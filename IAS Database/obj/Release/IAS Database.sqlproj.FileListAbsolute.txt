@@ -1,0 +1,9 @@
+C:\Users\cbalbuena\Fuentes\IAS\IAS Database\bin\Release\IAS Database.dacpac
+C:\Users\cbalbuena\Fuentes\IAS\IAS Database\bin\Release\IAS_Database.dll
+C:\Users\cbalbuena\Fuentes\IAS\IAS Database\bin\Release\IAS_Database.pdb
+C:\Users\cbalbuena\Fuentes\IAS\IAS Database\obj\Release\Model.xml
+C:\Users\cbalbuena\Fuentes\IAS\IAS Database\obj\Release\refactor.xml
+C:\Users\cbalbuena\Fuentes\IAS\IAS Database\obj\Release\postdeploy.sql
+C:\Users\cbalbuena\Fuentes\IAS\IAS Database\obj\Release\predeploy.sql
+C:\Users\cbalbuena\Fuentes\IAS\IAS Database\obj\Release\IAS_Database.dll
+C:\Users\cbalbuena\Fuentes\IAS\IAS Database\obj\Release\IAS_Database.pdb

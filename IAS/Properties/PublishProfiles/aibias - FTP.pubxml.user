@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4TYUu2naQE6B96IyKYYBagAAAAACAAAAAAAQZgAAAAEAACAAAAC/Ut1ltfhbWN0yWiu337Y4O2Pak18ZWwtabi9XbPC23QAAAAAOgAAAAAIAACAAAAC8b0a3Wz3+c1RkbH8IlEBw882fplQH86MMOvCOs1YayhAAAADUlUzPCe0QR1U0R+t4jLuLQAAAALX/umCtFmmu7XdCH0vLvLSvPii0kALS7ShUxXZw5n7Nie5WceUYoHRDjIvzaaow1kpBSz7psV5V8FCP9h1bBSw=</EncryptedPassword>
+    <_PublishTargetUrl>ftp://aibsql.cloudapp.net/site/wwwroot</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="About.aspx">
+      <publishTime>03/16/2014 22:51:12</publishTime>
+    </File>
+    <File Include="Account/RegisterExternalLogin.aspx">
+      <publishTime>03/16/2014 22:51:15</publishTime>
+    </File>
+    <File Include="Account/Web.config">
+      <publishTime>03/16/2014 22:51:15</publishTime>
+    </File>
+    <File Include="Admin/AlarmRoles.aspx">
+      <publishTime>03/16/2014 22:51:15</publishTime>
+    </File>
+    <File Include="Admin/Alarms.aspx">
+      <publishTime>03/16/2014 22:51:15</publishTime>
+    </File>
+    <File Include="Admin/AlarmUsers.aspx">
+      <publishTime>03/16/2014 22:51:15</publishTime>
+    </File>
+    <File Include="Admin/CasePriorities.aspx">
+      <publishTime>03/16/2014 22:51:16</publishTime>
+    </File>
+    <File Include="Admin/CollectionMethods.aspx">
+      <publishTime>04/23/2014 09:57:48</publishTime>
+    </File>
+    <File Include="Admin/CollectionStates.aspx">
+      <publishTime>04/23/2014 09:57:48</publishTime>
+    </File>
+    <File Include="Admin/Currencies.aspx">
+      <publishTime>04/23/2014 09:57:49</publishTime>
+    </File>
+    <File Include="Admin/Forms.aspx">
+      <publishTime>03/16/2014 22:51:15</publishTime>
+    </File>
+    <File Include="Admin/Persons.aspx">
+      <publishTime>03/16/2014 22:51:16</publishTime>
+    </File>
+    <File Include="Admin/PersonUserAssignments.aspx">
+      <publishTime>03/16/2014 22:51:16</publishTime>
+    </File>
+    <File Include="Admin/RoleStateTransitions.aspx">
+      <publishTime>03/16/2014 22:51:16</publishTime>
+    </File>
+    <File Include="Admin/States.aspx">
+      <publishTime>03/16/2014 22:51:17</publishTime>
+    </File>
+    <File Include="Admin/StatesTransitionsChart.aspx">
+      <publishTime>03/16/2014 22:51:17</publishTime>
+    </File>
+    <File Include="Admin/UserStateTransitions.aspx">
+      <publishTime>03/16/2014 22:51:17</publishTime>
+    </File>
+    <File Include="Admin/Workflows.aspx">
+      <publishTime>03/16/2014 22:51:17</publishTime>
+    </File>
+    <File Include="Admin/WorkflowStateForms.aspx">
+      <publishTime>03/16/2014 22:51:17</publishTime>
+    </File>
+    <File Include="Admin/WorkflowStateTransitions.aspx">
+      <publishTime>03/16/2014 22:51:18</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>03/16/2014 22:51:32</publishTime>
+    </File>
+    <File Include="bin/AspNet.ScriptManager.bootstrap.dll">
+      <publishTime>03/16/2014 22:51:33</publishTime>
+    </File>
+    <File Include="bin/AspNet.ScriptManager.jQuery.dll">
+      <publishTime>03/16/2014 22:51:35</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>03/16/2014 22:51:41</publishTime>
+    </File>
+    <File Include="Bundle.config">
+      <publishTime>03/16/2014 22:51:13</publishTime>
+    </File>
+    <File Include="Contact.aspx">
+      <publishTime>03/16/2014 22:51:13</publishTime>
+    </File>
+    <File Include="Default.aspx">
+      <publishTime>03/16/2014 22:51:13</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>03/16/2014 22:51:13</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

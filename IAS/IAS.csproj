@@ -1,0 +1,774 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{69DEFB67-F2E6-49D9-A52E-1FA2C5B3D0CB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IAS</RootNamespace>
+    <AssemblyName>IAS</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Elmah">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.bootstrap">
+      <HintPath>..\packages\AspNet.ScriptManager.bootstrap.3.0.0\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery">
+      <HintPath>..\packages\AspNet.ScriptManager.jQuery.1.10.2\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.MSAjax">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <Private>True</Private>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.1\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.1.0.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.0.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.2.0.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.0.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.2.0.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.2.0.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.2.0.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.0.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Manage.aspx" />
+    <Content Include="Account\OpenAuthProviders.ascx" />
+    <Content Include="Account\Register.aspx" />
+    <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Admin\AlarmRoles.aspx" />
+    <Content Include="Admin\Alarms.aspx" />
+    <Content Include="Admin\AlarmUsers.aspx" />
+    <Content Include="Admin\CasePriorities.aspx" />
+    <Content Include="Admin\ClaimsStatus.aspx" />
+    <Content Include="Admin\CollectionStates.aspx" />
+    <Content Include="Admin\CollectionMethods.aspx" />
+    <Content Include="Admin\ContactDestinations.aspx" />
+    <Content Include="Admin\ContactTypes.aspx" />
+    <Content Include="Admin\Currencies.aspx" />
+    <Content Include="Admin\Forms.aspx" />
+    <Content Include="Admin\Liquidators.aspx" />
+    <Content Include="Admin\Persons.aspx" />
+    <Content Include="Admin\PersonUserAssignments.aspx" />
+    <Content Include="Admin\RoleStateTransitions.aspx" />
+    <Content Include="Admin\StatesTransitionsChart.aspx" />
+    <Content Include="Admin\WorkflowStateForms.aspx" />
+    <Content Include="Admin\States.aspx" />
+    <Content Include="Admin\UserStateTransitions.aspx" />
+    <Content Include="Admin\Workflows.aspx" />
+    <Content Include="Admin\WorkflowStateTransitions.aspx" />
+    <Content Include="Admin\Workshops.aspx" />
+    <Content Include="CaseManagment\CaseData.ascx" />
+    <Content Include="CaseManagment\CaseDetails.aspx" />
+    <Content Include="CaseManagment\CaseTransitionManager.ascx" />
+    <Content Include="CaseManagment\CollectionCaseDetails.aspx" />
+    <Content Include="CaseManagment\CollectionsToExpire.aspx" />
+    <Content Include="CaseManagment\MyCaseList.aspx" />
+    <Content Include="ClaimsTemporalErase.aspx" />
+    <Content Include="Collections\Assignations.aspx" />
+    <Content Include="Collections\UploadCollections.aspx" />
+    <Content Include="Contact.aspx" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery.datetimepicker.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="ErrorPage.aspx" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="App_Data\Images\alert-icon.png" />
+    <Content Include="App_Data\Images\arrow-icon.png" />
+    <Content Include="App_Data\Images\calendar-icon.png" />
+    <Content Include="App_Data\Images\comments-icon.png" />
+    <Content Include="App_Data\Images\form-icon.png" />
+    <Content Include="App_Data\Images\help-icon.png" />
+    <Content Include="App_Data\Images\schedule-icon.png" />
+    <Content Include="App_Data\Images\tasks-diagram-icon.png" />
+    <Content Include="App_Data\Images\user-icon.png" />
+    <Content Include="App_Data\Images\users-icon.png" />
+    <Content Include="Migrations\ExchangeSchemaData.sql" />
+    <Content Include="Migrations\SqlScripts\CreateCaseAndSMSTrigger.sql" />
+    <Content Include="Migrations\SqlScripts\TestsData.sql" />
+    <Content Include="Migrations\SqlScripts\UserCaseAssigment.sql" />
+    <Content Include="packages.config" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Account\Web.config" />
+    <None Include="Properties\PublishProfiles\aibias - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\aibias - Web Deploy.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\d3.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery.datetimepicker.js" />
+    <Content Include="Scripts\jqueryBlockUI.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\raphael-min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Default.aspx" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Site.Master" />
+    <Content Include="Collections\Tasks.aspx" />
+    <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Bundle.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Site.Mobile.Master" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Manage.aspx.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Manage.aspx.designer.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\OpenAuthProviders.ascx.cs">
+      <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\OpenAuthProviders.ascx.designer.cs">
+      <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\RegisterExternalLogin.aspx.cs">
+      <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\RegisterExternalLogin.aspx.designer.cs">
+      <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AlarmRoles.aspx.cs">
+      <DependentUpon>AlarmRoles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AlarmRoles.aspx.designer.cs">
+      <DependentUpon>AlarmRoles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Alarms.aspx.cs">
+      <DependentUpon>Alarms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Alarms.aspx.designer.cs">
+      <DependentUpon>Alarms.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AlarmUsers.aspx.cs">
+      <DependentUpon>AlarmUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AlarmUsers.aspx.designer.cs">
+      <DependentUpon>AlarmUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CasePriorities.aspx.cs">
+      <DependentUpon>CasePriorities.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CasePriorities.aspx.designer.cs">
+      <DependentUpon>CasePriorities.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ClaimsStatus.aspx.cs">
+      <DependentUpon>ClaimsStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ClaimsStatus.aspx.designer.cs">
+      <DependentUpon>ClaimsStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CollectionStates.aspx.cs">
+      <DependentUpon>CollectionStates.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CollectionStates.aspx.designer.cs">
+      <DependentUpon>CollectionStates.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CollectionMethods.aspx.cs">
+      <DependentUpon>CollectionMethods.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CollectionMethods.aspx.designer.cs">
+      <DependentUpon>CollectionMethods.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ContactDestinations.aspx.cs">
+      <DependentUpon>ContactDestinations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ContactDestinations.aspx.designer.cs">
+      <DependentUpon>ContactDestinations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ContactTypes.aspx.cs">
+      <DependentUpon>ContactTypes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ContactTypes.aspx.designer.cs">
+      <DependentUpon>ContactTypes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Currencies.aspx.cs">
+      <DependentUpon>Currencies.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Currencies.aspx.designer.cs">
+      <DependentUpon>Currencies.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Forms.aspx.cs">
+      <DependentUpon>Forms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Forms.aspx.designer.cs">
+      <DependentUpon>Forms.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Liquidators.aspx.cs">
+      <DependentUpon>Liquidators.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Liquidators.aspx.designer.cs">
+      <DependentUpon>Liquidators.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Persons.aspx.cs">
+      <DependentUpon>Persons.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Persons.aspx.designer.cs">
+      <DependentUpon>Persons.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PersonUserAssignments.aspx.cs">
+      <DependentUpon>PersonUserAssignments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\PersonUserAssignments.aspx.designer.cs">
+      <DependentUpon>PersonUserAssignments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\RoleStateTransitions.aspx.cs">
+      <DependentUpon>RoleStateTransitions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\RoleStateTransitions.aspx.designer.cs">
+      <DependentUpon>RoleStateTransitions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\StatesTransitionsChart.aspx.cs">
+      <DependentUpon>StatesTransitionsChart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\StatesTransitionsChart.aspx.designer.cs">
+      <DependentUpon>StatesTransitionsChart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\WorkflowStateForms.aspx.cs">
+      <DependentUpon>WorkflowStateForms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\WorkflowStateForms.aspx.designer.cs">
+      <DependentUpon>WorkflowStateForms.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\States.aspx.cs">
+      <DependentUpon>States.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\States.aspx.designer.cs">
+      <DependentUpon>States.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserStateTransitions.aspx.cs">
+      <DependentUpon>UserStateTransitions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserStateTransitions.aspx.designer.cs">
+      <DependentUpon>UserStateTransitions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Workflows.aspx.cs">
+      <DependentUpon>Workflows.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Workflows.aspx.designer.cs">
+      <DependentUpon>Workflows.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\WorkflowStateTransitions.aspx.cs">
+      <DependentUpon>WorkflowStateTransitions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\WorkflowStateTransitions.aspx.designer.cs">
+      <DependentUpon>WorkflowStateTransitions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Workshops.aspx.cs">
+      <DependentUpon>Workshops.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Workshops.aspx.designer.cs">
+      <DependentUpon>Workshops.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="CaseManagment\CaseData.ascx.cs">
+      <DependentUpon>CaseData.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CaseManagment\CaseData.ascx.designer.cs">
+      <DependentUpon>CaseData.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CaseManagment\CaseDetails.aspx.cs">
+      <DependentUpon>CaseDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CaseManagment\CaseDetails.aspx.designer.cs">
+      <DependentUpon>CaseDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CaseManagment\CaseTransitionManager.ascx.cs">
+      <DependentUpon>CaseTransitionManager.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CaseManagment\CaseTransitionManager.ascx.designer.cs">
+      <DependentUpon>CaseTransitionManager.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CaseManagment\CollectionCaseDetails.aspx.cs">
+      <DependentUpon>CollectionCaseDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CaseManagment\CollectionCaseDetails.aspx.designer.cs">
+      <DependentUpon>CollectionCaseDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CaseManagment\CollectionsToExpire.aspx.cs">
+      <DependentUpon>CollectionsToExpire.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CaseManagment\CollectionsToExpire.aspx.designer.cs">
+      <DependentUpon>CollectionsToExpire.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CaseManagment\MyCaseList.aspx.cs">
+      <DependentUpon>MyCaseList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CaseManagment\MyCaseList.aspx.designer.cs">
+      <DependentUpon>MyCaseList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimsTemporalErase.aspx.cs">
+      <DependentUpon>ClaimsTemporalErase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClaimsTemporalErase.aspx.designer.cs">
+      <DependentUpon>ClaimsTemporalErase.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Collections\Assignations.aspx.cs">
+      <DependentUpon>Assignations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Collections\Assignations.aspx.designer.cs">
+      <DependentUpon>Assignations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Collections\UploadCollections.aspx.cs">
+      <DependentUpon>UploadCollections.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Collections\UploadCollections.aspx.designer.cs">
+      <DependentUpon>UploadCollections.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Constants\ControlValues.cs" />
+    <Compile Include="Constants\SessionKeys.cs" />
+    <Compile Include="Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Core.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\EventLogManager.cs" />
+    <Compile Include="ErrorPage.aspx.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPage.aspx.designer.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\CaseStateChangedEventArgs.cs" />
+    <Compile Include="Infrastructure\ExceptionUtility.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mappings\ApplicationRoleMap.cs" />
+    <Compile Include="Mappings\UserCaseAssigment.cs" />
+    <Compile Include="Mappings\DocumentTypeMap.cs" />
+    <Compile Include="Mappings\PersonMap.cs" />
+    <Compile Include="Migrations\201402081817594_Initial.cs" />
+    <Compile Include="Migrations\201402081817594_Initial.Designer.cs">
+      <DependentUpon>201402081817594_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402111448570_Collection-Add.cs" />
+    <Compile Include="Migrations\201402111448570_Collection-Add.Designer.cs">
+      <DependentUpon>201402111448570_Collection-Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402111509436_StateForms-Mod.cs" />
+    <Compile Include="Migrations\201402111509436_StateForms-Mod.Designer.cs">
+      <DependentUpon>201402111509436_StateForms-Mod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402132053356_Collenction-RiskName-Edit.cs" />
+    <Compile Include="Migrations\201402132053356_Collenction-RiskName-Edit.Designer.cs">
+      <DependentUpon>201402132053356_Collenction-RiskName-Edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402141840217_AppConfigAdded.cs" />
+    <Compile Include="Migrations\201402141840217_AppConfigAdded.Designer.cs">
+      <DependentUpon>201402141840217_AppConfigAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402210143249_CaseTransition-EffectiveDate-Add.cs" />
+    <Compile Include="Migrations\201402210143249_CaseTransition-EffectiveDate-Add.Designer.cs">
+      <DependentUpon>201402210143249_CaseTransition-EffectiveDate-Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402210215563_Workflow-DefaultFormID-Add.cs" />
+    <Compile Include="Migrations\201402210215563_Workflow-DefaultFormID-Add.Designer.cs">
+      <DependentUpon>201402210215563_Workflow-DefaultFormID-Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402210234547_WorkFlow-DefaultForm-Edit.cs" />
+    <Compile Include="Migrations\201402210234547_WorkFlow-DefaultForm-Edit.Designer.cs">
+      <DependentUpon>201402210234547_WorkFlow-DefaultForm-Edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201403012107047_NoUnicode.cs" />
+    <Compile Include="Migrations\201403012107047_NoUnicode.Designer.cs">
+      <DependentUpon>201403012107047_NoUnicode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201403261429450_CollectionMoneyAndState.cs" />
+    <Compile Include="Migrations\201403261429450_CollectionMoneyAndState.Designer.cs">
+      <DependentUpon>201403261429450_CollectionMoneyAndState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201403261443477_CollectionMoneyAndStateNotNull.cs" />
+    <Compile Include="Migrations\201403261443477_CollectionMoneyAndStateNotNull.Designer.cs">
+      <DependentUpon>201403261443477_CollectionMoneyAndStateNotNull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404071448224_CollectionMethodAdded.cs" />
+    <Compile Include="Migrations\201404071448224_CollectionMethodAdded.Designer.cs">
+      <DependentUpon>201404071448224_CollectionMethodAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404071455115_CollectionMethodNotNull.cs" />
+    <Compile Include="Migrations\201404071455115_CollectionMethodNotNull.Designer.cs">
+      <DependentUpon>201404071455115_CollectionMethodNotNull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404091749425_PaymentDayAdded.cs" />
+    <Compile Include="Migrations\201404091749425_PaymentDayAdded.Designer.cs">
+      <DependentUpon>201404091749425_PaymentDayAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Alarm.cs" />
+    <Compile Include="Models\Case.cs" />
+    <Compile Include="Models\CasePriority.cs" />
+    <Compile Include="Models\CaseTransition.cs" />
+    <Compile Include="Models\Claim.cs" />
+    <Compile Include="Models\ClaimContactHistory.cs" />
+    <Compile Include="Models\ClaimStatu.cs" />
+    <Compile Include="Models\Collection.cs" />
+    <Compile Include="Models\AppConfig.cs" />
+    <Compile Include="Models\CollectionState.cs" />
+    <Compile Include="Models\CollectionMethod.cs" />
+    <Compile Include="Models\ClientPaymentDay.cs" />
+    <Compile Include="Models\ContactDestination.cs" />
+    <Compile Include="Models\ContactType.cs" />
+    <Compile Include="Models\Currency.cs" />
+    <Compile Include="Models\Liquidator.cs" />
+    <Compile Include="Models\RoleStateTransition.cs" />
+    <Compile Include="Models\SMSNotification.cs" />
+    <Compile Include="Models\UserCaseAssigment.cs" />
+    <Compile Include="Models\UserStateTransition.cs" />
+    <Compile Include="Models\DocumentType.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Form.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\State.cs" />
+    <Compile Include="Models\Workflow.cs" />
+    <Compile Include="Models\WorkflowStateForm.cs" />
+    <Compile Include="Models\WorkflowStateTransition.cs" />
+    <Compile Include="Models\WorkShop.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.designer.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.cs" />
+    <Compile Include="Collections\Tasks.aspx.cs">
+      <DependentUpon>Tasks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Collections\Tasks.aspx.designer.cs">
+      <DependentUpon>Tasks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.designer.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Readme\" />
+    <Folder Include="Claims\" />
+    <Folder Include="Exchange\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201402081817594_Initial.resx">
+      <DependentUpon>201402081817594_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402111448570_Collection-Add.resx">
+      <DependentUpon>201402111448570_Collection-Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402111509436_StateForms-Mod.resx">
+      <DependentUpon>201402111509436_StateForms-Mod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402132053356_Collenction-RiskName-Edit.resx">
+      <DependentUpon>201402132053356_Collenction-RiskName-Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402141840217_AppConfigAdded.resx">
+      <DependentUpon>201402141840217_AppConfigAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402210143249_CaseTransition-EffectiveDate-Add.resx">
+      <DependentUpon>201402210143249_CaseTransition-EffectiveDate-Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402210215563_Workflow-DefaultFormID-Add.resx">
+      <DependentUpon>201402210215563_Workflow-DefaultFormID-Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402210234547_WorkFlow-DefaultForm-Edit.resx">
+      <DependentUpon>201402210234547_WorkFlow-DefaultForm-Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403012107047_NoUnicode.resx">
+      <DependentUpon>201403012107047_NoUnicode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403261429450_CollectionMoneyAndState.resx">
+      <DependentUpon>201403261429450_CollectionMoneyAndState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403261443477_CollectionMoneyAndStateNotNull.resx">
+      <DependentUpon>201403261443477_CollectionMoneyAndStateNotNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404071448224_CollectionMethodAdded.resx">
+      <DependentUpon>201404071448224_CollectionMethodAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404071455115_CollectionMethodNotNull.resx">
+      <DependentUpon>201404071455115_CollectionMethodNotNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404091749425_PaymentDayAdded.resx">
+      <DependentUpon>201404091749425_PaymentDayAdded.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1790</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:1715/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

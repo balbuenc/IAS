@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IASDBContext-Web.config Connection String" description="IASDBContext Connection String used in web.config by the application to access the database." defaultValue="Data Source=aibsql.cloudapp.net;Initial Catalog=IAS;Persist Security Info=True;User ID=ias_web;Password=Ias2014" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\cbalbuena\\Fuentes\\IAS\\IAS\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='IASDBContext']/@connectionString" />
+  </parameter>
+</parameters>

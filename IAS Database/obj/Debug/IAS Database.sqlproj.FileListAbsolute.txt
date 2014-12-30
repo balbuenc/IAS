@@ -3,3 +3,12 @@ C:\Users\cbalbuena\Fuentes\IAS\IAS Database\bin\Debug\IAS_Database.dll
 C:\Users\cbalbuena\Fuentes\IAS\IAS Database\bin\Debug\IAS_Database.pdb
 C:\Users\cbalbuena\Fuentes\IAS\IAS Database\obj\Debug\IAS_Database.dll
 C:\Users\cbalbuena\Fuentes\IAS\IAS Database\obj\Debug\IAS_Database.pdb
+C:\Users\cbalbuena\Documents\GitHub\GitIAS\IAS\IAS Database\bin\Debug\IAS Database.dacpac
+C:\Users\cbalbuena\Documents\GitHub\GitIAS\IAS\IAS Database\bin\Debug\IAS_Database.dll
+C:\Users\cbalbuena\Documents\GitHub\GitIAS\IAS\IAS Database\bin\Debug\IAS_Database.pdb
+C:\Users\cbalbuena\Documents\GitHub\GitIAS\IAS\IAS Database\obj\Debug\Model.xml
+C:\Users\cbalbuena\Documents\GitHub\GitIAS\IAS\IAS Database\obj\Debug\refactor.xml
+C:\Users\cbalbuena\Documents\GitHub\GitIAS\IAS\IAS Database\obj\Debug\postdeploy.sql
+C:\Users\cbalbuena\Documents\GitHub\GitIAS\IAS\IAS Database\obj\Debug\predeploy.sql
+C:\Users\cbalbuena\Documents\GitHub\GitIAS\IAS\IAS Database\obj\Debug\IAS_Database.dll
+C:\Users\cbalbuena\Documents\GitHub\GitIAS\IAS\IAS Database\obj\Debug\IAS_Database.pdb

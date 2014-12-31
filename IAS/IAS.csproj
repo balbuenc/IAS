@@ -216,8 +216,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
-    <None Include="Properties\PublishProfiles\aibias - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\aibias - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\seguros - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\seguros - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

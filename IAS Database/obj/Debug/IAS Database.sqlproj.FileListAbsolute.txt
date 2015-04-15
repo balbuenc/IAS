@@ -12,3 +12,6 @@ C:\Users\cbalbuena\Documents\GitHub\GitIAS\IAS\IAS Database\obj\Debug\postdeploy
 C:\Users\cbalbuena\Documents\GitHub\GitIAS\IAS\IAS Database\obj\Debug\predeploy.sql
 C:\Users\cbalbuena\Documents\GitHub\GitIAS\IAS\IAS Database\obj\Debug\IAS_Database.dll
 C:\Users\cbalbuena\Documents\GitHub\GitIAS\IAS\IAS Database\obj\Debug\IAS_Database.pdb
+C:\Users\Administrador.AS\Documents\Git\IAS\IAS Database\bin\Debug\IAS Database.dacpac
+C:\Users\Administrador.AS\Documents\Git\IAS\IAS Database\obj\Debug\IAS_Database.dll
+C:\Users\Administrador.AS\Documents\Git\IAS\IAS Database\obj\Debug\IAS_Database.pdb

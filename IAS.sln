@@ -1,23 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAS", "IAS\IAS.csproj", "{69DEFB67-F2E6-49D9-A52E-1FA2C5B3D0CB}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "IAS Database", "IAS Database\IAS Database.sqlproj", "{D93F1EF6-9BA0-441F-8FD2-9C9C3120EE7F}"
-EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://balcazzhitech.visualstudio.com/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = IAS\\IAS.csproj
-		SccProjectName1 = IAS
-		SccLocalPath1 = IAS
-		SccProjectUniqueName2 = IAS\u0020Database\\IAS\u0020Database.sqlproj
-		SccProjectName2 = IAS\u0020Database
-		SccLocalPath2 = IAS\u0020Database
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -27,12 +15,6 @@ Global
 		{69DEFB67-F2E6-49D9-A52E-1FA2C5B3D0CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69DEFB67-F2E6-49D9-A52E-1FA2C5B3D0CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69DEFB67-F2E6-49D9-A52E-1FA2C5B3D0CB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D93F1EF6-9BA0-441F-8FD2-9C9C3120EE7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D93F1EF6-9BA0-441F-8FD2-9C9C3120EE7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D93F1EF6-9BA0-441F-8FD2-9C9C3120EE7F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{D93F1EF6-9BA0-441F-8FD2-9C9C3120EE7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D93F1EF6-9BA0-441F-8FD2-9C9C3120EE7F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D93F1EF6-9BA0-441F-8FD2-9C9C3120EE7F}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

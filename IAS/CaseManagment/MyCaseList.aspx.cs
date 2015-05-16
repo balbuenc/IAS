@@ -87,7 +87,7 @@ namespace IAS.CaseManagment {
                             dateInterval.Equals( ControlValues.NextWeek ) ? SqlFunctions.DatePart( "week", c.EffectiveDate ) == nextWeekNum :
                             dateInterval.Equals( ControlValues.CurrentMonth ) ? SqlFunctions.DatePart( "month", c.EffectiveDate ) == currentMonthNum :
                             dateInterval.Equals( ControlValues.Oldest ) ? c.EffectiveDate < DateTime.Today.Date : true )
-
+                        && c.WorkflowID == 2
                         && ( theCasePriorityID == 0 ? true : c.CasePriorityID == theCasePriorityID )
                         && ( string.IsNullOrEmpty( caseDescription ) ? true : c.Description.Contains( caseDescription ) ) )
                     //&& ( SqlFunctions.PatIndex("%" + caseDescription + "%",c.Description) > 0 ) )

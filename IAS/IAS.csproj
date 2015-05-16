@@ -186,7 +186,6 @@
     <Content Include="CaseManagment\CollectionCaseDetails.aspx" />
     <Content Include="CaseManagment\CollectionsToExpire.aspx" />
     <Content Include="CaseManagment\MyCaseList.aspx" />
-    <Content Include="ClaimsTemporalErase.aspx" />
     <Content Include="Collections\Assignations.aspx" />
     <Content Include="Collections\UploadCollections.aspx" />
     <Content Include="Contact.aspx" />
@@ -513,13 +512,6 @@
     </Compile>
     <Compile Include="CaseManagment\MyCaseList.aspx.designer.cs">
       <DependentUpon>MyCaseList.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ClaimsTemporalErase.aspx.cs">
-      <DependentUpon>ClaimsTemporalErase.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ClaimsTemporalErase.aspx.designer.cs">
-      <DependentUpon>ClaimsTemporalErase.aspx</DependentUpon>
     </Compile>
     <Compile Include="Collections\Assignations.aspx.cs">
       <DependentUpon>Assignations.aspx</DependentUpon>

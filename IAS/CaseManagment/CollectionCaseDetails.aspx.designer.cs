@@ -10,7 +10,7 @@
 namespace IAS.CaseManagment {
     
     
-    public partial class CollectionCaseDetails {
+    public partial class ClaimCaseDetails {
         
         /// <summary>
         /// caseInfoPanel control.

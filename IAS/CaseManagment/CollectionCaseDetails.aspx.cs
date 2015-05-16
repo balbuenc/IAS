@@ -27,7 +27,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace IAS.CaseManagment {
-    public partial class CollectionCaseDetails : System.Web.UI.Page {
+    public partial class ClaimCaseDetails : System.Web.UI.Page {
         protected void Page_Load( object sender, EventArgs e ) {
             
         }

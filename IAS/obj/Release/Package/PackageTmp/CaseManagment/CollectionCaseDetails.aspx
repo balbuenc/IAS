@@ -17,7 +17,7 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  --%>
 
-<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CollectionCaseDetails.aspx.cs" Inherits="IAS.CaseManagment.CollectionCaseDetails" %>
+<%@ Page Title="Informacion de Cobranzas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CollectionCaseDetails.aspx.cs" Inherits="IAS.CaseManagment.ClaimCaseDetails" %>
 
 <%@ Register Src="~/CaseManagment/CaseData.ascx" TagPrefix="uc1" TagName="CaseData" %>
 <%@ Register Src="~/CaseManagment/CaseTransitionManager.ascx" TagPrefix="uc1" TagName="CaseTransitionManager" %>

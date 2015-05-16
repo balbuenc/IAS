@@ -183,6 +183,7 @@
     <Content Include="CaseManagment\CaseData.ascx" />
     <Content Include="CaseManagment\CaseDetails.aspx" />
     <Content Include="CaseManagment\CaseTransitionManager.ascx" />
+    <Content Include="CaseManagment\ClaimCaseDetails.aspx" />
     <Content Include="CaseManagment\CollectionCaseDetails.aspx" />
     <Content Include="CaseManagment\CollectionsToExpire.aspx" />
     <Content Include="CaseManagment\MyCaseList.aspx" />
@@ -491,6 +492,13 @@
     </Compile>
     <Compile Include="CaseManagment\CaseTransitionManager.ascx.designer.cs">
       <DependentUpon>CaseTransitionManager.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CaseManagment\ClaimCaseDetails.aspx.cs">
+      <DependentUpon>ClaimCaseDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CaseManagment\ClaimCaseDetails.aspx.designer.cs">
+      <DependentUpon>ClaimCaseDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="CaseManagment\CollectionCaseDetails.aspx.cs">
       <DependentUpon>CollectionCaseDetails.aspx</DependentUpon>

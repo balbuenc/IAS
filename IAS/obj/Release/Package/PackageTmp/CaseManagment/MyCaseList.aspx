@@ -240,7 +240,7 @@
                                     SelectMethod="GetMyClaimsCases"
                                     ItemType="IAS.Models.Case"
                                     DataKeyNames="CaseID"
-                                    OnItemCommand="MyClaimsCasesListView_ItemCommand"
+                                     OnItemCommand="MyCasesListView_ItemCommand"
                                     AllowSorting="true">
 
                                     <LayoutTemplate>

@@ -8,7 +8,7 @@ namespace IAS.Models.Mapping
         public v_alarmas_activasMap()
         {
             // Primary Key
-            this.HasKey(t => new { t.AlarmID, t.StateID, t.Interval, t.ApplicationUser_Id, t.CaseID, t.PriorityName });
+            this.HasKey(t => new { t.AlarmID, t.StateID, t.Interval, t.ApplicationUser_Id, t.CaseID, t.PriorityName, t.CreationDate, t.EffectiveDate });
 
             // Properties
             this.Property(t => t.AlarmID)
@@ -34,22 +34,11 @@ namespace IAS.Models.Mapping
             this.Property(t => t.Description)
                 .HasMaxLength(200);
 
-            this.Property(t => t.CreationDate)
-                .IsFixedLength()
-                .HasMaxLength(10);
-
-            this.Property(t => t.EffectiveDate)
-                .IsFixedLength()
-                .HasMaxLength(10);
-
             this.Property(t => t.Message)
-                .HasMaxLength(696);
+                .HasMaxLength(814);
 
             this.Property(t => t.Editar)
                 .HasMaxLength(125);
-
-            this.Property(t => t.UserName)
-                .HasMaxLength(8000);
 
             // Table & Column Mappings
             this.ToTable("v_alarmas_activas");
@@ -65,7 +54,6 @@ namespace IAS.Models.Mapping
             this.Property(t => t.OverTimed).HasColumnName("OverTimed");
             this.Property(t => t.Message).HasColumnName("Message");
             this.Property(t => t.Editar).HasColumnName("Editar");
-            this.Property(t => t.UserName).HasColumnName("UserName");
         }
     }
 }

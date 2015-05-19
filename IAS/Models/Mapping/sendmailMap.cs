@@ -15,15 +15,11 @@ namespace IAS.Models.Mapping
                 .IsRequired()
                 .HasMaxLength(128);
 
-            this.Property(t => t.user)
-                .HasMaxLength(50);
-
             // Table & Column Mappings
             this.ToTable("sendmail", "exchange");
             this.Property(t => t.id).HasColumnName("id");
             this.Property(t => t.email).HasColumnName("email");
             this.Property(t => t.body).HasColumnName("body");
-            this.Property(t => t.user).HasColumnName("user");
         }
     }
 }

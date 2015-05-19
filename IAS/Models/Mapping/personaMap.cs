@@ -11,9 +11,6 @@ namespace IAS.Models.Mapping
             this.HasKey(t => t.id_persona);
 
             // Properties
-            this.Property(t => t.id_persona)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-
             this.Property(t => t.numero_documento)
                 .HasMaxLength(30);
 

@@ -29,8 +29,8 @@ namespace IAS.Mappings {
         {
             // Table & Column Mappings
             this.ToTable( "UserCaseAssigment" );
-            HasKey( u => u.UserCaseAssigmentID );
-            this.Property( t => t.UserCaseAssigmentID ).HasColumnName( "CaseID" );
+            HasKey( u => u.CaseID );
+            this.Property( t => t.CaseID ).HasColumnName( "CaseID" );
 
         }
     }

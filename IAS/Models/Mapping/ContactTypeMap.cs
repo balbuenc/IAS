@@ -11,14 +11,14 @@ namespace IAS.Models.Mapping
             this.HasKey(t => t.ContactTypeID);
 
             // Properties
-            this.Property(t => t.ContactType1)
+            this.Property(t => t.Description)
                 .IsRequired()
                 .HasMaxLength(50);
 
             // Table & Column Mappings
             this.ToTable("ContactType");
             this.Property(t => t.ContactTypeID).HasColumnName("ContactTypeID");
-            this.Property(t => t.ContactType1).HasColumnName("ContactType");
+            this.Property(t => t.Description).HasColumnName("Description");
         }
     }
 }

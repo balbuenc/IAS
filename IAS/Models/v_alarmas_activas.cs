@@ -12,10 +12,11 @@ namespace IAS.Models
         public long CaseID { get; set; }
         public string PriorityName { get; set; }
         public string Description { get; set; }
-        public System.DateTime CreationDate { get; set; }
-        public System.DateTime EffectiveDate { get; set; }
+        public string CreationDate { get; set; }
+        public string EffectiveDate { get; set; }
         public Nullable<int> OverTimed { get; set; }
         public string Message { get; set; }
         public string Editar { get; set; }
+        public string UserName { get; set; }
     }
 }

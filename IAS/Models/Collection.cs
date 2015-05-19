@@ -63,7 +63,7 @@ namespace IAS.Models
         [Required]
         public long PersonID { get; set; }
         [ForeignKey( "PersonID" )]
-        public virtual Person Person {
+        public virtual persona Person {
             get;
             set;
 
@@ -92,6 +92,13 @@ namespace IAS.Models
             get;
             set;
         }
+
+        public int InsuranceManagerID { get; set; }
+        public virtual InsuranceManager InsuranceManager { get; set; }
+
+        public int MonthGoal { get; set; }
+
+        public int YearGoal { get; set; }
     }
 
 }

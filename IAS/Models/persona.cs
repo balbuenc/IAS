@@ -8,6 +8,7 @@ namespace IAS.Models
         public persona()
         {
             this.Claims = new List<Claim>();
+            
             this.ClientPaymentDays = new List<ClientPaymentDay>();
             this.Collections = new List<Collection>();
             this.AspNetUsers = new List<AspNetUser>();
@@ -70,6 +71,7 @@ namespace IAS.Models
         public Nullable<System.DateTime> fecha_modificacion { get; set; }
         public string imagen { get; set; }
         public virtual ICollection<Claim> Claims { get; set; }
+        
         public virtual ICollection<ClientPaymentDay> ClientPaymentDays { get; set; }
         public virtual ICollection<Collection> Collections { get; set; }
         public virtual ICollection<AspNetUser> AspNetUsers { get; set; }

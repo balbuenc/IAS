@@ -32,6 +32,8 @@ namespace IAS.Models.Mapping
             this.Property(t => t.CollectionStateID).HasColumnName("CollectionStateID");
             this.Property(t => t.CollectionMethodID).HasColumnName("CollectionMethodID");
             this.Property(t => t.InsuranceManagerID).HasColumnName("InsuranceManagerID");
+            this.Property(t => t.MonthGoal).HasColumnName("MonthGoal");
+            this.Property(t => t.YearGoal).HasColumnName("YearGoal");
 
             // Relationships
             this.HasRequired(t => t.Case)
@@ -43,7 +45,7 @@ namespace IAS.Models.Mapping
             this.HasRequired(t => t.CollectionMethod)
                 .WithMany(t => t.Collections)
                 .HasForeignKey(d => d.CollectionMethodID);
-            this.HasRequired(t => t.persona)
+            this.HasRequired(t => t.Person)
                 .WithMany(t => t.Collections)
                 .HasForeignKey(d => d.PersonID);
 

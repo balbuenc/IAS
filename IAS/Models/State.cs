@@ -1,45 +1,34 @@
-//«Copyright 2014 Balcazz HT, http://www.balcazzht.com»
-
-//This file is part of IAS | Insurance Advanced Services.
-
-//IAS is free software: you can redistribute it and/or modify
-//it under the terms of the GNU General Public License as published by
-//the Free Software Foundation, either version 3 of the License, or
-//(at your option) any later version.
-
-//IAS is distributed in the hope that it will be useful,
-//but WITHOUT ANY WARRANTY; without even the implied warranty of
-//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//GNU General Public License for more details.
-
-//You should have received a copy of the GNU General Public License
-//along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
-
-
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace IAS.Models
 {
     public partial class State
     {
-       
         public State()
         {
+            this.Alarms = new List<Alarm>();
+            this.AppConfigs = new List<AppConfig>();
+            this.AppConfigs1 = new List<AppConfig>();
+            this.Cases = new List<Case>();
+            this.CaseTransitions = new List<CaseTransition>();
+            this.CaseTransitions1 = new List<CaseTransition>();
+            this.WorkflowStateForms = new List<WorkflowStateForm>();
+            this.WorkflowStateTransitions = new List<WorkflowStateTransition>();
+            this.WorkflowStateTransitions1 = new List<WorkflowStateTransition>();
         }
 
-        [ScaffoldColumn( false )]
         public long StateID { get; set; }
-
-        [Required, StringLength( 50 ), Display( Name = "Sate Name" )]
         public string StateName { get; set; }
-
-        [Required]
         public bool Active { get; set; }
-
-        public override string ToString() {
-            return StateName;
-        }
+        public virtual ICollection<Alarm> Alarms { get; set; }
+        public virtual ICollection<AppConfig> AppConfigs { get; set; }
+        public virtual ICollection<AppConfig> AppConfigs1 { get; set; }
+        public virtual ICollection<Case> Cases { get; set; }
+        public virtual ICollection<CaseTransition> CaseTransitions { get; set; }
+        public virtual ICollection<CaseTransition> CaseTransitions1 { get; set; }
+        public virtual ICollection<WorkflowStateForm> WorkflowStateForms { get; set; }
+        public virtual ICollection<WorkflowStateTransition> WorkflowStateTransitions { get; set; }
+        public virtual ICollection<WorkflowStateTransition> WorkflowStateTransitions1 { get; set; }
     }
 }

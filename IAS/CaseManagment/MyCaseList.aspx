@@ -15,9 +15,9 @@
 
     You should have received a copy of the GNU General Public License
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
- --%>
+--%>
 
-<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MyCaseList.aspx.cs" Inherits="IAS.CaseManagment.MyCaseList" %>
+<%@ Page Title="Casos" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MyCaseList.aspx.cs" Inherits="IAS.CaseManagment.MyCaseList" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
@@ -201,121 +201,233 @@
 
 
                     <div class="panel-heading">Siniestros Asignados a mi</div>
-
-                    <div class="text-left">
-                        <table class="table table-striped">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <asp:DropDownList ID="ddlClaimsDateInterval" runat="server" CssClass="form-control" AutoPostBack="true">
-                                            <asp:ListItem Selected="True" Value="Today">Hoy</asp:ListItem>
-                                            <asp:ListItem Value="CurrentWeek">Semana actual</asp:ListItem>
-                                            <asp:ListItem Value="NextWeek">Próxima semana</asp:ListItem>
-                                            <asp:ListItem Value="CurrentMonth">Mes actual</asp:ListItem>
-                                            <asp:ListItem Value="Oldest">Vencidos</asp:ListItem>
-                                        </asp:DropDownList>
-                                    </td>
-                                    <td>
-                                        <asp:DropDownList ID="ddlClaimsCasePriority" runat="server" CssClass="form-control" AutoPostBack="true"
-                                            SelectMethod="GetCasePriorities" DataTextField="PriorityName" DataValueField="CasePriorityID"
-                                            AppendDataBoundItems="true">
-                                            <asp:ListItem Text="Todas" Value="0" />
-                                        </asp:DropDownList>
-                                    </td>
-                                    <td>
-                                        <asp:TextBox ID="txtClaimsSearch" runat="server" CssClass="form-control" AutoPostBack="true"></asp:TextBox>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="panel-body">
-
-                        <asp:UpdatePanel ID="ClaimsCaseListUPanel" runat="server">
-
-                            <ContentTemplate>
-
-                                <asp:ListView ID="MyClaimsCasesListView" runat="server"
-                                    SelectMethod="GetMyClaimsCases"
-                                    ItemType="IAS.Models.Case"
-                                    DataKeyNames="CaseID"
-                                     OnItemCommand="MyCasesListView_ItemCommand"
-                                    AllowSorting="true">
-
-                                    <LayoutTemplate>
-
-                                        <div class="table responsive">
-
-                                            <table class="table table-striped">
-
-                                                <thead>
-                                                    <tr>
-                                                        <th>Rpt.</th>
-                                                        <th>
-                                                            <asp:LinkButton ID="FactionListViewName" runat="server" CommandName="Sort"
-                                                                CommandArgument="Description">Cliente</asp:LinkButton></th>
-                                                        <th>Prioridad</th>
-                                                        <th>Estado</th>
-                                                        <%--<th>Vencimiento</th>--%>
-                                                        <th>
-                                                            <asp:LinkButton ID="FactionListViewDueDate" runat="server" CommandName="Sort"
-                                                                CommandArgument="EffectiveDate">Vencimiento</asp:LinkButton></th>
-
-                                                        <th></th>
-                                                    </tr>
-                                                </thead>
-
-                                                <tbody>
-                                                    <tr runat="server" id="itemPlaceholder" />
-                                                </tbody>
-
-                                            </table>
-
-                                        </div>
-                                    </LayoutTemplate>
-
-                                    <ItemTemplate>
-
+                    <div class="container">
+                        <div class="row">
+                            <asp:Button ID="newManualClaimBtn" CssClass="btn btn-success col-lg-2 col-lg-offset-10" OnClick="newManualClaimBtn_Click" runat="server" Text="Nuevo Siniestro" />
+                        </div>
+                        <div class="row">
+                            <hr />
+                        </div>
+                        <div class="row">
+                            <div class="text-left">
+                                <table class="table table-striped">
+                                    <tbody>
                                         <tr>
                                             <td>
-                                                <a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fHistoricoCaso&rs:Command=Render&CaseID=<%# Item.CaseID %>" target="_blank">#</a>
+                                                <asp:DropDownList ID="ddlClaimsDateInterval" runat="server" CssClass="form-control" AutoPostBack="true">
+                                                    <asp:ListItem Selected="True" Value="Today">Hoy</asp:ListItem>
+                                                    <asp:ListItem Value="CurrentWeek">Semana actual</asp:ListItem>
+                                                    <asp:ListItem Value="NextWeek">Próxima semana</asp:ListItem>
+                                                    <asp:ListItem Value="CurrentMonth">Mes actual</asp:ListItem>
+                                                    <asp:ListItem Value="Oldest">Vencidos</asp:ListItem>
+                                                </asp:DropDownList>
                                             </td>
                                             <td>
-                                                <asp:Label ID="lblCaseDescription" runat="server" Text='<%# Item.Description %>' />
+                                                <asp:DropDownList ID="ddlClaimsCasePriority" runat="server" CssClass="form-control" AutoPostBack="true"
+                                                    SelectMethod="GetCasePriorities" DataTextField="PriorityName" DataValueField="CasePriorityID"
+                                                    AppendDataBoundItems="true">
+                                                    <asp:ListItem Text="Todas" Value="0" />
+                                                </asp:DropDownList>
                                             </td>
                                             <td>
-                                                <asp:Label ID="lblCasePriority" runat="server" Text='<%# Item.CasePriority.PriorityName %>' />
-                                            </td>
-                                            <td>
-                                                <asp:Label ID="lblEstado" runat="server" Text='<%#  Item.CurrentState.StateName %>' />
-                                            </td>
-                                            <td>
-                                                <asp:Label ID="lblEffectiveDate" runat="server" Text='<%# String.Format("{0:d}", Item.EffectiveDate )           %>' />
-                                            </td>
-                                            <td class="text-right">
-                                                <asp:Button ID="ChangeUserButton" runat="server" Text="Tranferir caso" CommandName="ChangeUser" CommandArgument="<%# Item.CaseID %>" CssClass="btn btn-default" />
-                                                <asp:Button ID="EditButton" runat="server" Text="Gestionar" CommandName="OpenCase" CommandArgument="<%# Item.CaseID %>" CssClass="btn btn-info" />
+                                                <asp:TextBox ID="txtClaimsSearch" runat="server" CssClass="form-control" AutoPostBack="true"></asp:TextBox>
                                             </td>
                                         </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="panel-body">
 
-                                    </ItemTemplate>
+                                <asp:UpdatePanel ID="ClaimsCaseListUPanel" runat="server">
 
-                                    <EmptyDataTemplate>
-                                        <div class="msg-box bg-warning">No hay Siniestros asignados a mi usuario</div>
-                                    </EmptyDataTemplate>
+                                    <ContentTemplate>
 
-                                </asp:ListView>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
+                                        <asp:ListView ID="MyClaimsCasesListView" runat="server"
+                                            SelectMethod="GetMyClaimsCases"
+                                            ItemType="IAS.Models.Case"
+                                            DataKeyNames="CaseID"
+                                            OnItemCommand="MyCasesListView_ItemCommand"
+                                            AllowSorting="true">
 
+                                            <LayoutTemplate>
+
+                                                <div class="table responsive">
+
+                                                    <table class="table table-striped">
+
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Rpt.</th>
+                                                                <th>
+                                                                    <asp:LinkButton ID="FactionListViewName" runat="server" CommandName="Sort"
+                                                                        CommandArgument="Description">Cliente</asp:LinkButton></th>
+                                                                <th>Prioridad</th>
+                                                                <th>Estado</th>
+                                                                <%--<th>Vencimiento</th>--%>
+                                                                <th>
+                                                                    <asp:LinkButton ID="FactionListViewDueDate" runat="server" CommandName="Sort"
+                                                                        CommandArgument="EffectiveDate">Vencimiento</asp:LinkButton></th>
+
+                                                                <th></th>
+                                                            </tr>
+                                                        </thead>
+
+                                                        <tbody>
+                                                            <tr runat="server" id="itemPlaceholder" />
+                                                        </tbody>
+
+                                                    </table>
+
+                                                </div>
+                                            </LayoutTemplate>
+
+                                            <ItemTemplate>
+
+                                                <tr>
+                                                    <td>
+                                                        <a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fHistoricoCaso&rs:Command=Render&CaseID=<%# Item.CaseID %>" target="_blank">#</a>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="lblCaseDescription" runat="server" Text='<%# Item.Description %>' />
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="lblCasePriority" runat="server" Text='<%# Item.CasePriority.PriorityName %>' />
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="lblEstado" runat="server" Text='<%#  Item.CurrentState.StateName %>' />
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="lblEffectiveDate" runat="server" Text='<%# String.Format("{0:d}", Item.EffectiveDate )           %>' />
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <asp:Button ID="ChangeUserButton" runat="server" Text="Tranferir caso" CommandName="ChangeUser" CommandArgument="<%# Item.CaseID %>" CssClass="btn btn-default" />
+                                                        <asp:Button ID="EditButton" runat="server" Text="Gestionar" CommandName="OpenCase" CommandArgument="<%# Item.CaseID %>" CssClass="btn btn-info" />
+                                                    </td>
+                                                </tr>
+
+                                            </ItemTemplate>
+
+                                            <EmptyDataTemplate>
+                                                <div class="msg-box bg-warning">No hay Siniestros asignados a mi usuario</div>
+                                            </EmptyDataTemplate>
+
+                                        </asp:ListView>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+
+                            </div>
+                        </div>
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-
         </div>
 
 
-    </div>
+        <%-- Modal de Nuevo Siniestro Manual --%>
+        <script src="../Scripts/bootstrap-datepicker.min.js"></script>
+        <link href="../Content/bootstrap-datepicker.min.css" rel="stylesheet" />
 
+        <script>
+            var nowTemp = new Date();
+            var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+
+            var checkin = $('#dpd1').datepicker({
+                onRender: function (date) {
+                    return date.valueOf() < now.valueOf() ? 'disabled' : '';
+                }
+            }).on('changeDate', function (ev) {
+                if (ev.date.valueOf() > checkout.date.valueOf()) {
+                    var newDate = new Date(ev.date)
+                    newDate.setDate(newDate.getDate() + 1);
+                    checkout.setValue(newDate);
+                }
+                checkin.hide();
+                $('#dpd2')[0].focus();
+            }).data('datepicker');
+            var checkout = $('#dpd2').datepicker({
+                onRender: function (date) {
+                    return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+                }
+            }).on('changeDate', function (ev) {
+                checkout.hide();
+            }).data('datepicker');
+        </script>
+        <div class="modal fade" id="newManualClaimModal" tabindex="-1" role="dialog" aria-labelledby="newManualClaimModal-label" aria-hidden="true">
+
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="newManualClaimModal-label">Registrar Siniestro</h4>
+                    </div>
+                    <div class="modal-body">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Datos del Cliente</div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-sm-2 control-label" for="form-group-input">Cliente</label>
+                                                <div class="col-sm-10">
+                                                    <asp:DropDownList ID="ddlClientes" runat="server" DataSourceID="clientesDataSource" AutoPostBack="true"
+                                                        CssClass="form-control" DataValueField="id_persona" DataTextField="cliente">
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="col-sm-2 control-label" for="form-group-input">Nro. póliza</label>
+                                                <div class="col-sm-10">
+                                                    <asp:DropDownList ID="ddlNroPoliza" runat="server" DataSourceID="polizasDataSource"
+                                                        CssClass="form-control" DataValueField="nro_poliza" DataTextField="nro_poliza">
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-heading">Datos del Siniestro</div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-sm-2 control-label" for="form-group-input">Fecha Siniestro</label>
+                                                <div class="col-sm-10">
+
+                                                    <input data-provide="datepicker" id="dp1" class="form-control" data-date-format="dd-mm-yyyy" runat="server">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="col-sm-2 control-label" for="form-group-input">Tipo Siniestro</label>
+                                                <div class="col-sm-10">
+                                                    <asp:DropDownList ID="ddlTipoSiniestro" runat="server" CssClass="form-control" DataSourceID="tipoSinistrosDataSource"
+                                                        DataValueField="ClaimTypeID" DataTextField="Description">
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <%--<button type="button" class="btn btn-primary"  onclick="">Registrar</button>--%>
+                        <asp:Button ID="btnRegistrarSiniestro" runat="server" OnClick="btnRegistrarSiniestro_Click" CssClass="btn btn-primary" Text="Registrar"  />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #SQL Data Sources -->
+        <asp:SqlDataSource ID="clientesDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="SELECT distinct(asegurado) cliente, id_persona FROM [IAS_Developer].[exchange].[v_cotizaciones] where fecha_emision > '20140101' order by 1 asc "></asp:SqlDataSource>
+        <asp:SqlDataSource ID="polizasDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="sp_obtener_polizas_por_persona" SelectCommandType="StoredProcedure">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="ddlClientes" Name="p_id_persona" DbType="Int32" PropertyName="SelectedValue" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="tipoSinistrosDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="sp_obtener_tipo_siniestros" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+    </div>
+    <!-- #endregion -->
 </asp:Content>

@@ -30,8 +30,8 @@
     <asp:PlaceHolder runat="server">
 
         <%: Scripts.Render("~/bundles/modernizr") %>
-        <%: Scripts.Render("~/bundles/jquerys") %>
-        <%: Scripts.Render("~/bundses/bootstrap") %>
+     <%--   <%: Scripts.Render("~/bundles/jquery") %>
+        <%: Scripts.Render("~/bundles/bootstrap") %>--%>
         
     </asp:PlaceHolder>
     <webopt:BundleReference runat="server" Path="~/Content/css" />

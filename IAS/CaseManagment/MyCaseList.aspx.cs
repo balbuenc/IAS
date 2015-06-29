@@ -31,6 +31,8 @@ using System.Data.Entity.SqlServer;
 using IAS.Constants;
 using System.Globalization;
 using System.Data.Entity;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace IAS.CaseManagment {
     public partial class MyCaseList : System.Web.UI.Page {
@@ -237,6 +239,47 @@ namespace IAS.CaseManagment {
                 ErrorLabel.Text = exp.Message;
                 ErrorLabel.Visible = true;
                 return null;
+            }
+        }
+
+        protected void newManualClaimBtn_Click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "js_newManualClaimModal", "$('#newManualClaimModal').modal('toggle')", true);
+        }
+
+      
+
+        protected void btnRegistrarSiniestro_Click(object sender, EventArgs e)
+        {
+            SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
+            SqlCommand cmd = new SqlCommand();
+            Int32 rowsAffected;
+
+            try
+            {
+
+                cmd.CommandText = "sp_registrar_caso_siniestro";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = sqlConnection1;
+
+                cmd.Parameters.AddWithValue("@id_persona", ddlClientes.SelectedValue);
+                cmd.Parameters.AddWithValue("@cliente", ddlClientes.SelectedItem.Text);
+                cmd.Parameters.AddWithValue("@fecha_siniestro", Convert.ToDateTime( dp1.Value));
+                cmd.Parameters.AddWithValue("@id_tipo_siniestro", ddlTipoSiniestro.SelectedValue);
+                cmd.Parameters.AddWithValue("@nro_poliza", ddlNroPoliza.SelectedItem.Text);
+                cmd.Parameters.AddWithValue("@usuario", User.Identity.Name );
+
+                sqlConnection1.Open();
+
+                rowsAffected = cmd.ExecuteNonQuery();
+
+                sqlConnection1.Close();
+
+            }
+            catch (Exception exp)
+            {
+                ErrorLabel.Text = exp.Message;
+                ErrorLabel.Visible = true;
             }
         }
     }

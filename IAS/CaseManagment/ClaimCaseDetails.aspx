@@ -1,18 +1,17 @@
 ﻿<%@ Page Title="Informacion de Siniestros" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ClaimCaseDetails.aspx.cs" Inherits="IAS.CaseManagment.ClaimCaseDetails1" %>
+
 <%@ Register Src="~/CaseManagment/CaseData.ascx" TagPrefix="uc1" TagName="CaseData" %>
 <%@ Register Src="~/CaseManagment/CaseTransitionManager.ascx" TagPrefix="uc1" TagName="CaseTransitionManager" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-     <script type="text/javascript">
-      
-
+    <script type="text/javascript">
         function OpenPage() {
 
             var prodId = getParameterByName('CaseID');
 
             var url = "http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fEstadoCuenta&rs:Command=Render&CaseID=" + prodId;
 
-        window.open(url);
+            window.open(url);
 
         }
 
@@ -21,15 +20,11 @@
             return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
         }
 
-</script>
+    </script>
     <asp:UpdatePanel ID="caseInfoPanel" runat="server" UpdateMode="Conditional">
-
         <ContentTemplate>
-
             <uc1:CaseData runat="server" ID="CaseData" />
-
         </ContentTemplate>
-
     </asp:UpdatePanel>
 
     <asp:FormView ID="PersonData" runat="server" ItemType="IAS.Models.Person"
@@ -53,15 +48,15 @@
                             Celular: <strong><%#:string.IsNullOrEmpty(Item.MobilePhone )?"nd": Item.MobilePhone %> </strong>
                             Laboral: <strong><%#:string.IsNullOrEmpty(Item.BusinessPhone )?"nd": Item.BusinessPhone %> </strong>
                         </div>
-                        
+
                     </div>
                     <div class="row">
                         <div class="col-sm-2"><u>Documentos:</u></div>
-                        
-                            <div class="col-sm-4">
+
+                        <div class="col-sm-4">
                             R.U.C.: <strong><%#:string.IsNullOrEmpty(Item.DocumentNumber )?"nd": Item.DocumentNumber%> </strong>
                             C.I.: <strong><%#:string.IsNullOrEmpty(Item.DocumentNumber2 )?"nd": Item.DocumentNumber2 %> </strong>
-                        
+
                         </div>
                     </div>
                 </div>
@@ -115,7 +110,7 @@
                                 UpdateMethod="UpdatePayment"
                                 OnItemEditing="DetailListView_ItemEditing"
                                 OnItemCanceling="DetailListView_ItemCanceling"
-                                OnItemUpdated="DetailListView_ItemUpdated" >
+                                OnItemUpdated="DetailListView_ItemUpdated">
                                 <LayoutTemplate>
                                     <table class="table table-striped">
                                         <thead>
@@ -148,10 +143,10 @@
                                             <asp:Label ID="lblDebtAmount" runat="server" Text='<%#:string.Format("{0:n2}",Item.DebtAmount) %>' />
                                         </td>
                                         <td>
-                                            <asp:Label ID="lblPaymentDueDate" runat="server" Text='<%#:string.Format("{0:d}",Item.PaymentDueDate) %>'  />
+                                            <asp:Label ID="lblPaymentDueDate" runat="server" Text='<%#:string.Format("{0:d}",Item.PaymentDueDate) %>' />
                                         </td>
                                         <td>
-                                            <asp:Label ID="lblCollection" runat="server" Text='<%#:string.Format("{0:d}",Item.CollectionMethod) %>'  />
+                                            <asp:Label ID="lblCollection" runat="server" Text='<%#:string.Format("{0:d}",Item.CollectionMethod) %>' />
                                         </td>
                                         <td>
                                             <asp:CheckBox ID="chkCollected" runat="server" Checked="<%# Item.Collected %>" Enabled="false" />
@@ -162,7 +157,7 @@
                                         <td>
                                             <asp:Label ID="Label4" runat="server" Text="<%#:Item.CollectionState%>" />
                                         </td>
-                                        <td class="text-right">                                            
+                                        <td class="text-right">
                                             <asp:Button ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CssClass="btn btn-info" Visible="true" />
                                         </td>
                                     </tr>
@@ -180,13 +175,13 @@
                                             <asp:Label ID="lblDebtAmount" runat="server" Text='<%#:string.Format("{0:n2}",Item.DebtAmount) %>' />
                                         </td>
                                         <td>
-                                            <asp:Label ID="lblPaymentDueDate" runat="server" Text='<%#:string.Format("{0:d}",Item.PaymentDueDate) %>'/>
+                                            <asp:Label ID="lblPaymentDueDate" runat="server" Text='<%#:string.Format("{0:d}",Item.PaymentDueDate) %>' />
                                         </td>
                                         <td>
-                                            <asp:Label ID="lblCollection" runat="server" Text='<%#:string.Format("{0:d}",Item.CollectionMethod) %>'  />
+                                            <asp:Label ID="lblCollection" runat="server" Text='<%#:string.Format("{0:d}",Item.CollectionMethod) %>' />
                                         </td>
                                         <td class="text-center">
-                                            <asp:CheckBox ID="chkCollected" runat="server" Checked="<%# BindItem.Collected %>"  />
+                                            <asp:CheckBox ID="chkCollected" runat="server" Checked="<%# BindItem.Collected %>" />
                                         </td>
                                         <td>
                                             <asp:TextBox ID="txtEffectiveDate" runat="server" Text="<%# BindItem.CollectedDate %>" CssClass="form-control datetime"></asp:TextBox>
@@ -225,9 +220,9 @@
             <uc1:CaseTransitionManager runat="server" ID="CaseTransitionManager" OnCaseStateChanged="CaseTransitionManager_CaseStateChanged" />
 
         </ContentTemplate>
-        
+
     </asp:UpdatePanel>
     <div>
-            <asp:Button ID="CaseAccountResumeBtn" runat="server" Text="Estado de cuenta" Width="148px" OnClientClick="javascript:OpenPage();" />
+        <asp:Button ID="CaseAccountResumeBtn" runat="server" Text="Estado de cuenta" Width="148px" OnClientClick="javascript:OpenPage();" />
     </div>
 </asp:Content>

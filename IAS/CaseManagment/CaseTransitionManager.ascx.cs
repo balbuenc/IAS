@@ -33,9 +33,11 @@ using IAS.Infrastructure;
 using System.Globalization;
 using IAS.Constants;
 
-namespace IAS.CaseManagment {
+namespace IAS.CaseManagment
+{
 
-    public partial class CaseTransitionManager : System.Web.UI.UserControl {
+    public partial class CaseTransitionManager : System.Web.UI.UserControl
+    {
 
         private void changeEffectiveDateEnableProperty()
         {
@@ -45,13 +47,13 @@ namespace IAS.CaseManagment {
             }
             else
             {
-                long caseID = long.Parse( hdnCaseID.Value );
+                long caseID = long.Parse(hdnCaseID.Value);
                 long newStateID = long.Parse(this.ddlNewState.SelectedValue);
 
                 var db = new ApplicationDbContext();
                 //var theCase = Session[SessionKeys.CurrentCase] as Case; 
                 var theCase = db.Cases.SingleOrDefault(c => c.CaseID == caseID);
-                if ( null == theCase)
+                if (null == theCase)
                 {
                     ErrorLabel.Text = string.Format(
                         "No hay ningun caso activo actualmente. Por favor contactar al administrador del sistema.Datos adicionales: Caso actual {0}",
@@ -65,11 +67,12 @@ namespace IAS.CaseManagment {
                 {
                     ErrorLabel.Text = string.Format(
                         "No se encontro una transicion de estado valida paar este Workflow, por favor contactar al administrador del sistema.Datos adicionales: flujo {0}, Estado actual {1}, estado final {2}",
-                        theCase.WorkflowID, theCase.StateID,newStateID);                    
+                        theCase.WorkflowID, theCase.StateID, newStateID);
                     return;
                 }
 
-                if (stateTransition.EditableEffectiveDate != null && stateTransition.EditableEffectiveDate == true)
+                //if (stateTransition.EditableEffectiveDate != null && stateTransition.EditableEffectiveDate == true)
+                if (stateTransition.EditableEffectiveDate == true)
                     this.txtEffectiveDate.Enabled = true;
                 else
                     this.txtEffectiveDate.Enabled = false;
@@ -110,7 +113,7 @@ namespace IAS.CaseManagment {
         protected void Page_Load(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "js_ctrl_init",
-                "$('#" + this.txtEffectiveDate.ClientID + "').datetimepicker({  lang: 'es', format:'d/m/Y H:i', step: 30 });", 
+                "$('#" + this.txtEffectiveDate.ClientID + "').datetimepicker({  lang: 'es', format:'d/m/Y H:i', step: 30 });",
                 true
             );
         }
@@ -129,13 +132,15 @@ namespace IAS.CaseManagment {
             hdnCaseID.Value = caseID.Value.ToString();
             var db = new ApplicationDbContext();
             var theCase = db.Cases.Where(c => c.CaseID == caseID).SingleOrDefault();
-            if ( null == theCase ) {
+            if (null == theCase)
+            {
                 Session[SessionKeys.CurrentCase] = null;
                 return null;
             }
-            else {
+            else
+            {
                 Session[SessionKeys.CurrentCase] = theCase;
-                return theCase.StateTransitions.OrderByDescending( s => s.TransitionDate ).AsQueryable();
+                return theCase.StateTransitions.OrderByDescending(s => s.TransitionDate).AsQueryable();
             }
         }
 
@@ -183,7 +188,7 @@ namespace IAS.CaseManagment {
             }
             catch (Exception exc)
             {
-               
+
                 return null;
             }
         }
@@ -192,7 +197,7 @@ namespace IAS.CaseManagment {
         {
             var currentUserId = HttpContext.Current.User.Identity.GetUserId();
             var caseID = long.Parse(hdnCaseID.Value);
-            
+
             var db = new ApplicationDbContext();
             var theCase = db.Cases.Where(c => c.CaseID == caseID).SingleOrDefault();
             if (null == theCase)
@@ -212,10 +217,12 @@ namespace IAS.CaseManagment {
             //var newResponsableID = users.OrderBy(t => t.Caseload).First().UserID;
 
             DateTime effectiveDate;
-            if ( this.txtEffectiveDate.Enabled == false  ) {
+            if (this.txtEffectiveDate.Enabled == false)
+            {
                 effectiveDate = DateTime.Now;
             }
-            else {
+            else
+            {
                 try
                 {
                     effectiveDate = DateTime.ParseExact(txtEffectiveDate.Text, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
@@ -224,9 +231,9 @@ namespace IAS.CaseManagment {
                 {
                     effectiveDate = DateTime.Now;
                 }
-                
+
                 //string[] components = txtEffectiveDate.Text.Split( '/' );                
-                
+
                 //int day = int.Parse( components[0] );
                 //int month = int.Parse( components[1] );
 
@@ -277,12 +284,14 @@ namespace IAS.CaseManagment {
 
         }
 
-        private class UserAssignmet {
-            public UserAssignmet() {
+        private class UserAssignmet
+        {
+            public UserAssignmet()
+            {
 
             }
             public string UserID { get; set; }
-            public int Caseload{get;set;}
+            public int Caseload { get; set; }
         }
 
         protected void ddlNewState_SelectedIndexChanged(object sender, EventArgs e)

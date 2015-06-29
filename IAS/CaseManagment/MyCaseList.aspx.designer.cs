@@ -130,6 +130,15 @@ namespace IAS.CaseManagment {
         protected global::System.Web.UI.UpdatePanel UPanelClaims;
         
         /// <summary>
+        /// newManualClaimBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button newManualClaimBtn;
+        
+        /// <summary>
         /// ddlClaimsDateInterval control.
         /// </summary>
         /// <remarks>
@@ -173,5 +182,77 @@ namespace IAS.CaseManagment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView MyClaimsCasesListView;
+        
+        /// <summary>
+        /// ddlClientes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlClientes;
+        
+        /// <summary>
+        /// ddlNroPoliza control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlNroPoliza;
+        
+        /// <summary>
+        /// dp1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText dp1;
+        
+        /// <summary>
+        /// ddlTipoSiniestro control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoSiniestro;
+        
+        /// <summary>
+        /// btnRegistrarSiniestro control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRegistrarSiniestro;
+        
+        /// <summary>
+        /// clientesDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource clientesDataSource;
+        
+        /// <summary>
+        /// polizasDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource polizasDataSource;
+        
+        /// <summary>
+        /// tipoSinistrosDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource tipoSinistrosDataSource;
     }
 }

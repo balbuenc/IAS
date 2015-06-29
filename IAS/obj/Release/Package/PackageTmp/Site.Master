@@ -106,10 +106,11 @@
                                     <li><a href="../Admin/Workflows.aspx">Workflows</a></li>
                                     <li><a href="../Admin/CasePriorities.aspx">Prioridades</a></li>
                                     <li><a href="../Admin/Currencies.aspx">Monedas</a></li>
+                                    <li role="separator" class="divider"></li>
                                     <li><a href="../Admin/CollectionStates.aspx">Estado de cuotas</a></li>
-                                    <li><a href="../Admin/CollectionMethods.aspx">Método de cobro</a></li>                                    
-                                    <li><br /></li>
+                                    <li><a href="../Admin/CollectionMethods.aspx">Método de cobro</a></li> 
                                    <%-- <li><a href="../Admin/PersonUserAssignments.aspx">Asignación de responsables</a></li>--%>
+                                    <li role="separator" class="divider"></li>
                                     <li><a href="../Admin/ContactTypes.aspx">Tipos de Contacto</a></li>
                                     <li><a href="../Admin/ContactDestinations.aspx">Destinos de Contacto</a></li>
                                     <li><a href="../Admin/Liquidators.aspx">Liquidadores</a></li>
@@ -126,6 +127,7 @@
                                      
                                  <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fGESTOR_SSRS%2fCumplimiento&rs:Command=Render" target="_blank">Cumplimiento</a></li>
                                     <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fGESTOR_SSRS%2fMorosidad&rs:Command=Render" target="_blank">Morosidad</a></li>
+                                    <li role="separator" class="divider"></li>
                                     <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fGESTOR_SSRS%2fGestionCasos&rs:Command=Render" target="_blank">Historial de gestión</a></li>
                                     <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fGESTOR_SSRS%2fHistoricoSMS&rs:Command=Render" target="_blank">Historial de SMS</a></li>
                                     

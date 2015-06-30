@@ -6,13 +6,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
         function OpenPage() {
-
             var prodId = getParameterByName('CaseID');
-
             var url = "http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fEstadoCuenta&rs:Command=Render&CaseID=" + prodId;
-
             window.open(url);
-
         }
 
         function getParameterByName(name) {
@@ -33,9 +29,7 @@
         RenderOuterTable="false">
         <ItemTemplate>
             <h3>Informacion de Siniestros</h3>
-
             <div class="containter-fluid" style="padding-left: 20px;">
-
                 <div class="row">
                     <div class="col-sm-2"><u>Cliente:</u></div>
                     <div class="col-sm-4">
@@ -48,7 +42,6 @@
                             Celular: <strong><%#:string.IsNullOrEmpty(Item.MobilePhone )?"nd": Item.MobilePhone %> </strong>
                             Laboral: <strong><%#:string.IsNullOrEmpty(Item.BusinessPhone )?"nd": Item.BusinessPhone %> </strong>
                         </div>
-
                     </div>
                     <div class="row">
                         <div class="col-sm-2"><u>Documentos:</u></div>
@@ -62,21 +55,16 @@
                 </div>
             </div>
         </ItemTemplate>
-
         <EmptyDataTemplate>
             <div class="msg-box bg-info">
-                No hay datos de cobranzas para mostrar
+                No hay datos de cliente para mostrar
             </div>
         </EmptyDataTemplate>
-
     </asp:FormView>
 
     <asp:UpdatePanel ID="WorkflowUPanel" runat="server">
-
         <ContentTemplate>
-
             <asp:Label ID="ErrorLabel" Visible="False" CssClass="msg-box bg-danger" runat="server" />
-
             <asp:ListView ID="CollectionsListView" runat="server"
                 ItemType="IAS.Models.Collection" DataKeyNames="CollectionID"
                 SelectMethod="GetCollectionsForCase">
@@ -214,15 +202,9 @@
     </asp:UpdatePanel>
 
     <asp:UpdatePanel ID="trasicionManagerPanel" runat="server">
-
         <ContentTemplate>
-
             <uc1:CaseTransitionManager runat="server" ID="CaseTransitionManager" OnCaseStateChanged="CaseTransitionManager_CaseStateChanged" />
-
         </ContentTemplate>
-
     </asp:UpdatePanel>
-    <div>
-        <asp:Button ID="CaseAccountResumeBtn" runat="server" Text="Estado de cuenta" Width="148px" OnClientClick="javascript:OpenPage();" />
-    </div>
+
 </asp:Content>

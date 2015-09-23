@@ -193,33 +193,33 @@
                                 </ItemTemplate>
                                 <EditItemTemplate>
                                     <tr>
-                                       <%-- <td>
-                                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("PaymentNumber")%>' />
+                                        <td>
+                                            <asp:Label ID="Label1" runat="server" Text='<%# Eval("PaymentNumber")%>' />
                                         </td>
                                         <td>
-                                            <asp:Label ID="lblReceiptNumber" runat="server" Text='<%# Bind("ReceiptNumber")%>' />
+                                            <asp:Label ID="lblReceiptNumber" runat="server" Text='<%# Eval("ReceiptNumber")%>' />
                                         </td>
                                         <td>
-                                            <asp:Label ID="lblCurrency" runat="server" Text='<%# Bind("Money") %>' />
-                                            <asp:Label ID="lblDebtAmount" runat="server" Text='<%#:string.Format("{0:n2}",Bind("DebtAmount")) %>' />
+                                            <asp:Label ID="lblCurrency" runat="server" Text='<%# Eval("Money") %>' />
+                                            <asp:Label ID="lblDebtAmount" runat="server" Text='<%#:string.Format("{0:n2}",Eval("DebtAmount")) %>' />
                                         </td>
                                         <td>
-                                            <asp:Label ID="lblPaymentDueDate" runat="server" Text='<%#:string.Format("{0:d}",Bind("PaymentDueDate")) %>'/>
+                                            <asp:Label ID="lblPaymentDueDate" runat="server" Text='<%#:string.Format("{0:d}",Eval("PaymentDueDate")) %>'/>
                                         </td>
                                         <td>
-                                            <asp:Label ID="lblCollection" runat="server" Text='<%#:string.Format("{0:d}",Bind("CollectionMethod")) %>'  />
+                                            <asp:Label ID="lblCollection" runat="server" Text='<%#:string.Format("{0:d}",Eval("CollectionMethod")) %>'  />
                                         </td>
                                         <td class="text-center">
-                                            <asp:CheckBox ID="chkCollected" runat="server" Checked='<%# Bind("Collected") %>' />
+                                            <asp:CheckBox ID="chkCollected" runat="server" Checked='<%# Eval("Collected") %>' />
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtEffectiveDate" runat="server" Text='<%# Bind("CollectedDate") %>' CssClass="form-control datetime"></asp:TextBox>
+                                            <asp:TextBox ID="txtEffectiveDate" runat="server" Text='<%# Eval("CollectedDate") %>' CssClass="form-control datetime"></asp:TextBox>
                                         </td>
-                                        <td>--%>
-                                           <%-- <asp:DropDownList ID="ddlCollectionState" ItemType="IAS.Models.CollectionState" SelectMethod="GetCollectionStates"
+                                        <td>
+                                            <asp:DropDownList ID="ddlCollectionState" ItemType="IAS.Models.CollectionState" SelectMethod="GetCollectionStates"
                                                 CssClass="form-control" DataTextField="CollectionStateName" DataValueField="CollectionStateID"
-                                                runat="server" SelectedValue="<%# Bind("CollectionStateID") %>">
-                                            </asp:DropDownList>--%>
+                                                runat="server" SelectedValue='<%# Eval("CollectionStateID") %>'>
+                                            </asp:DropDownList>
                                         </td>
 
                                         <td class="text-right" colspan="2">

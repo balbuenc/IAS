@@ -166,23 +166,24 @@ namespace IAS.CaseManagment {
             switch ( e.CommandName.ToString() ) {
                 case "OpenCase":
 
-                    var form = ( from f in db.WorkflowStatesForms
-                                 where f.StateID == currentCase.StateID
-                                 && f.WorkflowID == currentCase.WorkflowID
-                                 select f.Form ).FirstOrDefault();
+                    Response.Redirect("./CaseHub.aspx?CaseID=" + id_caso);
+                    //var form = ( from f in db.WorkflowStatesForms
+                    //             where f.StateID == currentCase.StateID
+                    //             && f.WorkflowID == currentCase.WorkflowID
+                    //             select f.Form ).FirstOrDefault();
 
-                    if ( null == form ) {
-                        form = ( from f in db.Workflows
-                                 where f.WorkflowID == currentCase.WorkflowID
-                                 select f.DefaultForm ).FirstOrDefault();
-                        if ( null == form )
-                            Response.Redirect( "CaseDetails.aspx?CaseID=" + currentCase.CaseID, false );
-                        else
-                            Response.Redirect( form.Url + "?CaseID=" + currentCase.CaseID , false);
-                    }
-                    else {
-                        Response.Redirect( form.Url + "?CaseID=" + currentCase.CaseID , false);
-                    }
+                    //if ( null == form ) {
+                    //    form = ( from f in db.Workflows
+                    //             where f.WorkflowID == currentCase.WorkflowID
+                    //             select f.DefaultForm ).FirstOrDefault();
+                    //    if ( null == form )
+                    //        Response.Redirect( "CaseDetails.aspx?CaseID=" + currentCase.CaseID, false );
+                    //    else
+                    //        Response.Redirect( form.Url + "?CaseID=" + currentCase.CaseID , false);
+                    //}
+                    //else {
+                    //    Response.Redirect( form.Url + "?CaseID=" + currentCase.CaseID , false);
+                    //}
                     break;
 
                 case "ChangeUser":

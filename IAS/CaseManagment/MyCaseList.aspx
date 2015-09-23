@@ -381,7 +381,7 @@
                                                 <label class="col-sm-2 control-label" for="form-group-input">Nro. póliza</label>
                                                 <div class="col-sm-10">
                                                     <asp:DropDownList ID="ddlNroPoliza" runat="server" DataSourceID="polizasDataSource"
-                                                        CssClass="form-control" DataValueField="nro_poliza" DataTextField="nro_poliza">
+                                                        CssClass="form-control" DataValueField="nro_poliza" DataTextField="detail">
                                                     </asp:DropDownList>
                                                 </div>
                                             </div>
@@ -400,9 +400,23 @@
                                             <div class="row">
                                                 <label class="col-sm-2 control-label" for="form-group-input">Tipo Siniestro</label>
                                                 <div class="col-sm-10">
-                                                    <asp:DropDownList ID="ddlTipoSiniestro" runat="server" CssClass="form-control" DataSourceID="tipoSinistrosDataSource"
+                                                    <asp:DropDownList ID="ddlTipoSiniestro" runat="server" CssClass="form-control" DataSourceID="tipoSinistrosDataSource" AutoPostBack="true"
                                                         DataValueField="ClaimTypeID" DataTextField="Description">
                                                     </asp:DropDownList>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="col-sm-2 control-label" for="form-group-input">Cobertura</label>
+                                                <div class="col-sm-10">
+                                                    <asp:ListBox ID="ListBox1"
+                                                        Rows="6"
+                                                        Width="100%"
+                                                        SelectionMode="Multiple"
+                                                        DataSourceID="coberturaPolizas"
+                                                        runat="server"
+                                                        DataTextField="ClaimMade"
+                                                        DataValueField="ClaimMadeID"></asp:ListBox>
+
                                                 </div>
                                             </div>
 
@@ -421,13 +435,18 @@
             </div>
         </div>
         <!-- #SQL Data Sources -->
-        <asp:SqlDataSource ID="clientesDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="SELECT distinct(asegurado) cliente, id_persona FROM [IAS_Developer].[exchange].[v_cotizaciones] where fecha_emision > '20140101' order by 1 asc "></asp:SqlDataSource>
+        <asp:SqlDataSource ID="clientesDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="sp_obtener_persona_para_siniestros" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
         <asp:SqlDataSource ID="polizasDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="sp_obtener_polizas_por_persona" SelectCommandType="StoredProcedure">
             <SelectParameters>
                 <asp:ControlParameter ControlID="ddlClientes" Name="p_id_persona" DbType="Int32" PropertyName="SelectedValue" />
             </SelectParameters>
         </asp:SqlDataSource>
         <asp:SqlDataSource ID="tipoSinistrosDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="sp_obtener_tipo_siniestros" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="coberturaPolizas" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="SELECT  [ClaimMade],[ClaimMadeID]  FROM [IAS_Developer].[dbo].[ClaimMade] where ClaimTypeID = @ClaimTypeID" SelectCommandType="Text">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="ddlTipoSiniestro" Name="ClaimTypeID" DbType="Int32" PropertyName="SelectedValue" />
+            </SelectParameters>
+        </asp:SqlDataSource>
     </div>
     <!-- #endregion -->
 </asp:Content>

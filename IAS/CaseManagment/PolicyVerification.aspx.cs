@@ -19,7 +19,9 @@
 using IAS.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity.Validation;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.ModelBinding;
@@ -52,36 +54,8 @@ namespace IAS.ClaimManagment
             }
         }
 
-        public IQueryable<Collection> GetCollectionsForCase([QueryString("CaseID")] long? caseID)
-        {
-
-            if (null == caseID)
-                return null;
-            var lastDate = this.LastDayofMonth(DateTime.Now);
-            var db = new ApplicationDbContext();
-
-            var coll = db.Collections
-                .Where(c => c.CaseID == caseID)
-                .Where(c => c.PaymentDueDate <= lastDate)
-                .GroupBy(c => c.PolicyNumber)
-                .Select(c => c.FirstOrDefault());
-
-            return coll;
-        }
-
-        public IQueryable<Collection> GetOverdueInvoices([Control("lblPolicyNumber")] long? policyNumber)
-        {
-            if (null == policyNumber)
-                return null;
-
-            var lastDate = this.LastDayofMonth(DateTime.Now);
-            var db = new ApplicationDbContext();
-            var coll = db.Collections
-                .Where(c => c.PolicyNumber == policyNumber)
-                .Where(c => c.PaymentDueDate <= lastDate);
-            return coll;
-        }
-
+      
+    
 
         protected void CaseTransitionManager_CaseStateChanged()
         {
@@ -126,6 +100,49 @@ namespace IAS.ClaimManagment
             //Return the DateTime, now set to the last day of the month
             return dt;
 
+        }
+
+       
+
+        protected void ClaimListView_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            SqlConnection sqlConnection1 = new SqlConnection(ClaimSqldataSource.ConnectionString);
+            SqlCommand cmd = new SqlCommand();
+            Int32 rowsAffected;
+
+            if (e.CommandName == "Request")
+            {
+
+                Label lblClaimID = (Label)e.Item.FindControl("lblClaimID");
+                try
+                {
+                    cmd.CommandText = "claim.sp_enviar_verificacion_poliza";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = sqlConnection1;
+
+                    cmd.Parameters.AddWithValue("@tipo_notificacion", "solicitud_verificacion");
+                    cmd.Parameters.AddWithValue("@destino", "cbalbuena.cazzola@gmail.com");
+                    cmd.Parameters.AddWithValue("@mensaje", "Se solicita la verificación del Siniestro");
+                    cmd.Parameters.AddWithValue("@user", User.Identity.Name);
+                    cmd.Parameters.AddWithValue("@id_caso", Request.QueryString["CaseID"]);
+                    cmd.Parameters.AddWithValue("@id_siniestro",  lblClaimID.Text);
+
+
+
+
+
+                    sqlConnection1.Open();
+
+                    rowsAffected = cmd.ExecuteNonQuery();
+
+                    sqlConnection1.Close();
+
+                }
+                catch (Exception exp)
+                {
+                    ErrorLabel.Text = exp.Message;
+                }
+            }
         }
     }
 }

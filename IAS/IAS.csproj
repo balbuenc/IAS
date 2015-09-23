@@ -182,6 +182,7 @@
     <Content Include="Admin\Workshops.aspx" />
     <Content Include="CaseManagment\CaseData.ascx" />
     <Content Include="CaseManagment\CaseDetails.aspx" />
+    <Content Include="CaseManagment\CaseHub.aspx" />
     <Content Include="CaseManagment\CaseTransitionManager.ascx" />
     <Content Include="CaseManagment\ClaimCaseDetails.aspx" />
     <Content Include="CaseManagment\CollectionCaseDetails.aspx" />
@@ -206,6 +207,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\typeahead.css" />
     <Content Include="ErrorPage.aspx" />
+    <Content Include="Exchange\ExternalPolicyVerification.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="App_Data\Images\alert-icon.png" />
     <Content Include="App_Data\Images\arrow-icon.png" />
@@ -563,6 +565,13 @@
     <Compile Include="CaseManagment\CaseDetails.aspx.designer.cs">
       <DependentUpon>CaseDetails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CaseManagment\CaseHub.aspx.cs">
+      <DependentUpon>CaseHub.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CaseManagment\CaseHub.aspx.designer.cs">
+      <DependentUpon>CaseHub.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CaseManagment\CaseTransitionManager.ascx.cs">
       <DependentUpon>CaseTransitionManager.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -645,6 +654,13 @@
     </Compile>
     <Compile Include="ErrorPage.aspx.designer.cs">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Exchange\ExternalPolicyVerification.aspx.cs">
+      <DependentUpon>ExternalPolicyVerification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Exchange\ExternalPolicyVerification.aspx.designer.cs">
+      <DependentUpon>ExternalPolicyVerification.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -777,7 +793,6 @@
   <ItemGroup>
     <Folder Include="App_Readme\" />
     <Folder Include="Claims\" />
-    <Folder Include="Exchange\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201402081817594_Initial.resx">

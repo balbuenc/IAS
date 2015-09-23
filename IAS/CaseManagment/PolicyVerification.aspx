@@ -79,18 +79,24 @@
     <asp:UpdatePanel ID="WorkflowUPanel" runat="server">
 
         <ContentTemplate>
-
+            <h3>Siniestros del caso.</h3>
             <asp:Label ID="ErrorLabel" Visible="False" CssClass="msg-box bg-danger" runat="server" />
-
-            <asp:ListView ID="CollectionsListView" runat="server"
-                ItemType="IAS.Models.Collection" DataKeyNames="CollectionID"
-                SelectMethod="GetCollectionsForCase">
+            
+            <asp:ListView ID="ClaimListView" runat="server"
+                 DataKeyNames="ClaimID"
+                 DataSourceID="ClaimSqldataSource" OnItemCommand="ClaimListView_ItemCommand">
                 <LayoutTemplate>
-                    <table class="table table-striped">
+                    <table class="table table-striped" >
                         <thead>
                             <tr>
-                                <th>Nombre del riesgo</th>
-                                <th>Poliza</th>
+                            <th>Poliza</th>
+                            <th>Nro. Siniestro</th>
+                            <th>Nombre del riesgo</th>
+                            <th>Fecha Registro</th>
+                            <th>Fecha Cierre</th>
+                            <th>Cerrado</th>
+                            <th>Fecha Siniestro</th>
+                            <th>Section</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -100,42 +106,98 @@
                 </LayoutTemplate>
                 <ItemTemplate>
                     <tr>
-                        <td>
-                            <asp:Label ID="lblRiskName" runat="server" Text="<%#:Item.RiskName%>" />
+                            <td><asp:Label ID="lblPolicyNumber" runat="server" Text='<%# Eval("PolicyNumber") %>' /></td>
+                            <td><asp:Label ID="lblClaimNumber" runat="server" Text='<%# Eval("ClaimNumber") %>' /></td>
+                            <td><asp:Label ID="lblRiskName" runat="server" Text='<%# Eval("RiskName") %>' /></td>                            
+                            <td><asp:Label ID="lblRegistryDate" runat="server" Text='<%#:string.Format("{0:d}", Eval("RegistryDate")) %>' /></td>
+                            <td><asp:Label ID="lblCloseDate" runat="server" Text='<%#:string.Format("{0:d}", Eval("CloseDate")) %>' /></td>
+                            <td><asp:Label ID="lblClosed" runat="server" Text='<%# Eval("Closed") %>' /></td>
+                            <td><asp:Label ID="lblClaimDate" runat="server" Text='<%#:string.Format("{0:d}", Eval("ClaimDate")) %>' /></td>
+                            <td><asp:Label ID="lblSection" runat="server" Text='<%# Eval("Section") %>' /></td>
+                    </tr>
+                    <tr>
+                        <td  colspan="3">
+                            <strong>ID Siniestro:</strong>
+                            <asp:Label ID="lblClaimID" runat="server" Text='<%# Eval("ClaimID") %>' />
                         </td>
-                        <td>
-                            <asp:Label ID="lblPolicyNumber" runat="server" Text="<%#:Item.PolicyNumber%>" />
+                        <td  colspan="3">
+                            <strong>Estado:</strong>
+                            <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>' />
+                        </td>
+                         <td class="text-nowrap">
+                            <asp:Button ID="EditButton" CssClass="btn btn-info" runat="server" Text="Editar" CommandName="Edit" ToolTip="Editar Siniestro" />
                         </td>
                     </tr>
-                   
+                    <tr>
+                        <td colspan="5">
+                        <div class="row">
+                            <div class="input-group col-sm-8">
+                                <span class="input-group-addon" id="basic-addon1">@</span>
+                                <asp:DropDownList ID="ddlContact" runat="server" CssClass="form-control" DataSourceID="ContactsSqlDataSource" DataTextField="Contact" DataValueField="ContactID"></asp:DropDownList>
+                            </div>
+                            <div class="col-sm-4">
+                                <asp:Button ID="SendEmailBtn" runat="server" CssClass="btn btn-info" Text="Solicitar Verificación"  CommandName="Request" />
+                            </div>
+                        </div>
+                            </td>
+                    </tr>
                 </ItemTemplate>
+                <EditItemTemplate>
+                            <td><asp:TextBox ID="txtPolicyNumber" runat="server" Text='<%# Bind("PolicyNumber") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                            <td><asp:TextBox ID="txtClaimNumber" runat="server" Text='<%# Bind("ClaimNumber") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                            <td><asp:TextBox ID="txtRiskName" runat="server" Text='<%# Bind("RiskName") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                            <td><asp:TextBox ID="txtRegistryDate" runat="server" Text='<%# Bind("RegistryDate", "{0:dd/MM/yyyy}") %>' CssClass="form-control datetime" Font-Size="X-Small" /></td>
+                            <td><asp:TextBox ID="txtCloseDate" runat="server" Text='<%# Bind("CloseDate", "{0:dd/MM/yyyy}") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                            <td><asp:TextBox ID="txtClosed" runat="server" Text='<%# Bind("Closed") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                            <td><asp:TextBox ID="txtClaimDate" runat="server" Text='<%# Bind("ClaimDate",  "{0:dd/MM/yyyy}") %>' CssClass="form-control datetime" Font-Size="X-Small"/></td>
+                            <td><asp:TextBox ID="txtSection" runat="server" Text='<%# Bind("Section") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                    <td class="text-right">
+                            <asp:Button ID="UpdateButton" runat="server" Text="Guardar" CommandName="Update" CssClass="btn btn-info" />
+                            <asp:Button ID="CancelButton" runat="server" Text="Cancelar" CommandName="Cancel" CssClass="btn" />
+                        </td>
+                </EditItemTemplate>
             </asp:ListView>
 
             <script>
                 $("a[title]").tooltip();
             </script>
+            <asp:SqlDataSource ID="ClaimSqldataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
+                 SelectCommand="claim.sp_get_claim_by_CaseID" SelectCommandType="StoredProcedure"
+                 UpdateCommand="claim.update_claim" UpdateCommandType="StoredProcedure"
+                >
+            <SelectParameters>
+                <asp:QueryStringParameter  Name="CaseID" QueryStringField="CaseID" Type="Int32"/>
+            </SelectParameters>
+                <UpdateParameters>
+                    <asp:Parameter Name="ClaimID" DefaultValue=""   ConvertEmptyStringToNull="True" />
+                    <asp:Parameter Name="CaseID" DefaultValue="" ConvertEmptyStringToNull="True" />
+                    <asp:Parameter Name="PolicyNumber" DefaultValue="" ConvertEmptyStringToNull="True" />
+                    <asp:Parameter Name="ClaimNumber" DefaultValue=""  ConvertEmptyStringToNull="True" />
+                    <asp:Parameter Name="RiskName" DefaultValue="" ConvertEmptyStringToNull="True" />
+                    <asp:Parameter Name="PersonID" DefaultValue=""  ConvertEmptyStringToNull="True" />
+                    <asp:Parameter Name="LiquidatorID" DefaultValue=""  ConvertEmptyStringToNull="True" />
+                    <asp:Parameter Name="WorkshopID" DefaultValue=""  ConvertEmptyStringToNull="True" />
+                    <asp:Parameter Name="RegistryDate" DefaultValue=""   ConvertEmptyStringToNull="True" />
+                    <asp:Parameter Name="CloseDate" DefaultValue=""  ConvertEmptyStringToNull="True" />
+                    <asp:Parameter Name="Closed" DefaultValue=""   ConvertEmptyStringToNull="True" />
+                    <asp:Parameter Name="ClaimDate" DefaultValue=""   ConvertEmptyStringToNull="True" />
+                    <asp:Parameter Name="ClaimStatusID" DefaultValue=""   ConvertEmptyStringToNull="True" />
+                    <asp:Parameter Name="ClaimTypeID" DefaultValue=""  ConvertEmptyStringToNull="True" />
+                    <asp:Parameter Name="InsuranceExpertID" DefaultValue=""   ConvertEmptyStringToNull="True" />
+                    <asp:Parameter Name="Section" DefaultValue=""  ConvertEmptyStringToNull="True" />
+                </UpdateParameters>
+            </asp:SqlDataSource>
 
+            <asp:SqlDataSource ID="ContactsSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" 
+                SelectCommand="claim.sp_get_contacts_by_insurance_manager_id" SelectCommandType="StoredProcedure">
+                <SelectParameters>
+                    <asp:Parameter  Name="InsuranceManagerID"  Type="Int32" DefaultValue="1"/>
+                </SelectParameters>
+            </asp:SqlDataSource>
         </ContentTemplate>
 
     </asp:UpdatePanel>
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title">Verificación de Cobertura</h3>
-        </div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="input-group col-sm-8">
-                    <span class="input-group-addon" id="basic-addon1">@</span>
-                    <asp:DropDownList ID="InsuranceMangerDDL" runat="server" CssClass="form-control" DataSourceID="InsuranceManagersSqlDataSource" DataTextField="InsuranceManager" DataValueField="InsuranceManagerID"></asp:DropDownList>
-                </div>
-                <div class="col-sm-4">
-                <asp:Button ID="SendEmailBtn" runat="server" CssClass="btn btn-info" Text="Solicitar Verificación" />
-                    </div>
-            </div>
-            <asp:SqlDataSource ID="InsuranceManagersSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="SELECT [InsuranceManagerID], [InsuranceManager] FROM [InsuranceManagers]"></asp:SqlDataSource>
-
-        </div>
-    </div>
+ 
     
 
     <asp:UpdatePanel ID="trasicionManagerPanel" runat="server">

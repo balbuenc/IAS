@@ -110,7 +110,7 @@
                                                 </div>
 
                                                 <div class="text-right">
-                                                    <asp:Button ID="SendSMSButtom" runat="server" Text="Enviar" Enabled ="false"  ToolTip="No posee cupo de SMS" CssClass="btn btn-success" OnClick="SendSMSButtom_Click" />
+                                                    <asp:Button ID="SendSMSButtom" runat="server" Text="Enviar" Enabled ="true"  ToolTip="No posee cupo de SMS" CssClass="btn btn-success" OnClick="SendSMSButtom_Click" />
                                                 </div>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
@@ -194,7 +194,7 @@
                                                 </div>
 
                                                 <div class="text-right">
-                                                    <asp:Button ID="SendSMSExpiredButtom" runat="server" Text="Enviar" Enabled ="false"  ToolTip="No posee cupo de SMS" CssClass="btn btn-success" OnClick="SendSMSExpiredButtom_Click" />
+                                                    <asp:Button ID="SendSMSExpiredButtom" runat="server" Text="Enviar" Enabled ="true"  ToolTip="No posee cupo de SMS" CssClass="btn btn-success" OnClick="SendSMSExpiredButtom_Click" />
                                                 </div>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>

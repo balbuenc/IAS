@@ -27,7 +27,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace IAS.CaseManagment {
-    public partial class ClaimCaseDetails : System.Web.UI.Page {
+    public partial class CollectionCaseDetails : System.Web.UI.Page {
         protected void Page_Load( object sender, EventArgs e ) {
             
         }
@@ -70,8 +70,9 @@ namespace IAS.CaseManagment {
             var lastDate = this.LastDayofMonth( DateTime.Now );
             var db = new ApplicationDbContext();
             var coll = db.Collections
-                .Where( c => c.PolicyNumber == policyNumber )
-                .Where( c => c.PaymentDueDate <= lastDate );
+                .Where(c => c.PolicyNumber == policyNumber)
+                .Where(c => c.PaymentDueDate <= lastDate)
+                .Where(c => c.Collected == false);
             return coll;
         }
 
@@ -146,6 +147,17 @@ namespace IAS.CaseManagment {
             //Return the DateTime, now set to the last day of the month
             return dt;
 
+        }
+
+       
+
+        protected void CollectionsListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListViewItemType.DataItem)
+            {
+                Label lblPolicyNumber = (Label)e.Item.FindControl("lblPolicyNumber");
+                HiddenField1.Value = lblPolicyNumber.Text;
+            }
         }
         
     }

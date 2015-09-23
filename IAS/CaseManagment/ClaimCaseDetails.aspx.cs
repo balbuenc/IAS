@@ -40,7 +40,7 @@ namespace IAS.CaseManagment
             try
             {
                 var db = new ApplicationDbContext();
-                var colls = db.Collections.Where(c => c.CaseID == caseID);
+                var colls = db.Claims.Where(c => c.CaseID == caseID);
                 if (null != colls)
                     return colls.First().Person;
                 else
@@ -52,36 +52,9 @@ namespace IAS.CaseManagment
             }
         }
 
-        public IQueryable<Collection> GetCollectionsForCase([QueryString("CaseID")] long? caseID)
-        {
+     
 
-            if (null == caseID)
-                return null;
-            var lastDate = this.LastDayofMonth(DateTime.Now);
-            var db = new ApplicationDbContext();
-
-            var coll = db.Collections
-                .Where(c => c.CaseID == caseID)
-                .Where(c => c.PaymentDueDate <= lastDate)
-                .GroupBy(c => c.PolicyNumber)
-                .Select(c => c.FirstOrDefault());
-
-            return coll;
-        }
-
-        public IQueryable<Collection> GetOverdueInvoices([Control("lblPolicyNumber")] long? policyNumber)
-        {
-            if (null == policyNumber)
-                return null;
-
-            var lastDate = this.LastDayofMonth(DateTime.Now);
-            var db = new ApplicationDbContext();
-            var coll = db.Collections
-                .Where(c => c.PolicyNumber == policyNumber)
-                .Where(c => c.PaymentDueDate <= lastDate);
-            return coll;
-        }
-
+       
 
         protected void CaseTransitionManager_CaseStateChanged()
         {
@@ -113,39 +86,7 @@ namespace IAS.CaseManagment
             lv.EditIndex = -1;
         }
 
-        public void UpdatePayment(Collection subject)
-        {
-            try
-            {
-                var db = new ApplicationDbContext();
-                var theCollection = db.Collections.SingleOrDefault(c => c.CollectionID == subject.CollectionID);
-                if (theCollection == null)
-                {
-                    ModelState.AddModelError("", String.Format("No se encontró el elemento con id. {0}", subject.CollectionID.ToString()));
-                    return;
-                }
-
-                theCollection.Collected = subject.Collected;
-                if (null == subject.CollectedDate)
-                    theCollection.CollectedDate = DateTime.Today;
-                else
-                    theCollection.CollectedDate = subject.CollectedDate;
-
-
-                theCollection.CollectionStateID = subject.CollectionStateID;
-                db.SaveChanges();
-            }
-            catch (DbEntityValidationException ex)
-            {
-                ErrorLabel.Visible = true;
-                ErrorLabel.Text = EventLogManager.LogError(ex);
-            }
-            catch (Exception exp)
-            {
-                ErrorLabel.Visible = true;
-                ErrorLabel.Text = exp.Message;
-            }
-        }
+       
 
 
         public DateTime LastDayofMonth(DateTime dt)

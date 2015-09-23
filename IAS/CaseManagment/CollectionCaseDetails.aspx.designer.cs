@@ -10,7 +10,7 @@
 namespace IAS.CaseManagment {
     
     
-    public partial class ClaimCaseDetails {
+    public partial class CollectionCaseDetails {
         
         /// <summary>
         /// caseInfoPanel control.
@@ -67,6 +67,15 @@ namespace IAS.CaseManagment {
         protected global::System.Web.UI.WebControls.ListView CollectionsListView;
         
         /// <summary>
+        /// HiddenField1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenField1;
+        
+        /// <summary>
         /// trasicionManagerPanel control.
         /// </summary>
         /// <remarks>
@@ -92,5 +101,14 @@ namespace IAS.CaseManagment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button CaseAccountResumeBtn;
+        
+        /// <summary>
+        /// CollectionSqlDatSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource CollectionSqlDatSource;
     }
 }

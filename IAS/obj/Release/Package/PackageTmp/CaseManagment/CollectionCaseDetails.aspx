@@ -17,7 +17,7 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  --%>
 
-<%@ Page Title="Informacion de Cobranzas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CollectionCaseDetails.aspx.cs" Inherits="IAS.CaseManagment.ClaimCaseDetails" %>
+<%@ Page Title="Informacion de Cobranzas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CollectionCaseDetails.aspx.cs" Inherits="IAS.CaseManagment.CollectionCaseDetails" %>
 
 <%@ Register Src="~/CaseManagment/CaseData.ascx" TagPrefix="uc1" TagName="CaseData" %>
 <%@ Register Src="~/CaseManagment/CaseTransitionManager.ascx" TagPrefix="uc1" TagName="CaseTransitionManager" %>
@@ -105,7 +105,10 @@
 
             <asp:ListView ID="CollectionsListView" runat="server"
                 ItemType="IAS.Models.Collection" DataKeyNames="CollectionID"
-                SelectMethod="GetCollectionsForCase">
+                SelectMethod="GetCollectionsForCase"
+                
+                 OnItemDataBound="CollectionsListView_ItemDataBound"
+                >
                 <LayoutTemplate>
                     <table class="table table-striped">
                         <thead>
@@ -125,18 +128,18 @@
                             <asp:Label ID="lblRiskName" runat="server" Text="<%#:Item.RiskName%>" />
                         </td>
                         <td>
+                           
                             <asp:Label ID="lblPolicyNumber" runat="server" Text="<%#:Item.PolicyNumber%>" />
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <asp:ListView ID="DetailListView" runat="server"
-                                ItemType="IAS.Models.Collection" DataKeyNames="CollectionID"
-                                SelectMethod="GetOverdueInvoices"
-                                UpdateMethod="UpdatePayment"
-                                OnItemEditing="DetailListView_ItemEditing"
-                                OnItemCanceling="DetailListView_ItemCanceling"
-                                OnItemUpdated="DetailListView_ItemUpdated" >
+                                
+                                DataKeyNames="CollectionID"
+                              
+                                 DataSourceID="CollectionSqlDatSource"
+                                 >
                                 <LayoutTemplate>
                                     <table class="table table-striped">
                                         <thead>
@@ -159,29 +162,29 @@
                                 <ItemTemplate>
                                     <tr>
                                         <td>
-                                            <asp:Label ID="Label1" runat="server" Text="<%#:Item.PaymentNumber%>" />
+                                            <asp:Label ID="Label1" runat="server" Text='<%# Eval("PaymentNumber") %>' />
                                         </td>
                                         <td>
-                                            <asp:Label ID="lblReceiptNumber" runat="server" Text="<%#:Item.ReceiptNumber%>" />
+                                            <asp:Label ID="lblReceiptNumber" runat="server" Text='<%# Eval("ReceiptNumber") %>' />
                                         </td>
                                         <td>
-                                            <asp:Label ID="lblCurrency" runat="server" Text='<%# Item.Money %>' />
-                                            <asp:Label ID="lblDebtAmount" runat="server" Text='<%#:string.Format("{0:n2}",Item.DebtAmount) %>' />
+                                            <asp:Label ID="lblCurrency" runat="server" Text='<%# Eval("Money") %>' />
+                                            <asp:Label ID="lblDebtAmount" runat="server" Text='<%#:string.Format("{0:n2}",Eval("DebtAmount")) %>' />
                                         </td>
                                         <td>
-                                            <asp:Label ID="lblPaymentDueDate" runat="server" Text='<%#:string.Format("{0:d}",Item.PaymentDueDate) %>'  />
+                                            <asp:Label ID="lblPaymentDueDate" runat="server" Text='<%#:string.Format("{0:d}",Eval("PaymentDueDate")) %>'  />
                                         </td>
                                         <td>
-                                            <asp:Label ID="lblCollection" runat="server" Text='<%#:string.Format("{0:d}",Item.CollectionMethod) %>'  />
+                                            <asp:Label ID="lblCollection" runat="server" Text='<%#:string.Format("{0:d}",Eval("CollectionMethod")) %>'  />
                                         </td>
                                         <td>
-                                            <asp:CheckBox ID="chkCollected" runat="server" Checked="<%# Item.Collected %>" Enabled="false" />
+                                            <asp:CheckBox ID="chkCollected" runat="server" Checked='<%# Eval("Collected") %>' Enabled="false" />
                                         </td>
                                         <td>
-                                            <asp:Label ID="Label3" runat="server" Text='<%#:string.Format("{0:d}",Item.CollectedDate) %>' />
+                                            <asp:Label ID="Label3" runat="server" Text='<%#:string.Format("{0:d}",Eval("CollectedDate")) %>' />
                                         </td>
                                         <td>
-                                            <asp:Label ID="Label4" runat="server" Text="<%#:Item.CollectionState%>" />
+                                            <asp:Label ID="Label4" runat="server" Text='<%# Eval("CollectionState")%>' />
                                         </td>
                                         <td class="text-right">                                            
                                             <asp:Button ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CssClass="btn btn-info" Visible="true" />
@@ -190,33 +193,33 @@
                                 </ItemTemplate>
                                 <EditItemTemplate>
                                     <tr>
-                                        <td>
-                                            <asp:Label ID="Label1" runat="server" Text="<%#:Item.PaymentNumber%>" />
+                                       <%-- <td>
+                                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("PaymentNumber")%>' />
                                         </td>
                                         <td>
-                                            <asp:Label ID="lblReceiptNumber" runat="server" Text="<%#:Item.ReceiptNumber%>" />
+                                            <asp:Label ID="lblReceiptNumber" runat="server" Text='<%# Bind("ReceiptNumber")%>' />
                                         </td>
                                         <td>
-                                            <asp:Label ID="lblCurrency" runat="server" Text="<%# Item.Money %>" />
-                                            <asp:Label ID="lblDebtAmount" runat="server" Text='<%#:string.Format("{0:n2}",Item.DebtAmount) %>' />
+                                            <asp:Label ID="lblCurrency" runat="server" Text='<%# Bind("Money") %>' />
+                                            <asp:Label ID="lblDebtAmount" runat="server" Text='<%#:string.Format("{0:n2}",Bind("DebtAmount")) %>' />
                                         </td>
                                         <td>
-                                            <asp:Label ID="lblPaymentDueDate" runat="server" Text='<%#:string.Format("{0:d}",Item.PaymentDueDate) %>'/>
+                                            <asp:Label ID="lblPaymentDueDate" runat="server" Text='<%#:string.Format("{0:d}",Bind("PaymentDueDate")) %>'/>
                                         </td>
                                         <td>
-                                            <asp:Label ID="lblCollection" runat="server" Text='<%#:string.Format("{0:d}",Item.CollectionMethod) %>'  />
+                                            <asp:Label ID="lblCollection" runat="server" Text='<%#:string.Format("{0:d}",Bind("CollectionMethod")) %>'  />
                                         </td>
                                         <td class="text-center">
-                                            <asp:CheckBox ID="chkCollected" runat="server" Checked="<%# BindItem.Collected %>"  />
+                                            <asp:CheckBox ID="chkCollected" runat="server" Checked='<%# Bind("Collected") %>' />
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtEffectiveDate" runat="server" Text="<%# BindItem.CollectedDate %>" CssClass="form-control datetime"></asp:TextBox>
+                                            <asp:TextBox ID="txtEffectiveDate" runat="server" Text='<%# Bind("CollectedDate") %>' CssClass="form-control datetime"></asp:TextBox>
                                         </td>
-                                        <td>
-                                            <asp:DropDownList ID="ddlCollectionState" ItemType="IAS.Models.CollectionState" SelectMethod="GetCollectionStates"
+                                        <td>--%>
+                                           <%-- <asp:DropDownList ID="ddlCollectionState" ItemType="IAS.Models.CollectionState" SelectMethod="GetCollectionStates"
                                                 CssClass="form-control" DataTextField="CollectionStateName" DataValueField="CollectionStateID"
-                                                runat="server" SelectedValue="<%# BindItem.CollectionStateID %>">
-                                            </asp:DropDownList>
+                                                runat="server" SelectedValue="<%# Bind("CollectionStateID") %>">
+                                            </asp:DropDownList>--%>
                                         </td>
 
                                         <td class="text-right" colspan="2">
@@ -225,6 +228,9 @@
                                         </td>
                                     </tr>
                                 </EditItemTemplate>
+                                <EmptyDataTemplate>
+                                    No hay cuotas Pendientes de gestiòn para la pòliza.
+                                </EmptyDataTemplate>
                             </asp:ListView>
                         </td>
                     </tr>
@@ -234,7 +240,7 @@
             <script>
                 $("a[title]").tooltip();
             </script>
-
+             <asp:HiddenField ID="HiddenField1" runat="server" Value="" />
         </ContentTemplate>
 
     </asp:UpdatePanel>
@@ -252,6 +258,13 @@
             <asp:Button ID="CaseAccountResumeBtn" runat="server" Text="Estado de cuenta" Width="148px" OnClientClick="javascript:OpenPage();" />
     </div>
 
-
+    <asp:SqlDataSource ID="CollectionSqlDatSource" runat="server"  ConnectionString="<%$ ConnectionStrings:IASDBContext %>" 
+        SelectCommand="[collection].[sp_get_collections_by_policy]" SelectCommandType="StoredProcedure"
+        >
+        <SelectParameters>
+            <asp:QueryStringParameter Name="CaseID" QueryStringField="CaseID"  Type="Int32"/>          
+            <asp:ControlParameter ControlID="HiddenField1" Name="PolicyNumber" PropertyName="Value" />
+        </SelectParameters>
+    </asp:SqlDataSource>
 
 </asp:Content>

@@ -58,40 +58,31 @@ namespace IAS.ClaimManagment {
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
-        /// CollectionsListView control.
+        /// ClaimListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView CollectionsListView;
+        protected global::System.Web.UI.WebControls.ListView ClaimListView;
         
         /// <summary>
-        /// InsuranceMangerDDL control.
+        /// ClaimSqldataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList InsuranceMangerDDL;
+        protected global::System.Web.UI.WebControls.SqlDataSource ClaimSqldataSource;
         
         /// <summary>
-        /// SendEmailBtn control.
+        /// ContactsSqlDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SendEmailBtn;
-        
-        /// <summary>
-        /// InsuranceManagersSqlDataSource control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource InsuranceManagersSqlDataSource;
+        protected global::System.Web.UI.WebControls.SqlDataSource ContactsSqlDataSource;
         
         /// <summary>
         /// trasicionManagerPanel control.

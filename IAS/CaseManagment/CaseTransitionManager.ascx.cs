@@ -51,7 +51,7 @@ namespace IAS.CaseManagment
                 long newStateID = long.Parse(this.ddlNewState.SelectedValue);
 
                 var db = new ApplicationDbContext();
-                //var theCase = Session[SessionKeys.CurrentCase] as Case; 
+             
                 var theCase = db.Cases.SingleOrDefault(c => c.CaseID == caseID);
                 if (null == theCase)
                 {
@@ -152,9 +152,7 @@ namespace IAS.CaseManagment
                 var db = new ApplicationDbContext();
                 var user = db.Users.SingleOrDefault(u => u.Id == userId);
                 var theCase = db.Cases.Where(c => c.CaseID == caseID).SingleOrDefault();
-                /*var userRoleIds = db.Users.Where( u => u.Id == userId ) Esto esta bien tambien
-                    .SelectMany( u => u.Roles.Select( r => r.RoleId ) )
-                    .ToList(); */
+             
 
                 var states = db.WorkflowStateTransitions
                     .Where(wst => wst.WorkflowID == theCase.WorkflowID && wst.InitialStateID == theCase.StateID)
@@ -169,20 +167,7 @@ namespace IAS.CaseManagment
                             rst => rst.WorkflowStateTransitionID,
                             (wst, rst) => wst.FinalState));
 
-                //var states1 = from wst in db.WorkflowStateTransitions
-                //             join rst in db.RoleStateTransitions
-                //                 on wst.WorkflowStateTransitionID equals rst.WorkflowStateTransitionID
-                //             join role in db.Roles
-                //                 on rst.RoleID equals role.Id
-                //             where role.Users.Any( u => u.UserId == id )
-                //             select wst.FinalState;
-
-                //var states1 = from wst in db.WorkflowStateTransitions
-                //              where wst.WorkflowID == theCase.WorkflowID && wst.InitialStateID == theCase.StateID
-                //              join rst in db.RoleStateTransitions on wst.WorkflowStateTransitionID equals rst.WorkflowStateTransitionID
-                //              where rst.RoleID in user.ApplicationRoles                              
-                //              select wst.FinalState; 
-
+            
 
                 return states;
             }
@@ -206,15 +191,6 @@ namespace IAS.CaseManagment
                 this.ErrorLabel.Visible = true;
                 return;
             }
-
-            //var users = this.GetNewResponsible(int.Parse(this.ddlNewState.SelectedValue));
-            //if (users == null || users.Count() == 0)
-            //{
-            //    this.ErrorLabel.Text = "No es posible procesar el cambio de estado porque no se definieron responsables para el mismo. <br />Contacte con el administrador del sistema.";
-            //    this.ErrorLabel.Visible = true;
-            //    return;
-            //}
-            //var newResponsableID = users.OrderBy(t => t.Caseload).First().UserID;
 
             DateTime effectiveDate;
             if (this.txtEffectiveDate.Enabled == false)
@@ -265,18 +241,6 @@ namespace IAS.CaseManagment
             this.ddlNewState.DataBind();
             this.CaseTransitionsListView.DataBind();
 
-            //if (newResponsableID == currentUserId)
-            //{
-            //    this.ddlNewState.DataBind();
-            //    this.CaseTransitionsListView.DataBind();
-            //}
-            //else
-            //{
-            //    this.buttonChangeState.Enabled = false;
-            //    this.ddlNewState.Enabled = false;
-            //    this.txtComments.Enabled = false;
-            //    this.txtEffectiveDate.Enabled = false;
-            //}
 
             this.txtComments.Text = string.Empty;
             this.txtEffectiveDate.Text = string.Empty;

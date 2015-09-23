@@ -180,7 +180,6 @@ C:\Users\vsian\Desktop\IAS-GITHUB\IAS\IAS\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\vsian\Desktop\IAS-GITHUB\IAS\IAS\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\vsian\Desktop\IAS-GITHUB\IAS\IAS\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\vsian\Desktop\IAS-GITHUB\IAS\IAS\bin\Microsoft.Owin.Security.OAuth.xml
-C:\Users\vsian\Desktop\IAS-GITHUB\IAS\IAS\obj\Debug\IAS.csprojResolveAssemblyReference.cache
 C:\Users\vsian\Desktop\IAS-GITHUB\IAS\IAS\obj\Debug\IAS.Migrations.Initial.resources
 C:\Users\vsian\Desktop\IAS-GITHUB\IAS\IAS\obj\Debug\IAS.Migrations.CollectionAdd.resources
 C:\Users\vsian\Desktop\IAS-GITHUB\IAS\IAS\obj\Debug\IAS.Migrations.StateFormsMod.resources
@@ -264,3 +263,4 @@ C:\Users\Administrador.AS\Documents\Git\IAS\IAS\obj\Debug\IAS.Migrations.Payment
 C:\Users\Administrador.AS\Documents\Git\IAS\IAS\obj\Debug\IAS.csproj.GenerateResource.Cache
 C:\Users\Administrador.AS\Documents\Git\IAS\IAS\obj\Debug\IAS.dll
 C:\Users\Administrador.AS\Documents\Git\IAS\IAS\obj\Debug\IAS.pdb
+C:\Users\vsian\Desktop\IAS-GITHUB\IAS\IAS\obj\Debug\IAS.csprojResolveAssemblyReference.cache

@@ -123,6 +123,14 @@
                     </table>
                 </LayoutTemplate>
                 <ItemTemplate>
+                    <asp:HiddenField ID="txtOuterID" runat="server" Value="<%#:Item.PolicyNumber%>" Visible="True" />
+                    <asp:SqlDataSource ID="CollectionSqlDatSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
+                        SelectCommand="[collection].[sp_get_collections_by_policy]" SelectCommandType="StoredProcedure">
+                        <SelectParameters>
+                            <asp:QueryStringParameter Name="CaseID" QueryStringField="CaseID" Type="Int32" />
+                            <asp:ControlParameter ControlID="txtOuterID" Name="PolicyNumber" PropertyName="Value" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
                     <tr>
                         <td>
                             <asp:Label ID="lblRiskName" runat="server" Text="<%#:Item.RiskName%>" />
@@ -135,11 +143,8 @@
                     <tr>
                         <td>
                             <asp:ListView ID="DetailListView" runat="server"
-                                
                                 DataKeyNames="CollectionID"
-                              
-                                 DataSourceID="CollectionSqlDatSource"
-                                 >
+                                DataSourceID="CollectionSqlDatSource">
                                 <LayoutTemplate>
                                     <table class="table table-striped">
                                         <thead>
@@ -229,7 +234,7 @@
                                     </tr>
                                 </EditItemTemplate>
                                 <EmptyDataTemplate>
-                                    No hay cuotas Pendientes de gestiòn para la pòliza.
+                                     <div class="msg-box bg-warning">No hay cuotas Pendientes de gestiòn para la Pòliza.</div>
                                 </EmptyDataTemplate>
                             </asp:ListView>
                         </td>
@@ -258,13 +263,6 @@
             <asp:Button ID="CaseAccountResumeBtn" runat="server" Text="Estado de cuenta" Width="148px" OnClientClick="javascript:OpenPage();" />
     </div>
 
-    <asp:SqlDataSource ID="CollectionSqlDatSource" runat="server"  ConnectionString="<%$ ConnectionStrings:IASDBContext %>" 
-        SelectCommand="[collection].[sp_get_collections_by_policy]" SelectCommandType="StoredProcedure"
-        >
-        <SelectParameters>
-            <asp:QueryStringParameter Name="CaseID" QueryStringField="CaseID"  Type="Int32"/>          
-            <asp:ControlParameter ControlID="HiddenField1" Name="PolicyNumber" PropertyName="Value" />
-        </SelectParameters>
-    </asp:SqlDataSource>
+   
 
 </asp:Content>

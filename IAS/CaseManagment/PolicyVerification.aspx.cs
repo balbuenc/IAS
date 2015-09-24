@@ -102,47 +102,35 @@ namespace IAS.ClaimManagment
 
         }
 
-       
-
         protected void ClaimListView_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
             SqlConnection sqlConnection1 = new SqlConnection(ClaimSqldataSource.ConnectionString);
             SqlCommand cmd = new SqlCommand();
-            Int32 rowsAffected;
 
-            if (e.CommandName == "Request")
+            Label lblClaimID = (Label)e.Item.FindControl("lblClaimID");
+            CheckBox chkCobertura = (CheckBox)e.Item.FindControl("chkCobertura");
+           
+            if (e.CommandName == "SetCovered")
             {
 
-                Label lblClaimID = (Label)e.Item.FindControl("lblClaimID");
-                try
-                {
-                    cmd.CommandText = "claim.sp_enviar_verificacion_poliza";
+                    cmd.CommandText = "[claim].[sp_set_claim_covered]";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Connection = sqlConnection1;
 
-                    cmd.Parameters.AddWithValue("@tipo_notificacion", "solicitud_verificacion");
-                    cmd.Parameters.AddWithValue("@destino", "cbalbuena.cazzola@gmail.com");
-                    cmd.Parameters.AddWithValue("@mensaje", "Se solicita la verificación del Siniestro");
-                    cmd.Parameters.AddWithValue("@user", User.Identity.Name);
-                    cmd.Parameters.AddWithValue("@id_caso", Request.QueryString["CaseID"]);
-                    cmd.Parameters.AddWithValue("@id_siniestro",  lblClaimID.Text);
-
-
-
-
+                    cmd.Parameters.AddWithValue("ClaimID", Int32.Parse(lblClaimID.Text));
+                    cmd.Parameters.AddWithValue("Covered", chkCobertura.Checked);
+                    cmd.Parameters.AddWithValue("User",  User.Identity.Name);
 
                     sqlConnection1.Open();
 
-                    rowsAffected = cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
 
                     sqlConnection1.Close();
 
-                }
-                catch (Exception exp)
-                {
-                    ErrorLabel.Text = exp.Message;
-                }
+              
             }
         }
+
+       
     }
 }

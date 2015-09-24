@@ -83,8 +83,9 @@
             <asp:Label ID="ErrorLabel" Visible="False" CssClass="msg-box bg-danger" runat="server" />
             
             <asp:ListView ID="ClaimListView" runat="server"
-                 DataKeyNames="ClaimID"
-                 DataSourceID="ClaimSqldataSource" OnItemCommand="ClaimListView_ItemCommand">
+                DataKeyNames="ClaimID"
+                DataSourceID="ClaimSqldataSource"
+                 OnItemCommand="ClaimListView_ItemCommand">
                 <LayoutTemplate>
                     <table class="table table-striped" >
                         <thead>
@@ -105,7 +106,7 @@
                     </table>
                 </LayoutTemplate>
                 <ItemTemplate>
-                    <tr>
+                    <tr> 
                             <td><asp:Label ID="lblPolicyNumber" runat="server" Text='<%# Eval("PolicyNumber") %>' /></td>
                             <td><asp:Label ID="lblClaimNumber" runat="server" Text='<%# Eval("ClaimNumber") %>' /></td>
                             <td><asp:Label ID="lblRiskName" runat="server" Text='<%# Eval("RiskName") %>' /></td>                            
@@ -130,16 +131,18 @@
                     </tr>
                     <tr>
                         <td colspan="5">
-                        <div class="row">
-                            <div class="input-group col-sm-8">
-                                <span class="input-group-addon" id="basic-addon1">@</span>
-                                <asp:DropDownList ID="ddlContact" runat="server" CssClass="form-control" DataSourceID="ContactsSqlDataSource" DataTextField="Contact" DataValueField="ContactID"></asp:DropDownList>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <asp:CheckBox ID="chkCobertura" runat="server" Text="Posee Cobertura" Checked='<%# Eval("Covered") == DBNull.Value ? false : Eval("Covered") %>' CssClass="form-control" />
+                                </div>
+                                <div class="col-sm-2">
+                                    <asp:Button ID="SetCoveredBtn" runat="server" Text="Aplicar Cobertura" CssClass="btn btn-info"  CommandName="SetCovered" />
+                                </div>
+                                <div class="col-sm-2 col-sm-offset-2">
+                                    <asp:Button ID="ViewCollectionsBtn" runat="server" Text="Estado de cuenta" CssClass="btn btn-info" OnClientClick="javascript:OpenPage();" />
+                                </div>
                             </div>
-                            <div class="col-sm-4">
-                                <asp:Button ID="SendEmailBtn" runat="server" CssClass="btn btn-info" Text="Solicitar Verificación"  CommandName="Request" />
-                            </div>
-                        </div>
-                            </td>
+                        </td>
                     </tr>
                 </ItemTemplate>
                 <EditItemTemplate>
@@ -187,29 +190,14 @@
                     <asp:Parameter Name="Section" DefaultValue=""  ConvertEmptyStringToNull="True" />
                 </UpdateParameters>
             </asp:SqlDataSource>
-
-            <asp:SqlDataSource ID="ContactsSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" 
-                SelectCommand="claim.sp_get_contacts_by_insurance_manager_id" SelectCommandType="StoredProcedure">
-                <SelectParameters>
-                    <asp:Parameter  Name="InsuranceManagerID"  Type="Int32" DefaultValue="1"/>
-                </SelectParameters>
-            </asp:SqlDataSource>
         </ContentTemplate>
 
     </asp:UpdatePanel>
- 
-    
 
     <asp:UpdatePanel ID="trasicionManagerPanel" runat="server">
-
         <ContentTemplate>
-
             <uc1:CaseTransitionManager runat="server" ID="CaseTransitionManager" OnCaseStateChanged="CaseTransitionManager_CaseStateChanged" />
-
         </ContentTemplate>
-        
     </asp:UpdatePanel>
-    <div>
-            <asp:Button ID="CaseAccountResumeBtn" runat="server" Text="Estado de cuenta" Width="148px" CssClass="btn btn-info" OnClientClick="javascript:OpenPage();" />
-    </div>
+    
 </asp:Content>

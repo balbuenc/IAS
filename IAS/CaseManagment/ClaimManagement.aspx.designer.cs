@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IAS.Claims {
+namespace IAS.CaseManagment {
     
     
-    public partial class ClaimGlobalView {
+    public partial class ClaimManagement {
         
         /// <summary>
         /// searchBox control.
@@ -38,5 +38,23 @@ namespace IAS.Claims {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton criteriaBtn;
+        
+        /// <summary>
+        /// ClaimListView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView ClaimListView;
+        
+        /// <summary>
+        /// ClaimSqldataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ClaimSqldataSource;
     }
 }

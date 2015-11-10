@@ -185,11 +185,11 @@
     <Content Include="CaseManagment\CaseHub.aspx" />
     <Content Include="CaseManagment\CaseTransitionManager.ascx" />
     <Content Include="CaseManagment\ClaimCaseDetails.aspx" />
+    <Content Include="CaseManagment\ClaimManagement.aspx" />
     <Content Include="CaseManagment\CollectionCaseDetails.aspx" />
     <Content Include="CaseManagment\CollectionsToExpire.aspx" />
     <Content Include="CaseManagment\MyCaseList.aspx" />
     <Content Include="CaseManagment\PolicyVerification.aspx" />
-    <Content Include="Claims\ClaimGlobalView.aspx" />
     <Content Include="Collections\Assignations.aspx" />
     <Content Include="Collections\UploadCollections.aspx" />
     <Content Include="Contact.aspx" />
@@ -587,6 +587,13 @@
     <Compile Include="CaseManagment\ClaimCaseDetails.aspx.designer.cs">
       <DependentUpon>ClaimCaseDetails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CaseManagment\ClaimManagement.aspx.cs">
+      <DependentUpon>ClaimManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CaseManagment\ClaimManagement.aspx.designer.cs">
+      <DependentUpon>ClaimManagement.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CaseManagment\CollectionCaseDetails.aspx.cs">
       <DependentUpon>CollectionCaseDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -614,13 +621,6 @@
     </Compile>
     <Compile Include="CaseManagment\PolicyVerification.aspx.designer.cs">
       <DependentUpon>PolicyVerification.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Claims\ClaimGlobalView.aspx.cs">
-      <DependentUpon>ClaimGlobalView.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Claims\ClaimGlobalView.aspx.designer.cs">
-      <DependentUpon>ClaimGlobalView.aspx</DependentUpon>
     </Compile>
     <Compile Include="Collections\Assignations.aspx.cs">
       <DependentUpon>Assignations.aspx</DependentUpon>
@@ -800,6 +800,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Readme\" />
+    <Folder Include="Claims\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201402081817594_Initial.resx">

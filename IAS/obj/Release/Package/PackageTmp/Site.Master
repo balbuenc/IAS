@@ -88,9 +88,8 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li><a href="../CaseManagment/MyCaseList.aspx">Mis Pendientes</a></li>
+                                    <li><a href="../Claims/ClaimGlobalView.aspx">Siniestros</a></li>
                                     <li><a href="../CaseManagment/CollectionsToExpire.aspx">Envio de SMS</a></li>
-                                    
-                                   <%-- <li><a href="ftp://aibsql%5Creport@aibsql.cloudapp.net/" target="_blank">Subir cuotas</a></li>--%>
                                     <li><a href="../Collections/UploadCollections.aspx">Subir cuotas</a></li>
 
                                 </ul>

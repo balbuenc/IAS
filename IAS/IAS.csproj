@@ -189,6 +189,7 @@
     <Content Include="CaseManagment\CollectionsToExpire.aspx" />
     <Content Include="CaseManagment\MyCaseList.aspx" />
     <Content Include="CaseManagment\PolicyVerification.aspx" />
+    <Content Include="Claims\ClaimGlobalView.aspx" />
     <Content Include="Collections\Assignations.aspx" />
     <Content Include="Collections\UploadCollections.aspx" />
     <Content Include="Contact.aspx" />
@@ -614,6 +615,13 @@
     <Compile Include="CaseManagment\PolicyVerification.aspx.designer.cs">
       <DependentUpon>PolicyVerification.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Claims\ClaimGlobalView.aspx.cs">
+      <DependentUpon>ClaimGlobalView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Claims\ClaimGlobalView.aspx.designer.cs">
+      <DependentUpon>ClaimGlobalView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Collections\Assignations.aspx.cs">
       <DependentUpon>Assignations.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -792,7 +800,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Readme\" />
-    <Folder Include="Claims\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201402081817594_Initial.resx">

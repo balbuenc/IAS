@@ -21,7 +21,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>&nbsp;Mis pendientes</h2>
+    <h2>Mis pendientes</h2>
 
     <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
     <!-- Nav tabs -->

@@ -264,3 +264,4 @@ C:\Users\Administrador.AS\Documents\Git\IAS\IAS\obj\Debug\IAS.csproj.GenerateRes
 C:\Users\Administrador.AS\Documents\Git\IAS\IAS\obj\Debug\IAS.dll
 C:\Users\Administrador.AS\Documents\Git\IAS\IAS\obj\Debug\IAS.pdb
 C:\Users\vsian\Desktop\IAS-GITHUB\IAS\IAS\obj\Debug\IAS.csprojResolveAssemblyReference.cache
+C:\Users\Administrador.AS\Documents\Git\IAS\IAS\obj\Debug\IAS.csprojResolveAssemblyReference.cache

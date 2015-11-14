@@ -197,6 +197,7 @@ C:\Users\vsian\Desktop\IAS-GITHUB\IAS\IAS\obj\Debug\IAS.Migrations.PaymentDayAdd
 C:\Users\vsian\Desktop\IAS-GITHUB\IAS\IAS\obj\Debug\IAS.csproj.GenerateResource.Cache
 C:\Users\vsian\Desktop\IAS-GITHUB\IAS\IAS\obj\Debug\IAS.dll
 C:\Users\vsian\Desktop\IAS-GITHUB\IAS\IAS\obj\Debug\IAS.pdb
+C:\Users\vsian\Desktop\IAS-GITHUB\IAS\IAS\obj\Debug\IAS.csprojResolveAssemblyReference.cache
 C:\Users\Administrador.AS\Documents\Git\IAS\IAS\bin\IAS.dll.config
 C:\Users\Administrador.AS\Documents\Git\IAS\IAS\bin\IAS.dll
 C:\Users\Administrador.AS\Documents\Git\IAS\IAS\bin\IAS.pdb
@@ -263,5 +264,3 @@ C:\Users\Administrador.AS\Documents\Git\IAS\IAS\obj\Debug\IAS.Migrations.Payment
 C:\Users\Administrador.AS\Documents\Git\IAS\IAS\obj\Debug\IAS.csproj.GenerateResource.Cache
 C:\Users\Administrador.AS\Documents\Git\IAS\IAS\obj\Debug\IAS.dll
 C:\Users\Administrador.AS\Documents\Git\IAS\IAS\obj\Debug\IAS.pdb
-C:\Users\vsian\Desktop\IAS-GITHUB\IAS\IAS\obj\Debug\IAS.csprojResolveAssemblyReference.cache
-C:\Users\Administrador.AS\Documents\Git\IAS\IAS\obj\Debug\IAS.csprojResolveAssemblyReference.cache

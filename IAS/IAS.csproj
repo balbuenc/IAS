@@ -185,11 +185,12 @@
     <Content Include="CaseManagment\CaseHub.aspx" />
     <Content Include="CaseManagment\CaseTransitionManager.ascx" />
     <Content Include="CaseManagment\ClaimCaseDetails.aspx" />
-    <Content Include="CaseManagment\ClaimManagement.aspx" />
     <Content Include="CaseManagment\CollectionCaseDetails.aspx" />
     <Content Include="CaseManagment\CollectionsToExpire.aspx" />
     <Content Include="CaseManagment\MyCaseList.aspx" />
     <Content Include="CaseManagment\PolicyVerification.aspx" />
+    <Content Include="Claims\ClaimSearch.aspx" />
+    <Content Include="Claims\NewClaim.aspx" />
     <Content Include="Collections\Assignations.aspx" />
     <Content Include="Collections\UploadCollections.aspx" />
     <Content Include="Contact.aspx" />
@@ -206,6 +207,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\jquery.datetimepicker.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Styles.css" />
     <Content Include="Content\typeahead.css" />
     <Content Include="ErrorPage.aspx" />
     <Content Include="Exchange\ExternalPolicyVerification.aspx" />
@@ -229,6 +231,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
+    <Content Include="Claim.Master" />
     <None Include="Properties\PublishProfiles\seguros - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\seguros - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -587,13 +590,6 @@
     <Compile Include="CaseManagment\ClaimCaseDetails.aspx.designer.cs">
       <DependentUpon>ClaimCaseDetails.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CaseManagment\ClaimManagement.aspx.cs">
-      <DependentUpon>ClaimManagement.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CaseManagment\ClaimManagement.aspx.designer.cs">
-      <DependentUpon>ClaimManagement.aspx</DependentUpon>
-    </Compile>
     <Compile Include="CaseManagment\CollectionCaseDetails.aspx.cs">
       <DependentUpon>CollectionCaseDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -621,6 +617,27 @@
     </Compile>
     <Compile Include="CaseManagment\PolicyVerification.aspx.designer.cs">
       <DependentUpon>PolicyVerification.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Claim.Master.cs">
+      <DependentUpon>Claim.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Claim.Master.designer.cs">
+      <DependentUpon>Claim.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Claims\ClaimSearch.aspx.cs">
+      <DependentUpon>ClaimSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Claims\ClaimSearch.aspx.designer.cs">
+      <DependentUpon>ClaimSearch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Claims\NewClaim.aspx.cs">
+      <DependentUpon>NewClaim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Claims\NewClaim.aspx.designer.cs">
+      <DependentUpon>NewClaim.aspx</DependentUpon>
     </Compile>
     <Compile Include="Collections\Assignations.aspx.cs">
       <DependentUpon>Assignations.aspx</DependentUpon>
@@ -800,7 +817,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Readme\" />
-    <Folder Include="Claims\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201402081817594_Initial.resx">

@@ -29,6 +29,8 @@ namespace IAS
                 searchClaimTab.Attributes.Add("class","active");
             else if (filename == "NewClaim")
                 newClaimTab.Attributes.Add("class", "active");
+            else if (filename == "ClaimPolicyVerification")
+                verificationClaimTab.Attributes.Add("class", "active");
 
         }
 

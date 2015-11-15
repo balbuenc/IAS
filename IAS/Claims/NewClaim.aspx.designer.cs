@@ -13,6 +13,15 @@ namespace IAS.Claims {
     public partial class NewClaim {
         
         /// <summary>
+        /// ErrorLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ErrorLabel;
+        
+        /// <summary>
         /// ddlClientes control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace IAS.Claims {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListBox ListBox1;
+        
+        /// <summary>
+        /// registrarSiniestroBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button registrarSiniestroBtn;
         
         /// <summary>
         /// clientesDataSource control.

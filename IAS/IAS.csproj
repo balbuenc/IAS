@@ -189,6 +189,7 @@
     <Content Include="CaseManagment\CollectionsToExpire.aspx" />
     <Content Include="CaseManagment\MyCaseList.aspx" />
     <Content Include="CaseManagment\PolicyVerification.aspx" />
+    <Content Include="Claims\ClaimPolicyVerification.aspx" />
     <Content Include="Claims\ClaimSearch.aspx" />
     <Content Include="Claims\NewClaim.aspx" />
     <Content Include="Collections\Assignations.aspx" />
@@ -624,6 +625,13 @@
     </Compile>
     <Compile Include="Claim.Master.designer.cs">
       <DependentUpon>Claim.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Claims\ClaimPolicyVerification.aspx.cs">
+      <DependentUpon>ClaimPolicyVerification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Claims\ClaimPolicyVerification.aspx.designer.cs">
+      <DependentUpon>ClaimPolicyVerification.aspx</DependentUpon>
     </Compile>
     <Compile Include="Claims\ClaimSearch.aspx.cs">
       <DependentUpon>ClaimSearch.aspx</DependentUpon>

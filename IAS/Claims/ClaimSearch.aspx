@@ -27,7 +27,7 @@
     <div class="container">
         <div id="header">
             <div class="row">
-                <div class="col-lg-6 col-lg-offset-6">
+                <div class="col-lg-6 ">
                     <div class="input-group">
                         <span class="input-group-btn">
                             <button id="searchBox" class="btn btn-default" runat="server" type="button" onserverclick="searchBox_ServerClick">Buscar</button>
@@ -43,7 +43,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="?criteria=PolicyNumber">Nro Pòliza</a></li>
                                 <li><a href="?criteria=Client">Cliente</a></li>
-                                <li><a href="?criteria=ClaimDate">Fecha</a></li>
+                                <li><a href="?criteria=ClientDocumentNumber">Nro. Documento</a></li>
                                 <li><a href="?criteria=ClaimNumber">Nro. Siniestro</a></li>
                             </ul>
                         </div>
@@ -66,8 +66,11 @@
                                         <tr>
                                             <th>Nro Pòliza</th>
                                             <th>Cliente</th>
+                                            <th>Nro. Doc.</th>
                                             <th>Riesgo</th>
                                             <th>Fecha</th>
+                                            <th>Estado</th>
+                                            <th>Accion</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -82,11 +85,17 @@
                                     <asp:Label ID="lblPolicyNumber" runat="server" Text='<%# Eval("PolicyNumber") %>' /></td>
                                 <td>
                                     <asp:Label ID="lblClient" runat="server" Text='<%# Eval("Client") %>' /></td>
+                                 <td>
+                                    <asp:Label ID="lblClientDocumentNumber" runat="server" Text='<%# Eval("ClientDocumentNumber") %>' /></td>
                                 <td>
                                     <asp:Label ID="lblRiskName" runat="server" Text='<%# Eval("RiskName") %>' /></td>
                                 <td>
                                     <asp:Label ID="lblRegistryDate" runat="server" Text='<%#   DateTime.Parse( Eval("RegistryDate").ToString()).ToShortDateString() %>' /></td>
-
+                                <td>
+                                    <asp:Label ID="lblClaimStatus" runat="server" Text='<%#   Eval("Status") %>' /></td>
+                                <td>
+                                    <asp:HyperLink ID="linkAction" runat="server" Text='<%#   Eval("NextStatus") %>'  NavigateUrl='<%#   Eval("ActionForm") %>'></asp:HyperLink>
+                                </td>
                             </tr>
                         </ItemTemplate>
                         <EditItemTemplate>

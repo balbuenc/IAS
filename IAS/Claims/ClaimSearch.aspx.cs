@@ -10,9 +10,25 @@ namespace IAS.Claims
     public partial class ClaimSearch : System.Web.UI.Page
     {
         private string criteria;
+        private string claimID;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Verifico si es una busqueda por Formulario
+            try
+            {
+                claimID = Request.QueryString["PolicyNumber"].ToString();
+                if (claimID != null)
+                {
+                    txtSearchClaim.Value = claimID;
+                    ClaimListView.DataBind();
+                }
+            }
+            catch (Exception exp1)
+            {
+                claimID = null;
+            }
+
             try
             {
                 criteria = Request.QueryString["criteria"].ToString();
@@ -26,9 +42,9 @@ namespace IAS.Claims
                         txtSearchClaim.Attributes["placeholder"] = "Buscar por Cliente";
                         criteriaBtn.InnerText = "Cliente";
                         break;
-                    case "ClaimDate":
-                        txtSearchClaim.Attributes["placeholder"] = "Buscar por Fecha";
-                        criteriaBtn.InnerText = "Fecha";
+                    case "ClientDocumentNumber":
+                        txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Documento";
+                        criteriaBtn.InnerText = "Nro. Documento";
                         break;
                     case "ClaimNumber":
                         txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Siniestro";
@@ -41,6 +57,7 @@ namespace IAS.Claims
                         criteria = "PolicyNumber";
                         break;
                 }
+
 
 
             }

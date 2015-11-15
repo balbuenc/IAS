@@ -48,61 +48,78 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
-        <div class="panel panel-default">
-            <div class="panel-heading">Datos del Cliente</div>
-            <div class="panel-body">
-                <div class="form-group">
-                    <div class="row">
-                        <label class="col-sm-2 control-label" for="form-group-input">Cliente</label>
-                        <div class="col-sm-10">
-                            <asp:DropDownList ID="ddlClientes" runat="server" DataSourceID="clientesDataSource" AutoPostBack="true"
-                                CssClass="form-control" DataValueField="id_persona" DataTextField="cliente">
-                            </asp:DropDownList>
+        <div class="row">
+            <div class="col-lg-12">
+                <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Datos del Cliente</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-sm-2 control-label" for="form-group-input">Cliente</label>
+                                <div class="col-sm-10">
+                                    <asp:DropDownList ID="ddlClientes" runat="server" DataSourceID="clientesDataSource" AutoPostBack="true"
+                                        CssClass="form-control" DataValueField="id_persona" DataTextField="cliente">
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-2 control-label" for="form-group-input">Nro. póliza</label>
+                                <div class="col-sm-10">
+                                    <asp:DropDownList ID="ddlNroPoliza" runat="server" DataSourceID="polizasDataSource"
+                                        CssClass="form-control" DataValueField="nro_poliza" DataTextField="detail">
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <label class="col-sm-2 control-label" for="form-group-input">Nro. póliza</label>
-                        <div class="col-sm-10">
-                            <asp:DropDownList ID="ddlNroPoliza" runat="server" DataSourceID="polizasDataSource"
-                                CssClass="form-control" DataValueField="nro_poliza" DataTextField="detail">
-                            </asp:DropDownList>
+                    <div class="panel-heading">Datos del Siniestro</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-sm-2 control-label" for="form-group-input">Fecha Siniestro</label>
+                                <div class="col-sm-10">
+
+                                    <input data-provide="datepicker" id="dp1" class="form-control" data-date-format="dd-mm-yyyy" runat="server">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-2 control-label" for="form-group-input">Tipo Siniestro</label>
+                                <div class="col-sm-10">
+                                    <asp:DropDownList ID="ddlTipoSiniestro" runat="server" CssClass="form-control" DataSourceID="tipoSinistrosDataSource" AutoPostBack="true"
+                                        DataValueField="ClaimTypeID" DataTextField="Description">
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-2 control-label" for="form-group-input">Cobertura</label>
+                                <div class="col-sm-10">
+                                    <asp:ListBox ID="ListBox1"
+                                        Rows="10"
+                                        Width="100%"
+                                        SelectionMode="Multiple"
+                                        DataSourceID="coberturaPolizas"
+                                        runat="server"
+                                        DataTextField="ClaimMade"
+                                        DataValueField="ClaimMadeID"></asp:ListBox>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="panel-heading">Datos del Siniestro</div>
-            <div class="panel-body">
-                <div class="form-group">
-                    <div class="row">
-                        <label class="col-sm-2 control-label" for="form-group-input">Fecha Siniestro</label>
-                        <div class="col-sm-10">
-
-                            <input data-provide="datepicker" id="dp1" class="form-control" data-date-format="dd-mm-yyyy" runat="server">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-sm-2 control-label" for="form-group-input">Tipo Siniestro</label>
-                        <div class="col-sm-10">
-                            <asp:DropDownList ID="ddlTipoSiniestro" runat="server" CssClass="form-control" DataSourceID="tipoSinistrosDataSource" AutoPostBack="true"
-                                DataValueField="ClaimTypeID" DataTextField="Description">
-                            </asp:DropDownList>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-sm-2 control-label" for="form-group-input">Cobertura</label>
-                        <div class="col-sm-10">
-                            <asp:ListBox ID="ListBox1"
-                                Rows="6"
-                                Width="100%"
-                                SelectionMode="Multiple"
-                                DataSourceID="coberturaPolizas"
-                                runat="server"
-                                DataTextField="ClaimMade"
-                                DataValueField="ClaimMadeID"></asp:ListBox>
-                        </div>
-                    </div>
-
-                </div>
+        </div>
+        <div class="row">
+            <hr />
+        </div>
+        <div class="row">
+            <div class="col-lg-2 col-lg-offset-10">
+                <asp:Button ID="registrarSiniestroBtn" runat="server" Text="Generar Siniestro" CssClass="form-control" OnClick="registrarSiniestroBtn_Click" />
             </div>
         </div>
 

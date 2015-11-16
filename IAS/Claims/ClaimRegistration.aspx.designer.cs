@@ -31,6 +31,15 @@ namespace IAS.Claims {
         protected global::System.Web.UI.WebControls.FormView PersonData;
         
         /// <summary>
+        /// ClaimDetailsListView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FormView ClaimDetailsListView;
+        
+        /// <summary>
         /// estadoClienteDataSource control.
         /// </summary>
         /// <remarks>
@@ -38,5 +47,14 @@ namespace IAS.Claims {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource estadoClienteDataSource;
+        
+        /// <summary>
+        /// siniestroDetalleDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource siniestroDetalleDataSource;
     }
 }

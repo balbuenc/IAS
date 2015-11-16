@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="IIS Web Application Name" description="" value="aibias" tags="IisApp">
-    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\cbalbuena\\Fuentes\\IAS\\IAS\\obj\\Release\\Package\\PackageTmp$" />
-    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\cbalbuena\\Fuentes\\IAS\\IAS\\obj\\Release\\Package\\PackageTmp$" />
+  <parameter name="IIS Web Application Name" description="" value="seguros" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Administrador\.AS\\Documents\\Git\\IAS\\IAS\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Administrador\.AS\\Documents\\Git\\IAS\\IAS\\obj\\Release\\Package\\PackageTmp$" />
   </parameter>
-  <parameter name="Add write permission to App_Data Folder" description="Add write permission to App_Data folder" value="aibias/App_Data" tags="Hidden">
-    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\cbalbuena\\Fuentes\\IAS\\IAS\\obj\\Release\\Package\\PackageTmp\\App_Data$" />
+  <parameter name="Add write permission to App_Data Folder" description="Add write permission to App_Data folder" value="seguros/App_Data" tags="Hidden">
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Administrador\.AS\\Documents\\Git\\IAS\\IAS\\obj\\Release\\Package\\PackageTmp\\App_Data$" />
   </parameter>
-  <parameter name="IASDBContext-Web.config Connection String" description="" value="Data Source=aibsql.cloudapp.net;Initial Catalog=IAS;Persist Security Info=True;User ID=ias_web;Password=Ias2014" tags="">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\cbalbuena\\Fuentes\\IAS\\IAS\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='IASDBContext']/@connectionString" />
+  <parameter name="IASDBContext-Web.config Connection String" description="" value="Data Source=aibsql.cloudapp.net;Initial Catalog=ias_developer;Persist Security Info=True;User ID=ias_desarrollo;Password=Passw0rd" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Administrador\.AS\\Documents\\Git\\IAS\\IAS\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='IASDBContext']/@connectionString" />
   </parameter>
 </parameters>

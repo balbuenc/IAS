@@ -189,9 +189,13 @@
     <Content Include="CaseManagment\CollectionsToExpire.aspx" />
     <Content Include="CaseManagment\MyCaseList.aspx" />
     <Content Include="CaseManagment\PolicyVerification.aspx" />
+    <Content Include="Claims\ApprovementClaim.aspx" />
     <Content Include="Claims\ClaimPolicyVerification.aspx" />
+    <Content Include="Claims\ClaimRegistration.aspx" />
     <Content Include="Claims\ClaimSearch.aspx" />
+    <Content Include="Claims\CloseClaim.aspx" />
     <Content Include="Claims\NewClaim.aspx" />
+    <Content Include="Claims\WorkShopClaim.aspx" />
     <Content Include="Collections\Assignations.aspx" />
     <Content Include="Collections\UploadCollections.aspx" />
     <Content Include="Contact.aspx" />
@@ -626,12 +630,26 @@
     <Compile Include="Claim.Master.designer.cs">
       <DependentUpon>Claim.Master</DependentUpon>
     </Compile>
+    <Compile Include="Claims\ApprovementClaim.aspx.cs">
+      <DependentUpon>ApprovementClaim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Claims\ApprovementClaim.aspx.designer.cs">
+      <DependentUpon>ApprovementClaim.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Claims\ClaimPolicyVerification.aspx.cs">
       <DependentUpon>ClaimPolicyVerification.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Claims\ClaimPolicyVerification.aspx.designer.cs">
       <DependentUpon>ClaimPolicyVerification.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Claims\ClaimRegistration.aspx.cs">
+      <DependentUpon>ClaimRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Claims\ClaimRegistration.aspx.designer.cs">
+      <DependentUpon>ClaimRegistration.aspx</DependentUpon>
     </Compile>
     <Compile Include="Claims\ClaimSearch.aspx.cs">
       <DependentUpon>ClaimSearch.aspx</DependentUpon>
@@ -640,12 +658,26 @@
     <Compile Include="Claims\ClaimSearch.aspx.designer.cs">
       <DependentUpon>ClaimSearch.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Claims\CloseClaim.aspx.cs">
+      <DependentUpon>CloseClaim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Claims\CloseClaim.aspx.designer.cs">
+      <DependentUpon>CloseClaim.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Claims\NewClaim.aspx.cs">
       <DependentUpon>NewClaim.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Claims\NewClaim.aspx.designer.cs">
       <DependentUpon>NewClaim.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Claims\WorkShopClaim.aspx.cs">
+      <DependentUpon>WorkShopClaim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Claims\WorkShopClaim.aspx.designer.cs">
+      <DependentUpon>WorkShopClaim.aspx</DependentUpon>
     </Compile>
     <Compile Include="Collections\Assignations.aspx.cs">
       <DependentUpon>Assignations.aspx</DependentUpon>

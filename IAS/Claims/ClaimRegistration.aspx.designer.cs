@@ -10,7 +10,7 @@
 namespace IAS.Claims {
     
     
-    public partial class ClaimPolicyVerification {
+    public partial class ClaimRegistration {
         
         /// <summary>
         /// ErrorLabel control.
@@ -31,24 +31,6 @@ namespace IAS.Claims {
         protected global::System.Web.UI.WebControls.FormView PersonData;
         
         /// <summary>
-        /// lblPolicyNumber control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPolicyNumber;
-        
-        /// <summary>
-        /// DetailListView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView DetailListView;
-        
-        /// <summary>
         /// estadoClienteDataSource control.
         /// </summary>
         /// <remarks>
@@ -56,14 +38,5 @@ namespace IAS.Claims {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource estadoClienteDataSource;
-        
-        /// <summary>
-        /// CollectionSqlDatSource control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource CollectionSqlDatSource;
     }
 }

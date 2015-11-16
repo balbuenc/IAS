@@ -264,3 +264,4 @@ C:\Users\Administrador.AS\Documents\Git\IAS\IAS\obj\Debug\IAS.Migrations.Payment
 C:\Users\Administrador.AS\Documents\Git\IAS\IAS\obj\Debug\IAS.csproj.GenerateResource.Cache
 C:\Users\Administrador.AS\Documents\Git\IAS\IAS\obj\Debug\IAS.dll
 C:\Users\Administrador.AS\Documents\Git\IAS\IAS\obj\Debug\IAS.pdb
+C:\Users\Administrador.AS\Documents\Git\IAS\IAS\obj\Debug\IAS.csprojResolveAssemblyReference.cache

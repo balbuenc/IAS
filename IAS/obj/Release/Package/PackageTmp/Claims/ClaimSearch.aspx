@@ -92,7 +92,8 @@
                                 <td>
                                     <asp:Label ID="lblRegistryDate" runat="server" Text='<%#   DateTime.Parse( Eval("RegistryDate").ToString()).ToShortDateString() %>' /></td>
                                 <td>
-                                    <asp:Label ID="lblClaimStatus" runat="server" Text='<%#   Eval("Status") %>' /></td>
+                                    <asp:HyperLink ID="linkStatus" runat="server" Text='<%#   Eval("Status") %>'  NavigateUrl='<%#   Eval("StatusForm") %>'></asp:HyperLink>
+                                </td>
                                 <td>
                                     <asp:HyperLink ID="linkAction" runat="server" Text='<%#   Eval("NextStatus") %>'  NavigateUrl='<%#   Eval("ActionForm") %>'></asp:HyperLink>
                                 </td>

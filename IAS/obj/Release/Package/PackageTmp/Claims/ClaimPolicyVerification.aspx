@@ -20,9 +20,7 @@
                     RenderOuterTable="false">
                     <ItemTemplate>
                         <h3>Informacion de Cliente</h3>
-
-                        <div class="containter-fluid" style="padding-left: 20px;">
-
+                        <div class="containter-fluid" style="padding-left: 20px; font-size: x-small">
                             <div class="row">
                                 <div class="col-sm-2"><u>Cliente:</u></div>
                                 <div class="col-sm-4">
@@ -66,13 +64,33 @@
         <div class="row">
             <hr />
         </div>
+
+        <div class="row" style="font-size:small">
+            <div class="form-inline" role="form">
+                <div class="form-group">
+                    <label for="nroPoliza">Nro. Pòliza:</label>
+                    <label id="lblPolicyNumber" runat="server"></label>
+                </div>
+                <div class="form-group col-lg-offset-4">
+                    <label for="acciones">Verificaciòn:</label>
+
+                </div>
+
+                <button type="submit" class="btn btn-success" runat="server" onserverclick="RegistrarSiniestro">Con Cobertura</button>
+                <button type="submit" class="btn btn-danger" runat="server" onserverclick="CierreSiniestro">Sin Cobertura</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <hr />
+        </div>
         <div class="row">
             <div class="col-lg-12">
                 <asp:ListView ID="DetailListView" runat="server"
                     DataKeyNames="CollectionID"
                     DataSourceID="CollectionSqlDatSource">
                     <LayoutTemplate>
-                        <table class="table table-striped">
+                        <table class="table table-striped" style="font-size: x-small">
                             <thead>
                                 <tr>
                                     <th>Cuota</th>
@@ -123,7 +141,7 @@
                     <EditItemTemplate>
                     </EditItemTemplate>
                     <EmptyDataTemplate>
-                        <div class="msg-box bg-warning">No hay cuotas Pendientes para la Pòliza.</div>
+                        <div class="msg-box bg-warning">No hay cuotas Registradas para la Pòliza.</div>
                     </EmptyDataTemplate>
                 </asp:ListView>
             </div>
@@ -140,7 +158,7 @@
     <asp:SqlDataSource ID="CollectionSqlDatSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
         SelectCommand="[collection].[sp_get_collections_by_policy]" SelectCommandType="StoredProcedure">
         <SelectParameters>
-            <asp:QueryStringParameter Name="CaseID" QueryStringField="CaseID" Type="Int32" />            
+            <asp:QueryStringParameter Name="CaseID" QueryStringField="CaseID" Type="Int32" />
             <asp:QueryStringParameter Name="PolicyNumber" QueryStringField="PolicyNumber" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>

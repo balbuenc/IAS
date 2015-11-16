@@ -54,7 +54,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12" style="font-size: x-small">
                 <div class="panel panel-default">
                     <div class="panel-heading">Datos del Cliente</div>
                     <div class="panel-body">
@@ -84,7 +84,7 @@
                                 <label class="col-sm-2 control-label" for="form-group-input">Fecha Siniestro</label>
                                 <div class="col-sm-10">
 
-                                    <input data-provide="datepicker" id="dp1" class="form-control" data-date-format="dd-mm-yyyy" runat="server">
+                                    <input data-provide="datepicker" id="dp1" class="form-control" data-date-format="dd-mm-yyyy" runat="server"/>
                                 </div>
                             </div>
                             <div class="row">

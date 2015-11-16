@@ -45,10 +45,10 @@
                 <li id="searchClaimTab" role="presentation" class="active" runat="server"><a href="ClaimSearch.aspx">Buscar Siniestros</a></li>
                 <li id="newClaimTab" role="presentation" runat="server"><a href="NewClaim.aspx">Alta Siniestro</a></li>
                 <li id="verificationClaimTab" role="presentation" runat="server"><a href="ClaimPolicyVerification.aspx">Verificacion de Cobertura</a></li>
-                <li id="registerClaimTab" role="presentation" runat="server"><a href="#">Registro del Siniestro</a></li>
-                <li id="approvementClaimTab" role="presentation" runat="server"><a href="#">Aceptacion por Aseguradora</a></li>
-                <li id="workShopClaimTab" role="presentation" runat="server"><a href="#">Gestion de Taller</a></li>
-                <li id="closeClaimTab" role="presentation" runat="server"><a href="#">Cierre del Siniestro</a></li>
+                <li id="registerClaimTab" role="presentation" runat="server"><a href="ClaimRegistration.aspx">Registro del Siniestro</a></li>
+                <li id="approvementClaimTab" role="presentation" runat="server"><a href="ApprovementClaimTab.aspx">Aceptacion por Aseguradora</a></li>
+                <li id="workShopClaimTab" role="presentation" runat="server"><a href="WorkShopClaimTab.aspx">Gestion de Taller</a></li>
+                <li id="closeClaimTab" role="presentation" runat="server"><a href="CloseClaim.aspx">Cierre del Siniestro</a></li>
             </ul>
 
         </div>

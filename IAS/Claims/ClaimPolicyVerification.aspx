@@ -13,48 +13,39 @@
             </div>
         </div>
         <div class="row">
+            <h3>Informacion de Cliente</h3>
+        </div>
+        <div class="row">
             <div class="col-lg-12">
                 <asp:FormView ID="PersonData" runat="server"
                     DataSourceID="estadoClienteDataSource"
                     DataKeyNames="PersonID"
                     RenderOuterTable="false">
                     <ItemTemplate>
-                        <h3>Informacion de Cliente</h3>
-                        <div class="containter-fluid" style="padding-left: 20px; font-size: x-small">
-                            <div class="row">
-                                <div class="col-sm-2"><u>Cliente:</u></div>
-                                <div class="col-sm-4">
-                                    <%#:Eval("Description") %>
+                        <div class="containter">
+                            <div class="form-horizontal" style="font-size: small">
+                                <div class="row">
+                                    <div class="col-lg-2"><u>Cliente:</u></div>
+                                    <div class="col-lg-4"><%#:Eval("Description") %></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-2"><u>Telefonos:</u></div>
-                                    <div class="col-sm-4">
+                                    <div class="col-lg-2"><u>Telefonos:</u></div>
+                                    <div class="col-lg-10">
                                         Particular: <strong><%#:string.IsNullOrEmpty( Eval("telefono_domicilio1").ToString() )?"nd": Eval("telefono_domicilio1")  %> </strong>
                                         Celular: <strong><%#:string.IsNullOrEmpty(Eval("telefono_celular").ToString() )?"nd": Eval("telefono_celular")  %> </strong>
                                         Laboral: <strong><%#:string.IsNullOrEmpty(Eval("telefono_laboral1").ToString() )?"nd": Eval("telefono_laboral1") %> </strong>
-                                    </div>
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-2"><u>Documentos:</u></div>
-
-                                    <div class="col-sm-4">
-                                        R.U.C.: <strong><%#:string.IsNullOrEmpty(Eval("numero_documento").ToString() )?"nd": Eval("numero_documento")%> </strong>
-                                        C.I.: <strong><%#:string.IsNullOrEmpty(Eval("numero_documento").ToString() )?"nd": Eval("numero_documento") %> </strong>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </ItemTemplate>
-
                     <EmptyDataTemplate>
                         <div class="row">
-                            <div class="msg-box bg-info">
-                                No hay datos de cliente para mostrar.
+                            <div class="row">
+                                <div class="col-lg-12 text-center">
+                                    <div class="msg-box bg-warning alert-danger">No hay Datos del Cliente para Mostrar.</div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <a href="ClaimSearch.aspx">Buscar Siniestro</a>
                         </div>
                     </EmptyDataTemplate>
 
@@ -64,8 +55,7 @@
         <div class="row">
             <hr />
         </div>
-
-        <div class="row" style="font-size:small">
+        <div class="row" style="font-size: small">
             <div class="form-inline" role="form">
                 <div class="form-group">
                     <label for="nroPoliza">Nro. Pòliza:</label>
@@ -73,14 +63,11 @@
                 </div>
                 <div class="form-group col-lg-offset-4">
                     <label for="acciones">Verificaciòn:</label>
-
                 </div>
-
                 <button type="submit" class="btn btn-success" runat="server" onserverclick="RegistrarSiniestro">Con Cobertura</button>
                 <button type="submit" class="btn btn-danger" runat="server" onserverclick="CierreSiniestro">Sin Cobertura</button>
             </div>
         </div>
-
         <div class="row">
             <hr />
         </div>
@@ -135,13 +122,16 @@
                             <td>
                                 <asp:Label ID="Label4" runat="server" Text='<%# Eval("CollectionState")%>' />
                             </td>
-
                         </tr>
                     </ItemTemplate>
                     <EditItemTemplate>
                     </EditItemTemplate>
-                    <EmptyDataTemplate>
-                        <div class="msg-box bg-warning">No hay cuotas Registradas para la Pòliza.</div>
+                    <EmptyDataTemplate>                        
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <div class="msg-box bg-warning alert-danger">La Pòliza no posee cuotas vencidas.</div>
+                            </div>
+                        </div>
                     </EmptyDataTemplate>
                 </asp:ListView>
             </div>

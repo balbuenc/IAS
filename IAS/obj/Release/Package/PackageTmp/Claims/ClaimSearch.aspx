@@ -51,7 +51,6 @@
                 </div>
             </div>
         </div>
-
         <div id="contenido">
             <div class="row">
                 <div class="col-lg-12">

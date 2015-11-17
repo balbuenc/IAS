@@ -56,5 +56,32 @@ namespace IAS.Claims {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource siniestroDetalleDataSource;
+        
+        /// <summary>
+        /// liquidadoresDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource liquidadoresDataSource;
+        
+        /// <summary>
+        /// talleresSqlDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource talleresSqlDataSource;
+        
+        /// <summary>
+        /// expertosAseguradoraDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource expertosAseguradoraDataSource;
     }
 }

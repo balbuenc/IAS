@@ -106,119 +106,65 @@
             <hr />
         </div>
         <div class="row">
-              <asp:FormView ID="ClaimDetailsListView" runat="server"
-                        DataKeyNames="ClaimID"
-                        DataSourceID="siniestroDetalleDataSource" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" Width="100%">
+            <asp:FormView ID="ClaimDetailsListView" runat="server"
+                DataKeyNames="ClaimID"
+                DataSourceID="siniestroDetalleDataSource"
+                BackColor="White"
+                BorderColor="#CCCCCC"
+                BorderStyle="None"
+                BorderWidth="1px"
+                CellPadding="4"
+                ForeColor="Black"
+                Width="95%">
 
-                       
-                        <ItemTemplate>
-                            ClaimID:
-                            <asp:Label ID="ClaimIDLabel" runat="server" Text='<%# Eval("ClaimID") %>' />
-                            <br />
-                            CaseID:
-                            <asp:Label ID="CaseIDLabel" runat="server" Text='<%# Bind("CaseID") %>' />
-                            <br />
-                            PolicyNumber:
-                            <asp:Label ID="PolicyNumberLabel" runat="server" Text='<%# Bind("PolicyNumber") %>' />
-                            <br />
-                            ClaimNumber:
-                            <asp:Label ID="ClaimNumberLabel" runat="server" Text='<%# Bind("ClaimNumber") %>' />
-                            <br />
-                            RiskName:
-                            <asp:Label ID="RiskNameLabel" runat="server" Text='<%# Bind("RiskName") %>' />
-                            <br />
-                            PersonID:
-                            <asp:Label ID="PersonIDLabel" runat="server" Text='<%# Bind("PersonID") %>' />
-                            <br />
-                            LiquidatorID:
-                            <asp:Label ID="LiquidatorIDLabel" runat="server" Text='<%# Bind("LiquidatorID") %>' />
-                            <br />
-                            WorkshopID:
-                            <asp:Label ID="WorkshopIDLabel" runat="server" Text='<%# Bind("WorkshopID") %>' />
-                            <br />
-                            RegistryDate:
-                            <asp:Label ID="RegistryDateLabel" runat="server" Text='<%# Bind("RegistryDate") %>' />
-                            <br />
-                            CloseDate:
-                            <asp:Label ID="CloseDateLabel" runat="server" Text='<%# Bind("CloseDate") %>' />
+
+                <ItemTemplate>
+                    <div class="form-horizontal" style="font-size:small">
+                        <div class="row alert-info" style="padding-top: 10px; padding-bottom: 10px">
+                            <div class="col-lg-4">Id. Caso:<asp:Label ID="CaseIDLabel" runat="server" Text='<%# Bind("CaseID") %>' /></div>
+                            <div class="col-lg-4">Id. Siniestro:<asp:Label ID="ClaimIDLabel" runat="server" Text='<%# Eval("ClaimID") %>' /></div>
+                            <div class="col-lg-4">Nro. Poliza:<asp:Label ID="PolicyNumberLabel" runat="server" Text='<%# Bind("PolicyNumber") %>' /></div>
+                        </div>
+                        <div>
+                            <hr />
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-5">Nro. Siniestro:<asp:TextBox ID="txtClaimNumber" runat="server" Text='<%# Bind("ClaimNumber") %>' /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">Riesgo:<asp:Label ID="RiskNameLabel" runat="server" Text='<%# Bind("RiskName") %>' /></div>
+                        </div>
+
+                        <%--  <div class="row">
                             
-                            <br />
-                            ClaimDate:
-                            <asp:Label ID="ClaimDateLabel" runat="server" Text='<%# Bind("ClaimDate") %>' />
-                            <br />
-                            ClaimStatusID:
-                            <asp:Label ID="ClaimStatusIDLabel" runat="server" Text='<%# Bind("ClaimStatusID") %>' />
-                            <br />
-                            ClaimTypeID:
-                            <asp:Label ID="ClaimTypeIDLabel" runat="server" Text='<%# Bind("ClaimTypeID") %>' />
-                            <br />
-                            InsuranceExpertID:
-                            <asp:Label ID="InsuranceExpertIDLabel" runat="server" Text='<%# Bind("InsuranceExpertID") %>' />
-                            <br />
-                            Section:
-                            <asp:Label ID="SectionLabel" runat="server" Text='<%# Bind("Section") %>' />
-                            <br />
-                            InsuranceManagerID:
-                            <asp:Label ID="InsuranceManagerIDLabel" runat="server" Text='<%# Bind("InsuranceManagerID") %>' />
-                           
-                            <br />
-                            ContactName:
-                            <asp:Label ID="ContactNameLabel" runat="server" Text='<%# Bind("ContactName") %>' />
-                            <br />
-                            ClaimAddress:
-                            <asp:Label ID="ClaimAddressLabel" runat="server" Text='<%# Bind("ClaimAddress") %>' />
-                            <br />
-                            ClaimDescription:
-                            <asp:Label ID="ClaimDescriptionLabel" runat="server" Text='<%# Bind("ClaimDescription") %>' />
-                            <br />
-                            ClaimTime:
-                            <asp:Label ID="ClaimTimeLabel" runat="server" Text='<%# Bind("ClaimTime") %>' />
-                            <br />
-                            OtherVehicleDescription:
-                            <asp:Label ID="OtherVehicleDescriptionLabel" runat="server" Text='<%# Bind("OtherVehicleDescription") %>' />
-                            <br />
-                            OtherVehiclePatentNumber:
-                            <asp:Label ID="OtherVehiclePatentNumberLabel" runat="server" Text='<%# Bind("OtherVehiclePatentNumber") %>' />
-                            <br />
-                            LooseDescription:
-                            <asp:Label ID="LooseDescriptionLabel" runat="server" Text='<%# Bind("LooseDescription") %>' />
-                            <br />
-                            ClaimCoordinate:
-                            <asp:Label ID="ClaimCoordinateLabel" runat="server" Text='<%# Bind("ClaimCoordinate") %>' />
-                            <br />
-                            PictureA:
-                            <asp:Label ID="PictureALabel" runat="server" Text='<%# Bind("PictureA") %>' />
-                            <br />
-                            PictureB:
-                            <asp:Label ID="PictureBLabel" runat="server" Text='<%# Bind("PictureB") %>' />
-                            <br />
-                            PictureC:
-                            <asp:Label ID="PictureCLabel" runat="server" Text='<%# Bind("PictureC") %>' />
-                            <br />
-                            PictureD:
-                            <asp:Label ID="PictureDLabel" runat="server" Text='<%# Bind("PictureD") %>' />
-                            <br />
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                         
-                        </EditItemTemplate>
-                        <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
-                        <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
-                        <InsertItemTemplate>
-                           
-                        </InsertItemTemplate>
-                        <EditRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
-                        <EmptyDataTemplate>
-                            <div class="row">
-                                <div class="col-lg-12 text-center">
-                                    <div class="msg-box bg-warning alert-danger">No se encontraron detalle del Siniestro.</div>
-                                </div>
-                            </div>
-                        </EmptyDataTemplate>
+                            <div class="col-lg-2">Id. Siniestro:<asp:Label ID="Label2" runat="server" Text='<%# Eval("ClaimID") %>' /></div>
+                            <div class="col-lg-4">Nro. Poliza:<asp:Label ID="Label3" runat="server" Text='<%# Bind("PolicyNumber") %>' /></div>
+                            <div class="col-lg-6">Nro. Siniestro:<asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("ClaimNumber") %>' /></div>
+                        </div>--%>
+                        <%--  <div class="row">
+                            <div class="row-sm-4">Nro. Poliza:<asp:Label ID="PolicyNumberLabel" runat="server" Text='<%# Bind("PolicyNumber") %>' /></div>
+                            <div class="row-sm-4">Nro. Siniestro:<asp:Label ID="ClaimNumberLabel" runat="server" Text='<%# Bind("ClaimNumber") %>' /></div>
+                            <div class="row-sm-4">Riesgo:<asp:Label ID="RiskNameLabel" runat="server" Text='<%# Bind("RiskName") %>' /></div>
+                        </div>--%>
+                    </div>
+                </ItemTemplate>
+                <EditItemTemplate>
+                </EditItemTemplate>
 
-                        <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+                <InsertItemTemplate>
+                </InsertItemTemplate>
 
-                    </asp:FormView>
+                <EmptyDataTemplate>
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <div class="msg-box bg-warning alert-danger">No se encontraron detalle del Siniestro.</div>
+                        </div>
+                    </div>
+                </EmptyDataTemplate>
+
+                <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+
+            </asp:FormView>
         </div>
     </div>
 

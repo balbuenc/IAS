@@ -90,13 +90,15 @@
                     runat="server"
                     DataKeyNames="ClaimID"
                     DataSourceID="siniestroDetalleDataSource"
-                    RenderOuterTable="false">
+                    RenderOuterTable="false" DefaultMode="Edit" OnItemCommand="ClaimDetailsListView_ItemCommand">
                     <ItemTemplate>
+                    </ItemTemplate>
+                    <EditItemTemplate>
                         <div class="container">
                             <div class="form-horizontal" style="font-size: small">
                                 <div class="row alert-info" style="padding-top: 10px; padding-bottom: 10px">
                                     <div class="col-lg-4">Id. Caso:<asp:Label ID="CaseIDLabel" runat="server" Text='<%# Bind("CaseID") %>' /></div>
-                                    <div class="col-lg-4">Id. Siniestro:<asp:Label ID="ClaimIDLabel" runat="server" Text='<%# Eval("ClaimID") %>' /></div>
+                                    <div class="col-lg-4">Id. Siniestro:<asp:Label ID="ClaimIDLabel" runat="server" Text='<%# Bind("ClaimID") %>' /></div>
                                     <div class="col-lg-4">Nro. Poliza:<asp:Label ID="PolicyNumberLabel" runat="server" Text='<%# Bind("PolicyNumber") %>' /></div>
                                 </div>
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
@@ -110,7 +112,7 @@
                                     </div>
                                     <div class="col-lg-1">Cierre</div>
                                     <div class="col-lg-3">
-                                        <asp:TextBox ID="txtCloseDate" runat="server" Text='<%#:string.IsNullOrEmpty( Eval("CloseDate").ToString())?"nd": DateTime.Parse( Eval("CloseDate").ToString()).ToShortDateString()  %>' CssClass="form-control" />
+                                        <asp:Label ID="lblCloseDate" runat="server" Text='<%#:string.IsNullOrEmpty( Eval("CloseDate").ToString())?"nd": DateTime.Parse( Eval("CloseDate").ToString()).ToShortDateString()  %>' CssClass="form-control" />
                                     </div>
                                 </div>
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
@@ -123,12 +125,12 @@
                                     <div class="col-lg-1">Liquidador</div>
                                     <div class="col-lg-3">
                                         <asp:DropDownList ID="ddlLiquidador" runat="server" CssClass="form-control" DataSourceID="liquidadoresDataSource"
-                                            DataValueField="LiquidatorID" DataTextField="Name" />
+                                            DataValueField="LiquidatorID" DataTextField="Name" SelectedValue='<%#string.IsNullOrEmpty( Eval("LiquidatorID").ToString())?-1:Eval("LiquidatorID") %>' />
                                     </div>
                                     <div class="col-lg-1">Taller</div>
                                     <div class="col-lg-3">
-                                        <asp:DropDownList ID="ddlTaller" runat="server" CssClass="form-control" DataSourceID="talleresSqlDataSource"
-                                            DataValueField="WorkShopID" DataTextField="Name" />
+                                        <asp:DropDownList ID="ddlTaller" runat="server" CssClass="form-control" DataSourceID="talleresSqlDataSource" 
+                                            DataValueField="WorkShopID" DataTextField="Name" SelectedValue='<%#string.IsNullOrEmpty( Eval("WorkshopID").ToString())?-1:Eval("WorkshopID") %>' />
                                     </div>
                                     <div class="col-lg-1">Contacto</div>
                                     <div class="col-lg-3">
@@ -147,58 +149,56 @@
                                     <div class="col-lg-1">Experto</div>
                                     <div class="col-lg-3">
                                         <asp:DropDownList ID="ddlExpertoAseguradora" runat="server" CssClass="form-control" DataSourceID="expertosAseguradoraDataSource"
-                                            DataValueField="ContactID" DataTextField="Name" />
+                                            DataValueField="ContactID" DataTextField="Name" SelectedValue='<%#string.IsNullOrEmpty( Eval("InsuranceExpertID").ToString())?-1:Eval("InsuranceExpertID") %>' />
                                     </div>
                                 </div>
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                     <div class="col-lg-1">Secciòn</div>
                                     <div class="col-lg-3">
-                                        <asp:TextBox ID="txtSection" runat="server" Text='<%# Eval("Section") %>' CssClass="form-control" />
+                                        <asp:TextBox ID="txtSection" runat="server" Text='<%# Bind("Section") %>' CssClass="form-control" />
                                     </div>
                                     <div class="col-lg-1">Aseguradora</div>
                                     <div class="col-lg-3">
-                                        <asp:Label ID="txtInsuranceManager" runat="server" Text='<%# Eval("InsuranceManager") %>' CssClass="form-control" />
+                                        <asp:Label ID="lblInsuranceManager" runat="server" Text='<%# Eval("InsuranceManager") %>'  />
                                     </div>
                                     <div class="col-lg-1">Dir. Siniestro</div>
                                     <div class="col-lg-3">
-                                        <asp:Label ID="txtClaimAddress" runat="server" Text='<%# Eval("ClaimAddress") %>' CssClass="form-control" />
+                                        <asp:TextBox ID="txtClaimAddress" runat="server" Text='<%# Bind("ClaimAddress") %>' CssClass="form-control" />
                                     </div>
                                 </div>
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                     <div class="col-lg-1">Desc. Siniestro</div>
                                     <div class="col-lg-11">
-                                        <asp:Label ID="txtClaimDescription" runat="server" Text='<%# Eval("ClaimDescription") %>' CssClass="form-control" />
+                                        <asp:TextBox ID="txtClaimDescription" runat="server" Text='<%# Bind("ClaimDescription") %>' CssClass="form-control" />
                                     </div>
                                 </div>
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                     <div class="col-lg-1">Hora Siniestro</div>
                                     <div class="col-lg-3">
-                                        <asp:TextBox ID="txtClaimTime" runat="server" Text='<%# Eval("ClaimTime") %>' CssClass="form-control" />
+                                        <asp:TextBox ID="txtClaimTime" runat="server" Text='<%# Bind("ClaimTime") %>' CssClass="form-control" />
                                     </div>
                                     <div class="col-lg-1">Otro Vehiculo</div>
                                     <div class="col-lg-3">
-                                        <asp:TextBox ID="txtOtherVehicleDescription" runat="server" Text='<%# Eval("OtherVehicleDescription") %>' CssClass="form-control" />
+                                        <asp:TextBox ID="txtOtherVehicleDescription" runat="server" Text='<%# Bind("OtherVehicleDescription") %>' CssClass="form-control" />
                                     </div>
                                     <div class="col-lg-1">Matricula Otro</div>
                                     <div class="col-lg-3">
-                                        <asp:TextBox ID="txtOtherVehiclePatentNumber" runat="server" Text='<%# Eval("OtherVehiclePatentNumber") %>' CssClass="form-control" />
+                                        <asp:TextBox ID="txtOtherVehiclePatentNumber" runat="server" Text='<%# Bind("OtherVehiclePatentNumber") %>' CssClass="form-control" />
                                     </div>
                                 </div>
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                     <div class="col-lg-1">Perdidas</div>
                                     <div class="col-lg-11">
-                                        <asp:Label ID="txtLooseDescription" runat="server" Text='<%# Eval("LooseDescription") %>' CssClass="form-control" />
+                                        <asp:TextBox ID="txtLooseDescription" runat="server" Text='<%# Bind("LooseDescription") %>' CssClass="form-control" />
                                     </div>
                                 </div>
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                     <div class="col-lg-2 col-lg-offset-10">
-                                        <button type="submit" class="btn btn-success" runat="server" onserverclick="RegistrarSiniestro" >Registrar Siniestro</button>
+                                        <asp:Button ID="UpdateButton" runat="server" Text="Registrar Siniestro" CommandName="Update" CssClass="btn btn-success" />
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </ItemTemplate>
-                    <EditItemTemplate>
                     </EditItemTemplate>
 
                     <InsertItemTemplate>
@@ -225,10 +225,11 @@
             <asp:QueryStringParameter Name="CaseID" QueryStringField="CaseID" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="siniestroDetalleDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[claim].[sp_get_claim_by_ClaimID]" SelectCommandType="StoredProcedure">
+    <asp:SqlDataSource ID="siniestroDetalleDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[claim].[sp_get_claim_by_ClaimID]" SelectCommandType="StoredProcedure" UpdateCommand="claim.sp_update_claim" UpdateCommandType="StoredProcedure">
         <SelectParameters>
             <asp:QueryStringParameter Name="ClaimID" QueryStringField="ClaimID" Type="Int32" />
         </SelectParameters>
+       
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="liquidadoresDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="claim.get_liquidators_ddl" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     <asp:SqlDataSource ID="talleresSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="claim.sp_get_workshops_ddl" SelectCommandType="StoredProcedure"></asp:SqlDataSource>

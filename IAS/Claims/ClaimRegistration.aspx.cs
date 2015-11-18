@@ -18,34 +18,42 @@ namespace IAS.Claims
 
         protected void RegistrarSiniestro(object sender, EventArgs e)
         {
+          
+        }
+
+        protected void ClaimDetailsListView_ItemCommand(object sender, FormViewCommandEventArgs e)
+        {
             SqlConnection sqlConnection1 = new SqlConnection(estadoClienteDataSource.ConnectionString);
             SqlCommand cmd = new SqlCommand();
             Int32 rowsAffected;
 
-            try
+            if (e.CommandName == "Update")
             {
+                try
+                {
 
-                cmd.CommandText = "claim.sp_change_claim_status";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = sqlConnection1;
+                    cmd.CommandText = "claim.sp_change_claim_status";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = sqlConnection1;
 
-                cmd.Parameters.AddWithValue("@ClaimID", Request.QueryString["ClaimID"]);
-                cmd.Parameters.AddWithValue("@NextClaimStatusID", 3);
+                    cmd.Parameters.AddWithValue("@ClaimID", Request.QueryString["ClaimID"]);
+                    cmd.Parameters.AddWithValue("@NextClaimStatusID", 3);
 
-                sqlConnection1.Open();
+                    sqlConnection1.Open();
 
-                rowsAffected = cmd.ExecuteNonQuery();
+                    rowsAffected = cmd.ExecuteNonQuery();
 
-                sqlConnection1.Close();
+                    sqlConnection1.Close();
 
-                //Direcciono a la pagina de busqueda
-                Response.Redirect("ClaimSearch.aspx?PolicyNumber=" + Request.QueryString["PolicyNumber"]);
+                    //Direcciono a la pagina de busqueda
+                    //Response.Redirect("ClaimSearch.aspx?PolicyNumber=" + Request.QueryString["PolicyNumber"]);
 
-            }
-            catch (Exception exp)
-            {
-                ErrorLabel.Text = exp.Message;
-                ErrorLabel.Visible = true;
+                }
+                catch (Exception exp)
+                {
+                    ErrorLabel.Text = exp.Message;
+                    ErrorLabel.Visible = true;
+                }
             }
         }
 

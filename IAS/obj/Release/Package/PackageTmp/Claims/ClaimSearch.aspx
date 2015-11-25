@@ -69,7 +69,8 @@
                                             <th>Riesgo</th>
                                             <th>Fecha</th>
                                             <th>Estado</th>
-                                            <th>Accion</th>
+                                            <th>Sub Estado</th>
+                                            <th>Pendiente</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -91,8 +92,9 @@
                                 <td>
                                     <asp:Label ID="lblRegistryDate" runat="server" Text='<%#   DateTime.Parse( Eval("RegistryDate").ToString()).ToShortDateString() %>' /></td>
                                 <td>
-                                    <asp:HyperLink ID="linkStatus" runat="server" Text='<%#   Eval("Status") %>'  NavigateUrl='<%#   Eval("StatusForm") %>'></asp:HyperLink>
-                                </td>
+                                     <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>' /></td>
+                                <td>
+                                     <asp:Label ID="lblSubStatus" runat="server" Text='<%# Eval("SubStatus") %>' /></td>
                                 <td>
                                     <asp:HyperLink ID="linkAction" runat="server" Text='<%#   Eval("NextStatus") %>'  NavigateUrl='<%#   Eval("ActionForm") %>'></asp:HyperLink>
                                 </td>

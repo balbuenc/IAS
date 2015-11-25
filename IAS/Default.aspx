@@ -22,9 +22,9 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h1>AIB Advanced Services</h1>
+        <h1>Insurance Advanced Services</h1>
         <p class="lead">IAS | Insurance Advanced Services.</p>
-        <p><a href="http://www.aib.com.py" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+       <%-- <p><a href="http://www.aib.com.py" class="btn btn-primary btn-large">Learn more &raquo;</a></p>--%>
     </div>
 
     <div class="row">

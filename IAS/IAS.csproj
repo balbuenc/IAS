@@ -239,6 +239,8 @@
     <Content Include="Claim.Master" />
     <None Include="Properties\PublishProfiles\seguros - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\seguros - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\toyoias - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\toyoias - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bloodhound.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="IASDBContext-Web.config Connection String" description="IASDBContext Connection String used in web.config by the application to access the database." defaultValue="Data Source=aibsql.cloudapp.net;Initial Catalog=ias_developer;Persist Security Info=True;User ID=ias_desarrollo;Password=Passw0rd" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Administrador\.AS\\Documents\\Git\\IAS\\IAS\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='IASDBContext']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\vsian\\Desktop\\IAS-GITHUB\\IAS\\IAS\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='IASDBContext']/@connectionString" />
   </parameter>
 </parameters>

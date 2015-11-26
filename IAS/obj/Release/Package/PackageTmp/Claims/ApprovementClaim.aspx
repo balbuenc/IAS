@@ -60,9 +60,9 @@
                     runat="server"
                     DataKeyNames="ClaimID"
                     DataSourceID="siniestroDetalleDataSource"
-                    RenderOuterTable="false" >
+                    RenderOuterTable="false" DefaultMode="Edit" >
                     <ItemTemplate>
-                     <div class="container">
+                     <%--<div class="container">
                             <div class="form-horizontal" style="font-size: small">
                                 <div class="row alert-info" style="padding-top: 10px; padding-bottom: 10px">
                                     <div class="col-lg-4">Id. Caso:<asp:Label ID="CaseIDLabel" runat="server" Text='<%# Eval("CaseID") %>' /></div>
@@ -170,10 +170,123 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>--%>
                     </ItemTemplate>
                     <EditItemTemplate>
-                        
+                        <div class="container">
+                            <div class="form-horizontal" style="font-size: small">
+                                <div class="row alert-info" style="padding-top: 10px; padding-bottom: 10px">
+                                    <div class="col-lg-4">Id. Caso:<asp:Label ID="CaseIDLabel" runat="server" Text='<%# Bind("CaseID") %>' /></div>
+                                    <div class="col-lg-4">Id. Siniestro:<asp:Label ID="ClaimIDLabel" runat="server" Text='<%# Bind("ClaimID") %>' /></div>
+                                    <div class="col-lg-4">Nro. Poliza:<asp:Label ID="PolicyNumberLabel" runat="server" Text='<%# Bind("PolicyNumber") %>' /></div>
+                                </div>
+                                <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                    <div class="col-lg-1">Nro.</div>
+                                    <div class="col-lg-3">
+                                        <asp:TextBox ID="txtClaimNumber" runat="server" Text='<%# Bind("ClaimNumber") %>' CssClass="form-control" />
+                                    </div>
+                                    <div class="col-lg-1">Registrado</div>
+                                    <div class="col-lg-3">
+                                        <asp:Label ID="lblRegistryDate" runat="server" Text='<%# DateTime.Parse( Eval("RegistryDate").ToString()).ToShortDateString() %>' />
+                                    </div>
+                                    <div class="col-lg-1">Cierre</div>
+                                    <div class="col-lg-3">
+                                        <asp:Label ID="lblCloseDate" runat="server" Text='<%#:string.IsNullOrEmpty( Eval("CloseDate").ToString())?"nd": DateTime.Parse( Eval("CloseDate").ToString()).ToShortDateString()  %>' CssClass="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                    <div class="col-lg-1">Riesgo</div>
+                                    <div class="col-lg-11">
+                                        <asp:TextBox ID="txtRiskName" runat="server" Text='<%# Bind("RiskName") %>' CssClass="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                    <div class="col-lg-1">Liquidador</div>
+                                    <div class="col-lg-3">
+                                        <asp:DropDownList ID="ddlLiquidador" runat="server" CssClass="form-control" DataSourceID="liquidadoresDataSource"
+                                            DataValueField="LiquidatorID" DataTextField="Name" SelectedValue='<%#string.IsNullOrEmpty( Eval("LiquidatorID").ToString())?-1:Eval("LiquidatorID") %>' />
+                                    </div>
+                                    <div class="col-lg-1">Taller</div>
+                                    <div class="col-lg-3">
+                                        <asp:DropDownList ID="ddlTaller" runat="server" CssClass="form-control" DataSourceID="talleresSqlDataSource" 
+                                            DataValueField="WorkShopID" DataTextField="Name" SelectedValue='<%#string.IsNullOrEmpty( Eval("WorkshopID").ToString())?-1:Eval("WorkshopID") %>' />
+                                    </div>
+                                    <div class="col-lg-1">Contacto</div>
+                                    <div class="col-lg-3">
+                                        <asp:TextBox ID="txtContactName" runat="server" Text='<%# Bind("ContactName") %>' CssClass="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                    <div class="col-lg-1">Fecha</div>
+                                    <div class="col-lg-3">
+                                        <asp:TextBox ID="txtClaimDate" runat="server" Text='<%#:string.IsNullOrEmpty( Eval("ClaimDate").ToString())?"nd": DateTime.Parse( Eval("ClaimDate").ToString()).ToShortDateString()  %>' CssClass="form-control" />
+                                    </div>
+                                    <div class="col-lg-1">Tipo</div>
+                                    <div class="col-lg-3">
+                                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("ClaimType") %>' />
+                                    </div>
+                                    <div class="col-lg-1">Experto</div>
+                                    <div class="col-lg-3">
+                                        <asp:DropDownList ID="ddlExpertoAseguradora" runat="server" CssClass="form-control" DataSourceID="expertosAseguradoraDataSource"
+                                            DataValueField="ContactID" DataTextField="Name" SelectedValue='<%#string.IsNullOrEmpty( Eval("InsuranceExpertID").ToString())?-1:Eval("InsuranceExpertID") %>' />
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                    <div class="col-lg-1">Secciòn</div>
+                                    <div class="col-lg-3">
+                                        <asp:TextBox ID="txtSection" runat="server" Text='<%# Bind("Section") %>' CssClass="form-control" />
+                                    </div>
+                                    <div class="col-lg-1">Aseguradora</div>
+                                    <div class="col-lg-3">
+                                        <asp:Label ID="lblInsuranceManager" runat="server" Text='<%# Eval("InsuranceManager") %>'  />
+                                    </div>
+                                    <div class="col-lg-1">Dir. Siniestro</div>
+                                    <div class="col-lg-3">
+                                        <asp:TextBox ID="txtClaimAddress" runat="server" Text='<%# Bind("ClaimAddress") %>' CssClass="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                    <div class="col-lg-1">Desc. Siniestro</div>
+                                    <div class="col-lg-11">
+                                        <asp:TextBox ID="txtClaimDescription" runat="server" Text='<%# Bind("ClaimDescription") %>' CssClass="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                    <div class="col-lg-1">Hora Siniestro</div>
+                                    <div class="col-lg-3">
+                                        <asp:TextBox ID="txtClaimTime" runat="server" Text='<%# Bind("ClaimTime") %>' CssClass="form-control" />
+                                    </div>
+                                    <div class="col-lg-1">Otro Vehiculo</div>
+                                    <div class="col-lg-3">
+                                        <asp:TextBox ID="txtOtherVehicleDescription" runat="server" Text='<%# Bind("OtherVehicleDescription") %>' CssClass="form-control" />
+                                    </div>
+                                    <div class="col-lg-1">Matricula Otro</div>
+                                    <div class="col-lg-3">
+                                        <asp:TextBox ID="txtOtherVehiclePatentNumber" runat="server" Text='<%# Bind("OtherVehiclePatentNumber") %>' CssClass="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                    <div class="col-lg-1">Perdidas</div>
+                                    <div class="col-lg-11">
+                                        <asp:TextBox ID="txtLooseDescription" runat="server" Text='<%# Bind("LooseDescription") %>' CssClass="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                    <div class="col-lg-1">Obs. del Estado</div>
+                                    <div class="col-lg-11">
+                                        <asp:TextBox ID="txtObservations" runat="server" Text='<%# Bind("Observations") %>' CssClass="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row" >
+                                    <div class="col-lg-6 ">
+                                        <asp:Button ID="ApprovementBtn" runat="server" Text="Aprobado por Aseguradora" OnClick="ApprovementBtn_Click"  CssClass="btn btn-success" />
+                                    </div>
+                                    <div class="col-lg-6 ">
+                                        <asp:Button ID="DisapprovementBT" runat="server" Text="Rechazado por Aseguradora" OnClick="DisapprovementBT_Click"  CssClass="btn btn-danger" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </EditItemTemplate>
 
                     <InsertItemTemplate>

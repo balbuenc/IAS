@@ -84,7 +84,8 @@ namespace IAS.Claims
                     cmd.Connection = sqlConnection1;
 
                     cmd.Parameters.AddWithValue("@ClaimID", Request.QueryString["ClaimID"]);
-                    cmd.Parameters.AddWithValue("@NextClaimStatusID", 3);
+                    cmd.Parameters.AddWithValue("@GoNextStep", 1);
+                    cmd.Parameters.AddWithValue("@UserName", User.Identity.Name);
 
                     sqlConnection1.Open();
 

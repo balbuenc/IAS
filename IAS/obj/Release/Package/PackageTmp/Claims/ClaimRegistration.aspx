@@ -193,6 +193,12 @@
                                     </div>
                                 </div>
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                    <div class="col-lg-1">Obs. del Estado</div>
+                                    <div class="col-lg-11">
+                                        <asp:TextBox ID="txtObservations" runat="server" Text='<%# Bind("Observations") %>' CssClass="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                     <div class="col-lg-2 col-lg-offset-10">
                                         <asp:Button ID="UpdateButton" runat="server" Text="Registrar Siniestro" CommandName="Update" CssClass="btn btn-success" />
                                     </div>
@@ -229,7 +235,6 @@
         <SelectParameters>
             <asp:QueryStringParameter Name="ClaimID" QueryStringField="ClaimID" Type="Int32" />
         </SelectParameters>
-       
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="liquidadoresDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="claim.get_liquidators_ddl" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     <asp:SqlDataSource ID="talleresSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="claim.sp_get_workshops_ddl" SelectCommandType="StoredProcedure"></asp:SqlDataSource>

@@ -41,16 +41,31 @@
 
         <div id="leftContent">
             <h3>Siniestros</h3>
-            <ul class="nav nav-pills nav-stacked">
-                <li id="searchClaimTab" role="presentation" class="active" runat="server"><a href="ClaimSearch.aspx">Buscar Siniestros</a></li>
-                <li id="newClaimTab" role="presentation" runat="server"><a href="NewClaim.aspx">Alta Siniestro</a></li>
-                <li id="verificationClaimTab" role="presentation" runat="server"><a href="ClaimPolicyVerification.aspx">Verificacion de Cobertura</a></li>
-                <li id="registerClaimTab" role="presentation" runat="server"><a href="ClaimRegistration.aspx">Registro del Siniestro</a></li>
-                <li id="approvementClaimTab" role="presentation" runat="server"><a href="ApprovementClaimTab.aspx">Aceptacion por Aseguradora</a></li>
-                <li id="workShopClaimTab" role="presentation" runat="server"><a href="WorkShopClaimTab.aspx">Gestion de Taller</a></li>
-                <li id="closeClaimTab" role="presentation" runat="server"><a href="CloseClaim.aspx">Cierre del Siniestro</a></li>
-            </ul>
-
+            <div class="container">
+                <div class="row">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li id="searchClaimTab" role="presentation" class="active" runat="server"><a href="ClaimSearch.aspx">Buscar Siniestros</a></li>
+                        <li id="newClaimTab" role="presentation" runat="server"><a href="NewClaim.aspx">Alta Siniestro</a></li>
+                        <li id="verificationClaimTab" role="presentation" runat="server"><a href="ClaimPolicyVerification.aspx">Verificacion de Cobertura</a></li>
+                        <li id="registerClaimTab" role="presentation" runat="server"><a href="ClaimRegistration.aspx">Registro del Siniestro</a></li>
+                        <li id="approvementClaimTab" role="presentation" runat="server"><a href="ApprovementClaimTab.aspx">Aceptacion por Aseguradora</a></li>
+                        <li id="workShopClaimTab" role="presentation" runat="server"><a href="WorkShopClaimTab.aspx">Gestion de Taller</a></li>
+                        <li id="closeClaimTab" role="presentation" runat="server"><a href="CloseClaim.aspx">Cierre del Siniestro</a></li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
+                        Reportes
+                    </div>
+                </div>
+                <div class="row">
+                    <a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fClaimsResume&rs:Command=Render" target="_blank">Informe Siniestros</a>
+                </div>
+                <div class="row">
+                    <a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fClaimsByStatus&rs:Command=Render" target="_blank">Resultado Gestion</a>
+                </div>
+            </div>
         </div>
 
         <div id="footerContent">

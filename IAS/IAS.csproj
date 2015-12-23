@@ -195,6 +195,7 @@
     <Content Include="Claims\ClaimSearch.aspx" />
     <Content Include="Claims\CloseClaim.aspx" />
     <Content Include="Claims\NewClaim.aspx" />
+    <Content Include="Claims\UploadClaims.aspx" />
     <Content Include="Claims\WorkShopClaim.aspx" />
     <Content Include="Collections\Assignations.aspx" />
     <Content Include="Collections\UploadCollections.aspx" />
@@ -673,6 +674,13 @@
     </Compile>
     <Compile Include="Claims\NewClaim.aspx.designer.cs">
       <DependentUpon>NewClaim.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Claims\UploadClaims.aspx.cs">
+      <DependentUpon>UploadClaims.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Claims\UploadClaims.aspx.designer.cs">
+      <DependentUpon>UploadClaims.aspx</DependentUpon>
     </Compile>
     <Compile Include="Claims\WorkShopClaim.aspx.cs">
       <DependentUpon>WorkShopClaim.aspx</DependentUpon>

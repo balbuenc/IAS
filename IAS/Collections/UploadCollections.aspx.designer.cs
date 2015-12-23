@@ -40,13 +40,13 @@ namespace IAS.Collections {
         protected global::System.Web.UI.WebControls.FileUpload MapfreExpiredUp;
         
         /// <summary>
-        /// MapfreExpireBtn control.
+        /// MapfreClaimsFileBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button MapfreExpireBtn;
+        protected global::System.Web.UI.WebControls.Button MapfreClaimsFileBtn;
         
         /// <summary>
         /// MapfreExpiredStatus control.

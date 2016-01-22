@@ -9,6 +9,7 @@
     <link href="../Content/bootstrap-datepicker.min.css" rel="stylesheet" />
 
     <script>
+
         var nowTemp = new Date();
         var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
@@ -67,6 +68,7 @@
                                     </asp:DropDownList>
                                 </div>
                             </div>
+                            <br>
                             <div class="row">
                                 <label class="col-sm-2 control-label" for="form-group-input">Nro. póliza</label>
                                 <div class="col-sm-10">
@@ -83,10 +85,10 @@
                             <div class="row">
                                 <label class="col-sm-2 control-label" for="form-group-input">Fecha Siniestro</label>
                                 <div class="col-sm-10">
-
-                                    <input data-provide="datepicker" id="dp1" class="form-control" data-date-format="dd-mm-yyyy" runat="server"/>
+                                    <input data-provide="datepicker" id="dp1" class="form-control" data-date-format="dd-mm-yyyy" runat="server" />
                                 </div>
                             </div>
+                            <br>
                             <div class="row">
                                 <label class="col-sm-2 control-label" for="form-group-input">Tipo Siniestro</label>
                                 <div class="col-sm-10">
@@ -95,6 +97,7 @@
                                     </asp:DropDownList>
                                 </div>
                             </div>
+                            <br>
                             <div class="row">
                                 <label class="col-sm-2 control-label" for="form-group-input">Cobertura</label>
                                 <div class="col-sm-10">
@@ -105,7 +108,8 @@
                                         DataSourceID="coberturaPolizas"
                                         runat="server"
                                         DataTextField="ClaimMade"
-                                        DataValueField="ClaimMadeID"></asp:ListBox>
+                                        DataValueField="ClaimMadeID">
+                                    </asp:ListBox>
                                 </div>
                             </div>
 
@@ -119,11 +123,9 @@
         </div>
         <div class="row">
             <div class="col-lg-2 col-lg-offset-10">
-                <asp:Button ID="registrarSiniestroBtn" runat="server" Text="Generar Siniestro" CssClass="form-control" OnClick="registrarSiniestroBtn_Click" />
+                <asp:Button ID="registrarSiniestroBtn" runat="server" Text="Generar Siniestro" CssClass="btn btn-primary" OnClick="registrarSiniestroBtn_Click" />
             </div>
         </div>
-
-
     </div>
 
     <!-- #SQL Data Sources -->

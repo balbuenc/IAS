@@ -17,7 +17,12 @@ namespace IAS.Claims
             //Verifico si es una busqueda por Formulario
             try
             {
-                claimID = Request.QueryString["PolicyNumber"].ToString();
+
+                if (Request.QueryString["PolicyNumber"] != null)
+                {
+                    claimID = Request.QueryString["PolicyNumber"].ToString();
+                }
+
                 if (claimID != null)
                 {
                     txtSearchClaim.Value = claimID;
@@ -31,40 +36,42 @@ namespace IAS.Claims
 
             try
             {
-                criteria = Request.QueryString["criteria"].ToString();
-                switch (criteria)
+                if (Request.QueryString["criteria"] != null)
                 {
-                    case "PolicyNumber":
-                        txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Pòliza";
-                        criteriaBtn.InnerText = "Nro. Pòliza";
-                        break;
-                    case "Client":
-                        txtSearchClaim.Attributes["placeholder"] = "Buscar por Cliente";
-                        criteriaBtn.InnerText = "Cliente";
-                        break;
-                    case "ClientDocumentNumber":
-                        txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Documento";
-                        criteriaBtn.InnerText = "Nro. Documento";
-                        break;
-                    case "ClaimNumber":
-                        txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Siniestro";
-                        criteriaBtn.InnerText = "Nro. Siniestro";
-                        break;
+                    criteria = Request.QueryString["criteria"].ToString();
+                    switch (criteria)
+                    {
+                        case "PolicyNumber":
+                            txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Póliza";
+                            criteriaBtn.InnerText = "Nro. Póliza";
+                            break;
+                        case "Client":
+                            txtSearchClaim.Attributes["placeholder"] = "Buscar por Cliente";
+                            criteriaBtn.InnerText = "Cliente";
+                            break;
+                        case "ClientDocumentNumber":
+                            txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Documento";
+                            criteriaBtn.InnerText = "Nro. Documento";
+                            break;
+                        case "ClaimNumber":
+                            txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Siniestro";
+                            criteriaBtn.InnerText = "Nro. Siniestro";
+                            break;
 
-                    default:
-                        txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Pòliza";
-                        criteriaBtn.InnerText = "Nro. Pòliza";
-                        criteria = "PolicyNumber";
-                        break;
+                        default:
+                            txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Pòliza";
+                            criteriaBtn.InnerText = "Nro. Pòliza";
+                            criteria = "PolicyNumber";
+                            break;
+                    }
                 }
-
 
 
             }
             catch (Exception exp)
             {
-                txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Pòliza";
-                criteriaBtn.InnerText = "Nro. Pòliza";
+                txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Póliza";
+                criteriaBtn.InnerText = "Nro. Póliza";
                 criteria = "PolicyNumber";
             }
 

@@ -32,16 +32,18 @@
                         <span class="input-group-btn">
                             <button id="searchBox" class="btn btn-default" runat="server" type="button" onserverclick="searchBox_ServerClick">Buscar</button>
                         </span>
-                        <input type="text" class="form-control" id="txtSearchClaim" runat="server" placeholder="Buscar Siniestro..." onkeydown="if (window.event.keyCode == 13) 
-                                                                                                                                            {
-                                                                                                                                                event.returnValue=false; 
-                                                                                                                                                event.cancel = true;
-                                                                                                                                                searchRecords();
-                                                                                                                                            }" />
+                        <input type="text" class="form-control" id="txtSearchClaim" runat="server" 
+                            placeholder="Buscar Siniestro..." 
+                            onkeydown= "if (window.event.keyCode == 13) 
+                                        {
+                                            event.returnValue=false; 
+                                            event.cancel = true;
+                                            searchRecords();
+                                        }" />
                         <div class="input-group-btn">
-                            <button type="button" id="criteriaBtn" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" runat="server">Nro. Pòliza<span class="caret"></span></button>
+                            <button type="button" id="criteriaBtn" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" runat="server">Nro. Póliza<span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                                <li><a href="?criteria=PolicyNumber">Nro Pòliza</a></li>
+                                <li><a href="?criteria=PolicyNumber">Nro Póliza</a></li>
                                 <li><a href="?criteria=Client">Cliente</a></li>
                                 <li><a href="?criteria=ClientDocumentNumber">Nro. Documento</a></li>
                                 <li><a href="?criteria=ClaimNumber">Nro. Siniestro</a></li>
@@ -119,7 +121,6 @@
     </div>
 
     <!-- #region DATSOURCES -->
-
     <asp:SqlDataSource ID="ClaimSqldataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
         SelectCommand="claim.sp_search_claims" SelectCommandType="StoredProcedure">
         <SelectParameters>

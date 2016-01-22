@@ -58,11 +58,11 @@
         <div class="row" style="font-size: small">
             <div class="form-inline" role="form">
                 <div class="form-group">
-                    <label for="nroPoliza">Nro. Pòliza:</label>
+                    <label for="nroPoliza">Nro. Póliza:</label>
                     <label id="lblPolicyNumber" runat="server"></label>
                 </div>
                 <div class="form-group col-lg-offset-4">
-                    <label for="acciones">Verificaciòn:</label>
+                    <label for="acciones">Verificación:</label>
                 </div>
                 <button type="submit" class="btn btn-success" runat="server" onserverclick="RegistrarSiniestro">Con Cobertura</button>
                 <button type="submit" class="btn btn-danger" runat="server" onserverclick="CierreSiniestro">Sin Cobertura</button>

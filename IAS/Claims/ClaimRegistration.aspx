@@ -126,8 +126,9 @@
                                     <div class="col-lg-1">Liquidador</div>
                                     <div class="col-lg-3">
                                         <asp:DropDownList ID="ddlLiquidador" runat="server" CssClass="form-control" DataSourceID="liquidadoresDataSource"
-                                            DataValueField="LiquidatorID" DataTextField="Name" required
-                                            SelectedValue='<%#string.IsNullOrEmpty( Eval("LiquidatorID").ToString()) ? -1 : Eval("LiquidatorID") %>' />
+                                            DataValueField="LiquidatorID" DataTextField="Name" required AppendDataBoundItems="true"
+                                            SelectedValue='<%#string.IsNullOrEmpty( Eval("LiquidatorID").ToString()) ? -1 : Eval("LiquidatorID") %>'>
+                                        </asp:DropDownList>
                                     </div>
                                     <div class="col-lg-1">Taller</div>
                                     <div class="col-lg-3">

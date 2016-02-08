@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace IAS.Claims
@@ -25,7 +21,8 @@ namespace IAS.Claims
 
             try
             {
-                //Actualizolos datos del Siniestro
+
+                //Actualizo los datos del Siniestro
                 UpdateClaim();
 
                 //Genero el cambio de estado
@@ -33,8 +30,10 @@ namespace IAS.Claims
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = sqlConnection1;
 
+
                 cmd.Parameters.AddWithValue("@ClaimID", Request.QueryString["ClaimID"]);
-                cmd.Parameters.AddWithValue("@NextClaimStatusID", 4);
+                cmd.Parameters.AddWithValue("@GoNextStep", 1);
+                cmd.Parameters.AddWithValue("@UserName", User.Identity.Name);
 
                 sqlConnection1.Open();
 
@@ -70,17 +69,16 @@ namespace IAS.Claims
                 cmd.CommandText = "claim.sp_change_claim_status";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = sqlConnection1;
-
+                
                 cmd.Parameters.AddWithValue("@ClaimID", Request.QueryString["ClaimID"]);
-                cmd.Parameters.AddWithValue("@NextClaimStatusID", 5);
+                cmd.Parameters.AddWithValue("@GoNextStep", 0);
+                cmd.Parameters.AddWithValue("@UserName", User.Identity.Name);
 
                 sqlConnection1.Open();
 
                 rowsAffected = cmd.ExecuteNonQuery();
 
                 sqlConnection1.Close();
-
-                
 
                 //Direcciono a la pagina de busqueda
                 Response.Redirect("ClaimSearch.aspx?PolicyNumber=" + Request.QueryString["PolicyNumber"]);
@@ -98,7 +96,7 @@ namespace IAS.Claims
             SqlConnection sqlConnection1 = new SqlConnection(estadoClienteDataSource.ConnectionString);
             SqlCommand cmd = new SqlCommand();
             SqlCommand cmd1 = new SqlCommand();
-            Int32 rowsAffected;
+            int rowsAffected;
 
             string txtClaimNumber = (ClaimDetailsListView.Row.FindControl("txtClaimNumber") as TextBox).Text;
             string txtRiskName = (ClaimDetailsListView.Row.FindControl("txtRiskName") as TextBox).Text;
@@ -115,9 +113,7 @@ namespace IAS.Claims
             string txtOtherVehicleDescription = (ClaimDetailsListView.Row.FindControl("txtOtherVehicleDescription") as TextBox).Text;
             string txtOtherVehiclePatentNumber = (ClaimDetailsListView.Row.FindControl("txtOtherVehiclePatentNumber") as TextBox).Text;
             string txtLooseDescription = (ClaimDetailsListView.Row.FindControl("txtLooseDescription") as TextBox).Text;
-
-
-
+            
             try
             {
 

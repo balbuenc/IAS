@@ -38,9 +38,7 @@ namespace IAS.Claims
             string txtOtherVehicleDescription = (ClaimDetailsListView.Row.FindControl("txtOtherVehicleDescription") as TextBox).Text;
             string txtOtherVehiclePatentNumber = (ClaimDetailsListView.Row.FindControl("txtOtherVehiclePatentNumber") as TextBox).Text;
             string txtLooseDescription = (ClaimDetailsListView.Row.FindControl("txtLooseDescription") as TextBox).Text;
-
-
-
+            
             try
             {
 
@@ -76,7 +74,6 @@ namespace IAS.Claims
                 ErrorLabel.Text = exp.Message;
                 ErrorLabel.Visible = true;
             }
-
         }
     }
 }

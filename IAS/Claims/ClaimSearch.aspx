@@ -4,8 +4,7 @@
     <script src="../Scripts/jquery-1.10.2.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
-
-
+    
     <script type="text/javascript">
         function searchRecords() {
             document.getElementById("<%=searchBox.ClientID %>").click();
@@ -32,9 +31,9 @@
                         <span class="input-group-btn">
                             <button id="searchBox" class="btn btn-default" runat="server" type="button" onserverclick="searchBox_ServerClick">Buscar</button>
                         </span>
-                        <input type="text" class="form-control" id="txtSearchClaim" runat="server" 
-                            placeholder="Buscar Siniestro..." 
-                            onkeydown= "if (window.event.keyCode == 13) 
+                        <input type="text" class="form-control" id="txtSearchClaim" runat="server"
+                            placeholder="Buscar Siniestro..."
+                            onkeydown="if (window.event.keyCode == 13) 
                                         {
                                             event.returnValue=false; 
                                             event.cancel = true;
@@ -65,7 +64,7 @@
                                 <table class="table table-striped" style="font-size: x-small">
                                     <thead>
                                         <tr>
-                                            <th>Nro Pòliza</th>
+                                            <th>Nro Póliza</th>
                                             <th>Cliente</th>
                                             <th>Nro. Doc.</th>
                                             <th>Riesgo</th>
@@ -87,18 +86,18 @@
                                     <asp:Label ID="lblPolicyNumber" runat="server" Text='<%# Eval("PolicyNumber") %>' /></td>
                                 <td>
                                     <asp:Label ID="lblClient" runat="server" Text='<%# Eval("Client") %>' /></td>
-                                 <td>
+                                <td>
                                     <asp:Label ID="lblClientDocumentNumber" runat="server" Text='<%# Eval("ClientDocumentNumber") %>' /></td>
                                 <td>
                                     <asp:Label ID="lblRiskName" runat="server" Text='<%# Eval("RiskName") %>' /></td>
                                 <td>
-                                    <asp:Label ID="lblRegistryDate" runat="server" Text='<%#   DateTime.Parse( Eval("RegistryDate").ToString()).ToShortDateString() %>' /></td>
+                                    <asp:Label ID="lblRegistryDate" runat="server" Text='<%# DateTime.Parse( Eval("RegistryDate").ToString()).ToShortDateString() %>' /></td>
                                 <td>
-                                     <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>' /></td>
+                                    <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>' /></td>
                                 <td>
-                                     <asp:Label ID="lblSubStatus" runat="server" Text='<%# Eval("SubStatus") %>' /></td>
+                                    <asp:Label ID="lblSubStatus" runat="server" Text='<%# Eval("SubStatus") %>' /></td>
                                 <td>
-                                    <asp:HyperLink ID="linkAction" runat="server" Text='<%#   Eval("NextStatus") %>'  NavigateUrl='<%#   Eval("ActionForm") %>'></asp:HyperLink>
+                                    <asp:HyperLink ID="linkAction" runat="server" Text='<%#   Eval("NextStatus") %>' NavigateUrl='<%#   Eval("ActionForm") %>'></asp:HyperLink>
                                 </td>
                             </tr>
                         </ItemTemplate>
@@ -108,7 +107,7 @@
                         </InsertItemTemplate>
                         <EmptyDataTemplate>
                             <div class="row">
-                                <div class="col-lg-12 text-center">
+                                <div class="col-lg-10 text-center">
                                     <div class="msg-box bg-warning alert-danger">No se encontraron Siniestros.</div>
                                 </div>
                             </div>

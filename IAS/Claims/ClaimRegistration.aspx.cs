@@ -26,7 +26,7 @@ namespace IAS.Claims
             SqlConnection sqlConnection1 = new SqlConnection(estadoClienteDataSource.ConnectionString);
             SqlCommand cmd = new SqlCommand();
             SqlCommand cmd1 = new SqlCommand();
-            Int32 rowsAffected;
+            int rowsAffected;
 
             string txtClaimNumber = (ClaimDetailsListView.Row.FindControl("txtClaimNumber") as TextBox).Text;
             string txtRiskName = (ClaimDetailsListView.Row.FindControl("txtRiskName") as TextBox).Text;
@@ -75,8 +75,6 @@ namespace IAS.Claims
                     rowsAffected = cmd1.ExecuteNonQuery();
 
                     sqlConnection1.Close();
-
-
 
                     //Genero el cambio de estado
                     cmd.CommandText = "claim.sp_change_claim_status";

@@ -72,10 +72,12 @@
                                     <div class="col-lg-4">Id. Siniestro:<asp:Label ID="ClaimIDLabel" runat="server" Text='<%# Bind("ClaimID") %>' /></div>
                                     <div class="col-lg-4">Nro. Poliza:<asp:Label ID="PolicyNumberLabel" runat="server" Text='<%# Bind("PolicyNumber") %>' /></div>
                                 </div>
+                                <br>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">Estado de Reparacion: <span class="label label-warning"> Pendiente de Aprobacion </span></h3>
-                                        
+                                        <h3 class="panel-title">Estado de Reparacion: 
+                                            <asp:Label ID="lblSubestado" runat="server" CssClass="label label-warning" Text='<%# Bind("SubStatus") %>'  ></asp:Label>
+                                        </h3>                                        
                                     </div>
                                     <div class="panel-body">
                                         <div class="row" style="padding-top: 5px; padding-bottom: 5px">
@@ -110,7 +112,7 @@
 
                                         <div class="row" style="padding-top: 5px; padding-bottom: 5px">
 
-                                            <div class="col-lg-1">Aseguradora</div>
+                                            <div class="col-lg-1">Aseguradora: </div>
                                             <div class="col-lg-3">
                                                 <asp:Label ID="lblInsuranceManager" runat="server" Text='<%# Eval("InsuranceManager") %>' />
                                             </div>
@@ -120,10 +122,10 @@
                                             </div>
 
                                         </div>
-                                        <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                        <div class="row">
                                             <div class="col-lg-1">Obs. del Estado</div>
                                             <div class="col-lg-11">
-                                                <asp:TextBox ID="txtObservations" runat="server" Text='<%# Bind("Observations") %>' CssClass="form-control" />
+                                                <asp:TextBox ID="txtObservations" runat="server" Text='<%# Bind("Observations") %>' TextMode="MultiLine" Height="100" CssClass="form-control" />
                                             </div>
                                         </div>
                                     </div>
@@ -138,10 +140,10 @@
                                         </button>
                                     </div>
                                     <div class="col-lg-4 col-lg-offset-4">
-                                        <button id="DisapprovementBT" type="button" class="btn btn-success btn-lg" runat="server">
-                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                            Realizado
-                                        </button>
+                                        <asp:Button id="DoneBtn" type="button" class="btn btn-primary btn-lg" runat="server" Text="Realizado" OnClick="DoneBtn_Click">
+                                            <%--<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                            Realizado--%>
+                                        </asp:Button>
                                     </div>
                                 </div>
                             </div>

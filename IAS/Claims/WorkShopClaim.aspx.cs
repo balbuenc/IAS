@@ -75,5 +75,45 @@ namespace IAS.Claims
                 ErrorLabel.Visible = true;
             }
         }
+
+        protected void DoneBtn_Click(object sender, EventArgs e)
+        {
+            SqlConnection sqlConnection1 = new SqlConnection(estadoClienteDataSource.ConnectionString);
+            SqlCommand cmd = new SqlCommand();
+
+            Int32 rowsAffected;
+
+            try
+            {
+                //Actualizo los datos del Siniestro
+                // ESPERAMOS UN RATO
+                //UpdateClaim();
+
+                //Genero el cambio de estado
+                cmd.CommandText = "claim.sp_change_claim_status";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = sqlConnection1;
+
+
+                cmd.Parameters.AddWithValue("@ClaimID", Request.QueryString["ClaimID"]);
+                cmd.Parameters.AddWithValue("@GoNextStep", 1);
+                cmd.Parameters.AddWithValue("@UserName", User.Identity.Name);
+
+                sqlConnection1.Open();
+
+                rowsAffected = cmd.ExecuteNonQuery();
+
+                sqlConnection1.Close();
+
+                //Direcciono a la pagina de busqueda
+                Response.Redirect("ClaimSearch.aspx?PolicyNumber=" + Request.QueryString["PolicyNumber"]);
+
+            }
+            catch (Exception exp)
+            {
+                ErrorLabel.Text = exp.Message;
+                ErrorLabel.Visible = true;
+            }
+        }
     }
 }

@@ -108,12 +108,15 @@ namespace IAS.Models
             modelBuilder.Configurations.Add( new UserCaseAssigmentMap() );
             modelBuilder.Configurations.Add( new ApplicationRoleMap());
 
-            //modelBuilder.Entity<State>().ToTable("State", "Workflow");
+            //modelBuilder.Entity<Coverage>().ToTable("Coverage");
             //modelBuilder.Properties<string>().Configure(p => p.IsUnicode(false));
             modelBuilder.Properties<string>().Configure(x => x.HasColumnType("VARCHAR"));
         }
 
+        public DbSet<ClaimType> ClaimTypes { get; set; }
+        public DbSet<ClaimMade> ClaimMades { get; set; }
         public DbSet<State> States { get; set; }
+        public DbSet<Coverage> Coverages { get; set; }
         public DbSet<Workflow> Workflows { get; set; }
         public DbSet<Form> Forms { get; set; }
         public DbSet<WorkflowStateTransition> WorkflowStateTransitions { get; set; }
@@ -148,6 +151,8 @@ namespace IAS.Models
         public DbSet<Claim> Claims { get; set; }
 
         public DbSet<ClaimContactHistory> ClaimContactHistories { get; set; }
+
+
     }
 
     #endregion //Context

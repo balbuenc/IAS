@@ -83,5 +83,14 @@ namespace IAS.Claims
         {
             ClaimListView.DataBind();
         }
+
+        protected void getAllBox_ServerClick(object sender, EventArgs e)
+        {
+            ClaimSqldataSource.SelectParameters["find"].DefaultValue = " ";
+            ClaimSqldataSource.SelectParameters["criteria"].DefaultValue = " ";
+            ClaimListView.DataBind();
+        }
+
+        
     }
 }

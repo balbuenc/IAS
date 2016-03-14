@@ -105,6 +105,7 @@
                                     <li><a href="../Admin/Workflows.aspx">Workflows</a></li>
                                     <li><a href="../Admin/CasePriorities.aspx">Prioridades</a></li>
                                     <li><a href="../Admin/Currencies.aspx">Monedas</a></li>
+                                        <li><a href="../Admin/ClaimTypes.aspx">Tipos de cobertura</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="../Admin/CollectionStates.aspx">Estado de cuotas</a></li>
                                     <li><a href="../Admin/CollectionMethods.aspx">Método de cobro</a></li> 

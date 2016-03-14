@@ -23,6 +23,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -167,6 +168,7 @@
     <Content Include="Admin\CollectionMethods.aspx" />
     <Content Include="Admin\ContactDestinations.aspx" />
     <Content Include="Admin\ContactTypes.aspx" />
+    <Content Include="Admin\ClaimTypes.aspx" />
     <Content Include="Admin\Currencies.aspx" />
     <Content Include="Admin\Forms.aspx" />
     <Content Include="Admin\Liquidators.aspx" />
@@ -461,6 +463,13 @@
     </Compile>
     <Compile Include="Admin\ContactTypes.aspx.designer.cs">
       <DependentUpon>ContactTypes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ClaimTypes.aspx.cs">
+      <DependentUpon>ClaimTypes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ClaimTypes.aspx.designer.cs">
+      <DependentUpon>ClaimTypes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Currencies.aspx.cs">
       <DependentUpon>Currencies.aspx</DependentUpon>
@@ -811,7 +820,9 @@
     <Compile Include="Models\CaseTransition.cs" />
     <Compile Include="Models\Claim.cs" />
     <Compile Include="Models\ClaimContactHistory.cs" />
+    <Compile Include="Models\ClaimMade.cs" />
     <Compile Include="Models\ClaimStatu.cs" />
+    <Compile Include="Models\ClaimType.cs" />
     <Compile Include="Models\Collection.cs" />
     <Compile Include="Models\AppConfig.cs" />
     <Compile Include="Models\CollectionState.cs" />
@@ -819,6 +830,7 @@
     <Compile Include="Models\ClientPaymentDay.cs" />
     <Compile Include="Models\ContactDestination.cs" />
     <Compile Include="Models\ContactType.cs" />
+    <Compile Include="Models\Coverage.cs" />
     <Compile Include="Models\Currency.cs" />
     <Compile Include="Models\Liquidator.cs" />
     <Compile Include="Models\RoleStateTransition.cs" />

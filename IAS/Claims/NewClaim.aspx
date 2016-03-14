@@ -54,8 +54,9 @@
                 <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
             </div>
         </div>
+        <br>
         <div class="row">
-            <div class="col-lg-12" style="font-size: x-small">
+            <div class="col-lg-12" style="font-size: small">
                 <div class="panel panel-default">
                     <div class="panel-heading">Datos del Cliente</div>
                     <div class="panel-body">
@@ -104,6 +105,7 @@
                                     <asp:ListBox ID="ListBox1"
                                         Rows="10"
                                         Width="100%"
+                                        CssClass="form-control"
                                         SelectionMode="Multiple"
                                         DataSourceID="coberturaPolizas"
                                         runat="server"
@@ -112,7 +114,6 @@
                                     </asp:ListBox>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>

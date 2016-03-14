@@ -40,6 +40,15 @@ namespace IAS.Claims {
         protected global::System.Web.UI.HtmlControls.HtmlButton criteriaBtn;
         
         /// <summary>
+        /// btnObtenerTodos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnObtenerTodos;
+        
+        /// <summary>
         /// ClaimListView control.
         /// </summary>
         /// <remarks>

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace IAS.Models
@@ -11,7 +10,9 @@ namespace IAS.Models
         }
 
         public int ClaimTypeID { get; set; }
+
         public string Description { get; set; }
+
         public virtual ICollection<Claim> Claims { get; set; }
     }
 }

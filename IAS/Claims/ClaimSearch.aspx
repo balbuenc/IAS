@@ -48,6 +48,8 @@
                                 <li><a href="?criteria=ClaimNumber">Nro. Siniestro</a></li>
                             </ul>
                         </div>
+                       <button id="btnObtenerTodos" class="btn btn-default" runat="server" type="button" onserverclick="getAllBox_ServerClick">Obtener todos</button>
+                     
                     </div>
                 </div>
             </div>
@@ -69,6 +71,7 @@
                                             <th>Nro. Doc.</th>
                                             <th>Riesgo</th>
                                             <th>Fecha</th>
+                                            <th>Usuario</th>
                                             <th>Estado</th>
                                             <th>Sub Estado</th>
                                             <th>Pendiente</th>
@@ -92,6 +95,8 @@
                                     <asp:Label ID="lblRiskName" runat="server" Text='<%# Eval("RiskName") %>' /></td>
                                 <td>
                                     <asp:Label ID="lblRegistryDate" runat="server" Text='<%# DateTime.Parse( Eval("RegistryDate").ToString()).ToShortDateString() %>' /></td>
+                                 <td>
+                                    <asp:Label ID="lblUsuario" runat="server" Text='<%# Eval("Usuario") %>' /></td>
                                 <td>
                                     <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>' /></td>
                                 <td>

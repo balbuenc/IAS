@@ -32,9 +32,9 @@ namespace IAS.Models
         [ScaffoldColumn( false )]
         public long StateID { get; set; }
 
-        [Required, StringLength( 50 ), Display( Name = "Sate Name" )]
+        [Required, StringLength( 50 ), Display( Name = "State Name" )]
         public string StateName { get; set; }
-
+        
         [Required]
         public bool Active { get; set; }
 

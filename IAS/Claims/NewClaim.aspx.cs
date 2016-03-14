@@ -7,26 +7,22 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace IAS.Claims
-{
-    public partial class NewClaim : System.Web.UI.Page
-    {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-           
+namespace IAS.Claims {
+    public partial class NewClaim : System.Web.UI.Page {
+        protected void Page_Load(object sender, EventArgs e) {
+
         }
 
-        protected void registrarSiniestroBtn_Click(object sender, EventArgs e)
-        {
+        protected void registrarSiniestroBtn_Click(object sender, EventArgs e) {
 
             SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
             SqlCommand cmd = new SqlCommand();
             SqlCommand cmd1 = new SqlCommand();
 
             int rowsAffected;
-      
-            try
-            {
+
+            try {
+
                 cmd.CommandText = "sp_registrar_caso_siniestro";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = sqlConnection1;
@@ -37,7 +33,7 @@ namespace IAS.Claims
                 cmd.Parameters.AddWithValue("@id_tipo_siniestro", ddlTipoSiniestro.SelectedValue);
                 cmd.Parameters.AddWithValue("@nro_poliza", ddlNroPoliza.SelectedValue);
                 cmd.Parameters.AddWithValue("@usuario", User.Identity.Name);
-                
+
                 sqlConnection1.Open();
 
                 rowsAffected = cmd.ExecuteNonQuery();
@@ -47,7 +43,7 @@ namespace IAS.Claims
                 //cmd1.CommandText = "sp_registrar_caso_siniestro";
                 //cmd1.CommandType = CommandType.StoredProcedure;
                 //cmd1.Connection = sqlConnection1;
-                
+
                 ////Genero el cambio de estado
                 //cmd1.CommandText = "claim.sp_change_claim_status";
                 //cmd1.CommandType = CommandType.StoredProcedure;
@@ -64,14 +60,13 @@ namespace IAS.Claims
                 //sqlConnection1.Close();
 
                 //Direcciono a la pagina de busqueda
-                Response.Redirect("ClaimSearch.aspx?PolicyNumber=" + ddlNroPoliza.SelectedValue.Replace(".",""));
+                Response.Redirect("ClaimSearch.aspx?PolicyNumber=" + ddlNroPoliza.SelectedValue.Replace(".", ""));
 
             }
-            catch (Exception exp)
-            {
+            catch (Exception exp) {
                 ErrorLabel.Text = exp.Message;
                 ErrorLabel.Visible = true;
             }
-        }
+        }             
     }
 }

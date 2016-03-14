@@ -39,6 +39,7 @@ namespace IAS.Models
         public DbSet<CollectionState> CollectionStates { get; set; }
         public DbSet<ContactDestination> ContactDestinations { get; set; }
         public DbSet<ContactType> ContactTypes { get; set; }
+        public DbSet<Coverage> Coverages { get; set; }
         public DbSet<Currency> Currencies { get; set; }
         public DbSet<Form> Forms { get; set; }
         public DbSet<InsuranceManagerContact> InsuranceManagerContacts { get; set; }
@@ -107,6 +108,7 @@ namespace IAS.Models
             modelBuilder.Configurations.Add(new ContactDestinationMap());
             modelBuilder.Configurations.Add(new ContactTypeMap());
             modelBuilder.Configurations.Add(new CurrencyMap());
+            modelBuilder.Configurations.Add(new CoverageMap());
             modelBuilder.Configurations.Add(new FormMap());
             modelBuilder.Configurations.Add(new InsuranceManagerContactMap());
             modelBuilder.Configurations.Add(new InsuranceManagerMap());

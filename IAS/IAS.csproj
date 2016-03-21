@@ -240,9 +240,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
     <Content Include="Claim.Master" />
-    <None Include="Properties\PublishProfiles\seguros - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\aibias - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\aibias - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\seguros - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\toyoias - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\toyoias - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bloodhound.js" />

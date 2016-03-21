@@ -58,11 +58,11 @@
         <div class="row" style="font-size: small">
             <div class="form-inline" role="form">
                 <div class="form-group">
-                    <label for="nroPoliza">Nro. Pòliza:</label>
+                    <label for="nroPoliza">Nro. Póliza:</label>
                     <label id="lblPolicyNumber" runat="server"></label>
                 </div>
                 <div class="form-group col-lg-offset-4">
-                    <label for="acciones">Verificaciòn:</label>
+                    <label for="acciones">Verificación:</label>
                 </div>
                 <button type="submit" class="btn btn-success" runat="server" onserverclick="RegistrarSiniestro">Con Cobertura</button>
                 <button type="submit" class="btn btn-danger" runat="server" onserverclick="CierreSiniestro">Sin Cobertura</button>
@@ -140,7 +140,7 @@
 
     <!-- #region Data Sources -->
 
-    <asp:SqlDataSource ID="estadoClienteDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[claim].[sp_get_client_status]" SelectCommandType="StoredProcedure">
+    <asp:SqlDataSource ID="estadoClienteDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[dbo].[sp_get_client_status]" SelectCommandType="StoredProcedure">
         <SelectParameters>
             <asp:QueryStringParameter Name="CaseID" QueryStringField="CaseID" Type="Int32" />
         </SelectParameters>

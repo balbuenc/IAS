@@ -8,7 +8,8 @@
     <script src="../Scripts/bootstrap-datepicker.min.js"></script>
     <link href="../Content/bootstrap-datepicker.min.css" rel="stylesheet" />
 
-    <script>
+    <script>       
+
         var nowTemp = new Date();
         var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
@@ -125,7 +126,9 @@
                                     <div class="col-lg-1">Liquidador</div>
                                     <div class="col-lg-3">
                                         <asp:DropDownList ID="ddlLiquidador" runat="server" CssClass="form-control" DataSourceID="liquidadoresDataSource"
-                                            DataValueField="LiquidatorID" DataTextField="Name" SelectedValue='<%#string.IsNullOrEmpty( Eval("LiquidatorID").ToString())?-1:Eval("LiquidatorID") %>' />
+                                            DataValueField="LiquidatorID" DataTextField="Name" required AppendDataBoundItems="true"
+                                            SelectedValue='<%#string.IsNullOrEmpty( Eval("LiquidatorID").ToString()) ? -1 : Eval("LiquidatorID") %>'>
+                                        </asp:DropDownList>
                                     </div>
                                     <div class="col-lg-1">Taller</div>
                                     <div class="col-lg-3">
@@ -153,7 +156,7 @@
                                     </div>
                                 </div>
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
-                                    <div class="col-lg-1">Secciòn</div>
+                                    <div class="col-lg-1">Sección</div>
                                     <div class="col-lg-3">
                                         <asp:TextBox ID="txtSection" runat="server" Text='<%# Bind("Section") %>' CssClass="form-control" />
                                     </div>
@@ -200,7 +203,7 @@
                                 </div>
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                     <div class="col-lg-2 col-lg-offset-10">
-                                        <asp:Button ID="UpdateButton" runat="server" Text="Registrar Siniestro" CommandName="Update" CssClass="btn btn-success" />
+                                        <asp:Button ID="UpdateButton" runat="server" Text="Registrar Siniestro" CommandName="Update" CssClass="btn btn-primary" />
                                     </div>
                                 </div>
                             </div>

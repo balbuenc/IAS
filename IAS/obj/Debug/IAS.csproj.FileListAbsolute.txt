@@ -266,3 +266,4 @@ C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\obj\Debug\IAS
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\obj\Debug\IAS.csproj.GenerateResource.Cache
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\obj\Debug\IAS.dll
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\obj\Debug\IAS.pdb
+C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\obj\Debug\IAS.csprojResolveAssemblyReference.cache

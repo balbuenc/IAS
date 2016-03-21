@@ -48,7 +48,7 @@
                             <a href="ClaimSearch.aspx">Buscar Siniestros</a>
                         </li>
                         <li id="newClaimTab" role="presentation" runat="server">
-                            <a href="NewClaim.aspx">Alta Siniestro</a>
+                            <a href="NewClaim.aspx?criteria=Client">Alta Siniestro</a>
                         </li>
                         <li id="verificationClaimTab" role="presentation" runat="server">
                             <a href="ClaimPolicyVerification.aspx">Verificacion de Cobertura</a>

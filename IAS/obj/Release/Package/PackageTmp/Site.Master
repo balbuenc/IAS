@@ -36,8 +36,8 @@
     </asp:PlaceHolder>
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    
-    
+
+
 </head>
 <body>
     <form runat="server">
@@ -58,11 +58,11 @@
                 <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
                 <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
                 <asp:ScriptReference Name="WebFormsBundle" />
-                
+
                 <%--Site Scripts--%>
                 <asp:ScriptReference Path="~/Scripts/jqueryBlockUI.js" />
                 <asp:ScriptReference Path="~/Scripts/jquery.datetimepicker.js" />
-                
+
             </Scripts>
         </asp:ScriptManager>
 
@@ -84,7 +84,8 @@
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                     Servicios
-                                <span class="caret"></span>
+                               
+                                    <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li><a href="../CaseManagment/MyCaseList.aspx">Mis Pendientes</a></li>
@@ -97,6 +98,7 @@
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                     Administración
+                                   
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
@@ -105,10 +107,13 @@
                                     <li><a href="../Admin/Workflows.aspx">Workflows</a></li>
                                     <li><a href="../Admin/CasePriorities.aspx">Prioridades</a></li>
                                     <li><a href="../Admin/Currencies.aspx">Monedas</a></li>
+                                    <li><a href="../Admin/ClaimTypes.aspx">Tipos de cobertura</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="../Admin/CollectionStates.aspx">Estado de cuotas</a></li>
-                                    <li><a href="../Admin/CollectionMethods.aspx">Método de cobro</a></li> 
-                                   <%-- <li><a href="../Admin/PersonUserAssignments.aspx">Asignación de responsables</a></li>--%>
+                                    <li><a href="../Admin/CollectionMethods.aspx">Método de cobro</a></li>
+                                    <li><a href="../Admin/CollectionManagementResults.aspx">Resultados de Cobranza</a></li>
+                                    <li><a href="../Admin/CollectionResult.aspx">Asignacion de Resultado</a></li>
+                                    <%-- <li><a href="../Admin/PersonUserAssignments.aspx">Asignación de responsables</a></li>--%>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="../Admin/ContactTypes.aspx">Tipos de Contacto</a></li>
                                     <li><a href="../Admin/ContactDestinations.aspx">Destinos de Contacto</a></li>
@@ -117,22 +122,30 @@
                                     <li><a href="../Admin/ClaimsStatus.aspx">Estados de Siniestro</a></li>
                                 </ul>
                             </div>
-                             <div class="btn-group">
+                            <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                     Reportes
-                                <span class="caret"></span>
+                               
+                                    <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                     
-                                 <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fGESTOR_SSRS%2fCumplimiento&rs:Command=Render" target="_blank">Cumplimiento</a></li>
-                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fGESTOR_SSRS%2fMorosidad&rs:Command=Render" target="_blank">Morosidad</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fGESTOR_SSRS%2fGestionCasos&rs:Command=Render" target="_blank">Historial de gestión</a></li>
-                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fGESTOR_SSRS%2fHistoricoSMS&rs:Command=Render" target="_blank">Historial de SMS</a></li>
-                                    
+
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fCumplimiento&rs:Command=Render" target="_blank">Cumplimiento</a></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fMorosidad&rs:Command=Render" target="_blank">Morosidad</a></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fGestionCasos&rs:Command=Render" target="_blank">Historial de gestión</a></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fHistoricoSMS&rs:Command=Render" target="_blank">Historial de SMS</a></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fMapfreCuotasOmitidas&rs:Command=Render" target="_blank">Mapfre | Cuotas Omitidas</a></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fSancorCuotasExcluidas&rs:Command=Render" target="_blank">Sancor | Cuotas Omitidas</a></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fCobranzasDiferencias&rs:Command=Render" target="_blank">Diferencias en Cuotas</a></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fCasosPorCliente&rs:Command=Render" target="_blank">Listado de casos</a></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fCasosCelulares&rs:Command=Render" target="_blank">Clientes con Celular</a></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fEnvioSMSCasosConCelular&rs:Command=Render" target="_blank">Notificaciones por SMS</a></li>
+                                    <hr />
+                                    <li><a href="https://app.powerbi.com/groups/me/dashboards/0fa2deb1-7e8b-4c54-a4e3-f3182f602af5" target="_blank">Cobranzas Dashboard</a></li>
+                                
                                 </ul>
                             </div>
-                            
+
 
                             <%--<div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -160,7 +173,7 @@
                             </ul>
                         </LoggedInTemplate>
                     </asp:LoginView>
-                
+
                 </div>
             </div>
         </div>
@@ -192,7 +205,7 @@
             function onPageLoad() {
                 $.unblockUI();
             }
-         
+
 
     </script>
 

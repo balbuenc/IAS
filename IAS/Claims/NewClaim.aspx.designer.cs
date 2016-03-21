@@ -22,22 +22,58 @@ namespace IAS.Claims {
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
-        /// ddlClientes control.
+        /// searchBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlClientes;
+        protected global::System.Web.UI.HtmlControls.HtmlButton searchBox;
         
         /// <summary>
-        /// ddlNroPoliza control.
+        /// txtSearchClaim control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlNroPoliza;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtSearchClaim;
+        
+        /// <summary>
+        /// criteriaBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton criteriaBtn;
+        
+        /// <summary>
+        /// lblCliente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCliente;
+        
+        /// <summary>
+        /// lblNroDocumento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNroDocumento;
+        
+        /// <summary>
+        /// lblPoliza control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPoliza;
         
         /// <summary>
         /// dp1 control.
@@ -76,6 +112,15 @@ namespace IAS.Claims {
         protected global::System.Web.UI.WebControls.Button registrarSiniestroBtn;
         
         /// <summary>
+        /// gridClients control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridClients;
+        
+        /// <summary>
         /// clientesDataSource control.
         /// </summary>
         /// <remarks>
@@ -83,15 +128,6 @@ namespace IAS.Claims {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource clientesDataSource;
-        
-        /// <summary>
-        /// polizasDataSource control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource polizasDataSource;
         
         /// <summary>
         /// tipoSinistrosDataSource control.

@@ -28,8 +28,6 @@
     <div class="page-header">
         <h2>Subir Siniestros</h2>
     </div>
-
-
     <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
     <div class="table responsive">
         <table class="table table-striped">

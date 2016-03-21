@@ -232,7 +232,7 @@
                                     </div>
                                 </div>
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
-                                    <div class="col-lg-1">Secciòn</div>
+                                    <div class="col-lg-1">Sección</div>
                                     <div class="col-lg-3">
                                         <asp:TextBox ID="txtSection" runat="server" Text='<%# Bind("Section") %>' CssClass="form-control" />
                                     </div>

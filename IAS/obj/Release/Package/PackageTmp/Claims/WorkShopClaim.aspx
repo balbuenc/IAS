@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Gestiòn de Talleres" Language="C#" MasterPageFile="~/Claim.Master" AutoEventWireup="true" CodeBehind="WorkShopClaim.aspx.cs" Inherits="IAS.Claims.WorkShopClaim" %>
+﻿<%@ Page Title="Gestión de Talleres" Language="C#" MasterPageFile="~/Claim.Master" AutoEventWireup="true" CodeBehind="WorkShopClaim.aspx.cs" Inherits="IAS.Claims.WorkShopClaim" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="../Scripts/jquery-1.10.2.min.js"></script>
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="row">
-            <h3>Informacion de Cliente</h3>
+            <h3>Información de Cliente</h3>
         </div>
         <div class="row">
             <div class="col-lg-12">
@@ -53,7 +53,7 @@
             </div>
         </div>
         <div class="row">
-            <h3>Gestion del taller</h3>
+            <h3>Gestión del taller</h3>
         </div>
         <div class="row">
             <div class="col-lg-12">
@@ -72,10 +72,12 @@
                                     <div class="col-lg-4">Id. Siniestro:<asp:Label ID="ClaimIDLabel" runat="server" Text='<%# Bind("ClaimID") %>' /></div>
                                     <div class="col-lg-4">Nro. Poliza:<asp:Label ID="PolicyNumberLabel" runat="server" Text='<%# Bind("PolicyNumber") %>' /></div>
                                 </div>
+                                <br>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">Estado de Reparacion: <span class="label label-warning"> Pendiente de Aprobacion </span></h3>
-                                        
+                                        <h3 class="panel-title">Estado de Reparación: 
+                                            <asp:Label ID="lblSubestado" runat="server" CssClass="label label-warning" Text='<%# Bind("SubStatus") %>'></asp:Label>
+                                        </h3>
                                     </div>
                                     <div class="panel-body">
                                         <div class="row" style="padding-top: 5px; padding-bottom: 5px">
@@ -101,16 +103,57 @@
                                                 <asp:DropDownList ID="ddlTaller" runat="server" CssClass="form-control" DataSourceID="talleresSqlDataSource"
                                                     DataValueField="WorkShopID" DataTextField="Name" SelectedValue='<%#string.IsNullOrEmpty( Eval("WorkshopID").ToString())?-1:Eval("WorkshopID") %>' />
                                             </div>
+
                                             <div class="col-lg-1">Experto</div>
                                             <div class="col-lg-3">
                                                 <asp:DropDownList ID="ddlExpertoAseguradora" runat="server" CssClass="form-control" DataSourceID="expertosAseguradoraDataSource"
                                                     DataValueField="ContactID" DataTextField="Name" SelectedValue='<%#string.IsNullOrEmpty( Eval("InsuranceExpertID").ToString())?-1:Eval("InsuranceExpertID") %>' />
                                             </div>
                                         </div>
+                                        <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                            <div class="col-lg-1">Fecha</div>
+                                            <div class="col-lg-3">
+                                                <asp:Label ID="lblClaimDate" runat="server" Text='<%#:string.IsNullOrEmpty( Eval("ClaimDate").ToString())?"nd": DateTime.Parse( Eval("ClaimDate").ToString()).ToShortDateString()  %>' CssClass="form-control" />
+                                            </div>
+                                            <div class="col-lg-1">Contacto</div>
+                                            <div class="col-lg-3">
+                                                <asp:Label ID="lblContactName" runat="server" Text='<%# Bind("ContactName") %>' CssClass="form-control" />
+                                            </div>
+                                            <div class="col-lg-1">Sección</div>
+                                            <div class="col-lg-3">
+                                                <asp:Label ID="lblSection" runat="server" Text='<%# Bind("Section") %>' CssClass="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                            <div class="col-lg-1">Dir. Siniestro</div>
+                                            <div class="col-lg-3">
+                                                <asp:Label ID="lblClaimAddress" runat="server" Text='<%# Bind("ClaimAddress") %>' CssClass="form-control" />
+                                            </div>
 
+                                            <div class="col-lg-1">Hora Siniestro</div>
+                                            <div class="col-lg-3">
+                                                <asp:Label ID="lblClaimTime" runat="server" Text='<%# Bind("ClaimTime") %>' CssClass="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                            <div class="col-lg-1">Desc. Siniestro</div>
+                                            <div class="col-lg-11">
+                                                <asp:Label ID="lblClaimDescription" runat="server" Text='<%# Bind("ClaimDescription") %>' CssClass="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                            <div class="col-lg-1">Otro Vehiculo</div>
+                                            <div class="col-lg-3">
+                                                <asp:Label ID="lblOtherVehicleDescription" runat="server" Text='<%# Bind("OtherVehicleDescription") %>' CssClass="form-control" />
+                                            </div>
+                                            <div class="col-lg-1">Matricula Otro</div>
+                                            <div class="col-lg-3">
+                                                <asp:Label ID="lblOtherVehiclePatentNumber" runat="server" Text='<%# Bind("OtherVehiclePatentNumber") %>' CssClass="form-control" />
+                                            </div>
+                                        </div>
                                         <div class="row" style="padding-top: 5px; padding-bottom: 5px">
 
-                                            <div class="col-lg-1">Aseguradora</div>
+                                            <div class="col-lg-1">Aseguradora: </div>
                                             <div class="col-lg-3">
                                                 <asp:Label ID="lblInsuranceManager" runat="server" Text='<%# Eval("InsuranceManager") %>' />
                                             </div>
@@ -120,28 +163,30 @@
                                             </div>
 
                                         </div>
-                                        <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                        <div class="row">
                                             <div class="col-lg-1">Obs. del Estado</div>
                                             <div class="col-lg-11">
-                                                <asp:TextBox ID="txtObservations" runat="server" Text='<%# Bind("Observations") %>' CssClass="form-control" />
+                                                <asp:TextBox ID="txtObservations" runat="server" Text='<%# Bind("Observations") %>' TextMode="MultiLine" Height="100" CssClass="form-control" />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <hr />
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-4 ">
-                                        <button id="ApprovementBtn" type="button" class="btn btn-default btn-lg" runat="server">
+                                    <div class="col-lg-8">
+                                        <%-- <button id="ApprovementBtn" type="button" class="btn btn-default btn-lg" runat="server">
                                             <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>Notificar al Cliente
-                                        </button>
+                                        </button>--%>
+                                        <asp:RadioButtonList ID="rdbSendOptions" runat="server" CssClass="radio-inline">
+                                            <asp:ListItem Value="1" Text="No notificar" Selected="True"></asp:ListItem>
+                                            <asp:ListItem Value="2" Text="Notificar vía SMS"></asp:ListItem>
+                                            <asp:ListItem Value="3" Text="Notificar vía SMS e Email"></asp:ListItem>
+                                        </asp:RadioButtonList>
                                     </div>
-                                    <div class="col-lg-4 col-lg-offset-4">
-                                        <button id="DisapprovementBT" type="button" class="btn btn-success btn-lg" runat="server">
-                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                            Realizado
-                                        </button>
+                                    <div class="col-lg-4">
+                                        <asp:Button ID="DoneBtn" type="button" class="btn btn-primary btn-lg" runat="server" Text="Realizado" OnClick="DoneBtn_Click">
+                                            <%--<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                            Realizado--%>
+                                        </asp:Button>
                                     </div>
                                 </div>
                             </div>

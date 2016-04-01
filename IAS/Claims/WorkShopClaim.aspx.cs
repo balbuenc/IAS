@@ -70,7 +70,7 @@ namespace IAS.Claims {
             DropDownList ddlExpertoAseguradora = (ClaimDetailsListView.Row.FindControl("ddlExpertoAseguradora") as DropDownList);
             string lblSection = (ClaimDetailsListView.Row.FindControl("lblSection") as Label).Text;
             string lblClaimAddress = (ClaimDetailsListView.Row.FindControl("lblClaimAddress") as Label).Text;
-            string lblClaimDescription = (ClaimDetailsListView.Row.FindControl("lblClaimDescription") as Label).Text;
+            string lblClaimDescription = (ClaimDetailsListView.Row.FindControl("lblClaimDescription") as TextBox).Text;
             string lblClaimTime = (ClaimDetailsListView.Row.FindControl("lblClaimTime") as Label).Text;
 
             string lblOtherVehicleDescription = (ClaimDetailsListView.Row.FindControl("lblOtherVehicleDescription") as Label).Text;
@@ -121,19 +121,18 @@ namespace IAS.Claims {
             try {
 
                 //Genero el cambio de estado
-                cmd.CommandText = "claim.sp_send_email_to_client";
+                cmd.CommandText = "sp_send_email_to_client";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = sqlConnection1;
 
-                cmd.Parameters.AddWithValue("@ClaimID", Request.QueryString["ClaimID"]);
-                cmd.Parameters.AddWithValue("@GoNextStep", 1);
-                cmd.Parameters.AddWithValue("@UserName", User.Identity.Name);
+                cmd.Parameters.AddWithValue("@p_claimID", Request.QueryString["ClaimID"]);
 
                 sqlConnection1.Open();
 
                 rowsAffected = cmd.ExecuteNonQuery();
 
                 sqlConnection1.Close();
+
             }
             catch(Exception ex) {
                 ErrorLabel.Text = ex.Message;
@@ -165,8 +164,7 @@ namespace IAS.Claims {
             }
         }
         private void SendSMS() {
-
-
+            
             SqlConnection sqlConnection1 = new SqlConnection(estadoClienteDataSource.ConnectionString);
             SqlCommand cmd = new SqlCommand();
 

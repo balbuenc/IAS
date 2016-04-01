@@ -142,7 +142,7 @@
 
     <asp:SqlDataSource ID="estadoClienteDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[dbo].[sp_get_client_status]" SelectCommandType="StoredProcedure">
         <SelectParameters>
-            <asp:QueryStringParameter Name="CaseID" QueryStringField="CaseID" Type="Int32" />
+            <asp:QueryStringParameter Name="ClaimID" QueryStringField="ClaimID" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="CollectionSqlDatSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"

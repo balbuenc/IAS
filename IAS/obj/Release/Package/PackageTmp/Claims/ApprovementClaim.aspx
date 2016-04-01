@@ -248,7 +248,7 @@
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                     <div class="col-lg-1">Desc. Siniestro</div>
                                     <div class="col-lg-11">
-                                        <asp:TextBox ID="txtClaimDescription" runat="server" Text='<%# Bind("ClaimDescription") %>' CssClass="form-control" />
+                                        <asp:TextBox ID="txtClaimDescription" runat="server" Text='<%# Bind("ClaimDescription") %>' TextMode="MultiLine" Height="100px" CssClass="form-control" />
                                     </div>
                                 </div>
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
@@ -310,7 +310,7 @@
     <!-- #region Data Sources -->
     <asp:SqlDataSource ID="estadoClienteDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[claim].[sp_get_client_status]" SelectCommandType="StoredProcedure">
         <SelectParameters>
-            <asp:QueryStringParameter Name="CaseID" QueryStringField="CaseID" Type="Int32" />
+            <asp:QueryStringParameter Name="ClaimID" QueryStringField="ClaimID" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="siniestroDetalleDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[claim].[sp_get_claim_by_ClaimID]" SelectCommandType="StoredProcedure" UpdateCommand="claim.sp_update_claim" UpdateCommandType="StoredProcedure">

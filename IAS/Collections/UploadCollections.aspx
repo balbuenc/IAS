@@ -22,9 +22,7 @@
      <div class="page-header">
         <h2>Subir cuotas</h2>
     </div>
-        <asp:UpdatePanel ID="upnlCollections" runat="server">
-
-        <ContentTemplate>
+      
 
             <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
             <div class="table responsive">
@@ -80,7 +78,6 @@
                             </tbody>
                             </table>
                 </div>
-            </ContentTemplate>
-            </asp:UpdatePanel>
+           
 
 </asp:Content>

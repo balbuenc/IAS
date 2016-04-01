@@ -40,13 +40,22 @@ namespace IAS.Claims {
         protected global::System.Web.UI.HtmlControls.HtmlButton criteriaBtn;
         
         /// <summary>
-        /// btnObtenerTodos control.
+        /// ddlMyClaims control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnObtenerTodos;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMyClaims;
+        
+        /// <summary>
+        /// ddlStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
         
         /// <summary>
         /// ClaimListView control.
@@ -65,5 +74,14 @@ namespace IAS.Claims {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource ClaimSqldataSource;
+        
+        /// <summary>
+        /// StatusSqldataSoruce control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource StatusSqldataSoruce;
     }
 }

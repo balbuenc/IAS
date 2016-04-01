@@ -35,7 +35,7 @@
         }).data('datepicker');
 
 
-        function openResetearContrasena() {
+        function openModalPolizas() {
             $('#myModalPolizas').modal('show');
         }
 
@@ -156,7 +156,7 @@
                             <div class="row">
                                 <label class="col-sm-2 control-label" for="form-group-input">Cobertura</label>
                                 <div class="col-sm-10">
-                                    <asp:ListBox ID="ListBox1"
+                                    <asp:ListBox ID="lsbCoberturas"
                                         Rows="10"
                                         Width="100%"
                                         CssClass="form-control"

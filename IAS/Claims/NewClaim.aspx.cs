@@ -36,7 +36,7 @@ namespace IAS.Claims {
 
         private string criteria;
         private string find;
-        
+
         protected void Page_Load(object sender, EventArgs e) {
 
             try {
@@ -64,6 +64,9 @@ namespace IAS.Claims {
                             break;
                     }
                 }
+                else {
+                    criteria = "Client";
+                }
 
             }
             catch(Exception exp) {
@@ -77,8 +80,7 @@ namespace IAS.Claims {
 
             SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
             SqlCommand cmd = new SqlCommand();
-            SqlCommand cmd1 = new SqlCommand();
-
+            int claimID;
             int rowsAffected;
 
             try {
@@ -87,6 +89,11 @@ namespace IAS.Claims {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = sqlConnection1;
 
+                SqlParameter claim_id = new SqlParameter("@id_claim", SqlDbType.Int) {
+                    Direction = ParameterDirection.Output
+
+                };
+                cmd.Parameters.Add(claim_id);
                 cmd.Parameters.AddWithValue("@id_persona", id_persona);
                 cmd.Parameters.AddWithValue("@cliente", lblCliente.Text);
                 cmd.Parameters.AddWithValue("@fecha_siniestro", Convert.ToDateTime(dp1.Value));
@@ -97,27 +104,11 @@ namespace IAS.Claims {
                 sqlConnection1.Open();
 
                 rowsAffected = cmd.ExecuteNonQuery();
+                claimID = int.Parse(cmd.Parameters["@id_claim"].Value.ToString());
 
                 sqlConnection1.Close();
-
-                //cmd1.CommandText = "sp_registrar_caso_siniestro";
-                //cmd1.CommandType = CommandType.StoredProcedure;
-                //cmd1.Connection = sqlConnection1;
-
-                ////Genero el cambio de estado
-                //cmd1.CommandText = "claim.sp_change_claim_status";
-                //cmd1.CommandType = CommandType.StoredProcedure;
-                //cmd1.Connection = sqlConnection1;
-
-                //cmd1.Parameters.AddWithValue("@ClaimID", claimID);
-                //cmd1.Parameters.AddWithValue("@GoNextStep", 1);
-                //cmd1.Parameters.AddWithValue("@UserName", User.Identity.Name);
-
-                //sqlConnection1.Open();
-
-                //rowsAffected = cmd1.ExecuteNonQuery();
-
-                //sqlConnection1.Close();
+                
+                SaveDetails(claimID);
 
                 //Direcciono a la pagina de busqueda
                 Response.Redirect("ClaimSearch.aspx?PolicyNumber=" + nro_poliza.Replace(".", ""));
@@ -127,6 +118,42 @@ namespace IAS.Claims {
                 ErrorLabel.Text = exp.Message;
                 ErrorLabel.Visible = true;
             }
+        }
+
+        private void SaveDetails(int claimID) {
+
+            SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
+            int rowsAffected;
+
+            foreach(ListItem item in lsbCoberturas.Items) {
+                if(item.Selected) {
+                    using(SqlCommand cmd = new SqlCommand()) {
+
+                        try {
+
+                            cmd.CommandText = "sp_registrar_caso_siniestro_detalle";
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Connection = sqlConnection1;
+                            
+                            string val = item.Value;
+
+                            cmd.Parameters.AddWithValue("@id_claim", claimID);
+                            cmd.Parameters.AddWithValue("@id_cobertura", val);
+
+                            sqlConnection1.Open();
+
+                            rowsAffected = cmd.ExecuteNonQuery();
+
+                            sqlConnection1.Close();
+                        }
+                        catch(Exception exp) {
+                            ErrorLabel.Text = exp.Message;
+                            ErrorLabel.Visible = true;
+                        }
+                    }
+                }
+            }
+
         }
 
         protected void searchBox_ServerClick(object sender, EventArgs e) {
@@ -159,7 +186,7 @@ namespace IAS.Claims {
                 ErrorLabel.Visible = true;
             }
 
-            ScriptManager.RegisterStartupScript(this, GetType(), "Pop", "openResetearContrasena();", true);
+            ScriptManager.RegisterStartupScript(this, GetType(), "Pop", "openModalPolizas();", true);
         }
 
         protected void gridClients_RowCommand(object sender, GridViewCommandEventArgs e) {

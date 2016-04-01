@@ -4,7 +4,7 @@
     <script src="../Scripts/jquery-1.10.2.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
-    
+
     <script type="text/javascript">
         function searchRecords() {
             document.getElementById("<%=searchBox.ClientID %>").click();
@@ -26,7 +26,7 @@
     <div class="container">
         <div id="header">
             <div class="row">
-                <div class="col-lg-6 ">
+                <div class="col-lg-4">
                     <div class="input-group">
                         <span class="input-group-btn">
                             <button id="searchBox" class="btn btn-default" runat="server" type="button" onserverclick="searchBox_ServerClick">Buscar</button>
@@ -45,12 +45,22 @@
                                 <li><a href="?criteria=PolicyNumber">Nro Póliza</a></li>
                                 <li><a href="?criteria=Client">Cliente</a></li>
                                 <li><a href="?criteria=ClientDocumentNumber">Nro. Documento</a></li>
-                                <li><a href="?criteria=ClaimNumber">Nro. Siniestro</a></li>
                             </ul>
                         </div>
-                       <button id="btnObtenerTodos" class="btn btn-default" runat="server" type="button" onserverclick="getAllBox_ServerClick">Obtener todos</button>
-                     
+
+                        <%--<button id="btnObtenerTodos" class="btn btn-default" runat="server" type="button" onserverclick="getAllBox_ServerClick">Obtener todos</button>--%>
                     </div>
+                </div>
+                <div class="col-lg-3">
+                    <asp:DropDownList ID="ddlMyClaims" runat="server" CssClass="form-control">
+                        <asp:ListItem Value="0" Text="Todos los siniestros" Selected="True"></asp:ListItem>
+                        <asp:ListItem Value="1" Text="Mis siniestros"></asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+                <div class="col-lg-3">
+                    <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" DataValueField="ClaimStatusID" DataTextField="Status" DataSourceID="StatusSqldataSoruce" AppendDataBoundItems="true">
+                        <asp:ListItem Value="-1" Text="Todos los estados" Selected="True"></asp:ListItem>
+                    </asp:DropDownList>
                 </div>
             </div>
         </div>
@@ -60,7 +70,6 @@
                     <asp:ListView ID="ClaimListView" runat="server"
                         DataKeyNames="ClaimID"
                         DataSourceID="ClaimSqldataSource">
-
                         <LayoutTemplate>
                             <div class="table responsive">
                                 <table class="table table-striped" style="font-size: x-small">
@@ -95,7 +104,7 @@
                                     <asp:Label ID="lblRiskName" runat="server" Text='<%# Eval("RiskName") %>' /></td>
                                 <td>
                                     <asp:Label ID="lblRegistryDate" runat="server" Text='<%# DateTime.Parse( Eval("RegistryDate").ToString()).ToShortDateString() %>' /></td>
-                                 <td>
+                                <td>
                                     <asp:Label ID="lblUsuario" runat="server" Text='<%# Eval("Usuario") %>' /></td>
                                 <td>
                                     <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>' /></td>
@@ -130,8 +139,12 @@
         <SelectParameters>
             <asp:ControlParameter Name="find" ControlID="txtSearchClaim" PropertyName="Value" Type="String" />
             <asp:QueryStringParameter Name="criteria" QueryStringField="criteria" DefaultValue="PolicyNumber" />
+            <asp:Parameter Name="user" />
+            <asp:ControlParameter Name="myClaims" ControlID="ddlMyClaims" Type="String" PropertyName="SelectedValue" />
+            <asp:ControlParameter Name="claimStatusId" ControlID="ddlStatus" DbType="Int32" PropertyName="SelectedValue" />
         </SelectParameters>
     </asp:SqlDataSource>
-
+    <asp:SqlDataSource ID="StatusSqldataSoruce" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
+        SelectCommand="claim.sp_get_status" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     <!-- #endregion -->
 </asp:Content>

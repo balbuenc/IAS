@@ -12,6 +12,11 @@ namespace IAS.Claims
         private string criteria;
         private string claimID;
 
+
+        protected void Page_Init(object sender, EventArgs e) {
+            ClaimSqldataSource.SelectParameters["user"].DefaultValue = User.Identity.Name;
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -31,7 +36,7 @@ namespace IAS.Claims
                         ClaimListView.DataBind();
                     }
                 }
-                catch (Exception exp1)
+                catch (Exception ex)
                 {
                     claimID = null;
                 }
@@ -59,10 +64,9 @@ namespace IAS.Claims
                                 txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Siniestro";
                                 criteriaBtn.InnerText = "Nro. Siniestro";
                                 break;
-
                             default:
                                 txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Pòliza";
-                                criteriaBtn.InnerText = "Nro. Pòliza";
+                                criteriaBtn.InnerText = "Nro. Póliza";
                                 criteria = "PolicyNumber";
                                 break;
                         }
@@ -75,7 +79,6 @@ namespace IAS.Claims
                     criteriaBtn.InnerText = "Nro. Póliza";
                     criteria = "PolicyNumber";
                 }
-
             }
         }
 
@@ -84,12 +87,12 @@ namespace IAS.Claims
             ClaimListView.DataBind();
         }
 
-        protected void getAllBox_ServerClick(object sender, EventArgs e)
-        {
-            ClaimSqldataSource.SelectParameters["find"].DefaultValue = " ";
-            ClaimSqldataSource.SelectParameters["criteria"].DefaultValue = " ";
-            ClaimListView.DataBind();
-        }
+        //protected void getAllBox_ServerClick(object sender, EventArgs e)
+        //{
+        //    ClaimSqldataSource.SelectParameters["find"].DefaultValue = " ";
+        //    ClaimSqldataSource.SelectParameters["criteria"].DefaultValue = " ";
+        //    ClaimListView.DataBind();
+        //}
 
         
     }

@@ -84,15 +84,24 @@ namespace IAS.Claims
 
         protected void searchBox_ServerClick(object sender, EventArgs e)
         {
-            ClaimListView.DataBind();
+            if (txtSearchClaim.Value == "" && ddlMyClaims.SelectedValue == "0" && ddlStatus.SelectedValue == "-1")
+            {
+                getAllClaims();
+            }
+            else {
+                ClaimListView.DataBind();
+            }
+
+           
+         
         }
 
-        //protected void getAllBox_ServerClick(object sender, EventArgs e)
-        //{
-        //    ClaimSqldataSource.SelectParameters["find"].DefaultValue = " ";
-        //    ClaimSqldataSource.SelectParameters["criteria"].DefaultValue = " ";
-        //    ClaimListView.DataBind();
-        //}
+        protected void getAllClaims()
+        {
+            ClaimSqldataSource.SelectParameters["find"].DefaultValue = " ";
+            ClaimSqldataSource.SelectParameters["criteria"].DefaultValue = " ";
+            ClaimListView.DataBind();
+        }
 
         
     }

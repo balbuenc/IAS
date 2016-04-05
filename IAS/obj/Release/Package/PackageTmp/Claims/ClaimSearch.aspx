@@ -139,7 +139,7 @@
         <SelectParameters>
             <asp:ControlParameter Name="find" ControlID="txtSearchClaim" PropertyName="Value" Type="String" />
             <asp:QueryStringParameter Name="criteria" QueryStringField="criteria" DefaultValue="PolicyNumber" />
-            <asp:Parameter Name="user" />
+            <asp:Parameter Name="user"  />
             <asp:ControlParameter Name="myClaims" ControlID="ddlMyClaims" Type="String" PropertyName="SelectedValue" />
             <asp:ControlParameter Name="claimStatusId" ControlID="ddlStatus" DbType="Int32" PropertyName="SelectedValue" />
         </SelectParameters>

@@ -26,7 +26,7 @@ namespace IAS
 
                 //Limpio los campos de Atributos de las pastillas de Navegacion
                 searchClaimTab.Attributes.Remove("class");
-                newClaimTab.Attributes.Remove("class");
+                //newClaimTab.Attributes.Remove("class");
                 verificationClaimTab.Attributes.Remove("class");
                 registerClaimTab.Attributes.Remove("class");
                 approvementClaimTab.Attributes.Remove("class");
@@ -36,8 +36,8 @@ namespace IAS
                 //Seteo la pastilla de Navegacion activa
                 if (filename == "ClaimSearch")
                     searchClaimTab.Attributes.Add("class", "active");
-                else if (filename == "NewClaim")
-                    newClaimTab.Attributes.Add("class", "active");
+                //else if (filename == "NewClaim")
+                //    newClaimTab.Attributes.Add("class", "active");
                 else if (filename == "ClaimPolicyVerification")
                     verificationClaimTab.Attributes.Add("class", "active");
                 else if (filename == "ClaimRegistration")

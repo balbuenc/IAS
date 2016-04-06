@@ -51,17 +51,21 @@
                         <%--<button id="btnObtenerTodos" class="btn btn-default" runat="server" type="button" onserverclick="getAllBox_ServerClick">Obtener todos</button>--%>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <asp:DropDownList ID="ddlMyClaims" runat="server" CssClass="form-control">
                         <asp:ListItem Value="0" Text="Todos los siniestros" Selected="True"></asp:ListItem>
                         <asp:ListItem Value="1" Text="Mis siniestros"></asp:ListItem>
                     </asp:DropDownList>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" DataValueField="ClaimStatusID" DataTextField="Status" DataSourceID="StatusSqldataSoruce" AppendDataBoundItems="true">
                         <asp:ListItem Value="-1" Text="Todos los estados" Selected="True"></asp:ListItem>
                     </asp:DropDownList>
                 </div>
+                <div class="col-lg-2">
+                    <a href="NewClaim.aspx?criteria=Client">Alta Siniestro</a>
+                </div>
+
             </div>
         </div>
         <div id="contenido">

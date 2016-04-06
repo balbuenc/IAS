@@ -76,6 +76,7 @@ namespace IAS.Claims {
             string lblOtherVehicleDescription = (ClaimDetailsListView.Row.FindControl("lblOtherVehicleDescription") as Label).Text;
             string lblOtherVehiclePatentNumber = (ClaimDetailsListView.Row.FindControl("lblOtherVehiclePatentNumber") as Label).Text;
             string txtLooseDescription = (ClaimDetailsListView.Row.FindControl("txtLooseDescription") as TextBox).Text;
+            string txtObservations = (ClaimDetailsListView.Row.FindControl("txtObservations") as TextBox).Text;
 
             try {
 
@@ -98,6 +99,7 @@ namespace IAS.Claims {
                 cmd1.Parameters.AddWithValue("@OtherVehicleDescription", lblOtherVehicleDescription);
                 cmd1.Parameters.AddWithValue("@OtherVehiclePatentNumber", lblOtherVehiclePatentNumber);
                 cmd1.Parameters.AddWithValue("@LooseDescription", txtLooseDescription);
+                cmd1.Parameters.AddWithValue("@Observations", txtObservations);
 
                 sqlConnection1.Open();
 

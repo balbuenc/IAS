@@ -166,7 +166,7 @@
                                         <div class="row">
                                             <div class="col-lg-1">Obs. del Estado</div>
                                             <div class="col-lg-11">
-                                                <asp:TextBox ID="txtObservations" runat="server" Text='<%# Bind("Observations") %>' TextMode="MultiLine" Height="100" CssClass="form-control" />
+                                                <asp:TextBox ID="txtObservations" runat="server" Text='<%# Bind("Observations") %>' TextMode="MultiLine" Height="100px" CssClass="form-control" />
                                             </div>
                                         </div>
                                     </div>

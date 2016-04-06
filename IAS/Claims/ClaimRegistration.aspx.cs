@@ -43,7 +43,7 @@ namespace IAS.Claims
             string txtOtherVehicleDescription = (ClaimDetailsListView.Row.FindControl("txtOtherVehicleDescription") as TextBox).Text;
             string txtOtherVehiclePatentNumber = (ClaimDetailsListView.Row.FindControl("txtOtherVehiclePatentNumber") as TextBox).Text;
             string txtLooseDescription = (ClaimDetailsListView.Row.FindControl("txtLooseDescription") as TextBox).Text;
-
+            string txtObservations = (ClaimDetailsListView.Row.FindControl("txtObservations") as TextBox).Text;
 
             if (e.CommandName == "Update")
             {
@@ -69,6 +69,7 @@ namespace IAS.Claims
                     cmd1.Parameters.AddWithValue("@OtherVehicleDescription", txtOtherVehicleDescription);
                     cmd1.Parameters.AddWithValue("@OtherVehiclePatentNumber", txtOtherVehiclePatentNumber);
                     cmd1.Parameters.AddWithValue("@LooseDescription", txtLooseDescription);
+                    cmd1.Parameters.AddWithValue("@Observations", txtObservations);
 
                     sqlConnection1.Open();
 

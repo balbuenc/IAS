@@ -51,17 +51,21 @@
                         <%--<button id="btnObtenerTodos" class="btn btn-default" runat="server" type="button" onserverclick="getAllBox_ServerClick">Obtener todos</button>--%>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <asp:DropDownList ID="ddlMyClaims" runat="server" CssClass="form-control">
                         <asp:ListItem Value="0" Text="Todos los siniestros" Selected="True"></asp:ListItem>
                         <asp:ListItem Value="1" Text="Mis siniestros"></asp:ListItem>
                     </asp:DropDownList>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" DataValueField="ClaimStatusID" DataTextField="Status" DataSourceID="StatusSqldataSoruce" AppendDataBoundItems="true">
                         <asp:ListItem Value="-1" Text="Todos los estados" Selected="True"></asp:ListItem>
                     </asp:DropDownList>
                 </div>
+                <div class="col-lg-2">
+                    <a href="NewClaim.aspx?criteria=Client">Alta Siniestro</a>
+                </div>
+
             </div>
         </div>
         <div id="contenido">
@@ -77,7 +81,7 @@
                                         <tr>
                                             <th>Nro Póliza</th>
                                             <th>Cliente</th>
-                                            <th>Nro. Doc.</th>
+                                      <%--      <th>Nro. Doc.</th>--%>
                                             <th>Riesgo</th>
                                             <th>Fecha</th>
                                             <th>Usuario</th>
@@ -98,8 +102,8 @@
                                     <asp:Label ID="lblPolicyNumber" runat="server" Text='<%# Eval("PolicyNumber") %>' /></td>
                                 <td>
                                     <asp:Label ID="lblClient" runat="server" Text='<%# Eval("Client") %>' /></td>
-                                <td>
-                                    <asp:Label ID="lblClientDocumentNumber" runat="server" Text='<%# Eval("ClientDocumentNumber") %>' /></td>
+                               <%-- <td>
+                                    <asp:Label ID="lblClientDocumentNumber" runat="server" Text='<%# Eval("ClientDocumentNumber") %>' /></td>--%>
                                 <td>
                                     <asp:Label ID="lblRiskName" runat="server" Text='<%# Eval("RiskName") %>' /></td>
                                 <td>

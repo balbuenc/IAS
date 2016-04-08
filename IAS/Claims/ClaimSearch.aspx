@@ -81,7 +81,7 @@
                                         <tr>
                                             <th>Nro Póliza</th>
                                             <th>Cliente</th>
-                                            <th>Nro. Doc.</th>
+                                      <%--      <th>Nro. Doc.</th>--%>
                                             <th>Riesgo</th>
                                             <th>Fecha</th>
                                             <th>Usuario</th>
@@ -102,8 +102,8 @@
                                     <asp:Label ID="lblPolicyNumber" runat="server" Text='<%# Eval("PolicyNumber") %>' /></td>
                                 <td>
                                     <asp:Label ID="lblClient" runat="server" Text='<%# Eval("Client") %>' /></td>
-                                <td>
-                                    <asp:Label ID="lblClientDocumentNumber" runat="server" Text='<%# Eval("ClientDocumentNumber") %>' /></td>
+                               <%-- <td>
+                                    <asp:Label ID="lblClientDocumentNumber" runat="server" Text='<%# Eval("ClientDocumentNumber") %>' /></td>--%>
                                 <td>
                                     <asp:Label ID="lblRiskName" runat="server" Text='<%# Eval("RiskName") %>' /></td>
                                 <td>

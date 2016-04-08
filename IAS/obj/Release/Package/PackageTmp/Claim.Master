@@ -32,8 +32,29 @@
     <form id="form1" runat="server">
         <div id="topContent">
             <a href="../../Default.aspx">IAS | Siniestros </a>
-        </div>
+            <asp:LoginView runat="server" ViewStateMode="Disabled">
+                <AnonymousTemplate>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a runat="server" href="~/Account/Login">Log in</a></li>
+                    </ul>
+                </AnonymousTemplate>
+                <LoggedInTemplate>
+                    <ul class="nav navbar-nav navbar-right" style="font-size: x-small;">
+                        <li><a runat="server" href="~/Account/Manage" title="Manage your account">Bienvenido, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                        <li>
+                            <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                        </li>
+                        <li>
+                            <asp:LinkButton ID="lnkEstados" runat="server"
+                                Text="Estados" OnClientClick="$('#myModalStatus').modal('show'); return false;">
+                                <span class="glyphicon glyphicon-arrow-down"></span>
+                            </asp:LinkButton>
+                        </li>
+                    </ul>
+                </LoggedInTemplate>
+            </asp:LoginView>
 
+        </div>
         <div id="mainContent">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
@@ -47,9 +68,9 @@
                         <li id="searchClaimTab" role="presentation" class="active" runat="server">
                             <a href="ClaimSearch.aspx">Buscar Siniestros</a>
                         </li>
-                        <li id="newClaimTab" role="presentation" runat="server">
+                        <%-- <li id="newClaimTab" role="presentation" runat="server">
                             <a href="NewClaim.aspx?criteria=Client">Alta Siniestro</a>
-                        </li>
+                        </li>--%>
                         <li id="verificationClaimTab" role="presentation" runat="server">
                             <a href="ClaimPolicyVerification.aspx">Verificacion de Cobertura</a>
                         </li>
@@ -84,6 +105,29 @@
         </div>
 
         <div id="footerContent">
+        </div>
+        <div class="modal fade" id="myModalStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+                        <h4 class="modal-title" id="H5">Estados</h4>
+                    </div>
+                    <br />
+                    <div class="alert alert-danger" role="alert">
+                        <asp:Label ID="lblDanger" runat="server"></asp:Label>
+                    </div>
+                    <div class="alert alert-warning" role="alert">
+                        <asp:Label ID="lblWarning" runat="server"></asp:Label>
+                    </div>
+                    <div class="alert alert-info" role="alert">
+                        <asp:Label ID="lblInfo" runat="server"></asp:Label>
+                    </div>
+                    <div class="alert alert-success" role="alert">
+                        <asp:Label ID="lblSucess" runat="server"></asp:Label>
+                    </div>
+                </div>
+            </div>
         </div>
     </form>
 </body>

@@ -174,6 +174,7 @@
     <Content Include="Admin\Liquidators.aspx" />
     <Content Include="Admin\Persons.aspx" />
     <Content Include="Admin\PersonUserAssignments.aspx" />
+    <Content Include="Admin\Policies.aspx" />
     <Content Include="Admin\RoleStateTransitions.aspx" />
     <Content Include="Admin\Sections.aspx" />
     <Content Include="Admin\StatesTransitionsChart.aspx" />
@@ -506,6 +507,13 @@
     </Compile>
     <Compile Include="Admin\PersonUserAssignments.aspx.designer.cs">
       <DependentUpon>PersonUserAssignments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Policies.aspx.cs">
+      <DependentUpon>Policies.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Policies.aspx.designer.cs">
+      <DependentUpon>Policies.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\RoleStateTransitions.aspx.cs">
       <DependentUpon>RoleStateTransitions.aspx</DependentUpon>

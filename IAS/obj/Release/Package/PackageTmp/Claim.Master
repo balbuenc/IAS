@@ -27,6 +27,82 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="Content/Styles.css" rel="stylesheet" />
+    <style>
+        .bs-callout {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #808080;
+            background-color: #eee;
+            border-left-width: 5px;
+            border-radius: 3px;
+            text-align:left;
+        }
+
+            .bs-callout h4 {
+                margin-top: 0;
+                margin-bottom: 5px;
+            }
+
+            .bs-callout p:last-child {
+                margin-bottom: 0;
+            }
+
+            .bs-callout code {
+                border-radius: 3px;
+            }
+
+            .bs-callout + .bs-callout {
+                margin-top: -5px;
+            }
+
+        .bs-callout-default {
+            border-left-color: #777;
+        }
+
+            .bs-callout-default h4 {
+                color: #777;
+            }
+
+        .bs-callout-primary {
+            border-left-color: #428bca;
+        }
+
+            .bs-callout-primary h4 {
+                color: #428bca;
+            }
+
+        .bs-callout-success {
+            border-left-color: #5cb85c;
+        }
+
+            .bs-callout-success h4 {
+                color: #5cb85c;
+            }
+
+        .bs-callout-danger {
+            border-left-color: #d9534f;
+        }
+
+            .bs-callout-danger h4 {
+                color: #d9534f;
+            }
+
+        .bs-callout-warning {
+            border-left-color: #f0ad4e;
+        }
+
+            .bs-callout-warning h4 {
+                color: #f0ad4e;
+            }
+
+        .bs-callout-info {
+            border-left-color: #5bc0de;
+        }
+
+            .bs-callout-info h4 {
+                color: #5bc0de;
+            }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -114,17 +190,26 @@
                         <h4 class="modal-title" id="H5">Estados</h4>
                     </div>
                     <br />
-                    <div class="alert alert-danger" role="alert">
-                        <asp:Label ID="lblDanger" runat="server"></asp:Label>
+                    <div class="container">
+                        <%--   <div style="background-color:red;">&nbsp;</div>--%>
+                        <div class="bs-callout bs-callout-danger">
+                            <asp:Label ID="lblDanger" runat="server"></asp:Label>
+                        </div>
                     </div>
-                    <div class="alert alert-warning" role="alert">
-                        <asp:Label ID="lblWarning" runat="server"></asp:Label>
+                    <div class="container">
+                        <div class="bs-callout bs-callout-warning">
+                            <asp:Label ID="lblWarning" runat="server"></asp:Label>
+                        </div>
                     </div>
-                    <div class="alert alert-info" role="alert">
-                        <asp:Label ID="lblInfo" runat="server"></asp:Label>
+                    <div class="container">
+                        <div class="bs-callout bs-callout-info">
+                            <asp:Label ID="lblInfo" runat="server"></asp:Label>
+                        </div>
                     </div>
-                    <div class="alert alert-success" role="alert">
-                        <asp:Label ID="lblSucess" runat="server"></asp:Label>
+                    <div class="container">
+                        <div class="bs-callout bs-callout-success">
+                            <asp:Label ID="lblSucess" runat="server"></asp:Label>
+                        </div>
                     </div>
                 </div>
             </div>

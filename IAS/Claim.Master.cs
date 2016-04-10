@@ -80,7 +80,7 @@ namespace IAS
 
                 da.Fill(dt);
 
-                
+
                 if(dt.Rows.Count > 0)
                 {
                     lblDanger.Text = dt.Rows[0]["Total"] + " / " + dt.Rows[0]["Status"];

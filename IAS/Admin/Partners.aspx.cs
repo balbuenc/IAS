@@ -18,69 +18,84 @@ namespace IAS.Admin
 
         protected void PartnerListView_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
-            SqlConnection sqlConnection1 = new SqlConnection(PartnerDataSource.ConnectionString);
+            //SqlConnection sqlConnection1 = new SqlConnection(PartnerDataSource.ConnectionString);
 
-            SqlCommand cmd1 = new SqlCommand();
-            int rowsAffected;
+            //SqlCommand cmd1 = new SqlCommand();
+            //int rowsAffected;
 
             string txtPartner;
-            string txtPartnerID; 
+            string txtPartnerID;
             DropDownList ddlCountry;
 
-
-            if (e.CommandName == "Insert")
+            try
             {
-                try
+                if(e.CommandName == "Insert")
                 {
-                    txtPartner = (PartnerListView.InsertItem.FindControl("txtPartner") as TextBox).Text;
-                    ddlCountry = (PartnerListView.InsertItem.FindControl("ddlCountry") as DropDownList);
+                    try
+                    {
+                        txtPartner = (PartnerListView.InsertItem.FindControl("txtPartner") as TextBox).Text;
+                        ddlCountry = (PartnerListView.InsertItem.FindControl("ddlCountry") as DropDownList);
 
-                    cmd1.CommandText = "[dbo].[sp_insert_partner]";
-                    cmd1.CommandType = CommandType.StoredProcedure;
-                    cmd1.Connection = sqlConnection1;
+                        //cmd1.CommandText = "[dbo].[sp_insert_partner]";
+                        //cmd1.CommandType = CommandType.StoredProcedure;
+                        //cmd1.Connection = sqlConnection1;
 
-                    cmd1.Parameters.AddWithValue("@Partner", txtPartner);
-                    cmd1.Parameters.AddWithValue("@CountryID", ddlCountry.SelectedValue);
+                        //cmd1.Parameters.AddWithValue("@Partner", txtPartner);
+                        //cmd1.Parameters.AddWithValue("@CountryID", ddlCountry.SelectedValue);
 
-                    sqlConnection1.Open();
+                        //sqlConnection1.Open();
 
-                    rowsAffected = cmd1.ExecuteNonQuery();
+                        //rowsAffected = cmd1.ExecuteNonQuery();
 
-                    sqlConnection1.Close();
+                        //sqlConnection1.Close();
+
+                        PartnerDataSource.InsertParameters["Partner"].DefaultValue = txtPartner;
+                        PartnerDataSource.InsertParameters["CountryID"].DefaultValue = ddlCountry.SelectedValue;
+
+                        PartnerDataSource.Insert();
+
+                    }
+                    catch(Exception exp)
+                    {
+                        ErrorLabel.Text = exp.Message;
+                        ErrorLabel.Visible = true;
+                    }
                 }
-                catch (Exception exp)
+                else if(e.CommandName == "Update")
                 {
-                    ErrorLabel.Text = exp.Message;
-                    ErrorLabel.Visible = true;
+                    txtPartner = (e.Item.FindControl("txtPartner") as TextBox).Text;
+                    ddlCountry = (e.Item.FindControl("ddlCountry") as DropDownList);
+                    txtPartnerID = (e.Item.FindControl("txtPartnerID") as TextBox).Text;
+
+                    //cmd1.CommandText = "[dbo].[sp_update_partner]";
+                    //cmd1.CommandType = CommandType.StoredProcedure;
+                    //cmd1.Connection = sqlConnection1;
+
+                    //cmd1.Parameters.AddWithValue("@Partner", txtPartner);
+                    //cmd1.Parameters.AddWithValue("@CountryID", ddlCountry.SelectedValue);
+                    //cmd1.Parameters.AddWithValue("@PartnerID", txtPartnerID);
+                    //sqlConnection1.Open();
+
+                    //rowsAffected = cmd1.ExecuteNonQuery();
+
+                    //sqlConnection1.Close();
+
+                    PartnerDataSource.UpdateParameters["PartnerID"].DefaultValue = txtPartnerID;
+                    PartnerDataSource.UpdateParameters["Partner"].DefaultValue = txtPartner;
+                    PartnerDataSource.UpdateParameters["CountryID"].DefaultValue = ddlCountry.SelectedValue;
+
+                    PartnerDataSource.Update();
                 }
-            }
-            else if (e.CommandName == "Update")
-            {
-                txtPartner = (e.Item.FindControl("txtPartner") as TextBox).Text;
-                ddlCountry = (e.Item.FindControl("ddlCountry") as DropDownList);
-                txtPartnerID = (e.Item.FindControl("txtPartnerID") as TextBox).Text;
-
-                cmd1.CommandText = "[dbo].[sp_update_partner]";
-                cmd1.CommandType = CommandType.StoredProcedure;
-                cmd1.Connection = sqlConnection1;
-
-                cmd1.Parameters.AddWithValue("@Partner", txtPartner);
-                cmd1.Parameters.AddWithValue("@CountryID", ddlCountry.SelectedValue);
-                cmd1.Parameters.AddWithValue("@PartnerID", txtPartnerID);
-                sqlConnection1.Open();
-
-                rowsAffected = cmd1.ExecuteNonQuery();
-
-                sqlConnection1.Close();
-
                 
             }
-           
+            catch(Exception)
+            {
+
+                throw;
+            }
+            
         }
 
-      
-
-      
     }
 
 }

@@ -169,9 +169,11 @@
     <Content Include="Admin\ContactDestinations.aspx" />
     <Content Include="Admin\ContactTypes.aspx" />
     <Content Include="Admin\ClaimTypes.aspx" />
+    <Content Include="Admin\Countries.aspx" />
     <Content Include="Admin\Currencies.aspx" />
     <Content Include="Admin\Forms.aspx" />
     <Content Include="Admin\Liquidators.aspx" />
+    <Content Include="Admin\Partners.aspx" />
     <Content Include="Admin\Persons.aspx" />
     <Content Include="Admin\PersonUserAssignments.aspx" />
     <Content Include="Admin\Policies.aspx" />
@@ -247,6 +249,7 @@
     <None Include="Properties\PublishProfiles\seguros - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\toyoias - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Policies\Policy.aspx" />
     <Content Include="Scripts\bloodhound.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
@@ -473,6 +476,13 @@
     <Compile Include="Admin\ClaimTypes.aspx.designer.cs">
       <DependentUpon>ClaimTypes.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Countries.aspx.cs">
+      <DependentUpon>Countries.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Countries.aspx.designer.cs">
+      <DependentUpon>Countries.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Currencies.aspx.cs">
       <DependentUpon>Currencies.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -493,6 +503,13 @@
     </Compile>
     <Compile Include="Admin\Liquidators.aspx.designer.cs">
       <DependentUpon>Liquidators.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Partners.aspx.cs">
+      <DependentUpon>Partners.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Partners.aspx.designer.cs">
+      <DependentUpon>Partners.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Persons.aspx.cs">
       <DependentUpon>Persons.aspx</DependentUpon>
@@ -862,6 +879,13 @@
     <Compile Include="Models\WorkflowStateForm.cs" />
     <Compile Include="Models\WorkflowStateTransition.cs" />
     <Compile Include="Models\WorkShop.cs" />
+    <Compile Include="Policies\Policy.aspx.cs">
+      <DependentUpon>Policy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Policies\Policy.aspx.designer.cs">
+      <DependentUpon>Policy.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

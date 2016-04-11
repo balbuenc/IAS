@@ -81,7 +81,7 @@
                                         <tr>
                                             <th>Nro Póliza</th>
                                             <th>Cliente</th>
-                                      <%--      <th>Nro. Doc.</th>--%>
+                                            <%--      <th>Nro. Doc.</th>--%>
                                             <th>Riesgo</th>
                                             <th>Fecha</th>
                                             <th>Usuario</th>
@@ -102,7 +102,7 @@
                                     <asp:Label ID="lblPolicyNumber" runat="server" Text='<%# Eval("PolicyNumber").ToString() %>' /></td>
                                 <td>
                                     <asp:Label ID="lblClient" runat="server" Text='<%# Eval("Client") %>' /></td>
-                               <%-- <td>
+                                <%-- <td>
                                     <asp:Label ID="lblClientDocumentNumber" runat="server" Text='<%# Eval("ClientDocumentNumber") %>' /></td>--%>
                                 <td>
                                     <asp:Label ID="lblRiskName" runat="server" Text='<%# Eval("RiskName") %>' /></td>
@@ -117,6 +117,7 @@
                                 <td>
                                     <asp:HyperLink ID="linkAction" runat="server" Text='<%#   Eval("NextStatus") %>' NavigateUrl='<%#   Eval("ActionForm") %>'></asp:HyperLink>
                                 </td>
+                                 
                             </tr>
                         </ItemTemplate>
                         <EditItemTemplate>
@@ -143,7 +144,7 @@
         <SelectParameters>
             <asp:ControlParameter Name="find" ControlID="txtSearchClaim" PropertyName="Value" Type="String" />
             <asp:QueryStringParameter Name="criteria" QueryStringField="criteria" DefaultValue="PolicyNumber" />
-            <asp:Parameter Name="user"  />
+            <asp:Parameter Name="user" />
             <asp:ControlParameter Name="myClaims" ControlID="ddlMyClaims" Type="String" PropertyName="SelectedValue" />
             <asp:ControlParameter Name="claimStatusId" ControlID="ddlStatus" DbType="Int32" PropertyName="SelectedValue" />
         </SelectParameters>

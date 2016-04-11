@@ -15,7 +15,7 @@
 
     You should have received a copy of the GNU General Public License
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
- --%>
+--%>
 
 <%@ Page Title="Pólizas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Policies.aspx.cs" Inherits="IAS.Admin.Policies" %>
 
@@ -36,7 +36,7 @@
                 InsertItemPosition="LastItem">
                 <LayoutTemplate>
                     <div class="table responsive">
-                        <table class="table table-striped" style="font-size:x-small">
+                        <table class="table table-striped" style="font-size: x-small">
                             <thead>
                                 <th>Nro.</th>
                                 <th>Sección</th>
@@ -45,6 +45,7 @@
                                 <th>Vencimiento</th>
                                 <th>Tomador</th>
                                 <th>Estado</th>
+                                <th>Póliza</th>
                             </thead>
                             <tbody>
                                 <tr runat="server" id="itemPlaceholder" />
@@ -54,7 +55,7 @@
                 </LayoutTemplate>
                 <ItemTemplate>
                     <tr>
-                       
+
                         <td>
                             <asp:Label ID="lblPolicyNumber" runat="server" Text='<%# Eval("PolicyNumber") %>' /></td>
                         <td>
@@ -67,10 +68,12 @@
                             <asp:Label ID="lblExpirationDate" runat="server" Text='<%# Eval("ExpirationDate") %>' /></td>
                         <td>
                             <asp:Label ID="lblPersonID" runat="server" Text='<%# Eval("PersonID") %>' /></td>
-                       
+
                         <td>
                             <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>' /></td>
-                       
+                        <td>
+                            <asp:HyperLink ID="linkABM" runat="server" Text="Póliza" NavigateUrl='<%#   Eval("Policy") %>'></asp:HyperLink>
+                        </td>
 
                         <td class="text-right">
                             <asp:Button ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CssClass="btn btn-info" />
@@ -92,10 +95,10 @@
                             <asp:TextBox ID="txtExpirationDate" runat="server" Text='<%# Bind("ExpirationDate") %>' CssClass="form-control" Font-Size="X-Small" /></td>
                         <td>
                             <asp:TextBox ID="txtPersonID" runat="server" Text='<%# Bind("PersonID") %>' CssClass="form-control" Font-Size="X-Small" /></td>
-                    
+
                         <td>
                             <asp:TextBox ID="txtStatus" runat="server" Text='<%# Bind("Status") %>' CssClass="form-control" Font-Size="X-Small" /></td>
-                       
+
 
                         <td class="text-right">
                             <asp:Button ID="UpdateButton" runat="server" Text="Guardar" CommandName="Update" CssClass="btn btn-info" />
@@ -117,10 +120,10 @@
                             <asp:TextBox ID="txtExpirationDate" runat="server" Text='<%# Bind("ExpirationDate") %>' CssClass="form-control" Font-Size="X-Small" /></td>
                         <td>
                             <asp:TextBox ID="txtPersonID" runat="server" Text='<%# Bind("PersonID") %>' CssClass="form-control" Font-Size="X-Small" /></td>
-                        
+
                         <td>
                             <asp:TextBox ID="txtStatus" runat="server" Text='<%# Bind("Status") %>' CssClass="form-control" Font-Size="X-Small" /></td>
-                      
+
 
                         <td class="text-right">
                             <asp:Button ID="InsertButton" runat="server" Text="Agregar" CommandName="Insert" CssClass="btn btn-success" />

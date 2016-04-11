@@ -97,16 +97,9 @@ namespace IAS.Claims
 
         protected void getAllClaims()
         {
-            try
-            {
                 ClaimSqldataSource.SelectParameters["find"].DefaultValue = " ";
                 ClaimSqldataSource.SelectParameters["criteria"].DefaultValue = " ";
                 ClaimListView.DataBind();
-            }
-            catch (Exception ex)
-            {
-                Response.Write(ex.Message);
-            }
         }
 
 

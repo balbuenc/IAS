@@ -13,7 +13,8 @@ namespace IAS.Claims
         private string claimID;
 
 
-        protected void Page_Init(object sender, EventArgs e) {
+        protected void Page_Init(object sender, EventArgs e)
+        {
             ClaimSqldataSource.SelectParameters["user"].DefaultValue = User.Identity.Name;
         }
 
@@ -88,7 +89,8 @@ namespace IAS.Claims
             {
                 getAllClaims();
             }
-            else {
+            else
+            {
                 ClaimListView.DataBind();
             }
         }

@@ -121,7 +121,15 @@
         UpdateCommand="[dbo].[sp_update_partner]" UpdateCommandType="StoredProcedure"
         DeleteCommand="delete from dbo.Partner where PartnerID=@PartnerID " DeleteCommandType="Text"
         InsertCommand="[dbo].[sp_insert_partner]" InsertCommandType="StoredProcedure">
-
+        <InsertParameters>
+            <asp:Parameter Name="Partner" />
+            <asp:Parameter Name="CountryID" />
+        </InsertParameters>
+        <UpdateParameters>
+             <asp:Parameter Name="PartnerID" />
+             <asp:Parameter Name="Partner" />
+            <asp:Parameter Name="CountryID" />
+        </UpdateParameters>
         <DeleteParameters>
             <asp:Parameter Name="PartnerID" Type="Int32" />
         </DeleteParameters>

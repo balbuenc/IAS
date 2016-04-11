@@ -83,7 +83,11 @@ namespace IAS
 
                 if(dt.Rows.Count > 0)
                 {
+<<<<<<< HEAD
                     lblDanger.Text = dt.Rows[0]["Total"] + " / " + dt.Rows[0]["Status"];
+=======
+                    lblDanger.Text = dt.Rows[0]["Total"] + " / " + dt.Rows?[0]["Status"];
+>>>>>>> d50062d90cc0e20c6646145f2dd1661224ae8383
                     lblWarning.Text = dt.Rows[1]["Total"] + " / " + dt.Rows[1]["Status"];
                     lblInfo.Text = dt.Rows[2]["Total"] + " / " + dt.Rows[2]["Status"];
                 }

@@ -13,8 +13,7 @@ namespace IAS.Claims
         private string claimID;
 
 
-        protected void Page_Init(object sender, EventArgs e)
-        {
+        protected void Page_Init(object sender, EventArgs e) {
             ClaimSqldataSource.SelectParameters["user"].DefaultValue = User.Identity.Name;
         }
 
@@ -89,19 +88,16 @@ namespace IAS.Claims
             {
                 getAllClaims();
             }
-            else
-            {
+            else {
                 ClaimListView.DataBind();
             }
         }
 
         protected void getAllClaims()
         {
-                ClaimSqldataSource.SelectParameters["find"].DefaultValue = " ";
-                ClaimSqldataSource.SelectParameters["criteria"].DefaultValue = " ";
-                ClaimListView.DataBind();
+            ClaimSqldataSource.SelectParameters["find"].DefaultValue = " ";
+            ClaimSqldataSource.SelectParameters["criteria"].DefaultValue = " ";
+            ClaimListView.DataBind();
         }
-
-
     }
 }

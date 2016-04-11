@@ -91,9 +91,6 @@ namespace IAS.Claims
             else {
                 ClaimListView.DataBind();
             }
-
-           
-         
         }
 
         protected void getAllClaims()
@@ -102,7 +99,5 @@ namespace IAS.Claims
             ClaimSqldataSource.SelectParameters["criteria"].DefaultValue = " ";
             ClaimListView.DataBind();
         }
-
-        
     }
 }

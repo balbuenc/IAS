@@ -51,8 +51,6 @@
                 </LayoutTemplate>
                 <ItemTemplate>
                     <tr>
-
-
                         <td>
                             <asp:Label ID="lblPartnerID" runat="server" Text='<%# Eval("PartnerID") %>' /></td>
                         <td>

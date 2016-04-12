@@ -29,13 +29,14 @@
     <link href="Content/Styles.css" rel="stylesheet" />
     <style>
         .bs-callout {
-            padding: 10px;
-            margin: 10px 0;
+            padding: 15px;
+            margin: 5px 0;
             border: 1px solid #808080;
             background-color: #eee;
             border-left-width: 5px;
             border-radius: 3px;
-            text-align:left;
+            font-size:small;
+            /*text-align: left;*/
         }
 
             .bs-callout h4 {
@@ -102,6 +103,10 @@
             .bs-callout-info h4 {
                 color: #5bc0de;
             }
+
+        .modal-wide .modal-dialog {
+            width: 30%; /* or whatever you wish */
+        }
     </style>
 </head>
 <body>
@@ -182,7 +187,7 @@
 
         <div id="footerContent">
         </div>
-        <div class="modal fade" id="myModalStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade modal-wide" id="myModalStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">

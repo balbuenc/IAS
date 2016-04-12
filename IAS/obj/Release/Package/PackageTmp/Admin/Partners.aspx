@@ -33,14 +33,15 @@
             <asp:ListView ID="PartnerListView" runat="server"
                 DataKeyNames="PartnerID"
                 DataSourceID="PartnerDataSource"
-                InsertItemPosition="LastItem">
+                InsertItemPosition="LastItem"
+                OnItemCommand="PartnerListView_ItemCommand">
                 <LayoutTemplate>
                     <div class="table responsive">
                         <table class="table table-striped" style="font-size: x-small">
                             <thead>
-                                <th>PartnerID</th>
-                                <th>Partner</th>
-                                <th>CountryID</th>
+                                <th>ID.</th>
+                                <th>Asociado</th>
+                                <th>Pais</th>
                             </thead>
                             <tbody>
                                 <tr runat="server" id="itemPlaceholder" />
@@ -57,7 +58,7 @@
                         <td>
                             <asp:Label ID="lblPartner" runat="server" Text='<%# Eval("Partner") %>' /></td>
                         <td>
-                            <asp:Label ID="lblCountryID" runat="server" Text='<%# Eval("CountryID") %>' /></td>
+                            <asp:Label ID="lblCountry" runat="server" Text='<%# Eval("Country") %>' /></td>
 
                         <td class="text-right">
                             <asp:Button ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CssClass="btn btn-info" />
@@ -72,7 +73,11 @@
                         <td>
                             <asp:TextBox ID="txtPartner" runat="server" Text='<%# Bind("Partner") %>' CssClass="form-control" Font-Size="X-Small" /></td>
                         <td>
-                            <asp:TextBox ID="txtCountryID" runat="server" Text='<%# Bind("CountryID") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                            <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-control" DataSourceID="CountriesDataSource"
+                                DataValueField="CountryID" DataTextField="Country" AppendDataBoundItems="true"
+                                SelectedValue='<%#string.IsNullOrEmpty( Eval("CountryID").ToString())?-1:Eval("CountryID") %>'>
+                            </asp:DropDownList>
+                        </td>
 
                         <td class="text-right">
                             <asp:Button ID="UpdateButton" runat="server" Text="Guardar" CommandName="Update" CssClass="btn btn-info" />
@@ -86,12 +91,9 @@
                             <asp:Label ID="lblPartnerID" runat="server" Text="" CssClass="form-control" Font-Size="X-Small" /></td>
                         <td>
                             <asp:TextBox ID="txtPartner" runat="server" Text='<%# Bind("Partner") %>' CssClass="form-control" Font-Size="X-Small" /></td>
-
-                        <%-- <asp:TextBox ID="txtCountryID" runat="server" Text='<%# Bind("CountryID") %>' CssClass="form-control" Font-Size="X-Small" />--%>
                         <td>
                             <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-control" DataSourceID="CountriesDataSource"
-                                DataValueField="CountryID" DataTextField="Country" AppendDataBoundItems="true"
-                                >
+                                DataValueField="CountryID" DataTextField="Country" AppendDataBoundItems="true">
                             </asp:DropDownList>
                         </td>
                         <td class="text-right">
@@ -116,23 +118,22 @@
 
     <asp:SqlDataSource ID="PartnerDataSource" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" runat="server"
         SelectCommand="[dbo].[sp_get_partners]" SelectCommandType="StoredProcedure"
-        UpdateCommand="update dbo.Partner set Partner=@Partner , CountryID=@CountryID where PartnerID=@PartnerID " UpdateCommandType="Text"
+        UpdateCommand="[dbo].[sp_update_partner]" UpdateCommandType="StoredProcedure"
         DeleteCommand="delete from dbo.Partner where PartnerID=@PartnerID " DeleteCommandType="Text"
-        InsertCommand="INSERT INTO [dbo].[Partner] ([Partner],[CountryID]) VALUES (@Partner,@CountryID)" InsertCommandType="Text">
-
+        InsertCommand="[dbo].[sp_insert_partner]" InsertCommandType="StoredProcedure">
+        <InsertParameters>
+            <asp:Parameter Name="Partner" />
+            <asp:Parameter Name="CountryID" />
+        </InsertParameters>
+        <UpdateParameters>
+             <asp:Parameter Name="PartnerID" />
+             <asp:Parameter Name="Partner" />
+            <asp:Parameter Name="CountryID" />
+        </UpdateParameters>
         <DeleteParameters>
             <asp:Parameter Name="PartnerID" Type="Int32" />
         </DeleteParameters>
-        <UpdateParameters>
-            <asp:Parameter Name="PartnerID" Type="Int32" />
-            <asp:Parameter Name="Partner" Type="String" />
-            <asp:Parameter Name="CountryID" Type="Int32" />
-        </UpdateParameters>
-        <InsertParameters>
-            <asp:Parameter Name="PartnerID" Type="Int32" />
-            <asp:Parameter Name="Partner" Type="String" />
-            <asp:Parameter Name="CountryID" Type="Int32" />
-        </InsertParameters>
+       
     </asp:SqlDataSource>
 
     <asp:SqlDataSource ID="CountriesDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[dbo].[get_countries_ddl]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>

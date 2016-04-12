@@ -86,7 +86,7 @@ namespace IAS
 
                     lblDanger.Text = dt.Rows[0]["Total"] + " / " + dt.Rows[0]["Status"];
 
-                    lblDanger.Text = dt.Rows[0]["Total"] + " / " + dt.Rows?[0]["Status"];
+                    lblDanger.Text = dt.Rows[0]["Total"] + " / " + dt.Rows[0]["Status"];
 
                     lblWarning.Text = dt.Rows[1]["Total"] + " / " + dt.Rows[1]["Status"];
                     lblInfo.Text = dt.Rows[2]["Total"] + " / " + dt.Rows[2]["Status"];

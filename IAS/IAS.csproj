@@ -355,6 +355,7 @@
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
     <Content Include="Collections\Tasks.aspx" />
+    <Content Include="Transport\Admin\Certificates.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -909,6 +910,13 @@
     <Compile Include="Collections\Tasks.aspx.designer.cs">
       <DependentUpon>Tasks.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Transport\Admin\Certificates.aspx.cs">
+      <DependentUpon>Certificates.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Transport\Admin\Certificates.aspx.designer.cs">
+      <DependentUpon>Certificates.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -919,7 +927,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Readme\" />
-    <Folder Include="Transport\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201402081817594_Initial.resx">

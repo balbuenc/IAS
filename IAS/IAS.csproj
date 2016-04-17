@@ -919,6 +919,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Readme\" />
+    <Folder Include="Transport\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201402081817594_Initial.resx">

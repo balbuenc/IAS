@@ -26,6 +26,8 @@ namespace IAS.Claims
             SqlConnection sqlConnection1 = new SqlConnection(estadoClienteDataSource.ConnectionString);
             SqlCommand cmd = new SqlCommand();
             SqlCommand cmd1 = new SqlCommand();
+            SqlCommand cmd2 = new SqlCommand();
+
             int rowsAffected;
 
             string txtClaimNumber = (ClaimDetailsListView.Row.FindControl("txtClaimNumber") as TextBox).Text;
@@ -49,7 +51,6 @@ namespace IAS.Claims
             {
                 try
                 {
-
                     cmd1.CommandText = "[claim].[sp_update_claim]";
                     cmd1.CommandType = CommandType.StoredProcedure;
                     cmd1.Connection = sqlConnection1;
@@ -69,7 +70,7 @@ namespace IAS.Claims
                     cmd1.Parameters.AddWithValue("@OtherVehicleDescription", txtOtherVehicleDescription);
                     cmd1.Parameters.AddWithValue("@OtherVehiclePatentNumber", txtOtherVehiclePatentNumber);
                     cmd1.Parameters.AddWithValue("@LooseDescription", txtLooseDescription);
-                    cmd1.Parameters.AddWithValue("@Observations", txtObservations);
+                    //cmd1.Parameters.AddWithValue("@Observations", txtObservations);
 
                     sqlConnection1.Open();
 
@@ -89,6 +90,24 @@ namespace IAS.Claims
                     sqlConnection1.Open();
 
                     rowsAffected = cmd.ExecuteNonQuery();
+
+                    sqlConnection1.Close();
+
+                    // Agregamos el comentario
+
+                    //Genero el cambio de estado
+                    cmd2.CommandText = "claim.sp_insert_claimComment";
+                    cmd2.CommandType = CommandType.StoredProcedure;
+                    cmd2.Connection = sqlConnection1;
+
+                    cmd2.Parameters.AddWithValue("@ClaimID", Request.QueryString["ClaimID"]);
+                    cmd2.Parameters.AddWithValue("@UserName", User.Identity.Name);
+                    cmd2.Parameters.AddWithValue("@CommentDate", DateTime.Now);
+                    cmd2.Parameters.AddWithValue("@Comment", txtObservations);
+
+                    sqlConnection1.Open();
+
+                    rowsAffected = cmd2.ExecuteNonQuery();
 
                     sqlConnection1.Close();
 

@@ -198,7 +198,7 @@
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                     <div class="col-lg-1">Obs. del Estado</div>
                                     <div class="col-lg-11">
-                                        <asp:TextBox ID="txtObservations" runat="server" Text='<%# Bind("Observations") %>' TextMode="MultiLine" Height="100px" CssClass="form-control" />
+                                        <asp:TextBox ID="txtObservations" runat="server" TextMode="MultiLine" Height="100px" CssClass="form-control" /> <%--Text='<%# Bind("Observations") %>' --%>
                                     </div>
                                 </div>
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">

@@ -58,7 +58,7 @@ namespace IAS.Claims
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = sqlConnection1;
 
-                cmd.Parameters.AddWithValue("@ClaimID",  Request.QueryString["ClaimID"]);
+                cmd.Parameters.AddWithValue("@ClaimID", Request.QueryString["ClaimID"]);
                 cmd.Parameters.AddWithValue("@GoNextStep", 1);
                 cmd.Parameters.AddWithValue("@UserName", User.Identity.Name);
 
@@ -87,7 +87,6 @@ namespace IAS.Claims
 
             try
             {
-
                 cmd.CommandText = "claim.sp_change_claim_status";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = sqlConnection1;

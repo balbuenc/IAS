@@ -62,6 +62,7 @@ namespace IAS.Claims
             try
             {
 
+
                 //Actualizolos datos del Siniestro
                 UpdateClaim();
 
@@ -69,7 +70,7 @@ namespace IAS.Claims
                 cmd.CommandText = "claim.sp_change_claim_status";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = sqlConnection1;
-                
+
                 cmd.Parameters.AddWithValue("@ClaimID", Request.QueryString["ClaimID"]);
                 cmd.Parameters.AddWithValue("@GoNextStep", 0);
                 cmd.Parameters.AddWithValue("@UserName", User.Identity.Name);
@@ -96,6 +97,7 @@ namespace IAS.Claims
             SqlConnection sqlConnection1 = new SqlConnection(estadoClienteDataSource.ConnectionString);
             SqlCommand cmd = new SqlCommand();
             SqlCommand cmd1 = new SqlCommand();
+            SqlCommand cmd2 = new SqlCommand();
             int rowsAffected;
 
             string txtClaimNumber = (ClaimDetailsListView.Row.FindControl("txtClaimNumber") as TextBox).Text;
@@ -137,11 +139,27 @@ namespace IAS.Claims
                 cmd1.Parameters.AddWithValue("@OtherVehicleDescription", txtOtherVehicleDescription);
                 cmd1.Parameters.AddWithValue("@OtherVehiclePatentNumber", txtOtherVehiclePatentNumber);
                 cmd1.Parameters.AddWithValue("@LooseDescription", txtLooseDescription);
-                cmd1.Parameters.AddWithValue("@Observations", txtObservations);
+                //cmd1.Parameters.AddWithValue("@Observations", txtObservations);
 
                 sqlConnection1.Open();
 
                 rowsAffected = cmd1.ExecuteNonQuery();
+
+                sqlConnection1.Close();
+
+                //Genero el cambio de estado
+                cmd2.CommandText = "claim.sp_insert_claimComment";
+                cmd2.CommandType = CommandType.StoredProcedure;
+                cmd2.Connection = sqlConnection1;
+
+                cmd2.Parameters.AddWithValue("@ClaimID", Request.QueryString["ClaimID"]);
+                cmd2.Parameters.AddWithValue("@UserName", User.Identity.Name);
+                cmd2.Parameters.AddWithValue("@CommentDate", DateTime.Now);
+                cmd2.Parameters.AddWithValue("@Comment", txtObservations);
+
+                sqlConnection1.Open();
+
+                rowsAffected = cmd2.ExecuteNonQuery();
 
                 sqlConnection1.Close();
 
@@ -151,6 +169,26 @@ namespace IAS.Claims
                 ErrorLabel.Text = exp.Message;
                 ErrorLabel.Visible = true;
             }
+
+        }
+
+        protected void grdClaimComments_RowUpdated(object sender, GridViewUpdatedEventArgs e)
+        {
+
+        }
+
+        protected void grdClaimComments_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            Label lblClaimCommentId = (Label)grdClaimComments.Rows[e.RowIndex].FindControl("lblClaimCommentId");
+            TextBox txtComment = (TextBox)grdClaimComments.Rows[e.RowIndex].FindControl("txtComment");
+
+            claimCommentsDataSource.UpdateParameters["ClaimCommentId"].DefaultValue = lblClaimCommentId.Text;
+            claimCommentsDataSource.UpdateParameters["Comment"].DefaultValue = txtComment.Text;
+            claimCommentsDataSource.UpdateParameters["UserName"].DefaultValue = User.Identity.Name;
+            claimCommentsDataSource.UpdateParameters["CommentDate"].DefaultValue = DateTime.Now.ToString();
+
+            claimCommentsDataSource.Update();
+            grdClaimComments.EditIndex = -1;
 
         }
     }

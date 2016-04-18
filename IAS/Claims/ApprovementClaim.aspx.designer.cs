@@ -40,6 +40,24 @@ namespace IAS.Claims {
         protected global::System.Web.UI.WebControls.FormView ClaimDetailsListView;
         
         /// <summary>
+        /// grdClaimComments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdClaimComments;
+        
+        /// <summary>
+        /// claimCommentsDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource claimCommentsDataSource;
+        
+        /// <summary>
         /// estadoClienteDataSource control.
         /// </summary>
         /// <remarks>

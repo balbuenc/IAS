@@ -85,6 +85,8 @@
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                     Servicios
                                
+                                   
+
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
@@ -99,6 +101,8 @@
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                     Administración
                                    
+                                   
+
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
@@ -130,6 +134,8 @@
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                     Reportes
                                
+                                   
+
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
@@ -146,18 +152,6 @@
                                     <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fEnvioSMSCasosConCelular&rs:Command=Render" target="_blank">Notificaciones por SMS</a></li>
                                     <hr />
                                     <li><a href="https://app.powerbi.com/groups/me/dashboards/0fa2deb1-7e8b-4c54-a4e3-f3182f602af5" target="_blank">Cobranzas Dashboard</a></li>
-
-                                </ul>
-                            </div>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    Transporte
-                               
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="../Transport/Admin/Certificates.aspx">Certificados</a></li>
-
 
                                 </ul>
                             </div>

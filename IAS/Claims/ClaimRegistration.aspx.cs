@@ -70,7 +70,7 @@ namespace IAS.Claims
                     cmd1.Parameters.AddWithValue("@OtherVehicleDescription", txtOtherVehicleDescription);
                     cmd1.Parameters.AddWithValue("@OtherVehiclePatentNumber", txtOtherVehiclePatentNumber);
                     cmd1.Parameters.AddWithValue("@LooseDescription", txtLooseDescription);
-                    //cmd1.Parameters.AddWithValue("@Observations", txtObservations);
+                    cmd1.Parameters.AddWithValue("@Observations", txtObservations);
 
                     sqlConnection1.Open();
 
@@ -93,24 +93,6 @@ namespace IAS.Claims
 
                     sqlConnection1.Close();
 
-                    // Agregamos el comentario
-
-                    //Genero el cambio de estado
-                    cmd2.CommandText = "claim.sp_insert_claimComment";
-                    cmd2.CommandType = CommandType.StoredProcedure;
-                    cmd2.Connection = sqlConnection1;
-
-                    cmd2.Parameters.AddWithValue("@ClaimID", Request.QueryString["ClaimID"]);
-                    cmd2.Parameters.AddWithValue("@UserName", User.Identity.Name);
-                    cmd2.Parameters.AddWithValue("@CommentDate", DateTime.Now);
-                    cmd2.Parameters.AddWithValue("@Comment", txtObservations);
-
-                    sqlConnection1.Open();
-
-                    rowsAffected = cmd2.ExecuteNonQuery();
-
-                    sqlConnection1.Close();
-
                     //Direcciono a la pagina de busqueda
                     Response.Redirect("ClaimSearch.aspx?PolicyNumber=" + Request.QueryString["PolicyNumber"]);
 
@@ -123,5 +105,35 @@ namespace IAS.Claims
             }
         }
 
+        protected void grdClaimComments_RowUpdated(object sender, GridViewUpdatedEventArgs e)
+        {
+
+        }
+
+        protected void grdClaimComments_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            Label lblClaimCommentId = (Label)grdClaimComments.Rows[e.RowIndex].FindControl("lblClaimCommentId");
+            TextBox txtComment = (TextBox)grdClaimComments.Rows[e.RowIndex].FindControl("txtComment");
+
+            claimCommentsDataSource.UpdateParameters["ClaimCommentId"].DefaultValue = lblClaimCommentId.Text;
+            claimCommentsDataSource.UpdateParameters["Comment"].DefaultValue = txtComment.Text;
+            claimCommentsDataSource.UpdateParameters["UserName"].DefaultValue = User.Identity.Name;
+            claimCommentsDataSource.UpdateParameters["CommentDate"].DefaultValue = DateTime.Now.ToString();
+
+            claimCommentsDataSource.Update();
+            grdClaimComments.EditIndex = -1;
+
+        }
+
+        protected void btnCommentAdd_Click(object sender, EventArgs e)
+        {
+            claimCommentsDataSource.InsertParameters["Comment"].DefaultValue = txtComments.Text;
+            claimCommentsDataSource.InsertParameters["UserName"].DefaultValue = User.Identity.Name;
+            claimCommentsDataSource.InsertParameters["CommentDate"].DefaultValue = DateTime.Now.ToString();
+
+            claimCommentsDataSource.Insert();
+            claimCommentsDataSource.DataBind();
+            txtComments.Text = string.Empty;
+        }
     }
 }

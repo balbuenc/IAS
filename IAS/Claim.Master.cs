@@ -81,7 +81,7 @@ namespace IAS
                 da.Fill(dt);
 
 
-                if(dt.Rows.Count > 0)
+                if (dt.Rows.Count > 0)
                 {
 
                     lblDanger.Text = dt.Rows[0]["Total"] + " / " + dt.Rows[0]["Status"];
@@ -92,7 +92,7 @@ namespace IAS
                     lblInfo.Text = dt.Rows[2]["Total"] + " / " + dt.Rows[2]["Status"];
                 }
             }
-            catch(Exception exp)
+            catch (Exception exp)
             {
 
             }

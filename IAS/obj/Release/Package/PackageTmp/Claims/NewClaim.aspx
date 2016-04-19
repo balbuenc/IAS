@@ -52,7 +52,7 @@
             padding-right: 10px;
         }
 
-        .modal-wide .modal-dialog {
+        .modal-wide1 .modal-dialog {
             width: 80%; /* or whatever you wish */
         }
     </style>
@@ -181,7 +181,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade modal-wide" id="myModalPolizas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade modal-wide1" id="myModalPolizas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">

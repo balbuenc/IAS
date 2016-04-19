@@ -49,6 +49,18 @@
                                 <th>ContactID</th>
                                 <th>RiskName</th>
                                 <th>PackageCount</th>
+                                <th>Origin</th>
+                                <th>Destination</th>
+                                <th>TransportationMethodID</th>
+                                <th>Description</th>
+                                <th>Premium</th>
+                                <th>PremiunmPlusTax</th>
+                                <th>CapitalAmount</th>
+                                <th>Rate</th>
+                                <th>SpendingPercent</th>
+                                <th>Spending</th>
+                                <th>ComissionASSAPercent</th>
+                                <th>ComissionAdviserPercent</th>
                             </thead>
                             <tbody>
                                 <tr runat="server" id="itemPlaceholder" />
@@ -80,6 +92,30 @@
                             <asp:Label ID="lblRiskName" runat="server" Text='<%# Eval("RiskName") %>' /></td>
                         <td>
                             <asp:Label ID="lblPackageCount" runat="server" Text='<%# Eval("PackageCount") %>' /></td>
+                        <td>
+                            <asp:Label ID="lblOrigin" runat="server" Text='<%# Eval("Origin") %>' /></td>
+                        <td>
+                            <asp:Label ID="lblDestination" runat="server" Text='<%# Eval("Destination") %>' /></td>
+                        <td>
+                            <asp:Label ID="lblTransportationMethodID" runat="server" Text='<%# Eval("TransportationMethodID") %>' /></td>
+                        <td>
+                            <asp:Label ID="lblDescription" runat="server" Text='<%# Eval("Description") %>' /></td>
+                        <td>
+                            <asp:Label ID="lblPremium" runat="server" Text='<%# Eval("Premium") %>' /></td>
+                        <td>
+                            <asp:Label ID="lblPremiunmPlusTax" runat="server" Text='<%# Eval("PremiunmPlusTax") %>' /></td>
+                        <td>
+                            <asp:Label ID="lblCapitalAmount" runat="server" Text='<%# Eval("CapitalAmount") %>' /></td>
+                        <td>
+                            <asp:Label ID="lblRate" runat="server" Text='<%# Eval("Rate") %>' /></td>
+                        <td>
+                            <asp:Label ID="lblSpendingPercent" runat="server" Text='<%# Eval("SpendingPercent") %>' /></td>
+                        <td>
+                            <asp:Label ID="lblSpending" runat="server" Text='<%# Eval("Spending") %>' /></td>
+                        <td>
+                            <asp:Label ID="lblComissionASSAPercent" runat="server" Text='<%# Eval("ComissionASSAPercent") %>' /></td>
+                        <td>
+                            <asp:Label ID="lblComissionAdviserPercent" runat="server" Text='<%# Eval("ComissionAdviserPercent") %>' /></td>
 
                         <td class="text-right">
                             <asp:Button ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CssClass="btn btn-info" />
@@ -111,6 +147,30 @@
                             <asp:TextBox ID="txtRiskName" runat="server" Text='<%# Bind("RiskName") %>' CssClass="form-control" Font-Size="X-Small" /></td>
                         <td>
                             <asp:TextBox ID="txtPackageCount" runat="server" Text='<%# Bind("PackageCount") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtOrigin" runat="server" Text='<%# Bind("Origin") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtDestination" runat="server" Text='<%# Bind("Destination") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtTransportationMethodID" runat="server" Text='<%# Bind("TransportationMethodID") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtDescription" runat="server" Text='<%# Bind("Description") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtPremium" runat="server" Text='<%# Bind("Premium") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtPremiunmPlusTax" runat="server" Text='<%# Bind("PremiunmPlusTax") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtCapitalAmount" runat="server" Text='<%# Bind("CapitalAmount") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtRate" runat="server" Text='<%# Bind("Rate") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtSpendingPercent" runat="server" Text='<%# Bind("SpendingPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtSpending" runat="server" Text='<%# Bind("Spending") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtComissionASSAPercent" runat="server" Text='<%# Bind("ComissionASSAPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtComissionAdviserPercent" runat="server" Text='<%# Bind("ComissionAdviserPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
 
                         <td class="text-right">
                             <asp:Button ID="UpdateButton" runat="server" Text="Guardar" CommandName="Update" CssClass="btn btn-info" />
@@ -142,6 +202,30 @@
                             <asp:TextBox ID="txtRiskName" runat="server" Text='<%# Bind("RiskName") %>' CssClass="form-control" Font-Size="X-Small" /></td>
                         <td>
                             <asp:TextBox ID="txtPackageCount" runat="server" Text='<%# Bind("PackageCount") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtOrigin" runat="server" Text='<%# Bind("Origin") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtDestination" runat="server" Text='<%# Bind("Destination") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtTransportationMethodID" runat="server" Text='<%# Bind("TransportationMethodID") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtDescription" runat="server" Text='<%# Bind("Description") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtPremium" runat="server" Text='<%# Bind("Premium") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtPremiunmPlusTax" runat="server" Text='<%# Bind("PremiunmPlusTax") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtCapitalAmount" runat="server" Text='<%# Bind("CapitalAmount") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtRate" runat="server" Text='<%# Bind("Rate") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtSpendingPercent" runat="server" Text='<%# Bind("SpendingPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtSpending" runat="server" Text='<%# Bind("Spending") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtComissionASSAPercent" runat="server" Text='<%# Bind("ComissionASSAPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtComissionAdviserPercent" runat="server" Text='<%# Bind("ComissionAdviserPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
                         <td class="text-right">
                             <asp:Button ID="InsertButton" runat="server" Text="Agregar" CommandName="Insert" CssClass="btn btn-success" />
                         </td>

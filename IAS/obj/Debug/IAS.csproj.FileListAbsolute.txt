@@ -229,7 +229,6 @@ C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\bin\Owin.dll
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\bin\System.Web.Optimization.dll
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\bin\System.Web.Providers.dll
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\bin\WebGrease.dll
-C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\bin\System.Data.SqlServerCe.dll
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\bin\System.Web.Optimization.xml
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\bin\Antlr3.Runtime.pdb
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\bin\Newtonsoft.Json.xml
@@ -248,7 +247,6 @@ C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\bin\Microsoft
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\bin\Microsoft.Owin.Security.OAuth.xml
-C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\bin\ES\System.Data.SqlServerCe.resources.dll
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\obj\Debug\IAS.Migrations.Initial.resources
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\obj\Debug\IAS.Migrations.CollectionAdd.resources
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\obj\Debug\IAS.Migrations.StateFormsMod.resources

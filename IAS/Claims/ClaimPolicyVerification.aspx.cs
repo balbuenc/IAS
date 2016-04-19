@@ -58,7 +58,7 @@ namespace IAS.Claims
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = sqlConnection1;
 
-                cmd.Parameters.AddWithValue("@ClaimID",  Request.QueryString["ClaimID"]);
+                cmd.Parameters.AddWithValue("@ClaimID", Request.QueryString["ClaimID"]);
                 cmd.Parameters.AddWithValue("@GoNextStep", 1);
                 cmd.Parameters.AddWithValue("@UserName", User.Identity.Name);
 
@@ -87,7 +87,6 @@ namespace IAS.Claims
 
             try
             {
-
                 cmd.CommandText = "claim.sp_change_claim_status";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = sqlConnection1;
@@ -113,5 +112,35 @@ namespace IAS.Claims
             }
         }
 
+        protected void grdClaimComments_RowUpdated(object sender, GridViewUpdatedEventArgs e)
+        {
+
+        }
+
+        protected void grdClaimComments_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            Label lblClaimCommentId = (Label)grdClaimComments.Rows[e.RowIndex].FindControl("lblClaimCommentId");
+            TextBox txtComment = (TextBox)grdClaimComments.Rows[e.RowIndex].FindControl("txtComment");
+
+            claimCommentsDataSource.UpdateParameters["ClaimCommentId"].DefaultValue = lblClaimCommentId.Text;
+            claimCommentsDataSource.UpdateParameters["Comment"].DefaultValue = txtComment.Text;
+            claimCommentsDataSource.UpdateParameters["UserName"].DefaultValue = User.Identity.Name;
+            claimCommentsDataSource.UpdateParameters["CommentDate"].DefaultValue = DateTime.Now.ToString();
+
+            claimCommentsDataSource.Update();
+            grdClaimComments.EditIndex = -1;
+
+        }
+
+        protected void btnCommentAdd_Click(object sender, EventArgs e)
+        {
+            claimCommentsDataSource.InsertParameters["Comment"].DefaultValue = txtComments.Text;
+            claimCommentsDataSource.InsertParameters["UserName"].DefaultValue = User.Identity.Name;
+            claimCommentsDataSource.InsertParameters["CommentDate"].DefaultValue = DateTime.Now.ToString();
+
+            claimCommentsDataSource.Insert();
+            claimCommentsDataSource.DataBind();
+            txtComments.Text = string.Empty;
+        }
     }
 }

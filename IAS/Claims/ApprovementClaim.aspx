@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="Aprobaciòn de Siniestros" Language="C#" MasterPageFile="~/Claim.Master" AutoEventWireup="true" CodeBehind="ApprovementClaim.aspx.cs" Inherits="IAS.Claims.ApprovementClaim" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="../Scripts/jquery-1.10.2.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
@@ -60,9 +61,9 @@
                     runat="server"
                     DataKeyNames="ClaimID"
                     DataSourceID="siniestroDetalleDataSource"
-                    RenderOuterTable="false" DefaultMode="Edit" >
+                    RenderOuterTable="false" DefaultMode="Edit">
                     <ItemTemplate>
-                     <%--<div class="container">
+                        <%--<div class="container">
                             <div class="form-horizontal" style="font-size: small">
                                 <div class="row alert-info" style="padding-top: 10px; padding-bottom: 10px">
                                     <div class="col-lg-4">Id. Caso:<asp:Label ID="CaseIDLabel" runat="server" Text='<%# Eval("CaseID") %>' /></div>
@@ -208,7 +209,7 @@
                                     </div>
                                     <div class="col-lg-1">Taller</div>
                                     <div class="col-lg-3">
-                                        <asp:DropDownList ID="ddlTaller" runat="server" CssClass="form-control" DataSourceID="talleresSqlDataSource" 
+                                        <asp:DropDownList ID="ddlTaller" runat="server" CssClass="form-control" DataSourceID="talleresSqlDataSource"
                                             DataValueField="WorkShopID" DataTextField="Name" SelectedValue='<%#string.IsNullOrEmpty( Eval("WorkshopID").ToString())?-1:Eval("WorkshopID") %>' />
                                     </div>
                                     <div class="col-lg-1">Contacto</div>
@@ -238,7 +239,7 @@
                                     </div>
                                     <div class="col-lg-1">Aseguradora</div>
                                     <div class="col-lg-3">
-                                        <asp:Label ID="lblInsuranceManager" runat="server" Text='<%# Eval("InsuranceManager") %>'  />
+                                        <asp:Label ID="lblInsuranceManager" runat="server" Text='<%# Eval("InsuranceManager") %>' />
                                     </div>
                                     <div class="col-lg-1">Dir. Siniestro</div>
                                     <div class="col-lg-3">
@@ -275,14 +276,15 @@
                                     <div class="col-lg-1">Obs. del Estado</div>
                                     <div class="col-lg-11">
                                         <asp:TextBox ID="txtObservations" runat="server" Text='<%# Bind("Observations") %>' TextMode="MultiLine" Height="100px" CssClass="form-control" />
+                                        <%-- --%>
                                     </div>
                                 </div>
-                                <div class="row" >
+                                <div class="row">
                                     <div class="col-lg-6 ">
-                                        <asp:Button ID="ApprovementBtn" runat="server" Text="Aprobado por Aseguradora" OnClick="ApprovementBtn_Click"  CssClass="btn btn-success" />
+                                        <asp:Button ID="ApprovementBtn" runat="server" Text="Aprobado por Aseguradora" OnClick="ApprovementBtn_Click" CssClass="btn btn-success" />
                                     </div>
                                     <div class="col-lg-6 ">
-                                        <asp:Button ID="DisapprovementBT" runat="server" Text="Rechazado por Aseguradora" OnClick="DisapprovementBT_Click"  CssClass="btn btn-danger" />
+                                        <asp:Button ID="DisapprovementBT" runat="server" Text="Rechazado por Aseguradora" OnClick="DisapprovementBT_Click" CssClass="btn btn-danger" />
                                     </div>
                                 </div>
                             </div>
@@ -305,9 +307,100 @@
                 </asp:FormView>
             </div>
         </div>
+        <br />
+        <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+            <div class="col-lg-2">Comentarios</div>
+            <div class="col-lg-8">
+                <asp:TextBox ID="txtComments" runat="server" CssClass="form-control" />
+            </div>
+            <div class="col-lg-2">
+                <asp:Button ID="btnCommentAdd" runat="server" Text="Guardar comentario" CssClass="btn btn-default" OnClick="btnCommentAdd_Click"  />
+            </div>
+        </div>
+        <div class="row">
+            <br />
+            <div class="col-lg-12">
+                <asp:GridView ID="grdClaimComments" runat="server" CssClass="table table-hover table-bordered"
+                    AutoGenerateColumns="false"
+                    DataKeyNames="ClaimCommentID"
+                    DataSourceID="claimCommentsDataSource"
+                    OnRowUpdated="grdClaimComments_RowUpdated"
+                    OnRowUpdating="grdClaimComments_RowUpdating"
+                    RowStyle-Font-Size="Small"
+                    HeaderStyle-Font-Size="Small">
+                    <Columns>
+                        <asp:TemplateField HeaderText="ID" Visible="false">
+                            <ItemTemplate>
+                                <asp:Label ID="lblClaimCommentID" runat="server" Text='<%# Eval("ClaimCommentID") %>'></asp:Label>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:Label ID="lblClaimCommentID" runat="server" Text='<%# Eval("ClaimCommentID") %>'></asp:Label>
+                            </EditItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Comentario">
+                            <ItemTemplate>
+                                <asp:Label ID="lblComment" runat="server" Text='<%# Eval("Comment") %>'></asp:Label>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txtComment" CssClass="form-control" runat="server" Text='<%# Eval("Comment") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="ClaimID">
+                            <ItemTemplate>
+                                <asp:Label ID="lblClaimID" runat="server" Text='<%# Eval("ClaimID") %>'></asp:Label>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txtClaimID" CssClass="form-control" runat="server" ReadOnly="true" Text='<%# Eval("ClaimID") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="User">
+                            <ItemTemplate>
+                                <asp:Label ID="lblUserName" runat="server" Text='<%# Eval("UserName") %>'></asp:Label>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txtUserName" CssClass="form-control" runat="server" ReadOnly="true" Text='<%# Eval("UserName") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Fecha">
+                            <ItemTemplate>
+                                <asp:Label ID="lblCommentDate" runat="server" Text='<%# Eval("CommentDate") %>'></asp:Label>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txtCommentDate" CssClass="form-control" runat="server" ReadOnly="true" Text='<%# System.DateTime.Now %>'></asp:TextBox>
+                            </EditItemTemplate>
+                        </asp:TemplateField>
+                        <asp:CommandField CancelText="Cancelar" DeleteText="Eliminar" EditText="Editar"
+                            InsertText="Insertar" NewText="Nuevo" ShowEditButton="True"
+                            UpdateText="Actualizar" HeaderText="Acciones" />
+                    </Columns>
+                </asp:GridView>
+            </div>
+        </div>
     </div>
 
     <!-- #region Data Sources -->
+    <asp:SqlDataSource ID="claimCommentsDataSource" runat="server"
+        ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
+        SelectCommand="[claim].[sp_get_claimComments]" SelectCommandType="StoredProcedure"
+        InsertCommand="[claim].[sp_insert_claimComment]" InsertCommandType="StoredProcedure"
+        UpdateCommand="[claim].[sp_update_claimComment]" UpdateCommandType="StoredProcedure">
+        <InsertParameters>
+            <asp:QueryStringParameter Name="ClaimID" QueryStringField="ClaimID" Type="Int32" />
+            <asp:Parameter Name="UserName" DbType="String" />
+            <asp:Parameter Name="CommentDate" DbType="DateTime" />
+            <asp:Parameter Name="Comment" DbType="String" />
+        </InsertParameters>
+        <UpdateParameters>
+            <asp:Parameter Name="ClaimCommentID" DbType="Int64" />
+            <asp:QueryStringParameter Name="ClaimID" QueryStringField="ClaimID" Type="Int32" />
+            <asp:Parameter Name="UserName" DbType="String" />
+            <asp:Parameter Name="CommentDate" DbType="DateTime" />
+            <asp:Parameter Name="Comment" DbType="String" />
+        </UpdateParameters>
+        <SelectParameters>
+            <asp:QueryStringParameter Name="ClaimID" QueryStringField="ClaimID" Type="Int32" />
+        </SelectParameters>
+    </asp:SqlDataSource>
     <asp:SqlDataSource ID="estadoClienteDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[claim].[sp_get_client_status]" SelectCommandType="StoredProcedure">
         <SelectParameters>
             <asp:QueryStringParameter Name="ClaimID" QueryStringField="ClaimID" Type="Int32" />
@@ -317,7 +410,7 @@
         <SelectParameters>
             <asp:QueryStringParameter Name="ClaimID" QueryStringField="ClaimID" Type="Int32" />
         </SelectParameters>
-       
+
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="liquidadoresDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="claim.get_liquidators_ddl" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     <asp:SqlDataSource ID="talleresSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="claim.sp_get_workshops_ddl" SelectCommandType="StoredProcedure"></asp:SqlDataSource>

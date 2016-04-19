@@ -13,6 +13,10 @@ namespace IAS.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(!Page.IsPostBack)
+            {
+
+            }
 
         }
 
@@ -26,10 +30,10 @@ namespace IAS.Admin
             string txtPartner;
             string txtPartnerID;
             DropDownList ddlCountry;
-
+           
             try
             {
-                if(e.CommandName == "Insert")
+                if(e.CommandName == "Insertar")
                 {
                     try
                     {
@@ -90,7 +94,6 @@ namespace IAS.Admin
             }
             catch(Exception)
             {
-
                 throw;
             }
             

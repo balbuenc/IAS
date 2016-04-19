@@ -30,7 +30,6 @@ namespace IAS.Claims
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = sqlConnection1;
 
-
                 cmd.Parameters.AddWithValue("@ClaimID", Request.QueryString["ClaimID"]);
                 cmd.Parameters.AddWithValue("@GoNextStep", 1);
                 cmd.Parameters.AddWithValue("@UserName", User.Identity.Name);
@@ -61,7 +60,6 @@ namespace IAS.Claims
 
             try
             {
-
 
                 //Actualizolos datos del Siniestro
                 UpdateClaim();
@@ -139,7 +137,7 @@ namespace IAS.Claims
                 cmd1.Parameters.AddWithValue("@OtherVehicleDescription", txtOtherVehicleDescription);
                 cmd1.Parameters.AddWithValue("@OtherVehiclePatentNumber", txtOtherVehiclePatentNumber);
                 cmd1.Parameters.AddWithValue("@LooseDescription", txtLooseDescription);
-                //cmd1.Parameters.AddWithValue("@Observations", txtObservations);
+                cmd1.Parameters.AddWithValue("@Observations", txtObservations);
 
                 sqlConnection1.Open();
 
@@ -190,6 +188,17 @@ namespace IAS.Claims
             claimCommentsDataSource.Update();
             grdClaimComments.EditIndex = -1;
 
+        }
+
+        protected void btnCommentAdd_Click(object sender, EventArgs e)
+        {
+            claimCommentsDataSource.InsertParameters["Comment"].DefaultValue = txtComments.Text;
+            claimCommentsDataSource.InsertParameters["UserName"].DefaultValue = User.Identity.Name;
+            claimCommentsDataSource.InsertParameters["CommentDate"].DefaultValue = DateTime.Now.ToString();
+
+            claimCommentsDataSource.Insert();
+            claimCommentsDataSource.DataBind();
+            txtComments.Text = string.Empty;
         }
     }
 }

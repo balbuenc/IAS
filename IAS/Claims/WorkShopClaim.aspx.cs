@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -108,7 +108,7 @@ namespace IAS.Claims
                 cmd1.Parameters.AddWithValue("@OtherVehicleDescription", lblOtherVehicleDescription);
                 cmd1.Parameters.AddWithValue("@OtherVehiclePatentNumber", lblOtherVehiclePatentNumber);
                 cmd1.Parameters.AddWithValue("@LooseDescription", txtLooseDescription);
-                //cmd1.Parameters.AddWithValue("@Observations", txtObservations);
+                cmd1.Parameters.AddWithValue("@Observations", txtObservations);
 
                 sqlConnection1.Open();
 
@@ -249,6 +249,17 @@ namespace IAS.Claims
             claimCommentsDataSource.Update();
             grdClaimComments.EditIndex = -1;
 
+        }
+
+        protected void btnCommentAdd_Click(object sender, EventArgs e)
+        {
+            claimCommentsDataSource.InsertParameters["Comment"].DefaultValue = txtComments.Text;
+            claimCommentsDataSource.InsertParameters["UserName"].DefaultValue = User.Identity.Name;
+            claimCommentsDataSource.InsertParameters["CommentDate"].DefaultValue = DateTime.Now.ToString();
+
+            claimCommentsDataSource.Insert();
+            claimCommentsDataSource.DataBind();
+            txtComments.Text = string.Empty;
         }
 
     }

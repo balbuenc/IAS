@@ -76,17 +76,16 @@
                                 SelectedValue='<%#string.IsNullOrEmpty( Eval("CountryID").ToString())?-1:Eval("CountryID") %>'>
                             </asp:DropDownList>
                         </td>
-
                         <td class="text-right">
                             <asp:Button ID="UpdateButton" runat="server" Text="Guardar" CommandName="Update" CssClass="btn btn-info" />
-                            <asp:Button ID="CancelButton" runat="server" Text="Cancelar" CommandName="Cancel" CssClass="btn" />
+                            <asp:Button ID="CancelButton" runat="server" Text="Cancelar" CommandName="Cancel" CssClass="btn btn-default" />
                         </td>
                     </tr>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <tr>
                         <td>
-                            <asp:Label ID="lblPartnerID" runat="server" Text="" CssClass="form-control" Font-Size="X-Small" /></td>
+                            <asp:Label ID="lblPartnerID" runat="server" Text='<%# Bind("PartnerID") %>' CssClass="form-control" Font-Size="X-Small" /></td>
                         <td>
                             <asp:TextBox ID="txtPartner" runat="server" Text='<%# Bind("Partner") %>' CssClass="form-control" Font-Size="X-Small" /></td>
                         <td>
@@ -95,11 +94,10 @@
                             </asp:DropDownList>
                         </td>
                         <td class="text-right">
-                            <asp:Button ID="InsertButton" runat="server" Text="Agregar" CommandName="Insert" CssClass="btn btn-success" />
+                            <asp:Button ID="InsertButton" runat="server" Text="Agregar" CommandName="Insertar" CssClass="btn btn-success" />
                         </td>
                     </tr>
                 </InsertItemTemplate>
-
             </asp:ListView>
 
             <asp:DataPager ID="PartnersDataPager" runat="server" PagedControlID="PartnerListView" PageSize="10">
@@ -117,7 +115,7 @@
     <asp:SqlDataSource ID="PartnerDataSource" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" runat="server"
         SelectCommand="[dbo].[sp_get_partners]" SelectCommandType="StoredProcedure"
         UpdateCommand="[dbo].[sp_update_partner]" UpdateCommandType="StoredProcedure"
-        DeleteCommand="delete from dbo.Partner where PartnerID=@PartnerID " DeleteCommandType="Text"
+        DeleteCommand="delete from dbo.Partner where PartnerID = @PartnerID " DeleteCommandType="Text"
         InsertCommand="[dbo].[sp_insert_partner]" InsertCommandType="StoredProcedure">
         <InsertParameters>
             <asp:Parameter Name="Partner" />

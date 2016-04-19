@@ -85,6 +85,8 @@
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                     Servicios
                                
+                                   
+
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
@@ -99,6 +101,8 @@
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                     Administración
                                    
+                                   
+
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
@@ -130,6 +134,8 @@
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                     Reportes
                                
+                                   
+
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Gestión de Talleres" Language="C#" MasterPageFile="~/Claim.Master" AutoEventWireup="true" CodeBehind="WorkShopClaim.aspx.cs" Inherits="IAS.Claims.WorkShopClaim" %>
+<%@ Page Title="Gestión de Talleres" Language="C#" MasterPageFile="~/Claim.Master" AutoEventWireup="true" CodeBehind="WorkShopClaim.aspx.cs" Inherits="IAS.Claims.WorkShopClaim" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="../Scripts/jquery-1.10.2.min.js"></script>
@@ -166,7 +166,7 @@
                                         <div class="row">
                                             <div class="col-lg-1">Obs. del Estado</div>
                                             <div class="col-lg-11">
-                                                <asp:TextBox ID="txtObservations" runat="server" TextMode="MultiLine" Height="100px" CssClass="form-control" /> <%--Text='<%# Bind("Observations") %>' --%>
+                                                <asp:TextBox ID="txtObservations" runat="server" Text='<%# Bind("Observations") %>' TextMode="MultiLine" Height="100px" CssClass="form-control" />
                                             </div>
                                         </div>
                                     </div>
@@ -208,6 +208,17 @@
 
                 </asp:FormView>
             </div>
+        </div>
+        <br />
+        <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+            <div class="col-lg-2">Comentarios</div>
+            <div class="col-lg-8">
+                <asp:TextBox ID="txtComments" runat="server"  CssClass="form-control" />
+            </div>
+            <div class="col-lg-2">
+                <asp:Button ID="btnCommentAdd" runat="server" Text="Guardar comentario" CssClass="btn btn-default" OnClick="btnCommentAdd_Click"  />
+            </div>
+        </div>
         </div>
         <div class="row">
             <br />

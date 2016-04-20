@@ -358,6 +358,7 @@
     <Content Include="Site.Master" />
     <Content Include="Collections\Tasks.aspx" />
     <Content Include="Transport\Admin\Certificates.aspx" />
+    <Content Include="Transport\Admin\Policies.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -932,6 +933,13 @@
     </Compile>
     <Compile Include="Transport\Admin\Certificates.aspx.designer.cs">
       <DependentUpon>Certificates.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Transport\Admin\Policies.aspx.cs">
+      <DependentUpon>Policies.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Transport\Admin\Policies.aspx.designer.cs">
+      <DependentUpon>Policies.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

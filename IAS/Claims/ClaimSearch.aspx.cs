@@ -101,5 +101,16 @@ namespace IAS.Claims
             ClaimSqldataSource.SelectParameters["criteria"].DefaultValue = " ";
             ClaimListView.DataBind();
         }
+
+        protected void ClaimListView_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            string claimID = ((Label)e.Item.FindControl("lblClaimID")).Text;
+            string PolicyNumber = ((Label)e.Item.FindControl("lblPolicyNumber")).Text;
+
+            if (e.CommandName == "Edit")
+            {
+                Response.Redirect("ClaimDetail.aspx?ClaimID=" + claimID + "&PolicyNumber=" + PolicyNumber);
+            }
+        }
     }
 }

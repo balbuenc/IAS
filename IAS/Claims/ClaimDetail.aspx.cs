@@ -33,6 +33,7 @@ namespace IAS.Claims
             string txtRiskName = (ClaimDetailsListView.Row.FindControl("txtRiskName") as TextBox).Text;
             DropDownList ddlLiquidador = (ClaimDetailsListView.Row.FindControl("ddlLiquidador") as DropDownList);
             DropDownList ddlTaller = (ClaimDetailsListView.Row.FindControl("ddlTaller") as DropDownList);
+            DropDownList ddlUser = (ClaimDetailsListView.Row.FindControl("ddlClaimUser") as DropDownList);
             string txtContactName = (ClaimDetailsListView.Row.FindControl("txtContactName") as TextBox).Text;
             string txtClaimDate = (ClaimDetailsListView.Row.FindControl("txtClaimDate") as TextBox).Text;
             DropDownList ddlExpertoAseguradora = (ClaimDetailsListView.Row.FindControl("ddlExpertoAseguradora") as DropDownList);
@@ -70,6 +71,7 @@ namespace IAS.Claims
                     cmd1.Parameters.AddWithValue("@OtherVehiclePatentNumber", txtOtherVehiclePatentNumber);
                     cmd1.Parameters.AddWithValue("@LooseDescription", txtLooseDescription);
                     cmd1.Parameters.AddWithValue("@Observations", txtObservations);
+                    cmd1.Parameters.AddWithValue("@UserID", ddlUser.SelectedValue);
 
                     sqlConnection1.Open();
 

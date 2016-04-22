@@ -13,7 +13,7 @@ namespace IAS.Claims
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void RegistrarSiniestro(object sender, EventArgs e)
@@ -100,11 +100,13 @@ namespace IAS.Claims
         {
             Label lblClaimCommentId = (Label)grdClaimComments.Rows[e.RowIndex].FindControl("lblClaimCommentId");
             TextBox txtComment = (TextBox)grdClaimComments.Rows[e.RowIndex].FindControl("txtComment");
+            TextBox txtCommentDate = (TextBox)grdClaimComments.Rows[e.RowIndex].FindControl("txtCommentDate");
+
 
             claimCommentsDataSource.UpdateParameters["ClaimCommentId"].DefaultValue = lblClaimCommentId.Text;
             claimCommentsDataSource.UpdateParameters["Comment"].DefaultValue = txtComment.Text;
             claimCommentsDataSource.UpdateParameters["UserName"].DefaultValue = User.Identity.Name;
-            claimCommentsDataSource.UpdateParameters["CommentDate"].DefaultValue = DateTime.Now.ToString();
+            claimCommentsDataSource.UpdateParameters["CommentDate"].DefaultValue = txtCommentDate.Text;
 
             claimCommentsDataSource.Update();
             grdClaimComments.EditIndex = -1;
@@ -121,5 +123,8 @@ namespace IAS.Claims
             claimCommentsDataSource.DataBind();
             txtComments.Text = string.Empty;
         }
+
+      
+       
     }
 }

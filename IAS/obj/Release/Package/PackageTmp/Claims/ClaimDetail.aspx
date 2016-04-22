@@ -284,7 +284,7 @@
                                 <asp:Label ID="lblCommentDate" runat="server" Text='<%# Eval("CommentDate") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="txtCommentDate" CssClass="form-control" runat="server" ReadOnly="true" Text='<%# System.DateTime.Now %>'></asp:TextBox>
+                                <asp:TextBox ID="txtCommentDate" CssClass="form-control" runat="server" ReadOnly="False" Text='<%# Eval("CommentDate") %>'></asp:TextBox>
                             </EditItemTemplate>
                         </asp:TemplateField>
                         <asp:CommandField CancelText="Cancelar" DeleteText="Eliminar" EditText="Editar"

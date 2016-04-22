@@ -31,6 +31,15 @@ namespace IAS.Claims {
         protected global::System.Web.UI.WebControls.FormView PersonData;
         
         /// <summary>
+        /// ddlClaimUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlClaimUser;
+        
+        /// <summary>
         /// ClaimDetailsListView control.
         /// </summary>
         /// <remarks>
@@ -119,5 +128,14 @@ namespace IAS.Claims {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource expertosAseguradoraDataSource;
+        
+        /// <summary>
+        /// UsuariosSiniestrosSqlDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource UsuariosSiniestrosSqlDataSource;
     }
 }

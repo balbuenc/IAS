@@ -73,9 +73,8 @@
                 <div class="col-lg-12">
                     <asp:ListView ID="ClaimListView" runat="server"
                         DataKeyNames="ClaimID"
-                        DataSourceID="ClaimSqldataSource" 
-                         OnItemCommand="ClaimListView_ItemCommand"
-                         >
+                        DataSourceID="ClaimSqldataSource"
+                        OnItemCommand="ClaimListView_ItemCommand">
                         <LayoutTemplate>
                             <div class="table responsive">
                                 <table class="table table-striped" style="font-size: x-small">
@@ -101,7 +100,7 @@
                         <ItemTemplate>
                             <tr>
                                 <td>
-                                     <asp:Label ID="lblClaimID" runat="server" Text='<%# Eval("ClaimID").ToString() %>' Visible="false" />
+                                    <asp:Label ID="lblClaimID" runat="server" Text='<%# Eval("ClaimID").ToString() %>' Visible="false" />
                                     <asp:Label ID="lblPolicyNumber" runat="server" Text='<%# Eval("PolicyNumber").ToString() %>' /></td>
                                 <td>
                                     <asp:Label ID="lblClient" runat="server" Text='<%# Eval("Client") %>' /></td>
@@ -121,9 +120,19 @@
                                     <asp:HyperLink ID="linkAction" runat="server" Text='<%#   Eval("NextStatus") %>' NavigateUrl='<%#   Eval("ActionForm") %>'></asp:HyperLink>
                                 </td>
 
-                                <td class="text-right">
-                                    <asp:Button ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CssClass="btn btn-info" />
-                                    <asp:Button ID="DeleteButton" runat="server" Text="Borrar" CommandName="Delete" CssClass="btn btn-danger" />
+                                <td>
+                                    <div class="row">
+                                        <div class="col-lg-5">
+                                            <asp:LinkButton ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CssClass="btn btn-link">
+                                                    <span class="glyphicon glyphicon-edit"></span>
+                                            </asp:LinkButton>
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Delete" CssClass="btn btn-link">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </asp:LinkButton>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         </ItemTemplate>
@@ -147,7 +156,7 @@
     <!-- #region DATSOURCES -->
     <asp:SqlDataSource ID="ClaimSqldataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
         SelectCommand="claim.sp_search_claims" SelectCommandType="StoredProcedure"
-         DeleteCommand="claim.sp_delete_claim" DeleteCommandType="StoredProcedure">
+        DeleteCommand="claim.sp_delete_claim" DeleteCommandType="StoredProcedure">
         <SelectParameters>
             <asp:ControlParameter Name="find" ControlID="txtSearchClaim" PropertyName="Value" Type="String" />
             <asp:QueryStringParameter Name="criteria" QueryStringField="criteria" DefaultValue="PolicyNumber" />
@@ -155,7 +164,7 @@
             <asp:ControlParameter Name="myClaims" ControlID="ddlMyClaims" Type="String" PropertyName="SelectedValue" />
             <asp:ControlParameter Name="claimStatusId" ControlID="ddlStatus" DbType="Int32" PropertyName="SelectedValue" />
         </SelectParameters>
-         <DeleteParameters>
+        <DeleteParameters>
             <asp:Parameter Name="ClaimID" Type="Int32" />
         </DeleteParameters>
     </asp:SqlDataSource>

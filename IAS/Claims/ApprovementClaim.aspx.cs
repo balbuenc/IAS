@@ -95,7 +95,7 @@ namespace IAS.Claims
             SqlConnection sqlConnection1 = new SqlConnection(estadoClienteDataSource.ConnectionString);
             SqlCommand cmd = new SqlCommand();
             SqlCommand cmd1 = new SqlCommand();
-            SqlCommand cmd2 = new SqlCommand();
+           
             int rowsAffected;
 
             string txtClaimNumber = (ClaimDetailsListView.Row.FindControl("txtClaimNumber") as TextBox).Text;
@@ -142,22 +142,6 @@ namespace IAS.Claims
                 sqlConnection1.Open();
 
                 rowsAffected = cmd1.ExecuteNonQuery();
-
-                sqlConnection1.Close();
-
-                //Genero el cambio de estado
-                cmd2.CommandText = "claim.sp_insert_claimComment";
-                cmd2.CommandType = CommandType.StoredProcedure;
-                cmd2.Connection = sqlConnection1;
-
-                cmd2.Parameters.AddWithValue("@ClaimID", Request.QueryString["ClaimID"]);
-                cmd2.Parameters.AddWithValue("@UserName", User.Identity.Name);
-                cmd2.Parameters.AddWithValue("@CommentDate", DateTime.Now);
-                cmd2.Parameters.AddWithValue("@Comment", txtObservations);
-
-                sqlConnection1.Open();
-
-                rowsAffected = cmd2.ExecuteNonQuery();
 
                 sqlConnection1.Close();
 

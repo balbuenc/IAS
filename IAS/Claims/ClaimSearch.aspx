@@ -121,18 +121,21 @@
                                 </td>
 
                                 <td>
-                                    <div class="row">
-                                        <div class="col-lg-5">
+                                    <div class="container">
+                                        <div class="row">
+
                                             <asp:LinkButton ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CssClass="btn btn-link">
                                                     <span class="glyphicon glyphicon-edit"></span>
                                             </asp:LinkButton>
-                                        </div>
-                                        <div class="col-lg-5">
+
+
                                             <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Delete" CssClass="btn btn-link">
                                                 <span class="glyphicon glyphicon-trash"></span>
                                             </asp:LinkButton>
+
                                         </div>
                                     </div>
+
                                 </td>
                             </tr>
                         </ItemTemplate>

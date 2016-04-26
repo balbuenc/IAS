@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="Siniestro" Language="C#" MasterPageFile="~/Claim.Master" AutoEventWireup="true" CodeBehind="ClaimDetail.aspx.cs" Inherits="IAS.Claims.ClaimDetail" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="../Scripts/jquery-1.10.2.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
@@ -7,7 +8,7 @@
     <script src="../Scripts/bootstrap-datepicker.min.js"></script>
     <link href="../Content/bootstrap-datepicker.min.css" rel="stylesheet" />
 
-    <script>       
+    <script>
 
         var nowTemp = new Date();
         var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
@@ -35,7 +36,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-     <div class="container">
+    <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
@@ -64,7 +65,7 @@
                                         Celular: <strong><%#:string.IsNullOrEmpty(Eval("telefono_celular").ToString() )?"nd": Eval("telefono_celular")  %> </strong>
                                         Laboral: <strong><%#:string.IsNullOrEmpty(Eval("telefono_laboral1").ToString() )?"nd": Eval("telefono_laboral1") %> </strong>
                                     </div>
-                                </div>
+                                </div>                               
                             </div>
                         </div>
                     </ItemTemplate>
@@ -81,9 +82,7 @@
                 </asp:FormView>
             </div>
         </div>
-        <div class="row">
-            <h3>Datos del Siniestro</h3>
-        </div>
+
         <div class="row">
             <div class="col-lg-12">
                 <asp:FormView ID="ClaimDetailsListView"
@@ -100,6 +99,17 @@
                                     <div class="col-lg-4">Id. Caso:<asp:Label ID="CaseIDLabel" runat="server" Text='<%# Bind("CaseID") %>' /></div>
                                     <div class="col-lg-4">Id. Siniestro:<asp:Label ID="ClaimIDLabel" runat="server" Text='<%# Bind("ClaimID") %>' /></div>
                                     <div class="col-lg-4">Nro. Poliza:<asp:Label ID="PolicyNumberLabel" runat="server" Text='<%# Bind("PolicyNumber") %>' /></div>
+                                </div>
+                                <br/>
+                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                   <div class="col-lg-1">Usuario</div>
+                                    <div class="col-lg-3">
+                                        <asp:DropDownList ID="ddlClaimUser" runat="server"  CssClass="form-control" DataSourceID="UsuariosSiniestrosSqlDataSource"
+                                            DataValueField="ID" DataTextField="UserName" 
+                                            SelectedValue='<%#string.IsNullOrEmpty( Eval("UserID").ToString())?-1:Eval("UserID") %>'
+                                            AppendDataBoundItems="true">
+                                        </asp:DropDownList>
+                                    </div>
                                 </div>
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                     <div class="col-lg-1">Nro.</div>
@@ -125,13 +135,13 @@
                                     <div class="col-lg-1">Liquidador</div>
                                     <div class="col-lg-3">
                                         <asp:DropDownList ID="ddlLiquidador" runat="server" CssClass="form-control" DataSourceID="liquidadoresDataSource"
-                                            DataValueField="LiquidatorID" DataTextField="Name"  AppendDataBoundItems="true"
+                                            DataValueField="LiquidatorID" DataTextField="Name" AppendDataBoundItems="true"
                                             SelectedValue='<%#string.IsNullOrEmpty( Eval("LiquidatorID").ToString()) ? -1 : Eval("LiquidatorID") %>'>
                                         </asp:DropDownList>
                                     </div>
                                     <div class="col-lg-1">Taller</div>
                                     <div class="col-lg-3">
-                                        <asp:DropDownList ID="ddlTaller" runat="server" CssClass="form-control" DataSourceID="talleresSqlDataSource" 
+                                        <asp:DropDownList ID="ddlTaller" runat="server" CssClass="form-control" DataSourceID="talleresSqlDataSource"
                                             DataValueField="WorkShopID" DataTextField="Name" SelectedValue='<%#string.IsNullOrEmpty( Eval("WorkshopID").ToString())?-1:Eval("WorkshopID") %>' />
                                     </div>
                                     <div class="col-lg-1">Contacto</div>
@@ -161,7 +171,7 @@
                                     </div>
                                     <div class="col-lg-1">Aseguradora</div>
                                     <div class="col-lg-3">
-                                        <asp:Label ID="lblInsuranceManager" runat="server" Text='<%# Eval("InsuranceManager") %>'  />
+                                        <asp:Label ID="lblInsuranceManager" runat="server" Text='<%# Eval("InsuranceManager") %>' />
                                     </div>
                                     <div class="col-lg-1">Dir. Siniestro</div>
                                     <div class="col-lg-3">
@@ -194,6 +204,7 @@
                                         <asp:TextBox ID="txtLooseDescription" runat="server" Text='<%# Bind("LooseDescription") %>' CssClass="form-control" />
                                     </div>
                                 </div>
+                                
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                     <div class="col-lg-1">Obs. del Estado</div>
                                     <div class="col-lg-11">
@@ -232,7 +243,7 @@
                 <asp:TextBox ID="txtComments" runat="server" CssClass="form-control" />
             </div>
             <div class="col-lg-2">
-                <asp:Button ID="btnCommentAdd" runat="server" Text="Guardar comentario" CssClass="btn btn-default" OnClick="btnCommentAdd_Click"  />
+                <asp:Button ID="btnCommentAdd" runat="server" Text="Guardar comentario" CssClass="btn btn-default" OnClick="btnCommentAdd_Click" />
             </div>
         </div>
         <div class="row">
@@ -297,7 +308,7 @@
 
     </div>
 
-     <!-- #region Data Sources -->
+    <!-- #region Data Sources -->
     <asp:SqlDataSource ID="claimCommentsDataSource" runat="server"
         ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
         SelectCommand="[claim].[sp_get_claimComments]" SelectCommandType="StoredProcedure"
@@ -333,5 +344,6 @@
     <asp:SqlDataSource ID="liquidadoresDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="claim.get_liquidators_ddl" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     <asp:SqlDataSource ID="talleresSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="claim.sp_get_workshops_ddl" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     <asp:SqlDataSource ID="expertosAseguradoraDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="claim.sp_get_insurance_experts_ddl" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="UsuariosSiniestrosSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="select id, UserName from AspNetUsers u inner join ClaimUser cu on cu.UserID = u.Id " SelectCommandType="Text"></asp:SqlDataSource>
     <!-- #endregion -->
 </asp:Content>

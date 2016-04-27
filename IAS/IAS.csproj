@@ -198,6 +198,7 @@
     <Content Include="CaseManagment\PolicyVerification.aspx" />
     <Content Include="Claims\ApprovementClaim.aspx" />
     <Content Include="Claims\ClaimDetail.aspx" />
+    <Content Include="Claims\ClaimFollow.aspx" />
     <Content Include="Claims\ClaimPolicyVerification.aspx" />
     <Content Include="Claims\ClaimRegistration.aspx" />
     <Content Include="Claims\ClaimSearch.aspx" />
@@ -701,6 +702,13 @@
     </Compile>
     <Compile Include="Claims\ClaimDetail.aspx.designer.cs">
       <DependentUpon>ClaimDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Claims\ClaimFollow.aspx.cs">
+      <DependentUpon>ClaimFollow.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Claims\ClaimFollow.aspx.designer.cs">
+      <DependentUpon>ClaimFollow.aspx</DependentUpon>
     </Compile>
     <Compile Include="Claims\ClaimPolicyVerification.aspx.cs">
       <DependentUpon>ClaimPolicyVerification.aspx</DependentUpon>

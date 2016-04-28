@@ -33,6 +33,7 @@ namespace IAS.Models
         [Key]
         public short ClaimStatusID { get; set; }
         public string Status { get; set; }
+        public string Form { get; set; }
         public virtual ICollection<Claim> Claims { get; set; }
     }
 }

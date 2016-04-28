@@ -7,29 +7,37 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace IAS.Claims {
-    public partial class NewClaim : System.Web.UI.Page {
+namespace IAS.Claims
+{
+    public partial class NewClaim : System.Web.UI.Page
+    {
 
-        public string nro_poliza {
-            get {
+        public string nro_poliza
+        {
+            get
+            {
                 object o = ViewState["nro_poliza"];
                 if(o == null)
                     return string.Empty;
                 return o.ToString();
             }
-            set {
+            set
+            {
                 ViewState["nro_poliza"] = value;
             }
         }
 
-        public string id_persona {
-            get {
+        public string id_persona
+        {
+            get
+            {
                 object o = ViewState["id_persona"];
                 if(o == null)
                     return string.Empty;
                 return o.ToString();
             }
-            set {
+            set
+            {
                 ViewState["id_persona"] = value;
             }
         }
@@ -37,13 +45,15 @@ namespace IAS.Claims {
         private string criteria;
         private string find;
 
-        protected void Page_Load(object sender, EventArgs e) {
-
-            try {
-
-                if(Request.QueryString["criteria"] != null) {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if(Request.QueryString["criteria"] != null)
+                {
                     criteria = Request.QueryString["criteria"].ToString();
-                    switch(criteria) {
+                    switch(criteria)
+                    {
                         case "PolicyNumber":
                             txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Póliza";
                             criteriaBtn.InnerText = "Nro. Póliza";
@@ -64,32 +74,37 @@ namespace IAS.Claims {
                             break;
                     }
                 }
-                else {
+                else
+                {
                     criteria = "Client";
                 }
 
             }
-            catch(Exception exp) {
+            catch(Exception exp)
+            {
                 txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Póliza";
                 criteriaBtn.InnerText = "Nro. Póliza";
                 criteria = "PolicyNumber";
             }
         }
 
-        protected void registrarSiniestroBtn_Click(object sender, EventArgs e) {
+        protected void registrarSiniestroBtn_Click(object sender, EventArgs e)
+        {
 
             SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
             SqlCommand cmd = new SqlCommand();
             int claimID;
             int rowsAffected;
 
-            try {
+            try
+            {
 
                 cmd.CommandText = "sp_registrar_caso_siniestro";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = sqlConnection1;
 
-                SqlParameter claim_id = new SqlParameter("@id_claim", SqlDbType.Int) {
+                SqlParameter claim_id = new SqlParameter("@id_claim", SqlDbType.Int)
+                {
                     Direction = ParameterDirection.Output
 
                 };
@@ -107,34 +122,40 @@ namespace IAS.Claims {
                 claimID = int.Parse(cmd.Parameters["@id_claim"].Value.ToString());
 
                 sqlConnection1.Close();
-                
+
                 SaveDetails(claimID);
 
                 //Direcciono a la pagina de busqueda
                 Response.Redirect("ClaimSearch.aspx?PolicyNumber=" + nro_poliza.Replace(".", ""));
 
             }
-            catch(Exception exp) {
+            catch(Exception exp)
+            {
                 ErrorLabel.Text = exp.Message;
                 ErrorLabel.Visible = true;
             }
         }
 
-        private void SaveDetails(int claimID) {
+        private void SaveDetails(int claimID)
+        {
 
             SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
             int rowsAffected;
 
-            foreach(ListItem item in lsbCoberturas.Items) {
-                if(item.Selected) {
-                    using(SqlCommand cmd = new SqlCommand()) {
+            foreach(ListItem item in lsbCoberturas.Items)
+            {
+                if(item.Selected)
+                {
+                    using(SqlCommand cmd = new SqlCommand())
+                    {
 
-                        try {
+                        try
+                        {
 
                             cmd.CommandText = "sp_registrar_caso_siniestro_detalle";
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Connection = sqlConnection1;
-                            
+
                             string val = item.Value;
 
                             cmd.Parameters.AddWithValue("@id_claim", claimID);
@@ -146,7 +167,8 @@ namespace IAS.Claims {
 
                             sqlConnection1.Close();
                         }
-                        catch(Exception exp) {
+                        catch(Exception exp)
+                        {
                             ErrorLabel.Text = exp.Message;
                             ErrorLabel.Visible = true;
                         }
@@ -156,7 +178,8 @@ namespace IAS.Claims {
 
         }
 
-        protected void searchBox_ServerClick(object sender, EventArgs e) {
+        protected void searchBox_ServerClick(object sender, EventArgs e)
+        {
 
             SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
             SqlCommand cmd = new SqlCommand();
@@ -164,7 +187,8 @@ namespace IAS.Claims {
             SqlDataAdapter da = new SqlDataAdapter();
             DataTable dt = new DataTable();
 
-            try {
+            try
+            {
 
                 cmd.CommandText = "[claim].[sp_search_clients]";
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -181,7 +205,8 @@ namespace IAS.Claims {
                 gridClients.DataBind();
 
             }
-            catch(Exception exp) {
+            catch(Exception exp)
+            {
                 ErrorLabel.Text = exp.Message;
                 ErrorLabel.Visible = true;
             }
@@ -189,9 +214,11 @@ namespace IAS.Claims {
             ScriptManager.RegisterStartupScript(this, GetType(), "Pop", "openModalPolizas();", true);
         }
 
-        protected void gridClients_RowCommand(object sender, GridViewCommandEventArgs e) {
+        protected void gridClients_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
 
-            switch(e.CommandName) {
+            switch(e.CommandName)
+            {
                 case "seleccionar":
                     string[] values = e.CommandArgument.ToString().Split('|');
 

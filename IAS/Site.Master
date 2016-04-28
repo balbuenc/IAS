@@ -111,6 +111,7 @@
                                     <li><a href="../Admin/Workflows.aspx">Workflows</a></li>
                                     <li><a href="../Admin/CasePriorities.aspx">Prioridades</a></li>
                                     <li><a href="../Admin/Currencies.aspx">Monedas</a></li>
+                                    <li><a href="../Admin/ClaimsStatus.aspx">Estados de Siniestro</a></li>
                                     <li><a href="../Admin/ClaimTypes.aspx">Tipos de cobertura</a></li>
                                     <li><a href="../Admin/Sections.aspx">Secciones</a></li>
                                     <li><a href="../Admin/Policies.aspx">Pólizas</a></li>
@@ -127,7 +128,7 @@
                                     <li><a href="../Admin/ContactDestinations.aspx">Destinos de Contacto</a></li>
                                     <li><a href="../Admin/Liquidators.aspx">Liquidadores</a></li>
                                     <li><a href="../Admin/Workshops.aspx">Talleres</a></li>
-                                    <li><a href="../Admin/ClaimsStatus.aspx">Estados de Siniestro</a></li>
+
                                 </ul>
                             </div>
                             <div class="btn-group">
@@ -155,7 +156,7 @@
 
                                 </ul>
                             </div>
-                          <%--  <div class="btn-group">
+                            <%--  <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                     Transporte
                                

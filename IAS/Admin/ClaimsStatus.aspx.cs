@@ -59,7 +59,7 @@ namespace IAS.Admin
                 var claimStatus = db.ClaimStatus.Where(s => s.ClaimStatusID  == subject.ClaimStatusID).SingleOrDefault();
 
                 claimStatus.Status  = subject.Status;
-              
+                claimStatus.Form = subject.Form;
 
                 db.SaveChanges();
                 ErrorLabel.Text = String.Empty;
@@ -136,6 +136,26 @@ namespace IAS.Admin
             {
                 ErrorLabel.Text = "Complete todos los campos.";
                 ErrorLabel.Visible = true;
+            }
+        }
+
+        protected void ClaimStatusListView_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            try
+            {
+                switch(e.CommandName)
+                {
+                    case "SubStatus":
+
+                        ScriptManager.RegisterStartupScript(this, GetType(), "Pop", "openModalSubStatus();", true);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch(Exception ex)
+            {
+                throw;
             }
         }
     }

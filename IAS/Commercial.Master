@@ -4,17 +4,46 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title><%: Page.Title %> - Balcazz HT</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <link href="Content/Styles.css" rel="stylesheet" />
+    <script type="text/javascript">
+        window.onload = function () {
+            var pos = window.name || 0;
+            window.scrollTo(0, pos);
+        }
+
+        window.onunload = function () {
+            window.name = self.pageYOffset || (document.documentElement.scrollTop + document.body.scrollTop);
+        }
+
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        
-        </asp:ContentPlaceHolder>
-    </div>
+        <div id="topContent">
+            <a href="../../Default.aspx">IAS | Siniestros </a>
+            <asp:LoginView runat="server" ViewStateMode="Disabled">
+                <AnonymousTemplate>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a runat="server" href="~/Account/Login">Log in</a></li>
+                    </ul>
+                </AnonymousTemplate>
+                <LoggedInTemplate>
+                    <ul class="nav navbar-nav navbar-right" style="font-size: x-small;">
+                        <li><a runat="server" href="~/Account/Manage" title="Manage your account">Bienvenido, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                        <li>
+                            <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                        </li>                        
+                    </ul>
+                </LoggedInTemplate>
+            </asp:LoginView>
+        </div>
+        <div id="mainContent">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
     </form>
 </body>
 </html>

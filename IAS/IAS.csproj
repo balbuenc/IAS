@@ -207,7 +207,6 @@
     <Content Include="Claims\WorkShopClaim.aspx" />
     <Content Include="Collections\Assignations.aspx" />
     <Content Include="Collections\UploadCollections.aspx" />
-    <Content Include="Commercial\TestMaster.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker.min.css" />
@@ -773,13 +772,6 @@
     <Compile Include="Commercial.Master.designer.cs">
       <DependentUpon>Commercial.Master</DependentUpon>
     </Compile>
-    <Compile Include="Commercial\TestMaster.aspx.cs">
-      <DependentUpon>TestMaster.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Commercial\TestMaster.aspx.designer.cs">
-      <DependentUpon>TestMaster.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Constants\ControlValues.cs" />
     <Compile Include="Constants\SessionKeys.cs" />
     <Compile Include="Contact.aspx.cs">
@@ -975,6 +967,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Readme\" />
+    <Folder Include="Renovations\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201402081817594_Initial.resx">

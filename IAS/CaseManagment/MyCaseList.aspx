@@ -27,7 +27,7 @@
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
         <li class="active"><a href="#collections" role="tab" data-toggle="tab">Cobranzas</a></li>
-        <li><a href="#claims" role="tab" data-toggle="tab">Siniestros</a></li>
+      <%--  <li><a href="#claims" role="tab" data-toggle="tab">Siniestros</a></li>--%>
     </ul>
 
     <!-- Tab panes -->
@@ -265,7 +265,7 @@
                                                                         CommandArgument="Description">Cliente</asp:LinkButton></th>
                                                                 <th>Prioridad</th>
                                                                 <th>Estado</th>
-                                                                <%--<th>Vencimiento</th>--%>
+                                                            
                                                                 <th>
                                                                     <asp:LinkButton ID="FactionListViewDueDate" runat="server" CommandName="Sort"
                                                                         CommandArgument="EffectiveDate">Vencimiento</asp:LinkButton></th>
@@ -429,24 +429,25 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                         <%--<button type="button" class="btn btn-primary"  onclick="">Registrar</button>--%>
-                        <asp:Button ID="btnRegistrarSiniestro" runat="server" OnClick="btnRegistrarSiniestro_Click" CssClass="btn btn-primary" Text="Registrar"  />
+                        <asp:Button ID="btnRegistrarSiniestro" runat="server" OnClick="btnRegistrarSiniestro_Click" CssClass="btn btn-primary" Text="Registrar" />
                     </div>
                 </div>
             </div>
         </div>
-        <!-- #SQL Data Sources -->
-        <asp:SqlDataSource ID="clientesDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="sp_obtener_persona_para_siniestros" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
-        <asp:SqlDataSource ID="polizasDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="sp_obtener_polizas_por_persona" SelectCommandType="StoredProcedure">
-            <SelectParameters>
-                <asp:ControlParameter ControlID="ddlClientes" Name="p_id_persona" DbType="Int32" PropertyName="SelectedValue" />
-            </SelectParameters>
-        </asp:SqlDataSource>
-        <asp:SqlDataSource ID="tipoSinistrosDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="sp_obtener_tipo_siniestros" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
-        <asp:SqlDataSource ID="coberturaPolizas" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="SELECT  [ClaimMade],[ClaimMadeID]  FROM [IAS_Developer].[dbo].[ClaimMade] where ClaimTypeID = @ClaimTypeID" SelectCommandType="Text">
-            <SelectParameters>
-                <asp:ControlParameter ControlID="ddlTipoSiniestro" Name="ClaimTypeID" DbType="Int32" PropertyName="SelectedValue" />
-            </SelectParameters>
-        </asp:SqlDataSource>
+
     </div>
+    <!-- #SQL Data Sources -->
+    <asp:SqlDataSource ID="clientesDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="sp_obtener_persona_para_siniestros" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="polizasDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="sp_obtener_polizas_por_persona" SelectCommandType="StoredProcedure">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="ddlClientes" Name="p_id_persona" DbType="Int32" PropertyName="SelectedValue" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+    <asp:SqlDataSource ID="tipoSinistrosDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="sp_obtener_tipo_siniestros" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="coberturaPolizas" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="SELECT  [ClaimMade],[ClaimMadeID]  FROM [IAS_Developer].[dbo].[ClaimMade] where ClaimTypeID = @ClaimTypeID" SelectCommandType="Text">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="ddlTipoSiniestro" Name="ClaimTypeID" DbType="Int32" PropertyName="SelectedValue" />
+        </SelectParameters>
+    </asp:SqlDataSource>
     <!-- #endregion -->
 </asp:Content>

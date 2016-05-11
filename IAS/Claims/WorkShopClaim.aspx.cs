@@ -96,10 +96,10 @@ namespace IAS.Claims
                 cmd1.Parameters.AddWithValue("@ClaimID", Request.QueryString["ClaimID"]);
                 cmd1.Parameters.AddWithValue("@ClaimNumber", txtClaimNumber);
                 cmd1.Parameters.AddWithValue("@RiskName", txtRiskName);
-                cmd1.Parameters.AddWithValue("@LiquidatorID", ddlLiquidador.SelectedValue);
-                cmd1.Parameters.AddWithValue("@WorkshopID", ddlTaller.SelectedValue);
+                cmd1.Parameters.AddWithValue("@LiquidatorID", (ddlLiquidador.SelectedValue == "-1") ? null : ddlLiquidador.SelectedValue);
+                cmd1.Parameters.AddWithValue("@WorkshopID", (ddlTaller.SelectedValue == "-1") ? null : ddlTaller.SelectedValue);
                 cmd1.Parameters.AddWithValue("@ClaimDate", DateTime.Parse(lblClaimDate));
-                cmd1.Parameters.AddWithValue("@InsuranceExpertID", ddlExpertoAseguradora.SelectedValue);
+                cmd1.Parameters.AddWithValue("@InsuranceExpertID", (ddlExpertoAseguradora.SelectedValue == "-1") ? null : ddlExpertoAseguradora.SelectedValue);
                 cmd1.Parameters.AddWithValue("@Section", lblSection);
                 cmd1.Parameters.AddWithValue("@ContactName", lblContactName);
                 cmd1.Parameters.AddWithValue("@ClaimAddress", lblClaimAddress);

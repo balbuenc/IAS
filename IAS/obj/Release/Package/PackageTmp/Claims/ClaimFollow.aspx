@@ -215,7 +215,7 @@
                                         <asp:Button ID="CloseButton" runat="server" Text="Cerrar Siniestro" CommandName="Close" CssClass="btn btn-primary" />
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Button ID="UpdateButton" runat="server" Text="Guardar Cambios" CommandName="Update" CssClass="btn btn-primary" />
+                                        <asp:Button ID="UpdateButton" runat="server" Text="Guardar Cambios" CommandName="Save" CssClass="btn btn-primary" />
                                     </div>
                                 </div>
                             </div>
@@ -338,7 +338,7 @@
             <asp:QueryStringParameter Name="ClaimID" QueryStringField="ClaimID" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="siniestroDetalleDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[claim].[sp_get_claim_by_ClaimID]" SelectCommandType="StoredProcedure" UpdateCommand="claim.sp_update_claim" UpdateCommandType="StoredProcedure">
+    <asp:SqlDataSource ID="siniestroDetalleDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[claim].[sp_get_claim_by_ClaimID]" SelectCommandType="StoredProcedure" >
         <SelectParameters>
             <asp:QueryStringParameter Name="ClaimID" QueryStringField="ClaimID" Type="Int32" />
         </SelectParameters>

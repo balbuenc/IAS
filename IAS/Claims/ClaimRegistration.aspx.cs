@@ -47,7 +47,9 @@ namespace IAS.Claims
             string txtLooseDescription = (ClaimDetailsListView.Row.FindControl("txtLooseDescription") as TextBox).Text;
             string txtObservations = (ClaimDetailsListView.Row.FindControl("txtObservations") as TextBox).Text;
 
-            if (e.CommandName == "Update")
+           
+
+            if (e.CommandName == "Save")
             {
                 try
                 {
@@ -58,10 +60,11 @@ namespace IAS.Claims
                     cmd1.Parameters.AddWithValue("@ClaimID", Request.QueryString["ClaimID"]);
                     cmd1.Parameters.AddWithValue("@ClaimNumber", txtClaimNumber);
                     cmd1.Parameters.AddWithValue("@RiskName", txtRiskName);
-                    cmd1.Parameters.AddWithValue("@LiquidatorID", ddlLiquidador.SelectedValue);
-                    cmd1.Parameters.AddWithValue("@WorkshopID", ddlTaller.SelectedValue);
+                  
+                    cmd1.Parameters.AddWithValue("@LiquidatorID", (ddlLiquidador.SelectedValue == "-1") ? null : ddlLiquidador.SelectedValue);
+                    cmd1.Parameters.AddWithValue("@WorkshopID", (ddlTaller.SelectedValue == "-1") ? null : ddlTaller.SelectedValue);
                     cmd1.Parameters.AddWithValue("@ClaimDate", DateTime.Parse(txtClaimDate));
-                    cmd1.Parameters.AddWithValue("@InsuranceExpertID", ddlExpertoAseguradora.SelectedValue);
+                    cmd1.Parameters.AddWithValue("@InsuranceExpertID", (ddlExpertoAseguradora.SelectedValue == "-1") ? null : ddlExpertoAseguradora.SelectedValue);
                     cmd1.Parameters.AddWithValue("@Section", txtSection);
                     cmd1.Parameters.AddWithValue("@ContactName", txtContactName);
                     cmd1.Parameters.AddWithValue("@ClaimAddress", txtClaimAddress);

@@ -203,7 +203,7 @@
                                 </div>
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                     <div class="col-lg-2 col-lg-offset-10">
-                                        <asp:Button ID="UpdateButton" runat="server" Text="Registrar Siniestro" CommandName="Update" CssClass="btn btn-primary" />
+                                        <asp:Button ID="UpdateButton" runat="server" Text="Registrar Siniestro" CommandName="Save" CssClass="btn btn-primary" />
                                     </div>
                                 </div>
                             </div>

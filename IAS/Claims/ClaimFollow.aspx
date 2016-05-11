@@ -215,7 +215,7 @@
                                         <asp:Button ID="CloseButton" runat="server" Text="Cerrar Siniestro" CommandName="Close" CssClass="btn btn-primary" />
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Button ID="UpdateButton" runat="server" Text="Guardar Cambios" CommandName="Update" CssClass="btn btn-primary" />
+                                        <asp:Button ID="UpdateButton" runat="server" Text="Guardar Cambios" CommandName="Save" CssClass="btn btn-primary" />
                                     </div>
                                 </div>
                             </div>

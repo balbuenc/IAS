@@ -83,6 +83,7 @@
                                             <th>Nro Póliza</th>
                                             <th>Cliente</th>
                                             <%--      <th>Nro. Doc.</th>--%>
+                                            <th>Siniestro</th>
                                             <th>Riesgo</th>
                                             <th>Fecha</th>
                                             <th>Usuario</th>
@@ -107,6 +108,8 @@
                                 <%-- <td>
                                     <asp:Label ID="lblClientDocumentNumber" runat="server" Text='<%# Eval("ClientDocumentNumber") %>' /></td>--%>
                                 <td>
+                                    <asp:Label ID="lblClaimNumber" runat="server" Text='<%# Eval("ClaimNumber") %>' /></td>
+                                <td>
                                     <asp:Label ID="lblRiskName" runat="server" Text='<%# Eval("RiskName") %>' /></td>
                                 <td>
                                     <asp:Label ID="lblRegistryDate" runat="server" Text='<%# DateTime.Parse( Eval("ClaimDate").ToString()).ToShortDateString() %>' /></td>
@@ -129,7 +132,7 @@
                                             </asp:LinkButton>
 
 
-                                            <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Delete" CssClass="btn btn-link">
+                                            <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Delete" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar el Siniestro.?');" >
                                                 <span class="glyphicon glyphicon-trash"></span>
                                             </asp:LinkButton>
 

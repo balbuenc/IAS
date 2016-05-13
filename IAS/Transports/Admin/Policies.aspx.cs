@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace IAS.Transport.Admin
+namespace IAS.Transports.Admin
 {
-    public partial class Certificates : System.Web.UI.Page
+    public partial class Policies : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

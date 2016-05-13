@@ -7,19 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IAS.Transport.Admin {
+namespace IAS.Transports.Admin {
     
     
-    public partial class Policies {
+    public partial class Collection {
         
         /// <summary>
-        /// upnlPolicies control.
+        /// upnlCollections control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upnlPolicies;
+        protected global::System.Web.UI.UpdatePanel upnlCollections;
         
         /// <summary>
         /// ErrorLabel control.
@@ -31,39 +31,48 @@ namespace IAS.Transport.Admin {
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
-        /// PolicyListView control.
+        /// CollectionListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView PolicyListView;
+        protected global::System.Web.UI.WebControls.ListView CollectionListView;
         
         /// <summary>
-        /// PoliciesDataPager control.
+        /// CollectionDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataPager PoliciesDataPager;
+        protected global::System.Web.UI.WebControls.SqlDataSource CollectionDataSource;
         
         /// <summary>
-        /// PoliciesDataSource control.
+        /// CollectionMethodDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource PoliciesDataSource;
+        protected global::System.Web.UI.WebControls.SqlDataSource CollectionMethodDataSource;
         
         /// <summary>
-        /// CountriesDataSource control.
+        /// CollectionStateDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource CountriesDataSource;
+        protected global::System.Web.UI.WebControls.SqlDataSource CollectionStateDataSource;
+        
+        /// <summary>
+        /// CurrencyDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource CurrencyDataSource;
     }
 }

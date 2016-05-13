@@ -81,8 +81,6 @@
                                     <asp:SqlDataSource ID="DSPersonasJuridicas" runat="server" ConnectionString="<%$ ConnectionStrings:sqliasConnectionString %>" SelectCommand="SELECT * FROM [exchange].[v_personas_juridicas_exp] ORDER BY [id_persona], [NRO_POLIZA], [NRO_RECIBO]"></asp:SqlDataSource>
                                 </div>
                             </div>
-
-
                         </div>
                         <div class="accordion-group">
                             <div class="accordion-heading">

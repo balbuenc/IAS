@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IAS.Transport.Admin {
-    
-    
-    public partial class Certificates {
-        
+namespace IAS.Transports.Admin
+{
+
+
+    public partial class Certificates
+    {
+
         /// <summary>
         /// upnlCertificates control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace IAS.Transport.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upnlCertificates;
-        
+
         /// <summary>
         /// ErrorLabel control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace IAS.Transport.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
-        
+
         /// <summary>
         /// CertificateListView control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace IAS.Transport.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView CertificateListView;
-        
+
         /// <summary>
         /// CertificatesDataPager control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace IAS.Transport.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DataPager CertificatesDataPager;
-        
+
         /// <summary>
         /// CertificateDataSource control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace IAS.Transport.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource CertificateDataSource;
-        
+
         /// <summary>
         /// CountriesDataSource control.
         /// </summary>

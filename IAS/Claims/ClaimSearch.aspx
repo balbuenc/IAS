@@ -65,7 +65,6 @@
                 <div class="col-lg-2">
                     <a href="NewClaim.aspx?criteria=Client">Alta Siniestro</a>
                 </div>
-
             </div>
         </div>
         <div id="contenido">

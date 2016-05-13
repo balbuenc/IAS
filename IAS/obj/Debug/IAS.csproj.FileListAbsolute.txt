@@ -282,6 +282,7 @@ C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\obj\Debug\IAS
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\obj\Debug\IAS.Migrations.CollectionMethodNotNull.resources
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\obj\Debug\IAS.Migrations.PaymentDayAdded.resources
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\obj\Debug\IAS.csproj.GenerateResource.Cache
+C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\obj\Debug\IAS.csprojResolveAssemblyReference.cache
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\bin\IAS.dll.config
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\bin\IAS.dll
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\bin\IAS.pdb
@@ -335,4 +336,3 @@ C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\bin\Microsoft
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\bin\ES\System.Data.SqlServerCe.resources.dll
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\obj\Debug\IAS.dll
 C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\obj\Debug\IAS.pdb
-C:\Users\Usuario\Documents\Visual Studio 2015\Projects\Git\IAS\IAS\obj\Debug\IAS.csprojResolveAssemblyReference.cache

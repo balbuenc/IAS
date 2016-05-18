@@ -64,7 +64,7 @@
                 <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
             </div>
         </div>
-        <br>
+        <br/>
         <div class="row">
             <div class="col-lg-12" style="font-size: small">
                 <div class="panel panel-default">
@@ -152,7 +152,7 @@
                                     </asp:DropDownList>
                                 </div>
                             </div>
-                            <br>
+                            <br/>
                             <div class="row">
                                 <label class="col-sm-2 control-label" for="form-group-input">Cobertura</label>
                                 <div class="col-sm-10">

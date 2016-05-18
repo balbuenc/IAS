@@ -252,7 +252,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-4">
-                        <asp:Button ID="btnGuardar" runat="server" CssClass =" btn btn-primary" OnClick="btnGuardar_Click" />
+                        <asp:Button ID="btnGuardar" runat="server" CssClass =" btn btn-primary" Text="Guardar" OnClick="btnGuardar_Click" />
                     </div>
                 </div>
                 <div class="modal fade" id="myModalClients" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -296,7 +296,7 @@
                 <asp:SqlDataSource ID="agentDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[transport].[sp_get_agent_ddl]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
                 <asp:SqlDataSource ID="policyDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[transport].[sp_get_policy_ddl]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
                 <asp:SqlDataSource ID="contactDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[transport].[sp_get_contact_ddl]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
-                <asp:SqlDataSource ID="transportationMethodDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[dbo].[sp_get_transport_method_ddl]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="transportationMethodDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[dbo].[sp_get_transportation_method_ddl]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
                 <asp:SqlDataSource ID="partnersDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[dbo].[sp_get_partners_ddl]" SelectCommandType="StoredProcedure">
                     <%--<SelectParameters>
                         <asp:Parameter Name="CountryID" DbType="Int32" />

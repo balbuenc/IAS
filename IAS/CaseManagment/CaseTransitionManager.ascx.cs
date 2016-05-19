@@ -33,6 +33,9 @@ using IAS.Infrastructure;
 using System.Globalization;
 using IAS.Constants;
 
+using System.Data;
+using System.Data.SqlClient;
+
 namespace IAS.CaseManagment
 {
 
@@ -266,6 +269,41 @@ namespace IAS.CaseManagment
         protected void ddlNewState_DataBound(object sender, EventArgs e)
         {
             changeEffectiveDateEnableProperty();
+        }
+
+        protected void CaseTransitionsListView_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            SqlConnection sqlConnection1 = new SqlConnection(CaseTransitionDataSource.ConnectionString);
+          
+            SqlCommand cmd1 = new SqlCommand();
+
+            Label lblCaseTransitionID = (Label)e.Item.FindControl("lblCaseTransitionID");
+            
+            if (e.CommandName == "Drop")
+            {
+                try
+                {
+                    cmd1.CommandText = "[dbo].[sp_delete_case_transition]";
+                    cmd1.CommandType = CommandType.StoredProcedure;
+                    cmd1.Connection = sqlConnection1;
+
+                    cmd1.Parameters.AddWithValue("@CaseTransitionID", lblCaseTransitionID.Text);
+
+                    sqlConnection1.Open();
+
+                    cmd1.ExecuteNonQuery();
+
+                    sqlConnection1.Close();
+
+                    Response.Redirect("CollectionCaseDetails.aspx?CaseID=" + Request.QueryString["CaseID"]);
+
+                }
+                catch (Exception exp)
+                {
+                    ErrorLabel.Text = exp.Message;
+                    ErrorLabel.Visible = true;
+                }
+            }
         }
 
     }

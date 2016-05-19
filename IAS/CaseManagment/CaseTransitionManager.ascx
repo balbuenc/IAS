@@ -15,7 +15,7 @@
 
     You should have received a copy of the GNU General Public License
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
- --%>
+--%>
 
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CaseTransitionManager.ascx.cs" Inherits="IAS.CaseManagment.CaseTransitionManager" %>
 
@@ -25,7 +25,7 @@
 <asp:ListView ID="CaseTransitionsListView" runat="server"
     ItemType="IAS.Models.CaseTransition"
     SelectMethod="GetData"
-    DataKeyNames="CaseTransitionID">
+    DataKeyNames="CaseTransitionID"   OnItemCommand="CaseTransitionsListView_ItemCommand">
 
     <LayoutTemplate>
 
@@ -43,20 +43,20 @@
 
             <div class="row">
 
-                <div class="col-sm-3">
+                <div class="col-sm-3">                    
                     <asp:Image ID="imgCalendar" ImageUrl="~/Images/calendar-icon.png" CssClass="history-icon" runat="server" />
-                    <asp:Label runat="server" ID="lblTransitionDate" Text='<%# Bind("TransitionDate", "{0:dd/MM/yyyy HH:mm:ss}") %>' Style="font-size:0.8em;" />
+                    <asp:Label runat="server" ID="lblTransitionDate" Text='<%# Bind("TransitionDate", "{0:dd/MM/yyyy HH:mm:ss}") %>' Style="font-size: 0.8em;" />
                 </div>
 
                 <div class="col-sm-4">
                     <asp:Label ID="lblPreviousState" runat="server" Text="<%# Item.PreviousState.StateName %>" />
                     <asp:Image ID="imgArrow" ImageUrl="~/Images/arrow-icon.png" runat="server" />
-                    <asp:Label ID="lblNewState" runat="server" Text="<%# Item.NewState.StateName %>" />                 
+                    <asp:Label ID="lblNewState" runat="server" Text="<%# Item.NewState.StateName %>" />
                 </div>
 
                 <div class="col-sm-2">
                     <asp:Image ID="imgEffeciveDate" ImageUrl="~/Images/schedule-icon.png" CssClass="history-icon" runat="server" />
-                    <asp:Label runat="server" ID="lblEffectiveDate" Text='<%# Bind("EffectiveDate", "{0:dd/MM/yyyy HH:mm:ss}") %>' Style="font-size:0.8em;" />
+                    <asp:Label runat="server" ID="lblEffectiveDate" Text='<%# Bind("EffectiveDate", "{0:dd/MM/yyyy HH:mm:ss}") %>' Style="font-size: 0.8em;" />
                 </div>
 
                 <div class="col-sm-3">
@@ -68,11 +68,16 @@
 
             <div class="row">
 
-                <div class="col-sm-12"> 
+                <div class="col-sm-10">
                     <asp:Image ID="imgComments" ImageUrl="~/Images/comments-icon.png" CssClass="history-icon" runat="server" />
                     <asp:Label ID="Label3" runat="server" Text="<%#Item.Comment%>" />
+                    <asp:Label ID="lblCaseTransitionID" runat="server" Text="<%#Item.CaseTransitionID%>"  Visible="false" />
                 </div>
-
+                <div class="col-sm-2">
+                    <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Drop" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar el registro.?');">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                    </asp:LinkButton>
+                </div>
             </div>
 
         </div>
@@ -118,4 +123,6 @@
 <div class="text-right">
     <asp:Button ID="buttonChangeState" runat="server" Text="Cambiar estado" CssClass="btn btn-info" OnClick="buttonChangeState_Click" />
 </div>
+
+<asp:SqlDataSource ID="CaseTransitionDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"></asp:SqlDataSource>
 

@@ -94,7 +94,9 @@
                                     <li><a href="../Claims/ClaimSearch.aspx">Siniestros</a></li>
                                     <li><a href="../CaseManagment/CollectionsToExpire.aspx">Envio de SMS</a></li>
                                     <li><a href="../Collections/UploadCollections.aspx">Subir cuotas</a></li>
-                                        <li><a href="../Transports/Certificates.aspx">Transporte</a></li>
+                                   <%--  
+                                    <li><a href="../Transports/Certificates.aspx">Transporte</a></li>
+                                --%>
                                 </ul>
                             </div>
                             <div class="btn-group">
@@ -155,7 +157,7 @@
 
                                 </ul>
                             </div>
-                          <%--  <div class="btn-group">
+                            <%--  <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                     Transporte
                                

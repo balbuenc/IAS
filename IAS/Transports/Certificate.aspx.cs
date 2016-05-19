@@ -202,10 +202,9 @@ namespace IAS.Transports
 		{
 			SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
 			SqlCommand cmd = new SqlCommand();
-			int claimID;
+		
 			int rowsAffected;
-
-
+			
 			try
 			{
 				cmd.CommandText = "[transport].[sp_insert_certificate]";
@@ -232,18 +231,21 @@ namespace IAS.Transports
 				cmd.Parameters.AddWithValue("@Rate", txtRate.Text);
 				cmd.Parameters.AddWithValue("@SpendingPercent", txtSpendingPercent.Text);
 				cmd.Parameters.AddWithValue("@Spending", txtSpending.Text);
+				cmd.Parameters.AddWithValue("@ComissionASSAPercent", txtComissionASSAPercent.Text);
 				cmd.Parameters.AddWithValue("@ComissionAdviserPercent", txtComissionAdviserPercent.Text);
 				cmd.Parameters.AddWithValue("@AgentID", ddlAgent.SelectedValue);
 				cmd.Parameters.AddWithValue("@ComissionPercent", txtComissionPercent.Text);
 				cmd.Parameters.AddWithValue("@ComissionAmount", txtComissionAmount.Text);
 				cmd.Parameters.AddWithValue("@ComissionSellerPercent", txtComissionSellerPercent.Text);
 				cmd.Parameters.AddWithValue("@ComissionSellerAmount", txtComissionSellerAmount.Text);
-
+				
 				sqlConnection1.Open();
 
 				rowsAffected = cmd.ExecuteNonQuery();
 				
 				sqlConnection1.Close();
+
+				Response.Redirect("Certificates.aspx");
 
 			}
 			catch(Exception ex)

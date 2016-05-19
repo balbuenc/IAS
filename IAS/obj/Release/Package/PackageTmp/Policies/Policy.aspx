@@ -11,71 +11,123 @@
 
             <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
 
-            <asp:ListView ID="PolicyListView" runat="server"
+            <asp:FormView ID="PolicyFormView"
+                runat="server"
                 DataKeyNames="PolicyNumber"
-                DataSourceID="PolicyDataSource"
-                InsertItemPosition="LastItem">
-                <LayoutTemplate>
-                    <div>
-                        <asp:PlaceHolder runat="server" ID="itemPlaceholder"></asp:PlaceHolder>
-                    </div>
+                DataSourceID="PolicyDataSource">
 
-                </LayoutTemplate>
                 <ItemTemplate>
 
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label for="inputPolicyNumber" class="col-sm-2 control-label">Nro. Póliza</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="lblPolicyNumber" placeholder="Nro. Póliza" value='<%# Eval("PolicyNumber") %>'>
+                    <div class="container">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputPolicyNumber" class="col-lm-4 control-label">Nro. Póliza</label>
+                                <div class="col-lm-8">
+                                    <input type="text" class="form-control" id="lblPolicyNumber" placeholder="Nro. Póliza" value='<%# Eval("PolicyNumber") %>'>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputSectionNumber" class="col-sm-2 control-label">Sección</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="lblSectionNumber" placeholder="Sección" value='<%# Eval("SectionNumber") %>'>
+                            <div class="form-group">
+                                <label for="inputSectionNumber" class="col-lm-4 control-label">Sección</label>
+                                <div class="col-lm-8">
+                                    <input type="text" class="form-control" id="lblSectionNumber" placeholder="Sección" value='<%# Eval("SectionNumber") %>'>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputInsuranceManagerID" class="col-sm-2 control-label">Aseguradora</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="lblInsuranceManagerID" placeholder="Aseguradora" value='<%# Eval("InsuranceManagerID") %>'>
+                            <div class="form-group">
+                                <label for="inputInsuranceManagerID" class="col-lm-4 control-label">Aseguradora</label>
+                                <div class="col-lm-8">
+                                    <input type="text" class="form-control" id="lblInsuranceManagerID" placeholder="Aseguradora" value='<%# Eval("InsuranceManagerID") %>'>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmissionDate" class="col-sm-2 control-label">Fecha de Emisión</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="lblEmissionDate" placeholder="Fecha de Emisíon" value='<%# Eval("EmissionDate") %>'>
+                            <div class="form-group">
+                                <label for="inputEmissionDate" class="col-lm-4 control-label">Fecha de Emisión</label>
+                                <div class="col-lm-8">
+                                    <input type="text" class="form-control" id="lblEmissionDate" placeholder="Fecha de Emisíon" value='<%# Eval("EmissionDate") %>'>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputExpirationDate" class="col-sm-2 control-label">Fecha de Vencimiento</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="lblExpirationDate" placeholder="Fecha de Vencimiento" value='<%# Eval("ExpirationDate") %>'>
+                            <div class="form-group">
+                                <label for="inputExpirationDate" class="col-lm-4 control-label">Fecha de Vencimiento</label>
+                                <div class="col-lm-8">
+                                    <input type="text" class="form-control" id="lblExpirationDate" placeholder="Fecha de Vencimiento" value='<%# Eval("ExpirationDate") %>'>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPersonID" class="col-sm-2 control-label">Asegurado</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="lblPersonID" placeholder="Fecha de Emisíon" value='<%# Eval("PersonID") %>'>
+                            <div class="form-group">
+                                <label for="inputPersonID" class="col-lm-4 control-label">Asegurado</label>
+                                <div class="col-lm-8">
+                                    <input type="text" class="form-control" id="lblPersonID" placeholder="Fecha de Emisíon" value='<%# Eval("PersonID") %>'>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputStatus" class="col-sm-2 control-label">Estado</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="lblStatus" placeholder="Estado" value='<%# Eval("Status") %>'>
+                            <div class="form-group">
+                                <label for="inputStatus" class="col-lm-4 control-label">Estado</label>
+                                <div class="col-lm-8">
+                                    <input type="text" class="form-control" id="lblStatus" placeholder="Estado" value='<%# Eval("Status") %>'>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-4 col-sm-10">
-
+                            <div class="form-group">
+                                <label for="inputStatus" class="col-lm-4 control-label">Monto cubierto</label>
+                                <div class="col-lm-8">
+                                    <asp:TextBox ID="txtCoverage" runat="server" Text='<%# Bind("Coverage") %>' CssClass="form-control" Font-Size="X-Small" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputStatus" class="col-lm-4 control-label">Riesgo</label>
+                                <div class="col-lm-8">
+                                    <asp:TextBox ID="txtRiskName" runat="server" Text='<%# Bind("RiskName") %>' CssClass="form-control" Font-Size="X-Small" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputStatus" class="col-lm-4 control-label">Cant. cuotas</label>
+                                <div class="col-lm-8">
+                                    <asp:TextBox ID="txtPaymentsNumber" runat="server" Text='<%# Bind("PaymentsNumber") %>' CssClass="form-control" Font-Size="X-Small" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputStatus" class="col-lm-4 control-label">Prima</label>
+                                <div class="col-lm-8">
+                                    <asp:TextBox ID="txtPremium" runat="server" Text='<%# Bind("Premium") %>' CssClass="form-control" Font-Size="X-Small" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputStatus" class="col-lm-4 control-label">Premio</label>
+                                <div class="col-lm-8">
+                                    <asp:TextBox ID="txtPremiunPlusTax" runat="server" Text='<%# Bind("PremiunPlusTax") %>' CssClass="form-control" Font-Size="X-Small" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputStatus" class="col-lm-4 control-label">Asociado</label>
+                                <div class="col-lm-8">
+                                    <asp:TextBox ID="txtPartnerID" runat="server" Text='<%# Bind("PartnerID") %>' CssClass="form-control" Font-Size="X-Small" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputStatus" class="col-lm-4 control-label">Comision ASSA %</label>
+                                <div class="col-lm-8">
+                                    <asp:TextBox ID="txtComissionASSAPercent" runat="server" Text='<%# Bind("ComissionASSAPercent") %>' CssClass="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputStatus" class="col-lm-4 control-label">Comision ASSA</label>
+                                <div class="col-lm-8">
+                                    <asp:TextBox ID="txtComissionASSA" runat="server" Text='<%# Bind("ComissionASSA") %>' CssClass="form-control" Font-Size="X-Small" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputStatus" class="col-lm-4 control-label">Asociado %</label>
+                                <div class="col-lm-8">
+                                    <asp:TextBox ID="txtPartnerComissionPercent" runat="server" Text='<%# Bind("PartnerComissionPercent") %>' CssClass="form-control" Font-Size="X-Small" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputStatus" class="col-lm-4 control-label">Asociado %</label>
+                                <div class="col-lm-8">
+                                    <asp:TextBox ID="txtPartnerComissionAmount" runat="server" Text='<%# Bind("PartnerComissionAmount") %>' CssClass="form-control" Font-Size="X-Small" />
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <asp:Button ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CssClass="btn btn-info" />
-                            </div>
-                            <div class="col-sm-offset-2 col-sm-10">
                                 <asp:Button ID="DeleteButton" runat="server" Text="Borrar" CommandName="Delete" CssClass="btn btn-danger" />
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
 
 
 
@@ -100,6 +152,29 @@
                             <asp:TextBox ID="txtStatus" runat="server" Text='<%# Bind("Status") %>' CssClass="form-control" Font-Size="X-Small" /></td>
 
 
+                        <td>
+                            <asp:TextBox ID="txtCoverage" runat="server" Text='<%# Bind("Coverage") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtRiskName" runat="server" Text='<%# Bind("RiskName") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtPaymentsNumber" runat="server" Text='<%# Bind("PaymentsNumber") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+
+                        <td>
+                            <asp:TextBox ID="txtPremium" runat="server" Text='<%# Bind("Premium") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtPremiunPlusTax" runat="server" Text='<%# Bind("PremiunPlusTax") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtPartnerID" runat="server" Text='<%# Bind("PartnerID") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtComissionASSAPercent" runat="server" Text='<%# Bind("ComissionASSAPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtComissionASSA" runat="server" Text='<%# Bind("ComissionASSA") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtPartnerComissionPercent" runat="server" Text='<%# Bind("PartnerComissionPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                        <td>
+                            <asp:TextBox ID="txtPartnerComissionAmount" runat="server" Text='<%# Bind("PartnerComissionAmount") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+
+
                         <td class="text-right">
                             <asp:Button ID="UpdateButton" runat="server" Text="Guardar" CommandName="Update" CssClass="btn btn-info" />
                             <asp:Button ID="CancelButton" runat="server" Text="Cancelar" CommandName="Cancel" CssClass="btn" />
@@ -109,7 +184,7 @@
                 <InsertItemTemplate>
                 </InsertItemTemplate>
 
-            </asp:ListView>
+            </asp:FormView>
 
         </ContentTemplate>
 

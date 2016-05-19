@@ -1,8 +1,24 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Transport.Master" AutoEventWireup="true" CodeBehind="Certificate.aspx.cs" Inherits="IAS.Transports.Certificate" %>
 
 <asp:Content ID="head" ContentPlaceHolderID="head" runat="server">
+    <style>
+        #contenido {
+            margin: 0 10px;
+        }
+
+        #header {
+            padding-top: 5px;
+            height: 50px;
+            padding-right: 10px;
+        }
+
+        .modal-wide1 .modal-dialog {
+            width: 80%; /* or whatever you wish */
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
+
     <div class="page-header">
         <h2>Certificado</h2>
     </div>
@@ -41,7 +57,7 @@
                                                                 searchRecords();
                                                             }" />
                                                 <div class="input-group-btn">
-                                                    <button type="button" id="criteriaBtn" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" runat="server">Cliente<span class="caret"></span></button>
+                                                    <button type="button" id="criteriaBtn" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" runat="server">Cliente<span class="caret"></span></button>
                                                     <ul class="dropdown-menu">
                                                         <li><a href="?criteria=Client">Cliente</a></li>
                                                         <li><a href="?criteria=ClientDocumentNumber">Nro. Documento</a></li>
@@ -76,6 +92,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-lg-12" style="font-size: small">
                         <div class="panel panel-default">
@@ -136,7 +153,7 @@
                                                 DataValueField="ContactID" DataTextField="Contact">
                                             </asp:DropDownList>
                                         </div>
-                                        
+
                                         <label class="col-sm-1 control-label" for="form-group-input">Metodo de transporte</label>
                                         <div class="col-sm-3">
                                             <asp:DropDownList ID="ddlTransportationMethod" runat="server" CssClass="form-control" DataSourceID="transportationMethodDataSource"
@@ -176,13 +193,13 @@
                                         <div class="col-sm-3">
                                             <asp:TextBox ID="txtPremiunmPlusTax" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
-                                        
+
                                         <label class="col-sm-1 control-label" for="form-group-input">Monto de capital</label>
                                         <div class="col-sm-3">
                                             <asp:TextBox ID="txtCapitalAmount" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
                                     </div>
-                                    <br />                                    
+                                    <br />
                                     <div class="row">
                                         <label class="col-sm-1 control-label" for="form-group-input">Tarifa</label>
                                         <div class="col-sm-3">
@@ -213,6 +230,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-lg-12" style="font-size: small">
                         <div class="panel panel-default">
@@ -250,22 +268,23 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-sm-4">
-                        <asp:Button ID="btnGuardar" runat="server" CssClass =" btn btn-primary" OnClick="btnGuardar_Click" />
+                        <asp:Button ID="btnGuardar" runat="server" CssClass=" btn btn-primary" Text="Guardar" OnClick="btnGuardar_Click" />
                     </div>
                 </div>
-                <div class="modal fade" id="myModalClients" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal fade modal-wide1" id="myModalClients" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
-                                <h4 class="modal-title" id="H5">Seleccionar póliza</h4>
+                                <h4 class="modal-title" id="myModalLabel">Seleccionar póliza</h4>
                             </div>
                             <br />
                             <div class="form-horizontal" role="form">
-                                <div class="row" style="font-size: x-small !important;">
-                                    <div class="col-lg-6">
+                                <div class="row" style="padding-left: 20px; padding-right: 20px; font-size: x-small !important;">
+                                    <div class="col-lg-12">
                                         <asp:GridView ID="gridClients" AutoGenerateColumns="false" EmptyDataText="Sin registros" runat="server" CssClass="table table-hover"
                                             OnRowCommand="gridClients_RowCommand">
                                             <Columns>
@@ -290,6 +309,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- SQL Data Sources -->
                 <asp:SqlDataSource ID="clientesDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="sp_obtener_persona_para_siniestros" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
                 <asp:SqlDataSource ID="insuranceManagerDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[dbo].[sp_get_insurance_managers_ddl]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>

@@ -164,6 +164,8 @@
     <Content Include="Admin\AlarmUsers.aspx" />
     <Content Include="Admin\CasePriorities.aspx" />
     <Content Include="Admin\ClaimsStatus.aspx" />
+    <Content Include="Admin\CollectionManagementResults.aspx" />
+    <Content Include="Admin\CollectionResult.aspx" />
     <Content Include="Admin\CollectionStates.aspx" />
     <Content Include="Admin\CollectionMethods.aspx" />
     <Content Include="Admin\ContactDestinations.aspx" />
@@ -248,7 +250,6 @@
     <Content Include="Account\Web.config" />
     <Content Include="Claim.Master" />
     <Content Include="Commercial.Master" />
-    <None Include="Properties\PublishProfiles\aibias - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\aibias - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\seguros - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\toyoias - Web Deploy.pubxml" />
@@ -453,6 +454,20 @@
     </Compile>
     <Compile Include="Admin\ClaimsStatus.aspx.designer.cs">
       <DependentUpon>ClaimsStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CollectionManagementResults.aspx.cs">
+      <DependentUpon>CollectionManagementResults.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CollectionManagementResults.aspx.designer.cs">
+      <DependentUpon>CollectionManagementResults.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CollectionResult.aspx.cs">
+      <DependentUpon>CollectionResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CollectionResult.aspx.designer.cs">
+      <DependentUpon>CollectionResult.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\CollectionStates.aspx.cs">
       <DependentUpon>CollectionStates.aspx</DependentUpon>

@@ -175,6 +175,6 @@
         </DeleteParameters>
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="StatusSqldataSoruce" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
-        SelectCommand="claim.sp_get_status" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+        SelectCommand="[claim].[sp_get_status]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     <!-- #endregion -->
 </asp:Content>

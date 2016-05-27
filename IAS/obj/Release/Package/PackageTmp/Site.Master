@@ -153,7 +153,7 @@
                                     <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fCasosCelulares&rs:Command=Render" target="_blank">Clientes con Celular</a></li>
                                     <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fEnvioSMSCasosConCelular&rs:Command=Render" target="_blank">Notificaciones por SMS</a></li>
                                     <hr />
-                                    <li><a href="https://app.powerbi.com/groups/me/dashboards/0fa2deb1-7e8b-4c54-a4e3-f3182f602af5" target="_blank">Cobranzas Dashboard</a></li>
+                                    <%--<li><a href="https://app.powerbi.com/groups/me/dashboards/0fa2deb1-7e8b-4c54-a4e3-f3182f602af5" target="_blank">Cobranzas Dashboard</a></li>--%>
 
                                 </ul>
                             </div>

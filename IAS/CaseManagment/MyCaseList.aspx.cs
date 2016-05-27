@@ -91,7 +91,8 @@ namespace IAS.CaseManagment {
                             dateInterval.Equals( ControlValues.Oldest ) ? c.EffectiveDate < DateTime.Today.Date : true )
                         && c.WorkflowID == 2
                         && ( theCasePriorityID == 0 ? true : c.CasePriorityID == theCasePriorityID )
-                        && ( string.IsNullOrEmpty( caseDescription ) ? true : c.Description.Contains( caseDescription ) ) )
+                        && ( string.IsNullOrEmpty( caseDescription ) ? true : c.Description.Contains( caseDescription ) )
+                        && c.StateID != 15)
                     //&& ( SqlFunctions.PatIndex("%" + caseDescription + "%",c.Description) > 0 ) )
 
 

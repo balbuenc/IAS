@@ -5,6 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title><%: Page.Title %> - Balcazz HT</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="cleartype" content="on" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <asp:PlaceHolder runat="server">
@@ -13,25 +20,52 @@
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="Content/Styles.css" rel="stylesheet" />
-   <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/mango.css" rel="stylesheet" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
 
-    <script type="text/javascript">
-        window.onload = function () {
-            var pos = window.name || 0;
-            window.scrollTo(0, pos);
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
         }
 
-        window.onunload = function () {
-            window.name = self.pageYOffset || (document.documentElement.scrollTop + document.body.scrollTop);
+        .slideout-menu {
+            position: fixed;
+            background-color: #0094ff;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            z-index: 0;
+            width: 256px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            display: none;
         }
 
-    </script>
+        .slideout-panel {
+            position: relative;
+            z-index: 1;
+            will-change: transform;
+        }
+
+        .slideout-open,
+        .slideout-open body,
+        .slideout-open .slideout-panel {
+            overflow: hidden;
+        }
+
+            .slideout-open .slideout-menu {
+                display: block;
+            }
+    </style>
+
 </head>
 <body>
     <form id="form" runat="server">
-        <div id="topContentTransport">
+        <%--        <div id="topContentTransport">
             <a href="../../Default.aspx">IAS | Transporte </a>
-        </div>
+        </div>--%>
         <asp:ScriptManager runat="server" ID="ScriptManager1">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -49,18 +83,37 @@
                 <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
                 <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
                 <asp:ScriptReference Name="WebFormsBundle" />
-
                 <%--Site Scripts--%>
                 <asp:ScriptReference Path="~/Scripts/jqueryBlockUI.js" />
                 <asp:ScriptReference Path="~/Scripts/jquery.datetimepicker.js" />
-
+                <asp:ScriptReference Path="~/Scripts/slideout.js" />
             </Scripts>
         </asp:ScriptManager>
         <div>
+
+            <nav id="menu" class="menu">
+                <h2>IAS</h2>
+            </nav>
+
+            <main id="panel">
+                <header>
+                    <h2>Panel</h2>
+                    <button class="btn-hamburger toggle-button" onclick="return false;">☰</button>
+                </header>
+            </main>
+
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
         </div>
+
         <script>
+
+            var slideout = new Slideout({
+                'panel': document.getElementById('panel'),
+                'menu': document.getElementById('menu'),
+                'padding': 256,
+                'tolerance': 70,
+            });
 
             Sys.Application.add_load(setupControlsDisablers);
             function setupControlsDisablers(sender) {
@@ -78,6 +131,15 @@
 
             function onPageLoad() {
                 $.unblockUI();
+            }
+
+            window.onload = function () {
+                var pos = window.name || 0;
+                window.scrollTo(0, pos);
+            }
+
+            window.onunload = function () {
+                window.name = self.pageYOffset || (document.documentElement.scrollTop + document.body.scrollTop);
             }
 
 

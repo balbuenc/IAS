@@ -209,6 +209,7 @@
     <Content Include="Collections\Assignations.aspx" />
     <Content Include="Collections\UploadCollections.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="Content\assets\menu.png" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker.min.css" />
     <Content Include="Content\bootstrap-datepicker.standalone.css" />
@@ -223,6 +224,7 @@
     <Content Include="Content\jquery.datetimepicker.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Styles.css" />
+    <Content Include="Content\mango.css" />
     <Content Include="Content\typeahead.css" />
     <Content Include="ErrorPage.aspx" />
     <Content Include="Exchange\ExternalPolicyVerification.aspx" />
@@ -332,6 +334,7 @@
     <Content Include="Scripts\raphael-min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\slideout.js" />
     <Content Include="Scripts\typeahead.bundle.js" />
     <Content Include="Scripts\typeahead.bundle.min.js" />
     <Content Include="Scripts\typeahead.jquery.js" />
@@ -362,6 +365,7 @@
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
     <Content Include="Collections\Tasks.aspx" />
+    <Content Include="Test.html" />
     <Content Include="Transports\Admin\Certificates.aspx" />
     <Content Include="Transports\Admin\Policies.aspx" />
     <Content Include="Transports\Certificate.aspx" />

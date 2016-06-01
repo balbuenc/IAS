@@ -13,13 +13,13 @@ namespace IAS.Transports {
     public partial class Certificate {
         
         /// <summary>
-        /// upnlCollections control.
+        /// upnlCertificate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upnlCollections;
+        protected global::System.Web.UI.UpdatePanel upnlCertificate;
         
         /// <summary>
         /// ErrorLabel control.
@@ -328,15 +328,6 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.Button btnGuardar;
         
         /// <summary>
-        /// gridClients control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridClients;
-        
-        /// <summary>
         /// clientesDataSource control.
         /// </summary>
         /// <remarks>
@@ -398,5 +389,14 @@ namespace IAS.Transports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource partnersDataSource;
+        
+        /// <summary>
+        /// gridClients control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridClients;
     }
 }

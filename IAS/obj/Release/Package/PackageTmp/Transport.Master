@@ -49,33 +49,29 @@
 </head>
 <body style="padding-top: 0px">
     <form id="form" runat="server">
-
-
-        <div class="container-fluid" style="background-color: #3361D6">
-            <div class="row">
-               
-                <div class="col-lg-4">
-                    <h4 style="color: white">
-                        <a href="../Default.aspx" class="btn btn-info btn-lg">
-                        <span class="glyphicon glyphicon-home"></span> IAS 
-                    </a>
+        <div class="container-fluid" style="background-color: #BDBDBD">
+            <div class="row" style="padding: 4px">
+                <div class="col-lg-2">
+                    <h4 style="color:whitesmoke;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+                        <a href="../Default.aspx" class="btn btn-info">
+                            <span class="glyphicon glyphicon-home"></span>
+                        </a>
                         Transporte
                     </h4>
                 </div>
-                <div class="col-lg-8">
+
+                <div class="col-lg-8 visible-lg">
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Login">
-                                    <h5 style="color: white">Log in</h5>
+                                <li><a runat="server" href="~/Account/Login">Log in
                                 </a></li>
                             </ul>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
-                            <ul class="nav navbar-nav navbar-right" style="font-size: x-small;">
+                            <ul class="nav navbar-nav navbar-right">
                                 <li>
-                                    <a runat="server" href="~/Account/Manage" title="Manage your account">
-                                        <h5 style="color: white">Bienvenido, <%: Context.User.Identity.GetUserName()  %> </h5>
+                                    <a runat="server" href="~/Account/Manage" title="Manage your account">Bienvenido, <%: Context.User.Identity.GetUserName()  %>
                                     </a>
                                 </li>
                             </ul>

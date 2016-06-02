@@ -48,14 +48,14 @@
                         <div class="table responsive">
                             <table class="table table-striped" style="font-size: x-small">
                                 <thead>
-                                    <th>ID</th>
+                                    <th class="visible-lg">ID</th>
                                     <th>Nro. Cert.</th>
                                     <th>Póliza</th>
                                     <th>Cliente</th>
-                                    <th>Cant. Paquetes</th>
-                                    <th>Origen</th>
-                                    <th>Destino</th>
-                                    <th>Monto Aegurado</th>
+                                    <th class="visible-lg">Cant. Paquetes</th>
+                                    <th class="visible-lg">Origen</th>
+                                    <th class="visible-lg">Destino</th>
+                                    <th class="visible-lg">Monto Aegurado</th>
                                     <th>Prima</th>
                                 </thead>
                                 <tbody>
@@ -66,7 +66,7 @@
                     </LayoutTemplate>
                     <ItemTemplate>
                         <tr>
-                            <td>
+                            <td class="visible-lg">
                                 <asp:Label ID="lblCertificateID" runat="server" Text='<%# Eval("CertificateID") %>' /></td>
                             <td>
                                 <asp:Label ID="lblCertificateNumber" runat="server" Text='<%# Eval("CertificateNumber") %>' /></td>
@@ -75,13 +75,13 @@
                             <td>
                                 <asp:Label ID="lblBeneficiary" runat="server" Text='<%# Eval("Beneficiary") %>' /></td>
 
-                            <td>
+                            <td class="visible-lg">
                                 <asp:Label ID="lblPackageCount" runat="server" Text='<%# Eval("PackageCount") %>' /></td>
-                            <td>
+                            <td class="visible-lg">
                                 <asp:Label ID="lblOrigin" runat="server" Text='<%# Eval("Origin") %>' /></td>
-                            <td>
+                            <td class="visible-lg">
                                 <asp:Label ID="lblDestination" runat="server" Text='<%# Eval("Destination") %>' /></td>
-                            <td>
+                            <td class="visible-lg">
                                 <asp:Label ID="lblCapitalAmount" runat="server" Text='<%# Eval("CapitalAmount") %>' /></td>
                             <td>
                                 <asp:Label ID="lblPremiunmPlusTax" runat="server" Text='<%# Eval("PremiunmPlusTax") %>' /></td>
@@ -94,7 +94,7 @@
                                     </asp:LinkButton>
 
 
-                                    <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Delete" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar el Siniestro.?');">
+                                    <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Delete" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar el Certificado.?');">
                                                 <span class="glyphicon glyphicon-trash"></span>
                                     </asp:LinkButton>
 

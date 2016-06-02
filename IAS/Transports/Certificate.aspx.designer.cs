@@ -328,6 +328,15 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.Button btnGuardar;
         
         /// <summary>
+        /// gridClients control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridClients;
+        
+        /// <summary>
         /// clientesDataSource control.
         /// </summary>
         /// <remarks>
@@ -389,14 +398,5 @@ namespace IAS.Transports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource partnersDataSource;
-        
-        /// <summary>
-        /// gridClients control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridClients;
     }
 }

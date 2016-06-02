@@ -49,18 +49,31 @@
 </head>
 <body style="padding-top: 0px">
     <form id="form" runat="server">
-        <div class="container-fluid" style="background-color: #01DFD7">
+        <div class="container-fluid" style="background-color: #01DFD7;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
             <div class="row" style="padding: 4px">
                 <div class="col-lg-2">
-                    <h4 style="color:whitesmoke;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+                    <h4 style="color:white" title="Home">
                         <a href="../Default.aspx" class="btn btn-info">
                             <span class="glyphicon glyphicon-home"></span>
                         </a>
                         Transporte
                     </h4>
                 </div>
-
-                <div class="col-lg-8 visible-lg">
+                 <div class="col-lg-2" title="Certificados">
+                    <h4>
+                        <a href="Certificates.aspx" class="btn btn-info">
+                            <span class="glyphicon glyphicon-list-alt"></span>
+                        </a>
+                    </h4>
+                </div>
+                 <div class="col-lg-2" title="Pólizas">
+                    <h4>
+                        <a href="Policies.aspx" class="btn btn-info">
+                            <span class="glyphicon glyphicon-book"></span>
+                        </a>
+                    </h4>
+                </div>
+                <div class="col-lg-6 visible-lg">
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">

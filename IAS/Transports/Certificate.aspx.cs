@@ -95,6 +95,8 @@ namespace IAS.Transports
 							criteria = "Client";
 							break;
 					}
+
+                    
 				}
 				else
 				{

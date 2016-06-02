@@ -368,6 +368,7 @@
     <Content Include="Transports\Certificate.aspx" />
     <Content Include="Transports\Certificates.aspx" />
     <Content Include="Transports\Collection.aspx" />
+    <Content Include="Transports\Policies.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1027,6 +1028,13 @@
     </Compile>
     <Compile Include="Transports\Collection.aspx.designer.cs">
       <DependentUpon>Collection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Transports\Policies.aspx.cs">
+      <DependentUpon>Policies.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Transports\Policies.aspx.designer.cs">
+      <DependentUpon>Policies.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

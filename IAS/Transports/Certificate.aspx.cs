@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 
 namespace IAS.Transports
 {
-<<<<<<< HEAD
+
 	public partial class Certificate : Page
 	{
 		public string NroPoliza
@@ -260,7 +260,7 @@ namespace IAS.Transports
 			
 		}
 	}
-=======
+
     public partial class Certificate : Page
     {
         public string NroPoliza
@@ -361,7 +361,7 @@ namespace IAS.Transports
             try
             {
 
-                criteria = Request.QueryString["criteria"]?.ToString();
+                criteria = Request.QueryString["criteria"].ToString();
                 switch(criteria)
                 {
                     case "Client":
@@ -392,13 +392,13 @@ namespace IAS.Transports
             {
                 if(Mode == string.Empty)
                 {
-                    Mode = Request.QueryString["mode"]?.ToString();
+                    Mode = Request.QueryString["mode"].ToString();
                 }
 
-                CertificateNumber = Convert.ToInt64(Request.QueryString["CertificateNumber"]?.ToString());
+                CertificateNumber = Convert.ToInt64(Request.QueryString["CertificateNumber"].ToString());
                 if(CertificateID == 0)
                 {
-                    CertificateID = Convert.ToInt64(Request.QueryString["CertificateID"]?.ToString());
+                    CertificateID = Convert.ToInt64(Request.QueryString["CertificateID"].ToString());
                 }
 
                 if(Mode.Equals("update"))
@@ -442,7 +442,7 @@ namespace IAS.Transports
                     BeneficiaryID = Convert.ToInt64(dt.Rows[0]["PersonID"].ToString());
                     txtCertificateNumber.Text = dt.Rows[0]["CertificateNumber"].ToString();
                     txtPartnerAmmountPercent.Text = dt.Rows[0]["PartnerAmmountPercent"].ToString();
-                    txtRiskName.Text = dt.Rows[0]["RiskName"]?.ToString();
+                    txtRiskName.Text = dt.Rows[0]["RiskName"].ToString();
                     ddlInsuranceManager.SelectedValue = (dt.Rows[0]["InsuranceManagerID"].ToString() == string.Empty) ? "-1" : dt.Rows[0]["InsuranceManagerID"].ToString();
                     ddlPartners.SelectedValue = (dt.Rows[0]["PartnerID"].ToString() == string.Empty) ? "-1" : dt.Rows[0]["PartnerID"].ToString();
                     ddlPolicy.SelectedValue = (dt.Rows[0]["PolicyNumber"].ToString() == string.Empty) ? "-1" : dt.Rows[0]["PolicyNumber"].ToString();
@@ -623,5 +623,5 @@ namespace IAS.Transports
             }
         }
     }
->>>>>>> db57491f0ee5f7168d07d232cb702d8689df96db
+
 }

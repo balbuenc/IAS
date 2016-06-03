@@ -53,11 +53,11 @@
                                                 <input type="text" class="form-control" id="txtSearchClient" runat="server"
                                                     placeholder="Buscar Cliente..."
                                                     onkeydown="if (window.event.keyCode == 13) 
-                                                            {
-                                                                event.returnValue=false; 
-                                                                event.cancel = true;
-                                                                searchRecords();
-                                                            }" />
+                                                               {
+                                                                    event.returnValue = false; 
+                                                                    event.cancel = true;
+                                                                    searchRecords();
+                                                               }" />
                                                 <div class="input-group-btn">
                                                     <button type="button" id="criteriaBtn" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" runat="server">Cliente<span class="caret"></span></button>
                                                     <ul class="dropdown-menu">

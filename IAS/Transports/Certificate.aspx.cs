@@ -72,14 +72,14 @@ namespace IAS.Transports
         {
             get
             {
-                object o = ViewState["CertificateID"];
+                object o = Session["CertificateID"];
                 if(o == null)
                     return 0;
                 return (Int64)o;
             }
             set
             {
-                ViewState["CertificateID"] = value;
+                Session["CertificateID"] = value;
             }
         }
 
@@ -87,14 +87,14 @@ namespace IAS.Transports
         {
             get
             {
-                object o = ViewState["Mode"];
+                object o = Session["Mode"];
                 if(o == null)
                     return string.Empty;
                 return o.ToString();
             }
             set
             {
-                ViewState["Mode"] = value;
+                Session["Mode"] = value;
             }
         }
 
@@ -139,9 +139,12 @@ namespace IAS.Transports
                 {
                     Mode = Request.QueryString["mode"]?.ToString();
                 }
-                
+
                 CertificateNumber = Convert.ToInt64(Request.QueryString["CertificateNumber"]?.ToString());
-                CertificateID = Convert.ToInt64(Request.QueryString["CertificateID"]?.ToString());
+                if(CertificateID == 0)
+                {
+                    CertificateID = Convert.ToInt64(Request.QueryString["CertificateID"]?.ToString());
+                }
 
                 if(Mode.Equals("update"))
                 {
@@ -348,6 +351,9 @@ namespace IAS.Transports
                     rowsAffected = cmd.ExecuteNonQuery();
 
                     sqlConnection1.Close();
+
+                    Mode = string.Empty;
+                    CertificateID = 0;
 
                     Response.Redirect("Certificates.aspx");
 

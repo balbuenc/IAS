@@ -14,7 +14,6 @@
 
         .modal-wide1 .modal-dialog {
             width: 80%; /* or whatever you wish */
-           
             left: 0;
         }
     </style>
@@ -32,17 +31,17 @@
             <asp:PostBackTrigger ControlID="gridClients" />
         </Triggers>
         <ContentTemplate>
-            <div class="container" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+            <div class="container" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
                 <div class="row">
                     <div class="col-lg-12">
                         <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
                     </div>
                 </div>
-               
+
                 <div class="row">
                     <div class="col-lg-12" style="font-size: small">
                         <div class="panel panel-default">
-                            <div class="panel-heading"><span class="glyphicon glyphicon-search"></span> Buscar cliente</div>
+                            <div class="panel-heading"><span class="glyphicon glyphicon-search"></span>Buscar cliente</div>
                             <div class="panel-body">
                                 <div class="form-group">
                                     <div class="row">
@@ -70,7 +69,7 @@
                                         </div>
                                     </div>
                                     <br />
-                                    <div id="divClientData" runat="server" style=" border-bottom:double;border-bottom-color:lightgray" visible="false">
+                                    <div id="divClientData" runat="server" style="border-bottom: double; border-bottom-color: lightgray" visible="false">
                                         <div class="row">
                                             <label class="col-sm-2 control-label" for="form-group-input">Cliente</label>
                                             <div class="col-sm-6">
@@ -144,7 +143,7 @@
                                         <label class="col-sm-1 control-label" for="form-group-input">Nro Poliza</label>
                                         <div class="col-sm-3">
                                             <asp:DropDownList ID="ddlPolicy" runat="server" CssClass="form-control" DataSourceID="policyDataSource"
-                                                DataValueField="PolicyNumber" DataTextField="Description">
+                                                DataValueField="PolicyNumber" DataTextField="PolicyNumber">
                                             </asp:DropDownList>
                                         </div>
                                     </div>
@@ -228,42 +227,28 @@
                                             <asp:TextBox ID="txtComissionAdviserPercent" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-12" style="font-size: small">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Datos de comisiones</div>
-                            <div class="panel-body">
-                                <div class="form-group">
+                                    <br />
                                     <div class="row">
-                                        <label class="col-sm-1 control-label" for="form-group-input">Gerente de Seguros</label>
+                                        <label class="col-sm-1 control-label" for="form-group-input">Moneda</label>
                                         <div class="col-sm-3">
-                                            <asp:DropDownList ID="ddlAgent" runat="server" CssClass="form-control" DataSourceID="agentDataSource"
-                                                DataValueField="AgentID" DataTextField="Agent">
+                                            <asp:DropDownList ID="ddlCurrency" runat="server" CssClass="form-control" DataSourceID="currencyDataSource"
+                                                DataValueField="CurrencyID" DataTextField="Denomination">
                                             </asp:DropDownList>
                                         </div>
-                                        <label class="col-sm-1 control-label" for="form-group-input">Porcentaje comisión</label>
+                                        <label class="col-sm-1 control-label" for="form-group-input">Beneficiario</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtComissionPercent" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtBeneficiary" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
-                                        <label class="col-sm-1 control-label" for="form-group-input">Monto comisión</label>
+                                        <label class="col-sm-1 control-label" for="form-group-input">Fecha de emisión</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtComissionAmount" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtEmissionDate" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
                                     </div>
+                                    <br />
                                     <div class="row">
-                                        <label class="col-sm-1 control-label" for="form-group-input">Porcentaje comisión vendedor</label>
+                                        <label class="col-sm-1 control-label" for="form-group-input">Fecha de extensión</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtComissionSellerPercent" runat="server" CssClass="form-control"></asp:TextBox>
-                                        </div>
-                                        <label class="col-sm-1 control-label" for="form-group-input">Monto comisión vendedor</label>
-                                        <div class="col-sm-3">
-                                            <asp:TextBox ID="txtComissionSellerAmount" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtExtensionDate" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -277,19 +262,17 @@
                         <asp:Button ID="btnGuardar" runat="server" CssClass=" btn btn-primary" Text="Guardar" OnClick="btnGuardar_Click" />
                     </div>
                 </div>
-               
 
                 <!-- SQL Data Sources -->
                 <asp:SqlDataSource ID="clientesDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="sp_obtener_persona_para_siniestros" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
                 <asp:SqlDataSource ID="insuranceManagerDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[dbo].[sp_get_insurance_managers_ddl]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
-                <asp:SqlDataSource ID="agentDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[transport].[sp_get_agent_ddl]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="currencyDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[dbo].[get_currency_ddl]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
                 <asp:SqlDataSource ID="policyDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[transport].[sp_get_policy_ddl]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
                 <asp:SqlDataSource ID="contactDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[transport].[sp_get_contact_ddl]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
                 <asp:SqlDataSource ID="transportationMethodDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[dbo].[sp_get_transportation_method_ddl]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
-                <asp:SqlDataSource ID="partnersDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[dbo].[sp_get_partners_ddl]" SelectCommandType="StoredProcedure">                  
-                </asp:SqlDataSource>
+                <asp:SqlDataSource ID="partnersDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[dbo].[sp_get_partners_ddl]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
 
-                 <div class="modal fade modal-wide1" id="myModalClients" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal fade modal-wide1" id="myModalClients" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -325,11 +308,11 @@
                     </div>
                 </div>
 
-                </div>
+            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
 
-    
+
     <script type="text/javascript">
 
         function openModalClients() {

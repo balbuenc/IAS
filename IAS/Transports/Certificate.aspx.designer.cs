@@ -274,49 +274,40 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.TextBox txtComissionAdviserPercent;
         
         /// <summary>
-        /// ddlAgent control.
+        /// ddlCurrency control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlAgent;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCurrency;
         
         /// <summary>
-        /// txtComissionPercent control.
+        /// txtBeneficiary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtComissionPercent;
+        protected global::System.Web.UI.WebControls.TextBox txtBeneficiary;
         
         /// <summary>
-        /// txtComissionAmount control.
+        /// txtEmissionDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtComissionAmount;
+        protected global::System.Web.UI.WebControls.TextBox txtEmissionDate;
         
         /// <summary>
-        /// txtComissionSellerPercent control.
+        /// txtExtensionDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtComissionSellerPercent;
-        
-        /// <summary>
-        /// txtComissionSellerAmount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtComissionSellerAmount;
+        protected global::System.Web.UI.WebControls.TextBox txtExtensionDate;
         
         /// <summary>
         /// btnGuardar control.
@@ -346,13 +337,13 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.SqlDataSource insuranceManagerDataSource;
         
         /// <summary>
-        /// agentDataSource control.
+        /// currencyDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource agentDataSource;
+        protected global::System.Web.UI.WebControls.SqlDataSource currencyDataSource;
         
         /// <summary>
         /// policyDataSource control.

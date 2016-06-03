@@ -361,6 +361,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="SideTest.html" />
     <Content Include="Site.Master" />
     <Content Include="Collections\Tasks.aspx" />
     <Content Include="Transports\Admin\Certificates.aspx" />

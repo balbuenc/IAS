@@ -61,6 +61,8 @@ namespace IAS.Models
         [ForeignKey("UserID")]
         public virtual ApplicationUser User { get; set; }
 
+        public int isToday { get; set; }
+
         public virtual ICollection<CaseTransition> StateTransitions { get; set; }
 
         public virtual ICollection<Collection> Collections { get; set; }

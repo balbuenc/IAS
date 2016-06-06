@@ -69,6 +69,7 @@ namespace IAS.CaseManagment {
                 DateTime.Now, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday );
             int nextWeekNum = CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(
                 DateTime.Now.AddDays( 7 ), CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Sunday );
+            DateTime today = DateTime.Today.Date;
 
             try {
                 var db = new ApplicationDbContext();
@@ -84,10 +85,10 @@ namespace IAS.CaseManagment {
 
                 var query = db.Cases
                     .Where( c => c.UserID == userId
-                        && ( string.IsNullOrEmpty( dateInterval ) || dateInterval.Equals( ControlValues.Today ) ? c.EffectiveDate == DateTime.Today.Date :
-                            dateInterval.Equals( ControlValues.CurrentWeek ) ? SqlFunctions.DatePart( "week", c.EffectiveDate ) == currentWeekNum :
-                            dateInterval.Equals( ControlValues.NextWeek ) ? SqlFunctions.DatePart( "week", c.EffectiveDate ) == nextWeekNum :
-                            dateInterval.Equals( ControlValues.CurrentMonth ) ? SqlFunctions.DatePart( "month", c.EffectiveDate ) == currentMonthNum :
+                        && ( string.IsNullOrEmpty( dateInterval ) || dateInterval.Equals( ControlValues.Today ) ? c.isToday == 1 :
+                            dateInterval.Equals( ControlValues.CurrentWeek ) ? SqlFunctions.DatePart( "week", c.EffectiveDate ) == currentWeekNum && SqlFunctions.DatePart("year", c.EffectiveDate) == today.Year  :
+                            dateInterval.Equals( ControlValues.NextWeek ) ? SqlFunctions.DatePart( "week", c.EffectiveDate ) == nextWeekNum && SqlFunctions.DatePart("year", c.EffectiveDate) == today.Year :
+                            dateInterval.Equals( ControlValues.CurrentMonth ) ? SqlFunctions.DatePart( "month", c.EffectiveDate ) == currentMonthNum && SqlFunctions.DatePart("year", c.EffectiveDate) == today.Year :
                             dateInterval.Equals( ControlValues.Oldest ) ? c.EffectiveDate < DateTime.Today.Date : true )
                         && c.WorkflowID == 2
                         && ( theCasePriorityID == 0 ? true : c.CasePriorityID == theCasePriorityID )

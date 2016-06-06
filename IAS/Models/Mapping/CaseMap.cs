@@ -29,6 +29,7 @@ namespace IAS.Models.Mapping
             this.Property(t => t.EffectiveDate).HasColumnName("EffectiveDate");
             this.Property(t => t.UserID).HasColumnName("UserID");
             this.Property(t => t.PersonID).HasColumnName("PersonID");
+            this.Property(t => t.IsToday).HasColumnName("IsToday");
 
             // Relationships
             this.HasOptional(t => t.AspNetUser)

@@ -27,6 +27,8 @@ using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity.Validation;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace IAS.CaseManagment {
     public partial class CaseData : System.Web.UI.UserControl {
@@ -78,6 +80,10 @@ namespace IAS.CaseManagment {
                 if (Page.ModelState.IsValid)
                 {
                     db.SaveChanges();
+
+                    ModifyCaseEffectiveDate(pDay.Person.PersonID, subject.PaymentDay);
+
+                    CaseDetail.DataBind();
                 }
             }
             catch (Exception exp)
@@ -86,99 +92,130 @@ namespace IAS.CaseManagment {
                 ErrorLabel.Visible = true;
             }
         }
-/*
-        public IQueryable<State> GetStates()
+
+        private void ModifyCaseEffectiveDate(long PersonID, int Day)
         {
-            var db = new ApplicationDbContext();
-            var query = db.States.OrderBy(s => s.StateName);
-            return query;
+
+            SqlConnection sqlConnection1 = new SqlConnection(caseDataSource.ConnectionString);
+            SqlCommand cmd = new SqlCommand();
+
+          
+            try
+            {
+                cmd.CommandText = "[dbo].[sp_update_person_effective_day]";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = sqlConnection1;
+
+                cmd.Parameters.AddWithValue("@PersonID", PersonID);
+                cmd.Parameters.AddWithValue("@Day", Day);
+
+                sqlConnection1.Open();
+
+                cmd.ExecuteNonQuery();
+
+                sqlConnection1.Close();
+
+
+            }
+            catch (Exception exp)
+            {
+                ErrorLabel.Text = exp.Message;
+                ErrorLabel.Visible = true;
+            }
         }
-
-        public IQueryable<CaseTransition> GetCaseTransitions( [QueryString( "CaseID" )] long? caseID ) {
-            if ( null == theCase )
-                return null;
-            return theCase.StateTransitions.AsQueryable();
-        }
-
-        public void InsertCaseTransition( [QueryString( "CaseID" )] long caseID ) {
-            if ( Page.ModelState.IsValid ) {
-                try {
-                    var ddlState = CaseTransitionsListView.InsertItem.FindControl( "ddlStates" ) as DropDownList;
-                    var txtComment = CaseTransitionsListView.InsertItem.FindControl( "txtComments" ) as TextBox;
-
+        /*
+                public IQueryable<State> GetStates()
+                {
                     var db = new ApplicationDbContext();
-                    theCase = db.Cases.Single( c => c.CaseID == caseID );
-                    var trans = new CaseTransition();                    
-                    trans.CaseID = caseID;
-                    trans.NewStateID = long.Parse( ddlState.SelectedValue );
-                    var user = db.Users.Where(u=>u.UserName == Page.User.Identity.Name).Single();
-                    trans.UserID = user.Id;// Page.User.Identity.GetUserId();
-                    trans.TransitionDate = DateTime.Now;
-                    trans.Comment = txtComment.Text;
-                   
-                    var lastOne = theCase.StateTransitions.OrderByDescending( t => t.TransitionDate ).FirstOrDefault();
-                    if ( null != lastOne ) 
-                        trans.PreviousState = lastOne.NewState;
-                    else
-                        trans.PreviousState = theCase.CurrentState;
-                    
-                    //Usuario 
-                    // Recupera la lista de usuarios on permisos
-                    var users = from ust in db.UserStateTransitions
-                                where ust.WorkflowStateTransition.InitialStateID == trans.NewStateID
-                                && ust.WorkflowStateTransition.WorkflowID == theCase.WorkflowID
-                                select ust.ApplicationUser;
+                    var query = db.States.OrderBy(s => s.StateName);
+                    return query;
+                }
 
-                    var roles = from rst in db.RoleStateTransitions
-                                where rst.WorkflowStateTransition.InitialStateID == trans.NewStateID
-                                && rst.WorkflowStateTransition.WorkflowID == theCase.WorkflowID
-                                select rst.ApplicationRole.Id;
+                public IQueryable<CaseTransition> GetCaseTransitions( [QueryString( "CaseID" )] long? caseID ) {
+                    if ( null == theCase )
+                        return null;
+                    return theCase.StateTransitions.AsQueryable();
+                }
 
-                    var users2 = from usr in db.Users
-                                 where usr.Roles.Count(r => roles.Contains(r.RoleId)) > 0
-                                 select usr;
+                public void InsertCaseTransition( [QueryString( "CaseID" )] long caseID ) {
+                    if ( Page.ModelState.IsValid ) {
+                        try {
+                            var ddlState = CaseTransitionsListView.InsertItem.FindControl( "ddlStates" ) as DropDownList;
+                            var txtComment = CaseTransitionsListView.InsertItem.FindControl( "txtComments" ) as TextBox;
 
-                    users.Union(users2).Distinct();
+                            var db = new ApplicationDbContext();
+                            theCase = db.Cases.Single( c => c.CaseID == caseID );
+                            var trans = new CaseTransition();                    
+                            trans.CaseID = caseID;
+                            trans.NewStateID = long.Parse( ddlState.SelectedValue );
+                            var user = db.Users.Where(u=>u.UserName == Page.User.Identity.Name).Single();
+                            trans.UserID = user.Id;// Page.User.Identity.GetUserId();
+                            trans.TransitionDate = DateTime.Now;
+                            trans.Comment = txtComment.Text;
 
-                    var cargaLaboral = db.Cases.GroupBy(c => c.UserID).
-                     Select(group =>
-                         new
-                         {
-                             UserID = group.Key,
-                             Count = group.Count()
-                         });
+                            var lastOne = theCase.StateTransitions.OrderByDescending( t => t.TransitionDate ).FirstOrDefault();
+                            if ( null != lastOne ) 
+                                trans.PreviousState = lastOne.NewState;
+                            else
+                                trans.PreviousState = theCase.CurrentState;
 
-                    var winner = cargaLaboral.First();
-                    foreach (var unU in users){
-                        foreach (var theUser in cargaLaboral)
-                        {
-                            if (unU.Id == theUser.UserID)
-                            {
-                                if (theUser.Count > winner.Count) {
-                                    winner = theUser;
+                            //Usuario 
+                            // Recupera la lista de usuarios on permisos
+                            var users = from ust in db.UserStateTransitions
+                                        where ust.WorkflowStateTransition.InitialStateID == trans.NewStateID
+                                        && ust.WorkflowStateTransition.WorkflowID == theCase.WorkflowID
+                                        select ust.ApplicationUser;
+
+                            var roles = from rst in db.RoleStateTransitions
+                                        where rst.WorkflowStateTransition.InitialStateID == trans.NewStateID
+                                        && rst.WorkflowStateTransition.WorkflowID == theCase.WorkflowID
+                                        select rst.ApplicationRole.Id;
+
+                            var users2 = from usr in db.Users
+                                         where usr.Roles.Count(r => roles.Contains(r.RoleId)) > 0
+                                         select usr;
+
+                            users.Union(users2).Distinct();
+
+                            var cargaLaboral = db.Cases.GroupBy(c => c.UserID).
+                             Select(group =>
+                                 new
+                                 {
+                                     UserID = group.Key,
+                                     Count = group.Count()
+                                 });
+
+                            var winner = cargaLaboral.First();
+                            foreach (var unU in users){
+                                foreach (var theUser in cargaLaboral)
+                                {
+                                    if (unU.Id == theUser.UserID)
+                                    {
+                                        if (theUser.Count > winner.Count) {
+                                            winner = theUser;
+                                        }
+                                    }
                                 }
                             }
+
+                            var uWinner = users.First(u => u.Id == winner.UserID);
+                            theCase.User = uWinner;
+                            theCase.CurrentState = db.States.Single(s => s.StateID == trans.NewStateID);
+
+                            theCase.StateTransitions.Add( trans );
+                            db.SaveChanges();
+                            ErrorLabel.Text = String.Empty;
+                        }
+                        catch ( Exception exp ) {
+                            ErrorLabel.Visible = true;
+                            ErrorLabel.Text = exp.Message;
                         }
                     }
-
-                    var uWinner = users.First(u => u.Id == winner.UserID);
-                    theCase.User = uWinner;
-                    theCase.CurrentState = db.States.Single(s => s.StateID == trans.NewStateID);
-
-                    theCase.StateTransitions.Add( trans );
-                    db.SaveChanges();
-                    ErrorLabel.Text = String.Empty;
+                    else {
+                        ErrorLabel.Visible = true;
+                        ErrorLabel.Text = "Complete todos los campos.";
+                    }
                 }
-                catch ( Exception exp ) {
-                    ErrorLabel.Visible = true;
-                    ErrorLabel.Text = exp.Message;
-                }
-            }
-            else {
-                ErrorLabel.Visible = true;
-                ErrorLabel.Text = "Complete todos los campos.";
-            }
-        }
-        */
+                */
     }
 }

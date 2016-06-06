@@ -1,4 +1,23 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Transport.master.cs" Inherits="IAS.Transport" %>
+﻿<%--   
+    «Copyright 2014 Balcazz HT, http://www.balcazzht.com»
+
+    This file is part of IAS | Insurance Advanced Services.
+
+    IAS is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    IAS is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+--%>
+
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Transport.master.cs" Inherits="IAS.Transport" %>
 
 <!DOCTYPE html>
 
@@ -13,8 +32,7 @@
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="Content/Styles.css" rel="stylesheet" />
-   <link href="Content/bootstrap.min.css" rel="stylesheet" />
-
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <script type="text/javascript">
         window.onload = function () {
             var pos = window.name || 0;
@@ -26,12 +44,57 @@
         }
 
     </script>
+
+
 </head>
-<body>
+<body style="padding-top: 0px">
     <form id="form" runat="server">
-        <div id="topContentTransport">
-            <a href="../../Default.aspx">IAS | Transporte </a>
+        <div class="container-fluid" style="background-color: #01DFD7;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+            <div class="row" style="padding: 4px">
+                <div class="col-lg-2">
+                    <h4 style="color:white" title="Home">
+                        <a href="../Default.aspx" class="btn btn-info">
+                            <span class="glyphicon glyphicon-home"></span>
+                        </a>
+                        Transporte
+                    </h4>
+                </div>
+                 <div class="col-lg-2" title="Certificados">
+                    <h4>
+                        <a href="Certificates.aspx" class="btn btn-info">
+                            <span class="glyphicon glyphicon-list-alt"></span>
+                        </a>
+                    </h4>
+                </div>
+                 <div class="col-lg-2" title="Pólizas">
+                    <h4>
+                        <a href="Policies.aspx" class="btn btn-info">
+                            <span class="glyphicon glyphicon-book"></span>
+                        </a>
+                    </h4>
+                </div>
+                <div class="col-lg-6 visible-lg">
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a runat="server" href="~/Account/Login">Log in
+                                </a></li>
+                            </ul>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <a runat="server" href="~/Account/Manage" title="Manage your account">Bienvenido, <%: Context.User.Identity.GetUserName()  %>
+                                    </a>
+                                </li>
+                            </ul>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </div>
+            </div>
         </div>
+
+
         <asp:ScriptManager runat="server" ID="ScriptManager1">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>

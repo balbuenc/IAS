@@ -108,6 +108,7 @@ namespace IAS.CaseManagment {
 
                 cmd.Parameters.AddWithValue("@PersonID", PersonID);
                 cmd.Parameters.AddWithValue("@Day", Day);
+                cmd.Parameters.AddWithValue("@UserID", HttpContext.Current.User.Identity.GetUserId());
 
                 sqlConnection1.Open();
 

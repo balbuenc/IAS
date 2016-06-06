@@ -107,3 +107,5 @@
         </td>
     </EditItemTemplate>
 </asp:FormView>
+
+<asp:SqlDataSource ID="caseDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" ></asp:SqlDataSource>

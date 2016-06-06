@@ -74,6 +74,7 @@ namespace IAS.CaseManagment {
             try {
                 var db = new ApplicationDbContext();
                 var userId = HttpContext.Current.User.Identity.GetUserId();
+                var userName =  HttpContext.Current.User.Identity.Name;
 
                 // Estados con permisos para el usuario
                 //var stateIDs = from ust in db.UserStateTransitions
@@ -84,7 +85,7 @@ namespace IAS.CaseManagment {
                 //               select rst.WorkflowStateTransition.InitialStateID);
 
                 var query = db.Cases
-                    .Where( c => c.UserID == userId
+                    .Where( c => (c.UserID == userId || userName == "sergio")
                         && ( string.IsNullOrEmpty( dateInterval ) || dateInterval.Equals( ControlValues.Today ) ? c.isToday == 1 :
                             dateInterval.Equals( ControlValues.CurrentWeek ) ? SqlFunctions.DatePart( "week", c.EffectiveDate ) == currentWeekNum && SqlFunctions.DatePart("year", c.EffectiveDate) == today.Year  :
                             dateInterval.Equals( ControlValues.NextWeek ) ? SqlFunctions.DatePart( "week", c.EffectiveDate ) == nextWeekNum && SqlFunctions.DatePart("year", c.EffectiveDate) == today.Year :

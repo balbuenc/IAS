@@ -68,36 +68,6 @@ namespace IAS.Transports
             }
         }
 
-        public Int64 CertificateID
-        {
-            get
-            {
-                object o = Session["CertificateID"];
-                if(o == null)
-                    return 0;
-                return (Int64)o;
-            }
-            set
-            {
-                Session["CertificateID"] = value;
-            }
-        }
-
-        public string Mode
-        {
-            get
-            {
-                object o = Session["Mode"];
-                if(o == null)
-                    return string.Empty;
-                return o.ToString();
-            }
-            set
-            {
-                Session["Mode"] = value;
-            }
-        }
-
         private string criteria;
         private string find;
 
@@ -135,23 +105,17 @@ namespace IAS.Transports
 
             if(!Page.IsPostBack)
             {
-                if(Mode == string.Empty)
+
+                if(Request.QueryString["mode"] == null)
                 {
-                    Mode = Request.QueryString["mode"].ToString();
+                    throw new NullReferenceException("El modo del formulario no se ha definido");
                 }
 
-                CertificateNumber = Convert.ToInt64(Request.QueryString["CertificateNumber"].ToString());
-                if(CertificateID == 0)
-                {
-                    CertificateID = Convert.ToInt64(Request.QueryString["CertificateID"].ToString());
-                }
-
-                if(Mode.Equals("update"))
+                if(Request.QueryString["mode"].ToString().Equals("update"))
                 {
                     //Load data to update
                     LoadCertificates();
                 }
-
             }
         }
 
@@ -170,7 +134,7 @@ namespace IAS.Transports
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = sqlConnection1;
 
-                cmd.Parameters.AddWithValue("@certificateID", CertificateID);
+                cmd.Parameters.AddWithValue("@certificateID", long.Parse(Request.QueryString["certificateID"].ToString()));
 
                 da.SelectCommand = cmd;
 
@@ -186,10 +150,10 @@ namespace IAS.Transports
                     PersonaID = Convert.ToInt64(dt.Rows[0]["PersonID"].ToString());
                     BeneficiaryID = Convert.ToInt64(dt.Rows[0]["PersonID"].ToString());
                     txtCertificateNumber.Text = dt.Rows[0]["CertificateNumber"].ToString();
-                    txtPartnerAmmountPercent.Text = dt.Rows[0]["PartnerAmmountPercent"].ToString();
+                    //txtPartnerAmmountPercent.Text = dt.Rows[0]["PartnerAmmountPercent"].ToString();
                     txtRiskName.Text = dt.Rows[0]["RiskName"].ToString();
                     ddlInsuranceManager.SelectedValue = (dt.Rows[0]["InsuranceManagerID"].ToString() == string.Empty) ? "-1" : dt.Rows[0]["InsuranceManagerID"].ToString();
-                    ddlPartners.SelectedValue = (dt.Rows[0]["PartnerID"].ToString() == string.Empty) ? "-1" : dt.Rows[0]["PartnerID"].ToString();
+                    //ddlPartners.SelectedValue = (dt.Rows[0]["PartnerID"].ToString() == string.Empty) ? "-1" : dt.Rows[0]["PartnerID"].ToString();
                     ddlPolicy.SelectedValue = (dt.Rows[0]["PolicyNumber"].ToString() == string.Empty) ? "-1" : dt.Rows[0]["PolicyNumber"].ToString();
                     ddlContact.SelectedValue = (dt.Rows[0]["ContactID"].ToString() == string.Empty) ? "-1" : dt.Rows[0]["ContactID"].ToString();
                     ddlTransportationMethod.SelectedValue = (dt.Rows[0]["TransportationMethodID"].ToString() == string.Empty) ? "-1" : dt.Rows[0]["TransportationMethodID"].ToString();
@@ -276,7 +240,7 @@ namespace IAS.Transports
                     string numero_documento = values[0];
                     string cliente = values[1];
                     string razonSocial = values[2];
-                    Int64 personaID = Int64.Parse(values[3]);
+                    long personaID = long.Parse(values[3]);
 
                     lblNroDocumento.Text = numero_documento;
                     lblCliente.Text = cliente;
@@ -296,7 +260,7 @@ namespace IAS.Transports
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            if(Mode != string.Empty)
+            if(Request.QueryString["mode"] != null)
             {
                 SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
                 SqlCommand cmd = new SqlCommand();
@@ -308,14 +272,29 @@ namespace IAS.Transports
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Connection = sqlConnection1;
 
-                    if(Mode == "update")
+                    if(Request.QueryString["mode"].ToString().Equals("update"))
                     {
+                        if(Request.QueryString["certificateID"] == null)
+                        {
+                            ErrorLabel.Text = "No se puede actualizar sin conocer el ID de Certificado";
+                            ErrorLabel.Visible = true;
+                            return;
+                        }
+
                         cmd.CommandText = "[transport].[sp_update_certificate]";
-                        cmd.Parameters.AddWithValue("@CertificateID", CertificateID);
+                        cmd.Parameters.AddWithValue("@CertificateID", long.Parse(Request.QueryString["certificateID"].ToString()) );
                     }
-                    else if(Mode == "insert")
+                    else if(Request.QueryString["mode"].ToString().Equals("insert"))
                     {
                         cmd.CommandText = "[transport].[sp_insert_certificate]";
+                    }
+
+                    if(PersonaID == 0)
+                    {
+                        ErrorLabel.Text = "No se ha seleccionado al cliente";
+                        ErrorLabel.Visible = true;
+                        txtSearchClient.Focus();
+                        return;
                     }
 
                     cmd.Parameters.AddWithValue("@CertificateNumber", Convert.ToInt64(txtCertificateNumber.Text));
@@ -323,8 +302,8 @@ namespace IAS.Transports
                     cmd.Parameters.AddWithValue("@InsuranceManagerID", Convert.ToInt32(ddlInsuranceManager.SelectedValue));
                     cmd.Parameters.AddWithValue("@PolicyNumber", Convert.ToInt32(ddlPolicy.SelectedValue));
                     cmd.Parameters.AddWithValue("@BeneficiaryID", BeneficiaryID);
-                    cmd.Parameters.AddWithValue("@PartnerID", Convert.ToInt32(ddlPartners.SelectedValue));
-                    cmd.Parameters.AddWithValue("@PartnerAmmountPercent", Convert.ToDecimal(txtPartnerAmmountPercent.Text));
+                    //cmd.Parameters.AddWithValue("@PartnerID", Convert.ToInt32(ddlPartners.SelectedValue));
+                    //cmd.Parameters.AddWithValue("@PartnerAmmountPercent", Convert.ToDecimal(txtPartnerAmmountPercent.Text));
                     cmd.Parameters.AddWithValue("@ContactID", Convert.ToInt32(ddlContact.SelectedValue));
                     cmd.Parameters.AddWithValue("@RiskName", txtRiskName.Text);
                     cmd.Parameters.AddWithValue("@PackageCount", Convert.ToDecimal(txtPackageCount.Text));
@@ -352,17 +331,14 @@ namespace IAS.Transports
 
                     sqlConnection1.Close();
 
-                    Mode = string.Empty;
-                    CertificateID = 0;
 
                     Response.Redirect("Certificates.aspx");
 
                 }
                 catch(Exception ex)
                 {
-                    ErrorLabel.Text = ex.InnerException.ToString();
+                    ErrorLabel.Text = ex.ToString();
                     ErrorLabel.Visible = true;
-                    throw;
                 }
 
             }

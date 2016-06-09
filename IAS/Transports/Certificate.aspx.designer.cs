@@ -103,15 +103,6 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.TextBox txtCertificateNumber;
         
         /// <summary>
-        /// txtPartnerAmmountPercent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPartnerAmmountPercent;
-        
-        /// <summary>
         /// txtRiskName control.
         /// </summary>
         /// <remarks>
@@ -128,15 +119,6 @@ namespace IAS.Transports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlInsuranceManager;
-        
-        /// <summary>
-        /// ddlPartners control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPartners;
         
         /// <summary>
         /// ddlPolicy control.
@@ -317,6 +299,15 @@ namespace IAS.Transports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnGuardar;
+        
+        /// <summary>
+        /// lnkVolver control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkVolver;
         
         /// <summary>
         /// clientesDataSource control.

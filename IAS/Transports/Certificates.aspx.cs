@@ -13,5 +13,19 @@ namespace IAS.Transports
         {
             
         }
+
+        protected void CertificateListView_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            switch(e.CommandName)
+            {
+                case "Edit":
+                    Response.Redirect("Certificate.aspx?criteria=Client&mode=update&certificateID=" + e.CommandArgument);
+                    break;
+                case "Delete":
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

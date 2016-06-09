@@ -248,7 +248,6 @@ namespace IAS.CaseManagment
             this.txtComments.Text = string.Empty;
             this.txtEffectiveDate.Text = string.Empty;
             RaiseBubbleEvent(this, new CaseStateChangedEventArgs());
-
         }
 
         private class UserAssignmet

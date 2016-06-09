@@ -12,33 +12,31 @@ namespace IAS.CaseManagment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-             var db = new ApplicationDbContext();
+            var db = new ApplicationDbContext();
 
-        
-           
-            var id_caso = int.Parse( Request.QueryString["CaseID"]);
-            var currentCase = db.Cases.Where( c => c.CaseID == id_caso ).SingleOrDefault();
-           
+            var id_caso = int.Parse(Request.QueryString["CaseID"]);
+            var currentCase = db.Cases.Where(c => c.CaseID == id_caso).SingleOrDefault();
 
-                    var form = ( from f in db.WorkflowStatesForms
-                                 where f.StateID == currentCase.StateID
-                                 && f.WorkflowID == currentCase.WorkflowID
-                                 select f.Form ).FirstOrDefault();
 
-                    if (null == form)
-                    {
-                        form = (from f in db.Workflows
-                                where f.WorkflowID == currentCase.WorkflowID
-                                select f.DefaultForm).FirstOrDefault();
-                        if (null == form)
-                            Response.Redirect("CaseDetails.aspx?CaseID=" + currentCase.CaseID, false);
-                        else
-                            Response.Redirect(form.Url + "?CaseID=" + currentCase.CaseID, false);
-                    }
-                    else
-                    {
-                        Response.Redirect(form.Url + "?CaseID=" + currentCase.CaseID, false);
-                    }   
+            var form = (from f in db.WorkflowStatesForms
+                        where f.StateID == currentCase.StateID
+                        && f.WorkflowID == currentCase.WorkflowID
+                        select f.Form).FirstOrDefault();
+
+            if (null == form)
+            {
+                form = (from f in db.Workflows
+                        where f.WorkflowID == currentCase.WorkflowID
+                        select f.DefaultForm).FirstOrDefault();
+                if (null == form)
+                    Response.Redirect("CaseDetails.aspx?CaseID=" + currentCase.CaseID, false);
+                else
+                    Response.Redirect(form.Url + "?CaseID=" + currentCase.CaseID, false);
+            }
+            else
+            {
+                Response.Redirect(form.Url + "?CaseID=" + currentCase.CaseID, false);
+            }
         }
     }
 }

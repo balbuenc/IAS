@@ -27,7 +27,7 @@
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
         <li class="active"><a href="#collections" role="tab" data-toggle="tab">Cobranzas</a></li>
-      <%--  <li><a href="#claims" role="tab" data-toggle="tab">Siniestros</a></li>--%>
+        <%--  <li><a href="#claims" role="tab" data-toggle="tab">Siniestros</a></li>--%>
     </ul>
 
     <!-- Tab panes -->
@@ -117,7 +117,7 @@
 
                                         <tr>
                                             <td>
-                                                <a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fHistoricoCaso&rs:Command=Render&CaseID=<%# Item.CaseID %>" target="_blank">#</a>
+                                                <a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fHistoricoCaso&rs:Command=Render&CaseID=<%# Item.CaseID %>" target="_blank">#</a>
                                             </td>
                                             <td>
                                                 <asp:Label ID="lblCaseDescription" runat="server" Text='<%# Item.Description %>' />
@@ -132,7 +132,7 @@
                                                 <asp:Label ID="lblEffectiveDate" runat="server" Text='<%# String.Format("{0:d}", Item.EffectiveDate )           %>' />
                                             </td>
                                             <td class="text-right">
-                                                <asp:Button ID="ChangeUserButton" runat="server" Text="Tranferir caso" CommandName="ChangeUser" CommandArgument="<%# Item.CaseID %>" CssClass="btn btn-default" />
+                                                <asp:Button ID="ChangeUserButton" runat="server" Text="Tranferir" CommandName="ChangeUser" CommandArgument="<%# Item.CaseID %>" CssClass="btn btn-default" />
                                                 <asp:Button ID="EditButton" runat="server" Text="Gestionar" CommandName="OpenCase" CommandArgument="<%# Item.CaseID %>" CssClass="btn btn-info" />
                                             </td>
                                         </tr>
@@ -265,7 +265,7 @@
                                                                         CommandArgument="Description">Cliente</asp:LinkButton></th>
                                                                 <th>Prioridad</th>
                                                                 <th>Estado</th>
-                                                            
+
                                                                 <th>
                                                                     <asp:LinkButton ID="FactionListViewDueDate" runat="server" CommandName="Sort"
                                                                         CommandArgument="EffectiveDate">Vencimiento</asp:LinkButton></th>
@@ -287,7 +287,7 @@
 
                                                 <tr>
                                                     <td>
-                                                        <a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fHistoricoCaso&rs:Command=Render&CaseID=<%# Item.CaseID %>" target="_blank">#</a>
+                                                        <a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fHistoricoCaso&rs:Command=Render&CaseID=<%# Item.CaseID %>" target="_blank">#</a>
                                                     </td>
                                                     <td>
                                                         <asp:Label ID="lblCaseDescription" runat="server" Text='<%# Item.Description %>' />

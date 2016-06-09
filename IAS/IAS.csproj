@@ -196,6 +196,7 @@
     <Content Include="CaseManagment\ClaimCaseDetails.aspx" />
     <Content Include="CaseManagment\CollectionCaseDetails.aspx" />
     <Content Include="CaseManagment\CollectionsToExpire.aspx" />
+    <Content Include="CaseManagment\ManageCase.aspx" />
     <Content Include="CaseManagment\MyCaseList.aspx" />
     <Content Include="CaseManagment\PolicyVerification.aspx" />
     <Content Include="Claims\ApprovementClaim.aspx" />
@@ -239,6 +240,16 @@
     <Content Include="App_Data\Images\tasks-diagram-icon.png" />
     <Content Include="App_Data\Images\user-icon.png" />
     <Content Include="App_Data\Images\users-icon.png" />
+    <Content Include="Images\alert-icon.png" />
+    <Content Include="Images\arrow-icon.png" />
+    <Content Include="Images\calendar-icon.png" />
+    <Content Include="Images\comments-icon.png" />
+    <Content Include="Images\form-icon.png" />
+    <Content Include="Images\help-icon.png" />
+    <Content Include="Images\schedule-icon.png" />
+    <Content Include="Images\tasks-diagram-icon.png" />
+    <Content Include="Images\user-icon.png" />
+    <Content Include="Images\users-icon.png" />
     <Content Include="Migrations\ExchangeSchemaData.sql" />
     <Content Include="Migrations\SqlScripts\CreateCaseAndSMSTrigger.sql" />
     <Content Include="Migrations\SqlScripts\TestsData.sql" />
@@ -250,6 +261,7 @@
     <Content Include="Account\Web.config" />
     <Content Include="Claim.Master" />
     <Content Include="Commercial.Master" />
+    <Content Include="CaseManagement.Master" />
     <None Include="Properties\PublishProfiles\aibias - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\seguros - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\toyoias - Web Deploy.pubxml" />
@@ -642,6 +654,13 @@
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="CaseManagement.Master.cs">
+      <DependentUpon>CaseManagement.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CaseManagement.Master.designer.cs">
+      <DependentUpon>CaseManagement.Master</DependentUpon>
+    </Compile>
     <Compile Include="CaseManagment\CaseData.ascx.cs">
       <DependentUpon>CaseData.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -690,6 +709,13 @@
     </Compile>
     <Compile Include="CaseManagment\CollectionsToExpire.aspx.designer.cs">
       <DependentUpon>CollectionsToExpire.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CaseManagment\ManageCase.aspx.cs">
+      <DependentUpon>ManageCase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CaseManagment\ManageCase.aspx.designer.cs">
+      <DependentUpon>ManageCase.aspx</DependentUpon>
     </Compile>
     <Compile Include="CaseManagment\MyCaseList.aspx.cs">
       <DependentUpon>MyCaseList.aspx</DependentUpon>

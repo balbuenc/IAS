@@ -29,7 +29,7 @@ using System.Web.UI.WebControls;
 namespace IAS.CaseManagment {
     public partial class CollectionCaseDetails : System.Web.UI.Page {
         protected void Page_Load( object sender, EventArgs e ) {
-            
+          
         }
 
         public Person GetPerson( [QueryString( "CaseID" )] long? caseID ) {

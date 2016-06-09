@@ -37,6 +37,58 @@ using System.Data;
 namespace IAS.CaseManagment {
     public partial class MyCaseList : System.Web.UI.Page {
 
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            //FindUserFirstCase();
+        }
+
+        private void FindUserFirstCase()
+        {
+
+            SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
+            SqlCommand cmd = new SqlCommand();
+            SqlDataReader reader;
+
+            string caseID = string.Empty;
+
+            try
+            {
+                //Obtengo el primer Caso para gestionar
+                cmd.CommandText = "[dbo].[sp_get_cases_by_period]";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = sqlConnection1;
+
+                cmd.Parameters.AddWithValue("@Period", 2);
+               
+
+                sqlConnection1.Open();
+
+                reader = cmd.ExecuteReader();
+                
+                if (reader.Read())
+                {
+                    // make sure the value is not DBNull
+                    if (DBNull.Value != reader["CaseID"])
+                    {
+                        caseID = reader["CaseID"].ToString();
+                    }
+                }
+               
+
+                sqlConnection1.Close();
+
+                //Direcciono a la pagina de busqueda
+                Response.Redirect("ManageCase?CaseID=" + caseID);
+
+            }
+            catch (Exception exp)
+            {
+                ErrorLabel.Text = exp.Message;
+                ErrorLabel.Visible = true;
+            }
+        }
+
         public IQueryable<CasePriority> GetCasePriorities() {
             try {
                 var db = new ApplicationDbContext();
@@ -51,8 +103,7 @@ namespace IAS.CaseManagment {
             }
         }
 
-        //public IQueryable<Case> GetMyCases([QueryString("Buscar")] string caseDescription,
-        //    [Control("ddlCasePriority")] int? casePriorityID)
+      
         public IQueryable<Case> GetMyCases( [Control( "txtSearch" )] string caseDescription,
              [Control( "ddlDateInterval" )] string dateInterval,
              [Control( "ddlCasePriority" )] int? casePriorityID ) {
@@ -61,29 +112,18 @@ namespace IAS.CaseManagment {
                 theCasePriorityID = 0; //Todas
             else
                 theCasePriorityID = casePriorityID.HasValue ? casePriorityID.Value : 1;
-            //var fromDate = DateTime.Today;
-            //var toDate = DateTime.Today;            
+           
             int currentDayNum = DateTime.Today.Day;
             int currentMonthNum = DateTime.Today.Month;
-            int currentWeekNum = CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(
-                DateTime.Now, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday );
-            int nextWeekNum = CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(
-                DateTime.Now.AddDays( 7 ), CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Sunday );
+            int currentWeekNum = CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFullWeek, DayOfWeek.Sunday );
+            int nextWeekNum = CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(DateTime.Now.AddDays( 7 ), CalendarWeekRule.FirstFullWeek, DayOfWeek.Sunday );
             DateTime today = DateTime.Today.Date;
 
             try {
                 var db = new ApplicationDbContext();
                 var userId = HttpContext.Current.User.Identity.GetUserId();
                 var userName =  HttpContext.Current.User.Identity.Name;
-
-                // Estados con permisos para el usuario
-                //var stateIDs = from ust in db.UserStateTransitions
-                //               where ust.UserID == userId
-                //               select ust.WorkflowStateTransition.InitialStateID;
-                //stateIDs.Union(from rst in db.RoleStateTransitions
-                //               where User.IsInRole(rst.ApplicationRole.Id) 
-                //               select rst.WorkflowStateTransition.InitialStateID);
-
+                
                 var query = db.Cases
                     .Where( c => (c.UserID == userId || userName == "sergio")
                         && ( string.IsNullOrEmpty( dateInterval ) || dateInterval.Equals( ControlValues.Today ) ? c.isToday == 1 :
@@ -95,11 +135,6 @@ namespace IAS.CaseManagment {
                         && ( theCasePriorityID == 0 ? true : c.CasePriorityID == theCasePriorityID )
                         && ( string.IsNullOrEmpty( caseDescription ) ? true : c.Description.Contains( caseDescription ) )
                         && c.StateID != 15)
-                    //&& ( SqlFunctions.PatIndex("%" + caseDescription + "%",c.Description) > 0 ) )
-
-
-                    //.Where(m => m.UserID == userId && stateIDs.Contains(m.StateID))
-                    //.Where(m => m.User.UserName == User.Identity.Name && stateIDs.Contains(m.StateID) && m.EffectiveDate <= DateTime.Now) 
                     .OrderBy( m => m.EffectiveDate );
 
                 return query;
@@ -170,23 +205,6 @@ namespace IAS.CaseManagment {
                 case "OpenCase":
 
                     Response.Redirect("./CaseHub.aspx?CaseID=" + id_caso);
-                    //var form = ( from f in db.WorkflowStatesForms
-                    //             where f.StateID == currentCase.StateID
-                    //             && f.WorkflowID == currentCase.WorkflowID
-                    //             select f.Form ).FirstOrDefault();
-
-                    //if ( null == form ) {
-                    //    form = ( from f in db.Workflows
-                    //             where f.WorkflowID == currentCase.WorkflowID
-                    //             select f.DefaultForm ).FirstOrDefault();
-                    //    if ( null == form )
-                    //        Response.Redirect( "CaseDetails.aspx?CaseID=" + currentCase.CaseID, false );
-                    //    else
-                    //        Response.Redirect( form.Url + "?CaseID=" + currentCase.CaseID , false);
-                    //}
-                    //else {
-                    //    Response.Redirect( form.Url + "?CaseID=" + currentCase.CaseID , false);
-                    //}
                     break;
 
                 case "ChangeUser":

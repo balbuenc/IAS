@@ -1618,3 +1618,13 @@ Exception Type: System.Exception
 Exception: El error no fué controlado por la aplicación.
 Source: customErrors section - Web.config
 Stack Trace: 
+********** 07/06/2016 06:25:12 p.m. **********
+Exception Type: System.Exception
+Exception: El error no fué controlado por la aplicación.
+Source: customErrors section - Web.config
+Stack Trace: 
+********** 09/06/2016 10:18:05 a.m. **********
+Exception Type: System.Exception
+Exception: El error no fué controlado por la aplicación.
+Source: customErrors section - Web.config
+Stack Trace: 

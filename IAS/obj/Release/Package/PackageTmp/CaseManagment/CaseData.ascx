@@ -27,7 +27,7 @@
     RenderOuterTable="false">
     <ItemTemplate>
 
-      <%--  <h3><%#:Item.Workflow.WorkflowName %></h3>--%>
+        <h3><%#:Item.Workflow.WorkflowName %></h3>
 
         <h4><%#:Item.Description %></h4>
 

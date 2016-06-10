@@ -67,24 +67,6 @@ namespace IAS {
         protected global::IAS.CaseManagment.CaseData CaseData;
         
         /// <summary>
-        /// UpdatePanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
-        /// <summary>
-        /// HiddenField1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenField1;
-        
-        /// <summary>
         /// ErrorLabel control.
         /// </summary>
         /// <remarks>
@@ -94,12 +76,30 @@ namespace IAS {
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
-        /// CollectionsListView control.
+        /// hdnCaseID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView CollectionsListView;
+        protected global::System.Web.UI.WebControls.HiddenField hdnCaseID;
+        
+        /// <summary>
+        /// CaseTransitionsListView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView CaseTransitionsListView;
+        
+        /// <summary>
+        /// CaseTransitionDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource CaseTransitionDataSource;
     }
 }

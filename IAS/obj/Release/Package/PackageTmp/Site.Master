@@ -77,7 +77,7 @@
                     <a class="navbar-brand" runat="server" href="~/">Insurance Advanced Services</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                    <asp:LoginView runat="server" ViewStateMode="Disabled" ID="lv">
                         <AnonymousTemplate>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
@@ -94,7 +94,7 @@
                                     <li><a href="../Claims/ClaimSearch.aspx">Siniestros</a></li>
                                     <li><a href="../CaseManagment/CollectionsToExpire.aspx">Envio de SMS</a></li>
                                     <li><a href="../Collections/UploadCollections.aspx">Subir cuotas</a></li>
-                                    <%--<li ><a href="../Transports/Certificates.aspx">Certificados</a></li>--%>
+                                    <li ><a id="CertLink" runat="server" visible="false" href="../Transports/Certificates.aspx">Certificados</a></li>
                                 
                                 </ul>
                             </div>
@@ -134,9 +134,6 @@
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                     Reportes
-                               
-                                   
-
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
@@ -156,29 +153,7 @@
 
                                 </ul>
                             </div>
-                            <%--  <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    Transporte
-                               
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="../Transport/Admin/Policies.aspx">Pólizas</a></li>
-                                    <li><a href="../Transport/Admin/Certificates.aspx">Certificados</a></li>
-
-
-                                </ul>
-                            </div>--%>
-
-                            <%--<div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    Ayuda
-                                <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="../About.aspx">Acerca de</a></li>
-                                </ul>
-                            </div>--%>
+                          
                         </LoggedInTemplate>
                     </asp:LoginView>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">

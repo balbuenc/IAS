@@ -40,10 +40,11 @@ namespace IAS.CaseManagment {
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //FindUserFirstCase();
+            if (User.Identity.Name != "Sergio")
+                FindUserFirstCase(0); //Traer en automatico , DIA<< MES ACTUAL << VENCIDOS
         }
 
-        private void FindUserFirstCase()
+        private void FindUserFirstCase(int period)
         {
 
             SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
@@ -59,8 +60,10 @@ namespace IAS.CaseManagment {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = sqlConnection1;
 
-                cmd.Parameters.AddWithValue("@Period", 2);
-               
+                cmd.Parameters.AddWithValue("@Period", period);
+                cmd.Parameters.AddWithValue("@User", User.Identity.Name);
+
+
 
                 sqlConnection1.Open();
 
@@ -79,7 +82,8 @@ namespace IAS.CaseManagment {
                 sqlConnection1.Close();
 
                 //Direcciono a la pagina de busqueda
-                Response.Redirect("ManageCase?CaseID=" + caseID);
+                if (caseID != String.Empty)
+                    Response.Redirect("ManageCase?CaseID=" + caseID);
 
             }
             catch (Exception exp)

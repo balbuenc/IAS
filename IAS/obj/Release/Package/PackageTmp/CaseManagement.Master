@@ -209,13 +209,6 @@
                             </ul>
                         </li>
                         <li>
-                            <a class='expandable' href='#' title='APIs'>
-                                <span class='glyphicon glyphicon-wrench collapsed-element'></span>
-                                <span class='expanded-element'>APIs</span>
-                            </a>
-
-                        </li>
-                        <li>
                             <a class='expandable' href='#myCaseHistoryModal' title='Historial' data-target="#myCaseHistoryModal" data-toggle="modal">
                                 <span class='glyphicon glyphicon-cog collapsed-element'></span>
                                 <span class='expanded-element'>Settings</span>
@@ -281,148 +274,64 @@
                         </div>
                         <div class="modal-body">
                             <div class="row">
-                                <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
-                                    <ContentTemplate>
-                                        <asp:HiddenField ID="HiddenField1" runat="server" Value="" />
-                                        <asp:Label ID="ErrorLabel" Visible="False" CssClass="msg-box bg-danger" runat="server" />
-                                        <asp:ListView ID="CollectionsListView" runat="server"
-                                            ItemType="IAS.Models.Collection" DataKeyNames="CollectionID"
-                                            SelectMethod="GetCollectionsForCase"
-                                            OnItemDataBound="CollectionsListView_ItemDataBound">
-                                            <LayoutTemplate>
-                                                <table class="table table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Nombre del riesgo</th>
-                                                            <th>Poliza</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr runat="server" id="itemPlaceholder" />
-                                                    </tbody>
-                                                </table>
-                                            </LayoutTemplate>
-                                            <ItemTemplate>
-                                                <asp:HiddenField ID="txtOuterID" runat="server" Value="<%#:Item.PolicyNumber%>" Visible="True" />
-                                                <asp:SqlDataSource ID="CollectionSqlDatSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
-                                                    SelectCommand="[collection].[sp_get_collections_by_policy]" SelectCommandType="StoredProcedure">
-                                                    <SelectParameters>
-                                                        <asp:QueryStringParameter Name="CaseID" QueryStringField="CaseID" Type="Int32" />
-                                                        <asp:ControlParameter ControlID="txtOuterID" Name="PolicyNumber" PropertyName="Value" />
-                                                    </SelectParameters>
-                                                </asp:SqlDataSource>
-                                                <tr>
-                                                    <td>
-                                                        <asp:Label ID="lblRiskName" runat="server" Text="<%#:Item.RiskName%>" />
-                                                    </td>
-                                                    <td>
+                                <asp:Label ID="ErrorLabel" runat="server" Text="" CssClass="msg-box bg-danger" Visible="false"></asp:Label>
+                                <asp:HiddenField ID="hdnCaseID" runat="server" />
+                                <asp:ListView ID="CaseTransitionsListView" runat="server"
+                                    ItemType="IAS.Models.CaseTransition"
+                                    SelectMethod="GetData"
+                                    DataKeyNames="CaseTransitionID"  OnItemCommand="CaseTransitionsListView_ItemCommand">
+                                    <LayoutTemplate>
+                                        <div class="containter-fluid">
+                                            <div runat="server" id="itemPlaceholder" />
+                                        </div>
+                                    </LayoutTemplate>
+                                    <ItemTemplate>
+                                        <div class="history-row">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <asp:Image ID="imgCalendar" ImageUrl="~/Images/calendar-icon.png" CssClass="history-icon" runat="server" />
+                                                    <asp:Label runat="server" ID="lblTransitionDate" Text='<%# Bind("TransitionDate", "{0:dd/MM/yyyy HH:mm:ss}") %>' Style="font-size: 0.8em;" />
+                                                </div>
 
-                                                        <asp:Label ID="lblPolicyNumber" runat="server" Text="<%#:Item.PolicyNumber%>" />
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <asp:ListView ID="DetailListView" runat="server"
-                                                            DataKeyNames="CollectionID"
-                                                            DataSourceID="CollectionSqlDatSource">
-                                                            <LayoutTemplate>
-                                                                <table class="table table-striped">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>Cuota</th>
-                                                                            <th>Recibo</th>
-                                                                            <th>Importe</th>
-                                                                            <th>Vencimiento</th>
-                                                                            <th>Metodo de cobro</th>
-                                                                            <th class="text-center">Cobrada</th>
-                                                                            <th>Fecha pago</th>
-                                                                            <th>Estado</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <tr runat="server" id="itemPlaceholder" />
-                                                                    </tbody>
-                                                                </table>
-                                                            </LayoutTemplate>
-                                                            <ItemTemplate>
-                                                                <tr>
-                                                                    <td>
-                                                                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("PaymentNumber") %>' />
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:Label ID="lblReceiptNumber" runat="server" Text='<%# Eval("ReceiptNumber") %>' />
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:Label ID="lblCurrency" runat="server" Text='<%# Eval("Money") %>' />
-                                                                        <asp:Label ID="lblDebtAmount" runat="server" Text='<%#:string.Format("{0:n2}",Eval("DebtAmount")) %>' />
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:Label ID="lblPaymentDueDate" runat="server" Text='<%#:string.Format("{0:d}",Eval("PaymentDueDate")) %>' />
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:Label ID="lblCollection" runat="server" Text='<%#:string.Format("{0:d}",Eval("CollectionMethod")) %>' />
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:CheckBox ID="chkCollected" runat="server" Checked='<%# Eval("Collected") %>' Enabled="false" />
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:Label ID="Label3" runat="server" Text='<%#:string.Format("{0:d}",Eval("CollectedDate")) %>' />
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:Label ID="Label4" runat="server" Text='<%# Eval("CollectionState")%>' />
-                                                                    </td>
-                                                                    <td class="text-right">
-                                                                        <asp:Button ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CssClass="btn btn-info" Visible="true" />
-                                                                    </td>
-                                                                </tr>
-                                                            </ItemTemplate>
-                                                            <EditItemTemplate>
-                                                                <tr>
-                                                                    <td>
-                                                                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("PaymentNumber")%>' />
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:Label ID="lblReceiptNumber" runat="server" Text='<%# Eval("ReceiptNumber")%>' />
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:Label ID="lblCurrency" runat="server" Text='<%# Eval("Money") %>' />
-                                                                        <asp:Label ID="lblDebtAmount" runat="server" Text='<%#:string.Format("{0:n2}",Eval("DebtAmount")) %>' />
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:Label ID="lblPaymentDueDate" runat="server" Text='<%#:string.Format("{0:d}",Eval("PaymentDueDate")) %>' />
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:Label ID="lblCollection" runat="server" Text='<%#:string.Format("{0:d}",Eval("CollectionMethod")) %>' />
-                                                                    </td>
-                                                                    <td class="text-center">
-                                                                        <asp:CheckBox ID="chkCollected" runat="server" Checked='<%# Eval("Collected") %>' />
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ID="txtEffectiveDate" runat="server" Text='<%# Eval("CollectedDate") %>' CssClass="form-control datetime"></asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:DropDownList ID="ddlCollectionState" ItemType="IAS.Models.CollectionState" SelectMethod="GetCollectionStates"
-                                                                            CssClass="form-control" DataTextField="CollectionStateName" DataValueField="CollectionStateID"
-                                                                            runat="server" SelectedValue='<%# Eval("CollectionStateID") %>'>
-                                                                        </asp:DropDownList>
-                                                                    </td>
+                                                <div class="col-sm-4">
+                                                    <asp:Label ID="lblPreviousState" runat="server" Text="<%# Item.PreviousState.StateName %>" />
+                                                    <asp:Image ID="imgArrow" ImageUrl="~/Images/arrow-icon.png" runat="server" />
+                                                    <asp:Label ID="lblNewState" runat="server" Text="<%# Item.NewState.StateName %>" />
+                                                </div>
 
-                                                                    <td class="text-right" colspan="2">
-                                                                        <asp:Button ID="UpdateButton" runat="server" Text="Actualizar" CommandName="Update" CssClass="btn btn-info" />
-                                                                        <asp:Button ID="CancelButton" runat="server" Text="Cancelar" CommandName="Cancel" CssClass="btn" />
-                                                                    </td>
-                                                                </tr>
-                                                            </EditItemTemplate>
-                                                            <EmptyDataTemplate>
-                                                                <div class="msg-box bg-warning">No hay cuotas Pendientes de gestiòn para la Pòliza.</div>
-                                                            </EmptyDataTemplate>
-                                                        </asp:ListView>
-                                                    </td>
-                                                </tr>
-                                            </ItemTemplate>
-                                        </asp:ListView>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
+                                                <div class="col-sm-2">
+                                                    <asp:Image ID="imgEffeciveDate" ImageUrl="~/Images/schedule-icon.png" CssClass="history-icon" runat="server" />
+                                                    <asp:Label runat="server" ID="lblEffectiveDate" Text='<%# Bind("EffectiveDate", "{0:dd/MM/yyyy HH:mm:ss}") %>' Style="font-size: 0.8em;" />
+                                                </div>
+
+                                                <div class="col-sm-3">
+                                                    <asp:Image ID="imgUser" ImageUrl="~/Images/user-icon.png" runat="server" CssClass="history-icon" />
+                                                    <asp:Label ID="lblUser" runat="server" Text="<%# Item.User.FullName %>" />
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row">
+
+                                                <div class="col-sm-10">
+                                                    <asp:Image ID="imgComments" ImageUrl="~/Images/comments-icon.png" CssClass="history-icon" runat="server" />
+                                                    <asp:Label ID="Label3" runat="server" Text="<%#Item.Comment%>" />
+                                                    <asp:Label ID="lblCaseTransitionID" runat="server" Text="<%#Item.CaseTransitionID%>" Visible="false" />
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Drop" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar el registro.?');">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                                    </asp:LinkButton>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ItemTemplate>
+                                    <EmptyDataTemplate>
+                                        <div class="msg-box bg-info">
+                                            El historial del caso esta vacío
+                                        </div>
+                                    </EmptyDataTemplate>
+                                </asp:ListView>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -434,6 +343,8 @@
             </div>
 
         </div>
+
+        <asp:SqlDataSource ID="CaseTransitionDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"></asp:SqlDataSource>
     </form>
 </body>
 </html>

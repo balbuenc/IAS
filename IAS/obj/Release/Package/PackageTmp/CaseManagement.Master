@@ -210,14 +210,14 @@
                         </li>
                         <li>
                             <a class='expandable' href='#myCaseHistoryModal' title='Historial' data-target="#myCaseHistoryModal" data-toggle="modal">
-                                <span class='glyphicon glyphicon-cog collapsed-element'></span>
-                                <span class='expanded-element'>Settings</span>
+                                <span class='glyphicon glyphicon-calendar collapsed-element'></span>
+                                <span class='expanded-element'>Historial</span>
                             </a>
 
                         </li>
                         <li>
                             <a class='expandable' href="#myCaseDataModal" title='Datos Caso' data-target="#myCaseDataModal" data-toggle="modal">
-                                <span class='glyphicon glyphicon-phone-alt collapsed-element'></span>
+                                <span class='glyphicon glyphicon-comment collapsed-element'></span>
                                 <span class='expanded-element'>Datos caso</span>
                             </a>
 
@@ -274,64 +274,68 @@
                         </div>
                         <div class="modal-body">
                             <div class="row">
-                                <asp:Label ID="ErrorLabel" runat="server" Text="" CssClass="msg-box bg-danger" Visible="false"></asp:Label>
-                                <asp:HiddenField ID="hdnCaseID" runat="server" />
-                                <asp:ListView ID="CaseTransitionsListView" runat="server"
-                                    ItemType="IAS.Models.CaseTransition"
-                                    SelectMethod="GetData"
-                                    DataKeyNames="CaseTransitionID"  OnItemCommand="CaseTransitionsListView_ItemCommand">
-                                    <LayoutTemplate>
-                                        <div class="containter-fluid">
-                                            <div runat="server" id="itemPlaceholder" />
-                                        </div>
-                                    </LayoutTemplate>
-                                    <ItemTemplate>
-                                        <div class="history-row">
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <asp:Image ID="imgCalendar" ImageUrl="~/Images/calendar-icon.png" CssClass="history-icon" runat="server" />
-                                                    <asp:Label runat="server" ID="lblTransitionDate" Text='<%# Bind("TransitionDate", "{0:dd/MM/yyyy HH:mm:ss}") %>' Style="font-size: 0.8em;" />
+                                <asp:UpdatePanel ID="upnlHistory" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <asp:Label ID="ErrorLabel" runat="server" Text="" CssClass="msg-box bg-danger" Visible="false"></asp:Label>
+                                        <asp:HiddenField ID="hdnCaseID" runat="server" />
+                                        <asp:ListView ID="CaseTransitionsListView" runat="server"
+                                            ItemType="IAS.Models.CaseTransition"
+                                            SelectMethod="GetData"
+                                            DataKeyNames="CaseTransitionID" OnItemCommand="CaseTransitionsListView_ItemCommand">
+                                            <LayoutTemplate>
+                                                <div class="containter-fluid">
+                                                    <div runat="server" id="itemPlaceholder" />
                                                 </div>
+                                            </LayoutTemplate>
+                                            <ItemTemplate>
+                                                <div class="history-row">
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <asp:Image ID="imgCalendar" ImageUrl="~/Images/calendar-icon.png" CssClass="history-icon" runat="server" />
+                                                            <asp:Label runat="server" ID="lblTransitionDate" Text='<%# Bind("TransitionDate", "{0:dd/MM/yyyy HH:mm:ss}") %>' Style="font-size: 0.8em;" />
+                                                        </div>
 
-                                                <div class="col-sm-4">
-                                                    <asp:Label ID="lblPreviousState" runat="server" Text="<%# Item.PreviousState.StateName %>" />
-                                                    <asp:Image ID="imgArrow" ImageUrl="~/Images/arrow-icon.png" runat="server" />
-                                                    <asp:Label ID="lblNewState" runat="server" Text="<%# Item.NewState.StateName %>" />
-                                                </div>
+                                                        <div class="col-sm-4">
+                                                            <asp:Label ID="lblPreviousState" runat="server" Text="<%# Item.PreviousState.StateName %>" />
+                                                            <asp:Image ID="imgArrow" ImageUrl="~/Images/arrow-icon.png" runat="server" />
+                                                            <asp:Label ID="lblNewState" runat="server" Text="<%# Item.NewState.StateName %>" />
+                                                        </div>
 
-                                                <div class="col-sm-2">
-                                                    <asp:Image ID="imgEffeciveDate" ImageUrl="~/Images/schedule-icon.png" CssClass="history-icon" runat="server" />
-                                                    <asp:Label runat="server" ID="lblEffectiveDate" Text='<%# Bind("EffectiveDate", "{0:dd/MM/yyyy HH:mm:ss}") %>' Style="font-size: 0.8em;" />
-                                                </div>
+                                                        <div class="col-sm-2">
+                                                            <asp:Image ID="imgEffeciveDate" ImageUrl="~/Images/schedule-icon.png" CssClass="history-icon" runat="server" />
+                                                            <asp:Label runat="server" ID="lblEffectiveDate" Text='<%# Bind("EffectiveDate", "{0:dd/MM/yyyy HH:mm:ss}") %>' Style="font-size: 0.8em;" />
+                                                        </div>
 
-                                                <div class="col-sm-3">
-                                                    <asp:Image ID="imgUser" ImageUrl="~/Images/user-icon.png" runat="server" CssClass="history-icon" />
-                                                    <asp:Label ID="lblUser" runat="server" Text="<%# Item.User.FullName %>" />
-                                                </div>
+                                                        <div class="col-sm-3">
+                                                            <asp:Image ID="imgUser" ImageUrl="~/Images/user-icon.png" runat="server" CssClass="history-icon" />
+                                                            <asp:Label ID="lblUser" runat="server" Text="<%# Item.User.FullName %>" />
+                                                        </div>
 
-                                            </div>
+                                                    </div>
 
-                                            <div class="row">
+                                                    <div class="row">
 
-                                                <div class="col-sm-10">
-                                                    <asp:Image ID="imgComments" ImageUrl="~/Images/comments-icon.png" CssClass="history-icon" runat="server" />
-                                                    <asp:Label ID="Label3" runat="server" Text="<%#Item.Comment%>" />
-                                                    <asp:Label ID="lblCaseTransitionID" runat="server" Text="<%#Item.CaseTransitionID%>" Visible="false" />
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Drop" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar el registro.?');">
+                                                        <div class="col-sm-10">
+                                                            <asp:Image ID="imgComments" ImageUrl="~/Images/comments-icon.png" CssClass="history-icon" runat="server" />
+                                                            <asp:Label ID="Label3" runat="server" Text="<%#Item.Comment%>" />
+                                                            <asp:Label ID="lblCaseTransitionID" runat="server" Text="<%#Item.CaseTransitionID%>" Visible="false" />
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Drop" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar el registro.?');">
                                                 <span class="glyphicon glyphicon-trash"></span>
-                                                    </asp:LinkButton>
+                                                            </asp:LinkButton>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </ItemTemplate>
-                                    <EmptyDataTemplate>
-                                        <div class="msg-box bg-info">
-                                            El historial del caso esta vacío
-                                        </div>
-                                    </EmptyDataTemplate>
-                                </asp:ListView>
+                                            </ItemTemplate>
+                                            <EmptyDataTemplate>
+                                                <div class="msg-box bg-info">
+                                                    El historial del caso esta vacío
+                                                </div>
+                                            </EmptyDataTemplate>
+                                        </asp:ListView>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
                             </div>
                         </div>
                         <div class="modal-footer">

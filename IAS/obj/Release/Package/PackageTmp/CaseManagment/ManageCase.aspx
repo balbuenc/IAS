@@ -150,9 +150,8 @@
 
     <div class="row">
         <asp:Label ID="ErrorLabel" Visible="False" CssClass="msg-box bg-danger" runat="server" />
-        <asp:ListView ID="CollectionsListView" runat="server"
-            ItemType="IAS.Models.Collection" DataKeyNames="CollectionID"
-            SelectMethod="GetCollectionsForCase"
+        <asp:ListView ID="CollectionsListView" runat="server" DataSourceID="ActivePoliciesByCase"
+            DataKeyNames="PolicyNumber"
             OnItemDataBound="CollectionsListView_ItemDataBound">
             <LayoutTemplate>
                 <table class="table table-striped">
@@ -168,7 +167,7 @@
                 </table>
             </LayoutTemplate>
             <ItemTemplate>
-                <asp:HiddenField ID="txtOuterID" runat="server" Value="<%#:Item.PolicyNumber%>" Visible="True" />
+                <asp:HiddenField ID="txtOuterID" runat="server" Value='<%# Eval("PolicyNumber") %>' Visible="True" />
                 <asp:SqlDataSource ID="CollectionSqlDatSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
                     SelectCommand="[collection].[sp_get_collections_by_policy]" SelectCommandType="StoredProcedure">
                     <SelectParameters>
@@ -178,10 +177,10 @@
                 </asp:SqlDataSource>
                 <tr>
                     <td>
-                        <asp:Label ID="lblRiskName" runat="server" Text="<%#:Item.RiskName%>" />
+                        <asp:Label ID="lblRiskName" runat="server" Text='<%# Eval("RiskName") %>' />
                     </td>
                     <td>
-                        <asp:Label ID="lblPolicyNumber" runat="server" Text="<%#:Item.PolicyNumber%>" />
+                        <asp:Label ID="lblPolicyNumber" runat="server" Text='<%# Eval("PolicyNumber") %>' />
                     </td>
                 </tr>
                 <tr>
@@ -329,7 +328,21 @@
             <asp:Button ID="buttonChangeState" runat="server" Text="Registrar" CssClass="btn btn-info" OnClick="buttonChangeState_Click" />
         </div>
 
-        <asp:SqlDataSource ID="CaseTransitionDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"></asp:SqlDataSource>
+       <%-- <asp:SqlDataSource ID="CaseTransitionDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"></asp:SqlDataSource>--%>
+        <asp:SqlDataSource ID="PolicyDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="select * from dbo.policy where PolicyNumber = @PolicyNumber"
+             SelectCommandType="Text">
+            <SelectParameters>
+                <asp:Parameter Name="PolicyNumber" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+
+         <asp:SqlDataSource ID="ActivePoliciesByCase" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" 
+             SelectCommand="sp_get_active_policies_by_CaseID"
+             SelectCommandType="StoredProcedure">
+            <SelectParameters>
+                <asp:QueryStringParameter QueryStringField="CaseID" Name="CaseID" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
     </div>
 
 

@@ -29,7 +29,7 @@
                 <asp:LinkButton ID="AddCertificateBtn"
                     runat="server"
                     CssClass="btn btn-link"
-                    PostBackUrl="Certificate.aspx?criteria=Client"
+                    PostBackUrl="Certificate.aspx?criteria=Client&mode=insert"
                     ToolTip="Nuevo Certificado">
                                 <span class="glyphicon glyphicon-plus"></span>
                 </asp:LinkButton>
@@ -43,7 +43,8 @@
 
                 <asp:ListView ID="CertificateListView" runat="server"
                     DataKeyNames="CertificateID"
-                    DataSourceID="CertificateDataSource">
+                    DataSourceID="CertificateDataSource"
+                    OnItemCommand="CertificateListView_ItemCommand">
                     <LayoutTemplate>
                         <div class="table responsive">
                             <table class="table table-striped" style="font-size: x-small">
@@ -89,7 +90,7 @@
                             <td>
                                 <div class="row">
 
-                                    <asp:LinkButton ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CssClass="btn btn-link">
+                                    <asp:LinkButton ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CommandArgument='<%# Eval("CertificateID") %>' CssClass="btn btn-link">
                                                     <span class="glyphicon glyphicon-edit"></span>
                                     </asp:LinkButton>
 

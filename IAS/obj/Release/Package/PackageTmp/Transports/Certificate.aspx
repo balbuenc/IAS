@@ -107,6 +107,10 @@
                                         <div class="col-sm-3">
                                             <asp:TextBox ID="txtCertificateNumber" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
+                                        <label class="col-sm-1 control-label" for="form-group-input">Beneficiario</label>
+                                        <div class="col-sm-3">
+                                            <asp:TextBox ID="txtBeneficiary" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
                                         <%--  <label class="col-sm-1 control-label" for="form-group-input">Porcentaje partner</label>
                                         <div class="col-sm-3">
                                             <asp:TextBox ID="txtPartnerAmmountPercent" runat="server" CssClass="form-control"></asp:TextBox>
@@ -115,6 +119,7 @@
                                         <div class="col-sm-3">
                                             <asp:TextBox ID="txtRiskName" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -236,22 +241,16 @@
                                                 DataValueField="CurrencyID" DataTextField="Denomination">
                                             </asp:DropDownList>
                                         </div>
-                                        <label class="col-sm-1 control-label" for="form-group-input">Beneficiario</label>
-                                        <div class="col-sm-3">
-                                            <asp:TextBox ID="txtBeneficiary" runat="server" CssClass="form-control"></asp:TextBox>
-                                        </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Fecha de emisión</label>
                                         <div class="col-sm-3">
                                             <asp:TextBox ID="txtEmissionDate" runat="server" CssClass="form-control" type="date"></asp:TextBox>
                                         </div>
-                                    </div>
-                                    <br />
-                                    <div class="row">
-                                        <label class="col-sm-1 control-label" for="form-group-input" >Fecha de extensión</label>
+                                        <label class="col-sm-1 control-label" for="form-group-input">Fecha de extensión</label>
                                         <div class="col-sm-3">
                                             <asp:TextBox ID="txtExtensionDate" runat="server" CssClass="form-control" type="date"></asp:TextBox>
                                         </div>
                                     </div>
+                                    <br />
                                 </div>
                             </div>
                         </div>
@@ -321,7 +320,7 @@
 
         function openModalClients() {
             $('#myModalClients').modal('show');
-        }      
+        }
 
         $(document).ready(function () {
 
@@ -334,7 +333,7 @@
                 today: "Hoy"
             };
 
-            
+
             //$('#MainContent_txtEmissionDate').datepicker({
             //    isRTL: false,
             //    format: 'dd/mm/yyyy',

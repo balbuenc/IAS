@@ -47,43 +47,7 @@ namespace IAS.CaseManagment
             }
         }
 
-        public IQueryable<Collection> GetCollectionsForCase([QueryString("CaseID")] long? caseID)
-        {
-
-            if (null == caseID)
-                return null;
-            var lastDate = this.LastDayofMonth(DateTime.Now);
-            var db = new ApplicationDbContext();
-
-            var coll = db.Collections
-                .Where(c => c.CaseID == caseID)
-                .Where(c => c.PaymentDueDate <= lastDate)
-                .GroupBy(c => c.PolicyNumber)
-                .Select(c => c.FirstOrDefault());
-
-            return coll;
-        }
-
-        public IQueryable<Collection> GetOverdueInvoices([Control("lblPolicyNumber")] long? policyNumber)
-        {
-            if (null == policyNumber)
-                return null;
-
-            var lastDate = this.LastDayofMonth(DateTime.Now);
-            var db = new ApplicationDbContext();
-            var coll = db.Collections
-                .Where(c => c.PolicyNumber == policyNumber)
-                .Where(c => c.PaymentDueDate <= lastDate)
-                .Where(c => c.Collected == false);
-            return coll;
-        }
-
-
-        protected void CaseTransitionManager_CaseStateChanged()
-        {
-
-        }
-
+       
         public IQueryable<CollectionState> GetCollectionStates()
         {
             var db = new ApplicationDbContext();

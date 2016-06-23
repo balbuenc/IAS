@@ -65,7 +65,7 @@ namespace IAS
 
                     sqlConnection1.Close();
 
-                    Response.Redirect("CollectionCaseDetails.aspx?CaseID=" + Request.QueryString["CaseID"]);
+                    CaseTransitionsListView.DataBind();
 
                 }
                 catch (Exception exp)

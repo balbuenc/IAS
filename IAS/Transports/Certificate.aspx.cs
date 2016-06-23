@@ -171,8 +171,8 @@ namespace IAS.Transports
                     txtComissionAdviserPercent.Text = dt.Rows[0]["ComissionAdviserPercent"].ToString();
                     ddlCurrency.SelectedValue = (dt.Rows[0]["CurrencyID"].ToString() == string.Empty) ? "-1" : dt.Rows[0]["CurrencyID"].ToString();
                     txtBeneficiary.Text = dt.Rows[0]["Beneficiary"].ToString();
-                    txtEmissionDate.Text = dt.Rows[0]["EmissionDate"].ToString();
-                    txtExtensionDate.Text = dt.Rows[0]["ExtensionDate"].ToString();
+                    txtEmissionDate.Text = Convert.ToDateTime(dt.Rows[0]["EmissionDate"].ToString()).ToString("yyyy-MM-dd");
+                    txtExtensionDate.Text = Convert.ToDateTime(dt.Rows[0]["ExtensionDate"].ToString()).ToString("yyyy-MM-dd");
                 }
             }
             catch(Exception exp)
@@ -247,6 +247,7 @@ namespace IAS.Transports
                     lblRazonSocial.Text = razonSocial;
                     PersonaID = personaID;
                     BeneficiaryID = personaID;
+                    txtBeneficiary.Text = cliente;
 
                     divClientData.Visible = true;
 
@@ -282,7 +283,7 @@ namespace IAS.Transports
                         }
 
                         cmd.CommandText = "[transport].[sp_update_certificate]";
-                        cmd.Parameters.AddWithValue("@CertificateID", long.Parse(Request.QueryString["certificateID"].ToString()) );
+                        cmd.Parameters.AddWithValue("@CertificateID", long.Parse(Request.QueryString["certificateID"].ToString()));
                     }
                     else if(Request.QueryString["mode"].ToString().Equals("insert"))
                     {
@@ -297,32 +298,75 @@ namespace IAS.Transports
                         return;
                     }
 
-                    cmd.Parameters.AddWithValue("@CertificateNumber", Convert.ToInt64(txtCertificateNumber.Text));
+                    long certificateNumber = 0;
+                    long.TryParse(txtCertificateNumber.Text, out certificateNumber);
+                    int insuranceManager = 0;
+                    int.TryParse(ddlInsuranceManager.SelectedValue, out insuranceManager);
+                    int policy = 0;
+                    int.TryParse(ddlPolicy.SelectedValue, out policy);
+                    int contact = 0;
+                    int.TryParse(ddlContact.SelectedValue, out contact);
+                    decimal packageCount = 0;
+                    decimal.TryParse(txtPackageCount.Text, out packageCount);
+                    int transportationMethod = 0;
+                    int.TryParse(ddlTransportationMethod.SelectedValue, out transportationMethod);
+                    decimal premium = 0;
+                    decimal.TryParse(txtPremium.Text, out premium);
+                    decimal premiunmPlusTax = 0;
+                    decimal.TryParse(txtPremiunmPlusTax.Text, out premiunmPlusTax);
+                    decimal capitalAmount = 0;
+                    decimal.TryParse(txtCapitalAmount.Text, out capitalAmount);
+                    decimal rate = 0;
+                    decimal.TryParse(txtRate.Text, out rate);
+                    decimal spendingPercent = 0;
+                    decimal.TryParse(txtSpendingPercent.Text, out spendingPercent);
+                    decimal spending = 0;
+                    decimal.TryParse(txtSpending.Text, out spending);
+                    decimal comissionASSAPercent = 0;
+                    decimal.TryParse(txtComissionASSAPercent.Text, out comissionASSAPercent);
+                    decimal comissionAdviserPercent = 0;
+                    decimal.TryParse(txtComissionAdviserPercent.Text, out comissionAdviserPercent);
+                    int currency = 0;
+                    int.TryParse(ddlCurrency.SelectedValue, out currency);
+
+                    DateTime emissionDate = DateTime.Now;
+                    if(!string.IsNullOrEmpty(txtEmissionDate.Text))
+                    {
+                        DateTime.TryParse(txtEmissionDate.Text, out emissionDate);
+                    }
+
+                    DateTime extensionDate = DateTime.Now;
+                    if(!string.IsNullOrEmpty(txtExtensionDate.Text))
+                    {
+                        DateTime.TryParse(txtExtensionDate.Text, out extensionDate);
+                    }
+
+                    cmd.Parameters.AddWithValue("@CertificateNumber", certificateNumber);
                     cmd.Parameters.AddWithValue("@PersonID", PersonaID);
-                    cmd.Parameters.AddWithValue("@InsuranceManagerID", Convert.ToInt32(ddlInsuranceManager.SelectedValue));
-                    cmd.Parameters.AddWithValue("@PolicyNumber", Convert.ToInt32(ddlPolicy.SelectedValue));
+                    cmd.Parameters.AddWithValue("@InsuranceManagerID", insuranceManager);
+                    cmd.Parameters.AddWithValue("@PolicyNumber", policy);
                     cmd.Parameters.AddWithValue("@BeneficiaryID", BeneficiaryID);
                     //cmd.Parameters.AddWithValue("@PartnerID", Convert.ToInt32(ddlPartners.SelectedValue));
                     //cmd.Parameters.AddWithValue("@PartnerAmmountPercent", Convert.ToDecimal(txtPartnerAmmountPercent.Text));
-                    cmd.Parameters.AddWithValue("@ContactID", Convert.ToInt32(ddlContact.SelectedValue));
+                    cmd.Parameters.AddWithValue("@ContactID", contact);
                     cmd.Parameters.AddWithValue("@RiskName", txtRiskName.Text);
-                    cmd.Parameters.AddWithValue("@PackageCount", Convert.ToDecimal(txtPackageCount.Text));
+                    cmd.Parameters.AddWithValue("@PackageCount", packageCount);
                     cmd.Parameters.AddWithValue("@Origin", txtOrigin.Text);
                     cmd.Parameters.AddWithValue("@Destination", txtDestination.Text);
-                    cmd.Parameters.AddWithValue("@TransportationMethodID", Convert.ToInt32(ddlTransportationMethod.SelectedValue));
+                    cmd.Parameters.AddWithValue("@TransportationMethodID", transportationMethod);
                     cmd.Parameters.AddWithValue("@Description", txtDescription.Text);
-                    cmd.Parameters.AddWithValue("@Premium", Convert.ToDecimal(txtPremium.Text));
-                    cmd.Parameters.AddWithValue("@PremiunmPlusTax", Convert.ToDecimal(txtPremiunmPlusTax.Text));
-                    cmd.Parameters.AddWithValue("@CapitalAmount", Convert.ToDecimal(txtCapitalAmount.Text));
-                    cmd.Parameters.AddWithValue("@Rate", Convert.ToDecimal(txtRate.Text));
-                    cmd.Parameters.AddWithValue("@SpendingPercent", Convert.ToDecimal(txtSpendingPercent.Text));
-                    cmd.Parameters.AddWithValue("@Spending", Convert.ToDecimal(txtSpending.Text));
-                    cmd.Parameters.AddWithValue("@ComissionASSAPercent", Convert.ToDecimal(txtComissionASSAPercent.Text));
-                    cmd.Parameters.AddWithValue("@ComissionAdviserPercent", Convert.ToDecimal(txtComissionAdviserPercent.Text));
-                    cmd.Parameters.AddWithValue("@CurrencyID", Convert.ToInt32(ddlCurrency.SelectedValue));
+                    cmd.Parameters.AddWithValue("@Premium", premium);
+                    cmd.Parameters.AddWithValue("@PremiunmPlusTax", premiunmPlusTax);
+                    cmd.Parameters.AddWithValue("@CapitalAmount", capitalAmount);
+                    cmd.Parameters.AddWithValue("@Rate", rate);
+                    cmd.Parameters.AddWithValue("@SpendingPercent", spendingPercent);
+                    cmd.Parameters.AddWithValue("@Spending", spending);
+                    cmd.Parameters.AddWithValue("@ComissionASSAPercent", comissionASSAPercent);
+                    cmd.Parameters.AddWithValue("@ComissionAdviserPercent", comissionAdviserPercent);
+                    cmd.Parameters.AddWithValue("@CurrencyID", currency);
                     cmd.Parameters.AddWithValue("@Beneficiary", txtBeneficiary.Text);
-                    cmd.Parameters.AddWithValue("@EmissionDate", DateTime.Parse(txtEmissionDate.Text));
-                    cmd.Parameters.AddWithValue("@ExtensionDate", DateTime.Parse(txtExtensionDate.Text));
+                    cmd.Parameters.AddWithValue("@EmissionDate", emissionDate);
+                    cmd.Parameters.AddWithValue("@ExtensionDate", extensionDate);
                     cmd.Parameters.AddWithValue("@Status", "Activo");
 
                     sqlConnection1.Open();

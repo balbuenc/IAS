@@ -107,14 +107,19 @@
                                         <div class="col-sm-3">
                                             <asp:TextBox ID="txtCertificateNumber" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
-                                        <label class="col-sm-1 control-label" for="form-group-input">Porcentaje partner</label>
+                                        <label class="col-sm-1 control-label" for="form-group-input">Beneficiario</label>
+                                        <div class="col-sm-3">
+                                            <asp:TextBox ID="txtBeneficiary" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                        <%--  <label class="col-sm-1 control-label" for="form-group-input">Porcentaje partner</label>
                                         <div class="col-sm-3">
                                             <asp:TextBox ID="txtPartnerAmmountPercent" runat="server" CssClass="form-control"></asp:TextBox>
-                                        </div>
+                                        </div>--%>
                                         <label class="col-sm-1 control-label" for="form-group-input">Riesgo</label>
                                         <div class="col-sm-3">
                                             <asp:TextBox ID="txtRiskName" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -135,16 +140,16 @@
                                                 DataValueField="InsuranceManagerID" DataTextField="InsuranceManager">
                                             </asp:DropDownList>
                                         </div>
-                                        <label class="col-sm-1 control-label" for="form-group-input">Asociado</label>
+                                        <%-- <label class="col-sm-1 control-label" for="form-group-input">Asociado</label>
                                         <div class="col-sm-3">
                                             <asp:DropDownList ID="ddlPartners" runat="server" CssClass="form-control" DataSourceID="partnersDataSource"
                                                 DataValueField="PartnerID" DataTextField="Partner">
                                             </asp:DropDownList>
-                                        </div>
+                                        </div>--%>
                                         <label class="col-sm-1 control-label" for="form-group-input">Nro Poliza</label>
                                         <div class="col-sm-3">
                                             <asp:DropDownList ID="ddlPolicy" runat="server" CssClass="form-control" DataSourceID="policyDataSource"
-                                                DataValueField="PolicyNumber" DataTextField="PolicyNumber">
+                                                DataValueField="PolicyNumber" DataTextField="Description">
                                             </asp:DropDownList>
                                         </div>
                                     </div>
@@ -236,22 +241,16 @@
                                                 DataValueField="CurrencyID" DataTextField="Denomination">
                                             </asp:DropDownList>
                                         </div>
-                                        <label class="col-sm-1 control-label" for="form-group-input">Beneficiario</label>
-                                        <div class="col-sm-3">
-                                            <asp:TextBox ID="txtBeneficiary" runat="server" CssClass="form-control"></asp:TextBox>
-                                        </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Fecha de emisión</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtEmissionDate" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtEmissionDate" runat="server" CssClass="form-control" type="date"></asp:TextBox>
+                                        </div>
+                                        <label class="col-sm-1 control-label" for="form-group-input">Fecha de extensión</label>
+                                        <div class="col-sm-3">
+                                            <asp:TextBox ID="txtExtensionDate" runat="server" CssClass="form-control" type="date"></asp:TextBox>
                                         </div>
                                     </div>
                                     <br />
-                                    <div class="row">
-                                        <label class="col-sm-1 control-label" for="form-group-input">Fecha de extensión</label>
-                                        <div class="col-sm-3">
-                                            <asp:TextBox ID="txtExtensionDate" runat="server" CssClass="form-control"></asp:TextBox>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -259,8 +258,11 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-2">
                         <asp:Button ID="btnGuardar" runat="server" CssClass=" btn btn-primary" Text="Guardar" OnClick="btnGuardar_Click" />
+                    </div>
+                    <div class="=col-sm-2">
+                        <asp:LinkButton ID="lnkVolver" PostBackUrl="~/Transports/Certificates.aspx" runat="server" Text="Volver"></asp:LinkButton>
                     </div>
                 </div>
 
@@ -319,5 +321,33 @@
         function openModalClients() {
             $('#myModalClients').modal('show');
         }
+
+        $(document).ready(function () {
+
+            $.fn.datepicker.dates['es'] = {
+                days: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                daysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
+                daysMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+                months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                today: "Hoy"
+            };
+
+
+            //$('#MainContent_txtEmissionDate').datepicker({
+            //    isRTL: false,
+            //    format: 'dd/mm/yyyy',
+            //    autoclose:true,
+            //    language: 'es'
+            //});
+
+            //$('#MainContent_txtExtensionDate').datepicker({
+            //    isRTL: false,
+            //    format: 'dd/mm/yyyy',
+            //    autoclose: true,
+            //    language: 'es'
+            //});
+        });
+
     </script>
 </asp:Content>

@@ -17,7 +17,7 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 --%>
 
-<%@ Page Title="Casos" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MyCaseList.aspx.cs" Inherits="IAS.CaseManagment.MyCaseList" %>
+<%@ Page Title="Casos" Language="C#" MasterPageFile="~/IAS_Master.Master" AutoEventWireup="true" CodeBehind="MyCaseList.aspx.cs" Inherits="IAS.CaseManagment.MyCaseList" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
@@ -326,8 +326,8 @@
 
 
         <%-- Modal de Nuevo Siniestro Manual --%>
-        <script src="Scripts/bootstrap-datepicker.min.js"></script>
-        <link href="Content/bootstrap-datepicker.min.css" rel="stylesheet" />
+        <script src="/Scripts/bootstrap-datepicker.min.js"></script>
+        <link href="/Content/bootstrap-datepicker.min.css" rel="stylesheet" />
 
         <script>
             var nowTemp = new Date();

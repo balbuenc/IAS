@@ -1,14 +1,14 @@
-﻿<%@ Page Title="Gestion de caso" Language="C#" MasterPageFile="~/CaseManagement.Master" AutoEventWireup="true" CodeBehind="ManageCase.aspx.cs" Inherits="IAS.CaseManagment.ManageCase" %>
+﻿<%@ Page Title="Gestion de caso" Language="C#" MasterPageFile="~/IAS_Master.Master" AutoEventWireup="true" CodeBehind="ManageCase.aspx.cs" Inherits="IAS.CaseManagment.ManageCase" %>
 
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-    <script src="../Scripts/jquery-1.10.2.min.js"></script>
-    <script src="../../Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/jquery-2.1.3.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
 
 
-    <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
 
 
     <script>
@@ -97,7 +97,7 @@
         }).call(this);
     </script>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="container-fluid" style="font-family: 'Segoe UI'">
         <asp:HiddenField ID="hdnCaseID" runat="server" />

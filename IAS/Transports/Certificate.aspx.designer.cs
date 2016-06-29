@@ -103,6 +103,15 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.TextBox txtCertificateNumber;
         
         /// <summary>
+        /// txtBeneficiary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBeneficiary;
+        
+        /// <summary>
         /// txtRiskName control.
         /// </summary>
         /// <remarks>
@@ -263,15 +272,6 @@ namespace IAS.Transports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCurrency;
-        
-        /// <summary>
-        /// txtBeneficiary control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBeneficiary;
         
         /// <summary>
         /// txtEmissionDate control.

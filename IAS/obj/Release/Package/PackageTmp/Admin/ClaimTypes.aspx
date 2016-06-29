@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ClaimTypes.aspx.cs" Inherits="IAS.Admin.ClaimTypes" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/IAS_Master.Master" AutoEventWireup="true" CodeBehind="ClaimTypes.aspx.cs" Inherits="IAS.Admin.ClaimTypes" %>
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="page-header">

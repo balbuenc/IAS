@@ -17,7 +17,7 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  --%>
 
-<%@ Page Title="Manage Currencies" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Currencies.aspx.cs" Inherits="IAS.Admin.Currencies" %>
+<%@ Page Title="Manage Currencies" Language="C#" MasterPageFile="~/IAS_Master.Master" AutoEventWireup="true" CodeBehind="Currencies.aspx.cs" Inherits="IAS.Admin.Currencies" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     

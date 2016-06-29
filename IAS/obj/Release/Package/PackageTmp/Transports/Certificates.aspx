@@ -17,12 +17,12 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 --%>
 
-<%@ Page Title="Certificados" Language="C#" MasterPageFile="~/Transport.Master" AutoEventWireup="true" CodeBehind="Certificates.aspx.cs" Inherits="IAS.Transports.Certificates" %>
+<%@ Page Title="Certificados" Language="C#" MasterPageFile="~/IAS_Master.Master" AutoEventWireup="true" CodeBehind="Certificates.aspx.cs" Inherits="IAS.Transports.Certificates" %>
 
 <asp:Content ID="head" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="container" style="border-bottom: double; border-bottom-color: aliceblue">
+    <div class="container-fluid" style="border-bottom: double; border-bottom-color: aliceblue">
 
         <div class="row">
             <div class="col-lg-2">
@@ -36,7 +36,7 @@
             </div>
         </div>
     </div>
-    <div class="container" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+    <div class="container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
         <asp:UpdatePanel ID="upnlCertificates" runat="server">
             <ContentTemplate>
                 <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />

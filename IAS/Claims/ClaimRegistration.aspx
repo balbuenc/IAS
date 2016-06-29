@@ -1,12 +1,12 @@
-﻿<%@ Page Title="Registro de Siniestros" Language="C#" MasterPageFile="~/Claim.Master" AutoEventWireup="true" CodeBehind="ClaimRegistration.aspx.cs" Inherits="IAS.Claims.ClaimRegistration" %>
+﻿<%@ Page Title="Registro de Siniestros" Language="C#" MasterPageFile="~/IAS_Master.Master" AutoEventWireup="true" CodeBehind="ClaimRegistration.aspx.cs" Inherits="IAS.Claims.ClaimRegistration" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script src="../Scripts/jquery-1.10.2.min.js"></script>
-    <script src="../Scripts/bootstrap.min.js"></script>
-    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="/Scripts/jquery-2.1.3.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
 
-    <script src="../Scripts/bootstrap-datepicker.min.js"></script>
-    <link href="../Content/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <script src="/Scripts/bootstrap-datepicker.min.js"></script>
+    <link href="/Content/bootstrap-datepicker.min.css" rel="stylesheet" />
 
     <script>       
 
@@ -36,7 +36,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
                 <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />

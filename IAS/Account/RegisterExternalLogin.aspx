@@ -17,7 +17,7 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  --%>
 
-<%@ Page Title="Register an external login" Language="C#" MasterPageFile="~/IAS_Master.Master" AutoEventWireup="true" CodeBehind="RegisterExternalLogin.aspx.cs" Inherits="IAS.Account.RegisterExternalLogin" Async="true" %>
+<%@ Page Title="Register an external login" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RegisterExternalLogin.aspx.cs" Inherits="IAS.Account.RegisterExternalLogin" Async="true" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
 <h3>Register with your <%: ProviderName %> account</h3>

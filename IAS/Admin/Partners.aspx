@@ -17,7 +17,7 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 --%>
 
-<%@ Page Title="Asociados" Language="C#" MasterPageFile="~/IAS_Master.Master" AutoEventWireup="true" CodeBehind="Partners.aspx.cs" Inherits="IAS.Admin.Partners" %>
+<%@ Page Title="Asociados" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Partners.aspx.cs" Inherits="IAS.Admin.Partners" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="page-header">

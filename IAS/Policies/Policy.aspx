@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Póliza" Language="C#" MasterPageFile="~/IAS_Master.Master" AutoEventWireup="true" CodeBehind="Policy.aspx.cs" Inherits="IAS.Policies.Policy" %>
+﻿<%@ Page Title="Póliza" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Policy.aspx.cs" Inherits="IAS.Policies.Policy" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="page-header">

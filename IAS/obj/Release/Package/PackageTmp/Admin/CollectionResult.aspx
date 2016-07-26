@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Asignaciòn de Estados de Cuota" Language="C#" MasterPageFile="~/IAS_Master.Master" AutoEventWireup="true" CodeBehind="CollectionResult.aspx.cs" Inherits="IAS.Admin.CollectionResult" %>
+﻿<%@ Page Title="Asignaciòn de Estados de Cuota" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CollectionResult.aspx.cs" Inherits="IAS.Admin.CollectionResult" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="page-header">
         <h2>Asignaciòn de Eatados de Cuota por Resultado</h2>

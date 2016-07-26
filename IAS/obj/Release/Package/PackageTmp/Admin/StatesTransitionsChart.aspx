@@ -27,9 +27,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Grafico</title>
 
-    <link href="/Content/dagre-d3-simple.css" rel="stylesheet" />
-    <script src="/Scripts/jquery-2.1.3.min.js"></script>
-    <script src="/Scripts/d3.min.js"></script>
+    <link href="../Content/dagre-d3-simple.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../Scripts/d3.min.js"></script>
     <script>
 
         function renderTransitionChart() {

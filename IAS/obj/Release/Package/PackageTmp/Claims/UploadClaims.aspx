@@ -17,12 +17,12 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 --%>
 
-<%@ Page Title="Subir Siniestros" Language="C#" MasterPageFile="~/IAS_Master.Master" AutoEventWireup="true" CodeBehind="UploadClaims.aspx.cs" Inherits="IAS.Claims.UploadClaims" %>
+<%@ Page Title="Subir Siniestros" Language="C#" MasterPageFile="~/Claim.Master" AutoEventWireup="true" CodeBehind="UploadClaims.aspx.cs" Inherits="IAS.Claims.UploadClaims" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script src="/Scripts/jquery-2.1.3.min.js"></script>
-    <script src="/Scripts/bootstrap.min.js"></script>
-    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="page-header">

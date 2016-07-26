@@ -18,7 +18,7 @@
 --%>
 
 
-<%@ Page Title="Paises" Language="C#" MasterPageFile="~/IAS_Master.Master" AutoEventWireup="true" CodeBehind="Countries.aspx.cs" Inherits="IAS.Admin.Countries" %>
+<%@ Page Title="Paises" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Countries.aspx.cs" Inherits="IAS.Admin.Countries" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="page-header">

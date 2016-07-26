@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Resultados de Gestión de cuotas" Language="C#" MasterPageFile="~/IAS_Master.Master" AutoEventWireup="true" CodeBehind="CollectionManagementResults.aspx.cs" Inherits="IAS.Admin.CollectionManagementResults" %>
+﻿<%@ Page Title="Resultados de Gestión de cuotas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CollectionManagementResults.aspx.cs" Inherits="IAS.Admin.CollectionManagementResults" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="page-header">
         <h2>Resultado de Cobranzas</h2>

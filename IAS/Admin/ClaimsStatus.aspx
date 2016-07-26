@@ -17,7 +17,7 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  --%>
 
-<%@ Page Title="Estados del Siniestro" Language="C#" MasterPageFile="~/IAS_Master.Master" AutoEventWireup="true" CodeBehind="ClaimsStatus.aspx.cs" Inherits="IAS.Admin.ClaimsStatus" %>
+<%@ Page Title="Estados del Siniestro" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ClaimsStatus.aspx.cs" Inherits="IAS.Admin.ClaimsStatus" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
      <div class="page-header">
         <h2>Estado del Siniestro</h2>

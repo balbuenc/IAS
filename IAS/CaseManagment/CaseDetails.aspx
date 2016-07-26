@@ -17,10 +17,10 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  --%>
 
-<%@ Page Title="Detalle de Caso" Language="C#" MasterPageFile="~/IAS_Master.Master" AutoEventWireup="true" CodeBehind="CaseDetails.aspx.cs" Inherits="IAS.CaseManagment.CaseDetails" %>
+<%@ Page Title="Detalle de Caso" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CaseDetails.aspx.cs" Inherits="IAS.CaseManagment.CaseDetails" %>
 
-<%@ Register Src="/CaseManagment/CaseData.ascx" TagPrefix="uc1" TagName="CaseData" %>
-<%@ Register Src="/CaseManagment/CaseTransitionManager.ascx" TagPrefix="uc1" TagName="CaseTransitionManager" %>
+<%@ Register Src="~/CaseManagment/CaseData.ascx" TagPrefix="uc1" TagName="CaseData" %>
+<%@ Register Src="~/CaseManagment/CaseTransitionManager.ascx" TagPrefix="uc1" TagName="CaseTransitionManager" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">

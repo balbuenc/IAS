@@ -17,7 +17,7 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  --%>
 
-<%@ Page Title="Manage Collection Methods" Language="C#" MasterPageFile="~/IAS_Master.Master" AutoEventWireup="true" CodeBehind="CollectionMethods.aspx.cs" Inherits="IAS.Admin.CollectionMethods" %>
+<%@ Page Title="Manage Collection Methods" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CollectionMethods.aspx.cs" Inherits="IAS.Admin.CollectionMethods" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     

@@ -1,11 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/IAS_Master.Master" AutoEventWireup="true" CodeBehind="Collection.aspx.cs" Inherits="IAS.Transports.Collection" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Transport.Master" AutoEventWireup="true" CodeBehind="Collection.aspx.cs" Inherits="IAS.Transports.Collection" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <asp:UpdatePanel ID="upnlCollections" runat="server">
         <ContentTemplate>
-            <div class="container-fluid">
+            <div class="container">
                 <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
                 <div class="row">
                     <div class="col-lg-12">

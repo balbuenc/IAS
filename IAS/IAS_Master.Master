@@ -248,7 +248,7 @@
                         <ul class="treeview-menu">
                             <li><a href="/CaseManagment/MyCaseList.aspx"><i class="fa fa-gavel fa-1x"></i>Mis Cobranzas</a></li>
                             <li><a href="/Claims/ClaimSearch.aspx"><i class="fa fa-refresh fa-spin fa-1x fa-fw"></i>Mis Siniestros</a></li>
-                            <li><a href="/Transports/Certificates.aspx"><i class="fa fa-ship fa-1x"></i>Transporte</a></li>
+                            <%--<li><a href="/Transports/Certificates.aspx"><i class="fa fa-ship fa-1x"></i>Transporte</a></li>--%>
                             
                         </ul>
                     </li>

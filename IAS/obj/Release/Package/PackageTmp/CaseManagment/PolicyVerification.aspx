@@ -1,6 +1,6 @@
-﻿<%@ Page Title="Verificación de Cobertura" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PolicyVerification.aspx.cs" Inherits="IAS.ClaimManagment.PolicyVerification" %>
-<%@ Register Src="~/CaseManagment/CaseData.ascx" TagPrefix="uc1" TagName="CaseData" %>
-<%@ Register Src="~/CaseManagment/CaseTransitionManager.ascx" TagPrefix="uc1" TagName="CaseTransitionManager" %>
+﻿<%@ Page Title="Verificación de Cobertura" Language="C#" MasterPageFile="~/IAS_Master.Master" AutoEventWireup="true" CodeBehind="PolicyVerification.aspx.cs" Inherits="IAS.ClaimManagment.PolicyVerification" %>
+<%@ Register Src="/CaseManagment/CaseData.ascx" TagPrefix="uc1" TagName="CaseData" %>
+<%@ Register Src="/CaseManagment/CaseTransitionManager.ascx" TagPrefix="uc1" TagName="CaseTransitionManager" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
      <script type="text/javascript">

@@ -13,15 +13,6 @@ namespace IAS.Collections {
     public partial class UploadCollections {
         
         /// <summary>
-        /// upnlCollections control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upnlCollections;
-        
-        /// <summary>
         /// ErrorLabel control.
         /// </summary>
         /// <remarks>
@@ -40,13 +31,13 @@ namespace IAS.Collections {
         protected global::System.Web.UI.WebControls.FileUpload MapfreExpiredUp;
         
         /// <summary>
-        /// MapfreClaimsFileBtn control.
+        /// MapfreExpireBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button MapfreClaimsFileBtn;
+        protected global::System.Web.UI.WebControls.Button MapfreExpireBtn;
         
         /// <summary>
         /// MapfreExpiredStatus control.

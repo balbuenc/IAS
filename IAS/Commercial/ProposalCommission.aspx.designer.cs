@@ -7,20 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IAS.Transports.Admin
-{
-    public partial class Policies
-    {
-
+namespace IAS.Commercial {
+    
+    
+    public partial class ProposalCommission {
+        
         /// <summary>
-        /// upnlPolicies control.
+        /// upnlProposals control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upnlPolicies;
-
+        protected global::System.Web.UI.UpdatePanel upnlProposals;
+        
         /// <summary>
         /// ErrorLabel control.
         /// </summary>
@@ -29,41 +29,41 @@ namespace IAS.Transports.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
-
+        
         /// <summary>
-        /// PolicyListView control.
+        /// ProposalCommissionListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView PolicyListView;
-
+        protected global::System.Web.UI.WebControls.ListView ProposalCommissionListView;
+        
         /// <summary>
-        /// PoliciesDataPager control.
+        /// ProposalDataPager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataPager PoliciesDataPager;
-
+        protected global::System.Web.UI.WebControls.DataPager ProposalDataPager;
+        
         /// <summary>
-        /// PoliciesDataSource control.
+        /// ProposalCommissionDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource PoliciesDataSource;
-
+        protected global::System.Web.UI.WebControls.SqlDataSource ProposalCommissionDataSource;
+        
         /// <summary>
-        /// CountriesDataSource control.
+        /// ProposalTypesDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource CountriesDataSource;
+        protected global::System.Web.UI.WebControls.SqlDataSource ProposalTypesDataSource;
     }
 }

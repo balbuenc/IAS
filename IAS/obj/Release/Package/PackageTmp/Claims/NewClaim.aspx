@@ -198,6 +198,8 @@
                                     <asp:BoundField HeaderText="Nro Póliza" DataField="detail" />
                                     <asp:BoundField HeaderText="Nro documento" DataField="numero_documento" />
                                     <asp:BoundField HeaderText="Cliente" DataField="cliente" />
+                                    <asp:BoundField HeaderText="Aseguradora" DataField="InsuranceManager" />
+                                    
                                     <asp:TemplateField HeaderText="Seleccionar">
                                         <ItemTemplate>
                                             <asp:LinkButton ID="lnkSeleccionar" runat="server" CausesValidation="False" CommandArgument='<%# Eval("detail") + "|" + Eval("numero_documento") + "|" + Eval("cliente") + "|" + Eval("id_persona") + "|" + Eval("nro_poliza") %>'

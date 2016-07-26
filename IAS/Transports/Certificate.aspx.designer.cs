@@ -13,6 +13,15 @@ namespace IAS.Transports {
     public partial class Certificate {
         
         /// <summary>
+        /// SiteLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SiteLabel;
+        
+        /// <summary>
         /// upnlCertificate control.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace IAS.Transports {
         protected global::System.Web.UI.HtmlControls.HtmlButton criteriaBtn;
         
         /// <summary>
+        /// ClientsDDL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ClientsDDL;
+        
+        /// <summary>
         /// divClientData control.
         /// </summary>
         /// <remarks>
@@ -94,6 +112,15 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.Label lblNroDocumento;
         
         /// <summary>
+        /// ddlPolicy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPolicy;
+        
+        /// <summary>
         /// txtCertificateNumber control.
         /// </summary>
         /// <remarks>
@@ -103,13 +130,40 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.TextBox txtCertificateNumber;
         
         /// <summary>
-        /// txtRiskName control.
+        /// txtBeneficiary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRiskName;
+        protected global::System.Web.UI.WebControls.TextBox txtBeneficiary;
+        
+        /// <summary>
+        /// txtEmissionDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEmissionDate;
+        
+        /// <summary>
+        /// txtExtensionDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtExtensionDate;
+        
+        /// <summary>
+        /// ddlCurrency control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCurrency;
         
         /// <summary>
         /// ddlInsuranceManager control.
@@ -121,13 +175,22 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.DropDownList ddlInsuranceManager;
         
         /// <summary>
-        /// ddlPolicy control.
+        /// txtRiskName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPolicy;
+        protected global::System.Web.UI.WebControls.TextBox txtRiskName;
+        
+        /// <summary>
+        /// txtPackageCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPackageCount;
         
         /// <summary>
         /// ddlContact control.
@@ -146,15 +209,6 @@ namespace IAS.Transports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTransportationMethod;
-        
-        /// <summary>
-        /// txtPackageCount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPackageCount;
         
         /// <summary>
         /// txtOrigin control.
@@ -184,24 +238,6 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.TextBox txtDescription;
         
         /// <summary>
-        /// txtPremium control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPremium;
-        
-        /// <summary>
-        /// txtPremiunmPlusTax control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPremiunmPlusTax;
-        
-        /// <summary>
         /// txtCapitalAmount control.
         /// </summary>
         /// <remarks>
@@ -218,6 +254,15 @@ namespace IAS.Transports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRate;
+        
+        /// <summary>
+        /// txtPremium control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPremium;
         
         /// <summary>
         /// txtSpendingPercent control.
@@ -238,6 +283,15 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.TextBox txtSpending;
         
         /// <summary>
+        /// txtPremiunmPlusTax control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPremiunmPlusTax;
+        
+        /// <summary>
         /// txtComissionASSAPercent control.
         /// </summary>
         /// <remarks>
@@ -256,40 +310,22 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.TextBox txtComissionAdviserPercent;
         
         /// <summary>
-        /// ddlCurrency control.
+        /// divAgentCommission control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCurrency;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAgentCommission;
         
         /// <summary>
-        /// txtBeneficiary control.
+        /// AgentCommissionListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBeneficiary;
-        
-        /// <summary>
-        /// txtEmissionDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmissionDate;
-        
-        /// <summary>
-        /// txtExtensionDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtExtensionDate;
+        protected global::System.Web.UI.WebControls.ListView AgentCommissionListView;
         
         /// <summary>
         /// btnGuardar control.
@@ -371,6 +407,33 @@ namespace IAS.Transports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource partnersDataSource;
+        
+        /// <summary>
+        /// clientDS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource clientDS;
+        
+        /// <summary>
+        /// agentsDS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource agentsDS;
+        
+        /// <summary>
+        /// AgentCommissionDS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource AgentCommissionDS;
         
         /// <summary>
         /// gridClients control.

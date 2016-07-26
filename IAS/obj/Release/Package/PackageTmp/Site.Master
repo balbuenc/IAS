@@ -94,8 +94,7 @@
                                     <li><a href="../Claims/ClaimSearch.aspx">Siniestros</a></li>
                                     <li><a href="../CaseManagment/CollectionsToExpire.aspx">Envio de SMS</a></li>
                                     <li><a href="../Collections/UploadCollections.aspx">Subir cuotas</a></li>
-                                    <li ><a href="../Transports/Certificates.aspx">Certificados</a></li>
-                                
+                                    <li ><a href="../Transports/Certificates.aspx">Transporte</a></li>
                                 </ul>
                             </div>
                             <div class="btn-group">
@@ -129,6 +128,20 @@
                                     <li><a href="../Admin/Liquidators.aspx">Liquidadores</a></li>
                                     <li><a href="../Admin/Workshops.aspx">Talleres</a></li>
                                     <li><a href="../Admin/ClaimsStatus.aspx">Estados de Siniestro</a></li>
+                                   
+                                    
+                                </ul>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    Propuestas
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/Commercial/Proposals.aspx">Propuestas</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="/Commercial/PaymentTypes.aspx">Tipos de Pago</a></li>
+                                    <li><a href="/Commercial/ProposalCommission.aspx">Comisiones</a></li>
                                 </ul>
                             </div>
                             <div class="btn-group">
@@ -138,22 +151,22 @@
                                 </button>
                                 <ul class="dropdown-menu">
 
-                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fCumplimiento&rs:Command=Render" target="_blank">Cumplimiento</a></li>
-                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fMorosidad&rs:Command=Render" target="_blank">Morosidad</a></li>
-                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fGestionCasos&rs:Command=Render" target="_blank">Historial de gestión</a></li>
-                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fHistoricoSMS&rs:Command=Render" target="_blank">Historial de SMS</a></li>
-                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fMapfreCuotasOmitidas&rs:Command=Render" target="_blank">Mapfre | Cuotas Omitidas</a></li>
-                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fSancorCuotasExcluidas&rs:Command=Render" target="_blank">Sancor | Cuotas Omitidas</a></li>
-                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fCobranzasDiferencias&rs:Command=Render" target="_blank">Diferencias en Cuotas</a></li>
-                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fCasosPorCliente&rs:Command=Render" target="_blank">Listado de casos</a></li>
-                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fCasosCelulares&rs:Command=Render" target="_blank">Clientes con Celular</a></li>
-                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fEnvioSMSCasosConCelular&rs:Command=Render" target="_blank">Notificaciones por SMS</a></li>
-                                    <hr />
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fCumplimiento&rs:Command=Render" target="_blank">Cumplimiento</a></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fMorosidad&rs:Command=Render" target="_blank">Morosidad</a></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fGestionCasos&rs:Command=Render" target="_blank">Historial de gestión</a></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fHistoricoSMS&rs:Command=Render" target="_blank">Historial de SMS</a></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fMapfreCuotasOmitidas&rs:Command=Render" target="_blank">Mapfre | Cuotas Omitidas</a></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fSancorCuotasExcluidas&rs:Command=Render" target="_blank">Sancor | Cuotas Omitidas</a></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fCobranzasDiferencias&rs:Command=Render" target="_blank">Diferencias en Cuotas</a></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fCasosPorCliente&rs:Command=Render" target="_blank">Listado de casos</a></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fCasosCelulares&rs:Command=Render" target="_blank">Clientes con Celular</a></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fEnvioSMSCasosConCelular&rs:Command=Render" target="_blank">Notificaciones por SMS</a></li>
+                                     <li role="separator" class="divider"></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fPropuestas&rs:Command=Render" target="_blank">Propuestas</a></li>
                                     <%--<li><a href="https://app.powerbi.com/groups/me/dashboards/0fa2deb1-7e8b-4c54-a4e3-f3182f602af5" target="_blank">Cobranzas Dashboard</a></li>--%>
-
                                 </ul>
                             </div>
-                          
+
                         </LoggedInTemplate>
                     </asp:LoginView>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">

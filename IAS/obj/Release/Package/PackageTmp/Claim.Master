@@ -180,10 +180,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fClaimsResume&rs:Command=Render" target="_blank">Informe Siniestros</a>
+                    <a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fClaimsResume&rs:Command=Render" target="_blank">Informe Siniestros</a>
                 </div>
                 <div class="row">
-                    <a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fClaimsByStatus&rs:Command=Render" target="_blank">Resultado Gestion</a>
+                    <a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fClaimsByStatus&rs:Command=Render" target="_blank">Resultado Gestion</a>
                 </div>
                 <div class="row">
                     <div class="alert alert-danger" role="alert">

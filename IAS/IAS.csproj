@@ -211,6 +211,9 @@
     <Content Include="Claims\WorkShopClaim.aspx" />
     <Content Include="Collections\Assignations.aspx" />
     <Content Include="Collections\UploadCollections.aspx" />
+    <Content Include="Commercial\PaymentTypes.aspx" />
+    <Content Include="Commercial\ProposalCommission.aspx" />
+    <Content Include="Commercial\Proposals.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker.min.css" />
@@ -260,13 +263,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
     <Content Include="Claim.Master" />
-    <Content Include="Commercial.Master" />
     <Content Include="CaseManagement.Master" />
     <None Include="Properties\PublishProfiles\aibias - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\seguros - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\toyoias - Web Deploy.pubxml" />
-    <Content Include="Renovations\AssignRenovation.aspx" />
-    <Content Include="Renovations\RenovationSearch.aspx" />
     <Content Include="Reports.Master" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Policies\Policy.aspx" />
@@ -376,8 +376,6 @@
     <Content Include="SideTest.html" />
     <Content Include="Site.Master" />
     <Content Include="Collections\Tasks.aspx" />
-    <Content Include="Transports\Admin\Certificates.aspx" />
-    <Content Include="Transports\Admin\Policies.aspx" />
     <Content Include="Transports\Certificate.aspx" />
     <Content Include="Transports\Certificates.aspx" />
     <Content Include="Transports\Collection.aspx" />
@@ -822,12 +820,26 @@
     <Compile Include="Collections\UploadCollections.aspx.designer.cs">
       <DependentUpon>UploadCollections.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Commercial.Master.cs">
-      <DependentUpon>Commercial.Master</DependentUpon>
+    <Compile Include="Commercial\PaymentTypes.aspx.cs">
+      <DependentUpon>PaymentTypes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Commercial.Master.designer.cs">
-      <DependentUpon>Commercial.Master</DependentUpon>
+    <Compile Include="Commercial\PaymentTypes.aspx.designer.cs">
+      <DependentUpon>PaymentTypes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\ProposalCommission.aspx.cs">
+      <DependentUpon>ProposalCommission.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Commercial\ProposalCommission.aspx.designer.cs">
+      <DependentUpon>ProposalCommission.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\Proposals.aspx.cs">
+      <DependentUpon>Proposals.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Commercial\Proposals.aspx.designer.cs">
+      <DependentUpon>Proposals.aspx</DependentUpon>
     </Compile>
     <Compile Include="Constants\ControlValues.cs" />
     <Compile Include="Constants\SessionKeys.cs" />
@@ -971,20 +983,6 @@
       <DependentUpon>Policy.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Renovations\AssignRenovation.aspx.cs">
-      <DependentUpon>AssignRenovation.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Renovations\AssignRenovation.aspx.designer.cs">
-      <DependentUpon>AssignRenovation.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Renovations\RenovationSearch.aspx.cs">
-      <DependentUpon>RenovationSearch.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Renovations\RenovationSearch.aspx.designer.cs">
-      <DependentUpon>RenovationSearch.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Reports.Master.cs">
       <DependentUpon>Reports.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1020,20 +1018,6 @@
     </Compile>
     <Compile Include="Transport.Master.designer.cs">
       <DependentUpon>Transport.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Transports\Admin\Certificates.aspx.cs">
-      <DependentUpon>Certificates.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Transports\Admin\Certificates.aspx.designer.cs">
-      <DependentUpon>Certificates.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Transports\Admin\Policies.aspx.cs">
-      <DependentUpon>Policies.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Transports\Admin\Policies.aspx.designer.cs">
-      <DependentUpon>Policies.aspx</DependentUpon>
     </Compile>
     <Compile Include="Transports\Certificate.aspx.cs">
       <DependentUpon>Certificate.aspx</DependentUpon>
@@ -1073,6 +1057,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Readme\" />
+    <Folder Include="Renovations\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201402081817594_Initial.resx">

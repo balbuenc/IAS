@@ -40,8 +40,8 @@ namespace IAS.CaseManagment {
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (User.Identity.Name != "Blanca")
-                FindUserFirstCase(0); //Traer en automatico , DIA<< MES ACTUAL << VENCIDOS
+            //if (User.Identity.Name != "Sergio")
+            //    FindUserFirstCase(0); //Traer en automatico , DIA<< MES ACTUAL << VENCIDOS
         }
 
         private void FindUserFirstCase(int period)

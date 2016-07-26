@@ -22,6 +22,13 @@
 <asp:Content ID="head" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="container-fluid" style="padding-left: 25px; padding-right: 55px">
+        <div class="row">
+            <div class="col-lg-12" style="text-align: right">
+                <h3>Certificados</h3>
+            </div>
+        </div>
+    </div>
     <div class="container" style="border-bottom: double; border-bottom-color: aliceblue">
 
         <div class="row">
@@ -36,7 +43,7 @@
             </div>
         </div>
     </div>
-    <div class="container" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+    <div class="container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-left: 15px; padding-right: 15px">
         <asp:UpdatePanel ID="upnlCertificates" runat="server">
             <ContentTemplate>
                 <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />

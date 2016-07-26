@@ -7,54 +7,54 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IAS.Renovations {
+namespace IAS.Commercial {
     
     
-    public partial class RenovationSearch {
+    public partial class PaymentTypes {
         
         /// <summary>
-        /// searchBox control.
+        /// upnlProposals control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton searchBox;
+        protected global::System.Web.UI.UpdatePanel upnlProposals;
         
         /// <summary>
-        /// txtSearchClaim control.
+        /// ErrorLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtSearchClaim;
+        protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
-        /// criteriaBtn control.
+        /// PaymentTypeListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton criteriaBtn;
+        protected global::System.Web.UI.WebControls.ListView PaymentTypeListView;
         
         /// <summary>
-        /// ddlMyRenovations control.
+        /// PaymentTypeDataPager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlMyRenovations;
+        protected global::System.Web.UI.WebControls.DataPager PaymentTypeDataPager;
         
         /// <summary>
-        /// ddlStatus control.
+        /// PaymentDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
+        protected global::System.Web.UI.WebControls.SqlDataSource PaymentDataSource;
     }
 }

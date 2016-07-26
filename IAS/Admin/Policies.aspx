@@ -61,13 +61,13 @@
                         <td>
                             <asp:Label ID="lblSectionNumber" runat="server" Text='<%# Eval("SectionNumber") %>' /></td>
                         <td>
-                            <asp:Label ID="lblInsuranceManagerID" runat="server" Text='<%# Eval("InsuranceManagerID") %>' /></td>
+                            <asp:Label ID="lblInsuranceManager" runat="server" Text='<%# Eval("InsuranceManager") %>' /></td>
                         <td>
-                            <asp:Label ID="lblEmissionDate" runat="server" Text='<%# Eval("EmissionDate") %>' /></td>
+                            <asp:Label ID="lblEmissionDate" runat="server" Text='<%#:string.Format("{0:d}", Eval("EmissionDate")) %>' /></td>
                         <td>
-                            <asp:Label ID="lblExpirationDate" runat="server" Text='<%# Eval("ExpirationDate") %>' /></td>
+                            <asp:Label ID="lblExpirationDate" runat="server" Text='<%#:string.Format("{0:d}",  Eval("ExpirationDate")) %>' /></td>
                         <td>
-                            <asp:Label ID="lblPersonID" runat="server" Text='<%# Eval("PersonID") %>' /></td>
+                            <asp:Label ID="lblBeneficiary" runat="server" Text='<%# Eval("Beneficiary") %>' /></td>
 
                         <td>
                             <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>' /></td>
@@ -91,10 +91,11 @@
                             <asp:TextBox ID="txtInsuranceManagerID" runat="server" Text='<%# Bind("InsuranceManagerID") %>' CssClass="form-control" Font-Size="X-Small" /></td>
                         <td>
                             <asp:TextBox ID="txtEmissionDate" runat="server" Text='<%# Bind("EmissionDate") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                      
                         <td>
                             <asp:TextBox ID="txtExpirationDate" runat="server" Text='<%# Bind("ExpirationDate") %>' CssClass="form-control" Font-Size="X-Small" /></td>
                         <td>
-                            <asp:TextBox ID="txtPersonID" runat="server" Text='<%# Bind("PersonID") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                            <asp:TextBox ID="txtBeneficiary" runat="server" Text='<%# Bind("Beneficiary") %>' CssClass="form-control" Font-Size="X-Small" /></td>
 
                         <td>
                             <asp:TextBox ID="txtStatus" runat="server" Text='<%# Bind("Status") %>' CssClass="form-control" Font-Size="X-Small" /></td>
@@ -119,7 +120,7 @@
                         <td>
                             <asp:TextBox ID="txtExpirationDate" runat="server" Text='<%# Bind("ExpirationDate") %>' CssClass="form-control" Font-Size="X-Small" /></td>
                         <td>
-                            <asp:TextBox ID="txtPersonID" runat="server" Text='<%# Bind("PersonID") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                            <asp:TextBox ID="txtBeneficiary" runat="server" Text='<%# Bind("Beneficiary") %>' CssClass="form-control" Font-Size="X-Small" /></td>
 
                         <td>
                             <asp:TextBox ID="txtStatus" runat="server" Text='<%# Bind("Status") %>' CssClass="form-control" Font-Size="X-Small" /></td>
@@ -152,31 +153,32 @@
         InsertCommand="sp_insert_policy" InsertCommandType="StoredProcedure">
 
         <DeleteParameters>
-            <asp:Parameter Name="PolicyNumber" Type="Int32" />
+            <asp:Parameter Name="PolicyNumber" Type="Int64" />
         </DeleteParameters>
         <UpdateParameters>
-            <asp:Parameter Name="PolicyNumber" Type="Int32" />
-            <asp:Parameter Name="SectionNumber" Type="Int32" />
-            <asp:Parameter Name="InsuranceManagerID" Type="Int32" />
+            <asp:Parameter Name="PolicyNumber" Type="Int64"/>
+            <asp:Parameter Name="SectionNumber" Type="Int64" />
+            <asp:Parameter Name="InsuranceManagerID" Type="Int64" />
             <asp:Parameter Name="EmissionDate" Type="DateTime" />
             <asp:Parameter Name="ExpirationDate" Type="DateTime" />
-            <asp:Parameter Name="PersonID" Type="Int32" />
+            <asp:Parameter Name="PersonID" Type="Int64" />
             <asp:Parameter Name="Coverage" Type="Decimal" />
             <asp:Parameter Name="RiskName" Type="String" />
-            <asp:Parameter Name="PaymentsNumber" Type="Int32" />
+            <asp:Parameter Name="PaymentsNumber" Type="Int64" />
             <asp:Parameter Name="Status" Type="String" />
             <asp:Parameter Name="Premium" Type="Decimal" />
+            <asp:Parameter Name="Beneficiary" Type="String" />
         </UpdateParameters>
         <InsertParameters>
-            <asp:Parameter Name="PolicyNumber" Type="Int32" />
-            <asp:Parameter Name="SectionNumber" Type="Int32" />
-            <asp:Parameter Name="InsuranceManagerID" Type="Int32" />
+            <asp:Parameter Name="PolicyNumber" Type="Int64" />
+            <asp:Parameter Name="SectionNumber" Type="Int64" />
+            <asp:Parameter Name="InsuranceManagerID" Type="Int64" />
             <asp:Parameter Name="EmissionDate" Type="DateTime" />
             <asp:Parameter Name="ExpirationDate" Type="DateTime" />
-            <asp:Parameter Name="PersonID" Type="Int32" />
+            <asp:Parameter Name="PersonID" Type="Int64" />
             <asp:Parameter Name="Coverage" Type="Decimal" />
             <asp:Parameter Name="RiskName" Type="String" />
-            <asp:Parameter Name="PaymentsNumber" Type="Int32" />
+            <asp:Parameter Name="PaymentsNumber" Type="Int64" />
             <asp:Parameter Name="Status" Type="String" />
             <asp:Parameter Name="Premium" Type="Decimal" />
         </InsertParameters>

@@ -7,19 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IAS.Transports.Admin {
+namespace IAS.Commercial {
     
     
-    public partial class Certificates {
+    public partial class Proposals {
         
         /// <summary>
-        /// upnlCertificates control.
+        /// upnlProposals control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upnlCertificates;
+        protected global::System.Web.UI.UpdatePanel upnlProposals;
         
         /// <summary>
         /// ErrorLabel control.
@@ -31,39 +31,48 @@ namespace IAS.Transports.Admin {
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
-        /// CertificateListView control.
+        /// ProposalListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView CertificateListView;
+        protected global::System.Web.UI.WebControls.ListView ProposalListView;
         
         /// <summary>
-        /// CertificatesDataPager control.
+        /// ProposalDataPager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataPager CertificatesDataPager;
+        protected global::System.Web.UI.WebControls.DataPager ProposalDataPager;
         
         /// <summary>
-        /// CertificateDataSource control.
+        /// ProposalDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource CertificateDataSource;
+        protected global::System.Web.UI.WebControls.SqlDataSource ProposalDataSource;
         
         /// <summary>
-        /// CountriesDataSource control.
+        /// InsuranceManagersDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource CountriesDataSource;
+        protected global::System.Web.UI.WebControls.SqlDataSource InsuranceManagersDataSource;
+        
+        /// <summary>
+        /// ProposalCommisionDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ProposalCommisionDataSource;
     }
 }

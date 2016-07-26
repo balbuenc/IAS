@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace IAS.Renovations
+namespace IAS.Commercial
 {
-    public partial class RenovationSearch : System.Web.UI.Page
+    public partial class PaymentTypes : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

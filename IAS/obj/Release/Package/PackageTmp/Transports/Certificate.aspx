@@ -134,6 +134,12 @@
                                         <div class="col-sm-3">
                                             <asp:TextBox ID="txtExtensionDate" runat="server" CssClass="form-control" type="date"></asp:TextBox>
                                         </div>
+                                        <label class="col-sm-1 control-label" for="form-group-input">Moneda</label>
+                                        <div class="col-sm-3">
+                                            <asp:DropDownList ID="ddlCurrency" runat="server" CssClass="form-control" DataSourceID="currencyDataSource"
+                                                DataValueField="CurrencyID" DataTextField="Denomination">
+                                            </asp:DropDownList>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -169,7 +175,7 @@
                                         <div class="col-sm-3">
                                             <asp:TextBox ID="txtPackageCount" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
-                                    </div>.
+                                    </div>                                   
                                     <br />
                                     <div class="row">
                                         <label class="col-sm-1 control-label" for="form-group-input">Contacto</label>
@@ -185,7 +191,7 @@
                                                 DataValueField="TransportationMethodID" DataTextField="Method">
                                             </asp:DropDownList>
                                         </div>
-                                        
+
                                     </div>
                                     <br />
                                     <div class="row">
@@ -223,7 +229,18 @@
 
 
                                     </div>
-                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12" style="font-size: small">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Tasas</div>
+                            <div class="panel-body">
+                                <div class="form-group">
                                     <div class="row">
 
                                         <label class="col-sm-1 control-label" for="form-group-input">% Gasto</label>
@@ -249,16 +266,6 @@
                                         <div class="col-sm-3">
                                             <asp:TextBox ID="txtComissionAdviserPercent" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
-                                    </div>
-                                    <br />
-                                    <div class="row">
-                                        <label class="col-sm-1 control-label" for="form-group-input">Moneda</label>
-                                        <div class="col-sm-3">
-                                            <asp:DropDownList ID="ddlCurrency" runat="server" CssClass="form-control" DataSourceID="currencyDataSource"
-                                                DataValueField="CurrencyID" DataTextField="Denomination">
-                                            </asp:DropDownList>
-                                        </div>
-                                        
                                     </div>
                                     <br />
                                 </div>

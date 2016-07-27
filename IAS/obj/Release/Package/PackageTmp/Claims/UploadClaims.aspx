@@ -25,50 +25,52 @@
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="page-header">
-        <h2>Subir Siniestros</h2>
-    </div>
-    <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
-    <div class="table responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Siniestros</th>
-                    <th>Archivo (.csv)</th>
-                    <th>&nbsp;</th>
+    <div class="container">
+        <div class="page-header">
+            <h2>Subir Siniestros</h2>
+        </div>
+        <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
+        <div class="table responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Siniestros</th>
+                        <th>Archivo (.csv)</th>
+                        <th>&nbsp;</th>
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>Mapfre Siniestros</th>
-                    <th>
-                        <asp:FileUpload ID="MapfreClaimsFileUp" runat="server" />
-                    </th>
-                    <th>
-                        <asp:Button runat="server" ID="MapfreClaimsFileBtn" Text="Upload" OnClick="MapfreClaimsFileBtn_Click" />
-                    </th>
-                    <th>
-                        <asp:Label runat="server" ID="MapfreClaimsFileStatus" Text="Estado" />
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Mapfre Siniestros</th>
+                        <th>
+                            <asp:FileUpload ID="MapfreClaimsFileUp" runat="server" />
+                        </th>
+                        <th>
+                            <asp:Button runat="server" ID="MapfreClaimsFileBtn" Text="Upload" OnClick="MapfreClaimsFileBtn_Click" />
+                        </th>
+                        <th>
+                            <asp:Label runat="server" ID="MapfreClaimsFileStatus" Text="Estado" />
 
-                    </th>
-                </tr>
-                <tr>
-                    <th>Sancor Siniestros</th>
-                    <th>
-                        <asp:FileUpload ID="SancorClaimsFileUp" runat="server" />
-                    </th>
-                    <th>
-                        <asp:Button runat="server" ID="SancorClaimsFileBtn" Text="Upload" OnClick="SancorClaimsFileBtn_Click" />
-                    </th>
-                    <th>
-                        <asp:Label runat="server" ID="SancorClaimsFileStatus" Text="Estado" />
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>Sancor Siniestros</th>
+                        <th>
+                            <asp:FileUpload ID="SancorClaimsFileUp" runat="server" />
+                        </th>
+                        <th>
+                            <asp:Button runat="server" ID="SancorClaimsFileBtn" Text="Upload" OnClick="SancorClaimsFileBtn_Click" />
+                        </th>
+                        <th>
+                            <asp:Label runat="server" ID="SancorClaimsFileStatus" Text="Estado" />
 
-                    </th>
-                </tr>
+                        </th>
+                    </tr>
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
 
 </asp:Content>

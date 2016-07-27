@@ -25,8 +25,15 @@
 <head runat="server">
     <title><%: Page.Title %> - Balcazz HT</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
+        <script src="/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="/Scripts/bootstrap.min.js"></script>
+        <link href="/Content/Styles.css" rel="stylesheet" />
+        <script src="Scripts/bootstrap.min.js"></script>
+        <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+
+
     </asp:ContentPlaceHolder>
-    <link href="Content/Styles.css" rel="stylesheet" />
+
     <script type="text/javascript">
         window.onload = function () {
             var pos = window.name || 0;
@@ -47,7 +54,7 @@
             background-color: #eee;
             border-left-width: 5px;
             border-radius: 3px;
-            font-size:small;
+            font-size: small;
             /*text-align: left;*/
         }
 
@@ -123,82 +130,68 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div id="topContent">
-            <a href="../../Default.aspx">IAS | Siniestros </a>
-            <asp:LoginView runat="server" ViewStateMode="Disabled">
-                <AnonymousTemplate>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a runat="server" href="~/Account/Login">Log in</a></li>
-                    </ul>
-                </AnonymousTemplate>
-                <LoggedInTemplate>
-                    <ul class="nav navbar-nav navbar-right" style="font-size: x-small;">
-                        <li><a runat="server" href="~/Account/Manage" title="Manage your account">Bienvenido, <%: Context.User.Identity.GetUserName()  %> !</a></li>
-                        <li>
-                            <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
-                        </li>
-                        <li>
-                            <asp:LinkButton ID="lnkEstados" runat="server"
-                                Text="Estados" OnClientClick="$('#myModalStatus').modal('show'); return false;">
-                                <span class="glyphicon glyphicon-arrow-down"></span>
-                            </asp:LinkButton>
-                        </li>
-                    </ul>
-                </LoggedInTemplate>
-            </asp:LoginView>
+        <div class="container-fluid">
+            <div class="row" style="padding-top: 10px; padding-left: 5px; padding-right: 5px; background-color:aqua">
+                <div class="col-lg-1">
+                    <a href="/Claims/ClaimSearch.aspx" class="btn btn-info  btn-sm">
+                        <span class="glyphicon glyphicon-home"></span> IAS  
+                    </a>
+                </div>
+                <div class="col-lg-11" style="font-family: 'Segoe UI'; font-size: x-small">
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a runat="server" href="~/Account/Login">Log in</a></li>
+                            </ul>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <div class="btn-group">
+                                <button class="btn btn-default btn-sm dropdown-toggle" id="ReportsDropDown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Reportes <span class="caret"></span>
+                                </button>
 
-        </div>
-        <div id="mainContent">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
+                                <ul class="dropdown-menu" aria-labelledby="ReportsDropDown">
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fClaimsResume&rs:Command=Render" target="_blank">Informe Siniestros</a></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fClaimsByStatus&rs:Command=Render" target="_blank">Resultado Gestion</a></li>
+                                </ul>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn btn-default btn-sm dropdown-toggle" id="ActionssDropDown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Acciones <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="ActionssDropDown">
+                                    <li><a href="UploadClaims.aspx">Subir Archivos</a></li>
+                                </ul>
+                            </div>
 
-        <div id="leftContent">
-            <h3>Siniestros</h3>
-            <div class="container">
-                <div class="row">
-                    <ul class="nav nav-pills nav-stacked">
-                        <li id="searchClaimTab" role="presentation" class="active" runat="server">
-                            <a href="ClaimSearch.aspx">Buscar Siniestros</a>
-                        </li>
-                        <%-- <li id="newClaimTab" role="presentation" runat="server">
-                            <a href="NewClaim.aspx?criteria=Client">Alta Siniestro</a>
-                        </li>--%>
-                        <li id="verificationClaimTab" role="presentation" runat="server">
-                            <a href="ClaimPolicyVerification.aspx">Verificacion de Cobertura</a>
-                        </li>
-                        <li id="registerClaimTab" role="presentation" runat="server"><a href="ClaimRegistration.aspx">Registro del Siniestro</a></li>
-                        <li id="approvementClaimTab" role="presentation" runat="server"><a href="ApprovementClaimTab.aspx">Aceptacion por Aseguradora</a></li>
-                        <li id="workShopClaimTab" role="presentation" runat="server"><a href="WorkShopClaimTab.aspx">Gestion de Taller</a></li>
-                        <li id="closeClaimTab" role="presentation" runat="server"><a href="CloseClaim.aspx">Cierre del Siniestro</a></li>
-                    </ul>
-                </div>
-                <div class="row">
-                    <div class="alert alert-danger" role="alert">
-                        <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
-                        Reportes
-                    </div>
-                </div>
-                <div class="row">
-                    <a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fClaimsResume&rs:Command=Render" target="_blank">Informe Siniestros</a>
-                </div>
-                <div class="row">
-                    <a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fClaimsByStatus&rs:Command=Render" target="_blank">Resultado Gestion</a>
-                </div>
-                <div class="row">
-                    <div class="alert alert-danger" role="alert">
-                        <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
-                        Archivos
-                    </div>
-                </div>
-                <div class="row">
-                    <a href="UploadClaims.aspx">Subir Archivos</a>
+                            <ul class="nav navbar-nav navbar-right hidden-sm">
+                                <li><a runat="server" href="/Account/Manage" title="Mi Perfil"><%: Context.User.Identity.GetUserName()  %></a></li>
+                                <li>
+                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                </li>
+                                <li>
+                                    <asp:LinkButton ID="lnkEstados" runat="server" Text="Estados" OnClientClick="$('#myModalStatus').modal('show'); return false;">
+                                        <span class="glyphicon glyphicon-arrow-down"></span>
+                                    </asp:LinkButton>
+                                </li>
+
+                            </ul>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
                 </div>
             </div>
+
+
+            <div class="row">
+                <div class="col-lg-12" style="padding-top:5px">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+
         </div>
 
-        <div id="footerContent">
-        </div>
+
         <div class="modal fade modal-wide" id="myModalStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

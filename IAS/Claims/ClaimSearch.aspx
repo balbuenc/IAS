@@ -59,6 +59,12 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-lg-12">
+                <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
+            </div>
+        </div>
+        
         <div class="row" style="padding-top:5px">
             <div class="col-lg-12">
                 <asp:ListView ID="ClaimListView" runat="server"
@@ -75,11 +81,13 @@
                                         <%--      <th>Nro. Doc.</th>--%>
                                         <th>Siniestro</th>
                                         <th>Riesgo</th>
+                                        <th>Perdida</th>
                                         <th>Fecha</th>
                                         <th>Usuario</th>
                                         <th>Estado</th>
                                         <th>Sub Estado</th>
                                         <th>Pendiente</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -101,6 +109,8 @@
                                 <asp:Label ID="lblClaimNumber" runat="server" Text='<%# Eval("ClaimNumber") %>' /></td>
                             <td>
                                 <asp:Label ID="lblRiskName" runat="server" Text='<%# Eval("RiskName") %>' /></td>
+                            <td>
+                                <asp:Label ID="lblLooseDescription" runat="server" Text='<%# Eval("LooseDescription") %>' /></td>
                             <td>
                                 <asp:Label ID="lblRegistryDate" runat="server" Text='<%# DateTime.Parse( Eval("ClaimDate").ToString()).ToShortDateString() %>' /></td>
                             <td>
@@ -126,6 +136,9 @@
                                                 <span class="glyphicon glyphicon-trash"></span>
                                         </asp:LinkButton>
 
+                                         <asp:LinkButton ID="CloseButton" runat="server" Text="Borrar" CommandName="Close" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Cerrar el Siniestro.?');">
+                                                <span class="glyphicon glyphicon-download-alt"></span>
+                                        </asp:LinkButton>
                                     </div>
                                 </div>
 

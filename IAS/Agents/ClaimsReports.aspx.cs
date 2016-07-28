@@ -11,7 +11,7 @@ namespace IAS.Agents
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string url = "http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fClaims&rs:Command=Render";
+            string url = "http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fClaims&rs:Command=Render";
             Response.Redirect(url);
             //string s = "window.open('" + url + "', 'popup_window', 'width=300,height=100,left=100,top=100,resizable=yes');";
             //ClientScript.RegisterStartupScript(this.GetType(), "script", s, true);

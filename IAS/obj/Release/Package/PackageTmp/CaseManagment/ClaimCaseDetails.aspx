@@ -8,7 +8,7 @@
     <script type="text/javascript">
         function OpenPage() {
             var prodId = getParameterByName('CaseID');
-            var url = "http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fEstadoCuenta&rs:Command=Render&CaseID=" + prodId;
+            var url = "http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fEstadoCuenta&rs:Command=Render&CaseID=" + prodId;
             window.open(url);
         }
 

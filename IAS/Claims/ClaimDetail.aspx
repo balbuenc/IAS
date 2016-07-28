@@ -65,7 +65,7 @@
                                         Celular: <strong><%#:string.IsNullOrEmpty(Eval("telefono_celular").ToString() )?"nd": Eval("telefono_celular")  %> </strong>
                                         Laboral: <strong><%#:string.IsNullOrEmpty(Eval("telefono_laboral1").ToString() )?"nd": Eval("telefono_laboral1") %> </strong>
                                     </div>
-                                </div>                               
+                                </div>
                             </div>
                         </div>
                     </ItemTemplate>
@@ -89,7 +89,8 @@
                     runat="server"
                     DataKeyNames="ClaimID"
                     DataSourceID="siniestroDetalleDataSource"
-                    RenderOuterTable="false" DefaultMode="Edit" OnItemCommand="ClaimDetailsListView_ItemCommand">
+                    RenderOuterTable="false" DefaultMode="Edit" 
+                    OnItemCommand="ClaimDetailsListView_ItemCommand">
                     <ItemTemplate>
                     </ItemTemplate>
                     <EditItemTemplate>
@@ -100,13 +101,19 @@
                                     <div class="col-lg-4">Id. Siniestro:<asp:Label ID="ClaimIDLabel" runat="server" Text='<%# Bind("ClaimID") %>' /></div>
                                     <div class="col-lg-4">Nro. Poliza:<asp:Label ID="PolicyNumberLabel" runat="server" Text='<%# Bind("PolicyNumber") %>' /></div>
                                 </div>
-                                <br/>
-                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
-                                   <div class="col-lg-1">Usuario</div>
+                                <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                    <div class="col-lg-2 col-lg-offset-10">
+                                        <asp:Button ID="UpdateButtonUp" runat="server" Text="Guardar" CommandName="Save" CssClass="btn btn-primary" />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                    <div class="col-lg-1">Usuario</div>
                                     <div class="col-lg-3">
-                                        <asp:DropDownList ID="ddlClaimUser" runat="server"  CssClass="form-control" DataSourceID="UsuariosSiniestrosSqlDataSource"
-                                            DataValueField="ID" DataTextField="UserName" 
+                                        <asp:DropDownList ID="ddlClaimUser" runat="server" CssClass="form-control" DataSourceID="UsuariosSiniestrosSqlDataSource"
+                                            DataValueField="ID" DataTextField="UserName"
                                             SelectedValue='<%#string.IsNullOrEmpty( Eval("UserID").ToString())?-1:Eval("UserID") %>'
+                                            Enabled='<%#Eval("UserID").ToString().Equals("847e2632-8e7e-438d-ae8b-b5946a24950f") %>'
                                             AppendDataBoundItems="true">
                                         </asp:DropDownList>
                                     </div>
@@ -204,7 +211,6 @@
                                         <asp:TextBox ID="txtLooseDescription" runat="server" Text='<%# Bind("LooseDescription") %>' CssClass="form-control" />
                                     </div>
                                 </div>
-                                
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                     <div class="col-lg-1">Obs. del Estado</div>
                                     <div class="col-lg-11">
@@ -336,7 +342,7 @@
             <asp:QueryStringParameter Name="ClaimID" QueryStringField="ClaimID" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="siniestroDetalleDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[claim].[sp_get_claim_by_ClaimID]" SelectCommandType="StoredProcedure" >
+    <asp:SqlDataSource ID="siniestroDetalleDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[claim].[sp_get_claim_by_ClaimID]" SelectCommandType="StoredProcedure">
         <SelectParameters>
             <asp:QueryStringParameter Name="ClaimID" QueryStringField="ClaimID" Type="Int32" />
         </SelectParameters>

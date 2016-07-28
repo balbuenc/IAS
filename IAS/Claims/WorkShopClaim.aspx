@@ -1,4 +1,4 @@
-<%@ Page Title="Gestión de Talleres" Language="C#" MasterPageFile="~/Claim.Master" AutoEventWireup="true" CodeBehind="WorkShopClaim.aspx.cs" Inherits="IAS.Claims.WorkShopClaim" %>
+<%@ Page Title="Gesti&oacute;n de Talleres" Language="C#" MasterPageFile="~/Claim.Master" AutoEventWireup="true" CodeBehind="WorkShopClaim.aspx.cs" Inherits="IAS.Claims.WorkShopClaim" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="../Scripts/jquery-1.10.2.min.js"></script>
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="row">
-            <h3>Información de Cliente</h3>
+            <h3>Informaci&oacute;n de Cliente</h3>
         </div>
         <div class="row">
             <div class="col-lg-12">
@@ -53,7 +53,7 @@
             </div>
         </div>
         <div class="row">
-            <h3>Gestión del taller</h3>
+            <h3>Gesti&oacute;n del taller</h3>
         </div>
         <div class="row">
             <div class="col-lg-12">
@@ -73,9 +73,18 @@
                                     <div class="col-lg-4">Nro. Poliza:<asp:Label ID="PolicyNumberLabel" runat="server" Text='<%# Bind("PolicyNumber") %>' /></div>
                                 </div>
                                 <br>
+                                <div class="row">
+                                    <div class="col-lg-10">
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <asp:Button ID="DoneBtnUp" type="button" class="btn btn-primary btn-lg" runat="server" Text="Realizado" OnClick="DoneBtn_Click">
+                                        </asp:Button>
+                                    </div>
+                                </div>
+                                <br />
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">Estado de Reparación: 
+                                        <h3 class="panel-title">Estado de Reparaci&oacute;n: 
                                             <asp:Label ID="lblSubestado" runat="server" CssClass="label label-warning" Text='<%# Bind("SubStatus") %>'></asp:Label>
                                         </h3>
                                     </div>
@@ -119,7 +128,7 @@
                                             <div class="col-lg-3">
                                                 <asp:Label ID="lblContactName" runat="server" Text='<%# Bind("ContactName") %>' CssClass="form-control" />
                                             </div>
-                                            <div class="col-lg-1">Sección</div>
+                                            <div class="col-lg-1">Secci&oacute;n</div>
                                             <div class="col-lg-3">
                                                 <asp:Label ID="lblSection" runat="server" Text='<%# Bind("Section") %>' CssClass="form-control" />
                                             </div>
@@ -172,17 +181,17 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-8">
-                                        <%-- <button id="ApprovementBtn" type="button" class="btn btn-default btn-lg" runat="server">
+                                    <div class="col-lg-10">
+                                        <%--<button id="ApprovementBtn" type="button" class="btn btn-default btn-lg" runat="server">
                                             <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>Notificar al Cliente
                                         </button>--%>
                                         <asp:RadioButtonList ID="rdbSendOptions" runat="server" CssClass="radio-inline">
                                             <asp:ListItem Value="1" Text="No notificar" Selected="True"></asp:ListItem>
-                                            <asp:ListItem Value="2" Text="Notificar vía SMS"></asp:ListItem>
-                                            <asp:ListItem Value="3" Text="Notificar vía SMS e Email"></asp:ListItem>
+                                            <asp:ListItem Value="2" Text="Notificar v&iacute;a SMS"></asp:ListItem>
+                                            <asp:ListItem Value="3" Text="Notificar v&iacute;a SMS e Email"></asp:ListItem>
                                         </asp:RadioButtonList>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-2">
                                         <asp:Button ID="DoneBtn" type="button" class="btn btn-primary btn-lg" runat="server" Text="Realizado" OnClick="DoneBtn_Click">
                                             <%--<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                                             Realizado--%>

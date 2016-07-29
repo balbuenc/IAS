@@ -48,7 +48,6 @@
                             </div>
                         </div>
                     </EmptyDataTemplate>
-
                 </asp:FormView>
             </div>
         </div>
@@ -81,7 +80,9 @@
                                         </asp:Button>
                                     </div>
                                 </div>
-                                <br />
+                               
+                                 <br />
+
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">Estado de Reparaci&oacute;n: 

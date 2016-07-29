@@ -76,13 +76,10 @@
                                     <div class="col-lg-10">
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Button ID="DoneBtnUp" type="button" class="btn btn-primary btn-lg" runat="server" Text="Realizado" OnClick="DoneBtn_Click">
-                                        </asp:Button>
+                                        <asp:Button ID="DoneBtnUp" type="button" class="btn btn-primary btn-lg" runat="server" Text="Realizado" OnClick="DoneBtn_Click"></asp:Button>
                                     </div>
                                 </div>
-                               
-                                 <br />
-
+                                <br />
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">Estado de Reparaci&oacute;n: 
@@ -202,10 +199,8 @@
                             </div>
                         </div>
                     </EditItemTemplate>
-
                     <InsertItemTemplate>
                     </InsertItemTemplate>
-
                     <EmptyDataTemplate>
                         <div class="row">
                             <div class="col-lg-12 text-center">
@@ -213,9 +208,7 @@
                             </div>
                         </div>
                     </EmptyDataTemplate>
-
                     <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
-
                 </asp:FormView>
             </div>
         </div>
@@ -223,12 +216,11 @@
         <div class="row" style="padding-top: 5px; padding-bottom: 5px">
             <div class="col-lg-2">Comentarios</div>
             <div class="col-lg-8">
-                <asp:TextBox ID="txtComments" runat="server"  CssClass="form-control" />
+                <asp:TextBox ID="txtComments" runat="server" CssClass="form-control" />
             </div>
             <div class="col-lg-2">
-                <asp:Button ID="btnCommentAdd" runat="server" Text="Guardar comentario" CssClass="btn btn-default" OnClick="btnCommentAdd_Click"  />
+                <asp:Button ID="btnCommentAdd" runat="server" Text="Guardar comentario" CssClass="btn btn-default" OnClick="btnCommentAdd_Click" />
             </div>
-        </div>
         </div>
         <div class="row">
             <br />
@@ -290,9 +282,8 @@
             </div>
         </div>
     </div>
-
     <!-- #region Data Sources -->
-      <asp:SqlDataSource ID="claimCommentsDataSource" runat="server"
+    <asp:SqlDataSource ID="claimCommentsDataSource" runat="server"
         ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
         SelectCommand="[claim].[sp_get_claimComments]" SelectCommandType="StoredProcedure"
         InsertCommand="[claim].[sp_insert_claimComment]" InsertCommandType="StoredProcedure"
@@ -319,7 +310,7 @@
             <asp:QueryStringParameter Name="ClaimID" QueryStringField="ClaimID" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="siniestroDetalleDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[claim].[sp_get_claim_by_ClaimID]" SelectCommandType="StoredProcedure" >
+    <asp:SqlDataSource ID="siniestroDetalleDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[claim].[sp_get_claim_by_ClaimID]" SelectCommandType="StoredProcedure">
         <SelectParameters>
             <asp:QueryStringParameter Name="ClaimID" QueryStringField="ClaimID" Type="Int32" />
         </SelectParameters>

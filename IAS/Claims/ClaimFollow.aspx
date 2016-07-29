@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Seguimiento del Siniestro" Language="C#" MasterPageFile="~/Claim.Master" AutoEventWireup="true" CodeBehind="ClaimFollow.aspx.cs" Inherits="IAS.Claims.ClaimFollow" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-     <script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../Scripts/jquery-1.10.2.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
 
@@ -64,7 +65,7 @@
                                         Celular: <strong><%#:string.IsNullOrEmpty(Eval("telefono_celular").ToString() )?"nd": Eval("telefono_celular")  %> </strong>
                                         Laboral: <strong><%#:string.IsNullOrEmpty(Eval("telefono_laboral1").ToString() )?"nd": Eval("telefono_laboral1") %> </strong>
                                     </div>
-                                </div>                               
+                                </div>
                             </div>
                         </div>
                     </ItemTemplate>
@@ -99,20 +100,22 @@
                                     <div class="col-lg-4">Id. Siniestro:<asp:Label ID="ClaimIDLabel" runat="server" Text='<%# Bind("ClaimID") %>' /></div>
                                     <div class="col-lg-4">Nro. Poliza:<asp:Label ID="PolicyNumberLabel" runat="server" Text='<%# Bind("PolicyNumber") %>' /></div>
                                 </div>
-                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
-                                     <div class="col-lg-4">
+                                <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                    <div class="col-lg-4">
                                         <asp:Button ID="CloseButtonUp" runat="server" Text="Cerrar Siniestro" CommandName="Close" CssClass="btn btn-primary" />
                                     </div>
                                     <div class="col-lg-2">
                                         <asp:Button ID="UpdateButtonUp" runat="server" Text="Guardar Cambios" CommandName="Save" CssClass="btn btn-primary" />
                                     </div>
                                 </div>
-                                <br/>
-                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
-                                   <div class="col-lg-1">Usuario</div>
+
+                                <br />
+
+                                <div class="row" style="padding-top: 5px; padding-bottom: 5px">
+                                    <div class="col-lg-1">Usuario</div>
                                     <div class="col-lg-3">
-                                        <asp:DropDownList ID="ddlClaimUser" runat="server"  CssClass="form-control" DataSourceID="UsuariosSiniestrosSqlDataSource"
-                                            DataValueField="ID" DataTextField="UserName" 
+                                        <asp:DropDownList ID="ddlClaimUser" runat="server" CssClass="form-control" DataSourceID="UsuariosSiniestrosSqlDataSource"
+                                            DataValueField="ID" DataTextField="UserName"
                                             SelectedValue='<%#string.IsNullOrEmpty( Eval("UserID").ToString())?-1:Eval("UserID") %>'
                                             AppendDataBoundItems="true">
                                         </asp:DropDownList>
@@ -211,7 +214,7 @@
                                         <asp:TextBox ID="txtLooseDescription" runat="server" Text='<%# Bind("LooseDescription") %>' CssClass="form-control" />
                                     </div>
                                 </div>
-                                
+
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                     <div class="col-lg-1">Obs. del Estado</div>
                                     <div class="col-lg-11">
@@ -219,7 +222,7 @@
                                     </div>
                                 </div>
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
-                                     <div class="col-lg-4">
+                                    <div class="col-lg-4">
                                         <asp:Button ID="CloseButton" runat="server" Text="Cerrar Siniestro" CommandName="Close" CssClass="btn btn-primary" />
                                     </div>
                                     <div class="col-lg-2">
@@ -346,7 +349,7 @@
             <asp:QueryStringParameter Name="ClaimID" QueryStringField="ClaimID" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="siniestroDetalleDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[claim].[sp_get_claim_by_ClaimID]" SelectCommandType="StoredProcedure" >
+    <asp:SqlDataSource ID="siniestroDetalleDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[claim].[sp_get_claim_by_ClaimID]" SelectCommandType="StoredProcedure">
         <SelectParameters>
             <asp:QueryStringParameter Name="ClaimID" QueryStringField="ClaimID" Type="Int32" />
         </SelectParameters>

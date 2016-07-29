@@ -82,7 +82,6 @@
                 </asp:FormView>
             </div>
         </div>
-
         <div class="row">
             <div class="col-lg-12">
                 <asp:FormView ID="ClaimDetailsListView"
@@ -106,9 +105,7 @@
                                         <asp:Button ID="UpdateButtonUp" runat="server" Text="Guardar" CommandName="Save" CssClass="btn btn-primary" />
                                     </div>
                                 </div>
-
                                 <br />
-
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                     <div class="col-lg-1">Usuario</div>
                                     <div class="col-lg-3">
@@ -316,7 +313,6 @@
         </div>
 
     </div>
-
     <!-- #region Data Sources -->
     <asp:SqlDataSource ID="claimCommentsDataSource" runat="server"
         ConnectionString="<%$ ConnectionStrings:IASDBContext %>"

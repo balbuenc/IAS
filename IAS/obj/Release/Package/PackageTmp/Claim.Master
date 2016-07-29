@@ -131,13 +131,13 @@
 <body>
     <form id="form1" runat="server">
         <div class="container-fluid">
-            <div class="row" style="padding-top: 10px; padding-left: 5px; padding-right: 5px; background-color:aqua">
+            <div class="row" style="padding-top: 10px; padding-left: 5px; padding-right: 5px; background-color:#393">
                 <div class="col-lg-1">
                     <a href="/Claims/ClaimSearch.aspx" class="btn btn-info  btn-sm">
                         <span class="glyphicon glyphicon-home"></span> IAS  
                     </a>
                 </div>
-                <div class="col-lg-11" style="font-family: 'Segoe UI'; font-size: x-small">
+                <div class="col-lg-11" style="font-family: 'Segoe UI'; font-size: x-small;color:white">
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
@@ -151,8 +151,8 @@
                                 </button>
 
                                 <ul class="dropdown-menu" aria-labelledby="ReportsDropDown">
-                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fClaimsResume&rs:Command=Render" target="_blank">Informe Siniestros</a></li>
-                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fClaimsByStatus&rs:Command=Render" target="_blank">Resultado Gestion</a></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fClaimsResume&rs:Command=Render" target="_blank">Informe Siniestros</a></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fClaimsByStatus&rs:Command=Render" target="_blank">Resultado Gestion</a></li>
                                 </ul>
                             </div>
                             <div class="btn-group">
@@ -164,13 +164,13 @@
                                 </ul>
                             </div>
 
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="/Account/Manage" title="Mi Perfil"><%: Context.User.Identity.GetUserName()  %></a></li>
+                            <ul class="nav navbar-nav navbar-right hidden-sm">
+                                <li><a runat="server" href="/Account/Manage" title="Mi Perfil" style="color:white"><%: Context.User.Identity.GetUserName()  %></a></li>
                                 <li>
-                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut"   ForeColor="White" />
                                 </li>
                                 <li>
-                                    <asp:LinkButton ID="lnkEstados" runat="server" Text="Estados" OnClientClick="$('#myModalStatus').modal('show'); return false;">
+                                    <asp:LinkButton ID="lnkEstados" runat="server" Text="Estados" OnClientClick="$('#myModalStatus').modal('show'); return false;" ForeColor="Red">
                                         <span class="glyphicon glyphicon-arrow-down"></span>
                                     </asp:LinkButton>
                                 </li>

@@ -59,7 +59,13 @@
             </div>
         </div>
 
-        <div class="row" style="padding-top:5px">
+        <div class="row">
+            <div class="col-lg-12">
+                <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
+            </div>
+        </div>
+
+        <div class="row" style="padding-top: 5px">
             <div class="col-lg-12">
                 <asp:ListView ID="ClaimListView" runat="server"
                     DataKeyNames="ClaimID"
@@ -75,11 +81,13 @@
                                         <%--      <th>Nro. Doc.</th>--%>
                                         <th>Siniestro</th>
                                         <th>Riesgo</th>
+                                        <th>Perdida</th>
                                         <th>Fecha</th>
                                         <th>Usuario</th>
                                         <th>Estado</th>
                                         <th>Sub Estado</th>
                                         <th>Pendiente</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -102,6 +110,8 @@
                             <td>
                                 <asp:Label ID="lblRiskName" runat="server" Text='<%# Eval("RiskName") %>' /></td>
                             <td>
+                                <asp:Label ID="lblLooseDescription" runat="server" Text='<%# Eval("LooseDescription") %>' /></td>
+                            <td>
                                 <asp:Label ID="lblRegistryDate" runat="server" Text='<%# DateTime.Parse( Eval("ClaimDate").ToString()).ToShortDateString() %>' /></td>
                             <td>
                                 <asp:Label ID="lblUsuario" runat="server" Text='<%# Eval("Usuario") %>' /></td>
@@ -112,24 +122,30 @@
                             <td>
                                 <asp:HyperLink ID="linkAction" runat="server" Text='<%#   Eval("NextStatus") %>' NavigateUrl='<%#   Eval("ActionForm") %>'></asp:HyperLink>
                             </td>
-
-                            <td>
-                                <div class="container">
-                                    <div class="row">
-
-                                        <asp:LinkButton ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CssClass="btn btn-link">
-                                                    <span class="glyphicon glyphicon-edit"></span>
-                                        </asp:LinkButton>
-
-
-                                        <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Delete" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar el Siniestro.?');">
-                                                <span class="glyphicon glyphicon-trash"></span>
-                                        </asp:LinkButton>
-
-                                    </div>
-                                </div>
+                        </tr>
+                        <tr>
+                            <td colspan="8">
 
                             </td>
+                            <td colspan="2"  style=" text-align:right">
+
+
+                                <asp:LinkButton ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CssClass="btn btn-link">
+                                                    <span class="glyphicon glyphicon-edit"></span>
+                                </asp:LinkButton>
+
+                          
+                                <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Delete" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar el Siniestro.?');">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                </asp:LinkButton>
+                           
+                                <asp:LinkButton ID="CloseButton" runat="server" Text="Borrar" CommandName="Close" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Cerrar el Siniestro.?');">
+                                                <span class="glyphicon glyphicon-download-alt"></span>
+                                </asp:LinkButton>
+
+                            </td>
+
+
                         </tr>
                     </ItemTemplate>
                     <EditItemTemplate>

@@ -78,9 +78,7 @@ namespace IAS.Claims
                     rowsAffected = cmd1.ExecuteNonQuery();
 
                     sqlConnection1.Close();
-
-                  
-
+                    
                     //Direcciono a la pagina de busqueda
                     Response.Redirect("ClaimSearch.aspx?PolicyNumber=" + Request.QueryString["PolicyNumber"]);
 
@@ -125,8 +123,6 @@ namespace IAS.Claims
             claimCommentsDataSource.DataBind();
             txtComments.Text = string.Empty;
         }
-
-      
-       
+        
     }
 }

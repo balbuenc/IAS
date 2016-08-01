@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -104,6 +106,11 @@ namespace IAS.Claims
 
         protected void ClaimListView_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
+            SqlConnection sqlConnection1 = new SqlConnection(ClaimSqldataSource.ConnectionString);
+            SqlCommand cmd = new SqlCommand();
+
+            int rowsAffected;
+
             string claimID = ((Label)e.Item.FindControl("lblClaimID")).Text;
             string PolicyNumber = ((Label)e.Item.FindControl("lblPolicyNumber")).Text;
 
@@ -111,6 +118,39 @@ namespace IAS.Claims
             {
                 Response.Redirect("ClaimDetail.aspx?ClaimID=" + claimID + "&PolicyNumber=" + PolicyNumber);
             }
+            else if (e.CommandName == "Close")
+            {
+                try
+                {
+                   
+                    //Genero el cambio de estado
+                    cmd.CommandText = "claim.sp_change_claim_status";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = sqlConnection1;
+
+                    cmd.Parameters.AddWithValue("@ClaimID", claimID);
+                    cmd.Parameters.AddWithValue("@GoNextStep", -1);
+                    cmd.Parameters.AddWithValue("@UserName", User.Identity.Name);
+
+                    sqlConnection1.Open();
+
+                    rowsAffected = cmd.ExecuteNonQuery();
+
+                    sqlConnection1.Close();
+
+              
+
+                    //Direcciono a la pagina de busqueda
+                    Response.Redirect("ClaimSearch.aspx?PolicyNumber=" + PolicyNumber);
+
+                }
+                catch (Exception exp)
+                {
+                    ErrorLabel.Text = exp.Message;
+                    ErrorLabel.Visible = true;
+                }
+            }
+        
         }
     }
 }

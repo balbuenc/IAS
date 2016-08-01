@@ -102,11 +102,13 @@
                                     <div class="col-lg-4">Id. Siniestro:<asp:Label ID="ClaimIDLabel" runat="server" Text='<%# Bind("ClaimID") %>' /></div>
                                     <div class="col-lg-4">Nro. Poliza:<asp:Label ID="PolicyNumberLabel" runat="server" Text='<%# Bind("PolicyNumber") %>' /></div>
                                 </div>
+                                
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                     <div class="col-lg-2 col-lg-offset-10">
                                         <asp:Button ID="UpdateButtonUp" runat="server" Text="Registrar Siniestro" CommandName="Save" CssClass="btn btn-primary" />
                                     </div>
                                 </div>
+
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
                                     <div class="col-lg-1">Nro.</div>
                                     <div class="col-lg-3">

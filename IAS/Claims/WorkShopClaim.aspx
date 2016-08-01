@@ -72,6 +72,7 @@
                                     <div class="col-lg-4">Nro. Poliza:<asp:Label ID="PolicyNumberLabel" runat="server" Text='<%# Bind("PolicyNumber") %>' /></div>
                                 </div>
                                 <br>
+
                                 <div class="row">
                                     <div class="col-lg-10">
                                     </div>
@@ -79,7 +80,9 @@
                                         <asp:Button ID="DoneBtnUp" type="button" class="btn btn-primary btn-lg" runat="server" Text="Realizado" OnClick="DoneBtn_Click"></asp:Button>
                                     </div>
                                 </div>
+
                                 <br />
+
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">Estado de Reparaci&oacute;n: 
@@ -212,7 +215,9 @@
                 </asp:FormView>
             </div>
         </div>
+
         <br />
+
         <div class="row" style="padding-top: 5px; padding-bottom: 5px">
             <div class="col-lg-2">Comentarios</div>
             <div class="col-lg-8">

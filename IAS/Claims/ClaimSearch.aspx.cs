@@ -35,7 +35,9 @@ namespace IAS.Claims
 
                     if (claimID != null)
                     {
-                        txtSearchClaim.Value = claimID;
+                        txtSearchClaim.Text = claimID;
+                        ClaimListView.DataSource = null;
+                        ClaimListView.DataSourceID = "ClaimSqldataSource";
                         ClaimListView.DataBind();
                     }
                 }
@@ -53,23 +55,23 @@ namespace IAS.Claims
                         {
                             case "PolicyNumber":
                                 txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Póliza";
-                                criteriaBtn.InnerText = "Nro. Póliza";
+                                //criteriaBtn.InnerText = "Nro. Póliza";
                                 break;
                             case "Client":
                                 txtSearchClaim.Attributes["placeholder"] = "Buscar por Cliente";
-                                criteriaBtn.InnerText = "Cliente";
+                                //criteriaBtn.InnerText = "Cliente";
                                 break;
                             case "ClientDocumentNumber":
                                 txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Documento";
-                                criteriaBtn.InnerText = "Nro. Documento";
+                                //criteriaBtn.InnerText = "Nro. Documento";
                                 break;
                             case "ClaimNumber":
                                 txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Siniestro";
-                                criteriaBtn.InnerText = "Nro. Siniestro";
+                                //criteriaBtn.InnerText = "Nro. Siniestro";
                                 break;
                             default:
                                 txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Pòliza";
-                                criteriaBtn.InnerText = "Nro. Póliza";
+                                //criteriaBtn.InnerText = "Nro. Póliza";
                                 criteria = "PolicyNumber";
                                 break;
                         }
@@ -79,7 +81,7 @@ namespace IAS.Claims
                 catch (Exception exp)
                 {
                     txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Póliza";
-                    criteriaBtn.InnerText = "Nro. Póliza";
+                    //criteriaBtn.InnerText = "Nro. Póliza";
                     criteria = "PolicyNumber";
                 }
             }
@@ -87,21 +89,86 @@ namespace IAS.Claims
 
         protected void searchBox_ServerClick(object sender, EventArgs e)
         {
-            if (txtSearchClaim.Value == "" && ddlMyClaims.SelectedValue == "0" && ddlStatus.SelectedValue == "-1")
-            {
-                getAllClaims();
-            }
-            else
-            {
-                ClaimListView.DataBind();
-            }
+            searchClaims();
         }
 
-        protected void getAllClaims()
+
+
+        protected void searchClaims()
         {
-            ClaimSqldataSource.SelectParameters["find"].DefaultValue = " ";
-            ClaimSqldataSource.SelectParameters["criteria"].DefaultValue = " ";
-            ClaimListView.DataBind();
+            string criteria,
+                   find,
+                   myClaims,
+                   claimStatusId;
+
+            DateTime? startDate = null,
+                     endDate = null;
+
+            if (!string.IsNullOrEmpty(dpStart.Value))
+            {
+                startDate = DateTime.Parse(dpStart.Value);
+            }
+
+            if (!string.IsNullOrEmpty(dpEnd.Value))
+            {
+                endDate = DateTime.Parse(dpEnd.Value);
+            }
+
+            if (txtSearchClaim.Text == string.Empty)
+                find = " ";
+            else
+            {
+                find = txtSearchClaim.Text;
+            }
+
+            criteria = ddlCriteria.SelectedValue;
+
+
+
+
+
+            myClaims = ddlMyClaims.SelectedValue;
+            claimStatusId = ddlStatus.SelectedValue;
+
+            SqlConnection sqlConnection1 = new SqlConnection(ClaimSqldataSource.ConnectionString);
+            SqlDataAdapter da = new SqlDataAdapter();
+            SqlCommand cmd = new SqlCommand();
+            DataTable dt = new DataTable();
+
+            try
+            {
+
+                cmd.CommandText = "[claim].[sp_search_claims]";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = sqlConnection1;
+
+                cmd.Parameters.AddWithValue("@find", find);
+                cmd.Parameters.AddWithValue("@criteria", criteria);
+                cmd.Parameters.AddWithValue("@user", User.Identity.Name);
+                cmd.Parameters.AddWithValue("@myClaims", myClaims);
+                cmd.Parameters.AddWithValue("@claimStatusId", claimStatusId);
+
+                cmd.Parameters.Add("@startDate", SqlDbType.DateTime).Value = startDate;
+                cmd.Parameters.Add("@endDate", SqlDbType.DateTime).Value = endDate;
+
+                da.SelectCommand = cmd;
+
+                da.Fill(dt);
+
+                //if (dt != null && dt.Rows.Count > 0)
+                //{
+                ClaimListView.DataSourceID = string.Empty;
+                ClaimListView.DataSource = dt;
+                ClaimListView.DataBind();
+                //}
+            }
+            catch (Exception exp)
+            {
+                ErrorLabel.Text = "Error a ejecutar busqueda.. : " + exp.Message;
+                ErrorLabel.Visible = true;
+            }
+
+
         }
 
         protected void ClaimListView_ItemCommand(object sender, ListViewCommandEventArgs e)
@@ -122,7 +189,7 @@ namespace IAS.Claims
             {
                 try
                 {
-                   
+
                     //Genero el cambio de estado
                     cmd.CommandText = "claim.sp_change_claim_status";
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -138,7 +205,7 @@ namespace IAS.Claims
 
                     sqlConnection1.Close();
 
-              
+
 
                     //Direcciono a la pagina de busqueda
                     Response.Redirect("ClaimSearch.aspx?PolicyNumber=" + PolicyNumber);
@@ -150,7 +217,12 @@ namespace IAS.Claims
                     ErrorLabel.Visible = true;
                 }
             }
-        
+
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            searchClaims();
         }
     }
 }

@@ -115,7 +115,8 @@
                                         <asp:DropDownList ID="ddlClaimUser" runat="server" CssClass="form-control" DataSourceID="UsuariosSiniestrosSqlDataSource"
                                             DataValueField="ID" DataTextField="UserName"
                                             SelectedValue='<%#string.IsNullOrEmpty( Eval("UserID").ToString())?-1:Eval("UserID") %>'
-                                            Enabled='<%#Eval("UserID").ToString().Equals("847e2632-8e7e-438d-ae8b-b5946a24950f") %>'
+                                            Enabled='<%#Context.User.Identity.Name.Equals("Alexandra") %>'
+
                                             AppendDataBoundItems="true">
                                         </asp:DropDownList>
                                     </div>

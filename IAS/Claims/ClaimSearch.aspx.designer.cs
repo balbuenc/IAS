@@ -13,13 +13,13 @@ namespace IAS.Claims {
     public partial class ClaimSearch {
         
         /// <summary>
-        /// searchBox control.
+        /// ddlCriteria control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton searchBox;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCriteria;
         
         /// <summary>
         /// txtSearchClaim control.
@@ -28,16 +28,7 @@ namespace IAS.Claims {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtSearchClaim;
-        
-        /// <summary>
-        /// criteriaBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton criteriaBtn;
+        protected global::System.Web.UI.WebControls.TextBox txtSearchClaim;
         
         /// <summary>
         /// ddlMyClaims control.
@@ -56,6 +47,33 @@ namespace IAS.Claims {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
+        
+        /// <summary>
+        /// dpStart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText dpStart;
+        
+        /// <summary>
+        /// dpEnd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText dpEnd;
+        
+        /// <summary>
+        /// btnSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSearch;
         
         /// <summary>
         /// ErrorLabel control.

@@ -116,6 +116,7 @@
                                     <li><a href="../Admin/Policies.aspx">Pólizas</a></li>
                                     <li><a href="../Admin/Countries.aspx">Paises</a></li>
                                     <li><a href="../Admin/Partners.aspx">Asociados</a></li>
+                                    <li><a href="../Admin/Agents.aspx">Agentes</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="../Admin/CollectionStates.aspx">Estado de cuotas</a></li>
                                     <li><a href="../Admin/CollectionMethods.aspx">Método de cobro</a></li>
@@ -132,7 +133,7 @@
 
                                 </ul>
                             </div>
-                          <%--  <div class="btn-group">
+                            <%--<div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                     Propuestas
                                     <span class="caret"></span>

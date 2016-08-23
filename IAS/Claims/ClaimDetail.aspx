@@ -120,6 +120,15 @@
                                             AppendDataBoundItems="true">
                                         </asp:DropDownList>
                                     </div>
+                                    <div class="col-lg-1">Agente</div>
+                                     <div class="col-lg-3">
+                                        <asp:DropDownList ID="ddlClaimAgent" runat="server" CssClass="form-control" DataSourceID="AgentesSiniestrosSqlDataSource"
+                                            DataValueField="AgentID" DataTextField="Agent"
+                                           
+                                            Enabled='<%#Context.User.Identity.Name.Equals("Alexandra") %>'
+                                            AppendDataBoundItems="true">
+                                        </asp:DropDownList>
+                                    </div>
                                 </div>
 
                                 <div class="row" style="padding-top: 5px; padding-bottom: 5px">
@@ -354,5 +363,6 @@
     <asp:SqlDataSource ID="talleresSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="claim.sp_get_workshops_ddl" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     <asp:SqlDataSource ID="expertosAseguradoraDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="claim.sp_get_insurance_experts_ddl" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     <asp:SqlDataSource ID="UsuariosSiniestrosSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="select id, UserName from AspNetUsers u inner join ClaimUser cu on cu.UserID = u.Id " SelectCommandType="Text"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="AgentesSiniestrosSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="select AgentID , Agent from dbo.Agent union select null AgentID , 'ND' Agent  " SelectCommandType="Text"></asp:SqlDataSource>
     <!-- #endregion -->
 </asp:Content>

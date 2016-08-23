@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -13,7 +14,7 @@ namespace IAS.Transports
             get
             {
                 object o = ViewState["NroPoliza"];
-                if (o == null)
+                if(o == null)
                     return string.Empty;
                 return o.ToString();
             }
@@ -28,7 +29,7 @@ namespace IAS.Transports
             get
             {
                 object o = ViewState["PersonaID"];
-                if (o == null)
+                if(o == null)
                     return 0;
                 return (Int64)o;
             }
@@ -43,7 +44,7 @@ namespace IAS.Transports
             get
             {
                 object o = ViewState["BeneficiaryID"];
-                if (o == null)
+                if(o == null)
                     return 0;
                 return (Int64)o;
             }
@@ -58,7 +59,7 @@ namespace IAS.Transports
             get
             {
                 object o = ViewState["CertificateNumber"];
-                if (o == null)
+                if(o == null)
                     return 0;
                 return (Int64)o;
             }
@@ -77,7 +78,7 @@ namespace IAS.Transports
             {
 
                 criteria = Request.QueryString["criteria"].ToString();
-                switch (criteria)
+                switch(criteria)
                 {
                     case "Client":
                         txtSearchClient.Attributes["placeholder"] = "Buscar por Cliente";
@@ -96,22 +97,22 @@ namespace IAS.Transports
                 }
 
             }
-            catch (Exception exp)
+            catch(Exception exp)
             {
                 txtSearchClient.Attributes["placeholder"] = "Buscar por Nro. Póliza";
                 criteriaBtn.InnerText = "Nro. Póliza";
                 criteria = "PolicyNumber";
             }
 
-            if (!Page.IsPostBack)
+            if(!Page.IsPostBack)
             {
 
-                if (Request.QueryString["mode"] == null)
+                if(Request.QueryString["mode"] == null)
                 {
                     throw new NullReferenceException("El modo del formulario no se ha definido");
                 }
 
-                if (Request.QueryString["mode"].ToString().Equals("update"))
+                if(Request.QueryString["mode"].ToString().Equals("update"))
                 {
                     //Load data to update
                     LoadCertificates();
@@ -149,7 +150,7 @@ namespace IAS.Transports
                 da.Fill(dt);
 
                 // Load certificate
-                if (dt != null)
+                if(dt != null)
                 {
                     divClientData.Visible = true;
                     lblNroDocumento.Text = dt.Rows[0]["numero_documento"].ToString();
@@ -173,7 +174,12 @@ namespace IAS.Transports
                     txtPremiunmPlusTax.Text = dt.Rows[0]["PremiunmPlusTax"].ToString();
                     txtCapitalAmount.Text = dt.Rows[0]["CapitalAmount"].ToString();
                     txtRate.Text = dt.Rows[0]["Rate"].ToString();
-                    txtSpendingPercent.Text = dt.Rows[0]["SpendingPercent"].ToString();
+
+                    double sp = double.Parse( dt.Rows[0]["SpendingPercent"].ToString());
+                    txtSpendingPercent.Text = sp.ToString("0,0.00", new CultureInfo("es-PY", false));
+                    //txtSpendingPercent.Text = string.Format(CultureInfo.InvariantCulture,
+                    //             "{0:0.0,0}", dt.Rows[0]["SpendingPercent"].ToString());
+
                     txtSpending.Text = dt.Rows[0]["Spending"].ToString();
                     txtComissionASSAPercent.Text = dt.Rows[0]["ComissionASSAPercent"].ToString();
                     txtComissionAdviserPercent.Text = dt.Rows[0]["ComissionAdviserPercent"].ToString();
@@ -183,7 +189,7 @@ namespace IAS.Transports
                     txtExtensionDate.Text = Convert.ToDateTime(dt.Rows[0]["ExtensionDate"].ToString()).ToString("yyyy-MM-dd");
                 }
             }
-            catch (Exception exp)
+            catch(Exception exp)
             {
                 ErrorLabel.Text = exp.Message;
                 ErrorLabel.Visible = true;
@@ -192,7 +198,6 @@ namespace IAS.Transports
 
         protected void CertificateFormView_ItemInserting(object sender, FormViewInsertEventArgs e)
         {
-
 
         }
 
@@ -229,7 +234,7 @@ namespace IAS.Transports
                 ScriptManager.RegisterStartupScript(this, GetType(), "Pop", "openModalClients();", true);
 
             }
-            catch (Exception exp)
+            catch(Exception exp)
             {
                 ErrorLabel.Text = exp.Message;
                 ErrorLabel.Visible = true;
@@ -261,10 +266,10 @@ namespace IAS.Transports
 
                 reader = cmd.ExecuteReader();
 
-                if (reader.Read())
+                if(reader.Read())
                 {
                     // make sure the value is not DBNull
-                    if (DBNull.Value != reader["NextCertificateNumber"])
+                    if(DBNull.Value != reader["NextCertificateNumber"])
                     {
                         NextCertificateNumber = reader["NextCertificateNumber"].ToString();
 
@@ -284,7 +289,7 @@ namespace IAS.Transports
 
 
             }
-            catch (Exception exp)
+            catch(Exception exp)
             {
                 ErrorLabel.Text = exp.Message;
                 ErrorLabel.Visible = true;
@@ -296,7 +301,7 @@ namespace IAS.Transports
 
         }
 
-        private string GetLastPolicyNumberFromClient( long PersonaID )
+        private string GetLastPolicyNumberFromClient(long PersonaID)
         {
 
             string LastPolicyNumber = "";
@@ -320,10 +325,10 @@ namespace IAS.Transports
 
                 reader = cmd.ExecuteReader();
 
-                if (reader.Read())
+                if(reader.Read())
                 {
                     // make sure the value is not DBNull
-                    if (DBNull.Value != reader["PolicyNumber"])
+                    if(DBNull.Value != reader["PolicyNumber"])
                     {
                         LastPolicyNumber = reader["PolicyNumber"].ToString();
 
@@ -343,7 +348,7 @@ namespace IAS.Transports
 
 
             }
-            catch (Exception exp)
+            catch(Exception exp)
             {
                 ErrorLabel.Text = exp.Message;
                 ErrorLabel.Visible = true;
@@ -381,10 +386,10 @@ namespace IAS.Transports
 
                 reader = cmd.ExecuteReader();
 
-                if (reader.Read())
+                if(reader.Read())
                 {
                     // make sure the value is not DBNull
-                    if (DBNull.Value != reader["PersonID"])
+                    if(DBNull.Value != reader["PersonID"])
                     {
                         numero_documento = reader["numero_documento"].ToString();
                         cliente = reader["nombre"].ToString() + " " + reader["primer_apellido"].ToString() + " " + reader["segundo_apellido"].ToString();
@@ -401,11 +406,11 @@ namespace IAS.Transports
                         {
                             ddlPolicy.SelectedValue = GetLastPolicyNumberFromClient(PersonaID);
                         }
-                        catch (Exception ex)
+                        catch(Exception ex)
                         {
                             ddlPolicy.SelectedIndex = 0;
                         }
-                        
+
                     }
                 }
 
@@ -416,7 +421,7 @@ namespace IAS.Transports
 
 
             }
-            catch (Exception exp)
+            catch(Exception exp)
             {
                 ErrorLabel.Text = exp.Message;
                 ErrorLabel.Visible = true;
@@ -431,7 +436,7 @@ namespace IAS.Transports
         protected void gridClients_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
-            switch (e.CommandName)
+            switch(e.CommandName)
             {
                 case "seleccionar":
                     string[] values = e.CommandArgument.ToString().Split('|');
@@ -460,7 +465,7 @@ namespace IAS.Transports
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (Request.QueryString["mode"] != null)
+            if(Request.QueryString["mode"] != null)
             {
                 SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
                 SqlCommand cmd = new SqlCommand();
@@ -472,9 +477,9 @@ namespace IAS.Transports
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Connection = sqlConnection1;
 
-                    if (Request.QueryString["mode"].ToString().Equals("update"))
+                    if(Request.QueryString["mode"].ToString().Equals("update"))
                     {
-                        if (Request.QueryString["certificateID"] == null)
+                        if(Request.QueryString["certificateID"] == null)
                         {
                             ErrorLabel.Text = "No se puede actualizar sin conocer el ID de Certificado";
                             ErrorLabel.Visible = true;
@@ -484,12 +489,12 @@ namespace IAS.Transports
                         cmd.CommandText = "[transport].[sp_update_certificate]";
                         cmd.Parameters.AddWithValue("@CertificateID", long.Parse(Request.QueryString["certificateID"].ToString()));
                     }
-                    else if (Request.QueryString["mode"].ToString().Equals("insert"))
+                    else if(Request.QueryString["mode"].ToString().Equals("insert"))
                     {
                         cmd.CommandText = "[transport].[sp_insert_certificate]";
                     }
 
-                    if (PersonaID == 0)
+                    if(PersonaID == 0)
                     {
                         ErrorLabel.Text = "No se ha seleccionado al cliente";
                         ErrorLabel.Visible = true;
@@ -517,8 +522,14 @@ namespace IAS.Transports
                     decimal.TryParse(txtCapitalAmount.Text, out capitalAmount);
                     decimal rate = 0;
                     decimal.TryParse(txtRate.Text, out rate);
+
+                    txtSpendingPercent.Text = txtSpendingPercent.Text.Replace(".", "");
                     decimal spendingPercent = 0;
-                    decimal.TryParse(txtSpendingPercent.Text, out spendingPercent);
+                    if(!string.IsNullOrEmpty(txtSpendingPercent.Text))
+                    {
+                        spendingPercent = ParseToDecimal(txtSpendingPercent.Text);
+                    }
+
                     decimal spending = 0;
                     decimal.TryParse(txtSpending.Text, out spending);
                     decimal comissionASSAPercent = 0;
@@ -529,13 +540,13 @@ namespace IAS.Transports
                     int.TryParse(ddlCurrency.SelectedValue, out currency);
 
                     DateTime emissionDate = DateTime.Now;
-                    if (!string.IsNullOrEmpty(txtEmissionDate.Text))
+                    if(!string.IsNullOrEmpty(txtEmissionDate.Text))
                     {
                         DateTime.TryParse(txtEmissionDate.Text, out emissionDate);
                     }
 
                     DateTime extensionDate = DateTime.Now;
-                    if (!string.IsNullOrEmpty(txtExtensionDate.Text))
+                    if(!string.IsNullOrEmpty(txtExtensionDate.Text))
                     {
                         DateTime.TryParse(txtExtensionDate.Text, out extensionDate);
                     }
@@ -578,7 +589,7 @@ namespace IAS.Transports
                     Response.Redirect("Certificates.aspx");
 
                 }
-                catch (Exception ex)
+                catch(Exception ex)
                 {
                     ErrorLabel.Text = ex.ToString();
                     ErrorLabel.Visible = true;
@@ -587,9 +598,14 @@ namespace IAS.Transports
             }
         }
 
-
+        private decimal ParseToDecimal(string s)
+        {
+            if(string.IsNullOrEmpty(s))
+            {
+                return 0;
+            }
+            s = s.Replace(",", CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator);
+            return decimal.Parse(s, NumberStyles.Any, CultureInfo.InvariantCulture);
+        }
     }
-
-
-
 }

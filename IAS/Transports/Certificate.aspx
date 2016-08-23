@@ -246,8 +246,8 @@
 
                                         <label class="col-sm-1 control-label" for="form-group-input">% Gasto</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtSpendingPercent" runat="server" CssClass="form-control"></asp:TextBox>
-                                             <input type="text" onkeyup="format(this)" onchange="format(this)" id="txtImporte" class="form-control" runat="server" />
+                                            <asp:TextBox ID="txtSpendingPercent" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"  ></asp:TextBox>
+                                            <%--<input type="text" onchange="formatoNumero(this, null, ',', null)" id="txtImporte" class="form-control" runat="server" />--%>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Gasto</label>
                                         <div class="col-sm-3">

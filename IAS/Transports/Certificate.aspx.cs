@@ -170,19 +170,31 @@ namespace IAS.Transports
                     txtOrigin.Text = dt.Rows[0]["Origin"].ToString();
                     txtDestination.Text = dt.Rows[0]["Destination"].ToString();
                     txtDescription.Text = dt.Rows[0]["Description"].ToString();
-                    txtPremium.Text = dt.Rows[0]["Premium"].ToString();
-                    txtPremiunmPlusTax.Text = dt.Rows[0]["PremiunmPlusTax"].ToString();
-                    txtCapitalAmount.Text = dt.Rows[0]["CapitalAmount"].ToString();
-                    txtRate.Text = dt.Rows[0]["Rate"].ToString();
 
-                    double sp = double.Parse( dt.Rows[0]["SpendingPercent"].ToString());
-                    txtSpendingPercent.Text = sp.ToString("0,0.00", new CultureInfo("es-PY", false));
-                    //txtSpendingPercent.Text = string.Format(CultureInfo.InvariantCulture,
-                    //             "{0:0.0,0}", dt.Rows[0]["SpendingPercent"].ToString());
+                    double premium = double.Parse(dt.Rows[0]["Premium"].ToString());
+                    txtPremium.Text = premium.ToString("0,0.00", new CultureInfo("es-PY", false));
 
-                    txtSpending.Text = dt.Rows[0]["Spending"].ToString();
-                    txtComissionASSAPercent.Text = dt.Rows[0]["ComissionASSAPercent"].ToString();
-                    txtComissionAdviserPercent.Text = dt.Rows[0]["ComissionAdviserPercent"].ToString();
+                    double premiunmPlusTax = double.Parse(dt.Rows[0]["PremiunmPlusTax"].ToString());
+                    txtPremiunmPlusTax.Text = premiunmPlusTax.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                    double capitalAmount = double.Parse(dt.Rows[0]["CapitalAmount"].ToString());
+                    txtCapitalAmount.Text = capitalAmount.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                    double rate = double.Parse(dt.Rows[0]["Rate"].ToString());
+                    txtRate.Text = rate.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                    double spendingPercent = double.Parse( dt.Rows[0]["SpendingPercent"].ToString());
+                    txtSpendingPercent.Text = spendingPercent.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                    double spending = double.Parse(dt.Rows[0]["Spending"].ToString());
+                    txtSpending.Text = spending.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                    double comissionASSAPercent = double.Parse(dt.Rows[0]["ComissionASSAPercent"].ToString());
+                    txtComissionASSAPercent.Text = spending.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                    double ComissionAdviserPercent = double.Parse(dt.Rows[0]["ComissionAdviserPercent"].ToString());
+                    txtComissionAdviserPercent.Text = spending.ToString("0,0.00", new CultureInfo("es-PY", false));
+
                     ddlCurrency.SelectedValue = (dt.Rows[0]["CurrencyID"].ToString() == string.Empty) ? "-1" : dt.Rows[0]["CurrencyID"].ToString();
                     txtBeneficiary.Text = dt.Rows[0]["Beneficiary"].ToString();
                     txtEmissionDate.Text = Convert.ToDateTime(dt.Rows[0]["EmissionDate"].ToString()).ToString("yyyy-MM-dd");
@@ -259,9 +271,7 @@ namespace IAS.Transports
                 cmd.CommandText = "transport.sp_get_next_certificate_number";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = sqlConnection1;
-
-
-
+                
                 sqlConnection1.Open();
 
                 reader = cmd.ExecuteReader();
@@ -272,13 +282,11 @@ namespace IAS.Transports
                     if(DBNull.Value != reader["NextCertificateNumber"])
                     {
                         NextCertificateNumber = reader["NextCertificateNumber"].ToString();
-
                     }
                     else
                     {
                         NextCertificateNumber = "-1";
                     }
-
                 }
 
 
@@ -286,7 +294,6 @@ namespace IAS.Transports
 
                 //devuelvo el valro 
                 return NextCertificateNumber;
-
 
             }
             catch(Exception exp)
@@ -298,7 +305,6 @@ namespace IAS.Transports
 
             //devuelvo el valor
             return NextCertificateNumber;
-
         }
 
         private string GetLastPolicyNumberFromClient(long PersonaID)
@@ -402,6 +408,7 @@ namespace IAS.Transports
                         PersonaID = personaID;
                         BeneficiaryID = personaID;
                         txtBeneficiary.Text = cliente;
+
                         try
                         {
                             ddlPolicy.SelectedValue = GetLastPolicyNumberFromClient(PersonaID);
@@ -410,15 +417,12 @@ namespace IAS.Transports
                         {
                             ddlPolicy.SelectedIndex = 0;
                         }
-
                     }
                 }
-
-
+                
                 sqlConnection1.Close();
 
                 //Actualizo la informacion del cliente
-
 
             }
             catch(Exception exp)
@@ -514,14 +518,34 @@ namespace IAS.Transports
                     decimal.TryParse(txtPackageCount.Text, out packageCount);
                     int transportationMethod = 0;
                     int.TryParse(ddlTransportationMethod.SelectedValue, out transportationMethod);
+
+                    txtPremium.Text = txtPremium.Text.Replace(".", "");
                     decimal premium = 0;
-                    decimal.TryParse(txtPremium.Text, out premium);
+                    if(!string.IsNullOrEmpty(txtPremium.Text))
+                    {
+                        premium = ParseToDecimal(txtPremium.Text);
+                    }
+
+                    txtPremiunmPlusTax.Text = txtPremiunmPlusTax.Text.Replace(".", "");
                     decimal premiunmPlusTax = 0;
-                    decimal.TryParse(txtPremiunmPlusTax.Text, out premiunmPlusTax);
+                    if(!string.IsNullOrEmpty(txtPremiunmPlusTax.Text))
+                    {
+                        premiunmPlusTax = ParseToDecimal(txtPremiunmPlusTax.Text);
+                    }
+
+                    txtCapitalAmount.Text = txtCapitalAmount.Text.Replace(".", "");
                     decimal capitalAmount = 0;
-                    decimal.TryParse(txtCapitalAmount.Text, out capitalAmount);
+                    if(!string.IsNullOrEmpty(txtCapitalAmount.Text))
+                    {
+                        capitalAmount = ParseToDecimal(txtCapitalAmount.Text);
+                    }
+
+                    txtRate.Text = txtRate.Text.Replace(".", "");
                     decimal rate = 0;
-                    decimal.TryParse(txtRate.Text, out rate);
+                    if(!string.IsNullOrEmpty(txtRate.Text))
+                    { 
+                        rate = ParseToDecimal(txtRate.Text);
+                    }
 
                     txtSpendingPercent.Text = txtSpendingPercent.Text.Replace(".", "");
                     decimal spendingPercent = 0;
@@ -530,12 +554,27 @@ namespace IAS.Transports
                         spendingPercent = ParseToDecimal(txtSpendingPercent.Text);
                     }
 
+                    txtSpending.Text = txtSpending.Text.Replace(".", "");
                     decimal spending = 0;
-                    decimal.TryParse(txtSpending.Text, out spending);
+                    if(!string.IsNullOrEmpty(txtSpending.Text))
+                    {
+                        spending = ParseToDecimal(txtSpending.Text);
+                    }
+
+                    txtComissionASSAPercent.Text = txtComissionASSAPercent.Text.Replace(".", "");
                     decimal comissionASSAPercent = 0;
-                    decimal.TryParse(txtComissionASSAPercent.Text, out comissionASSAPercent);
+                    if(!string.IsNullOrEmpty(txtComissionASSAPercent.Text))
+                    {
+                        comissionASSAPercent = ParseToDecimal(txtComissionASSAPercent.Text);
+                    }
+
+                    txtComissionAdviserPercent.Text = txtComissionAdviserPercent.Text.Replace(".", "");
                     decimal comissionAdviserPercent = 0;
-                    decimal.TryParse(txtComissionAdviserPercent.Text, out comissionAdviserPercent);
+                    if(!string.IsNullOrEmpty(txtComissionAdviserPercent.Text))
+                    {
+                        comissionAdviserPercent = ParseToDecimal(txtComissionAdviserPercent.Text);
+                    }
+
                     int currency = 0;
                     int.TryParse(ddlCurrency.SelectedValue, out currency);
 

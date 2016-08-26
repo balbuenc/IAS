@@ -174,7 +174,7 @@
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Bultos</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtPackageCount" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtPackageCount" runat="server" CssClass="form-control" ></asp:TextBox>
                                         </div>
                                     </div>                                   
                                     <br />
@@ -216,19 +216,16 @@
                                     <div class="row">
                                         <label class="col-sm-1 control-label" for="form-group-input">Suma Asegurada</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtCapitalAmount" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtCapitalAmount" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')" ></asp:TextBox>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">% Prima L</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtRate" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtRate" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Prima L</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtPremium" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtPremium" runat="server" CssClass="form-control"  onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
                                         </div>
-
-
-
                                     </div>
                                 </div>
                             </div>
@@ -246,27 +243,27 @@
 
                                         <label class="col-sm-1 control-label" for="form-group-input">% Gasto</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtSpendingPercent" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"  ></asp:TextBox>
+                                            <asp:TextBox ID="txtSpendingPercent" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
                                             <%--<input type="text" onchange="formatoNumero(this, null, ',', null)" id="txtImporte" class="form-control" runat="server" />--%>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Gasto</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtSpending" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtSpending" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Premio</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtPremiunmPlusTax" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtPremiunmPlusTax" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
                                         </div>
                                     </div>
                                     <br />
                                     <div class="row">
                                         <label class="col-sm-1 control-label" for="form-group-input">% ASSA</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtComissionASSAPercent" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtComissionASSAPercent" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">% Asesor</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtComissionAdviserPercent" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtComissionAdviserPercent" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
                                         </div>
                                     </div>
                                     <br />

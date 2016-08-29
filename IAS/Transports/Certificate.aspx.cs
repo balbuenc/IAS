@@ -183,17 +183,17 @@ namespace IAS.Transports
                     double rate = double.Parse(dt.Rows[0]["Rate"].ToString());
                     txtRate.Text = rate.ToString("0,0.00", new CultureInfo("es-PY", false));
 
-                    double spendingPercent = double.Parse( dt.Rows[0]["SpendingPercent"].ToString());
+                    double spendingPercent = double.Parse(dt.Rows[0]["SpendingPercent"].ToString());
                     txtSpendingPercent.Text = spendingPercent.ToString("0,0.00", new CultureInfo("es-PY", false));
 
                     double spending = double.Parse(dt.Rows[0]["Spending"].ToString());
                     txtSpending.Text = spending.ToString("0,0.00", new CultureInfo("es-PY", false));
 
                     double comissionASSAPercent = double.Parse(dt.Rows[0]["ComissionASSAPercent"].ToString());
-                    txtComissionASSAPercent.Text = spending.ToString("0,0.00", new CultureInfo("es-PY", false));
+                    txtComissionASSAPercent.Text = comissionASSAPercent.ToString("0,0.00", new CultureInfo("es-PY", false));
 
-                    double ComissionAdviserPercent = double.Parse(dt.Rows[0]["ComissionAdviserPercent"].ToString());
-                    txtComissionAdviserPercent.Text = spending.ToString("0,0.00", new CultureInfo("es-PY", false));
+                    double comissionAdviserPercent = double.Parse(dt.Rows[0]["ComissionAdviserPercent"].ToString());
+                    txtComissionAdviserPercent.Text = comissionAdviserPercent.ToString("0,0.00", new CultureInfo("es-PY", false));
 
                     ddlCurrency.SelectedValue = (dt.Rows[0]["CurrencyID"].ToString() == string.Empty) ? "-1" : dt.Rows[0]["CurrencyID"].ToString();
                     txtBeneficiary.Text = dt.Rows[0]["Beneficiary"].ToString();

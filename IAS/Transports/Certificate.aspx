@@ -273,7 +273,6 @@
                     </div>
                 </div>
 
-
                 <div class="row" id="divAgentCommission" runat="server" visible="false">
                     <div class="col-lg-12" style="font-size: small">
                         <div class="panel panel-default">
@@ -444,8 +443,14 @@
         </ContentTemplate>
     </asp:UpdatePanel>
 
-
     <script type="text/javascript">
+
+        // Quitamos el uso de la tecla ENTER
+        window.addEventListener("keypress", function (event) {
+            if (event.keyCode == 13) {
+                event.preventDefault();
+            }
+        }, false);
 
         function openModalClients() {
             $('#myModalClients').modal('show');

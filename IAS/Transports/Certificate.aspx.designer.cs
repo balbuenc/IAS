@@ -166,6 +166,24 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.DropDownList ddlCurrency;
         
         /// <summary>
+        /// txtRequestDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRequestDate;
+        
+        /// <summary>
+        /// ddlCoverType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCoverType;
+        
+        /// <summary>
         /// ddlInsuranceManager control.
         /// </summary>
         /// <remarks>
@@ -308,6 +326,15 @@ namespace IAS.Transports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtComissionAdviserPercent;
+        
+        /// <summary>
+        /// txtTotalPrime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTotalPrime;
         
         /// <summary>
         /// divAgentCommission control.

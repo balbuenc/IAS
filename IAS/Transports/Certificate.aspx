@@ -142,6 +142,20 @@
                                             </asp:DropDownList>
                                         </div>
                                     </div>
+                                    <br />
+                                    <div class="row">
+                                        <label class="col-sm-1 control-label" for="form-group-input">Fecha de solicitud</label>
+                                        <div class="col-sm-3">
+                                            <asp:TextBox ID="txtRequestDate" runat="server" CssClass="form-control" type="date"></asp:TextBox>
+                                        </div>
+                                        <label class="col-sm-1 control-label" for="form-group-input">Tipo de cobertura</label>
+                                        <div class="col-sm-3">
+                                            <asp:DropDownList ID="ddlCoverType" runat="server" CssClass="form-control">
+                                                <asp:ListItem Text="Todo riesgo" Value="0"></asp:ListItem>
+                                                <asp:ListItem Text="Limitada" Value="1"></asp:ListItem>
+                                            </asp:DropDownList>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -174,9 +188,9 @@
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Bultos</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtPackageCount" runat="server" CssClass="form-control" ></asp:TextBox>
+                                            <asp:TextBox ID="txtPackageCount" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
-                                    </div>                                   
+                                    </div>
                                     <br />
                                     <div class="row">
                                         <label class="col-sm-1 control-label" for="form-group-input">Contacto</label>
@@ -216,7 +230,7 @@
                                     <div class="row">
                                         <label class="col-sm-1 control-label" for="form-group-input">Suma Asegurada</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtCapitalAmount" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')" ></asp:TextBox>
+                                            <asp:TextBox ID="txtCapitalAmount" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">% Prima L</label>
                                         <div class="col-sm-3">
@@ -224,7 +238,7 @@
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Prima L</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtPremium" runat="server" CssClass="form-control"  onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
+                                            <asp:TextBox ID="txtPremium" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -265,6 +279,10 @@
                                         <div class="col-sm-3">
                                             <asp:TextBox ID="txtComissionAdviserPercent" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
                                         </div>
+                                        <label class="col-sm-1 control-label" for="form-group-input">Prima Total</label>
+                                        <div class="col-sm-3">
+                                            <asp:TextBox ID="txtTotalPrime" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')" ></asp:TextBox>
+                                        </div>
                                     </div>
                                     <br />
                                 </div>
@@ -272,7 +290,6 @@
                         </div>
                     </div>
                 </div>
-
 
                 <div class="row" id="divAgentCommission" runat="server" visible="false">
                     <div class="col-lg-12" style="font-size: small">
@@ -444,8 +461,14 @@
         </ContentTemplate>
     </asp:UpdatePanel>
 
-
     <script type="text/javascript">
+
+        // Quitamos el uso de la tecla ENTER
+        window.addEventListener("keypress", function (event) {
+            if (event.keyCode == 13) {
+                event.preventDefault();
+            }
+        }, false);
 
         function openModalClients() {
             $('#myModalClients').modal('show');

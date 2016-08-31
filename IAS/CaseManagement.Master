@@ -222,6 +222,13 @@
                             </a>
 
                         </li>
+                        <li>
+                            <a class='expandable' href='/Dashboard/CommercialBoard.aspx?CaseID=-1' title='Tablero de Control'>
+                                <span class='glyphicon glyphicon-th-large collapsed-element'></span>
+                                <span class='expanded-element'>Tablero de Control</span>
+                            </a>
+
+                        </li>
 
                     </ul>
                     <a href='#' id='logout-icon' title='Logout'>

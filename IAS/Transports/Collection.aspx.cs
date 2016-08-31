@@ -9,18 +9,18 @@ namespace IAS.Transports
 {
     public partial class Collection : System.Web.UI.Page
     {
-        public string PolicyNumber
+        public string CertificateID
         {
             get
             {
-                object o = ViewState["PolicyNumber"];
+                object o = ViewState["CertificateID"];
                 if(o == null)
                     return string.Empty;
                 return o.ToString();
             }
             set
             {
-                ViewState["PolicyNumber"] = value;
+                ViewState["CertificateID"] = value;
             }
         }
 
@@ -28,13 +28,13 @@ namespace IAS.Transports
         {
             if(!Page.IsPostBack)
             {
-                if(Request.QueryString["PolicyNumber"] == null)
+                if(Request.QueryString["CertificateID"] == null)
                 {
-                    PolicyNumber = "5005010343315";
+                    CertificateID = "256";
                 }
                 else
                 {
-                    PolicyNumber = Request.QueryString["PolicyNumber"];
+                    CertificateID = Request.QueryString["CertificateID"];
                 }
             }
 
@@ -55,7 +55,7 @@ namespace IAS.Transports
             string txtMonthGoal;
             string txtYearGoal;
 
-            if(e.CommandName == "Insertar")
+            if (e.CommandName == "Insertar")
             {
                 txtPaymentDueDate = (CollectionListView.InsertItem.FindControl("txtPaymentDueDate") as TextBox).Text;
                 txtReceiptNumber = (CollectionListView.InsertItem.FindControl("txtReceiptNumber") as TextBox).Text;
@@ -78,11 +78,11 @@ namespace IAS.Transports
                 CollectionStateDataSource.InsertParameters["CollectionMethodID"].DefaultValue = ddlCollectionMethod;
                 CollectionStateDataSource.InsertParameters["MonthGoal"].DefaultValue = txtMonthGoal;
                 CollectionStateDataSource.InsertParameters["YearGoal"].DefaultValue = txtYearGoal;
-                CollectionStateDataSource.InsertParameters["PolicyNumber"].DefaultValue = PolicyNumber;
+                CollectionStateDataSource.InsertParameters["CertificateID"].DefaultValue = CertificateID;
 
                 CollectionDataSource.Insert();
             }
-            else if(e.CommandName == "Actualizar")
+            else if (e.CommandName == "Actualizar")
             {
                 txtPaymentDueDate = (e.Item.FindControl("txtPaymentDueDate") as TextBox).Text;
                 txtReceiptNumber = (e.Item.FindControl("txtReceiptNumber") as TextBox).Text;
@@ -105,11 +105,12 @@ namespace IAS.Transports
                 CollectionStateDataSource.UpdateParameters["CollectionMethodID"].DefaultValue = ddlCollectionMethod;
                 CollectionStateDataSource.UpdateParameters["MonthGoal"].DefaultValue = txtMonthGoal;
                 CollectionStateDataSource.UpdateParameters["YearGoal"].DefaultValue = txtYearGoal;
-                CollectionStateDataSource.UpdateParameters["PolicyNumber"].DefaultValue = PolicyNumber;
+                CollectionStateDataSource.UpdateParameters["CertificateID"].DefaultValue = CertificateID;
 
                 CollectionDataSource.Insert();
 
             }
+            
         }
     }
 }

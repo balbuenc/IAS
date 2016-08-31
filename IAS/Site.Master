@@ -100,9 +100,6 @@
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                     Administración
-                                   
-                                   
-
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
@@ -133,7 +130,7 @@
 
                                 </ul>
                             </div>
-                            <%--<div class="btn-group">
+                            <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                     Propuestas
                                     <span class="caret"></span>
@@ -143,8 +140,9 @@
                                     <li role="separator" class="divider"></li>
                                     <li><a href="/Commercial/PaymentTypes.aspx">Tipos de Pago</a></li>
                                     <li><a href="/Commercial/ProposalCommission.aspx">Comisiones</a></li>
+                                    <li><a href="/Commercial/Shipping.aspx">Envios</a></li>
                                 </ul>
-                            </div>--%>
+                            </div>
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                     Reportes
@@ -163,11 +161,11 @@
                                     <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fCasosCelulares&rs:Command=Render" target="_blank">Clientes con Celular</a></li>
                                     <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fEnvioSMSCasosConCelular&rs:Command=Render" target="_blank">Notificaciones por SMS</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><%--<a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fPropuestas&rs:Command=Render" target="_blank">Propuestas</a>--%></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fPropuestas&rs:Command=Render" target="_blank">Propuestas</a></li>
                                     <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fAsignaciones&rs:Command=Render" target="_blank">Asignaciones</a></li>
-                                    <li><%--<a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fPolicies&rs:Command=Render" target="_blank">Pólizas</a>--%></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fPolicies&rs:Command=Render" target="_blank">Pólizas</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <%--<li><a href="https://app.powerbi.com/groups/me/dashboards/0fa2deb1-7e8b-4c54-a4e3-f3182f602af5" target="_blank">Cobranzas Dashboard</a></li>--%>
+                                    <li><a href="https://app.powerbi.com/groups/me/dashboards/0fa2deb1-7e8b-4c54-a4e3-f3182f602af5" target="_blank">Cobranzas Dashboard</a></li>
                                 </ul>
                             </div>
 

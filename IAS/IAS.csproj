@@ -215,6 +215,7 @@
     <Content Include="Commercial\PaymentTypes.aspx" />
     <Content Include="Commercial\ProposalCommission.aspx" />
     <Content Include="Commercial\Proposals.aspx" />
+    <Content Include="Commercial\Shipping.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker.min.css" />
@@ -232,6 +233,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\Styles.css" />
     <Content Include="Content\typeahead.css" />
+    <Content Include="Dashboard\CommercialBoard.aspx" />
     <Content Include="ErrorPage.aspx" />
     <Content Include="Exchange\ExternalPolicyVerification.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -267,6 +269,9 @@
     <Content Include="Claim.Master" />
     <Content Include="CaseManagement.Master" />
     <None Include="Properties\PublishProfiles\aibias - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\assa - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\assa - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\iasdash - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\seguros - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\toyoias - Web Deploy.pubxml" />
     <Content Include="Reports.Master" />
@@ -856,6 +861,13 @@
     <Compile Include="Commercial\Proposals.aspx.designer.cs">
       <DependentUpon>Proposals.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Commercial\Shipping.aspx.cs">
+      <DependentUpon>Shipping.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Commercial\Shipping.aspx.designer.cs">
+      <DependentUpon>Shipping.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Constants\ControlValues.cs" />
     <Compile Include="Constants\SessionKeys.cs" />
     <Compile Include="Contact.aspx.cs">
@@ -867,6 +879,13 @@
     </Compile>
     <Compile Include="Core\Core.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\CommercialBoard.aspx.cs">
+      <DependentUpon>CommercialBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\CommercialBoard.aspx.designer.cs">
+      <DependentUpon>CommercialBoard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

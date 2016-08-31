@@ -100,7 +100,9 @@
                                     <asp:LinkButton ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CommandArgument='<%# Eval("CertificateID") %>' CssClass="btn btn-link">
                                                     <span class="glyphicon glyphicon-edit"></span>
                                     </asp:LinkButton>
-
+                                    <asp:LinkButton ID="CollectionsButton" runat="server" Text="Cobranza" CommandName="Collection" CommandArgument='<%# Eval("CertificateID") %>' CssClass="btn btn-link">
+                                                    <span class="glyphicon glyphicon-list-alt"></span>
+                                    </asp:LinkButton>
 
                                     <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Delete" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar el Certificado.?');">
                                                 <span class="glyphicon glyphicon-trash"></span>

@@ -23,6 +23,9 @@ namespace IAS.Transports
                     break;
                 case "Delete":
                     break;
+                case "Collection":
+                    Response.Redirect("Collection.aspx?criteria=Client&mode=update&certificateID=" + e.CommandArgument);
+                    break;
                 default:
                     break;
             }

@@ -38,8 +38,8 @@ namespace IAS.CaseManagment {
         }
 
         protected void Page_PreRender( object sender, EventArgs e ) {
-            if ( null == Request.QueryString["CaseID"] )
-                Response.Redirect("Defaul.aspx", false);
+            if ( null == Request.QueryString["CaseID"] || Request.QueryString["Dash"] == "True")
+                Response.Redirect("/Default.aspx", false);
         }
         
         public Case GetCase( [QueryString( "CaseID" )] long? caseID ) {            

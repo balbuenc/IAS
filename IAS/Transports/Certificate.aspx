@@ -281,7 +281,7 @@
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Prima Total</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtTotalPrime" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')" ></asp:TextBox>
+                                            <asp:TextBox ID="txtTotalPrime" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
                                         </div>
                                     </div>
                                     <br />
@@ -298,81 +298,49 @@
                             <div class="panel-body">
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-lg-12">
-                                            <asp:ListView ID="AgentCommissionListView" runat="server"
-                                                DataKeyNames="AgentID,CertificateID"
-                                                DataSourceID="AgentCommissionDS"
-                                                InsertItemPosition="FirstItem">
-                                                <LayoutTemplate>
-                                                    <div class="table responsive">
-                                                        <table class="table table-striped" style="font-size: x-small">
-                                                            <thead>
-                                                                <th>Comisionista</th>
-                                                                <th>% Comisión</th>
-                                                                <th>Comisión</th>
-                                                                <th>% Comisión Vend.</th>
-                                                                <th>Comisión Vend.</th>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr runat="server" id="itemPlaceholder" />
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </LayoutTemplate>
-                                                <ItemTemplate>
-                                                    <tr>
-                                                        <td>
-                                                            <asp:Label ID="lblAgentID" runat="server" Text='<%# Eval("AgentID") %>' Visible="false" />
-                                                            <asp:Label ID="lblAgent" runat="server" Text='<%# Eval("Agent") %>' />
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label ID="lblComissionPercent" runat="server" Text='<%# Eval("ComissionPercent") %>' /></td>
-                                                        <td>
-                                                            <asp:Label ID="lblComissionAmount" runat="server" Text='<%# Eval("ComissionAmount") %>' /></td>
-                                                        <td>
-                                                            <asp:Label ID="lblComissionSellerPercent" runat="server" Text='<%# Eval("ComissionSellerPercent") %>' /></td>
-                                                        <td>
-                                                            <asp:Label ID="lblComissionSellerAmount" runat="server" Text='<%# Eval("ComissionSellerAmount") %>' /></td>
+                                        <label class="col-sm-1 control-label" for="form-group-input">Agente 1</label>
+                                        <div class="col-sm-3">
 
-                                                        <td>
-                                                            <div class="row">
-                                                                <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Delete" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar la Comisión.?');">
-                                                                           <span class="glyphicon glyphicon-trash"></span>
-                                                                </asp:LinkButton>
-
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </ItemTemplate>
-                                                <EditItemTemplate>
-                                                </EditItemTemplate>
-                                                <InsertItemTemplate>
-                                                    <tr>
-                                                        <%--<td><asp:TextBox ID="txtAgentID" runat="server" Text='<%# Bind("AgentID") %>' CssClass="form-control" Font-Size="X-Small" /></td>--%>
-                                                        <td>
-                                                            <asp:DropDownList ID="AgentsDDL" runat="server" CssClass="form-control" DataSourceID="agentsDS"
-                                                                DataValueField="AgentID" DataTextField="Agent">
-                                                            </asp:DropDownList>
-                                                        </td>
-                                                        <td>
-                                                            <asp:TextBox ID="txtComissionPercent" runat="server" Text='<%# Bind("ComissionPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
-                                                        <td>
-                                                            <asp:Label ID="lblComissionAmount" runat="server" Text="" CssClass="form-control" Font-Size="X-Small" /></td>
-                                                        <td>
-                                                            <asp:TextBox ID="txtComissionSellerPercent" runat="server" Text='<%# Bind("ComissionSellerPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
-                                                        <td>
-                                                            <asp:Label ID="lblComissionSellerAmount" runat="server" Text="" CssClass="form-control" Font-Size="X-Small" /></td>
-                                                        <td class="text-right">
-                                                            <asp:Button ID="InsertButton" runat="server" Text="Agregar" CommandName="Insert" CssClass="btn btn-success" /></td>
-                                                    </tr>
-                                                </InsertItemTemplate>
-                                                <EmptyDataTemplate>
-                                                    <h4 style="color: lightgray; text-align: center"><span class="glyphicon glyphicon-comment"></span>No se encontraron Comisiones.</h4>
-                                                </EmptyDataTemplate>
-
-                                            </asp:ListView>
+                                            <asp:DropDownList ID="AgentsDDL" runat="server" CssClass="form-control" DataSourceID="agentsDS"
+                                                DataValueField="AgentID" DataTextField="Agent">
+                                            </asp:DropDownList>
                                         </div>
+                                        <label class="col-sm-1 control-label" for="form-group-input">% Comisión</label>
+                                        <div class="col-sm-3">
+                                            <asp:TextBox ID="txtComissionPercent" runat="server" Text='<%# Bind("ComissionPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                                        </div>
+                                        <label class="col-sm-1 control-label" for="form-group-input">Comisión</label>
+                                        <div class="col-sm-3">
+                                            <asp:Label ID="lblComissionAmount" runat="server" Text="" CssClass="form-control" Font-Size="X-Small" />
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="row">
+                                        <label class="col-sm-1 control-label" for="form-group-input">Agente 2</label>
+                                        <div class="col-sm-3">
 
+                                            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" DataSourceID="agentsDS"
+                                                DataValueField="AgentID" DataTextField="Agent">
+                                            </asp:DropDownList>
+                                        </div>
+                                        <label class="col-sm-1 control-label" for="form-group-input">% Comisión</label>
+                                        <div class="col-sm-3">
+                                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("ComissionPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                                        </div>
+                                        <label class="col-sm-1 control-label" for="form-group-input">Comisión</label>
+                                        <div class="col-sm-3">
+                                            <asp:Label ID="Label1" runat="server" Text="" CssClass="form-control" Font-Size="X-Small" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <asp:CheckBoxList ID="CheckBoxList1" runat="server">
+                                                <asp:ListItem>Comisión por Capital</asp:ListItem>
+                                                <asp:ListItem>Comisión por Prima</asp:ListItem>
+                                                <asp:ListItem>Comisión Fija</asp:ListItem>
+                                            </asp:CheckBoxList>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

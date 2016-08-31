@@ -170,7 +170,7 @@ namespace IAS.Transports
                     txtOrigin.Text = dt.Rows[0]["Origin"].ToString();
                     txtDestination.Text = dt.Rows[0]["Destination"].ToString();
                     txtDescription.Text = dt.Rows[0]["Description"].ToString();
-
+                  
                     double premium = double.Parse(dt.Rows[0]["Premium"].ToString());
                     txtPremium.Text = premium.ToString("0,0.00", new CultureInfo("es-PY", false));
 
@@ -195,10 +195,21 @@ namespace IAS.Transports
                     double comissionAdviserPercent = double.Parse(dt.Rows[0]["ComissionAdviserPercent"].ToString());
                     txtComissionAdviserPercent.Text = comissionAdviserPercent.ToString("0,0.00", new CultureInfo("es-PY", false));
 
+                    double totalPrime = double.Parse(dt.Rows[0]["TotalPrime"].ToString());
+                    txtTotalPrime.Text = totalPrime.ToString("0,0.00", new CultureInfo("es-PY", false));
+
                     ddlCurrency.SelectedValue = (dt.Rows[0]["CurrencyID"].ToString() == string.Empty) ? "-1" : dt.Rows[0]["CurrencyID"].ToString();
                     txtBeneficiary.Text = dt.Rows[0]["Beneficiary"].ToString();
                     txtEmissionDate.Text = Convert.ToDateTime(dt.Rows[0]["EmissionDate"].ToString()).ToString("yyyy-MM-dd");
                     txtExtensionDate.Text = Convert.ToDateTime(dt.Rows[0]["ExtensionDate"].ToString()).ToString("yyyy-MM-dd");
+
+                    if(dt.Rows[0]["RequestDate"] != null)
+                    {
+                        txtRequestDate.Text = Convert.ToDateTime(dt.Rows[0]["RequestDate"].ToString()).ToString("yyyy-MM-dd");
+                    }
+
+                    ddlCoverType.SelectedItem.Text = dt.Rows[0]["CoverType"]?.ToString();
+
                 }
             }
             catch(Exception exp)
@@ -575,6 +586,13 @@ namespace IAS.Transports
                         comissionAdviserPercent = ParseToDecimal(txtComissionAdviserPercent.Text);
                     }
 
+                    txtTotalPrime.Text = txtTotalPrime.Text.Replace(".", "");
+                    decimal totalPrime = 0;
+                    if(!string.IsNullOrEmpty(txtTotalPrime.Text))
+                    {
+                        totalPrime = ParseToDecimal(txtTotalPrime.Text);
+                    }
+
                     int currency = 0;
                     int.TryParse(ddlCurrency.SelectedValue, out currency);
 
@@ -589,6 +607,14 @@ namespace IAS.Transports
                     {
                         DateTime.TryParse(txtExtensionDate.Text, out extensionDate);
                     }
+
+                    DateTime? requestDate = null;
+                    if(!string.IsNullOrEmpty(txtRequestDate.Text))
+                    {
+                        requestDate = DateTime.Parse(txtRequestDate.Text);
+                    }
+
+                    string coverType = ddlContact.SelectedItem.Text;
 
                     cmd.Parameters.AddWithValue("@CertificateNumber", certificateNumber);
                     cmd.Parameters.AddWithValue("@PersonID", PersonaID);
@@ -617,6 +643,10 @@ namespace IAS.Transports
                     cmd.Parameters.AddWithValue("@EmissionDate", emissionDate);
                     cmd.Parameters.AddWithValue("@ExtensionDate", extensionDate);
                     cmd.Parameters.AddWithValue("@Status", "Activo");
+                    cmd.Parameters.AddWithValue("@Status", "Activo");
+                    cmd.Parameters.AddWithValue("@RequestDate", requestDate);
+                    cmd.Parameters.AddWithValue("@CoverType", coverType);
+                    cmd.Parameters.AddWithValue("@TotalPrime", totalPrime);
 
                     sqlConnection1.Open();
 

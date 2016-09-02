@@ -292,15 +292,6 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.TextBox txtPremiunmPlusTax;
         
         /// <summary>
-        /// txtTotalPrime control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTotalPrime;
-        
-        /// <summary>
         /// txtComissionASSAPercent control.
         /// </summary>
         /// <remarks>
@@ -434,6 +425,15 @@ namespace IAS.Transports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox1;
+        
+        /// <summary>
+        /// txtTotalPrime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTotalPrime;
         
         /// <summary>
         /// btnGuardar control.

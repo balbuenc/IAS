@@ -301,17 +301,17 @@
                                         <label class="col-sm-1 control-label" for="form-group-input">Agente 1</label>
                                         <div class="col-sm-3">
 
-                                            <asp:DropDownList ID="AgentsDDL" runat="server" CssClass="form-control" DataSourceID="agentsDS"
+                                            <asp:DropDownList ID="AgentsDDL1" runat="server" CssClass="form-control" DataSourceID="agentsDS"
                                                 DataValueField="AgentID" DataTextField="Agent">
                                             </asp:DropDownList>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">% Comisión</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtComissionPercent" runat="server" Text='<%# Bind("ComissionPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                                            <asp:TextBox ID="txtComissionPercent1" runat="server" Text='<%# Bind("ComissionPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Comisión</label>
                                         <div class="col-sm-3">
-                                            <asp:Label ID="lblComissionAmount" runat="server" Text="" CssClass="form-control" Font-Size="X-Small" />
+                                            <asp:Label ID="lblComissionAmount1" runat="server" Text="" CssClass="form-control" Font-Size="X-Small" />
                                         </div>
                                     </div>
                                     <hr />
@@ -319,29 +319,29 @@
                                         <label class="col-sm-1 control-label" for="form-group-input">Agente 2</label>
                                         <div class="col-sm-3">
 
-                                            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" DataSourceID="agentsDS"
+                                            <asp:DropDownList ID="AgentsDDL2" runat="server" CssClass="form-control" DataSourceID="agentsDS"
                                                 DataValueField="AgentID" DataTextField="Agent">
                                             </asp:DropDownList>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">% Comisión</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("ComissionPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                                            <asp:TextBox ID="txtComissionPercent2" runat="server" Text='<%# Bind("ComissionPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Comisión</label>
                                         <div class="col-sm-3">
-                                            <asp:Label ID="Label1" runat="server" Text="" CssClass="form-control" Font-Size="X-Small" />
+                                            <asp:Label ID="lblComissionAmount2" runat="server" Text="" CssClass="form-control" Font-Size="X-Small" />
                                         </div>
                                     </div>
 
-                                    <div class="row">
+<%--                                    <div class="row">
                                         <div class="col-sm-3">
-                                            <asp:CheckBoxList ID="CheckBoxList1" runat="server">
+                                            <asp:CheckBoxList ID="chkComisiones" runat="server">
                                                 <asp:ListItem>Comisión por Capital</asp:ListItem>
                                                 <asp:ListItem>Comisión por Prima</asp:ListItem>
                                                 <asp:ListItem>Comisión Fija</asp:ListItem>
                                             </asp:CheckBoxList>
                                         </div>
-                                    </div>
+                                    </div>--%>
                                 </div>
                             </div>
                         </div>

@@ -103,6 +103,15 @@ namespace IAS {
         protected global::System.Web.UI.WebControls.ListView CaseTransitionsListView;
         
         /// <summary>
+        /// SMSListView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView SMSListView;
+        
+        /// <summary>
         /// CaseTransitionDataSource control.
         /// </summary>
         /// <remarks>
@@ -110,5 +119,14 @@ namespace IAS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource CaseTransitionDataSource;
+        
+        /// <summary>
+        /// SmsDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SmsDataSource;
     }
 }

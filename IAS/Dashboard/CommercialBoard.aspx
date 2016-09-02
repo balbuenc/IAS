@@ -114,7 +114,7 @@
         </div>
         <div class="row">
             <div class="bs-callout bs-callout-success">
-                <h4>ASSA</h4>
+                <h4>AIB</h4>
                 <div class="container-fluid">
                     <hr />
                     <div class="row">

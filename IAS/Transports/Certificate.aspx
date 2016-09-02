@@ -241,6 +241,16 @@
                                             <asp:TextBox ID="txtPremium" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <label class="col-sm-1 control-label" for="form-group-input">Premio</label>
+                                        <div class="col-sm-3">
+                                            <asp:TextBox ID="txtPremiunmPlusTax" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
+                                        </div>
+                                        <label class="col-sm-1 control-label" for="form-group-input">Prima Total</label>
+                                        <div class="col-sm-3">
+                                            <asp:TextBox ID="txtTotalPrime" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -254,37 +264,39 @@
                             <div class="panel-body">
                                 <div class="form-group">
                                     <div class="row">
-
-                                        <label class="col-sm-1 control-label" for="form-group-input">% Gasto</label>
-                                        <div class="col-sm-3">
-                                            <asp:TextBox ID="txtSpendingPercent" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
-                                            <%--<input type="text" onchange="formatoNumero(this, null, ',', null)" id="txtImporte" class="form-control" runat="server" />--%>
-                                        </div>
-                                        <label class="col-sm-1 control-label" for="form-group-input">Gasto</label>
-                                        <div class="col-sm-3">
-                                            <asp:TextBox ID="txtSpending" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
-                                        </div>
-                                        <label class="col-sm-1 control-label" for="form-group-input">Premio</label>
-                                        <div class="col-sm-3">
-                                            <asp:TextBox ID="txtPremiunmPlusTax" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <br />
-                                    <div class="row">
                                         <label class="col-sm-1 control-label" for="form-group-input">% ASSA</label>
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-1">
                                             <asp:TextBox ID="txtComissionASSAPercent" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
                                         </div>
+                                        <label class="col-sm-1 control-label" for="form-group-input">Comisión ASSA</label>
+                                        <div class="col-sm-2">
+                                            <asp:TextBox ID="txtComissionASSA" runat="server" ReadOnly="true" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
+                                        </div>
+
                                         <label class="col-sm-1 control-label" for="form-group-input">% Asesor</label>
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-1">
                                             <asp:TextBox ID="txtComissionAdviserPercent" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
                                         </div>
-                                        <label class="col-sm-1 control-label" for="form-group-input">Prima Total</label>
-                                        <div class="col-sm-3">
-                                            <asp:TextBox ID="txtTotalPrime" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
+                                         <label class="col-sm-1 control-label" for="form-group-input">Comisión Asesor</label>
+                                        <div class="col-sm-2">
+                                            <asp:TextBox ID="txtComissionAdviser" runat="server"  ReadOnly="true" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
                                         </div>
                                     </div>
+                                    
                                     <br />
+                                    <div class="row">
+                                        <label class="col-sm-1 control-label" for="form-group-input">% Gasto</label>
+                                        <div class="col-sm-1">
+                                            <asp:TextBox ID="txtSpendingPercent" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>                                           
+                                        </div>
+                                        <label class="col-sm-1 control-label" for="form-group-input">Gasto</label>
+                                        <div class="col-sm-2">
+                                            <asp:TextBox ID="txtSpending" runat="server" ReadOnly="true" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
+                                        </div>
+                                        
+                                    </div>
+                                    <br />
+                                    
                                 </div>
                             </div>
                         </div>
@@ -306,42 +318,41 @@
                                             </asp:DropDownList>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">% Comisión</label>
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-1">
                                             <asp:TextBox ID="txtComissionPercent" runat="server" Text='<%# Bind("ComissionPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Comisión</label>
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-2">
                                             <asp:Label ID="lblComissionAmount" runat="server" Text="" CssClass="form-control" Font-Size="X-Small" />
+                                        </div>
+                                        <label class="col-sm-1 control-label" for="form-group-input">Aplicar Gasto</label>
+                                        <div class="col-sm-2">
+                                            <asp:CheckBox ID="CheckBox2" runat="server" />
                                         </div>
                                     </div>
                                     <hr />
                                     <div class="row">
                                         <label class="col-sm-1 control-label" for="form-group-input">Agente 2</label>
                                         <div class="col-sm-3">
-
                                             <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" DataSourceID="agentsDS"
                                                 DataValueField="AgentID" DataTextField="Agent">
                                             </asp:DropDownList>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">% Comisión</label>
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-1">
                                             <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("ComissionPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Comisión</label>
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-2">
                                             <asp:Label ID="Label1" runat="server" Text="" CssClass="form-control" Font-Size="X-Small" />
+                                        </div>
+                                        <label class="col-sm-1 control-label" for="form-group-input">Aplicar Gasto</label>
+                                        <div class="col-sm-2">
+                                            <asp:CheckBox ID="CheckBox1" runat="server" />
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <asp:CheckBoxList ID="CheckBoxList1" runat="server">
-                                                <asp:ListItem>Comisión por Capital</asp:ListItem>
-                                                <asp:ListItem>Comisión por Prima</asp:ListItem>
-                                                <asp:ListItem>Comisión Fija</asp:ListItem>
-                                            </asp:CheckBoxList>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>

@@ -192,8 +192,14 @@ namespace IAS.Transports
                     double comissionASSAPercent = double.Parse(dt.Rows[0]["ComissionASSAPercent"].ToString());
                     txtComissionASSAPercent.Text = comissionASSAPercent.ToString("0,0.00", new CultureInfo("es-PY", false));
 
+                    double comissionASSA = double.Parse(dt.Rows[0]["ComissionASSA"].ToString());
+                    txtComissionASSA.Text = comissionASSA.ToString("0,0.00", new CultureInfo("es-PY", false));
+
                     double comissionAdviserPercent = double.Parse(dt.Rows[0]["ComissionAdviserPercent"].ToString());
                     txtComissionAdviserPercent.Text = comissionAdviserPercent.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                    double comissionAdviser = double.Parse(dt.Rows[0]["ComissionAdviser"].ToString());
+                    txtComissionAdviser.Text = comissionAdviser.ToString("0,0.00", new CultureInfo("es-PY", false));
 
                     double totalPrime = double.Parse(dt.Rows[0]["TotalPrime"].ToString());
                     txtTotalPrime.Text = totalPrime.ToString("0,0.00", new CultureInfo("es-PY", false));

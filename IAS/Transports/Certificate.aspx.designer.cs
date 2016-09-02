@@ -283,6 +283,60 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.TextBox txtPremium;
         
         /// <summary>
+        /// txtPremiunmPlusTax control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPremiunmPlusTax;
+        
+        /// <summary>
+        /// txtTotalPrime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTotalPrime;
+        
+        /// <summary>
+        /// txtComissionASSAPercent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtComissionASSAPercent;
+        
+        /// <summary>
+        /// txtComissionASSA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtComissionASSA;
+        
+        /// <summary>
+        /// txtComissionAdviserPercent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtComissionAdviserPercent;
+        
+        /// <summary>
+        /// txtComissionAdviser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtComissionAdviser;
+        
+        /// <summary>
         /// txtSpendingPercent control.
         /// </summary>
         /// <remarks>
@@ -299,42 +353,6 @@ namespace IAS.Transports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSpending;
-        
-        /// <summary>
-        /// txtPremiunmPlusTax control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPremiunmPlusTax;
-        
-        /// <summary>
-        /// txtComissionASSAPercent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtComissionASSAPercent;
-        
-        /// <summary>
-        /// txtComissionAdviserPercent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtComissionAdviserPercent;
-        
-        /// <summary>
-        /// txtTotalPrime control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTotalPrime;
         
         /// <summary>
         /// divAgentCommission control.
@@ -373,6 +391,15 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.Label lblComissionAmount;
         
         /// <summary>
+        /// CheckBox2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox2;
+        
+        /// <summary>
         /// DropDownList1 control.
         /// </summary>
         /// <remarks>
@@ -400,13 +427,13 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// CheckBoxList1 control.
+        /// CheckBox1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList1;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox1;
         
         /// <summary>
         /// btnGuardar control.

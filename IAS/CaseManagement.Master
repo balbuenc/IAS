@@ -344,6 +344,60 @@
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                             </div>
+                            <hr />
+                            <div>
+                                <asp:ListView ID="SMSListView" runat="server"
+                                    DataSourceID="SmsDataSource"
+                                    DataKeyNames="SMSNotificationID"
+                                    AllowSorting="true">
+                                    <LayoutTemplate>
+                                        <div class="table responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Mensaje</th>
+                                                        <th>Fecha</th>
+                                                        <th>Riesgo</th>
+                                                        <th>Vencimiento</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr runat="server" id="itemPlaceholder" />
+                                                </tbody>
+
+                                            </table>
+
+                                        </div>
+                                    </LayoutTemplate>
+
+                                    <ItemTemplate>
+                                        <tr>
+                                            <td>
+                                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("SMSNotificationID") %>' />
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="Label2" runat="server" Text='<%# Eval("Message") %>' />
+                                            </td>
+                                             <td>
+                                                <asp:Label ID="Label4" runat="server" Text='<%# String.Format("{0:d}", Eval("SendDate")) %>' />
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="Label5" runat="server" Text='<%# Eval("RiskName") %>' />
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="Label6" runat="server" Text='<%# String.Format("{0:d}", Eval("PaymentDueDate")) %>' />
+                                            </td>
+                                        </tr>
+
+                                    </ItemTemplate>
+
+                                    <EmptyDataTemplate>
+                                        <div class="msg-box bg-warning">No hay historico de SMS para el caso</div>
+                                    </EmptyDataTemplate>
+
+                                </asp:ListView>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
@@ -356,6 +410,26 @@
         </div>
 
         <asp:SqlDataSource ID="CaseTransitionDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SmsDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
+            SelectCommand="SELECT sms.[SMSNotificationID]
+      ,left(sms.[MobilePhone], CHARINDEX('@',sms.MobilePhone , 1) -1) as MobilePhone
+      ,sms.[Message]
+      ,sms.[SendDate]
+      ,sms.[Sent]
+      ,coll.PolicyNumber
+	  ,coll.RiskName
+	  ,coll.PaymentNumber
+	  ,coll.PaymentDueDate
+	  ,coll.DebtAmount
+  FROM [dbo].[SMSNotification] sms 
+  inner join Collection coll on coll.CollectionID = sms.CollectionID 
+  where sms.CaseID = @CaseID
+  order by sms.[SendDate] desc"
+            SelectCommandType="Text">
+            <SelectParameters>
+                <asp:QueryStringParameter QueryStringField="CaseID" Name="CaseID" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
     </form>
 </body>
 </html>

@@ -238,7 +238,7 @@
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Prima L</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtPremium" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
+                                            <asp:TextBox ID="txtPremium" runat="server" CssClass="form-control" ReadOnly="true" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -323,7 +323,7 @@
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Comisión</label>
                                         <div class="col-sm-2">
-                                            <asp:Label ID="lblComissionAmount" runat="server" Text="" CssClass="form-control" Font-Size="X-Small" />
+                                            <asp:TextBox ID="txtAgent1Comission" runat="server"  ReadOnly="true" CssClass="form-control" Font-Size="X-Small" />
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Aplicar Gasto</label>
                                         <div class="col-sm-2">
@@ -344,7 +344,7 @@
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Comisión</label>
                                         <div class="col-sm-2">
-                                            <asp:Label ID="Label1" runat="server" Text="" CssClass="form-control" Font-Size="X-Small" />
+                                            <asp:TextBox ID="txtAgent2Comission" runat="server" ReadOnly="true"  CssClass="form-control" Font-Size="X-Small" />
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Aplicar Gasto</label>
                                         <div class="col-sm-2">

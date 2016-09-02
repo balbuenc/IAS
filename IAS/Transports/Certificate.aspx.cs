@@ -649,7 +649,7 @@ namespace IAS.Transports
                     cmd.Parameters.AddWithValue("@EmissionDate", emissionDate);
                     cmd.Parameters.AddWithValue("@ExtensionDate", extensionDate);
                     cmd.Parameters.AddWithValue("@Status", "Activo");
-                    cmd.Parameters.AddWithValue("@Status", "Activo");
+                  
                     cmd.Parameters.AddWithValue("@RequestDate", requestDate);
                     cmd.Parameters.AddWithValue("@CoverType", coverType);
                     cmd.Parameters.AddWithValue("@TotalPrime", totalPrime);

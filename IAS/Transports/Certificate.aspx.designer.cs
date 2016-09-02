@@ -382,13 +382,13 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.TextBox txtComissionPercent;
         
         /// <summary>
-        /// lblComissionAmount control.
+        /// txtAgent1Comission control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblComissionAmount;
+        protected global::System.Web.UI.WebControls.TextBox txtAgent1Comission;
         
         /// <summary>
         /// CheckBox2 control.
@@ -418,13 +418,13 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
-        /// Label1 control.
+        /// txtAgent2Comission control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.TextBox txtAgent2Comission;
         
         /// <summary>
         /// CheckBox1 control.

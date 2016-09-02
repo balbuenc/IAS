@@ -116,6 +116,7 @@ namespace IAS.Transports
                 {
                     //Load data to update
                     LoadCertificates();
+                    LoadAgentComissions();
                     SiteLabel.InnerText = "Certificado (Actualización)";
                     divAgentCommission.Visible = true;
                 }
@@ -203,12 +204,57 @@ namespace IAS.Transports
                     txtEmissionDate.Text = Convert.ToDateTime(dt.Rows[0]["EmissionDate"].ToString()).ToString("yyyy-MM-dd");
                     txtExtensionDate.Text = Convert.ToDateTime(dt.Rows[0]["ExtensionDate"].ToString()).ToString("yyyy-MM-dd");
 
-                    if(dt.Rows[0]["RequestDate"] != null)
+                    if(dt.Rows[0]["RequestDate"] != null && dt.Rows[0]["RequestDate"].ToString() != string.Empty)
                     {
                         txtRequestDate.Text = Convert.ToDateTime(dt.Rows[0]["RequestDate"].ToString()).ToString("yyyy-MM-dd");
                     }
 
                     ddlCoverType.SelectedItem.Text = dt.Rows[0]["CoverType"]?.ToString();
+
+                }
+            }
+            catch(Exception exp)
+            {
+                ErrorLabel.Text = exp.Message;
+                ErrorLabel.Visible = true;
+            }
+        }
+
+        private void LoadAgentComissions()
+        {
+            SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
+            SqlCommand cmd = new SqlCommand();
+
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataTable dt = new DataTable();
+
+            try
+            {
+                cmd.CommandText = "[transport].[get_agent_commissions_by_CertificateID]";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = sqlConnection1;
+
+                cmd.Parameters.AddWithValue("@certificateID", long.Parse(Request.QueryString["certificateID"].ToString()));
+
+                da.SelectCommand = cmd;
+
+                da.Fill(dt);
+
+                // Load certificate
+                if(dt != null && dt.Rows.Count > 0)
+                {
+                    AgentsDDL1.SelectedValue = dt.Rows[0]["AgentID"].ToString();
+                    
+                    double comissionPercent1 = double.Parse(dt.Rows[0]["ComissionPercent"].ToString());
+                    txtComissionPercent1.Text = comissionPercent1.ToString("0,0.00", new CultureInfo("es-PY", false));
+                    double comissionAmount1 = double.Parse(dt.Rows[0]["ComissionAmount"].ToString());
+                    lblComissionAmount1.Text = comissionAmount1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                    AgentsDDL1.SelectedValue = dt.Rows[1]["AgentID"].ToString();
+                    double comissionSellerPercent2 = double.Parse(dt.Rows[1]["ComissionPercent"].ToString());
+                    txtComissionPercent2.Text = comissionPercent1.ToString("0,0.00", new CultureInfo("es-PY", false));
+                    double comissionAmount2 = double.Parse(dt.Rows[1]["ComissionAmount"].ToString());
+                    lblComissionAmount2.Text = comissionAmount1.ToString("0,0.00", new CultureInfo("es-PY", false));
 
                 }
             }
@@ -503,6 +549,53 @@ namespace IAS.Transports
 
                         cmd.CommandText = "[transport].[sp_update_certificate]";
                         cmd.Parameters.AddWithValue("@CertificateID", long.Parse(Request.QueryString["certificateID"].ToString()));
+
+                        // Agente de comisiones 
+                        int agentsID1 = 0;
+                        int.TryParse(AgentsDDL1.SelectedValue, out agentsID1);
+
+                        decimal comissionPercent1 = 0;
+                        if(!string.IsNullOrEmpty(txtComissionPercent1.Text))
+                        {
+                            comissionPercent1 = ParseToDecimal(txtComissionPercent1.Text);
+                        }
+
+                        decimal comissionSellerPercent1 = 0;
+                        //if(!string.IsNullOrEmpty(txtComissionSellerPercent1.Text))
+                        //{
+                        //    comissionSellerPercent1 = ParseToDecimal(txtComissionSellerPercent1.Text);
+                        //}
+
+                        decimal agentOrder1 = 1;
+
+                        int agentsID2 = 0;
+                        int.TryParse(AgentsDDL2.SelectedValue, out agentsID1);
+
+                        decimal comissionPercent2 = 0;
+                        if(!string.IsNullOrEmpty(txtComissionPercent2.Text))
+                        {
+                            comissionPercent2 = ParseToDecimal(txtComissionPercent2.Text);
+                        }
+
+                        decimal comissionSellerPercent2 = 0;
+                        //if(!string.IsNullOrEmpty(txtComissionSellerPercent2.Text))
+                        //{
+                        //    comissionSellerPercent2 = ParseToDecimal(txtComissionSellerPercent2.Text);
+                        //}
+
+                        decimal agentOrder2 = 2;
+
+
+                        cmd.Parameters.AddWithValue("@AgentID1", agentsID1);
+                        cmd.Parameters.AddWithValue("@ComissionPercent1", comissionPercent1);
+                        cmd.Parameters.AddWithValue("@ComissionSellerPercent1", comissionSellerPercent1);
+                        cmd.Parameters.AddWithValue("@AgentOrder1", agentOrder1);
+                        cmd.Parameters.AddWithValue("@AgentID2", agentsID2);
+                        cmd.Parameters.AddWithValue("@ComissionPercent2", comissionPercent2);
+                        cmd.Parameters.AddWithValue("@ComissionSellerPercent2", comissionSellerPercent2);
+                        cmd.Parameters.AddWithValue("@AgentOrder1", agentOrder2);
+
+
                     }
                     else if(Request.QueryString["mode"].ToString().Equals("insert"))
                     {
@@ -587,6 +680,7 @@ namespace IAS.Transports
                     }
 
                     txtTotalPrime.Text = txtTotalPrime.Text.Replace(".", "");
+
                     decimal totalPrime = 0;
                     if(!string.IsNullOrEmpty(txtTotalPrime.Text))
                     {
@@ -615,6 +709,7 @@ namespace IAS.Transports
                     }
 
                     string coverType = ddlContact.SelectedItem.Text;
+                                        
 
                     cmd.Parameters.AddWithValue("@CertificateNumber", certificateNumber);
                     cmd.Parameters.AddWithValue("@PersonID", PersonaID);
@@ -647,6 +742,7 @@ namespace IAS.Transports
                     cmd.Parameters.AddWithValue("@RequestDate", requestDate);
                     cmd.Parameters.AddWithValue("@CoverType", coverType);
                     cmd.Parameters.AddWithValue("@TotalPrime", totalPrime);
+                    
 
                     sqlConnection1.Open();
 

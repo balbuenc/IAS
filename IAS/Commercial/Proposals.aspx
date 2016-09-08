@@ -42,12 +42,14 @@
                                 <th>Id.</th>
                                 <th>Tipo</th>
                                 <th>Nro.</th>
-                                <th>Aseguradora</th>
+                              <%--  <th>Aseguradora</th>--%>
                                 <th>Fecha</th>
                                 <th>Prima</th>
                                 <th>Riesgo</th>
                                 <th>Comisión</th>
                                 <th>Agente</th>
+                                <th>Cliente</th>
+                                <th>Nro. Doc.</th>
                             </thead>
                             <tbody>
                                 <tr runat="server" id="itemPlaceholder" />
@@ -64,8 +66,8 @@
                         <td>
                             <asp:Label ID="lblProposalNumber" runat="server" Text='<%# Eval("ProposalNumber") %>' /></td>
 
-                        <td>
-                            <asp:Label ID="lblInsuranceManager" runat="server" Text='<%# Eval("InsuranceManager") %>' /></td>
+                       <%-- <td>
+                            <asp:Label ID="lblInsuranceManager" runat="server" Text='<%# Eval("InsuranceManager") %>' /></td>--%>
                         <td>
                             <asp:Label ID="lblProposalDate" runat="server" Text='<%#  DateTime.Parse( Eval("ProposalDate").ToString()).ToShortDateString() %>' /></td>
                         <td>
@@ -77,6 +79,10 @@
                             <asp:Label ID="lblBrokerAmount" runat="server" Text='<%# Eval("BrokerAmount") %>' /></td>
                         <td>
                             <asp:Label ID="lblAgentAmount" runat="server" Text='<%# Eval("AgentAmount") %>' /></td>
+                        <td>
+                            <asp:Label ID="lblBeneficiary" runat="server" Text='<%# Eval("Beneficiary") %>' /></td>
+                        <td>
+                            <asp:Label ID="lblDocumentNumber" runat="server" Text='<%# Eval("DocumentNumber") %>' /></td>
 
                         <td class="text-right">
                             <asp:Button ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CssClass="btn btn-info" />
@@ -87,34 +93,37 @@
                 <EditItemTemplate>
                     <tr>
                         <td>
-                            <asp:label ID="txtProposalID" runat="server" Text='<%# Bind("ProposalID") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                            <asp:label ID="txtProposalID" runat="server" Text='<%# Bind("ProposalID") %>'  Font-Size="X-Small" /></td>
                         <td>
-                            <asp:DropDownList ID="ProposalCommisionDDL" runat="server" CssClass="form-control" DataSourceID="ProposalCommisionDataSource"
+                            <asp:DropDownList ID="ProposalCommisionDDL" runat="server"  DataSourceID="ProposalCommisionDataSource" Enabled="false"
                                 SelectedValue='<%# Eval("Commission") %>' 
                                 DataValueField="Commission"  DataTextField="Commission" AppendDataBoundItems="true">
                             </asp:DropDownList>
                         </td>
                         <td>
-                            <asp:TextBox ID="txtProposalNumber" runat="server" Text='<%# Bind("ProposalNumber") %>' CssClass="form-control" Font-Size="X-Small" /></td>
-                        <td>
+                            <asp:TextBox ID="txtProposalNumber" runat="server" Text='<%# Bind("ProposalNumber") %>' Font-Size="X-Small" /></td>
+                       <%-- <td>
                             <asp:DropDownList ID="ddlInsuranceManager" runat="server" CssClass="form-control" DataSourceID="InsuranceManagersDataSource"
                                 SelectedValue='<%# Eval("InsuranceManagerID") %>' 
                                 DataValueField="InsuranceManagerID" DataTextField="InsuranceManager" AppendDataBoundItems="true">
                             </asp:DropDownList>
 
-                        </td>
+                        </td>--%>
                         <td>
-                            <asp:TextBox ID="txtProposalDate" runat="server" Text='<%# Bind("ProposalDate") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                            <asp:TextBox ID="txtProposalDate" runat="server" Text='<%# Bind("ProposalDate") %>' Font-Size="X-Small" type="date" /></td>
                         <td>
-                            <asp:TextBox ID="txtPremiun" runat="server" Text='<%# Bind("Premiun") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                            <asp:TextBox ID="txtPremiun" runat="server" Text='<%# Bind("Premiun") %>' Font-Size="X-Small" /></td>
+                       
                         <td>
-                            <asp:TextBox ID="txtPremiunPlusTax" runat="server" Text='<%# Bind("PremiunPlusTax") %>' CssClass="form-control" Font-Size="X-Small" /></td>
-                        <td>
-                            <asp:TextBox ID="txtRiskName" runat="server" Text='<%# Bind("RiskName") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                            <asp:TextBox ID="txtRiskName" runat="server" Text='<%# Bind("RiskName") %>'  Font-Size="X-Small" /></td>
                         <td>
                             <asp:Label ID="lblBrokerAmount" runat="server" Text='<%# Eval("BrokerAmount") %>' /></td>
                         <td>
                             <asp:Label ID="lblAgentAmount" runat="server" Text='<%# Eval("AgentAmount") %>' /></td>
+                        <td>
+                            <asp:TextBox ID="txtBeneficiary" runat="server" Text='<%# Bind("Beneficiary") %>' /></td>
+                        <td>
+                            <asp:TextBox ID="txtDocumentNumber" runat="server" Text='<%# Bind("DocumentNumber") %>' /></td>
                         <td class="text-right">
                             <asp:Button ID="UpdateButton" runat="server" Text="Guardar" CommandName="Update" CssClass="btn btn-info" />
                             <asp:Button ID="CancelButton" runat="server" Text="Cancelar" CommandName="Cancel" CssClass="btn" />
@@ -127,30 +136,34 @@
                         <td>
                             <asp:Label ID="txtProposalID" runat="server" Text="#" Font-Size="X-Small" /></td>
                         <td>
-                            <asp:DropDownList ID="ProposalCommisionDDL" runat="server" CssClass="form-control" DataSourceID="ProposalCommisionDataSource"
+                            <asp:DropDownList ID="ProposalCommisionDDL" runat="server" DataSourceID="ProposalCommisionDataSource"
                                 DataValueField="Commission" DataTextField="Commission" AppendDataBoundItems="true">
                             </asp:DropDownList>
 
                         </td>
                         <td>
-                            <asp:TextBox ID="txtProposalNumber" runat="server" Text='<%# Bind("ProposalNumber") %>' CssClass="form-control" Font-Size="X-Small" /></td>
-                        <td>
+                            <asp:TextBox ID="txtProposalNumber" runat="server" Text='<%# Bind("ProposalNumber") %>' Font-Size="X-Small" /></td>
+                      <%--  <td>
                             <asp:DropDownList ID="ddlInsuranceManager" runat="server" CssClass="form-control" DataSourceID="InsuranceManagersDataSource"
                                 DataValueField="InsuranceManagerID" DataTextField="InsuranceManager" AppendDataBoundItems="true">
                             </asp:DropDownList>
 
-                        </td>
+                        </td>--%>
                         <td>
-                            <asp:TextBox ID="txtProposalDate" runat="server" Text='<%# Bind("ProposalDate") %>' CssClass="form-control" Font-Size="X-Small" type="date" /></td>
+                            <asp:TextBox ID="txtProposalDate" runat="server" Text='<%# Bind("ProposalDate") %>' Font-Size="X-Small" type="date" /></td>
                         <td>
-                            <asp:TextBox ID="txtPremiun" runat="server" Text='<%# Bind("Premiun") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                            <asp:TextBox ID="txtPremiun" runat="server" Text='<%# Bind("Premiun") %>'  Font-Size="X-Small" /></td>
                         <td>
-                            <asp:TextBox ID="txtRiskName" runat="server" Text='<%# Bind("RiskName") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                            <asp:TextBox ID="txtRiskName" runat="server" Text='<%# Bind("RiskName") %>'  Font-Size="X-Small" /></td>
 
                         <td>
                             <asp:Label ID="lblBrokerAmount" runat="server" Text="" /></td>
                         <td>
                             <asp:Label ID="lblAgentAmount" runat="server" Text="" /></td>
+                        <td>
+                            <asp:TextBox ID="txtBeneficiary" runat="server" Text='<%# Bind("Beneficiary") %>' /></td>
+                        <td>
+                            <asp:TextBox ID="txtDocumentNumber" runat="server" Text='<%# Bind("DocumentNumber") %>' /></td>
                         <td>
                             <asp:Button ID="InsertButton" runat="server" Text="Agregar" CommandName="Insert" CssClass="btn btn-success" />
                         </td>
@@ -186,13 +199,16 @@
                     <asp:Parameter Name="EmissionDate" Type="DateTime" />
                     <asp:Parameter Name="ExpirationDate" Type="DateTime" />
                     <asp:Parameter Name="PersonID" Type="Int32" />
-                    <asp:ControlParameter Name="InsuranceManagerID" ControlID="ddlInsuranceManager" PropertyName="SelectedValue" />
+                <%--    <asp:ControlParameter Name="InsuranceManagerID" ControlID="ddlInsuranceManager" PropertyName="SelectedValue" />--%>
                     <asp:Parameter Name="ProposalDate" Type="DateTime" />
                     <asp:Parameter Name="Premiun" Type="Decimal" />
                     <asp:Parameter Name="PremiunPlusTax" Type="Decimal" />
                     <asp:Parameter Name="RiskName" Type="String" />
 
-                    <asp:ControlParameter Name="Commission" ControlID="ProposalCommisionDDL" PropertyName="SelectedValue" />
+                    <%--<asp:ControlParameter Name="Commission" ControlID="ProposalCommisionDDL" PropertyName="SelectedValue" />--%>
+                    <asp:Parameter Name="Commission" Type="Int32" />
+                    <asp:Parameter Name="Beneficiary" Type="String" />
+                    <asp:Parameter Name="DocumentNumber" Type="String" />
                 </UpdateParameters>
                 <InsertParameters>
                     <asp:Parameter Name="ProposalNumber" Type="Int64" />
@@ -200,7 +216,7 @@
                     <asp:Parameter Name="ExpirationDate" Type="DateTime" />
                     <asp:Parameter Name="PersonID" Type="Int32" />
 
-                    <asp:ControlParameter Name="InsuranceManagerID" ControlID="ctl00$MainContent$ProposalListView$ctrl0$ddlInsuranceManager" PropertyName="SelectedValue" />
+                    <%--<asp:ControlParameter Name="InsuranceManagerID" ControlID="ctl00$MainContent$ProposalListView$ctrl0$ddlInsuranceManager" PropertyName="SelectedValue" />--%>
 
                     <asp:Parameter Name="ProposalDate" Type="DateTime" />
                     <asp:Parameter Name="Premiun" Type="Decimal" />
@@ -209,7 +225,8 @@
 
 
                     <asp:ControlParameter Name="Commission" ControlID="ctl00$MainContent$ProposalListView$ctrl0$ProposalCommisionDDL" PropertyName="SelectedValue" />
-
+                      <asp:Parameter Name="Beneficiary" Type="String" />
+                    <asp:Parameter Name="DocumentNumber" Type="String" />
                 </InsertParameters>
             </asp:SqlDataSource>
             <asp:SqlDataSource ID="InsuranceManagersDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[dbo].[sp_get_insurance_managers_ddl]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>

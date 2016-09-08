@@ -8,6 +8,8 @@
         }
     </style>
     <script src="/Scripts/utils.js"></script>
+
+    <%-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>--%>
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -162,6 +164,7 @@
                     </div>
                 </div>
 
+
                 <div class="row">
                     <div class="col-lg-12" style="font-size: small">
                         <div class="panel panel-default">
@@ -246,7 +249,6 @@
                                         <div class="col-sm-3">
                                             <asp:TextBox ID="txtPremiunmPlusTax" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -263,7 +265,7 @@
                                     <div class="row">
                                         <label class="col-sm-1 control-label" for="form-group-input">% ASSA</label>
                                         <div class="col-sm-1">
-                                            <asp:TextBox ID="txtComissionASSAPercent" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
+                                            <asp:TextBox ID="txtComissionASSAPercent" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')" AutoPostBack="true" OnTextChanged="Comission_TextChanged"></asp:TextBox>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Comisión ASSA</label>
                                         <div class="col-sm-2">
@@ -272,7 +274,7 @@
 
                                         <label class="col-sm-1 control-label" for="form-group-input">% Asesor</label>
                                         <div class="col-sm-1">
-                                            <asp:TextBox ID="txtComissionAdviserPercent" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
+                                            <asp:TextBox ID="txtComissionAdviserPercent" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')" AutoPostBack="true" OnTextChanged="Comission_TextChanged"></asp:TextBox>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Comisión Asesor</label>
                                         <div class="col-sm-2">
@@ -284,7 +286,7 @@
                                     <div class="row">
                                         <label class="col-sm-1 control-label" for="form-group-input">% Gasto</label>
                                         <div class="col-sm-1">
-                                            <asp:TextBox ID="txtSpendingPercent" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
+                                            <asp:TextBox ID="txtSpendingPercent" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')" AutoPostBack="true" OnTextChanged="Comission_TextChanged"></asp:TextBox>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Gasto</label>
                                         <div class="col-sm-2">
@@ -299,7 +301,6 @@
                         </div>
                     </div>
                 </div>
-                
 
                 <div class="row" id="divAgentCommission" runat="server" visible="false">
                     <div class="col-lg-12" style="font-size: small">
@@ -311,13 +312,13 @@
                                         <label class="col-sm-1 control-label" for="form-group-input">Agente 1</label>
                                         <div class="col-sm-3">
 
-                                            <asp:DropDownList ID="AgentsDDL" runat="server" CssClass="form-control" DataSourceID="agentsDS"
+                                            <asp:DropDownList ID="AgentsDDL1" runat="server" CssClass="form-control" DataSourceID="agentsDS"
                                                 DataValueField="AgentID" DataTextField="Agent">
                                             </asp:DropDownList>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">% Comisión</label>
                                         <div class="col-sm-1">
-                                            <asp:TextBox ID="txtComissionPercent" runat="server" Text='<%# Bind("ComissionPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                                            <asp:TextBox ID="txtComission1Percent" runat="server" Text='<%# Bind("ComissionPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Comisión</label>
                                         <div class="col-sm-2">
@@ -332,13 +333,13 @@
                                     <div class="row">
                                         <label class="col-sm-1 control-label" for="form-group-input">Agente 2</label>
                                         <div class="col-sm-3">
-                                            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" DataSourceID="agentsDS"
+                                            <asp:DropDownList ID="AgentsDDL2" runat="server" CssClass="form-control" DataSourceID="agentsDS"
                                                 DataValueField="AgentID" DataTextField="Agent">
                                             </asp:DropDownList>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">% Comisión</label>
                                         <div class="col-sm-1">
-                                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("ComissionPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                                            <asp:TextBox ID="txtComission2Percent" runat="server" Text='<%# Bind("ComissionPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Comisión</label>
                                         <div class="col-sm-2">
@@ -361,10 +362,10 @@
                     <div class="col-lg-8"></div>
                     <label class="col-sm-1 control-label" for="form-group-input">Prima Total</label>
                     <div class="col-sm-3">
-                        <asp:TextBox ID="txtTotalPrime" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
+                        <asp:TextBox ID="txtTotalPrime" runat="server" CssClass="form-control" onkeypress="numberFormat(this);" onchange="numberFormat(this);"></asp:TextBox>
                     </div>
-
                 </div>
+       
                 <div class="row">
                     <div class="col-sm-2">
                         <asp:Button ID="btnGuardar" runat="server" CssClass=" btn btn-primary" Text="Guardar" OnClick="btnGuardar_Click" />
@@ -373,6 +374,7 @@
                         <asp:LinkButton ID="lnkVolver" PostBackUrl="~/Transports/Certificates.aspx" runat="server" Text="Volver"></asp:LinkButton>
                     </div>
                 </div>
+
 
                 <!-- SQL Data Sources -->
                 <asp:SqlDataSource ID="clientesDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="sp_obtener_persona_para_siniestros" SelectCommandType="StoredProcedure"></asp:SqlDataSource>

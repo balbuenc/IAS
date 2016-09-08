@@ -203,7 +203,7 @@
                                             </asp:DropDownList>
                                         </div>
 
-                                        <label class="col-sm-1 control-label" for="form-group-input">Metodo de Transporte</label>
+                                        <label class="col-sm-1 control-label" for="form-group-input">Medio Transporte</label>
                                         <div class="col-sm-3">
                                             <asp:DropDownList ID="ddlTransportationMethod" runat="server" CssClass="form-control" DataSourceID="transportationMethodDataSource"
                                                 DataValueField="TransportationMethodID" DataTextField="Method">
@@ -242,12 +242,6 @@
                                         <label class="col-sm-1 control-label" for="form-group-input">Prima L</label>
                                         <div class="col-sm-3">
                                             <asp:TextBox ID="txtPremium" runat="server" CssClass="form-control" ReadOnly="true" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <label class="col-sm-1 control-label" for="form-group-input">Premio</label>
-                                        <div class="col-sm-3">
-                                            <asp:TextBox ID="txtPremiunmPlusTax" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -365,13 +359,16 @@
                         <asp:TextBox ID="txtTotalPrime" runat="server" CssClass="form-control" onkeypress="numberFormat(this);" onchange="numberFormat(this);"></asp:TextBox>
                     </div>
                 </div>
-       
+                <div class="row">
+                    <div class="col-lg-8"></div>
+                    <label class="col-sm-1 control-label" for="form-group-input">Premio</label>
+                    <div class="col-sm-3">
+                        <asp:TextBox ID="txtPremiunmPlusTax" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-sm-2">
                         <asp:Button ID="btnGuardar" runat="server" CssClass=" btn btn-primary" Text="Guardar" OnClick="btnGuardar_Click" />
-                    </div>
-                    <div class="=col-sm-2">
-                        <asp:LinkButton ID="lnkVolver" PostBackUrl="~/Transports/Certificates.aspx" runat="server" Text="Volver"></asp:LinkButton>
                     </div>
                 </div>
 

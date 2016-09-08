@@ -2,6 +2,8 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -170,7 +172,7 @@ namespace IAS.Transports
                     txtOrigin.Text = dt.Rows[0]["Origin"].ToString();
                     txtDestination.Text = dt.Rows[0]["Destination"].ToString();
                     txtDescription.Text = dt.Rows[0]["Description"].ToString();
-                  
+
                     double premium = double.Parse(dt.Rows[0]["Premium"].ToString());
                     txtPremium.Text = premium.ToString("0,0.00", new CultureInfo("es-PY", false));
 
@@ -288,7 +290,7 @@ namespace IAS.Transports
                 cmd.CommandText = "transport.sp_get_next_certificate_number";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = sqlConnection1;
-                
+
                 sqlConnection1.Open();
 
                 reader = cmd.ExecuteReader();
@@ -436,7 +438,7 @@ namespace IAS.Transports
                         }
                     }
                 }
-                
+
                 sqlConnection1.Close();
 
                 //Actualizo la informacion del cliente
@@ -560,7 +562,7 @@ namespace IAS.Transports
                     txtRate.Text = txtRate.Text.Replace(".", "");
                     decimal rate = 0;
                     if(!string.IsNullOrEmpty(txtRate.Text))
-                    { 
+                    {
                         rate = ParseToDecimal(txtRate.Text);
                     }
 
@@ -649,7 +651,7 @@ namespace IAS.Transports
                     cmd.Parameters.AddWithValue("@EmissionDate", emissionDate);
                     cmd.Parameters.AddWithValue("@ExtensionDate", extensionDate);
                     cmd.Parameters.AddWithValue("@Status", "Activo");
-                  
+
                     cmd.Parameters.AddWithValue("@RequestDate", requestDate);
                     cmd.Parameters.AddWithValue("@CoverType", coverType);
                     cmd.Parameters.AddWithValue("@TotalPrime", totalPrime);
@@ -681,6 +683,73 @@ namespace IAS.Transports
             }
             s = s.Replace(",", CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator);
             return decimal.Parse(s, NumberStyles.Any, CultureInfo.InvariantCulture);
+        }
+
+
+        protected void Comission_TextChanged(object sender, EventArgs e)
+        {
+            if(Request.QueryString["mode"] != null)
+            {
+                SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
+                SqlCommand cmd = new SqlCommand();
+
+                int rowsAffected;
+
+                try
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = sqlConnection1;
+
+                    if(Request.QueryString["certificateID"] == null)
+                    {
+                        ErrorLabel.Text = "No se puede actualizar sin conocer el ID de Certificado";
+                        ErrorLabel.Visible = true;
+                        return;
+                    }
+
+                    cmd.CommandText = "[transport].[sp_update_certificate_rate]";
+                    cmd.Parameters.AddWithValue("@CertificateID", long.Parse(Request.QueryString["certificateID"].ToString()));
+
+                    txtSpendingPercent.Text = txtSpendingPercent.Text.Replace(".", "");
+                    decimal spendingPercent = 0;
+                    if(!string.IsNullOrEmpty(txtSpendingPercent.Text))
+                    {
+                        spendingPercent = ParseToDecimal(txtSpendingPercent.Text);
+                    }
+
+                    txtComissionASSAPercent.Text = txtComissionASSAPercent.Text.Replace(".", "");
+                    decimal comissionASSAPercent = 0;
+                    if(!string.IsNullOrEmpty(txtComissionASSAPercent.Text))
+                    {
+                        comissionASSAPercent = ParseToDecimal(txtComissionASSAPercent.Text);
+                    }
+
+                    txtComissionAdviserPercent.Text = txtComissionAdviserPercent.Text.Replace(".", "");
+                    decimal comissionAdviserPercent = 0;
+                    if(!string.IsNullOrEmpty(txtComissionAdviserPercent.Text))
+                    {
+                        comissionAdviserPercent = ParseToDecimal(txtComissionAdviserPercent.Text);
+                    }
+
+                    cmd.Parameters.AddWithValue("@SpendingPercent", spendingPercent);
+                    cmd.Parameters.AddWithValue("@ComissionASSAPercent", comissionASSAPercent);
+                    cmd.Parameters.AddWithValue("@ComissionAdviserPercent", comissionAdviserPercent);
+
+                    sqlConnection1.Open();
+
+                    rowsAffected = cmd.ExecuteNonQuery();
+
+                    sqlConnection1.Close();
+
+                    LoadCertificates();
+                }
+                catch(Exception ex)
+                {
+                    ErrorLabel.Text = ex.ToString();
+                    ErrorLabel.Visible = true;
+                }
+
+            }
         }
     }
 }

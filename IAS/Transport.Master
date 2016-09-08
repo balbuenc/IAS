@@ -94,7 +94,7 @@
         </div>
 
 
-        <asp:ScriptManager runat="server" ID="ScriptManager1">
+        <asp:ScriptManager runat="server" ID="ScriptManager1" EnablePageMethods="true">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
                 <%--Framework Scripts--%>

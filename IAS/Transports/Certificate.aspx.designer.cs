@@ -355,22 +355,22 @@ namespace IAS.Transports {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAgentCommission;
         
         /// <summary>
-        /// AgentsDDL control.
+        /// AgentsDDL1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList AgentsDDL;
+        protected global::System.Web.UI.WebControls.DropDownList AgentsDDL1;
         
         /// <summary>
-        /// txtComissionPercent control.
+        /// txtComission1Percent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtComissionPercent;
+        protected global::System.Web.UI.WebControls.TextBox txtComission1Percent;
         
         /// <summary>
         /// txtAgent1Comission control.
@@ -391,22 +391,22 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.CheckBox CheckBox2;
         
         /// <summary>
-        /// DropDownList1 control.
+        /// AgentsDDL2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList AgentsDDL2;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtComission2Percent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtComission2Percent;
         
         /// <summary>
         /// txtAgent2Comission control.

@@ -2,8 +2,6 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
-using System.Web;
-using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -152,11 +150,11 @@ namespace IAS.Transports
                 da.Fill(dt);
 
                 // Load certificate
-                if(dt != null)
+                if(dt?.Rows.Count > 0)
                 {
                     divClientData.Visible = true;
                     lblNroDocumento.Text = dt.Rows[0]["numero_documento"].ToString();
-                    lblCliente.Text = dt.Rows[0]["cliente"].ToString();
+                    lblCliente.Text = dt?.Rows[0]["cliente"].ToString();
                     lblRazonSocial.Text = dt.Rows[0]["razon_social"].ToString();
                     PersonaID = Convert.ToInt64(dt.Rows[0]["PersonID"].ToString());
                     BeneficiaryID = Convert.ToInt64(dt.Rows[0]["PersonID"].ToString());
@@ -218,6 +216,11 @@ namespace IAS.Transports
 
                     ddlCoverType.SelectedItem.Text = dt.Rows[0]["CoverType"]?.ToString();
 
+                }
+                else
+                {
+                    ErrorLabel.Text = "No existen registros del certificado";
+                    ErrorLabel.Visible = true;
                 }
             }
             catch(Exception exp)
@@ -690,8 +693,11 @@ namespace IAS.Transports
         {
             if(Request.QueryString["mode"] != null)
             {
+
                 SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
                 SqlCommand cmd = new SqlCommand();
+                SqlDataAdapter da;
+                DataTable dt = new DataTable();
 
                 int rowsAffected;
 
@@ -735,20 +741,107 @@ namespace IAS.Transports
                     cmd.Parameters.AddWithValue("@ComissionASSAPercent", comissionASSAPercent);
                     cmd.Parameters.AddWithValue("@ComissionAdviserPercent", comissionAdviserPercent);
 
-                    sqlConnection1.Open();
+                    da = new SqlDataAdapter(cmd);
 
-                    rowsAffected = cmd.ExecuteNonQuery();
+                    da.Fill(dt);
 
-                    sqlConnection1.Close();
+                    if(dt?.Rows.Count > 0)
+                    {
 
-                    LoadCertificates();
+                        double comissionASSAPercent1 = double.Parse(dt.Rows[0]["ComissionASSAPercent"].ToString());
+                        txtComissionASSAPercent.Text = comissionASSAPercent1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                        double comissionASSA1 = double.Parse(dt.Rows[0]["ComissionASSA"].ToString());
+                        txtComissionASSA.Text = comissionASSA1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                        double comissionAdviserPercent1 = double.Parse(dt.Rows[0]["ComissionAdviserPercent"].ToString());
+                        txtComissionAdviserPercent.Text = comissionAdviserPercent1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                        double comissionAdviser1 = double.Parse(dt.Rows[0]["ComissionAdviser"].ToString());
+                        txtComissionAdviser.Text = comissionAdviser1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                        double spendingPercent1 = double.Parse(dt.Rows[0]["SpendingPercent"].ToString());
+                        txtSpendingPercent.Text = spendingPercent1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                        double spending1 = double.Parse(dt.Rows[0]["Spending"].ToString());
+                        txtSpending.Text = spending1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                    }
+
                 }
                 catch(Exception ex)
                 {
                     ErrorLabel.Text = ex.ToString();
                     ErrorLabel.Visible = true;
                 }
+            }
+        }
 
+        protected void Insurance_TextChanged(object sender, EventArgs e)
+        {
+            if(Request.QueryString["mode"] != null)
+            {
+
+                SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
+                SqlCommand cmd = new SqlCommand();
+                SqlDataAdapter da;
+                DataTable dt = new DataTable();
+
+                int rowsAffected;
+
+                try
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = sqlConnection1;
+
+                    if(Request.QueryString["certificateID"] == null)
+                    {
+                        ErrorLabel.Text = "No se puede actualizar sin conocer el ID de Certificado";
+                        ErrorLabel.Visible = true;
+                        return;
+                    }
+
+                    cmd.CommandText = "[transport].[sp_update_certificate_insurance]";
+                    cmd.Parameters.AddWithValue("@CertificateID", long.Parse(Request.QueryString["certificateID"].ToString()));
+
+                    txtCapitalAmount.Text = txtCapitalAmount.Text.Replace(".", "");
+                    decimal capitalAmount = 0;
+                    if(!string.IsNullOrEmpty(txtCapitalAmount.Text))
+                    {
+                        capitalAmount = ParseToDecimal(txtCapitalAmount.Text);
+                    }
+
+                    txtRate.Text = txtRate.Text.Replace(".", "");
+                    decimal rate = 0;
+                    if(!string.IsNullOrEmpty(txtRate.Text))
+                    {
+                        rate = ParseToDecimal(txtRate.Text);
+                    }
+
+                    cmd.Parameters.AddWithValue("@CapitalAmount", capitalAmount);
+                    cmd.Parameters.AddWithValue("@Rate", rate);
+
+                    da = new SqlDataAdapter(cmd);
+
+                    da.Fill(dt);
+
+                    if(dt?.Rows.Count > 0)
+                    {
+                        double capitalAmount1 = double.Parse(dt.Rows[0]["CapitalAmount"].ToString());
+                        txtCapitalAmount.Text = capitalAmount1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                        double rate1 = double.Parse(dt.Rows[0]["Rate"].ToString());
+                        txtRate.Text = rate1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                        double premium1 = double.Parse(dt.Rows[0]["Premium"].ToString());
+                        txtPremium.Text = premium1.ToString("0,0.00", new CultureInfo("es-PY", false));
+                    }
+                }
+                catch(Exception ex)
+                {
+                    ErrorLabel.Text = ex.ToString();
+                    ErrorLabel.Visible = true;
+                }
             }
         }
     }

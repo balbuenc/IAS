@@ -233,15 +233,15 @@
                                     <div class="row">
                                         <label class="col-sm-1 control-label" for="form-group-input">Suma Asegurada</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtCapitalAmount" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
+                                            <asp:TextBox ID="txtCapitalAmount" runat="server" CssClass="form-control" onkeypress="numberFormat(this);" onchange="numberFormat(this);" AutoPostBack="true" OnTextChanged="Insurance_TextChanged"></asp:TextBox>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">% Prima L</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtRate" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
+                                            <asp:TextBox ID="txtRate" runat="server" CssClass="form-control" onkeypress="numberFormat(this);" onchange="numberFormat(this);" AutoPostBack="true" OnTextChanged="Insurance_TextChanged"></asp:TextBox>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Prima L</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtPremium" runat="server" CssClass="form-control" ReadOnly="true" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
+                                            <asp:TextBox ID="txtPremium" runat="server" CssClass="form-control" ReadOnly="true" onchange="formatoNumero(this, null, ',', '.')" ></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -259,20 +259,20 @@
                                     <div class="row">
                                         <label class="col-sm-1 control-label" for="form-group-input">% ASSA</label>
                                         <div class="col-sm-1">
-                                            <asp:TextBox ID="txtComissionASSAPercent" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')" AutoPostBack="true" OnTextChanged="Comission_TextChanged"></asp:TextBox>
+                                            <asp:TextBox ID="txtComissionASSAPercent" runat="server" CssClass="form-control" onkeypress="numberFormat(this);" onchange="numberFormat(this);" AutoPostBack="true" OnTextChanged="Comission_TextChanged"></asp:TextBox>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Comisión ASSA</label>
                                         <div class="col-sm-2">
-                                            <asp:TextBox ID="txtComissionASSA" runat="server" ReadOnly="true" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
+                                            <asp:TextBox ID="txtComissionASSA" runat="server" ReadOnly="true" CssClass="form-control"></asp:TextBox>
                                         </div>
 
                                         <label class="col-sm-1 control-label" for="form-group-input">% Asesor</label>
                                         <div class="col-sm-1">
-                                            <asp:TextBox ID="txtComissionAdviserPercent" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')" AutoPostBack="true" OnTextChanged="Comission_TextChanged"></asp:TextBox>
+                                            <asp:TextBox ID="txtComissionAdviserPercent" runat="server" CssClass="form-control" onkeypress="numberFormat(this);" onchange="numberFormat(this);" AutoPostBack="true" OnTextChanged="Comission_TextChanged"></asp:TextBox>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Comisión Asesor</label>
                                         <div class="col-sm-2">
-                                            <asp:TextBox ID="txtComissionAdviser" runat="server" ReadOnly="true" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
+                                            <asp:TextBox ID="txtComissionAdviser" runat="server" ReadOnly="true" CssClass="form-control"></asp:TextBox>
                                         </div>
                                     </div>
 
@@ -280,16 +280,15 @@
                                     <div class="row">
                                         <label class="col-sm-1 control-label" for="form-group-input">% Gasto</label>
                                         <div class="col-sm-1">
-                                            <asp:TextBox ID="txtSpendingPercent" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')" AutoPostBack="true" OnTextChanged="Comission_TextChanged"></asp:TextBox>
+                                            <asp:TextBox ID="txtSpendingPercent" runat="server" CssClass="form-control" onkeypress="numberFormat(this);" onchange="numberFormat(this);" AutoPostBack="true" OnTextChanged="Comission_TextChanged"></asp:TextBox>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Gasto</label>
                                         <div class="col-sm-2">
-                                            <asp:TextBox ID="txtSpending" runat="server" ReadOnly="true" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
+                                            <asp:TextBox ID="txtSpending" runat="server" ReadOnly="true" CssClass="form-control" onkeypress="numberFormat(this);" onchange="numberFormat(this);"></asp:TextBox>
                                         </div>
 
                                     </div>
                                     <br />
-
                                 </div>
                             </div>
                         </div>
@@ -305,7 +304,6 @@
                                     <div class="row">
                                         <label class="col-sm-1 control-label" for="form-group-input">Agente 1</label>
                                         <div class="col-sm-3">
-
                                             <asp:DropDownList ID="AgentsDDL1" runat="server" CssClass="form-control" DataSourceID="agentsDS"
                                                 DataValueField="AgentID" DataTextField="Agent">
                                             </asp:DropDownList>
@@ -344,15 +342,13 @@
                                             <asp:CheckBox ID="CheckBox1" runat="server" />
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <hr />
-                <div class="row">
+                <%--<div class="row">
                     <div class="col-lg-8"></div>
                     <label class="col-sm-1 control-label" for="form-group-input">Prima Total</label>
                     <div class="col-sm-3">
@@ -365,13 +361,12 @@
                     <div class="col-sm-3">
                         <asp:TextBox ID="txtPremiunmPlusTax" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
                     </div>
-                </div>
+                </div>--%>
                 <div class="row">
                     <div class="col-sm-2">
                         <asp:Button ID="btnGuardar" runat="server" CssClass=" btn btn-primary" Text="Guardar" OnClick="btnGuardar_Click" />
                     </div>
                 </div>
-
 
                 <!-- SQL Data Sources -->
                 <asp:SqlDataSource ID="clientesDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="sp_obtener_persona_para_siniestros" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
@@ -394,7 +389,6 @@
                     DeleteCommandType="StoredProcedure">
                     <InsertParameters>
                         <asp:QueryStringParameter Name="CertificateID" QueryStringField="certificateID" Type="Int32" />
-
                         <asp:ControlParameter Name="AgentID" ControlID="ctl00$MainContent$AgentCommissionListView$ctrl0$AgentsDDL" PropertyName="SelectedValue" />
                         <asp:Parameter Name="ComissionPercent" Type="Decimal" />
                         <asp:Parameter Name="ComissionSellerPercent" Type="Decimal" />
@@ -468,8 +462,7 @@
                 monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
                 today: "Hoy"
             };
-
-
+            
             //$('#MainContent_txtEmissionDate').datepicker({
             //    isRTL: false,
             //    format: 'dd/mm/yyyy',

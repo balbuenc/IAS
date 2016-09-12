@@ -29,6 +29,7 @@
         <ContentTemplate>
 
             <div class="container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-left: 15px; padding-right: 15px">
+                
                 <div class="row">
                     <div class="col-lg-12">
                         <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
@@ -163,7 +164,6 @@
                         </div>
                     </div>
                 </div>
-
 
                 <div class="row">
                     <div class="col-lg-12" style="font-size: small">
@@ -348,7 +348,7 @@
                     </div>
                 </div>
                 <hr />
-                <%--<div class="row">
+                <div class="row">
                     <div class="col-lg-8"></div>
                     <label class="col-sm-1 control-label" for="form-group-input">Prima Total</label>
                     <div class="col-sm-3">
@@ -361,7 +361,7 @@
                     <div class="col-sm-3">
                         <asp:TextBox ID="txtPremiunmPlusTax" runat="server" CssClass="form-control" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
                     </div>
-                </div>--%>
+                </div>
                 <div class="row">
                     <div class="col-sm-2">
                         <asp:Button ID="btnGuardar" runat="server" CssClass=" btn btn-primary" Text="Guardar" OnClick="btnGuardar_Click" />

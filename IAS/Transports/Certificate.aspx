@@ -233,11 +233,11 @@
                                     <div class="row">
                                         <label class="col-sm-1 control-label" for="form-group-input">Suma Asegurada</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtCapitalAmount" runat="server" CssClass="form-control" onkeypress="numberFormat(this);" onchange="numberFormat(this);" AutoPostBack="true" OnTextChanged="Insurance_TextChanged"></asp:TextBox>
+                                            <asp:TextBox ID="txtCapitalAmount" runat="server" CssClass="form-control" onkeypress="numberFormat(this);" onchange="numberFormat(this);" AutoPostBack="true" OnTextChanged="Comission_TextChanged"></asp:TextBox>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">% Prima L</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtRate" runat="server" CssClass="form-control" onkeypress="numberFormat(this);" onchange="numberFormat(this);" AutoPostBack="true" OnTextChanged="Insurance_TextChanged"></asp:TextBox>
+                                            <asp:TextBox ID="txtRate" runat="server" CssClass="form-control" onkeypress="numberFormat(this);" onchange="numberFormat(this);" AutoPostBack="true" OnTextChanged="Comission_TextChanged"></asp:TextBox>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Prima L</label>
                                         <div class="col-sm-3">

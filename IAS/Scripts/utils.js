@@ -83,9 +83,12 @@ function numberFormat(obj) {
     if (numero.indexOf(",") >= 0)
         nuevoNumero = nuevoNumero.substring(0, nuevoNumero.indexOf(","));
 
+    console.log(nuevoNumero);
+
     // Ponemos un punto cada 3 caracteres
-    for (var j, i = nuevoNumero.length - 1, j = 0; i >= 0; i--, j++)
+    for (var j, i = nuevoNumero.length, j = 0; i >= 0; i--, j++) {
         resultado = nuevoNumero.charAt(i) + ((j > 0) && (j % 3 == 0) ? "." : "") + resultado;
+    }
 
     // Si tiene decimales, se lo añadimos al numero una vez forateado con 
     // los separadores de miles

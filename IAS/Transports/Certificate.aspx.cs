@@ -687,8 +687,7 @@ namespace IAS.Transports
             s = s.Replace(",", CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator);
             return decimal.Parse(s, NumberStyles.Any, CultureInfo.InvariantCulture);
         }
-
-
+        
         protected void Comission_TextChanged(object sender, EventArgs e)
         {
             if(Request.QueryString["mode"] != null)
@@ -737,9 +736,26 @@ namespace IAS.Transports
                         comissionAdviserPercent = ParseToDecimal(txtComissionAdviserPercent.Text);
                     }
 
+                    txtCapitalAmount.Text = txtCapitalAmount.Text.Replace(".", "");
+                    decimal capitalAmount = 0;
+                    if(!string.IsNullOrEmpty(txtCapitalAmount.Text))
+                    {
+                        capitalAmount = ParseToDecimal(txtCapitalAmount.Text);
+                    }
+
+                    txtRate.Text = txtRate.Text.Replace(".", "");
+                    decimal rate = 0;
+                    if(!string.IsNullOrEmpty(txtRate.Text))
+                    {
+                        rate = ParseToDecimal(txtRate.Text);
+                    }
+
+
                     cmd.Parameters.AddWithValue("@SpendingPercent", spendingPercent);
                     cmd.Parameters.AddWithValue("@ComissionASSAPercent", comissionASSAPercent);
                     cmd.Parameters.AddWithValue("@ComissionAdviserPercent", comissionAdviserPercent);
+                    cmd.Parameters.AddWithValue("@CapitalAmount", capitalAmount);
+                    cmd.Parameters.AddWithValue("@Rate", rate);
 
                     da = new SqlDataAdapter(cmd);
 
@@ -749,7 +765,7 @@ namespace IAS.Transports
                     {
 
                         double comissionASSAPercent1 = double.Parse(dt.Rows[0]["ComissionASSAPercent"].ToString());
-                        txtComissionASSAPercent.Text = comissionASSAPercent1.ToString("0,0.00", new CultureInfo("es-PY", false));
+                        txtComissionASSAPercent.Text = comissionASSAPercent1.ToString("0.0,00", new CultureInfo("es-PY", false));
 
                         double comissionASSA1 = double.Parse(dt.Rows[0]["ComissionASSA"].ToString());
                         txtComissionASSA.Text = comissionASSA1.ToString("0,0.00", new CultureInfo("es-PY", false));
@@ -766,76 +782,18 @@ namespace IAS.Transports
                         double spending1 = double.Parse(dt.Rows[0]["Spending"].ToString());
                         txtSpending.Text = spending1.ToString("0,0.00", new CultureInfo("es-PY", false));
 
-                    }
-
-                }
-                catch(Exception ex)
-                {
-                    ErrorLabel.Text = ex.ToString();
-                    ErrorLabel.Visible = true;
-                }
-            }
-        }
-
-        protected void Insurance_TextChanged(object sender, EventArgs e)
-        {
-            if(Request.QueryString["mode"] != null)
-            {
-
-                SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
-                SqlCommand cmd = new SqlCommand();
-                SqlDataAdapter da;
-                DataTable dt = new DataTable();
-
-                int rowsAffected;
-
-                try
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Connection = sqlConnection1;
-
-                    if(Request.QueryString["certificateID"] == null)
-                    {
-                        ErrorLabel.Text = "No se puede actualizar sin conocer el ID de Certificado";
-                        ErrorLabel.Visible = true;
-                        return;
-                    }
-
-                    cmd.CommandText = "[transport].[sp_update_certificate_insurance]";
-                    cmd.Parameters.AddWithValue("@CertificateID", long.Parse(Request.QueryString["certificateID"].ToString()));
-
-                    txtCapitalAmount.Text = txtCapitalAmount.Text.Replace(".", "");
-                    decimal capitalAmount = 0;
-                    if(!string.IsNullOrEmpty(txtCapitalAmount.Text))
-                    {
-                        capitalAmount = ParseToDecimal(txtCapitalAmount.Text);
-                    }
-
-                    txtRate.Text = txtRate.Text.Replace(".", "");
-                    decimal rate = 0;
-                    if(!string.IsNullOrEmpty(txtRate.Text))
-                    {
-                        rate = ParseToDecimal(txtRate.Text);
-                    }
-
-                    cmd.Parameters.AddWithValue("@CapitalAmount", capitalAmount);
-                    cmd.Parameters.AddWithValue("@Rate", rate);
-
-                    da = new SqlDataAdapter(cmd);
-
-                    da.Fill(dt);
-
-                    if(dt?.Rows.Count > 0)
-                    {
                         double capitalAmount1 = double.Parse(dt.Rows[0]["CapitalAmount"].ToString());
                         txtCapitalAmount.Text = capitalAmount1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
 
                         double rate1 = double.Parse(dt.Rows[0]["Rate"].ToString());
                         txtRate.Text = rate1.ToString("0,0.00", new CultureInfo("es-PY", false));
 
                         double premium1 = double.Parse(dt.Rows[0]["Premium"].ToString());
                         txtPremium.Text = premium1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
                     }
+
                 }
                 catch(Exception ex)
                 {

@@ -304,17 +304,17 @@
                                     <div class="row">
                                         <label class="col-sm-1 control-label" for="form-group-input">Agente 1</label>
                                         <div class="col-sm-3">
-                                            <asp:DropDownList ID="AgentsDDL1" runat="server" CssClass="form-control" DataSourceID="agentsDS"
+                                            <asp:DropDownList ID="AgentsDDL_1" runat="server" CssClass="form-control" DataSourceID="agentsDS"
                                                 DataValueField="AgentID" DataTextField="Agent">
                                             </asp:DropDownList>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">% Comisión</label>
                                         <div class="col-sm-1">
-                                            <asp:TextBox ID="txtComission1Percent" runat="server" Text='<%# Bind("ComissionPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                                            <asp:TextBox ID="txtAgentPercent_1" runat="server" CssClass="form-control" Font-Size="X-Small" AutoPostBack="true" OnTextChanged="Comission_TextChanged" ></asp:TextBox>                                           
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Comisión</label>
                                         <div class="col-sm-2">
-                                            <asp:TextBox ID="txtAgent1Comission" runat="server" ReadOnly="true" CssClass="form-control" Font-Size="X-Small" />
+                                            <asp:TextBox ID="txtAgentAmount_1" runat="server" ReadOnly="true" CssClass="form-control" Font-Size="X-Small" />
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Aplicar Gasto</label>
                                         <div class="col-sm-2">
@@ -325,17 +325,17 @@
                                     <div class="row">
                                         <label class="col-sm-1 control-label" for="form-group-input">Agente 2</label>
                                         <div class="col-sm-3">
-                                            <asp:DropDownList ID="AgentsDDL2" runat="server" CssClass="form-control" DataSourceID="agentsDS"
+                                            <asp:DropDownList ID="AgentsDDL_2" runat="server" CssClass="form-control" DataSourceID="agentsDS"
                                                 DataValueField="AgentID" DataTextField="Agent">
                                             </asp:DropDownList>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">% Comisión</label>
                                         <div class="col-sm-1">
-                                            <asp:TextBox ID="txtComission2Percent" runat="server" Text='<%# Bind("ComissionPercent") %>' CssClass="form-control" Font-Size="X-Small" /></td>
+                                            <asp:TextBox ID="txtAgentPercent_2" runat="server" CssClass="form-control" Font-Size="X-Small" AutoPostBack="true" OnTextChanged="Comission_TextChanged"></asp:TextBox>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Comisión</label>
                                         <div class="col-sm-2">
-                                            <asp:TextBox ID="txtAgent2Comission" runat="server" ReadOnly="true" CssClass="form-control" Font-Size="X-Small" />
+                                            <asp:TextBox ID="txtAgentAmount_2" runat="server" ReadOnly="true" CssClass="form-control" Font-Size="X-Small" />
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Aplicar Gasto</label>
                                         <div class="col-sm-2">

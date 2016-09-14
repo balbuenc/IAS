@@ -346,31 +346,31 @@ namespace IAS.Transports {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAgentCommission;
         
         /// <summary>
-        /// AgentsDDL1 control.
+        /// AgentsDDL_1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList AgentsDDL1;
+        protected global::System.Web.UI.WebControls.DropDownList AgentsDDL_1;
         
         /// <summary>
-        /// txtComission1Percent control.
+        /// txtAgentPercent_1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtComission1Percent;
+        protected global::System.Web.UI.WebControls.TextBox txtAgentPercent_1;
         
         /// <summary>
-        /// txtAgent1Comission control.
+        /// txtAgentAmount_1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAgent1Comission;
+        protected global::System.Web.UI.WebControls.TextBox txtAgentAmount_1;
         
         /// <summary>
         /// CheckBox2 control.
@@ -382,31 +382,31 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.CheckBox CheckBox2;
         
         /// <summary>
-        /// AgentsDDL2 control.
+        /// AgentsDDL_2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList AgentsDDL2;
+        protected global::System.Web.UI.WebControls.DropDownList AgentsDDL_2;
         
         /// <summary>
-        /// txtComission2Percent control.
+        /// txtAgentPercent_2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtComission2Percent;
+        protected global::System.Web.UI.WebControls.TextBox txtAgentPercent_2;
         
         /// <summary>
-        /// txtAgent2Comission control.
+        /// txtAgentAmount_2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAgent2Comission;
+        protected global::System.Web.UI.WebControls.TextBox txtAgentAmount_2;
         
         /// <summary>
         /// CheckBox1 control.

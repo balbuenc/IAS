@@ -115,7 +115,7 @@ namespace IAS.Transports
                 if(Request.QueryString["mode"].ToString().Equals("update"))
                 {
                     //Load data to update
-                    LoadCertificates();
+                    LoadCertificates();                
                     SiteLabel.InnerText = "Certificado (Actualización)";
                     divAgentCommission.Visible = true;
                 }
@@ -215,6 +215,19 @@ namespace IAS.Transports
                     }
 
                     ddlCoverType.SelectedItem.Text = dt.Rows[0]["CoverType"]?.ToString();
+
+                    AgentsDDL_1.SelectedValue = dt.Rows[0]["AgentID_1"].ToString();
+
+                    double agentPercent_1 = double.Parse(dt.Rows[0]["AgentPercent_1"].ToString());
+                    txtAgentPercent_1.Text = agentPercent_1.ToString("0,0.00", new CultureInfo("es-PY", false));
+                    double agentAmount_1 = double.Parse(dt.Rows[0]["AgentAmount_1"].ToString());
+                    txtAgentAmount_1.Text = agentAmount_1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                    AgentsDDL_2.SelectedValue = dt.Rows[0]["AgentID_2"].ToString();
+                    double agentPercent_2 = double.Parse(dt.Rows[0]["AgentPercent_2"].ToString());
+                    txtAgentPercent_2.Text = agentPercent_2.ToString("0,0.00", new CultureInfo("es-PY", false));
+                    double agentAmount_2 = double.Parse(dt.Rows[0]["AgentAmount_2"].ToString());
+                    txtAgentAmount_2.Text = agentAmount_2.ToString("0,0.00", new CultureInfo("es-PY", false));
 
                 }
                 else
@@ -627,6 +640,27 @@ namespace IAS.Transports
 
                     string coverType = ddlContact.SelectedItem.Text;
 
+
+
+                    int agentID_1 = 0;
+                    int.TryParse(AgentsDDL_1.SelectedValue, out agentID_1);
+
+                    txtAgentPercent_1.Text = txtAgentPercent_1.Text.Replace(".", "");
+                    decimal agentPercent_1 = 0;
+                    if(!string.IsNullOrEmpty(txtAgentPercent_1.Text))
+                    {
+                        agentPercent_1 = ParseToDecimal(txtAgentPercent_1.Text);
+                    }
+
+                    int agentID_2 = 0;
+                    int.TryParse(AgentsDDL_2.SelectedValue, out agentID_2);
+                    txtAgentPercent_2.Text = txtAgentPercent_2.Text.Replace(".", "");
+                    decimal agentPercent_2 = 0;
+                    if(!string.IsNullOrEmpty(txtAgentPercent_2.Text))
+                    {
+                        agentPercent_2 = ParseToDecimal(txtAgentPercent_2.Text);
+                    }
+
                     cmd.Parameters.AddWithValue("@CertificateNumber", certificateNumber);
                     cmd.Parameters.AddWithValue("@PersonID", PersonaID);
                     cmd.Parameters.AddWithValue("@InsuranceManagerID", insuranceManager);
@@ -658,6 +692,12 @@ namespace IAS.Transports
                     cmd.Parameters.AddWithValue("@RequestDate", requestDate);
                     cmd.Parameters.AddWithValue("@CoverType", coverType);
                     cmd.Parameters.AddWithValue("@TotalPrime", totalPrime);
+
+                    cmd.Parameters.AddWithValue("@AgentID_1", agentID_1);
+                    cmd.Parameters.AddWithValue("@AgentPercent_1", agentPercent_1);
+
+                    cmd.Parameters.AddWithValue("@AgentID_2", agentID_2);
+                    cmd.Parameters.AddWithValue("@AgentPercent_2", agentPercent_2);
 
                     sqlConnection1.Open();
 
@@ -750,13 +790,27 @@ namespace IAS.Transports
                         rate = ParseToDecimal(txtRate.Text);
                     }
 
+                    txtAgentPercent_1.Text = txtAgentPercent_1.Text.Replace(".", "");
+                    decimal agentPercent_1 = 0;
+                    if(!string.IsNullOrEmpty(txtAgentPercent_1.Text))
+                    {
+                        agentPercent_1 = ParseToDecimal(txtAgentPercent_1.Text);
+                    }
+
+                    txtAgentPercent_2.Text = txtAgentPercent_2.Text.Replace(".", "");
+                    decimal agentPercent_2 = 0;
+                    if(!string.IsNullOrEmpty(txtAgentPercent_2.Text))
+                    {
+                        agentPercent_2 = ParseToDecimal(txtAgentPercent_2.Text);
+                    }
 
                     cmd.Parameters.AddWithValue("@SpendingPercent", spendingPercent);
                     cmd.Parameters.AddWithValue("@ComissionASSAPercent", comissionASSAPercent);
                     cmd.Parameters.AddWithValue("@ComissionAdviserPercent", comissionAdviserPercent);
                     cmd.Parameters.AddWithValue("@CapitalAmount", capitalAmount);
                     cmd.Parameters.AddWithValue("@Rate", rate);
-
+                    cmd.Parameters.AddWithValue("@AgentPercent_1", agentPercent_1);
+                    cmd.Parameters.AddWithValue("@AgentPercent_2", agentPercent_2);
                     da = new SqlDataAdapter(cmd);
 
                     da.Fill(dt);
@@ -791,6 +845,18 @@ namespace IAS.Transports
 
                         double premium1 = double.Parse(dt.Rows[0]["Premium"].ToString());
                         txtPremium.Text = premium1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                        double agentPercent_11 = double.Parse(dt.Rows[0]["AgentPercent_1"].ToString());
+                        txtAgentPercent_1.Text = agentPercent_11.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                        double agentAmount_1 = double.Parse(dt.Rows[0]["AgentAmount_1"].ToString());
+                        txtAgentAmount_1.Text = agentAmount_1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                        double agentPercent_12 = double.Parse(dt.Rows[0]["AgentPercent_2"].ToString());
+                        txtAgentPercent_2.Text = agentPercent_12.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                        double agentAmount_2 = double.Parse(dt.Rows[0]["AgentAmount_2"].ToString());
+                        txtAgentAmount_2.Text = agentAmount_2.ToString("0,0.00", new CultureInfo("es-PY", false));
 
                     }
 

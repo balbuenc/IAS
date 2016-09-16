@@ -295,7 +295,7 @@
                     </div>
                 </div>
 
-                <div class="row" id="divAgentCommission" runat="server" visible="false">
+                <div class="row" id="divAgentCommission" runat="server">
                     <div class="col-lg-12" style="font-size: small">
                         <div class="panel panel-default">
                             <div class="panel-heading">Comisionistas</div>

@@ -117,15 +117,27 @@ namespace IAS.Transports
                     //Load data to update
                     LoadCertificates();                
                     SiteLabel.InnerText = "Certificado (Actualización)";
-                    divAgentCommission.Visible = true;
+                    //divAgentCommission.Visible = true;
                 }
                 else
                 {
                     SiteLabel.InnerText = "Certificado (Nuevo)";
                     txtCertificateNumber.Text = GetNextCertificateNumber();
-                    divAgentCommission.Visible = false;
+                    //divAgentCommission.Visible = false;
+                    SetRates();
+
                 }
             }
+        }
+
+        private void SetRates()
+        {
+            txtRate.Text = "5,00";
+            txtComissionASSAPercent.Text = "5,00";
+            txtComissionAdviserPercent.Text = "5,00";
+            txtSpendingPercent.Text = "5,00";
+            txtAgentPercent_1.Text = "5,00";
+            txtAgentPercent_2.Text = "5,00";
         }
 
         private void LoadCertificates()
@@ -139,7 +151,7 @@ namespace IAS.Transports
 
             try
             {
-                cmd.CommandText = "[transport].[sp_get_certificate_by_collectionID]";
+                cmd.CommandText = "[transport].[sp_get_certificate_by_certificateID]";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = sqlConnection1;
 
@@ -640,8 +652,6 @@ namespace IAS.Transports
 
                     string coverType = ddlContact.SelectedItem.Text;
 
-
-
                     int agentID_1 = 0;
                     int.TryParse(AgentsDDL_1.SelectedValue, out agentID_1);
 
@@ -733,138 +743,226 @@ namespace IAS.Transports
             if(Request.QueryString["mode"] != null)
             {
 
-                SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
-                SqlCommand cmd = new SqlCommand();
-                SqlDataAdapter da;
-                DataTable dt = new DataTable();
-
-                int rowsAffected;
-
-                try
+                if(Request.QueryString["mode"].ToString().Equals("update"))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Connection = sqlConnection1;
+                    SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
+                    SqlCommand cmd = new SqlCommand();
+                    SqlDataAdapter da;
+                    DataTable dt = new DataTable();
 
-                    if(Request.QueryString["certificateID"] == null)
+                    int rowsAffected;
+
+                    try
                     {
-                        ErrorLabel.Text = "No se puede actualizar sin conocer el ID de Certificado";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Connection = sqlConnection1;
+
+                        if(Request.QueryString["certificateID"] == null)
+                        {
+                            ErrorLabel.Text = "No se puede actualizar sin conocer el ID de Certificado";
+                            ErrorLabel.Visible = true;
+                            return;
+                        }
+
+                        cmd.CommandText = "[transport].[sp_update_certificate_rate]";
+                        cmd.Parameters.AddWithValue("@CertificateID", long.Parse(Request.QueryString["certificateID"].ToString()));
+
+                        txtSpendingPercent.Text = txtSpendingPercent.Text.Replace(".", "");
+                        decimal spendingPercent = 0;
+                        if(!string.IsNullOrEmpty(txtSpendingPercent.Text))
+                        {
+                            spendingPercent = ParseToDecimal(txtSpendingPercent.Text);
+                        }
+
+                        txtComissionASSAPercent.Text = txtComissionASSAPercent.Text.Replace(".", "");
+                        decimal comissionASSAPercent = 0;
+                        if(!string.IsNullOrEmpty(txtComissionASSAPercent.Text))
+                        {
+                            comissionASSAPercent = ParseToDecimal(txtComissionASSAPercent.Text);
+                        }
+
+                        txtComissionAdviserPercent.Text = txtComissionAdviserPercent.Text.Replace(".", "");
+                        decimal comissionAdviserPercent = 0;
+                        if(!string.IsNullOrEmpty(txtComissionAdviserPercent.Text))
+                        {
+                            comissionAdviserPercent = ParseToDecimal(txtComissionAdviserPercent.Text);
+                        }
+
+                        txtCapitalAmount.Text = txtCapitalAmount.Text.Replace(".", "");
+                        decimal capitalAmount = 0;
+                        if(!string.IsNullOrEmpty(txtCapitalAmount.Text))
+                        {
+                            capitalAmount = ParseToDecimal(txtCapitalAmount.Text);
+                        }
+
+                        txtRate.Text = txtRate.Text.Replace(".", "");
+                        decimal rate = 0;
+                        if(!string.IsNullOrEmpty(txtRate.Text))
+                        {
+                            rate = ParseToDecimal(txtRate.Text);
+                        }
+
+                        txtAgentPercent_1.Text = txtAgentPercent_1.Text.Replace(".", "");
+                        decimal agentPercent_1 = 0;
+                        if(!string.IsNullOrEmpty(txtAgentPercent_1.Text))
+                        {
+                            agentPercent_1 = ParseToDecimal(txtAgentPercent_1.Text);
+                        }
+
+                        txtAgentPercent_2.Text = txtAgentPercent_2.Text.Replace(".", "");
+                        decimal agentPercent_2 = 0;
+                        if(!string.IsNullOrEmpty(txtAgentPercent_2.Text))
+                        {
+                            agentPercent_2 = ParseToDecimal(txtAgentPercent_2.Text);
+                        }
+
+                        cmd.Parameters.AddWithValue("@SpendingPercent", spendingPercent);
+                        cmd.Parameters.AddWithValue("@ComissionASSAPercent", comissionASSAPercent);
+                        cmd.Parameters.AddWithValue("@ComissionAdviserPercent", comissionAdviserPercent);
+                        cmd.Parameters.AddWithValue("@CapitalAmount", capitalAmount);
+                        cmd.Parameters.AddWithValue("@Rate", rate);
+                        cmd.Parameters.AddWithValue("@AgentPercent_1", agentPercent_1);
+                        cmd.Parameters.AddWithValue("@AgentPercent_2", agentPercent_2);
+                        da = new SqlDataAdapter(cmd);
+
+                        da.Fill(dt);
+
+                        if(dt?.Rows.Count > 0)
+                        {
+
+                            double comissionASSAPercent1 = double.Parse(dt.Rows[0]["ComissionASSAPercent"].ToString());
+                            txtComissionASSAPercent.Text = comissionASSAPercent1.ToString("0.0,00", new CultureInfo("es-PY", false));
+
+                            double comissionASSA1 = double.Parse(dt.Rows[0]["ComissionASSA"].ToString());
+                            txtComissionASSA.Text = comissionASSA1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                            double comissionAdviserPercent1 = double.Parse(dt.Rows[0]["ComissionAdviserPercent"].ToString());
+                            txtComissionAdviserPercent.Text = comissionAdviserPercent1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                            double comissionAdviser1 = double.Parse(dt.Rows[0]["ComissionAdviser"].ToString());
+                            txtComissionAdviser.Text = comissionAdviser1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                            double spendingPercent1 = double.Parse(dt.Rows[0]["SpendingPercent"].ToString());
+                            txtSpendingPercent.Text = spendingPercent1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                            double spending1 = double.Parse(dt.Rows[0]["Spending"].ToString());
+                            txtSpending.Text = spending1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                            double capitalAmount1 = double.Parse(dt.Rows[0]["CapitalAmount"].ToString());
+                            txtCapitalAmount.Text = capitalAmount1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+
+                            double rate1 = double.Parse(dt.Rows[0]["Rate"].ToString());
+                            txtRate.Text = rate1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                            double premium1 = double.Parse(dt.Rows[0]["Premium"].ToString());
+                            txtPremium.Text = premium1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                            double agentPercent_11 = double.Parse(dt.Rows[0]["AgentPercent_1"].ToString());
+                            txtAgentPercent_1.Text = agentPercent_11.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                            double agentAmount_1 = double.Parse(dt.Rows[0]["AgentAmount_1"].ToString());
+                            txtAgentAmount_1.Text = agentAmount_1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                            double agentPercent_12 = double.Parse(dt.Rows[0]["AgentPercent_2"].ToString());
+                            txtAgentPercent_2.Text = agentPercent_12.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                            double agentAmount_2 = double.Parse(dt.Rows[0]["AgentAmount_2"].ToString());
+                            txtAgentAmount_2.Text = agentAmount_2.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                        }
+
+                    }
+                    catch(Exception ex)
+                    {
+                        ErrorLabel.Text = ex.ToString();
                         ErrorLabel.Visible = true;
-                        return;
                     }
+                }
+                else if(Request.QueryString["mode"].ToString().Equals("insert"))
+                {
+                    // Calculos auxiliares para los campos calculados
 
-                    cmd.CommandText = "[transport].[sp_update_certificate_rate]";
-                    cmd.Parameters.AddWithValue("@CertificateID", long.Parse(Request.QueryString["certificateID"].ToString()));
-
-                    txtSpendingPercent.Text = txtSpendingPercent.Text.Replace(".", "");
-                    decimal spendingPercent = 0;
-                    if(!string.IsNullOrEmpty(txtSpendingPercent.Text))
-                    {
-                        spendingPercent = ParseToDecimal(txtSpendingPercent.Text);
-                    }
-
-                    txtComissionASSAPercent.Text = txtComissionASSAPercent.Text.Replace(".", "");
-                    decimal comissionASSAPercent = 0;
-                    if(!string.IsNullOrEmpty(txtComissionASSAPercent.Text))
-                    {
-                        comissionASSAPercent = ParseToDecimal(txtComissionASSAPercent.Text);
-                    }
-
-                    txtComissionAdviserPercent.Text = txtComissionAdviserPercent.Text.Replace(".", "");
-                    decimal comissionAdviserPercent = 0;
-                    if(!string.IsNullOrEmpty(txtComissionAdviserPercent.Text))
-                    {
-                        comissionAdviserPercent = ParseToDecimal(txtComissionAdviserPercent.Text);
-                    }
-
-                    txtCapitalAmount.Text = txtCapitalAmount.Text.Replace(".", "");
+                    // Premium: (([CapitalAmount]*[Rate])/(100))
+                    decimal premium = 0;
                     decimal capitalAmount = 0;
-                    if(!string.IsNullOrEmpty(txtCapitalAmount.Text))
+                    decimal rate = 0;
+                    decimal spendingPercent = 0;
+                    decimal spending = 0;
+                    decimal comissionASSAPercent = 0;
+                    decimal comissionASSA = 0;
+                    decimal comissionAdviserPercent = 0;
+                    decimal comissionAdviser = 0;
+                    decimal agentPercent_1 = 0;
+                    decimal agentAmount_1 = 0;
+                    decimal agentPercent_2 = 0;
+                    decimal agentAmount_2 = 0;
+
+                    if(!string.IsNullOrEmpty( txtCapitalAmount .Text))
                     {
-                        capitalAmount = ParseToDecimal(txtCapitalAmount.Text);
+                        capitalAmount = ParseToDecimal(txtCapitalAmount.Text.Replace(".", "")); 
                     }
 
-                    txtRate.Text = txtRate.Text.Replace(".", "");
-                    decimal rate = 0;
                     if(!string.IsNullOrEmpty(txtRate.Text))
                     {
-                        rate = ParseToDecimal(txtRate.Text);
+                        rate = ParseToDecimal(txtRate.Text.Replace(".", ","));
+                    }
+                    premium = (capitalAmount * rate) / 100;
+                    txtPremium.Text = premium.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+
+                    // Spending : (((([CapitalAmount] *[Rate]) / (100)) *[SpendingPercent]) / (100))
+
+                    if(!string.IsNullOrEmpty(txtSpendingPercent.Text))
+                    {
+                        spendingPercent = ParseToDecimal(txtSpendingPercent.Text.Replace(".", ","));
                     }
 
-                    txtAgentPercent_1.Text = txtAgentPercent_1.Text.Replace(".", "");
-                    decimal agentPercent_1 = 0;
+                    // se calcula premium antes ((([CapitalAmount] *[Rate]) / (100))
+                    spending = (premium * spendingPercent) / 100;
+                    txtSpending.Text = spending.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                    // (([ComissionASSAPercent]*(([CapitalAmount]*[Rate])/(100)))/(100))
+
+                    if(!string.IsNullOrEmpty(txtComissionASSAPercent.Text))
+                    {
+                        comissionASSAPercent = ParseToDecimal(txtComissionASSAPercent.Text.Replace(".", ","));
+                    }
+
+                    // se calcula antes premium: (([CapitalAmount]*[Rate])/(100))
+                    comissionASSA = (comissionASSAPercent * premium) / 100;
+                    txtComissionASSA.Text = comissionASSA.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                    // ComissionAdviser: (([ComissionAdviserPercent]*(([CapitalAmount]*[Rate])/(100)))/(100))
+
+                    if(!string.IsNullOrEmpty(txtComissionAdviserPercent.Text))
+                    {
+                        comissionAdviserPercent = ParseToDecimal(txtComissionAdviserPercent.Text.Replace(".", ","));
+                    }
+
+                    // se calcula antes premium: (([CapitalAmount]*[Rate])/(100))
+                    comissionAdviser = (comissionAdviserPercent * premium) / 100;
+                    txtComissionAdviser.Text = comissionAdviser.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+
+                    // AgentAmount_1: (([AgentPercent_1]/(100))*[CapitalAmount])
                     if(!string.IsNullOrEmpty(txtAgentPercent_1.Text))
                     {
-                        agentPercent_1 = ParseToDecimal(txtAgentPercent_1.Text);
+                        agentPercent_1 = ParseToDecimal(txtAgentPercent_1.Text.Replace(".", ","));
                     }
 
-                    txtAgentPercent_2.Text = txtAgentPercent_2.Text.Replace(".", "");
-                    decimal agentPercent_2 = 0;
+                    agentAmount_1 = (agentPercent_1 / 100) * capitalAmount;
+                    txtAgentAmount_1.Text = agentPercent_1.ToString("0,0.00", new CultureInfo("es-PY", false));
+
+                    // AgentAmount_2: (([AgentPercent_2]/(100))*[CapitalAmount])
                     if(!string.IsNullOrEmpty(txtAgentPercent_2.Text))
                     {
-                        agentPercent_2 = ParseToDecimal(txtAgentPercent_2.Text);
+                        agentPercent_2 = ParseToDecimal(txtAgentPercent_2.Text.Replace(".", ","));
                     }
 
-                    cmd.Parameters.AddWithValue("@SpendingPercent", spendingPercent);
-                    cmd.Parameters.AddWithValue("@ComissionASSAPercent", comissionASSAPercent);
-                    cmd.Parameters.AddWithValue("@ComissionAdviserPercent", comissionAdviserPercent);
-                    cmd.Parameters.AddWithValue("@CapitalAmount", capitalAmount);
-                    cmd.Parameters.AddWithValue("@Rate", rate);
-                    cmd.Parameters.AddWithValue("@AgentPercent_1", agentPercent_1);
-                    cmd.Parameters.AddWithValue("@AgentPercent_2", agentPercent_2);
-                    da = new SqlDataAdapter(cmd);
+                    agentAmount_2 = (agentPercent_2 / 100) * capitalAmount;
+                    txtAgentAmount_2.Text = agentPercent_2.ToString("0,0.00", new CultureInfo("es-PY", false));
 
-                    da.Fill(dt);
-
-                    if(dt?.Rows.Count > 0)
-                    {
-
-                        double comissionASSAPercent1 = double.Parse(dt.Rows[0]["ComissionASSAPercent"].ToString());
-                        txtComissionASSAPercent.Text = comissionASSAPercent1.ToString("0.0,00", new CultureInfo("es-PY", false));
-
-                        double comissionASSA1 = double.Parse(dt.Rows[0]["ComissionASSA"].ToString());
-                        txtComissionASSA.Text = comissionASSA1.ToString("0,0.00", new CultureInfo("es-PY", false));
-
-                        double comissionAdviserPercent1 = double.Parse(dt.Rows[0]["ComissionAdviserPercent"].ToString());
-                        txtComissionAdviserPercent.Text = comissionAdviserPercent1.ToString("0,0.00", new CultureInfo("es-PY", false));
-
-                        double comissionAdviser1 = double.Parse(dt.Rows[0]["ComissionAdviser"].ToString());
-                        txtComissionAdviser.Text = comissionAdviser1.ToString("0,0.00", new CultureInfo("es-PY", false));
-
-                        double spendingPercent1 = double.Parse(dt.Rows[0]["SpendingPercent"].ToString());
-                        txtSpendingPercent.Text = spendingPercent1.ToString("0,0.00", new CultureInfo("es-PY", false));
-
-                        double spending1 = double.Parse(dt.Rows[0]["Spending"].ToString());
-                        txtSpending.Text = spending1.ToString("0,0.00", new CultureInfo("es-PY", false));
-
-                        double capitalAmount1 = double.Parse(dt.Rows[0]["CapitalAmount"].ToString());
-                        txtCapitalAmount.Text = capitalAmount1.ToString("0,0.00", new CultureInfo("es-PY", false));
-
-
-                        double rate1 = double.Parse(dt.Rows[0]["Rate"].ToString());
-                        txtRate.Text = rate1.ToString("0,0.00", new CultureInfo("es-PY", false));
-
-                        double premium1 = double.Parse(dt.Rows[0]["Premium"].ToString());
-                        txtPremium.Text = premium1.ToString("0,0.00", new CultureInfo("es-PY", false));
-
-                        double agentPercent_11 = double.Parse(dt.Rows[0]["AgentPercent_1"].ToString());
-                        txtAgentPercent_1.Text = agentPercent_11.ToString("0,0.00", new CultureInfo("es-PY", false));
-
-                        double agentAmount_1 = double.Parse(dt.Rows[0]["AgentAmount_1"].ToString());
-                        txtAgentAmount_1.Text = agentAmount_1.ToString("0,0.00", new CultureInfo("es-PY", false));
-
-                        double agentPercent_12 = double.Parse(dt.Rows[0]["AgentPercent_2"].ToString());
-                        txtAgentPercent_2.Text = agentPercent_12.ToString("0,0.00", new CultureInfo("es-PY", false));
-
-                        double agentAmount_2 = double.Parse(dt.Rows[0]["AgentAmount_2"].ToString());
-                        txtAgentAmount_2.Text = agentAmount_2.ToString("0,0.00", new CultureInfo("es-PY", false));
-
-                    }
-
-                }
-                catch(Exception ex)
-                {
-                    ErrorLabel.Text = ex.ToString();
-                    ErrorLabel.Visible = true;
                 }
             }
         }

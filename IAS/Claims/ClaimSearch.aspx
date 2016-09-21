@@ -1,7 +1,11 @@
 ﻿<%@ Page Title="Buscar Siniestros" Language="C#" MasterPageFile="~/Claim.Master" AutoEventWireup="true" CodeBehind="ClaimSearch.aspx.cs" Inherits="IAS.Claims.ClaimSearch" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script src="/Scripts/jquery-1.10.2.min.js"></script>
+   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  
+
+    <script src="/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="/Scripts/jquery-ui-1.12.1.min.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
     <link href="/Content/bootstrap.min.css" rel="stylesheet" />
 
@@ -10,6 +14,91 @@
     <script src="/Scripts/bootstrap-datepicker.min.js"></script>
     <link href="/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
 
+
+    <script type="text/javascript">
+        $(function () {
+            $("[id$=txtSearchClaim]").autocomplete(
+                {
+                    source: "search.ashx",
+                    // note minlength, triggers the Handler call only once 3 characters entered
+                    minLength: 3,
+                    focus: function( event, ui ) {
+                        $("[id$=txtSearchClaim]").val(ui.item.label);
+                        return false;
+                    },
+                    select: function (event, ui) {
+                        if (ui.item) {
+                            $("[id$=txtSearchClaim]").val(ui.item.Client);
+                            return false;
+                        }
+                    }
+                })
+                .autocomplete("instance")._renderItem = function (ul, item) {
+                    console.log(item.Client);
+                    return $("<li>")
+                      .append("<div>" + item.Client + "</div>")
+                      .appendTo(ul);
+                };
+        });
+
+        //$(document).ready(function () {
+        //    $.ajax({
+        //        type: "POST",
+        //        url: "ClaimSearch.aspx/SearchClaim",
+        //        data: "{}",
+        //        contentType: "application/json; charset=utf-8",
+        //        dataType: "json",
+        //        success: function (result) {
+        //            if (result.hasOwnProperty("d")) {
+        //                // The .d is part of the result so reference it
+        //                //  to get to the actual JSON data of interest
+        //                $("[id$=txtSearchClaim]").autocomplete({
+        //                    source: result.d
+        //                });
+        //            }
+        //            else {
+        //                // No .d; so just use result
+        //                $("[id$=txtSearchClaim]").autocomplete({
+        //                    source: result
+        //                });
+        //            }
+        //        }
+        //    });
+        //});
+
+
+        //    $(function () {
+        //        $("[id$=txtSearchClaim]").autocomplete({
+        //            source: function (request, response) {
+        //                $.ajax({
+        //                    url: 'http://localhost:1715/Claims/ClaimSearch/SearchClaim',
+        //                    data: "{ 'prefix': '" + request.term + "'}",
+        //                    dataType: "json",
+        //                    type: "POST",
+        //                    contentType: "application/json; charset=utf-8",
+        //                    success: function (data) {
+        //                        response($.map(data.d, function (item) {
+        //                        return {
+        //                            label: item.split('-')[0],
+        //                            val: item.split('-')[1]
+        //                        }
+        //                    }))
+        //                },
+        //                error: function (response) {
+        //                    console.log(response.responseText);
+        //                },
+        //                failure: function (response) {
+        //                    console.log(response.responseText);
+        //                }
+        //            });
+        //        },
+        //        select: function (e, i) {
+        //            $("[id$=txtSearchClaim]").val(i.item.val);
+        //        },
+        //        minLength: 1
+        //    });
+        //});
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
@@ -79,7 +168,7 @@
 
         <div class="row" style="padding-top: 5px">
             <div class="col-lg-12">
-                <asp:ListView ID="ClaimListView" 
+                <asp:ListView ID="ClaimListView"
                     runat="server"
                     DataKeyNames="ClaimID"
                     OnItemCommand="ClaimListView_ItemCommand">
@@ -206,4 +295,6 @@
         });
 
     </script>
+
+
 </asp:Content>

@@ -4,12 +4,13 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace IAS.Claims
 {
-    public partial class ClaimSearch : System.Web.UI.Page
+    public partial class ClaimSearch : Page
     {
         private string criteria;
         private string claimID;
@@ -91,9 +92,7 @@ namespace IAS.Claims
         {
             searchClaims();
         }
-
-
-
+        
         protected void searchClaims()
         {
             string criteria,
@@ -122,11 +121,6 @@ namespace IAS.Claims
             }
 
             criteria = ddlCriteria.SelectedValue;
-
-
-
-
-
             myClaims = ddlMyClaims.SelectedValue;
             claimStatusId = ddlStatus.SelectedValue;
 
@@ -137,7 +131,6 @@ namespace IAS.Claims
 
             try
             {
-
                 cmd.CommandText = "[claim].[sp_search_claims]";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = sqlConnection1;
@@ -167,8 +160,6 @@ namespace IAS.Claims
                 ErrorLabel.Text = "Error a ejecutar busqueda.. : " + exp.Message;
                 ErrorLabel.Visible = true;
             }
-
-
         }
 
         protected void ClaimListView_ItemCommand(object sender, ListViewCommandEventArgs e)
@@ -224,5 +215,32 @@ namespace IAS.Claims
         {
             searchClaims();
         }
+
+        [WebMethod]
+        public static string[] SearchClaim(string prefix)
+        {
+            List<string> customers = new List<string>();
+            using (SqlConnection conn = new SqlConnection())
+            {
+                conn.ConnectionString = @"Data Source = aibsql.cloudapp.net,1500; Initial Catalog = ias_developer; Persist Security Info = True; User ID = ias_desarrollo; Password = Passw0rd";
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandText = "select Top 10 nombre, apellido1 from exchange.personas where nombre like ''+@SearchText+'%'";
+                    cmd.Parameters.AddWithValue("@SearchText", prefix);
+                    cmd.Connection = conn;
+                    conn.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            customers.Add(string.Format("{0}-{1}", sdr["nombre"], sdr["apellido1"]));
+                        }
+                    }
+                    conn.Close();
+                }
+            }
+            return customers.ToArray();
+        }
+
     }
 }

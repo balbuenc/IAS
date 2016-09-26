@@ -27,8 +27,10 @@
                     select: function (event, ui) {
                         if (ui.item) {
                             $("[id$=txtSearchClaim]").val(ui.item.Client);
+                            $("[id$=btnSearch]").click();
                             return false;
                         }
+                    
                     }
                 })
                 .autocomplete("instance")._renderItem = function (ul, item) {
@@ -39,63 +41,6 @@
                 };
         });
 
-        //$(document).ready(function () {
-        //    $.ajax({
-        //        type: "POST",
-        //        url: "ClaimSearch.aspx/SearchClaim",
-        //        data: "{}",
-        //        contentType: "application/json; charset=utf-8",
-        //        dataType: "json",
-        //        success: function (result) {
-        //            if (result.hasOwnProperty("d")) {
-        //                // The .d is part of the result so reference it
-        //                //  to get to the actual JSON data of interest
-        //                $("[id$=txtSearchClaim]").autocomplete({
-        //                    source: result.d
-        //                });
-        //            }
-        //            else {
-        //                // No .d; so just use result
-        //                $("[id$=txtSearchClaim]").autocomplete({
-        //                    source: result
-        //                });
-        //            }
-        //        }
-        //    });
-        //});
-
-
-        //    $(function () {
-        //        $("[id$=txtSearchClaim]").autocomplete({
-        //            source: function (request, response) {
-        //                $.ajax({
-        //                    url: 'http://localhost:1715/Claims/ClaimSearch/SearchClaim',
-        //                    data: "{ 'prefix': '" + request.term + "'}",
-        //                    dataType: "json",
-        //                    type: "POST",
-        //                    contentType: "application/json; charset=utf-8",
-        //                    success: function (data) {
-        //                        response($.map(data.d, function (item) {
-        //                        return {
-        //                            label: item.split('-')[0],
-        //                            val: item.split('-')[1]
-        //                        }
-        //                    }))
-        //                },
-        //                error: function (response) {
-        //                    console.log(response.responseText);
-        //                },
-        //                failure: function (response) {
-        //                    console.log(response.responseText);
-        //                }
-        //            });
-        //        },
-        //        select: function (e, i) {
-        //            $("[id$=txtSearchClaim]").val(i.item.val);
-        //        },
-        //        minLength: 1
-        //    });
-        //});
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

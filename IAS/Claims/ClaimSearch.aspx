@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="Buscar Siniestros" Language="C#" MasterPageFile="~/Claim.Master" AutoEventWireup="true" CodeBehind="ClaimSearch.aspx.cs" Inherits="IAS.Claims.ClaimSearch" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  
+    <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
 
     <script src="/Scripts/jquery-1.12.4.min.js"></script>
     <script src="/Scripts/jquery-ui-1.12.1.min.js"></script>
@@ -12,9 +12,7 @@
     <script src="/Scripts/moment-with-locales.min.js"></script>
     <script src="/Scripts/bootstrap-datetimepicker.min.js"></script>
     <script src="/Scripts/bootstrap-datepicker.min.js"></script>
-    <link href="/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
-
-
+    
     <script type="text/javascript">
         $(function () {
             $("[id$=txtSearchClaim]").autocomplete(
@@ -34,7 +32,7 @@
                     }
                 })
                 .autocomplete("instance")._renderItem = function (ul, item) {
-                    console.log(item.Client);
+                    //console.log(item.Client);
                     return $("<li>")
                       .append("<div>" + item.Client + "</div>")
                       .appendTo(ul);

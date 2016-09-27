@@ -13,15 +13,6 @@ namespace IAS.Claims {
     public partial class ClaimSearch {
         
         /// <summary>
-        /// ddlCriteria control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCriteria;
-        
-        /// <summary>
         /// txtSearchClaim control.
         /// </summary>
         /// <remarks>
@@ -73,7 +64,7 @@ namespace IAS.Claims {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnSearch;
         
         /// <summary>
         /// ErrorLabel control.

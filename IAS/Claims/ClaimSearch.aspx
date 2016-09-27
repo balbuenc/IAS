@@ -45,7 +45,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="container">
+    <div class="container-fluid" style=" padding-left:5px; padding-right:5px">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Búsqueda</h3>
@@ -100,6 +100,7 @@
                         </a>
                     </div>
                 </div>
+            </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -200,8 +201,6 @@
                     </asp:ListView>
                 </div>
             </div>
-
-        </div>
     </div>
     <!-- #region DATSOURCES -->
     <asp:SqlDataSource ID="ClaimSqldataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"

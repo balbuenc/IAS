@@ -87,11 +87,6 @@ namespace IAS.Claims
                 }
             }
         }
-
-        protected void searchBox_ServerClick(object sender, EventArgs e)
-        {
-            searchClaims();
-        }
         
         protected void searchClaims()
         {
@@ -120,7 +115,7 @@ namespace IAS.Claims
                 find = txtSearchClaim.Text;
             }
 
-            criteria = ddlCriteria.SelectedValue;
+            criteria = "Client";//ddlCriteria.SelectedValue;
             myClaims = ddlMyClaims.SelectedValue;
             claimStatusId = ddlStatus.SelectedValue;
 
@@ -241,6 +236,6 @@ namespace IAS.Claims
             }
             return customers.ToArray();
         }
-
+      
     }
 }

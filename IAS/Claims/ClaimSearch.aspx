@@ -11,7 +11,6 @@
 
     <script src="/Scripts/moment-with-locales.min.js"></script>
     <script src="/Scripts/bootstrap-datetimepicker.min.js"></script>
-    <script src="/Scripts/bootstrap-datepicker.min.js"></script>
 
     <script type="text/javascript">
         $(function () {
@@ -183,7 +182,6 @@
                                     </asp:LinkButton>
 
                                 </td>
-
 
                             </tr>
                         </ItemTemplate>

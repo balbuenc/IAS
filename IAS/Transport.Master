@@ -26,9 +26,11 @@
     <title><%: Page.Title %> - Balcazz HT</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
+
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="Content/Styles.css" rel="stylesheet" />
@@ -58,21 +60,29 @@
                         Transporte
                     </h4>
                 </div>
-                 <div class="col-lg-2" title="Certificados">
+                <div class="col-lg-2" title="Certificados">
                     <h4>
                         <a href="Certificates.aspx" class="btn btn-info">
                             <span class="glyphicon glyphicon-list-alt"></span>
                         </a>
                     </h4>
                 </div>
-                 <div class="col-lg-2" title="Pólizas">
+                <div class="col-lg-2" title="Pólizas">
                     <h4>
                         <a href="Policies.aspx" class="btn btn-info">
                             <span class="glyphicon glyphicon-book"></span>
                         </a>
                     </h4>
                 </div>
-                <div class="col-lg-6 visible-lg">
+                <div class="col-lg-1" title="Reclamos">
+                    <h4>
+                        <a href="ClaimSearch.aspx" class="btn btn-info">
+                            <span class="glyphicon glyphicon-tasks"></span>
+                        </a>
+                    </h4>
+                </div>
+
+                <div class="col-lg-5 visible-lg">
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
@@ -98,7 +108,7 @@
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
                 <%--Framework Scripts--%>
-                <asp:ScriptReference Name="MsAjaxBundle" />
+                <%--<asp:ScriptReference Name="MsAjaxBundle" />
                 <asp:ScriptReference Name="jquery" />
                 <asp:ScriptReference Name="bootstrap" />
                 <asp:ScriptReference Name="respond" />
@@ -110,12 +120,12 @@
                 <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
                 <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
                 <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
-                <asp:ScriptReference Name="WebFormsBundle" />
+                <asp:ScriptReference Name="WebFormsBundle" />--%>
 
                 <%--Site Scripts--%>
                 <asp:ScriptReference Path="~/Scripts/jqueryBlockUI.js" />
                 <%--<asp:ScriptReference Path="~/Scripts/jquery.datetimepicker.js" />--%>
-                <asp:ScriptReference Path="~/Scripts/bootstrap-datepicker.min.js" />
+                <%--<asp:ScriptReference Path="~/Scripts/bootstrap-datepicker.min.js" />--%>
             </Scripts>
         </asp:ScriptManager>
         <div>
@@ -141,7 +151,6 @@
             function onPageLoad() {
                 $.unblockUI();
             }
-
 
         </script>
     </form>

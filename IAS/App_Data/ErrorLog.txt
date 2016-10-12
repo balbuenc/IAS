@@ -2230,3 +2230,63 @@ Exception Type: System.Exception
 Exception: El error no fué controlado por la aplicación.
 Source: customErrors section - Web.config
 Stack Trace: 
+********** 30/09/2016 12:44:23 p.m. **********
+Exception Type: System.Exception
+Exception: El error no fué controlado por la aplicación.
+Source: customErrors section - Web.config
+Stack Trace: 
+********** 02/10/2016 06:12:51 p.m. **********
+Exception Type: System.Web.HttpException
+Exception: Ha ocurrido un error HTTP. La página no ha sido encontrada. Por favor intentelo de nuevo.
+Source: customErrors section - Web.config
+Stack Trace: 
+********** 02/10/2016 06:13:34 p.m. **********
+Exception Type: System.Web.HttpException
+Exception: Ha ocurrido un error HTTP. La página no ha sido encontrada. Por favor intentelo de nuevo.
+Source: customErrors section - Web.config
+Stack Trace: 
+********** 02/10/2016 06:13:54 p.m. **********
+Exception Type: System.Web.HttpException
+Exception: Ha ocurrido un error HTTP. La página no ha sido encontrada. Por favor intentelo de nuevo.
+Source: customErrors section - Web.config
+Stack Trace: 
+********** 02/10/2016 06:17:06 p.m. **********
+Exception Type: System.Exception
+Exception: El error no fué controlado por la aplicación.
+Source: customErrors section - Web.config
+Stack Trace: 
+********** 03/10/2016 10:45:21 a.m. **********
+Exception Type: System.Exception
+Exception: El error no fué controlado por la aplicación.
+Source: customErrors section - Web.config
+Stack Trace: 
+********** 06/10/2016 04:32:09 p.m. **********
+Exception Type: System.Web.HttpException
+Exception: Ha ocurrido un error HTTP. La página no ha sido encontrada. Por favor intentelo de nuevo.
+Source: customErrors section - Web.config
+Stack Trace: 
+********** 09/10/2016 09:19:45 p.m. **********
+Exception Type: System.Web.HttpException
+Exception: Ha ocurrido un error HTTP. La página no ha sido encontrada. Por favor intentelo de nuevo.
+Source: customErrors section - Web.config
+Stack Trace: 
+********** 09/10/2016 09:19:45 p.m. **********
+Exception Type: System.Web.HttpException
+Exception: Ha ocurrido un error HTTP. La página no ha sido encontrada. Por favor intentelo de nuevo.
+Source: customErrors section - Web.config
+Stack Trace: 
+********** 09/10/2016 09:19:48 p.m. **********
+Exception Type: System.Web.HttpException
+Exception: Ha ocurrido un error HTTP. La página no ha sido encontrada. Por favor intentelo de nuevo.
+Source: customErrors section - Web.config
+Stack Trace: 
+********** 10/10/2016 07:20:16 p.m. **********
+Exception Type: System.Exception
+Exception: El error no fué controlado por la aplicación.
+Source: customErrors section - Web.config
+Stack Trace: 
+********** 10/10/2016 07:22:23 p.m. **********
+Exception Type: System.Exception
+Exception: El error no fué controlado por la aplicación.
+Source: customErrors section - Web.config
+Stack Trace: 

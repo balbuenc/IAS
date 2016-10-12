@@ -211,31 +211,5 @@ namespace IAS.Claims
             searchClaims();
         }
 
-        [WebMethod]
-        public static string[] SearchClaim(string prefix)
-        {
-            List<string> customers = new List<string>();
-            using (SqlConnection conn = new SqlConnection())
-            {
-                conn.ConnectionString = @"Data Source = aibsql.cloudapp.net,1500; Initial Catalog = ias_developer; Persist Security Info = True; User ID = ias_desarrollo; Password = Passw0rd";
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.CommandText = "select Top 10 nombre, apellido1 from exchange.personas where nombre like ''+@SearchText+'%'";
-                    cmd.Parameters.AddWithValue("@SearchText", prefix);
-                    cmd.Connection = conn;
-                    conn.Open();
-                    using (SqlDataReader sdr = cmd.ExecuteReader())
-                    {
-                        while (sdr.Read())
-                        {
-                            customers.Add(string.Format("{0}-{1}", sdr["nombre"], sdr["apellido1"]));
-                        }
-                    }
-                    conn.Close();
-                }
-            }
-            return customers.ToArray();
-        }
-      
     }
 }

@@ -227,7 +227,6 @@ namespace IAS.Transports
 
         protected void gridClients_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-
             switch (e.CommandName)
             {
                 case "seleccionar":
@@ -249,11 +248,8 @@ namespace IAS.Transports
                     break;
                 default:
                     break;
-
-
+                    
             }
-
         }
-
     }
 }

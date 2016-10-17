@@ -26,7 +26,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace IAS.Tasks
+namespace IAS.Collections
 {  
     public partial class Tasks : System.Web.UI.Page
     {

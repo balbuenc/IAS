@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-using Newtonsoft.Json;
 using System.Web.Services;
-using System.Data.SqlClient;
 
-namespace IAS.Claims
+namespace IAS.Tasks
 {
     /// <summary>
     /// Summary description for search
@@ -18,7 +18,7 @@ namespace IAS.Claims
         public void ProcessRequest(HttpContext context)
         {
             string json = string.Empty;
-            List<string> customers = new List<string>();
+            List<string> tasks = new List<string>();
             // note the httpcontext.Request contains the search term
             if (!string.IsNullOrEmpty(context.Request["term"]))
             {
@@ -30,7 +30,7 @@ namespace IAS.Claims
                     using (SqlCommand cmd = new SqlCommand())
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        cmd.CommandText = "[claim].[sp_search_claim]";
+                        cmd.CommandText = "[task].[sp_search_task]";
                         cmd.Parameters.AddWithValue("@find", searchTerm);
                         cmd.Connection = conn;
                         conn.Open();
@@ -38,22 +38,22 @@ namespace IAS.Claims
                         {
                             while (sdr.Read())
                             {
-                                customers.Add(sdr["client"].ToString());
+                                tasks.Add(sdr["task"].ToString());
                             }
                         }
                         conn.Close();
                     }
                 }
-                
-                if (customers.Count != 0)
+
+                if (tasks.Count != 0)
                 {
                     var transformList = new List<ResponseData>();
 
-                    for (int index = 0; index < customers.Count; index++)
+                    for (int index = 0; index < tasks.Count; index++)
                     {
                         transformList.Add(new ResponseData
                         {
-                            Client = customers[index].ToString()
+                            Task = tasks[index].ToString()
                         });
                     }
 
@@ -66,7 +66,7 @@ namespace IAS.Claims
             // write the JSON (or nothing) to the response
             context.Response.Write(json);
         }
-
+        
         public bool IsReusable
         {
             get
@@ -75,10 +75,9 @@ namespace IAS.Claims
             }
         }
     }
-
     [Serializable]
     public class ResponseData
     {
-        public string Client;
+        public string Task;
     }
 }

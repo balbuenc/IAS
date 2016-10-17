@@ -7,125 +7,108 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IAS.Collections
-{
+namespace IAS.Tasks {
+    
+    
     public partial class Tasks {
         
         /// <summary>
-        /// IdUserHiddenField control.
+        /// txtSearchTask control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField IdUserHiddenField;
+        protected global::System.Web.UI.WebControls.TextBox txtSearchTask;
         
         /// <summary>
-        /// LabelUser control.
+        /// ddlTaskPriority control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelUser;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTaskPriority;
         
         /// <summary>
-        /// PersonasFisicasGridView control.
+        /// ddlTaskState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView PersonasFisicasGridView;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTaskState;
         
         /// <summary>
-        /// DSPersonasFisicas control.
+        /// dpStart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource DSPersonasFisicas;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText dpStart;
         
         /// <summary>
-        /// PersonasJuridicasGridView control.
+        /// dpEnd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView PersonasJuridicasGridView;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText dpEnd;
         
         /// <summary>
-        /// DSPersonasJuridicas control.
+        /// btnSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource DSPersonasJuridicas;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnSearch;
         
         /// <summary>
-        /// PersonasInexistentesGridView control.
+        /// ErrorLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView PersonasInexistentesGridView;
+        protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
-        /// DSPersonasInexistentes control.
+        /// TasksListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource DSPersonasInexistentes;
+        protected global::System.Web.UI.WebControls.ListView TasksListView;
         
         /// <summary>
-        /// AssignationsPageBtn control.
+        /// TasksSqldataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AssignationsPageBtn;
+        protected global::System.Web.UI.WebControls.SqlDataSource TasksSqldataSource;
         
         /// <summary>
-        /// GridUserTasks control.
+        /// StatusSqldataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridUserTasks;
+        protected global::System.Web.UI.WebControls.SqlDataSource StatusSqldataSource;
         
         /// <summary>
-        /// DSTasks control.
+        /// PrioritySqldataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource DSTasks;
-        
-        /// <summary>
-        /// DetalleTareaFormView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView DetalleTareaFormView;
-        
-        /// <summary>
-        /// DSTaskDetail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource DSTaskDetail;
+        protected global::System.Web.UI.WebControls.SqlDataSource PrioritySqldataSource;
     }
 }

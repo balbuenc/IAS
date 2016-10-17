@@ -1,0 +1,112 @@
+﻿<%--   
+    «Copyright 2014 Balcazz HT, http://www.balcazzht.com»
+
+    This file is part of IAS | Insurance Advanced Services.
+
+    IAS is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    IAS is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+--%>
+
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Task.master.cs" Inherits="IAS.Task" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title><%: Page.Title %> - Balcazz HT</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+        <script src="/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="/Scripts/bootstrap.min.js"></script>
+        <link href="/Content/Styles.css" rel="stylesheet" />
+        <script src="Scripts/bootstrap.min.js"></script>
+        <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+
+    </asp:ContentPlaceHolder>
+    <script type="text/javascript">
+        window.onload = function () {
+            var pos = window.name || 0;
+            window.scrollTo(0, pos);
+        }
+
+        window.onunload = function () {
+            window.name = self.pageYOffset || (document.documentElement.scrollTop + document.body.scrollTop);
+        }
+
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div class="container-fluid">
+                <div class="row" style="padding-top: 10px; padding-left: 5px; padding-right: 5px; background-color: #393">
+                    <div class="col-lg-1">
+                        <a href="/Claims/ClaimSearch.aspx" class="btn btn-info  btn-sm">
+                            <span class="glyphicon glyphicon-home"></span>IAS  
+                        </a>
+                    </div>
+                    <div class="col-lg-11" style="font-family: 'Segoe UI'; font-size: x-small; color: white">
+                        <asp:LoginView runat="server" ViewStateMode="Disabled">
+                            <AnonymousTemplate>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a runat="server" href="~/Account/Login">Log in</a></li>
+                                </ul>
+                            </AnonymousTemplate>
+                            <LoggedInTemplate>
+                           <%--     <div class="btn-group">
+                                    <button class="btn btn-default btn-sm dropdown-toggle" id="ReportsDropDown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Reportes <span class="caret"></span>
+                                    </button>
+
+                                    <ul class="dropdown-menu" aria-labelledby="ReportsDropDown">
+                                        <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fGESTOR_SSRS%2fClaimsResume&rs:Command=Render" target="_blank">Informe Siniestros</a></li>
+                                        <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fGESTOR_SSRS%2fClaimsByStatus&rs:Command=Render" target="_blank">Resultado Gestion</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group">
+                                    <button class="btn btn-default btn-sm dropdown-toggle" id="ActionssDropDown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Acciones <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="ActionssDropDown">
+                                        <li><a href="UploadClaims.aspx">Subir Archivos</a></li>
+                                    </ul>
+                                </div>--%>
+
+                                <ul class="nav navbar-nav navbar-right hidden-sm">
+                                    <li><a runat="server" href="/Account/Manage" title="Mi Perfil" style="color: white"><%: Context.User.Identity.GetUserName()  %></a></li>
+                                    <li>
+                                        <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" ForeColor="White" />
+                                    </li>
+                                   <%-- <li>
+                                        <asp:LinkButton ID="lnkEstados" runat="server" Text="Estados" OnClientClick="$('#myModalStatus').modal('show'); return false;" ForeColor="Red">
+                                        <span class="glyphicon glyphicon-arrow-down"></span>
+                                        </asp:LinkButton>
+                                    </li>--%>
+
+                                </ul>
+                            </LoggedInTemplate>
+                        </asp:LoginView>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12" style="padding-top: 5px">
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</body>
+</html>

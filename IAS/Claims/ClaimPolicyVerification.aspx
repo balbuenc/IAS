@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Verficaciòn de Cobertura" Language="C#" MasterPageFile="~/Claim.Master" AutoEventWireup="true" CodeBehind="ClaimPolicyVerification.aspx.cs" Inherits="IAS.Claims.ClaimPolicyVerification" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../Scripts/jquery-1.12.4.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
 </asp:Content>

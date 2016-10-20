@@ -25,7 +25,7 @@
 <head runat="server">
     <title><%: Page.Title %> - Balcazz HT</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
-        <script src="/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="/Scripts/jquery-1.12.4.min.js"></script>
         <script src="/Scripts/bootstrap.min.js"></script>
         <link href="/Content/Styles.css" rel="stylesheet" />
         <script src="Scripts/bootstrap.min.js"></script>

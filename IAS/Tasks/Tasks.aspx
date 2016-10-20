@@ -51,7 +51,7 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    
+
                     <div class="col-lg-3">
                         <asp:TextBox ID="txtSearchTask" runat="server" CssClass="form-control" placeholder="Tarea"></asp:TextBox>
                     </div>
@@ -67,7 +67,7 @@
                             <asp:ListItem Value="-1" Text="Todos los estados" Selected="True"></asp:ListItem>
                         </asp:DropDownList>
                     </div>
-                    
+
                     <div class="col-lg-2">
                         <div class='input-group date' id='datetimepicker1'>
                             <input id="dpStart" placeholder="Fecha desde" class="form-control" runat="server" />
@@ -76,7 +76,7 @@
                             </span>
                         </div>
                     </div>
-                    
+
                     <div class="col-lg-2">
                         <div class='input-group date' id='datetimepicker2'>
                             <input id="dpEnd" placeholder="Fecha hasta" class="form-control" runat="server" />
@@ -85,15 +85,15 @@
                             </span>
                         </div>
                     </div>
-                    
+
                     <div class="col-lg-2 pull-right">
-                        <button id="btnSearch" runat="server" class="btn btn-default" onserverclick="btnSearch_ServerClick" >
+                        <button id="btnSearch" runat="server" class="btn btn-default" onserverclick="btnSearch_ServerClick">
                             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                         </button>
                         &nbsp;
-                        <a href="Task.aspx?mode=new" class="btn btn-default">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </a>
+                          <button id="btnNewTask" runat="server" class="btn btn-default" onserverclick="btnNewTask_ServerClick">
+                              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                          </button>
                     </div>
 
                 </div>
@@ -162,23 +162,23 @@
                                 <asp:Label ID="lblPercentComplete" runat="server" Text='<%# Eval("PercentComplete" ) + " %" %>' />
                             </td>
                             <td>
-                                
-                                <asp:LinkButton ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CssClass="btn btn-link">
+
+                                <asp:LinkButton ID="EditButton" runat="server" Text="Editar" CommandName="Editar" CommandArgument='<%# Eval("TaskID").ToString() %>' ToolTip="Editar" CssClass="btn btn-link">
                                                 <span class="glyphicon glyphicon-edit"></span>
                                 </asp:LinkButton>
-                                
-                                <asp:LinkButton ID="DeriveButton" runat="server" Text="Derivar" CommandName="Derive" CssClass="btn btn-link">
+
+                                <asp:LinkButton ID="DeriveButton" runat="server" Text="Derivar" CommandName="Derivar" CommandArgument='<%# Eval("TaskID").ToString() %>' CssClass="btn btn-link">
                                                 <span class="glyphicon glyphicon-share"></span>
                                 </asp:LinkButton>
 
-                                <asp:LinkButton ID="CloseButton" runat="server" Text="Cerrar" CommandName="Close" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Cerrar la Tarea.?');">
+                                <asp:LinkButton ID="CloseButton" runat="server" Text="Cerrar" CommandName="Cerrar" CommandArgument='<%# Eval("TaskID").ToString() %>' CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Cerrar la Tarea.?');">
                                                 <span class="glyphicon glyphicon-off"></span>
                                 </asp:LinkButton>
 
-                                <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Delete" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar la Tarea.?');">
+                                <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Eliminar" CommandArgument='<%# Eval("TaskID").ToString() %>' CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar la Tarea.?');">
                                                 <span class="glyphicon glyphicon-trash"></span>
                                 </asp:LinkButton>
-                                
+
                             </td>
 
                         </tr>
@@ -198,6 +198,80 @@
             </div>
         </div>
     </div>
+    <div class="modal fade modal-wide" id="myModalTask" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        <asp:Label ID="lblTitulo" runat="server" Text=""></asp:Label>
+                    </h4>
+                </div>
+                <br />
+                <div class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Tarea: </label>
+                        <div class="col-lg-6">
+                            <asp:TextBox ID="txtTarea" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Descripción: </label>
+                        <div class="col-lg-6">
+                            <asp:TextBox ID="txtDescripcion" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Fecha Inicio: </label>
+                        <div class="col-lg-6">
+                            <div class='input-group date' id='datetimepicker3'>
+                                <input id="txtFechaInicio" placeholder="Fecha inicio" class="form-control" runat="server" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Fecha Vencimiento: </label>
+                        <div class="col-lg-6">
+                            <div class='input-group date' id='datetimepicker4'>
+                                <input id="txtFechaVencimiento" placeholder="Fecha vencimiento" class="form-control" runat="server" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Prioridad: </label>
+                        <div class="col-lg-6">
+                            <asp:DropDownList ID="ddlPrioridad" runat="server" CssClass="form-control" DataValueField="TaskPriorityID" DataTextField="TaskPriority" DataSourceID="PrioritySqldataSource" AppendDataBoundItems="true">
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Estado: </label>
+                        <div class="col-lg-6">
+                          <asp:DropDownList ID="ddlEstado" runat="server" CssClass="form-control" DataValueField="TaskStateID" DataTextField="TaskState" DataSourceID="StatusSqldataSource" AppendDataBoundItems="true">
+                        </asp:DropDownList>
+                        </div>
+                    </div>
+                      <div class="form-group" runat="server">
+                        <label class="col-lg-3 control-label">Porcentaje: </label>
+                        <div class="col-lg-6">
+                           <asp:TextBox ID="txtPorcentaje" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <asp:Button ID="btnAceptar" runat="server" CssClass="btn btn-primary" Text="Aceptar" OnClick="btnAceptar_Click"></asp:Button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- #region DATASOURCES -->
     <asp:SqlDataSource ID="TasksSqldataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
         SelectCommand="task.sp_search_tasks" SelectCommandType="StoredProcedure"
@@ -214,7 +288,7 @@
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="StatusSqldataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
         SelectCommand="[task].[sp_get_status]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
-     <asp:SqlDataSource ID="PrioritySqldataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
+    <asp:SqlDataSource ID="PrioritySqldataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
         SelectCommand="[task].[sp_get_priority]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     <!-- #endregion -->
 
@@ -229,6 +303,20 @@
             format: 'DD-MM-YYYY',
             locale: 'es'
         });
+
+        $('#datetimepicker3').datetimepicker({
+            format: 'DD-MM-YYYY',
+            locale: 'es'
+        });
+
+        $('#datetimepicker4').datetimepicker({
+            format: 'DD-MM-YYYY',
+            locale: 'es'
+        });
+
+        function openModalTask() {
+            $('#myModalTask').modal('show');
+        }
 
     </script>
 

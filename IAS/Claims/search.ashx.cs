@@ -26,7 +26,7 @@ namespace IAS.Claims
 
                 using (SqlConnection conn = new SqlConnection())
                 {
-                    conn.ConnectionString = @"Data Source = aibsql.cloudapp.net,1500; Initial Catalog = ias_developer; Persist Security Info = True; User ID = ias_desarrollo; Password = Passw0rd";
+                    conn.ConnectionString = System.Configuration.ConfigurationManager.AppSettings["IASDBContext"]; 
                     using (SqlCommand cmd = new SqlCommand())
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;

@@ -11,9 +11,33 @@ namespace IAS.Tasks
 {
     public partial class Tasks : Page
     {
-        protected void Page_Init(object sender, EventArgs e)
+        public string Operacion
         {
-
+            get
+            {
+                object o = ViewState["Operacion"];
+                if (o == null)
+                    return string.Empty;
+                return o.ToString();
+            }
+            set
+            {
+                ViewState["Operacion"] = value;
+            }
+        }
+        public int TaskID
+        {
+            get
+            {
+                object o = ViewState["TaskID"];
+                if (o == null)
+                    return 0;
+                return (int)o;
+            }
+            set
+            {
+                ViewState["TaskID"] = value;
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -34,7 +58,98 @@ namespace IAS.Tasks
 
         protected void TasksListView_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
+            try
+            {
+                switch (e.CommandName)
+                {
+                    case "Editar":
+                        lblTitulo.Text = "editar tarea";
+                        Operacion = "update";
+                        GetTask(int.Parse(e.CommandArgument.ToString()));
+                        ScriptManager.RegisterStartupScript(this, GetType(), "Pop", "openModalTask();", true);
+                        break;
+                    case "Eliminar":
+                        DeleteTask(int.Parse(e.CommandArgument.ToString()));
 
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLabel.Text = "Error a ejecutar la operación.. : " + ex.Message;
+                ErrorLabel.Visible = true;
+            }
+        }
+
+        private void DeleteTask(int taskID)
+        {
+            SqlConnection sqlConnection1 = new SqlConnection(TasksSqldataSource.ConnectionString);
+
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cmd.CommandText = "[task].[sp_delete_task_by_taskId]";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = sqlConnection1;
+
+                cmd.Parameters.AddWithValue("@taskID", taskID);
+
+                sqlConnection1.Open();
+                cmd.ExecuteNonQuery();
+                sqlConnection1.Close();
+
+            }
+            catch (Exception exp)
+            {
+                sqlConnection1.Close();
+                ErrorLabel.Text = "Error a ejecutar busqueda.. : " + exp.Message;
+                ErrorLabel.Visible = true;
+            }
+
+            TasksLoad();
+
+        }
+
+        private void GetTask(int taskID)
+        {
+            SqlConnection sqlConnection1 = new SqlConnection(TasksSqldataSource.ConnectionString);
+            SqlDataAdapter da = new SqlDataAdapter();
+            SqlCommand cmd = new SqlCommand();
+            DataTable dt = new DataTable();
+
+            try
+            {
+                cmd.CommandText = "[task].[sp_get_task_by_taskId]";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = sqlConnection1;
+
+                cmd.Parameters.AddWithValue("@taskID", taskID);
+
+                da.SelectCommand = cmd;
+
+                da.Fill(dt);
+
+                if (dt?.Rows.Count > 0)
+                {
+                    TaskID = int.Parse(dt.Rows[0]["TaskID"].ToString());
+                    txtTarea.Text = dt.Rows[0]["TaskName"].ToString();
+                    txtDescripcion.Text = dt.Rows[0]["TaskDescription"].ToString();
+                    txtFechaInicio.Value = dt.Rows[0]["StartDate"].ToString();
+                    txtFechaVencimiento.Value = dt.Rows[0]["DueDate"].ToString();
+                    ddlPrioridad.SelectedValue = dt.Rows[0]["TaskPriorityID"].ToString();
+                    ddlEstado.SelectedValue = dt.Rows[0]["TaskStateID"].ToString();
+                    txtPorcentaje.Text = dt.Rows[0]["PercentComplete"].ToString();
+                }
+
+            }
+            catch (Exception exp)
+            {
+                ErrorLabel.Text = "Error a ejecutar busqueda.. : " + exp.Message;
+                ErrorLabel.Visible = true;
+            }
         }
 
         void TasksLoad()
@@ -99,6 +214,81 @@ namespace IAS.Tasks
                 ErrorLabel.Text = "Error a ejecutar busqueda.. : " + exp.Message;
                 ErrorLabel.Visible = true;
             }
+        }
+
+        protected void btnNewTask_ServerClick(object sender, EventArgs e)
+        {
+            lblTitulo.Text = "Nueva tarea";
+            Operacion = "new";
+         
+            ScriptManager.RegisterStartupScript(this, GetType(), "Pop", "openModalTask();", true);
+        }
+
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+            string taskName;
+            string taskDescription;
+            float percentComplete = 0;
+            int taskPriorityID;
+            int taskStateID;
+            int rowsAffected;
+            DateTime startDate,
+                     dueDate;
+
+            SqlConnection sqlConnection1 = new SqlConnection(TasksSqldataSource.ConnectionString);
+            SqlDataAdapter da = new SqlDataAdapter();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = sqlConnection1;
+            
+            try
+            {
+                
+                taskName = txtTarea.Text;
+                taskDescription = txtDescripcion.Text;
+                taskPriorityID = int.Parse(ddlPrioridad.SelectedValue);
+                taskStateID = int.Parse(ddlEstado.SelectedValue);
+                startDate = DateTime.Parse(txtFechaInicio.Value);
+                dueDate = DateTime.Parse(txtFechaVencimiento.Value);
+                             
+                switch (Operacion)
+                {
+                    case "new":
+                        cmd.CommandText = "[task].[sp_new_task]";
+                        break;
+                    case "update":
+                        cmd.CommandText = "[task].[sp_update_task]";
+                        percentComplete = float.Parse(txtPorcentaje.Text);
+                        cmd.Parameters.AddWithValue("@taskID", TaskID);
+                        break;
+                    default:
+                        break;
+                }
+
+                cmd.Parameters.AddWithValue("@taskName", taskName);
+                cmd.Parameters.AddWithValue("@taskDescription", taskDescription);
+                cmd.Parameters.AddWithValue("@user", User.Identity.Name);
+                cmd.Parameters.AddWithValue("@taskPriorityID", taskPriorityID);
+                cmd.Parameters.AddWithValue("@taskStateID", taskStateID);
+                cmd.Parameters.Add("@startDate", SqlDbType.DateTime).Value = startDate;
+                cmd.Parameters.Add("@dueDate", SqlDbType.DateTime).Value = dueDate;
+                cmd.Parameters.AddWithValue("@percentComplete", percentComplete);
+
+                sqlConnection1.Open();
+
+                rowsAffected = cmd.ExecuteNonQuery();
+
+                sqlConnection1.Close();
+
+            }
+            catch (Exception exp)
+            {
+                sqlConnection1.Close();
+                ErrorLabel.Text = "Error a ejecutar la operación.. : " + exp.Message;
+                ErrorLabel.Visible = true;
+            }
+
+            TasksLoad();
         }
     }
 }

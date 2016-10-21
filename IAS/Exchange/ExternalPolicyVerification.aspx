@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 
-    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../Scripts/jquery-1.12.4.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <title>IAS | Verficacion de Póliza</title>

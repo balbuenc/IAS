@@ -28,7 +28,7 @@
     <title>Grafico</title>
 
     <link href="../Content/dagre-d3-simple.css" rel="stylesheet" />
-    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../Scripts/jquery-1.12.4.min.js"></script>
     <script src="../Scripts/d3.min.js"></script>
     <script>
 

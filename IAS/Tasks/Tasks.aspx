@@ -167,9 +167,9 @@
                                                 <span class="glyphicon glyphicon-edit"></span>
                                 </asp:LinkButton>
 
-                                <asp:LinkButton ID="DeriveButton" runat="server" Text="Derivar" CommandName="Derivar" CommandArgument='<%# Eval("TaskID").ToString() %>' CssClass="btn btn-link">
+                                <%--<asp:LinkButton ID="DeriveButton" runat="server" Text="Derivar" CommandName="Derivar" CommandArgument='<%# Eval("TaskID").ToString() %>' CssClass="btn btn-link">
                                                 <span class="glyphicon glyphicon-share"></span>
-                                </asp:LinkButton>
+                                </asp:LinkButton>--%>
 
                                 <asp:LinkButton ID="CloseButton" runat="server" Text="Cerrar" CommandName="Cerrar" CommandArgument='<%# Eval("TaskID").ToString() %>' CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Cerrar la Tarea.?');">
                                                 <span class="glyphicon glyphicon-off"></span>
@@ -218,7 +218,7 @@
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Descripción: </label>
                         <div class="col-lg-6">
-                            <asp:TextBox ID="txtDescripcion" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txtDescripcion" TextMode="MultiLine" Style="height:100px;" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group">

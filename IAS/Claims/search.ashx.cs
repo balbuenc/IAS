@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using Newtonsoft.Json;
 using System.Web.Services;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace IAS.Claims
 {
@@ -26,7 +26,7 @@ namespace IAS.Claims
 
                 using (SqlConnection conn = new SqlConnection())
                 {
-                    conn.ConnectionString = @"Data Source = iasdev.cloudapp.net,1500; Initial Catalog = ias_developer; Persist Security Info = True; User ID = ias_desarrollo; Password = Passw0rd";
+                    conn.ConnectionString = ConfigurationManager.AppSettings["IASDBContext"];
                     using (SqlCommand cmd = new SqlCommand())
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Web;
 using System.Web.Services;
@@ -26,7 +27,7 @@ namespace IAS.Transports
 
                 using (SqlConnection conn = new SqlConnection())
                 {
-                    conn.ConnectionString = @"Data Source = iasdev.cloudapp.net,1500; Initial Catalog = ias_developer; Persist Security Info = True; User ID = ias_desarrollo; Password = Passw0rd";
+                    conn.ConnectionString = ConfigurationManager.AppSettings["IASDBContext"];
                     using (SqlCommand cmd = new SqlCommand())
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;

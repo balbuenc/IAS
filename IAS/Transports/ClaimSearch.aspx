@@ -52,14 +52,7 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    <%-- <div class="col-lg-3">
-                        <asp:DropDownList runat="server" ID="ddlCriteria" CssClass="form-control">
-                            <asp:ListItem Value="" Text="Tipo de búsqueda"></asp:ListItem>
-                            <asp:ListItem Value="PolicyNumber" Text="Nro Póliza"></asp:ListItem>
-                            <asp:ListItem Value="Client" Text="Cliente"></asp:ListItem>
-                            <asp:ListItem Value="ClientDocumentNumber" Text="Nro documento"></asp:ListItem>
-                        </asp:DropDownList>
-                    </div>--%>
+                 
                     <div class="col-lg-3">
                         <asp:TextBox ID="txtSearchClaim" runat="server" CssClass="form-control" placeholder="Cliente, Póliza, Documento"></asp:TextBox>
                     </div>

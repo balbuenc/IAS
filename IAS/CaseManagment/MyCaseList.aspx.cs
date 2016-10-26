@@ -40,8 +40,8 @@ namespace IAS.CaseManagment {
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (User.Identity.Name != "Sergio" || Request.QueryString["Search"] == "True")
-                FindUserFirstCase(0); //Traer en automatico , DIA<< MES ACTUAL << VENCIDOS
+            //if (User.Identity.Name != "Sergio" || Request.QueryString["Search"] == "True")
+            //    FindUserFirstCase(0); //Traer en automatico , DIA<< MES ACTUAL << VENCIDOS
         }
 
         private void FindUserFirstCase(int period)
@@ -129,7 +129,7 @@ namespace IAS.CaseManagment {
                 var userName =  HttpContext.Current.User.Identity.Name;
                 
                 var query = db.Cases
-                    .Where( c => (c.UserID == userId || userName == "sergio")
+                    .Where( c => (c.UserID == userId || userName == "cbalbuena")
                         && ( string.IsNullOrEmpty( dateInterval ) || dateInterval.Equals( ControlValues.Today ) ? c.isToday == 1 :
                             dateInterval.Equals( ControlValues.CurrentWeek ) ? SqlFunctions.DatePart( "week", c.EffectiveDate ) == currentWeekNum && SqlFunctions.DatePart("year", c.EffectiveDate) == today.Year  :
                             dateInterval.Equals( ControlValues.NextWeek ) ? SqlFunctions.DatePart( "week", c.EffectiveDate ) == nextWeekNum && SqlFunctions.DatePart("year", c.EffectiveDate) == today.Year :
@@ -139,7 +139,7 @@ namespace IAS.CaseManagment {
                         && ( theCasePriorityID == 0 ? true : c.CasePriorityID == theCasePriorityID )
                         && ( string.IsNullOrEmpty( caseDescription ) ? true : c.Description.Contains( caseDescription ) )
                         && c.StateID != 15)
-                    .OrderBy( m => m.EffectiveDate );
+                    .OrderByDescending( m => m.EffectiveDate );
 
                 return query;
             }

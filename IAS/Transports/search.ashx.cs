@@ -27,7 +27,9 @@ namespace IAS.Transports
 
                 using (SqlConnection conn = new SqlConnection())
                 {
-                    conn.ConnectionString = ConfigurationManager.AppSettings["IASDBContext"];
+
+                    conn.ConnectionString = ConfigurationManager.ConnectionStrings["IASDBContext"].ConnectionString;
+                    
                     using (SqlCommand cmd = new SqlCommand())
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;

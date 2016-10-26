@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.Services;
@@ -113,7 +114,7 @@ namespace IAS.Transports
                 find = txtSearchClaim.Text;
             }
 
-            criteria = "Client";//ddlCriteria.SelectedValue;
+            criteria = "Client";
             myClaims = ddlMyClaims.SelectedValue;
             claimStatusId = ddlStatus.SelectedValue;
 
@@ -124,7 +125,7 @@ namespace IAS.Transports
 
             try
             {
-                cmd.CommandText = "[claim].[sp_search_claims]";
+                cmd.CommandText = "[transport].[sp_search_claims]";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = sqlConnection1;
 
@@ -214,8 +215,8 @@ namespace IAS.Transports
         {
             List<string> customers = new List<string>();
             using (SqlConnection conn = new SqlConnection())
-            {
-                conn.ConnectionString = @"Data Source = aibsql.cloudapp.net,1500; Initial Catalog = ias_developer; Persist Security Info = True; User ID = ias_desarrollo; Password = Passw0rd";
+            {                
+                conn.ConnectionString = ConfigurationManager.AppSettings["IASDBContext"];
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.CommandText = "select Top 10 nombre, apellido1 from exchange.personas where nombre like ''+@SearchText+'%'";

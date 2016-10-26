@@ -28,6 +28,7 @@
         }
 
         .modal-wide1 .modal-dialog {
+            left: 10px;
             width: 80%; /* or whatever you wish */
         }
     </style>

@@ -125,7 +125,7 @@
                                     <%--    <input data-provide="datepicker" id="dp1" class="form-control" data-date-format="dd-mm-yyyy" runat="server" />--%>
                                 </div>
                             </div>
-                            <br>
+                            <br/>
                             <div class="row">
                                 <label class="col-sm-2 control-label" for="form-group-input">Tipo Siniestro</label>
                                 <div class="col-sm-10">

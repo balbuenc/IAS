@@ -119,11 +119,13 @@
                                     <tr>
                                         <th>Tarea</th>
                                         <th>Descripción</th>
+                                        <th>Tipo</th>
                                         <th>Fecha Inicio</th>
                                         <th>Fecha Vencimiento</th>
                                         <th>Prioridad</th>
                                         <th>Estado</th>
-                                        <th>Usuario</th>
+                                        <th>Asignado a</th>
+                                        <th>Creado por</th>
                                         <th>Porcentaje</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -144,6 +146,9 @@
                                 <asp:Label ID="lblTaskDescription" runat="server" Text='<%# Eval("TaskDescription") %>' />
                             </td>
                             <td>
+                                <asp:Label ID="lblTaskType" runat="server" Text='<%# Eval("TaskType") %>' />
+                            </td>
+                            <td>
                                 <asp:Label ID="lblStartDate" runat="server" Text='<%# DateTime.Parse( Eval("StartDate").ToString()).ToShortDateString() %>' />
                             </td>
                             <td>
@@ -157,6 +162,9 @@
                             </td>
                             <td>
                                 <asp:Label ID="lblUserName" runat="server" Text='<%# Eval("UserName") %>' />
+                            </td>
+                            <td>
+                                <asp:Label ID="lblCreatedBy" runat="server" Text='<%# Eval("CreatedBy") %>' />
                             </td>
                             <td>
                                 <asp:Label ID="lblPercentComplete" runat="server" Text='<%# Eval("PercentComplete" ) + " %" %>' />
@@ -218,7 +226,21 @@
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Descripción: </label>
                         <div class="col-lg-6">
-                            <asp:TextBox ID="txtDescripcion" TextMode="MultiLine" Style="height:100px;" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txtDescripcion" TextMode="MultiLine" Style="height:60px;" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Tipo de tarea: </label>
+                        <div class="col-lg-6">
+                            <asp:DropDownList ID="ddlTipoTarea" runat="server" CssClass="form-control" DataValueField="TaskTypeID" DataTextField="TaskType" DataSourceID="TypeSqldataSource" AppendDataBoundItems="true">
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Asignar a: </label>
+                        <div class="col-lg-6">
+                            <asp:DropDownList ID="ddlUsuario" runat="server" CssClass="form-control" DataValueField="UserID" DataTextField="UserName" DataSourceID="UserSqldataSource" AppendDataBoundItems="true">
+                            </asp:DropDownList>
                         </div>
                     </div>
                     <div class="form-group">
@@ -290,6 +312,10 @@
         SelectCommand="[task].[sp_get_status]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     <asp:SqlDataSource ID="PrioritySqldataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
         SelectCommand="[task].[sp_get_priority]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+     <asp:SqlDataSource ID="TypeSqldataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
+        SelectCommand="[task].[sp_get_type]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="UserSqldataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
+        SelectCommand="[task].[sp_get_users]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     <!-- #endregion -->
 
     <script>

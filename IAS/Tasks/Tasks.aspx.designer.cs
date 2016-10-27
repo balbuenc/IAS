@@ -121,6 +121,24 @@ namespace IAS.Tasks {
         protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
         
         /// <summary>
+        /// ddlTipoTarea control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoTarea;
+        
+        /// <summary>
+        /// ddlUsuario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsuario;
+        
+        /// <summary>
         /// txtFechaInicio control.
         /// </summary>
         /// <remarks>
@@ -200,5 +218,23 @@ namespace IAS.Tasks {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource PrioritySqldataSource;
+        
+        /// <summary>
+        /// TypeSqldataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource TypeSqldataSource;
+        
+        /// <summary>
+        /// UserSqldataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource UserSqldataSource;
     }
 }

@@ -141,6 +141,8 @@ namespace IAS.Tasks
                     txtFechaVencimiento.Value = dt.Rows[0]["DueDate"].ToString();
                     ddlPrioridad.SelectedValue = dt.Rows[0]["TaskPriorityID"].ToString();
                     ddlEstado.SelectedValue = dt.Rows[0]["TaskStateID"].ToString();
+                    ddlTipoTarea.SelectedValue = dt.Rows[0]["TaskTypeID"].ToString();
+                    ddlUsuario.SelectedValue = dt.Rows[0]["UserID"].ToString();
                     txtPorcentaje.Text = dt.Rows[0]["PercentComplete"].ToString();
                 }
 
@@ -157,7 +159,7 @@ namespace IAS.Tasks
             string find;
             int priorityID;
             int stateID;
-
+            
             DateTime? startDate = null,
                      endDate = null;
 
@@ -180,7 +182,7 @@ namespace IAS.Tasks
 
             priorityID = int.Parse(ddlTaskPriority.SelectedValue);
             stateID = int.Parse(ddlTaskState.SelectedValue);
-
+            
             SqlConnection sqlConnection1 = new SqlConnection(TasksSqldataSource.ConnectionString);
             SqlDataAdapter da = new SqlDataAdapter();
             SqlCommand cmd = new SqlCommand();
@@ -201,7 +203,7 @@ namespace IAS.Tasks
                 cmd.Parameters.Add("@endDate", SqlDbType.DateTime).Value = endDate;
 
                 da.SelectCommand = cmd;
-
+                
                 da.Fill(dt);
 
                 TasksListView.DataSourceID = string.Empty;
@@ -231,6 +233,8 @@ namespace IAS.Tasks
             float percentComplete = 0;
             int taskPriorityID;
             int taskStateID;
+            int taskTypeID;
+            string userID;
             int rowsAffected;
             DateTime startDate,
                      dueDate;
@@ -248,6 +252,8 @@ namespace IAS.Tasks
                 taskDescription = txtDescripcion.Text;
                 taskPriorityID = int.Parse(ddlPrioridad.SelectedValue);
                 taskStateID = int.Parse(ddlEstado.SelectedValue);
+                taskTypeID = int.Parse(ddlTipoTarea.SelectedValue);
+                userID = ddlUsuario.SelectedValue;
                 startDate = DateTime.Parse(txtFechaInicio.Value);
                 dueDate = DateTime.Parse(txtFechaVencimiento.Value);
                              
@@ -270,6 +276,8 @@ namespace IAS.Tasks
                 cmd.Parameters.AddWithValue("@user", User.Identity.Name);
                 cmd.Parameters.AddWithValue("@taskPriorityID", taskPriorityID);
                 cmd.Parameters.AddWithValue("@taskStateID", taskStateID);
+                cmd.Parameters.AddWithValue("@taskTypeID", taskTypeID);
+                cmd.Parameters.AddWithValue("@userID", userID);
                 cmd.Parameters.Add("@startDate", SqlDbType.DateTime).Value = startDate;
                 cmd.Parameters.Add("@dueDate", SqlDbType.DateTime).Value = dueDate;
                 cmd.Parameters.AddWithValue("@percentComplete", percentComplete);

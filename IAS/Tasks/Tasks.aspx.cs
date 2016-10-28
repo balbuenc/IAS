@@ -226,6 +226,19 @@ namespace IAS.Tasks
             ScriptManager.RegisterStartupScript(this, GetType(), "Pop", "openModalTask();", true);
         }
 
+
+        void Clean()
+        {
+            txtTarea.Text = string.Empty;
+            txtDescripcion.Text = string.Empty;
+            ddlTipoTarea.SelectedIndex = 0;
+            ddlUsuario.SelectedIndex = 0;
+            txtFechaInicio.Value = string.Empty;
+            txtFechaVencimiento.Value = string.Empty;
+            ddlPrioridad.SelectedIndex = 0;
+            ddlEstado.SelectedIndex = 0;
+            txtPorcentaje.Text = string.Empty;
+        }
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             string taskName;
@@ -244,10 +257,10 @@ namespace IAS.Tasks
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Connection = sqlConnection1;
-            
+
             try
             {
-                
+
                 taskName = txtTarea.Text;
                 taskDescription = txtDescripcion.Text;
                 taskPriorityID = int.Parse(ddlPrioridad.SelectedValue);
@@ -256,7 +269,7 @@ namespace IAS.Tasks
                 userID = ddlUsuario.SelectedValue;
                 startDate = DateTime.Parse(txtFechaInicio.Value);
                 dueDate = DateTime.Parse(txtFechaVencimiento.Value);
-                             
+
                 switch (Operacion)
                 {
                     case "new":
@@ -296,6 +309,7 @@ namespace IAS.Tasks
                 ErrorLabel.Visible = true;
             }
 
+            Clean();
             TasksLoad();
         }
     }

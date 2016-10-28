@@ -54,7 +54,7 @@
             <div class="row" style="padding: 4px">
                 <div class="col-lg-2">
                     <h4 style="color:white" title="Home">
-                        <a href="../Default.aspx" class="btn btn-info">
+                        <a href="/Default.aspx" class="btn btn-info">
                             <span class="glyphicon glyphicon-home"></span>
                         </a>
                         Transporte

@@ -44,69 +44,55 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="container-fluid" style="padding-left: 5px; padding-right: 5px">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Búsqueda</h3>
+    <div class="container-fluid" style="padding-left: 5px; padding-right: 5px; padding-right: 10px ; font-family:'Segoe UI' ; font-size:smaller">
+        <div class="row">
+            <div class="col-lg-3">
+                <asp:TextBox ID="txtSearchTask" runat="server" CssClass="form-control" placeholder="Tarea"></asp:TextBox>
             </div>
-            <div class="panel-body">
-                <div class="row">
-
-                    <div class="col-lg-3">
-                        <asp:TextBox ID="txtSearchTask" runat="server" CssClass="form-control" placeholder="Tarea"></asp:TextBox>
-                    </div>
-
-                    <div class="col-lg-1">
-                        <asp:DropDownList ID="ddlTaskPriority" runat="server" CssClass="form-control" DataValueField="TaskPriorityID" DataTextField="TaskPriority" DataSourceID="PrioritySqldataSource" AppendDataBoundItems="true">
-                            <asp:ListItem Value="-1" Text="Todas las prioridades" Selected="True"></asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
-
-                    <div class="col-lg-2">
-                        <asp:DropDownList ID="ddlTaskState" runat="server" CssClass="form-control" DataValueField="TaskStateID" DataTextField="TaskState" DataSourceID="StatusSqldataSource" AppendDataBoundItems="true">
-                            <asp:ListItem Value="-1" Text="Todos los estados" Selected="True"></asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
-
-                    <div class="col-lg-2">
-                        <div class='input-group date' id='datetimepicker1'>
-                            <input id="dpStart" placeholder="Fecha desde" class="form-control" runat="server" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-2">
-                        <div class='input-group date' id='datetimepicker2'>
-                            <input id="dpEnd" placeholder="Fecha hasta" class="form-control" runat="server" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-2 pull-right">
-                        <button id="btnSearch" runat="server" class="btn btn-default" onserverclick="btnSearch_ServerClick">
-                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                        </button>
-                        &nbsp;
+            <div class="col-lg-1">
+                <asp:DropDownList ID="ddlTaskPriority" runat="server" CssClass="form-control" DataValueField="TaskPriorityID" DataTextField="TaskPriority" DataSourceID="PrioritySqldataSource" AppendDataBoundItems="true">
+                    <asp:ListItem Value="-1" Text="Todas las prioridades" Selected="True"></asp:ListItem>
+                </asp:DropDownList>
+            </div>
+            <div class="col-lg-2">
+                <asp:DropDownList ID="ddlTaskState" runat="server" CssClass="form-control" DataValueField="TaskStateID" DataTextField="TaskState" DataSourceID="StatusSqldataSource" AppendDataBoundItems="true">
+                    <asp:ListItem Value="-1" Text="Todos los estados" Selected="True"></asp:ListItem>
+                </asp:DropDownList>
+            </div>
+            <div class="col-lg-2">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input id="dpStart" placeholder="Fecha desde" class="form-control" runat="server" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class='input-group date' id='datetimepicker2'>
+                    <input id="dpEnd" placeholder="Fecha hasta" class="form-control" runat="server" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-2 pull-right">
+                <button id="btnSearch" runat="server" class="btn btn-default" onserverclick="btnSearch_ServerClick">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
+                &nbsp;
                           <button id="btnNewTask" runat="server" class="btn btn-default" onserverclick="btnNewTask_ServerClick">
                               <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                           </button>
-                    </div>
-
-                </div>
             </div>
-        </div>
 
+        </div>
         <div class="row">
             <div class="col-lg-12">
                 <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
             </div>
         </div>
-
-        <div class="row" style="padding-top: 5px">
+        <hr style="margin-top: 7px; margin-bottom: 2px;" />
+        <div class="row">
             <div class="col-lg-12">
                 <asp:ListView ID="TasksListView"
                     runat="server"
@@ -120,13 +106,13 @@
                                         <th>Tarea</th>
                                         <th>Descripción</th>
                                         <th>Tipo</th>
-                                        <th>Fecha Inicio</th>
-                                        <th>Fecha Vencimiento</th>
+                                        <th>Inicio</th>
+                                        <th>Vencimiento</th>
                                         <th>Prioridad</th>
                                         <th>Estado</th>
                                         <th>Asignado a</th>
                                         <th>Creado por</th>
-                                        <th>Porcentaje</th>
+                                        <th>%</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -140,7 +126,7 @@
                         <tr>
                             <td>
                                 <asp:Label ID="lblTaskID" runat="server" Text='<%# Eval("TaskID").ToString() %>' Visible="false" />
-                                <asp:Label ID="lblTaskName" runat="server" Text='<%# Eval("TaskName") %>' />
+                                <asp:Label ID="lblTaskName" runat="server" Text='<%# Eval("TaskName") %>' Font-Bold="true" Font-Italic="true" />
                             </td>
                             <td>
                                 <asp:Label ID="lblTaskDescription" runat="server" Text='<%# Eval("TaskDescription") %>' />
@@ -226,7 +212,7 @@
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Descripción: </label>
                         <div class="col-lg-6">
-                            <asp:TextBox ID="txtDescripcion" TextMode="MultiLine" Style="height:60px;" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txtDescripcion" TextMode="MultiLine" Style="height: 60px;" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group">
@@ -275,14 +261,14 @@
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Estado: </label>
                         <div class="col-lg-6">
-                          <asp:DropDownList ID="ddlEstado" runat="server" CssClass="form-control" DataValueField="TaskStateID" DataTextField="TaskState" DataSourceID="StatusSqldataSource" AppendDataBoundItems="true">
-                        </asp:DropDownList>
+                            <asp:DropDownList ID="ddlEstado" runat="server" CssClass="form-control" DataValueField="TaskStateID" DataTextField="TaskState" DataSourceID="StatusSqldataSource" AppendDataBoundItems="true">
+                            </asp:DropDownList>
                         </div>
                     </div>
-                      <div class="form-group" runat="server">
+                    <div class="form-group" runat="server">
                         <label class="col-lg-3 control-label">Porcentaje: </label>
                         <div class="col-lg-6">
-                           <asp:TextBox ID="txtPorcentaje" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txtPorcentaje" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -312,7 +298,7 @@
         SelectCommand="[task].[sp_get_status]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     <asp:SqlDataSource ID="PrioritySqldataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
         SelectCommand="[task].[sp_get_priority]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
-     <asp:SqlDataSource ID="TypeSqldataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
+    <asp:SqlDataSource ID="TypeSqldataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
         SelectCommand="[task].[sp_get_type]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     <asp:SqlDataSource ID="UserSqldataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
         SelectCommand="[task].[sp_get_users]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>

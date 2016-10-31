@@ -20,25 +20,30 @@
 <%@ Page Title="Pólizas de Transporte" Language="C#" MasterPageFile="~/Transport.Master" AutoEventWireup="true" CodeBehind="Policies.aspx.cs" Inherits="IAS.Transports.Policies" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+      <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+
+    <script src="/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <script src="/Scripts/moment-with-locales.min.js"></script>
+    <script src="/Scripts/bootstrap-datetimepicker.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <div class="container" style="border-bottom: double; border-bottom-color: aliceblue">
-        <div class="row">
-            <div class="col-lg-2">
-                <asp:LinkButton ID="AddPolicylBtn"
-                    runat="server"
-                    CssClass="btn btn-link"
-                    PostBackUrl="Certificate.aspx?criteria=Client"
-                    ToolTip="Nuevo Póliza">
-                                <span class="glyphicon glyphicon-plus"></span>
-                </asp:LinkButton>
-            </div>
+    <div class="container-fluid" >
+        <div class="row" style="padding-left:5px">
+            <ul class="breadcrumb">
+                <li><a href="/Default.aspx">IAS</a></li>
+                <li><a href="/Transports/Certificates.aspx">Transportes</a></li>
+                <li class="active">Pólizas</li>
+            </ul>
         </div>
     </div>
+    
     <div class="container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-left:15px; padding-right:15px">
-        <asp:UpdatePanel ID="upnlPolicies" runat="server">
-            <ContentTemplate>
+       
                 <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
 
                 <asp:ListView ID="PolicyListView" runat="server"
@@ -49,10 +54,10 @@
                         <div class="table responsive">
                             <table class="table table-striped" style="font-size: x-small">
                                 <thead>
-                                    <th>Nro. Poliza</th>
+                                    <th>Nro. Póliza</th>
                                     <th>Aseguradora</th>
-                                    <th>Fecha de Emisión</th>
-                                    <th>Fecha de Expiración</th>
+                                    <th>Emisión</th>
+                                    <th>Expiración</th>
                                     <th>Descripción</th>
                                     <th>Estado</th>
                                 </thead>
@@ -143,9 +148,7 @@
                     </Fields>
                 </asp:DataPager>
 
-            </ContentTemplate>
-
-        </asp:UpdatePanel>
+           
     </div>
 
     <asp:SqlDataSource ID="PoliciesDataSource" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" runat="server"

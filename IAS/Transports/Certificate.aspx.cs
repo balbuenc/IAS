@@ -115,8 +115,10 @@ namespace IAS.Transports
                 if(Request.QueryString["mode"].ToString().Equals("update"))
                 {
                     //Load data to update
-                    LoadCertificates();                
+                    LoadCertificates();
+                   
                     SiteLabel.InnerText = "Certificado (Actualización)";
+                    //SiteLabel.InnerText = "Certificado (Actualización)";
                     //divAgentCommission.Visible = true;
                 }
                 else
@@ -479,10 +481,10 @@ namespace IAS.Transports
             }
         }
 
-        protected void ClientsDDL_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            FindClientdata(Convert.ToInt32(ClientsDDL.SelectedValue));
-        }
+        //protected void ClientsDDL_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    FindClientdata(Convert.ToInt32(ClientsDDL.SelectedValue));
+        //}
 
         protected void gridClients_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -749,8 +751,6 @@ namespace IAS.Transports
                     SqlCommand cmd = new SqlCommand();
                     SqlDataAdapter da;
                     DataTable dt = new DataTable();
-
-                    int rowsAffected;
 
                     try
                     {

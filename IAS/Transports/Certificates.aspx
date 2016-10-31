@@ -33,11 +33,13 @@
 
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="container-fluid" style="padding-left: 25px; padding-right: 55px">
-        <div class="row">
-            <div class="col-lg-12" style="text-align: right">
-                <h3>Certificados</h3>
-            </div>
+    <div class="container-fluid" >
+        <div class="row" style="padding-left:5px">
+            <ul class="breadcrumb">
+                <li><a href="/Default.aspx">IAS</a></li>
+                <li><a href="/Transports/Certificates.aspx">Transportes</a></li>
+                <li class="active">Certificados</li>
+            </ul>
         </div>
     </div>
     <div class="container" style="border-bottom: double; border-bottom-color: aliceblue">
@@ -55,101 +57,101 @@
         </div>
     </div>
     <div class="container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-left: 15px; padding-right: 15px">
-       <%-- <asp:UpdatePanel ID="upnlCertificates" runat="server">
+        <%-- <asp:UpdatePanel ID="upnlCertificates" runat="server">
             <ContentTemplate>--%>
-                <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
+        <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
 
-                <asp:ListView ID="CertificateListView" runat="server"
-                    DataKeyNames="CertificateID"
-                    DataSourceID="CertificateDataSource"
-                    OnItemCommand="CertificateListView_ItemCommand">
-                    <LayoutTemplate>
-                        <div class="table responsive">
-                            <table class="table table-striped" style="font-size: x-small">
-                                <thead>
-                                    <th class="visible-lg">ID</th>
-                                    <th>Nro. Cert.</th>
-                                    <th>Póliza</th>
-                                    <th>Cliente</th>
-                                    <th class="visible-lg">Cant. Paquetes</th>
-                                    <th class="visible-lg">Origen</th>
-                                    <th class="visible-lg">Destino</th>
-                                    <th class="visible-lg">Monto Aegurado</th>
-                                    <th>Prima</th>
-                                </thead>
-                                <tbody>
-                                    <tr runat="server" id="itemPlaceholder" />
-                                </tbody>
-                            </table>
-                        </div>
-                    </LayoutTemplate>
-                    <ItemTemplate>
-                        <tr>
-                            <td class="visible-lg">
-                                <asp:Label ID="lblCertificateID" runat="server" Text='<%# Eval("CertificateID") %>' />
-                            </td>
-                            <td>
-                                <asp:Label ID="lblCertificateNumber" runat="server" Text='<%# Eval("CertificateNumber") %>' />
-                            </td>
-                            <td>
-                                <asp:Label ID="lblPolicyNumber" runat="server" Text='<%# Eval("PolicyNumber") %>' />
-                            </td>
-                            <td>
-                                <asp:Label ID="lblBeneficiary" runat="server" Text='<%# Eval("Beneficiary") %>' />
-                            </td>
-                            <td class="visible-lg">
-                                <asp:Label ID="lblPackageCount" runat="server" Text='<%# Eval("PackageCount") %>' />
-                            </td>
-                            <td class="visible-lg">
-                                <asp:Label ID="lblOrigin" runat="server" Text='<%# Eval("Origin") %>' />
-                            </td>
-                            <td class="visible-lg">
-                                <asp:Label ID="lblDestination" runat="server" Text='<%# Eval("Destination") %>' />
-                            </td>
-                            <td class="visible-lg">
-                                <asp:Label ID="lblCapitalAmount" runat="server" Text='<%# Eval("CapitalAmount") %>' />
-                            </td>
-                            <td>
-                                <asp:Label ID="lblPremiunmPlusTax" runat="server" Text='<%# Eval("PremiunmPlusTax") %>' />
-                            </td>
-                            <td>
-                                <div class="row">
-                                    
-                                    <asp:LinkButton ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CommandArgument='<%# Eval("CertificateID") %>' CssClass="btn btn-link">
+        <asp:ListView ID="CertificateListView" runat="server"
+            DataKeyNames="CertificateID"
+            DataSourceID="CertificateDataSource"
+            OnItemCommand="CertificateListView_ItemCommand">
+            <LayoutTemplate>
+                <div class="table responsive">
+                    <table class="table table-striped" style="font-size: x-small">
+                        <thead>
+                            <th class="visible-lg">ID</th>
+                            <th>Nro. Cert.</th>
+                            <th>Póliza</th>
+                            <th>Cliente</th>
+                            <th class="visible-lg">Cant. Paquetes</th>
+                            <th class="visible-lg">Origen</th>
+                            <th class="visible-lg">Destino</th>
+                            <th class="visible-lg">Monto Aegurado</th>
+                            <th>Prima</th>
+                        </thead>
+                        <tbody>
+                            <tr runat="server" id="itemPlaceholder" />
+                        </tbody>
+                    </table>
+                </div>
+            </LayoutTemplate>
+            <ItemTemplate>
+                <tr>
+                    <td class="visible-lg">
+                        <asp:Label ID="lblCertificateID" runat="server" Text='<%# Eval("CertificateID") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="lblCertificateNumber" runat="server" Text='<%# Eval("CertificateNumber") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="lblPolicyNumber" runat="server" Text='<%# Eval("PolicyNumber") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="lblBeneficiary" runat="server" Text='<%# Eval("Beneficiary") %>' />
+                    </td>
+                    <td class="visible-lg">
+                        <asp:Label ID="lblPackageCount" runat="server" Text='<%# Eval("PackageCount") %>' />
+                    </td>
+                    <td class="visible-lg">
+                        <asp:Label ID="lblOrigin" runat="server" Text='<%# Eval("Origin") %>' />
+                    </td>
+                    <td class="visible-lg">
+                        <asp:Label ID="lblDestination" runat="server" Text='<%# Eval("Destination") %>' />
+                    </td>
+                    <td class="visible-lg">
+                        <asp:Label ID="lblCapitalAmount" runat="server" Text='<%# Eval("CapitalAmount") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="lblPremiunmPlusTax" runat="server" Text='<%# Eval("PremiunmPlusTax") %>' />
+                    </td>
+                    <td>
+                        <div class="row">
+
+                            <asp:LinkButton ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CommandArgument='<%# Eval("CertificateID") %>' CssClass="btn btn-link">
                                         <span class="glyphicon glyphicon-edit"></span>
-                                    </asp:LinkButton>
-                                    
-                                    <asp:LinkButton ID="CollectionsButton" runat="server" Text="Cobranza" CommandName="Collection" CommandArgument='<%# Eval("CertificateID") %>' CssClass="btn btn-link">
+                            </asp:LinkButton>
+
+                            <asp:LinkButton ID="CollectionsButton" runat="server" Text="Cobranza" CommandName="Collection" CommandArgument='<%# Eval("CertificateID") %>' CssClass="btn btn-link">
                                         <span class="glyphicon glyphicon-list-alt"></span>
-                                    </asp:LinkButton>
+                            </asp:LinkButton>
 
-                                    <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Delete" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar el Certificado.?');">
+                            <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Delete" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar el Certificado.?');">
                                                 <span class="glyphicon glyphicon-trash"></span>
-                                    </asp:LinkButton>
+                            </asp:LinkButton>
 
-                                </div>
-                            </td>
-                        </tr>
-                    </ItemTemplate>
-                    <EditItemTemplate>
-                    </EditItemTemplate>
-                    <InsertItemTemplate>
-                    </InsertItemTemplate>
-                    <EmptyDataTemplate>
-                        <h4 style="color: lightgray; text-align: center"><span class="glyphicon glyphicon-comment"></span>No se encontraron Certificados.</h4>
-                    </EmptyDataTemplate>
+                        </div>
+                    </td>
+                </tr>
+            </ItemTemplate>
+            <EditItemTemplate>
+            </EditItemTemplate>
+            <InsertItemTemplate>
+            </InsertItemTemplate>
+            <EmptyDataTemplate>
+                <h4 style="color: lightgray; text-align: center"><span class="glyphicon glyphicon-comment"></span>No se encontraron Certificados.</h4>
+            </EmptyDataTemplate>
 
-                </asp:ListView>
+        </asp:ListView>
 
-                <asp:DataPager ID="CertificatesDataPager" runat="server" PagedControlID="CertificateListView" PageSize="10">
-                    <Fields>
-                        <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
-                        <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
-                        <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
-                    </Fields>
-                </asp:DataPager>
+        <asp:DataPager ID="CertificatesDataPager" runat="server" PagedControlID="CertificateListView" PageSize="10">
+            <Fields>
+                <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
+                <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
+                <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
+            </Fields>
+        </asp:DataPager>
 
-           <%-- </ContentTemplate>
+        <%-- </ContentTemplate>
 
         </asp:UpdatePanel>--%>
     </div>

@@ -24,8 +24,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title><%: Page.Title %> - Balcazz HT</title>
-    
-        <asp:ContentPlaceHolder ID="head" runat="server">
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
         <script src="~/Scripts/jquery-1.12.4.min.js"></script>
 
         <script src="~/Scripts/bootstrap.min.js"></script>
@@ -49,50 +49,48 @@
 </head>
 <body style="padding-top: 0px">
     <form id="form" runat="server">
-        <div class="container-fluid" style="background-color: #01DFD7;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
-            <div class="row" style="padding: 4px">
-                <div class="col-lg-2">
-                    <h4 style="color:white" title="Home">
-                        <a href="/Default.aspx" class="btn btn-info">
+        <div class="container-fluid" style="background-color: #82ba00; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+            <div class="row" style="padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 3px;" >
+                <div class="col-lg-7" style="display:flex">
+                    <div style="margin-left: 2px;    margin-right: 2px;">
+                        <a href="/Default.aspx" class="btn btn-info" title="IAS" style="color: #fff; background-color: #82ba00;border-color: #f5f5f5;">
                             <span class="glyphicon glyphicon-home"></span>
                         </a>
-                        Transporte
-                    </h4>
-                </div>
-                <div class="col-lg-2" title="Certificados">
-                    <h4>
-                        <a href="Certificates.aspx" class="btn btn-info">
+                    </div>
+
+                    <div style="margin-left: 2px;    margin-right: 2px;">
+                        <a href="Certificates.aspx" class="btn btn-info" title="Certificados" style="color: #fff; background-color: #82ba00;border-color: #f5f5f5;">
                             <span class="glyphicon glyphicon-list-alt"></span>
                         </a>
-                    </h4>
-                </div>
-                <div class="col-lg-2" title="Pólizas">
-                    <h4>
-                        <a href="Policies.aspx" class="btn btn-info">
+                    </div>
+
+
+                    <div style="margin-left: 2px;    margin-right: 2px;">
+                        <a href="Policies.aspx" class="btn btn-info" title="Pólizas" style="color: #fff; background-color: #82ba00;border-color: #f5f5f5;">
                             <span class="glyphicon glyphicon-book"></span>
                         </a>
-                    </h4>
-                </div>
-                <div class="col-lg-1" title="Reclamos">
-                    <h4>
-                        <a href="ClaimSearch.aspx" class="btn btn-info">
+
+                    </div>
+
+                    <div style="margin-left: 2px;    margin-right: 2px;">
+                        <a href="ClaimSearch.aspx" class="btn btn-info" title="Reclamos" style="color: #fff; background-color: #82ba00;border-color: #f5f5f5;">
                             <span class="glyphicon glyphicon-tasks"></span>
                         </a>
-                    </h4>
+                    </div>
                 </div>
 
-                <div class="col-lg-5 visible-lg">
+                <div class="col-lg-5 visible-lg" >
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Login">Log in
-                                </a></li>
+                                <li><a runat="server" href="~/Account/Login">Log in</a></li>
                             </ul>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
                             <ul class="nav navbar-nav navbar-right">
                                 <li>
-                                    <a runat="server" href="~/Account/Manage" title="Manage your account">Bienvenido, <%: Context.User.Identity.GetUserName()  %>
+                                    <a runat="server" href="~/Account/Manage" style="color:white" title="Manage your account">Bienvenido, <%: Context.User.Identity.GetUserName()  %>
+                                        
                                     </a>
                                 </li>
                             </ul>
@@ -100,13 +98,18 @@
                     </asp:LoginView>
                 </div>
             </div>
+
         </div>
-        <div>
-            
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
         </div>
-      <%--  <script>
+
+        <%--  <script>
 
             Sys.Application.add_load(setupControlsDisablers);
             function setupControlsDisablers(sender) {

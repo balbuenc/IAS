@@ -13,24 +13,6 @@ namespace IAS.Transports {
     public partial class Policies {
         
         /// <summary>
-        /// AddPolicylBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton AddPolicylBtn;
-        
-        /// <summary>
-        /// upnlPolicies control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upnlPolicies;
-        
-        /// <summary>
         /// ErrorLabel control.
         /// </summary>
         /// <remarks>

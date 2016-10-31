@@ -45,6 +45,15 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="container-fluid" >
+        <div class="row" style="padding-left:5px">
+            <ul class="breadcrumb">
+                <li><a href="/Default.aspx">IAS</a></li>
+                <li><a href="/Transports/Certificates.aspx">Transportes</a></li>
+                <li class="active">Reclamos</li>
+            </ul>
+        </div>
+    </div>
     <div class="container-fluid" style="padding-left: 5px; padding-right: 5px">
         <div class="panel panel-default">
             <div class="panel-heading">

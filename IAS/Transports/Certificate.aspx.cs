@@ -966,5 +966,22 @@ namespace IAS.Transports
                 }
             }
         }
+
+        protected void btnSearch_ServerClick(object sender, EventArgs e)
+        {
+
+            string[] data = txtSearch.Text.Split('|');
+
+            if (data.Length > 0)
+            {
+                int personID = int.Parse(data[1]);
+                FindClientdata(personID);
+            }
+            //if (!string.IsNullOrEmpty(hifPersonID.Value))
+            //{
+            //    int personID = int.Parse(hifPersonID.Value);
+            //    FindClientdata(personID);
+            //}
+        }
     }
 }

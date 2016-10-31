@@ -22,15 +22,6 @@ namespace IAS.Transports {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl SiteLabel;
         
         /// <summary>
-        /// upnlCertificate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upnlCertificate;
-        
-        /// <summary>
         /// ErrorLabel control.
         /// </summary>
         /// <remarks>
@@ -67,13 +58,31 @@ namespace IAS.Transports {
         protected global::System.Web.UI.HtmlControls.HtmlButton criteriaBtn;
         
         /// <summary>
-        /// ClientsDDL control.
+        /// txtSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ClientsDDL;
+        protected global::System.Web.UI.WebControls.TextBox txtSearch;
+        
+        /// <summary>
+        /// hifPersonID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hifPersonID;
+        
+        /// <summary>
+        /// btnSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnSearch;
         
         /// <summary>
         /// divClientData control.

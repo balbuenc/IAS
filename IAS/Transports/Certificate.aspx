@@ -1,35 +1,78 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Transport.Master" AutoEventWireup="true" CodeBehind="Certificate.aspx.cs" Inherits="IAS.Transports.Certificate" %>
 
 <asp:Content ID="head" ContentPlaceHolderID="head" runat="server">
+    <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+
+    <script src="/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="../Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    
+    <script src="/Scripts/moment-with-locales.min.js"></script>
+    <script src="/Scripts/bootstrap-datetimepicker.min.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("[id$=txtSearch]").autocomplete(
+                {
+                    source: "SearchClient.ashx",
+                    // note minlength, triggers the Handler call only once 3 characters entered
+                    minLength: 3,
+                    focus: function (event, ui) {
+                        $("[id$=txtSearch]").val(ui.item.label);
+                        return false;
+                    },
+                    select: function (event, ui) {
+                        if (ui.item) {
+                            $("[id$=txtSearch]").val(ui.item.Client);
+
+                            var d = ui.item.Client.split('|');
+                            $("[id$=hifPersonID]").text(d[1]);
+
+                            $("[id$=btnSearch]").click();
+                            return false;
+                        }
+                    }
+                })
+                .autocomplete("instance")._renderItem = function (ul, item) {
+                    
+                    return $("<li>")
+                      .append("<div>" + item.Client + "</div>")
+                      .appendTo(ul);
+                };
+        });
+
+    </script>
+    
     <style>
         .modal-wide1 .modal-dialog {
             width: 80%; /* or whatever you wish */
             left: 0;
         }
     </style>
-    <script src="/Scripts/utils.js"></script>
-
-    <%-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>--%>
+    
+    
 </asp:Content>
-<asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
 
+<asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
+    
     <div class="container-fluid" style="padding-left: 25px; padding-right: 55px">
         <div class="row">
             <div class="col-lg-12" style="text-align: right">
-
                 <h3 id="SiteLabel" runat="server">Certificado</h3>
             </div>
         </div>
     </div>
 
-    <asp:UpdatePanel ID="upnlCertificate" runat="server">
+<%--    <asp:UpdatePanel ID="upnlCertificate" runat="server">
         <Triggers>
             <asp:PostBackTrigger ControlID="gridClients" />
         </Triggers>
-        <ContentTemplate>
+        <ContentTemplate>--%>
 
             <div class="container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-left: 15px; padding-right: 15px">
-                
+
                 <div class="row">
                     <div class="col-lg-12">
                         <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
@@ -67,13 +110,26 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
+                                   <%-- <div class="row"  hidden="hidden">
                                         <div class="col-lg-1">Cliente</div>
                                         <div class="col-lg-11">
                                             <asp:DropDownList ID="ClientsDDL" runat="server" CssClass="form-control" DataSourceID="clientDS"
                                                 DataValueField="id_persona" DataTextField="client" OnSelectedIndexChanged="ClientsDDL_SelectedIndexChanged" AutoPostBack="true">
                                             </asp:DropDownList>
                                         </div>
+                                    </div>--%>
+                                    <div class="row">
+                                        <div class="col-lg-1">Cliente</div>
+                                        <div class="col-lg-10">
+                                            <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:HiddenField ID="hifPersonID" runat="server" />
+                                        </div>
+                                        <div class="col-lg-1" hidden="hidden">
+                                            <button id="btnSearch" runat="server" class="btn btn-default" onserverclick="btnSearch_ServerClick">
+                                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                            </button>
+                                        </div>
+
                                     </div>
                                     <br />
                                     <div id="divClientData" runat="server" style="border-bottom: double; border-bottom-color: lightgray">
@@ -241,7 +297,7 @@
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Prima L</label>
                                         <div class="col-sm-3">
-                                            <asp:TextBox ID="txtPremium" runat="server" CssClass="form-control" ReadOnly="true" onchange="formatoNumero(this, null, ',', '.')" ></asp:TextBox>
+                                            <asp:TextBox ID="txtPremium" runat="server" CssClass="form-control" ReadOnly="true" onchange="formatoNumero(this, null, ',', '.')"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -310,7 +366,7 @@
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">% Comisión</label>
                                         <div class="col-sm-1">
-                                            <asp:TextBox ID="txtAgentPercent_1" runat="server" CssClass="form-control" Font-Size="X-Small" AutoPostBack="true" OnTextChanged="Comission_TextChanged" ></asp:TextBox>                                           
+                                            <asp:TextBox ID="txtAgentPercent_1" runat="server" CssClass="form-control" Font-Size="X-Small" AutoPostBack="true" OnTextChanged="Comission_TextChanged"></asp:TextBox>
                                         </div>
                                         <label class="col-sm-1 control-label" for="form-group-input">Comisión</label>
                                         <div class="col-sm-2">
@@ -436,8 +492,8 @@
                 </div>
 
             </div>
-        </ContentTemplate>
-    </asp:UpdatePanel>
+<%--        </ContentTemplate>
+    </asp:UpdatePanel>--%>
 
     <script type="text/javascript">
 
@@ -454,15 +510,15 @@
 
         $(document).ready(function () {
 
-            $.fn.datepicker.dates['es'] = {
-                days: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-                daysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
-                daysMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
-                months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-                today: "Hoy"
-            };
-            
+            //$.fn.datepicker.dates['es'] = {
+            //    days: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            //    daysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
+            //    daysMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+            //    months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            //    monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            //    today: "Hoy"
+            //};
+
             //$('#MainContent_txtEmissionDate').datepicker({
             //    isRTL: false,
             //    format: 'dd/mm/yyyy',

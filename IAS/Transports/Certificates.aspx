@@ -20,6 +20,17 @@
 <%@ Page Title="Certificados" Language="C#" MasterPageFile="~/Transport.Master" AutoEventWireup="true" CodeBehind="Certificates.aspx.cs" Inherits="IAS.Transports.Certificates" %>
 
 <asp:Content ID="head" ContentPlaceHolderID="head" runat="server">
+    <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+
+    <script src="/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <script src="/Scripts/moment-with-locales.min.js"></script>
+    <script src="/Scripts/bootstrap-datetimepicker.min.js"></script>
+
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container-fluid" style="padding-left: 25px; padding-right: 55px">
@@ -44,8 +55,8 @@
         </div>
     </div>
     <div class="container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-left: 15px; padding-right: 15px">
-        <asp:UpdatePanel ID="upnlCertificates" runat="server">
-            <ContentTemplate>
+       <%-- <asp:UpdatePanel ID="upnlCertificates" runat="server">
+            <ContentTemplate>--%>
                 <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
 
                 <asp:ListView ID="CertificateListView" runat="server"
@@ -75,33 +86,41 @@
                     <ItemTemplate>
                         <tr>
                             <td class="visible-lg">
-                                <asp:Label ID="lblCertificateID" runat="server" Text='<%# Eval("CertificateID") %>' /></td>
+                                <asp:Label ID="lblCertificateID" runat="server" Text='<%# Eval("CertificateID") %>' />
+                            </td>
                             <td>
-                                <asp:Label ID="lblCertificateNumber" runat="server" Text='<%# Eval("CertificateNumber") %>' /></td>
+                                <asp:Label ID="lblCertificateNumber" runat="server" Text='<%# Eval("CertificateNumber") %>' />
+                            </td>
                             <td>
-                                <asp:Label ID="lblPolicyNumber" runat="server" Text='<%# Eval("PolicyNumber") %>' /></td>
+                                <asp:Label ID="lblPolicyNumber" runat="server" Text='<%# Eval("PolicyNumber") %>' />
+                            </td>
                             <td>
-                                <asp:Label ID="lblBeneficiary" runat="server" Text='<%# Eval("Beneficiary") %>' /></td>
-
+                                <asp:Label ID="lblBeneficiary" runat="server" Text='<%# Eval("Beneficiary") %>' />
+                            </td>
                             <td class="visible-lg">
-                                <asp:Label ID="lblPackageCount" runat="server" Text='<%# Eval("PackageCount") %>' /></td>
+                                <asp:Label ID="lblPackageCount" runat="server" Text='<%# Eval("PackageCount") %>' />
+                            </td>
                             <td class="visible-lg">
-                                <asp:Label ID="lblOrigin" runat="server" Text='<%# Eval("Origin") %>' /></td>
+                                <asp:Label ID="lblOrigin" runat="server" Text='<%# Eval("Origin") %>' />
+                            </td>
                             <td class="visible-lg">
-                                <asp:Label ID="lblDestination" runat="server" Text='<%# Eval("Destination") %>' /></td>
+                                <asp:Label ID="lblDestination" runat="server" Text='<%# Eval("Destination") %>' />
+                            </td>
                             <td class="visible-lg">
-                                <asp:Label ID="lblCapitalAmount" runat="server" Text='<%# Eval("CapitalAmount") %>' /></td>
+                                <asp:Label ID="lblCapitalAmount" runat="server" Text='<%# Eval("CapitalAmount") %>' />
+                            </td>
                             <td>
-                                <asp:Label ID="lblPremiunmPlusTax" runat="server" Text='<%# Eval("PremiunmPlusTax") %>' /></td>
-
+                                <asp:Label ID="lblPremiunmPlusTax" runat="server" Text='<%# Eval("PremiunmPlusTax") %>' />
+                            </td>
                             <td>
                                 <div class="row">
-
+                                    
                                     <asp:LinkButton ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CommandArgument='<%# Eval("CertificateID") %>' CssClass="btn btn-link">
-                                                    <span class="glyphicon glyphicon-edit"></span>
+                                        <span class="glyphicon glyphicon-edit"></span>
                                     </asp:LinkButton>
+                                    
                                     <asp:LinkButton ID="CollectionsButton" runat="server" Text="Cobranza" CommandName="Collection" CommandArgument='<%# Eval("CertificateID") %>' CssClass="btn btn-link">
-                                                    <span class="glyphicon glyphicon-list-alt"></span>
+                                        <span class="glyphicon glyphicon-list-alt"></span>
                                     </asp:LinkButton>
 
                                     <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Delete" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar el Certificado.?');">
@@ -130,9 +149,9 @@
                     </Fields>
                 </asp:DataPager>
 
-            </ContentTemplate>
+           <%-- </ContentTemplate>
 
-        </asp:UpdatePanel>
+        </asp:UpdatePanel>--%>
     </div>
     <asp:SqlDataSource ID="CertificateDataSource" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" runat="server"
         SelectCommand="[transport].[sp_get_certificates]" SelectCommandType="StoredProcedure"

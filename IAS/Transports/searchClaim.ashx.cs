@@ -13,13 +13,13 @@ namespace IAS.Transports
     /// </summary>
     [WebService(Namespace = "IAS/http-handlers/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
-    public class search : IHttpHandler
+    public class SearchClaim : IHttpHandler
     {
         public void ProcessRequest(HttpContext context)
         {
             string json = string.Empty;
             List<string> customers = new List<string>();
-            
+
             // note the httpcontext.Request contains the search term
             if (!string.IsNullOrEmpty(context.Request["term"]))
             {
@@ -29,7 +29,7 @@ namespace IAS.Transports
                 {
 
                     conn.ConnectionString = ConfigurationManager.ConnectionStrings["IASDBContext"].ConnectionString;
-                    
+
                     using (SqlCommand cmd = new SqlCommand())
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
@@ -83,10 +83,6 @@ namespace IAS.Transports
         }
     }
 
-    [Serializable]
-    public class ResponseData
-    {
-        public string Client;
-    }
+  
 
 }

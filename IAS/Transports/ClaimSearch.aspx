@@ -17,7 +17,7 @@
         $(function () {
             $("[id$=txtSearchClaim]").autocomplete(
                 {
-                    source: "search.ashx",
+                    source: "SearchClaim.ashx",
                     // note minlength, triggers the Handler call only once 3 characters entered
                     minLength: 3,
                     focus: function (event, ui) {

@@ -22,15 +22,6 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.LinkButton AddCertificateBtn;
         
         /// <summary>
-        /// upnlCertificates control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upnlCertificates;
-        
-        /// <summary>
         /// ErrorLabel control.
         /// </summary>
         /// <remarks>

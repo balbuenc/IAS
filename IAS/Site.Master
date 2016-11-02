@@ -84,15 +84,12 @@
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                     Servicios
-                               
-                                   
-
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li><a href="../CaseManagment/MyCaseList.aspx">Mis Pendientes</a></li>
-                                    <li><a href="../Claims/ClaimSearch.aspx">Siniestros</a></li>
-                                    <li><a href="../Tasks/Tasks.aspx">Tareas</a></li>
+                                    <li><a href="../Claims/ClaimSearch.aspx">Siniestros <b style="color:green; font-style:italic; font-weight:bold">!Novedades</b></a></li>
+                                    <li><a href="../Tasks/Tasks.aspx">Tareas | <b style="color:red; font-style:italic; font-weight:bold">!Beta</b></a></li>
                                     <li><a href="../CaseManagment/CollectionsToExpire.aspx">Envio de SMS</a></li>
                                     <li><a href="../Collections/UploadCollections.aspx">Subir cuotas</a></li>
                                     <li><a href="../Transports/Certificates.aspx">Transporte</a></li>
@@ -131,7 +128,7 @@
 
                                 </ul>
                             </div>
-                            <div class="btn-group">
+                            <%--<div class="btn-group" >
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                     Propuestas
                                     <span class="caret"></span>
@@ -143,7 +140,7 @@
                                     <li><a href="/Commercial/ProposalCommission.aspx">Comisiones</a></li>
                                     <li><a href="/Commercial/Shipping.aspx">Envios</a></li>
                                 </ul>
-                            </div>
+                            </div>--%>
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                     Reportes
@@ -162,9 +159,10 @@
                                     <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fGESTOR_SSRS%2fCasosCelulares&rs:Command=Render" target="_blank">Clientes con Celular</a></li>
                                     <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fGESTOR_SSRS%2fEnvioSMSCasosConCelular&rs:Command=Render" target="_blank">Notificaciones por SMS</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fGESTOR_SSRS%2fPropuestas&rs:Command=Render" target="_blank">Propuestas</a></li>
+                                   <%-- <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fGESTOR_SSRS%2fPropuestas&rs:Command=Render" target="_blank">Propuestas</a></li>
                                     <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fGESTOR_SSRS%2fAsignaciones&rs:Command=Render" target="_blank">Asignaciones</a></li>
                                     <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fGESTOR_SSRS%2fPolicies&rs:Command=Render" target="_blank">Pólizas</a></li>
+                                    <li><a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fEnvios&rs:Command=Render" target="_blank">Envios</a></li>--%>
                                     <li role="separator" class="divider"></li>
                                     <%--<li><a href="https://app.powerbi.com/groups/me/dashboards/0fa2deb1-7e8b-4c54-a4e3-f3182f602af5" target="_blank">Cobranzas Dashboard</a></li>--%>
                                 </ul>

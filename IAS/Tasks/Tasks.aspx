@@ -44,7 +44,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="container-fluid" style="padding-left: 5px; padding-right: 5px; padding-right: 10px ; font-family:'Segoe UI' ; font-size:smaller">
+    <div class="container-fluid" style="padding-left: 5px; padding-right: 5px; padding-right: 10px; font-family: 'Segoe UI'; font-size: smaller">
         <div class="row">
             <div class="col-lg-3">
                 <asp:TextBox ID="txtSearchTask" runat="server" CssClass="form-control" placeholder="Tarea"></asp:TextBox>
@@ -161,9 +161,9 @@
                                                 <span class="glyphicon glyphicon-edit"></span>
                                 </asp:LinkButton>
 
-                                <%--<asp:LinkButton ID="DeriveButton" runat="server" Text="Derivar" CommandName="Derivar" CommandArgument='<%# Eval("TaskID").ToString() %>' CssClass="btn btn-link">
-                                                <span class="glyphicon glyphicon-share"></span>
-                                </asp:LinkButton>--%>
+                                <asp:LinkButton ID="CommentButton" runat="server" Text="Comentarios" CommandName="Comentarios" CommandArgument='<%# Eval("TaskID").ToString() %>' ToolTip="Comentarios" CssClass="btn btn-link">
+                                                <span class="glyphicon glyphicon-comment"></span>
+                                </asp:LinkButton>
 
                                 <asp:LinkButton ID="CloseButton" runat="server" Text="Cerrar" CommandName="Cerrar" CommandArgument='<%# Eval("TaskID").ToString() %>' CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Cerrar la Tarea.?');">
                                                 <span class="glyphicon glyphicon-off"></span>
@@ -280,6 +280,98 @@
         </div>
     </div>
 
+    <%-- Modal Task Comments --%>
+    <div class="modal fade modal-wide" id="myModalTaskComment" tabindex="-1" role="dialog" aria-labelledby="myModalTaskCommentLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="container-fluid">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+                        <h4 class="modal-title" id="myModalTaskCommentLabel">
+                            <asp:Label ID="lblComentarioTitle" runat="server" Text="Comentarios"></asp:Label>
+                        </h4>
+                    </div>
+                    <br />
+                    <div class="modal-body">
+
+                        <div class="row" >
+                            <div class="col-lg-9">
+                                <asp:TextBox ID="txtComments" runat="server" CssClass="form-control" />
+                            </div>
+                            <div class="col-lg-1">
+                                <asp:Button ID="btnCommentAdd" runat="server" Text="Comentar" CssClass="btn btn-default" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <br />
+                            <div class="col-lg-12">
+                                <asp:GridView ID="grdTaskComments" runat="server" CssClass="table table-hover table-bordered"
+                                    AutoGenerateColumns="false"
+                                    DataKeyNames="TaskCommentID"
+                                    DataSourceID="TaskCommentsDataSource"
+                                    RowStyle-Font-Size="Small"
+                                    HeaderStyle-Font-Size="Small">
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="ID" Visible="false">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lbltaskCommentID" runat="server" Text='<%# Eval("TaskCommentID") %>'></asp:Label>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <asp:Label ID="lbltaskCommentID" runat="server" Text='<%# Eval("TaskCommentID") %>'></asp:Label>
+                                            </EditItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Comentario">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblComment" runat="server" Text='<%# Eval("Comment") %>'></asp:Label>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <asp:TextBox ID="txtComment" CssClass="form-control" runat="server" Text='<%# Eval("Comment") %>'></asp:TextBox>
+                                            </EditItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="taskID">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lbltaskID" runat="server" Text='<%# Eval("taskID") %>'></asp:Label>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <asp:TextBox ID="txttaskID" CssClass="form-control" runat="server" ReadOnly="true" Text='<%# Eval("taskID") %>'></asp:TextBox>
+                                            </EditItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="User">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblUserName" runat="server" Text='<%# Eval("UserName") %>'></asp:Label>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <asp:TextBox ID="txtUserName" CssClass="form-control" runat="server" ReadOnly="true" Text='<%# Eval("UserName") %>'></asp:TextBox>
+                                            </EditItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Fecha">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblCommentDate" runat="server" Text='<%# Eval("CommentDate") %>'></asp:Label>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <asp:Label ID="txtCommentDate" CssClass="form-control" runat="server" ReadOnly="False" Text='<%# Eval("CommentDate") %>'></asp:Label>
+                                            </EditItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:CommandField CancelText="Cancelar" DeleteText="Eliminar" EditText="Editar"
+                                            InsertText="Insertar" NewText="Nuevo" ShowEditButton="True"
+                                            UpdateText="Actualizar" HeaderText="Acciones" />
+                                    </Columns>
+                                </asp:GridView>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" Text="Aceptar"></asp:Button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
+                    <
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- #region DATASOURCES -->
     <asp:SqlDataSource ID="TasksSqldataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
         SelectCommand="task.sp_search_tasks" SelectCommandType="StoredProcedure"
@@ -302,6 +394,30 @@
         SelectCommand="[task].[sp_get_type]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     <asp:SqlDataSource ID="UserSqldataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
         SelectCommand="[task].[sp_get_users]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+
+
+    <asp:SqlDataSource ID="TaskCommentsDataSource" runat="server"
+        ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
+        SelectCommand="[task].[sp_get_TaskComments]" SelectCommandType="StoredProcedure"
+        InsertCommand="[task].[sp_insert_TaskComment]" InsertCommandType="StoredProcedure"
+        UpdateCommand="[task].[sp_update_TaskComment]" UpdateCommandType="StoredProcedure">
+        <InsertParameters>
+            <asp:QueryStringParameter Name="TaskID" QueryStringField="TaskID" Type="Int32" />
+            <asp:Parameter Name="UserName" DbType="String" />
+            <asp:Parameter Name="CommentDate" DbType="DateTime" />
+            <asp:Parameter Name="Comment" DbType="String" />
+        </InsertParameters>
+        <UpdateParameters>
+            <asp:Parameter Name="TaskCommentID" DbType="Int64" />
+            <asp:QueryStringParameter Name="TaskID" QueryStringField="ClaimID" Type="Int32" />
+            <asp:Parameter Name="UserName" DbType="String" />
+            <asp:Parameter Name="CommentDate" DbType="DateTime" />
+            <asp:Parameter Name="Comment" DbType="String" />
+        </UpdateParameters>
+        <SelectParameters>
+            <asp:QueryStringParameter Name="TaskID" QueryStringField="ClaimID" Type="Int32" />
+        </SelectParameters>
+    </asp:SqlDataSource>
     <!-- #endregion -->
 
     <script>
@@ -328,6 +444,10 @@
 
         function openModalTask() {
             $('#myModalTask').modal('show');
+        }
+
+        function openModalTaskComments() {
+            $('#myModalTaskComment').modal('show');
         }
 
     </script>

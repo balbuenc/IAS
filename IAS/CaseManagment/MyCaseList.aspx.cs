@@ -129,7 +129,7 @@ namespace IAS.CaseManagment {
                 var userName =  HttpContext.Current.User.Identity.Name;
                 
                 var query = db.Cases
-                    .Where( c => (c.UserID == userId || userName == "cbalbuena")
+                    .Where( c => (c.UserID == userId || userName == "cbalbuena" || userName == "sergio")
                         && ( string.IsNullOrEmpty( dateInterval ) || dateInterval.Equals( ControlValues.Today ) ? c.isToday == 1 :
                             dateInterval.Equals( ControlValues.CurrentWeek ) ? SqlFunctions.DatePart( "week", c.EffectiveDate ) == currentWeekNum && SqlFunctions.DatePart("year", c.EffectiveDate) == today.Year  :
                             dateInterval.Equals( ControlValues.NextWeek ) ? SqlFunctions.DatePart( "week", c.EffectiveDate ) == nextWeekNum && SqlFunctions.DatePart("year", c.EffectiveDate) == today.Year :

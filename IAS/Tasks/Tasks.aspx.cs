@@ -63,7 +63,7 @@ namespace IAS.Tasks
                 switch (e.CommandName)
                 {
                     case "Editar":
-                        lblTitulo.Text = "editar tarea";
+                        lblTitulo.Text = "Editar tarea";
                         Operacion = "update";
                         GetTask(int.Parse(e.CommandArgument.ToString()));
                         ScriptManager.RegisterStartupScript(this, GetType(), "Pop", "openModalTask();", true);
@@ -71,6 +71,10 @@ namespace IAS.Tasks
                     case "Eliminar":
                         DeleteTask(int.Parse(e.CommandArgument.ToString()));
 
+                        break;
+                    case "Comentarios":
+                        
+                        ScriptManager.RegisterStartupScript(this, GetType(), "Pop", "openModalTaskComments();", true);
                         break;
                     default:
                         break;

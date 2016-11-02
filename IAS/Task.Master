@@ -48,9 +48,9 @@
     <form id="form1" runat="server">
         <div>
             <div class="container-fluid">
-                <div class="row" style="padding-top: 5px;  padding-left: 5px; padding-right: 5px; background-color: #5bc0de; height:40px" >
+                <div class="row" style="padding-top: 5px;  padding-left: 5px; padding-right: 5px; background-color: #b50d0a; height:40px" >
                     <div class="col-lg-1">
-                        <a href="/Default.aspx" class="btn btn-info  btn-sm">
+                        <a href="/Default.aspx" class="btn btn-info  btn-sm" style="color: whitesmoke; background-color: #b50d0a; border-color: whitesmoke">
                             <span class="glyphicon glyphicon-home"></span> IAS  
                         </a>
                     </div>

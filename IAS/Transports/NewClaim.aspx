@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="Nuevo siniestro" Language="C#" MasterPageFile="~/Transport.Master" AutoEventWireup="true" CodeBehind="NewClaim.aspx.cs" Inherits="IAS.Transports.NewClaim" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
     <script src="/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="/Scripts/jquery-ui-1.12.1.min.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
     <link href="/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
@@ -15,7 +18,37 @@
         }
 
     </script>
+    <script type="text/javascript">
+        $(function () {
+            $("[id$=txtSearch]").autocomplete(
+                {
+                    source: "SearchCertificate.ashx",
+                    // note minlength, triggers the Handler call only once 3 characters entered
+                    minLength: 3,
+                    focus: function (event, ui) {
+                        $("[id$=txtSearch]").val(ui.item.label);
+                        return false;
+                    },
+                    select: function (event, ui) {
+                        if (ui.item) {
+                            $("[id$=txtSearch]").val(ui.item.Client);
 
+                            var d = ui.item.Client.split('|');
+                            $("[id$=hifCertificateID]").text(d[1]);
+                            $("[id$=btnSearch]").click();
+                            return false;
+                        }
+                    }
+                })
+                .autocomplete("instance")._renderItem = function (ul, item) {
+
+                    return $("<li>")
+                      .append("<div>" + item.Client + "</div>")
+                      .appendTo(ul);
+                };
+        });
+
+    </script>
     <style>
         #contenido {
             margin: 0 10px;
@@ -48,28 +81,16 @@
                     <div class="panel-body">
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-sm-8">
-                                    <div class="input-group">
-                                        <span class="input-group-btn">
-                                            <button id="searchBox" class="btn btn-default" runat="server" type="button" onserverclick="searchBox_ServerClick">Buscar</button>
-                                        </span>
-                                        <input type="text" class="form-control" id="txtSearchClaim" runat="server"
-                                            placeholder="Buscar Cliente..."
-                                            onkeydown="if (window.event.keyCode == 13) 
-                                        {
-                                            event.returnValue=false; 
-                                            event.cancel = true;
-                                            searchRecords();
-                                        }" />
-                                        <div class="input-group-btn">
-                                            <button type="button" id="criteriaBtn" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" runat="server">Cliente<span class="caret"></span></button>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="?criteria=Client">Cliente</a></li>
-                                                <li><a href="?criteria=ClientDocumentNumber">Nro. Documento</a></li>
-                                                <li><a href="?criteria=PolicyNumber">Nro Póliza</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+
+                                <div class="col-lg-1">Cliente</div>
+                                <div class="col-lg-10">
+                                    <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:HiddenField ID="hifCertificateID" runat="server" />
+                                </div>
+                                <div class="col-lg-1" hidden="hidden">
+                                    <button id="btnSearch" runat="server" class="btn btn-default" onserverclick="searchBox_ServerClick">
+                                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                    </button>
                                 </div>
                             </div>
                             <br />
@@ -97,8 +118,8 @@
                     <div class="panel-body">
                         <div class="form-group">
                             <div class="row">
-                                <label class="col-sm-2 control-label" for="form-group-input">Fecha Siniestro</label>
-                                <div class="col-sm-4">
+                                <label class="col-sm-1 control-label" for="form-group-input">Fecha del reclamo</label>
+                                <div class="col-sm-3">
                                     <div class='input-group date' id='datetimepicker1'>
                                         <input id="dp1" placeholder="Fecha siniestro" class="form-control" runat="server" />
                                         <span class="input-group-addon">
@@ -106,13 +127,68 @@
                                         </span>
                                     </div>
                                 </div>
-                            </div>
-                            <br/>
-                            <div class="row">
-                                <label class="col-sm-2 control-label" for="form-group-input">Observación</label>
-                                <div class="col-sm-10">
-                                    <asp:TextBox ID="txtObservacion" runat ="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
+                                <label class="col-sm-1 control-label" for="form-group-input">CRT N°</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtCrtNro" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
+                                <label class="col-sm-1 control-label" for="form-group-input">Consignatario</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtConsignatario" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <label class="col-sm-1 control-label" for="form-group-input">Transportista</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtTransportista" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <label class="col-sm-1 control-label" for="form-group-input">Mercaderia</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtMercaderia" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <label class="col-sm-1 control-label" for="form-group-input">Factura Nro</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtFacturaNro" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <label class="col-sm-1 control-label" for="form-group-input">Valor Factura</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtValorFactura" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <label class="col-sm-1 control-label" for="form-group-input">Origen</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtOrigen" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <label class="col-sm-1 control-label" for="form-group-input">Destino</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtDestino" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <label class="col-sm-1 control-labelContacto" for="form-group-input"></label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtContacto" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <label class="col-sm-1 control-label" for="form-group-input">Telefono</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <label class="col-sm-1 control-label" for="form-group-input">Ubicación</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtUbicacion" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+
+                            <br />
+                            <div class="row">
+                                <label class="col-sm-1 control-label" for="form-group-input">Observación</label>
+                                <div class="col-sm-10">
+                                    <asp:TextBox ID="txtObservacion" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
+                                </div>
+
                             </div>
                             <br />
                         </div>
@@ -129,43 +205,6 @@
             </div>
         </div>
     </div>
-    <div class="modal fade modal-wide1" id="myModalPolizas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
-                    <h4 class="modal-title" id="H5">Seleccionar póliza</h4>
-                </div>
-                <br />
-                <div class="form-horizontal" role="form">
-                    <div class="row" style="padding-left: 20px; padding-right: 20px; font-size: x-small !important;">
-                        <div class="col-lg-12">
-                            <asp:GridView ID="gridClients" AutoGenerateColumns="false" EmptyDataText="Sin registros" runat="server" CssClass="table table-hover"
-                                OnRowCommand="gridClients_RowCommand">
-                                <Columns>
-                                    <asp:BoundField HeaderText="Nro Póliza" DataField="detail" />
-                                    <asp:BoundField HeaderText="Nro documento" DataField="numero_documento" />
-                                    <asp:BoundField HeaderText="Cliente" DataField="cliente" />
-                                    <asp:BoundField HeaderText="Aseguradora" DataField="InsuranceManager" />
-                                    <asp:TemplateField HeaderText="Seleccionar">
-                                        <ItemTemplate>
-                                            <asp:LinkButton ID="lnkSeleccionar" runat="server" CausesValidation="False" CommandArgument='<%# Eval("detail") + "|" + Eval("numero_documento") + "|" + Eval("cliente") + "|" + Eval("id_persona") + "|" + Eval("nro_poliza") + "|" + Eval("id_certificado") %>'
-                                                CommandName="seleccionar" Text="Seleccionar" ToolTip="Seleccionar">
-                                            </asp:LinkButton>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                </Columns>
-                            </asp:GridView>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- #SQL Data Sources -->
     <asp:SqlDataSource ID="clientesDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="sp_obtener_persona_para_siniestros" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     <%--  <asp:SqlDataSource ID="polizasDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="sp_obtener_polizas_por_persona" SelectCommandType="StoredProcedure">

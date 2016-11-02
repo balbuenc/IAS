@@ -6,50 +6,50 @@ using System.Web.UI.WebControls;
 
 namespace IAS.Transports
 {
-    public partial class NewClaim : System.Web.UI.Page
+    public partial class NewClaim : Page
     {
-        public string nro_poliza
+        public string NroPoliza
         {
             get
             {
-                object o = ViewState["nro_poliza"];
+                object o = ViewState["NroPoliza"];
                 if (o == null)
                     return string.Empty;
                 return o.ToString();
             }
             set
             {
-                ViewState["nro_poliza"] = value;
+                ViewState["NroPoliza"] = value;
             }
         }
 
-        public long certificateID
+        public long CertificateID
         {
             get
             {
-                object o = ViewState["certificateID"];
+                object o = ViewState["CertificateID"];
                 if (o == null)
                     return 0;
                 return (long)o;
             }
             set
             {
-                ViewState["certificateID"] = value;
+                ViewState["CertificateID"] = value;
             }
         }
 
-        public string id_persona
+        public string PersonaID
         {
             get
             {
-                object o = ViewState["id_persona"];
+                object o = ViewState["PersonaID"];
                 if (o == null)
                     return string.Empty;
                 return o.ToString();
             }
             set
             {
-                ViewState["id_persona"] = value;
+                ViewState["PersonaID"] = value;
             }
         }
 
@@ -58,47 +58,6 @@ namespace IAS.Transports
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            try
-            {
-
-                if (Request.QueryString["criteria"] != null)
-                {
-                    criteria = Request.QueryString["criteria"].ToString();
-                    switch (criteria)
-                    {
-                        case "PolicyNumber":
-                            txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Póliza";
-                            criteriaBtn.InnerText = "Nro. Póliza";
-                            break;
-                        case "Client":
-                            txtSearchClaim.Attributes["placeholder"] = "Buscar por Cliente";
-                            criteriaBtn.InnerText = "Cliente";
-                            break;
-                        case "ClientDocumentNumber":
-                            txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Documento";
-                            criteriaBtn.InnerText = "Nro. Documento";
-                            break;
-
-                        default:
-                            txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Pòliza";
-                            criteriaBtn.InnerText = "Nro. Pòliza";
-                            criteria = "PolicyNumber";
-                            break;
-                    }
-                }
-                else
-                {
-                    criteria = "Client";
-                }
-
-            }
-            catch (Exception exp)
-            {
-                txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Póliza";
-                criteriaBtn.InnerText = "Nro. Póliza";
-                criteria = "PolicyNumber";
-            }
         }
 
         protected void registrarSiniestroBtn_Click(object sender, EventArgs e)
@@ -121,12 +80,12 @@ namespace IAS.Transports
                 };
 
                 cmd.Parameters.Add(claim_id);
-                cmd.Parameters.AddWithValue("@id_persona", id_persona);
+                cmd.Parameters.AddWithValue("@id_persona", PersonaID);
                 cmd.Parameters.AddWithValue("@cliente", lblCliente.Text);
                 cmd.Parameters.AddWithValue("@fecha_siniestro", Convert.ToDateTime(dp1.Value));
                 cmd.Parameters.AddWithValue("@observacion", txtObservacion.Text);
-                cmd.Parameters.AddWithValue("@nro_poliza", nro_poliza);
-                cmd.Parameters.AddWithValue("@id_certificado", certificateID);
+                cmd.Parameters.AddWithValue("@nro_poliza", NroPoliza);
+                cmd.Parameters.AddWithValue("@id_certificado", CertificateID);
                 cmd.Parameters.AddWithValue("@usuario", User.Identity.Name);
 
                 sqlConnection1.Open();
@@ -139,7 +98,7 @@ namespace IAS.Transports
                 //SaveDetails(claimID);
 
                 //Direcciono a la pagina de busqueda
-                Response.Redirect("ClaimSearch.aspx?PolicyNumber=" + nro_poliza.Replace(".", ""));
+                Response.Redirect("ClaimSearch.aspx?PolicyNumber=" + NroPoliza.Replace(".", ""));
 
             }
             catch (Exception exp)
@@ -193,63 +152,50 @@ namespace IAS.Transports
 
         protected void searchBox_ServerClick(object sender, EventArgs e)
         {
-            SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
-            SqlCommand cmd = new SqlCommand();
-
-            SqlDataAdapter da = new SqlDataAdapter();
-            DataTable dt = new DataTable();
-
-            try
+            string[] data = txtSearch.Text.Split('|');
+            if (data.Length > 0)
             {
-                cmd.CommandText = "[transport].[sp_search_clients_for_claims]";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = sqlConnection1;
 
-                cmd.Parameters.AddWithValue("@find", txtSearchClaim.Value);
-                cmd.Parameters.AddWithValue("@criteria", criteria);
 
-                da.SelectCommand = cmd;
+                SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
+                SqlCommand cmd = new SqlCommand();
 
-                da.Fill(dt);
+                SqlDataAdapter da = new SqlDataAdapter();
+                DataTable dt = new DataTable();
+                
+                int certificateID = int.Parse(data[1]);
 
-                gridClients.DataSource = dt;
-                gridClients.DataBind();
+                try
+                {
+                    cmd.CommandText = "[transport].[sp_search_certificate_by_certificateID]";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = sqlConnection1;
 
-            }
-            catch (Exception exp)
-            {
-                ErrorLabel.Text = exp.Message;
-                ErrorLabel.Visible = true;
-            }
+                    cmd.Parameters.AddWithValue("@certificateID", certificateID);
 
-            ScriptManager.RegisterStartupScript(this, GetType(), "Pop", "openModalPolizas();", true);
-        }
+                    da.SelectCommand = cmd;
 
-        protected void gridClients_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            switch (e.CommandName)
-            {
-                case "seleccionar":
-                    string[] values = e.CommandArgument.ToString().Split('|');
+                    da.Fill(dt);
 
-                    string detail = values[0];
-                    string numero_documento = values[1];
-                    string cliente = values[2];
-                    string idPersona = values[3];
-                    string nroPoliza = values[4];
-                    string certificadoID = values[5];
-                    lblPoliza.Text = detail;
-                    lblNroDocumento.Text = numero_documento;
-                    lblCliente.Text = cliente;
+                    if (dt?.Rows.Count > 0)
+                    {
+                       
+                        lblPoliza.Text = dt.Rows[0]["nro_poliza"].ToString();
+                        lblNroDocumento.Text = dt.Rows[0]["numero_documento"].ToString();
+                        lblCliente.Text = dt.Rows[0]["cliente"].ToString();
+                        PersonaID = dt.Rows[0]["id_persona"].ToString();
+                        NroPoliza = dt.Rows[0]["nro_poliza"].ToString();
+                        CertificateID = certificateID;
+                    }
 
-                    id_persona = idPersona;
-                    nro_poliza = nroPoliza;
-                    certificateID = int.Parse(certificadoID);
-                    break;
-                default:
-                    break;
-                    
+                }
+                catch (Exception exp)
+                {
+                    ErrorLabel.Text = exp.Message;
+                    ErrorLabel.Visible = true;
+                }
             }
         }
+
     }
 }

@@ -3,20 +3,22 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Web;
 using System.Web.Services;
 
 namespace IAS.Transports
 {
     /// <summary>
-    /// Summary description for search
+    /// Summary description for SearchCertificate
     /// </summary>
     [WebService(Namespace = "IAS/http-handlers/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
-    public class SearchClaim : IHttpHandler
+    public class SearchCertificate : IHttpHandler
     {
+
         public void ProcessRequest(HttpContext context)
-       {
+        {
             string json = string.Empty;
             List<string> customers = new List<string>();
 
@@ -33,7 +35,7 @@ namespace IAS.Transports
                     using (SqlCommand cmd = new SqlCommand())
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        cmd.CommandText = "[transport].[sp_search_claim]";
+                        cmd.CommandText = "[transport].[sp_search_certificate]";
                         cmd.Parameters.AddWithValue("@find", searchTerm);
                         cmd.Connection = conn;
                         conn.Open();
@@ -82,7 +84,4 @@ namespace IAS.Transports
             }
         }
     }
-
-  
-
 }

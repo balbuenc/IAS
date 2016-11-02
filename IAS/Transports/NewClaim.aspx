@@ -97,19 +97,19 @@
                             <div class="row">
                                 <label class="col-sm-2 control-label" for="form-group-input">Cliente</label>
                                 <div class="col-sm-10">
-                                    <asp:Label ID="lblCliente" runat="server"></asp:Label>
+                                    <asp:Label ID="lblClient" runat="server"></asp:Label>
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-2 control-label" for="form-group-input">Nro Documento</label>
                                 <div class="col-sm-10">
-                                    <asp:Label ID="lblNroDocumento" runat="server"></asp:Label>
+                                    <asp:Label ID="lblDocumentNumber" runat="server"></asp:Label>
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-2 control-label" for="form-group-input">Poliza</label>
                                 <div class="col-sm-10">
-                                    <asp:Label ID="lblPoliza" runat="server"></asp:Label>
+                                    <asp:Label ID="lblPolicyNumber" runat="server"></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -129,56 +129,56 @@
                                 </div>
                                 <label class="col-sm-1 control-label" for="form-group-input">CRT N°</label>
                                 <div class="col-sm-3">
-                                    <asp:TextBox ID="txtCrtNro" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtCrtNumber" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                                 </div>
                                 <label class="col-sm-1 control-label" for="form-group-input">Consignatario</label>
                                 <div class="col-sm-3">
-                                    <asp:TextBox ID="txtConsignatario" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtBeneficiary" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                                 </div>
                             </div>
                             <br />
                             <div class="row">
                                 <label class="col-sm-1 control-label" for="form-group-input">Transportista</label>
                                 <div class="col-sm-3">
-                                    <asp:TextBox ID="txtTransportista" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtCarrier" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                                 <label class="col-sm-1 control-label" for="form-group-input">Mercaderia</label>
                                 <div class="col-sm-3">
-                                    <asp:TextBox ID="txtMercaderia" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtCommodity" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                                 <label class="col-sm-1 control-label" for="form-group-input">Factura Nro</label>
                                 <div class="col-sm-3">
-                                    <asp:TextBox ID="txtFacturaNro" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtInvoiceNumber" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
                             <br />
                             <div class="row">
                                 <label class="col-sm-1 control-label" for="form-group-input">Valor Factura</label>
                                 <div class="col-sm-3">
-                                    <asp:TextBox ID="txtValorFactura" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtInvoiceAmount" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                                 <label class="col-sm-1 control-label" for="form-group-input">Origen</label>
                                 <div class="col-sm-3">
-                                    <asp:TextBox ID="txtOrigen" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtOrigin" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                                 <label class="col-sm-1 control-label" for="form-group-input">Destino</label>
                                 <div class="col-sm-3">
-                                    <asp:TextBox ID="txtDestino" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtDestination" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
                             <br />
                             <div class="row">
-                                <label class="col-sm-1 control-labelContacto" for="form-group-input"></label>
+                                <label class="col-sm-1 control-labelContacto" for="form-group-input">Contacto</label>
                                 <div class="col-sm-3">
-                                    <asp:TextBox ID="txtContacto" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtContact" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                                 <label class="col-sm-1 control-label" for="form-group-input">Telefono</label>
                                 <div class="col-sm-3">
-                                    <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtPhoneNumber" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                                 <label class="col-sm-1 control-label" for="form-group-input">Ubicación</label>
                                 <div class="col-sm-3">
-                                    <asp:TextBox ID="txtUbicacion" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtLocation" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
 
@@ -186,7 +186,7 @@
                             <div class="row">
                                 <label class="col-sm-1 control-label" for="form-group-input">Observación</label>
                                 <div class="col-sm-10">
-                                    <asp:TextBox ID="txtObservacion" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
+                                    <asp:TextBox ID="txtObservations" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
                                 </div>
 
                             </div>

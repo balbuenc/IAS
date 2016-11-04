@@ -91,7 +91,7 @@
                 <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
             </div>
         </div>
-        <hr style="margin-top: 7px; margin-bottom: 2px;" />
+        <hr style="margin-top: 7px; margin-bottom: 5px;" />
         <div class="row">
             <div class="col-lg-12">
                 <asp:ListView ID="TasksListView"
@@ -99,26 +99,22 @@
                     DataKeyNames="TaskID"
                     OnItemCommand="TasksListView_ItemCommand">
                     <LayoutTemplate>
-                        <div class="table responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Tarea</th>
-                                        <th>Descripción</th>
-                                        <th>Tipo</th>
-                                        <th>Inicio</th>
-                                        <th>Vencimiento</th>
-                                        <th>Prioridad</th>
-                                        <th>Estado</th>
-                                        <th>Asignado a</th>
-                                        <th>Creado por</th>
-                                        <th>%</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr runat="server" id="itemPlaceholder" />
-                                </tbody>
+                        <div class="table ">
+                            <table class="table table-hover  table-condensed ">
+                                <tr runat="server" style="background-color: gray; color: whitesmoke; padding-top: 5px; padding-bottom: 5px">
+                                    <th>Tarea</th>
+                                    <th class="hidden-sm">Descripción</th>
+                                    <th class="hidden-sm">Tipo</th>
+                                    <th>Inicio</th>
+                                    <th>Vencimiento</th>
+                                    <th class="hidden-sm">Prioridad</th>
+                                    <th>Estado</th>
+                                    <th>Asignado a</th>
+                                    <th class="hidden-sm">Creado por</th>
+                                    <th>%</th>
+
+                                </tr>
+                                <tr runat="server" id="itemPlaceholder" />
                             </table>
                         </div>
                     </LayoutTemplate>
@@ -126,12 +122,12 @@
                         <tr>
                             <td>
                                 <asp:Label ID="lblTaskID" runat="server" Text='<%# Eval("TaskID").ToString() %>' Visible="false" />
-                                <asp:Label ID="lblTaskName" runat="server" Text='<%# Eval("TaskName") %>' Font-Bold="true" Font-Italic="true" />
+                                <asp:Label ID="lblTaskName" runat="server" Text='<%# Eval("TaskName") %>' Font-Bold="true" Font-Italic="true" Font-Size="Medium" />
                             </td>
-                            <td>
+                            <td class="hidden-sm">
                                 <asp:Label ID="lblTaskDescription" runat="server" Text='<%# Eval("TaskDescription") %>' />
                             </td>
-                            <td>
+                            <td class="hidden-sm">
                                 <asp:Label ID="lblTaskType" runat="server" Text='<%# Eval("TaskType") %>' />
                             </td>
                             <td>
@@ -140,7 +136,7 @@
                             <td>
                                 <asp:Label ID="lblDueDate" runat="server" Text='<%# DateTime.Parse( Eval("DueDate").ToString()).ToShortDateString() %>' />
                             </td>
-                            <td>
+                            <td class="hidden-sm">
                                 <asp:Label ID="lblTaskPriority" runat="server" Text='<%# Eval("TaskPriority") %>' />
                             </td>
                             <td>
@@ -149,32 +145,38 @@
                             <td>
                                 <asp:Label ID="lblUserName" runat="server" Text='<%# Eval("UserName") %>' />
                             </td>
-                            <td>
+                            <td class="hidden-sm">
                                 <asp:Label ID="lblCreatedBy" runat="server" Text='<%# Eval("CreatedBy") %>' />
                             </td>
                             <td>
                                 <asp:Label ID="lblPercentComplete" runat="server" Text='<%# Eval("PercentComplete" ) + " %" %>' />
                             </td>
-                            <td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" style="text-align: left; border-color: transparent; padding: 0px">
 
                                 <asp:LinkButton ID="EditButton" runat="server" Text="Editar" CommandName="Editar" CommandArgument='<%# Eval("TaskID").ToString() %>' ToolTip="Editar" CssClass="btn btn-link">
-                                                <span class="glyphicon glyphicon-edit"></span>
+                                                <small><span class="glyphicon glyphicon-edit"></span></small>
                                 </asp:LinkButton>
 
-                                <asp:LinkButton ID="CommentButton" runat="server" Text="Comentarios" CommandName="Comentarios" CommandArgument='<%# Eval("TaskID").ToString() %>' ToolTip="Comentarios" CssClass="btn btn-link">
-                                                <span class="glyphicon glyphicon-comment"></span>
+                                <label id="lblTaskCommentsCount" style="padding-left: 0px"><%# Eval("TaskCommentsCount").ToString() %> </label>
+                                <asp:LinkButton ID="CommentButton" runat="server" Text="Comentarios" CommandName="Comentarios" CommandArgument='<%# Eval("TaskID").ToString() %>' ToolTip="Comentarios" CssClass="btn btn-link" Style="padding-left: 0px; padding-right: 0px;">
+                                                <small><span class="glyphicon glyphicon-comment"></span></small>
                                 </asp:LinkButton>
 
                                 <asp:LinkButton ID="CloseButton" runat="server" Text="Cerrar" CommandName="Cerrar" CommandArgument='<%# Eval("TaskID").ToString() %>' CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Cerrar la Tarea.?');">
-                                                <span class="glyphicon glyphicon-off"></span>
+                                                <small><span class="glyphicon glyphicon-off"></span></small>
                                 </asp:LinkButton>
 
                                 <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Eliminar" CommandArgument='<%# Eval("TaskID").ToString() %>' CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar la Tarea.?');">
-                                                <span class="glyphicon glyphicon-trash"></span>
+                                                <small><span class="glyphicon glyphicon-trash"></span></small>
                                 </asp:LinkButton>
 
+                                <div class="label  label-success" style="padding: 5px">
+                                    <asp:Label ID="lblLastTaskComment" runat="server" Text='<%# Eval("LastTaskComment" )  %>' />
+                                </div>
                             </td>
-
+                        </tr>
                         </tr>
                     </ItemTemplate>
                     <EditItemTemplate>
@@ -294,7 +296,7 @@
                     <br />
                     <div class="modal-body">
 
-                        <div class="row" >
+                        <div class="row">
                             <div class="col-lg-9">
                                 <asp:TextBox ID="txtComments" runat="server" CssClass="form-control" />
                             </div>

@@ -46,20 +46,20 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container-fluid" style="padding-left: 5px; padding-right: 5px; padding-right: 10px; font-family: 'Segoe UI'; font-size: smaller">
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-3" style="padding-top: 5px; padding-bottom: 5px;">
                 <asp:TextBox ID="txtSearchTask" runat="server" CssClass="form-control" placeholder="Tarea"></asp:TextBox>
             </div>
-            <div class="col-lg-1">
+            <div class="col-lg-1" style="padding-top: 5px; padding-bottom: 5px;">
                 <asp:DropDownList ID="ddlTaskPriority" runat="server" CssClass="form-control" DataValueField="TaskPriorityID" DataTextField="TaskPriority" DataSourceID="PrioritySqldataSource" AppendDataBoundItems="true">
                     <asp:ListItem Value="-1" Text="Todas las prioridades" Selected="True"></asp:ListItem>
                 </asp:DropDownList>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2" style="padding-top: 5px; padding-bottom: 5px;">
                 <asp:DropDownList ID="ddlTaskState" runat="server" CssClass="form-control" DataValueField="TaskStateID" DataTextField="TaskState" DataSourceID="StatusSqldataSource" AppendDataBoundItems="true">
                     <asp:ListItem Value="-1" Text="Todos los estados" Selected="True"></asp:ListItem>
                 </asp:DropDownList>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2" style="padding-top: 5px; padding-bottom: 5px;">
                 <div class='input-group date' id='datetimepicker1'>
                     <input id="dpStart" placeholder="Fecha desde" class="form-control" runat="server" />
                     <span class="input-group-addon">
@@ -67,7 +67,7 @@
                     </span>
                 </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2" style="padding-top: 5px; padding-bottom: 5px;">
                 <div class='input-group date' id='datetimepicker2'>
                     <input id="dpEnd" placeholder="Fecha hasta" class="form-control" runat="server" />
                     <span class="input-group-addon">
@@ -75,14 +75,14 @@
                     </span>
                 </div>
             </div>
-            <div class="col-lg-2 pull-right">
+            <div class="col-lg-2 pull-right" style="padding-top: 5px; padding-bottom: 5px;">
                 <button id="btnSearch" runat="server" class="btn btn-default" onserverclick="btnSearch_ServerClick">
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 </button>
-                &nbsp;
-                          <button id="btnNewTask" runat="server" class="btn btn-default" onserverclick="btnNewTask_ServerClick">
-                              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                          </button>
+
+                <button id="btnNewTask" runat="server" class="btn btn-default" onserverclick="btnNewTask_ServerClick">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
             </div>
 
         </div>
@@ -91,7 +91,7 @@
                 <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
             </div>
         </div>
-        <hr style="margin-top: 7px; margin-bottom: 5px;" />
+        <hr style="margin-top: 7px; margin-bottom: 5px; border-color:#3d4247; border-width:2px" />
         <div class="row">
             <div class="col-lg-12">
                 <asp:ListView ID="TasksListView"
@@ -99,44 +99,48 @@
                     DataKeyNames="TaskID"
                     OnItemCommand="TasksListView_ItemCommand">
                     <LayoutTemplate>
-                        <div class="table ">
+                        <div class="table table-responsive">
                             <table class="table table-hover  table-condensed ">
-                                <tr runat="server" style="background-color: gray; color: whitesmoke; padding-top: 5px; padding-bottom: 5px">
-                                    <th>Tarea</th>
-                                    <th class="hidden-sm">Descripción</th>
-                                    <th class="hidden-sm">Tipo</th>
-                                    <th>Inicio</th>
-                                    <th>Vencimiento</th>
-                                    <th class="hidden-sm">Prioridad</th>
-                                    <th>Estado</th>
-                                    <th>Asignado a</th>
-                                    <th class="hidden-sm">Creado por</th>
-                                    <th>%</th>
+                                <thead>
+                                    <tr runat="server" style="padding-top: 5px; padding-bottom: 5px; height: 40px">
+                                        <th>TAREA</th>
+                                        <th class="visible-lg">DESCRIPCIÓN</th>
+                                        <th class="visible-lg">TIPO</th>
+                                        <th class="visible-lg">INICIO</th>
+                                        <th>VENCIMIENTO</th>
+                                        <th class="visible-lg">PRIORIDAD</th>
+                                        <th>ESTADO</th>
+                                        <th>ASIGNADO A</th>
+                                        <th class="visible-lg">CREADO POR</th>
+                                        <th class="visible-lg">%</th>
 
-                                </tr>
-                                <tr runat="server" id="itemPlaceholder" />
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr runat="server" id="itemPlaceholder" />
+                                </tbody>
                             </table>
                         </div>
                     </LayoutTemplate>
                     <ItemTemplate>
-                        <tr>
+                        <tr style="height: 33px">
                             <td>
                                 <asp:Label ID="lblTaskID" runat="server" Text='<%# Eval("TaskID").ToString() %>' Visible="false" />
-                                <asp:Label ID="lblTaskName" runat="server" Text='<%# Eval("TaskName") %>' Font-Bold="true" Font-Italic="true" Font-Size="Medium" />
+                                <asp:Label ID="lblTaskName" runat="server" Text='<%# Eval("TaskName") %>' Font-Italic="true" Font-Size="Medium" />
                             </td>
-                            <td class="hidden-sm">
+                            <td class="visible-lg">
                                 <asp:Label ID="lblTaskDescription" runat="server" Text='<%# Eval("TaskDescription") %>' />
                             </td>
-                            <td class="hidden-sm">
+                            <td class="visible-lg">
                                 <asp:Label ID="lblTaskType" runat="server" Text='<%# Eval("TaskType") %>' />
                             </td>
-                            <td>
+                            <td class="visible-lg">
                                 <asp:Label ID="lblStartDate" runat="server" Text='<%# DateTime.Parse( Eval("StartDate").ToString()).ToShortDateString() %>' />
                             </td>
                             <td>
                                 <asp:Label ID="lblDueDate" runat="server" Text='<%# DateTime.Parse( Eval("DueDate").ToString()).ToShortDateString() %>' />
                             </td>
-                            <td class="hidden-sm">
+                            <td class="visible-lg">
                                 <asp:Label ID="lblTaskPriority" runat="server" Text='<%# Eval("TaskPriority") %>' />
                             </td>
                             <td>
@@ -145,21 +149,21 @@
                             <td>
                                 <asp:Label ID="lblUserName" runat="server" Text='<%# Eval("UserName") %>' />
                             </td>
-                            <td class="hidden-sm">
+                            <td class="visible-lg">
                                 <asp:Label ID="lblCreatedBy" runat="server" Text='<%# Eval("CreatedBy") %>' />
                             </td>
-                            <td>
+                            <td class="visible-lg">
                                 <asp:Label ID="lblPercentComplete" runat="server" Text='<%# Eval("PercentComplete" ) + " %" %>' />
                             </td>
                         </tr>
-                        <tr>
+                        <tr style="height: 33px">
                             <td colspan="10" style="text-align: left; border-color: transparent; padding: 0px">
 
                                 <asp:LinkButton ID="EditButton" runat="server" Text="Editar" CommandName="Editar" CommandArgument='<%# Eval("TaskID").ToString() %>' ToolTip="Editar" CssClass="btn btn-link">
                                                 <small><span class="glyphicon glyphicon-edit"></span></small>
                                 </asp:LinkButton>
 
-                                <label id="lblTaskCommentsCount" style="padding-left: 0px"><%# Eval("TaskCommentsCount").ToString() %> </label>
+                                <label id="lblTaskCommentsCount" style="font-weight: normal"><%# Eval("TaskCommentsCount").ToString() %> </label>
                                 <asp:LinkButton ID="CommentButton" runat="server" Text="Comentarios" CommandName="Comentarios" CommandArgument='<%# Eval("TaskID").ToString() %>' ToolTip="Comentarios" CssClass="btn btn-link" Style="padding-left: 0px; padding-right: 0px;">
                                                 <small><span class="glyphicon glyphicon-comment"></span></small>
                                 </asp:LinkButton>
@@ -196,7 +200,7 @@
     </div>
     <div class="modal fade modal-wide" id="myModalTask" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content" style="padding-left: 5px; padding-right:5px;">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
                     <h4 class="modal-title" id="myModalLabel">

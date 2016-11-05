@@ -47,14 +47,14 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <div class="container-fluid">
-                <div class="row" style="padding-top: 5px;  padding-left: 5px; padding-right: 5px; background-color: #b50d0a; height:40px" >
+            <div class="container-fluid" style="font-family: az_ea_font,wf_segoe-ui_semibold,Segoe UI Semibold,Segoe WP Semibold,Segoe UI,Segoe WP,Tahoma,Arial,sans-serif; margin-left:5px; margin-right:5px">
+                <div class="row" style="padding-top: 5px;  padding-left: 5px; padding-right: 5px; background-color: #3d4247; height:45px" >
                     <div class="col-lg-1">
-                        <a href="/Default.aspx" class="btn btn-info  btn-sm" style="color: whitesmoke; background-color: #b50d0a; border-color: whitesmoke">
+                        <a href="/Default.aspx" class="btn btn-info  btn-sm" style="color: #00bcf2; background-color: #3d4247; border-color: #00bcf2">
                             <span class="glyphicon glyphicon-home"></span> IAS  
                         </a>
                     </div>
-                    <div class="col-lg-11" style="font-family: 'Segoe UI'; font-size: x-small; color: white">
+                    <div class="col-lg-11" style="font-size: x-small; color: white">
                         <asp:LoginView runat="server" ViewStateMode="Disabled">
                             <AnonymousTemplate>
                                 <ul class="nav navbar-nav navbar-right">

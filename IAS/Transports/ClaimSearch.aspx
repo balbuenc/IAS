@@ -97,7 +97,7 @@
                             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                         </button>
                         &nbsp;
-                        <a href="NewClaim.aspx?criteria=Client" class="btn btn-default">
+                        <a href="Claim.aspx?mode=insert" class="btn btn-default">
                             <span class="glyphicon glyphicon-plus"></span>
                         </a>
                     </div>

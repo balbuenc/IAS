@@ -73,8 +73,8 @@ namespace IAS.Tasks
 
                         break;
                     case "Comentarios":
-                        
-                        ScriptManager.RegisterStartupScript(this, GetType(), "Pop", "openModalTaskComments();", true);
+                        hf_TaskID.Value = e.CommandArgument.ToString();
+                        ReloadTaskComments();
                         break;
                     default:
                         break;
@@ -163,7 +163,7 @@ namespace IAS.Tasks
             string find;
             int priorityID;
             int stateID;
-            
+
             DateTime? startDate = null,
                      endDate = null;
 
@@ -186,7 +186,7 @@ namespace IAS.Tasks
 
             priorityID = int.Parse(ddlTaskPriority.SelectedValue);
             stateID = int.Parse(ddlTaskState.SelectedValue);
-            
+
             SqlConnection sqlConnection1 = new SqlConnection(TasksSqldataSource.ConnectionString);
             SqlDataAdapter da = new SqlDataAdapter();
             SqlCommand cmd = new SqlCommand();
@@ -207,7 +207,7 @@ namespace IAS.Tasks
                 cmd.Parameters.Add("@endDate", SqlDbType.DateTime).Value = endDate;
 
                 da.SelectCommand = cmd;
-                
+
                 da.Fill(dt);
 
                 TasksListView.DataSourceID = string.Empty;
@@ -226,22 +226,24 @@ namespace IAS.Tasks
         {
             lblTitulo.Text = "Nueva tarea";
             Operacion = "new";
-         
+            Clean();
             ScriptManager.RegisterStartupScript(this, GetType(), "Pop", "openModalTask();", true);
         }
 
 
         void Clean()
         {
+            DateTime localDate = DateTime.Now;
+
             txtTarea.Text = string.Empty;
             txtDescripcion.Text = string.Empty;
             ddlTipoTarea.SelectedIndex = 0;
             ddlUsuario.SelectedIndex = 0;
-            txtFechaInicio.Value = string.Empty;
-            txtFechaVencimiento.Value = string.Empty;
+            txtFechaInicio.Value = localDate.ToString();
+            txtFechaVencimiento.Value = localDate.ToString();
             ddlPrioridad.SelectedIndex = 0;
             ddlEstado.SelectedIndex = 0;
-            txtPorcentaje.Text = string.Empty;
+            txtPorcentaje.Text = "0";
         }
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -316,5 +318,91 @@ namespace IAS.Tasks
             Clean();
             TasksLoad();
         }
+
+        protected void btnCommentAdd_Click(object sender, EventArgs e)
+        {
+            SqlConnection sqlConnection1 = new SqlConnection(TasksSqldataSource.ConnectionString);
+            SqlDataAdapter da = new SqlDataAdapter();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = sqlConnection1;
+
+            try
+            {
+
+                cmd.CommandText = "[task].[sp_insert_TaskComment]";
+
+                cmd.Parameters.AddWithValue("@TaskID", hf_TaskID.Value);
+                cmd.Parameters.AddWithValue("@UserName", User.Identity.Name);
+                cmd.Parameters.AddWithValue("@Comment", txtComments.Text);
+
+                cmd.Parameters.Add("@CommentDate", SqlDbType.DateTime).Value = DateTime.Now;
+                sqlConnection1.Open();
+                cmd.ExecuteNonQuery();
+                sqlConnection1.Close();
+
+            }
+            catch (Exception exp)
+            {
+                sqlConnection1.Close();
+                ErrorLabel.Text = "Error a ejecutar la operación.. : " + exp.Message;
+                ErrorLabel.Visible = true;
+            }
+
+            ReloadTaskComments();
+          
+        }
+
+        private void ReloadTaskComments()
+        {
+            txtComments.Text = "";
+            grdTaskComments.DataBind();
+            ScriptManager.RegisterStartupScript(this, GetType(), "Pop", "openModalTaskComments();", true);
+        }
+
+        protected void TaskCommentsAcceptBtn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Tasks/Tasks.aspx");
+        }
+
+        protected void grdTaskComments_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Eliminar")
+                DeleteTaskComment(int.Parse(e.CommandArgument.ToString()));
+        }
+
+
+        private void DeleteTaskComment(int TaskCommentID)
+        {
+            SqlConnection sqlConnection1 = new SqlConnection(TasksSqldataSource.ConnectionString);
+
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cmd.CommandText = "[task].[sp_delete_TaskComment]";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = sqlConnection1;
+
+            
+                cmd.Parameters.AddWithValue("@TaskCommentID", TaskCommentID);
+        
+
+                sqlConnection1.Open();
+                cmd.ExecuteNonQuery();
+                sqlConnection1.Close();
+
+            }
+            catch (Exception exp)
+            {
+                sqlConnection1.Close();
+                ErrorLabel.Text = "Error a ejecutar busqueda.. : " + exp.Message;
+                ErrorLabel.Visible = true;
+            }
+
+            ReloadTaskComments();
+
+        }
+
     }
 }

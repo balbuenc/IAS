@@ -91,7 +91,7 @@
                 <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
             </div>
         </div>
-        <hr style="margin-top: 7px; margin-bottom: 5px; border-color:#3d4247; border-width:2px" />
+        <hr style="margin-top: 7px; margin-bottom: 5px; border-color: #3d4247; border-width: 2px" />
         <div class="row">
             <div class="col-lg-12">
                 <asp:ListView ID="TasksListView"
@@ -198,9 +198,11 @@
             </div>
         </div>
     </div>
+
+    <%-- Modal Task Edit --%>
     <div class="modal fade modal-wide" id="myModalTask" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content" style="padding-left: 5px; padding-right:5px;">
+        <div class="modal-dialog" style="width: 80%">
+            <div class="modal-content" style="padding-left: 5px; padding-right: 5px;">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
                     <h4 class="modal-title" id="myModalLabel">
@@ -218,7 +220,7 @@
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Descripción: </label>
                         <div class="col-lg-6">
-                            <asp:TextBox ID="txtDescripcion" TextMode="MultiLine" Style="height: 60px;" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txtDescripcion" TextMode="MultiLine" Style="height: 100px;" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group">
@@ -288,7 +290,7 @@
 
     <%-- Modal Task Comments --%>
     <div class="modal fade modal-wide" id="myModalTaskComment" tabindex="-1" role="dialog" aria-labelledby="myModalTaskCommentLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog" style="width: 80%">
             <div class="modal-content">
                 <div class="container-fluid">
                     <div class="modal-header">
@@ -299,14 +301,14 @@
                     </div>
                     <br />
                     <div class="modal-body">
-
                         <div class="row">
                             <div class="col-lg-9">
                                 <asp:TextBox ID="txtComments" runat="server" CssClass="form-control" />
                             </div>
                             <div class="col-lg-1">
-                                <asp:Button ID="btnCommentAdd" runat="server" Text="Comentar" CssClass="btn btn-default" />
+                                <asp:Button ID="btnCommentAdd" runat="server" Text="Comentar" CssClass="btn btn-default" OnClick="btnCommentAdd_Click" />
                             </div>
+                            <asp:HiddenField ID="hf_TaskID" runat="server" />
                         </div>
                         <div class="row">
                             <br />
@@ -316,7 +318,16 @@
                                     DataKeyNames="TaskCommentID"
                                     DataSourceID="TaskCommentsDataSource"
                                     RowStyle-Font-Size="Small"
-                                    HeaderStyle-Font-Size="Small">
+                                    HeaderStyle-Font-Size="Small"
+                                    OnRowCommand="grdTaskComments_RowCommand">
+                                    <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
+                                    <EditRowStyle BackColor="#ffffcc" />
+                                    <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
+                                    <EmptyDataTemplate>
+                                        <b>No hay comentarios para la Tarea.</b>
+                                    </EmptyDataTemplate>
+                                    <Rowstyle Height="20px" />
+                                    <AlternatingRowStyle Height="20px" />
                                     <Columns>
                                         <asp:TemplateField HeaderText="ID" Visible="false">
                                             <ItemTemplate>
@@ -334,14 +345,6 @@
                                                 <asp:TextBox ID="txtComment" CssClass="form-control" runat="server" Text='<%# Eval("Comment") %>'></asp:TextBox>
                                             </EditItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="taskID">
-                                            <ItemTemplate>
-                                                <asp:Label ID="lbltaskID" runat="server" Text='<%# Eval("taskID") %>'></asp:Label>
-                                            </ItemTemplate>
-                                            <EditItemTemplate>
-                                                <asp:TextBox ID="txttaskID" CssClass="form-control" runat="server" ReadOnly="true" Text='<%# Eval("taskID") %>'></asp:TextBox>
-                                            </EditItemTemplate>
-                                        </asp:TemplateField>
                                         <asp:TemplateField HeaderText="User">
                                             <ItemTemplate>
                                                 <asp:Label ID="lblUserName" runat="server" Text='<%# Eval("UserName") %>'></asp:Label>
@@ -352,15 +355,20 @@
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Fecha">
                                             <ItemTemplate>
-                                                <asp:Label ID="lblCommentDate" runat="server" Text='<%# Eval("CommentDate") %>'></asp:Label>
+                                                <asp:Label ID="lblCommentDate" runat="server" Text='<%# DateTime.Parse( Eval("CommentDate").ToString()).ToShortDateString() %>'></asp:Label>
                                             </ItemTemplate>
                                             <EditItemTemplate>
-                                                <asp:Label ID="txtCommentDate" CssClass="form-control" runat="server" ReadOnly="False" Text='<%# Eval("CommentDate") %>'></asp:Label>
+                                                <asp:Label ID="txtCommentDate" CssClass="form-control" runat="server" ReadOnly="False" Text='<%# DateTime.Parse( Eval("CommentDate").ToString()).ToShortDateString() %>'></asp:Label>
                                             </EditItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:CommandField CancelText="Cancelar" DeleteText="Eliminar" EditText="Editar"
-                                            InsertText="Insertar" NewText="Nuevo" ShowEditButton="True"
-                                            UpdateText="Actualizar" HeaderText="Acciones" />
+
+                                        <asp:TemplateField HeaderText="...">
+                                            <ItemTemplate>
+                                                <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Eliminar" CommandArgument='<%# Eval("TaskCommentID").ToString() %>' CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar el Comentario.?');">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                                </asp:LinkButton>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                                     </Columns>
                                 </asp:GridView>
                             </div>
@@ -369,10 +377,9 @@
                     </div>
 
                     <div class="modal-footer">
-                        <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" Text="Aceptar"></asp:Button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <asp:Button ID="TaskCommentsAcceptBtn" runat="server" CssClass="btn btn-primary" Text="Aceptar" OnClick="TaskCommentsAcceptBtn_Click"></asp:Button>
                     </div>
-                    <
+
                 </div>
             </div>
         </div>
@@ -404,24 +411,9 @@
 
     <asp:SqlDataSource ID="TaskCommentsDataSource" runat="server"
         ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
-        SelectCommand="[task].[sp_get_TaskComments]" SelectCommandType="StoredProcedure"
-        InsertCommand="[task].[sp_insert_TaskComment]" InsertCommandType="StoredProcedure"
-        UpdateCommand="[task].[sp_update_TaskComment]" UpdateCommandType="StoredProcedure">
-        <InsertParameters>
-            <asp:QueryStringParameter Name="TaskID" QueryStringField="TaskID" Type="Int32" />
-            <asp:Parameter Name="UserName" DbType="String" />
-            <asp:Parameter Name="CommentDate" DbType="DateTime" />
-            <asp:Parameter Name="Comment" DbType="String" />
-        </InsertParameters>
-        <UpdateParameters>
-            <asp:Parameter Name="TaskCommentID" DbType="Int64" />
-            <asp:QueryStringParameter Name="TaskID" QueryStringField="ClaimID" Type="Int32" />
-            <asp:Parameter Name="UserName" DbType="String" />
-            <asp:Parameter Name="CommentDate" DbType="DateTime" />
-            <asp:Parameter Name="Comment" DbType="String" />
-        </UpdateParameters>
+        SelectCommand="[task].[sp_get_TaskComments]" SelectCommandType="StoredProcedure">
         <SelectParameters>
-            <asp:QueryStringParameter Name="TaskID" QueryStringField="ClaimID" Type="Int32" />
+            <asp:ControlParameter Name="TaskID" ControlID="hf_TaskID" PropertyName="Value" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
     <!-- #endregion -->

@@ -220,6 +220,15 @@ namespace IAS.Tasks {
         protected global::System.Web.UI.WebControls.Button btnCommentAdd;
         
         /// <summary>
+        /// hf_TaskID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf_TaskID;
+        
+        /// <summary>
         /// grdTaskComments control.
         /// </summary>
         /// <remarks>
@@ -229,13 +238,13 @@ namespace IAS.Tasks {
         protected global::System.Web.UI.WebControls.GridView grdTaskComments;
         
         /// <summary>
-        /// Button1 control.
+        /// TaskCommentsAcceptBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button TaskCommentsAcceptBtn;
         
         /// <summary>
         /// TasksSqldataSource control.

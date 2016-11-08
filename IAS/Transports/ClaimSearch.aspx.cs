@@ -168,7 +168,7 @@ namespace IAS.Transports
 
             if (e.CommandName == "Edit")
             {
-                Response.Redirect("ClaimDetail.aspx?ClaimID=" + claimID + "&PolicyNumber=" + PolicyNumber);
+                Response.Redirect("Claim.aspx?ClaimID=" + claimID + "&mode=update");
             }
             else if (e.CommandName == "Close")
             {

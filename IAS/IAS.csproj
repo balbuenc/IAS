@@ -444,6 +444,7 @@
     <Content Include="Tasks\Tasks.aspx" />
     <Content Include="Transports\Certificate.aspx" />
     <Content Include="Transports\Certificates.aspx" />
+    <Content Include="Transports\Claim.aspx" />
     <Content Include="Transports\ClaimSearch.aspx" />
     <Content Include="Transports\Collection.aspx" />
     <Content Include="Transports\NewClaim.aspx" />
@@ -1147,6 +1148,13 @@
     </Compile>
     <Compile Include="Transports\Certificates.aspx.designer.cs">
       <DependentUpon>Certificates.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Transports\Claim.aspx.cs">
+      <DependentUpon>Claim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Transports\Claim.aspx.designer.cs">
+      <DependentUpon>Claim.aspx</DependentUpon>
     </Compile>
     <Compile Include="Transports\ClaimSearch.aspx.cs">
       <DependentUpon>ClaimSearch.aspx</DependentUpon>

@@ -2,11 +2,10 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace IAS.Transports
 {
-    public partial class NewClaim : Page
+    public partial class Claim : System.Web.UI.Page
     {
         public string PolicyNumber
         {
@@ -136,6 +135,7 @@ namespace IAS.Transports
                     txtContact.Text = dt.Rows[0]["Contact"].ToString();
                     txtPhoneNumber.Text = dt.Rows[0]["PhoneNumber"].ToString();
                     txtLocation.Text = dt.Rows[0]["Location"].ToString();
+                    txtObservations.Text = dt.Rows[0]["Observations"].ToString();
 
                 }
                 else
@@ -160,17 +160,24 @@ namespace IAS.Transports
 
             try
             {
+                if (Request.QueryString["mode"]?.ToString() == "insert")
+                {
+                    cmd.CommandText = "[transport].[sp_insert_claim]";
+                    SqlParameter claimIDOut = new SqlParameter("@claimID", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(claimIDOut);
+                }
+                else
+                {
+                    cmd.CommandText = "[transport].[sp_update_claim]";
+                    cmd.Parameters.AddWithValue("@claimID", int.Parse(Request.QueryString["claimID"]));
+                }
 
-                cmd.CommandText = "[transport].[sp_registrar_caso_siniestro]";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = sqlConnection1;
 
-                SqlParameter claimIDOut = new SqlParameter("@claimID", SqlDbType.Int)
-                {
-                    Direction = ParameterDirection.Output
-                };
-
-                cmd.Parameters.Add(claimIDOut);
                 cmd.Parameters.AddWithValue("@personID", PersonID);
                 cmd.Parameters.AddWithValue("@client", lblClient.Text);
                 cmd.Parameters.AddWithValue("@claimDate", Convert.ToDateTime(dp1.Value));
@@ -191,7 +198,7 @@ namespace IAS.Transports
                 sqlConnection1.Open();
 
                 rowsAffected = cmd.ExecuteNonQuery();
-                claimID = int.Parse(cmd.Parameters["@claimID"].Value.ToString());
+                //claimID = int.Parse(cmd.Parameters["@claimID"].Value.ToString());
 
                 sqlConnection1.Close();
 
@@ -298,6 +305,5 @@ namespace IAS.Transports
                 }
             }
         }
-
     }
 }

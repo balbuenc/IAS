@@ -40,7 +40,62 @@
                 };
         });
 
+
     </script>
+
+    <style type="text/css">
+        /************************************************************************/
+        /* PSEUDO-TOGGLE BUTTON MADE OF ASP.NET CHECKBOX AND CSS3*/
+        div.divToggleButton input[type=checkbox] {
+            display: none;
+            white-space: nowrap;
+        }
+
+        div.divToggleButton label {
+            display: block;
+            float: left;
+            cursor: pointer;
+        }
+
+        /* set the size of the pseudo-toggle button control */
+        div.divToggleButton input[type=checkbox]:checked + label::before,
+        div.divToggleButton input[type=checkbox]:not(:checked) + label::before,
+        div.divToggleButton input[type=checkbox] + label {
+            width: 70px;
+            height: 34px;
+            line-height: 33px;
+        }
+
+        /* additional styling: rounded border, gradient */
+        div.divToggleButton input[type=checkbox] + label {
+            vertical-align: middle;
+            text-align: center;
+            font-size: 8pt;
+            font-family: Arial, Calibri;
+            border: 1px solid #bdbdbd;
+            border-radius: 5px;
+            background: #f0f0f0;
+            /* gradient style (optional)*/
+            background-image: -moz-linear-gradient(top, #fdfdfd, #f9f9f9 50%, #e5e5e5 50%, #fdfdfd);
+            background-image: -webkit-gradient(linear, center top, center bottom, from(#fdfdfd), color-stop(0.5, #f9f9f9), color-stop(0.5, #e5e5e5 ), to(#fdfdfd));
+            background-image: linear-gradient(to bottom, #fdfdfd, #f9f9f9 50%, #e5e5e5 50%, #fdfdfd);
+        }
+
+        /* content to display and style pertinent to unchecked state*/
+        div.divToggleButton input[type=checkbox]:not(:checked) + label::before {
+            content: "Todas";
+            color: #303030;
+            opacity: 0.6;
+        }
+
+        /* content to display and style pertinent to checked state*/
+        div.divToggleButton input[type=checkbox]:checked + label::before {
+            content: "Mis Tareas";
+            color: #000090;
+            font-weight: bold;
+        }
+        /************************************************************************/
+    </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -75,7 +130,7 @@
                     </span>
                 </div>
             </div>
-            <div class="col-lg-2 pull-right" style="padding-top: 5px; padding-bottom: 5px;">
+            <div class="col-lg-2" style="padding-top: 5px;  display: -webkit-box">
                 <button id="btnSearch" runat="server" class="btn btn-default" onserverclick="btnSearch_ServerClick">
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 </button>
@@ -83,6 +138,15 @@
                 <button id="btnNewTask" runat="server" class="btn btn-default" onserverclick="btnNewTask_ServerClick">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button>
+
+                <div class="divToggleButton" style="padding-left: 6px;">
+                    <asp:CheckBox ID="chkToggleButton" runat="server"
+                        AutoPostBack="false" Checked="true" />
+                    <asp:Label ID="lblToggleButton"
+                        AssociatedControlID="chkToggleButton" runat="server"
+                        ToolTip="Mis Tareas" />
+                </div>
+
             </div>
 
         </div>
@@ -326,7 +390,7 @@
                                     <EmptyDataTemplate>
                                         <b>No hay comentarios para la Tarea.</b>
                                     </EmptyDataTemplate>
-                                    <Rowstyle Height="20px" />
+                                    <RowStyle Height="20px" />
                                     <AlternatingRowStyle Height="20px" />
                                     <Columns>
                                         <asp:TemplateField HeaderText="ID" Visible="false">

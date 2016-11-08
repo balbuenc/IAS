@@ -206,6 +206,9 @@ namespace IAS.Tasks
                 cmd.Parameters.Add("@startDate", SqlDbType.DateTime).Value = startDate;
                 cmd.Parameters.Add("@endDate", SqlDbType.DateTime).Value = endDate;
 
+                cmd.Parameters.AddWithValue("@MyTasks", chkToggleButton.Checked);
+                
+
                 da.SelectCommand = cmd;
 
                 da.Fill(dt);

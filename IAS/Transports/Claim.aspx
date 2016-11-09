@@ -200,7 +200,7 @@
         </div>
         <div class="row">
             <div class="col-lg-2 col-lg-offset-10">
-                <asp:Button ID="registrarSiniestroBtn" runat="server" Text="Generar Siniestro" CssClass="btn btn-primary" OnClick="registrarSiniestroBtn_Click" />
+                <asp:Button ID="registrarSiniestroBtn" runat="server" Text="Guardar Siniestro" CssClass="btn btn-primary" OnClick="registrarSiniestroBtn_Click" />
             </div>
         </div>
     </div>

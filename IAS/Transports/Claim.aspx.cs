@@ -205,7 +205,7 @@ namespace IAS.Transports
                 //SaveDetails(claimID);
 
                 //Direcciono a la pagina de busqueda
-                Response.Redirect("ClaimSearch.aspx?PolicyNumber=" + PolicyNumber.Replace(".", ""));
+                Response.Redirect("ClaimSearch.aspx");
 
             }
             catch (Exception exp)

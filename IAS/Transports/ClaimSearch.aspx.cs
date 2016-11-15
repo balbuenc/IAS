@@ -14,7 +14,6 @@ namespace IAS.Transports
         private string criteria;
         private string claimID;
 
-
         protected void Page_Init(object sender, EventArgs e)
         {
             ClaimSqldataSource.SelectParameters["user"].DefaultValue = User.Identity.Name;
@@ -87,7 +86,7 @@ namespace IAS.Transports
             }
         }
 
-        protected void searchClaims()
+        protected void SearchClaims()
         {
             string criteria,
                    find,
@@ -202,38 +201,12 @@ namespace IAS.Transports
                     ErrorLabel.Visible = true;
                 }
             }
-
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            searchClaims();
+            SearchClaims();
         }
 
-        [WebMethod]
-        public static string[] SearchClaim(string prefix)
-        {
-            List<string> customers = new List<string>();
-            using (SqlConnection conn = new SqlConnection())
-            {                
-                conn.ConnectionString = ConfigurationManager.AppSettings["IASDBContext"];
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.CommandText = "select Top 10 nombre, apellido1 from exchange.personas where nombre like ''+@SearchText+'%'";
-                    cmd.Parameters.AddWithValue("@SearchText", prefix);
-                    cmd.Connection = conn;
-                    conn.Open();
-                    using (SqlDataReader sdr = cmd.ExecuteReader())
-                    {
-                        while (sdr.Read())
-                        {
-                            customers.Add(string.Format("{0}-{1}", sdr["nombre"], sdr["apellido1"]));
-                        }
-                    }
-                    conn.Close();
-                }
-            }
-            return customers.ToArray();
-        }
     }
 }

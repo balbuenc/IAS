@@ -79,19 +79,8 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-lg-3">
+                    <div class="col-lg-6">
                         <asp:TextBox ID="txtSearchCertificate" runat="server" CssClass="form-control" placeholder="Datos del cliente"></asp:TextBox>
-                    </div>
-                    <div class="col-lg-1">
-                        <asp:DropDownList ID="ddlMyClaims" runat="server" CssClass="form-control">
-                            <asp:ListItem Value="0" Text="Todos" Selected="True"></asp:ListItem>
-                            <asp:ListItem Value="1" Text="Mis siniestros"></asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
-                    <div class="col-lg-2">
-                        <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" DataValueField="ClaimStatusID" DataTextField="Status" AppendDataBoundItems="true">
-                            <asp:ListItem Value="-1" Text="Todos los estados" Selected="True"></asp:ListItem>
-                        </asp:DropDownList>
                     </div>
                     <div class="col-lg-2">
                         <div class='input-group date' id='datetimepicker1'>

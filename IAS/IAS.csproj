@@ -464,6 +464,7 @@
     <Content Include="Transports\SearchClient.ashx" />
     <Content Include="Transports\SearchClaim.ashx" />
     <Content Include="Transports\SearchCertificate.ashx" />
+    <Content Include="Transports\SearchBeneficiary.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1185,6 +1186,9 @@
       <DependentUpon>Policies.aspx</DependentUpon>
     </Compile>
     <Compile Include="Transports\ResponseData.cs" />
+    <Compile Include="Transports\SearchBeneficiary.ashx.cs">
+      <DependentUpon>SearchBeneficiary.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Transports\SearchCertificate.ashx.cs">
       <DependentUpon>SearchCertificate.ashx</DependentUpon>
     </Compile>

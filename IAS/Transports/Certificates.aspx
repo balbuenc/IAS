@@ -30,11 +30,41 @@
 
     <script src="/Scripts/moment-with-locales.min.js"></script>
     <script src="/Scripts/bootstrap-datetimepicker.min.js"></script>
+    
+    <script type="text/javascript">
+        $(function () {
+            $("[id$=txtSearchCertificate]").autocomplete(
+                {
+                    source: "SearchCertificate.ashx",
+                    // note minlength, triggers the Handler call only once 3 characters entered
+                    minLength: 3,
+                    focus: function (event, ui) {
+                        $("[id$=txtSearchCertificate]").val(ui.item.label);
+                        return false;
+                    },
+                    select: function (event, ui) {
+                        if (ui.item) {
+                            $("[id$=txtSearchCertificate]").val(ui.item.Client);
+                            console.log($("[id$=btnSearch]"));
+                            $("[id$=btnSearch]").click();
+                            return false;
+                        }
 
+                    }
+                })
+                .autocomplete("instance")._renderItem = function (ul, item) {
+                    console.log(item.Client);
+                    return $("<li>")
+                      .append("<div>" + item.Client + "</div>")
+                      .appendTo(ul);
+                };
+        });
+
+    </script>
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="container-fluid" >
-        <div class="row" style="padding-left:5px">
+    <div class="container-fluid">
+        <div class="row" style="padding-left: 5px">
             <ul class="breadcrumb">
                 <li><a href="/Default.aspx">IAS</a></li>
                 <li><a href="/Transports/Certificates.aspx">Transportes</a></li>
@@ -42,20 +72,57 @@
             </ul>
         </div>
     </div>
-    <div class="container" style="border-bottom: double; border-bottom-color: aliceblue">
-
-        <div class="row">
-            <div class="col-lg-2">
-                <asp:LinkButton ID="AddCertificateBtn"
-                    runat="server"
-                    CssClass="btn btn-link"
-                    PostBackUrl="Certificate.aspx?criteria=Client&mode=insert"
-                    ToolTip="Nuevo Certificado">
-                                <span class="glyphicon glyphicon-plus"></span>
-                </asp:LinkButton>
+    <div class="container-fluid" style="padding-left: 5px; padding-right: 5px">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Búsqueda</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <asp:TextBox ID="txtSearchCertificate" runat="server" CssClass="form-control" placeholder="Datos del cliente"></asp:TextBox>
+                    </div>
+                    <div class="col-lg-1">
+                        <asp:DropDownList ID="ddlMyClaims" runat="server" CssClass="form-control">
+                            <asp:ListItem Value="0" Text="Todos" Selected="True"></asp:ListItem>
+                            <asp:ListItem Value="1" Text="Mis siniestros"></asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                    <div class="col-lg-2">
+                        <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" DataValueField="ClaimStatusID" DataTextField="Status" AppendDataBoundItems="true">
+                            <asp:ListItem Value="-1" Text="Todos los estados" Selected="True"></asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input id="dpStart" placeholder="Fecha desde" class="form-control" runat="server" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class='input-group date' id='datetimepicker2'>
+                            <input id="dpEnd" placeholder="Fecha hasta" class="form-control" runat="server" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 pull-right">
+                        <button id="btnSearch" runat="server" class="btn btn-default" onserverclick="btnSearch_ServerClick">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                        &nbsp;
+                        <a href="Certificate.aspx?criteria=Client&mode=insert" class="btn btn-default">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <br />
     <div class="container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-left: 15px; padding-right: 15px">
         <%-- <asp:UpdatePanel ID="upnlCertificates" runat="server">
             <ContentTemplate>--%>
@@ -159,13 +226,24 @@
         SelectCommand="[transport].[sp_get_certificates]" SelectCommandType="StoredProcedure"
         DeleteCommand="[transport].[sp_delete_certificate]" DeleteCommandType="StoredProcedure">
 
-
         <DeleteParameters>
             <asp:Parameter Name="CertificateID" Type="Int32" />
         </DeleteParameters>
 
     </asp:SqlDataSource>
 
+    <script>
 
+        $('#datetimepicker1').datetimepicker({
+            format: 'DD-MM-YYYY',
+            locale: 'es'
+        });
+
+        $('#datetimepicker2').datetimepicker({
+            format: 'DD-MM-YYYY',
+            locale: 'es'
+        });
+
+    </script>
 
 </asp:Content>

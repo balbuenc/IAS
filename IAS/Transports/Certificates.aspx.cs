@@ -48,9 +48,7 @@ namespace IAS.Transports
         private void SearchCertificates()
         {
 
-            string criteria,
-                   myClaims,
-                   claimStatusId;
+            string criteria;
 
             int certificateID = 0;
             string[] data; 
@@ -78,9 +76,7 @@ namespace IAS.Transports
             }
 
             criteria = "Client";
-            myClaims = ddlMyClaims.SelectedValue;
-            claimStatusId = ddlStatus.SelectedValue;
-
+           
             SqlConnection sqlConnection1 = new SqlConnection(CertificateDataSource.ConnectionString);
             SqlDataAdapter da = new SqlDataAdapter();
             SqlCommand cmd = new SqlCommand();
@@ -94,8 +90,6 @@ namespace IAS.Transports
 
                 cmd.Parameters.AddWithValue("@certificateID", certificateID);
                 cmd.Parameters.AddWithValue("@criteria", criteria);
-                cmd.Parameters.AddWithValue("@myClaims", myClaims);
-                cmd.Parameters.AddWithValue("@claimStatusId", claimStatusId);
 
                 cmd.Parameters.Add("@startDate", SqlDbType.DateTime).Value = startDate;
                 cmd.Parameters.Add("@endDate", SqlDbType.DateTime).Value = endDate;

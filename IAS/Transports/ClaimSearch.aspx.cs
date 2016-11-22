@@ -165,42 +165,68 @@ namespace IAS.Transports
             string claimID = ((Label)e.Item.FindControl("lblClaimID")).Text;
             string PolicyNumber = ((Label)e.Item.FindControl("lblPolicyNumber")).Text;
 
-            if (e.CommandName == "Edit")
+            switch (e.CommandName.ToLower())
             {
-                Response.Redirect("Claim.aspx?ClaimID=" + claimID + "&mode=update");
+                case "edit":
+                    Response.Redirect("Claim.aspx?ClaimID=" + claimID + "&mode=update");
+                    break;
+                case "close":
+                    try
+                    {
+                        //Genero el cambio de estado
+                        cmd.CommandText = "transport.sp_change_claim_status";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Connection = sqlConnection1;
+
+                        cmd.Parameters.AddWithValue("@ClaimID", claimID);
+                        cmd.Parameters.AddWithValue("@GoNextStep", -1);
+                        cmd.Parameters.AddWithValue("@UserName", User.Identity.Name);
+
+                        sqlConnection1.Open();
+
+                        rowsAffected = cmd.ExecuteNonQuery();
+
+                        sqlConnection1.Close();
+
+                        //Direcciono a la pagina de busqueda
+                        Response.Redirect("ClaimSearch.aspx?PolicyNumber=" + PolicyNumber);
+                    }
+                    catch (Exception exp)
+                    {
+                        ErrorLabel.Text = exp.Message;
+                        ErrorLabel.Visible = true;
+                    }
+                    break;
+                case "delete":
+                    try
+                    {
+
+                        //Genero el cambio de estado
+                        cmd.CommandText = "transport.sp_delete_claim";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Connection = sqlConnection1;
+
+                        cmd.Parameters.AddWithValue("@ClaimID", claimID);
+                        
+                        sqlConnection1.Open();
+
+                        rowsAffected = cmd.ExecuteNonQuery();
+
+                        sqlConnection1.Close();
+
+                        //Direcciono a la pagina de busqueda
+                        Response.Redirect("ClaimSearch.aspx?PolicyNumber=" + PolicyNumber);
+                    }
+                    catch (Exception exp)
+                    {
+                        ErrorLabel.Text = exp.Message;
+                        ErrorLabel.Visible = true;
+                    }
+                    break;
+                default:
+                    break;
             }
-            else if (e.CommandName == "Close")
-            {
-                try
-                {
 
-                    //Genero el cambio de estado
-                    cmd.CommandText = "claim.sp_change_claim_status";
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Connection = sqlConnection1;
-
-                    cmd.Parameters.AddWithValue("@ClaimID", claimID);
-                    cmd.Parameters.AddWithValue("@GoNextStep", -1);
-                    cmd.Parameters.AddWithValue("@UserName", User.Identity.Name);
-
-                    sqlConnection1.Open();
-
-                    rowsAffected = cmd.ExecuteNonQuery();
-
-                    sqlConnection1.Close();
-
-
-
-                    //Direcciono a la pagina de busqueda
-                    Response.Redirect("ClaimSearch.aspx?PolicyNumber=" + PolicyNumber);
-
-                }
-                catch (Exception exp)
-                {
-                    ErrorLabel.Text = exp.Message;
-                    ErrorLabel.Visible = true;
-                }
-            }
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -208,5 +234,34 @@ namespace IAS.Transports
             SearchClaims();
         }
 
+        protected void ClaimListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            try
+            {
+                if (e.Item.ItemType == ListViewItemType.DataItem)
+                {
+                    Label lblStatusID = (Label)e.Item.FindControl("lblStatusID");
+
+                    if (lblStatusID.Text.Equals("4"))
+                    {
+
+                        HyperLink linkAction = (HyperLink)e.Item.FindControl("linkAction");
+                        linkAction.Visible = false;
+
+                        LinkButton EditButton  = (LinkButton)e.Item.FindControl("EditButton");
+                        EditButton.Visible = false;
+
+                        LinkButton CloseButton = (LinkButton)e.Item.FindControl("CloseButton");
+                        CloseButton.Visible = false;
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLabel.Text = "Error al visualizar los datos.. : " + ex.Message;
+                ErrorLabel.Visible = true;
+            }
+        }
     }
 }

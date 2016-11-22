@@ -114,7 +114,8 @@
                 <asp:ListView ID="ClaimListView"
                     runat="server"
                     DataKeyNames="ClaimID"
-                    OnItemCommand="ClaimListView_ItemCommand">
+                    OnItemCommand="ClaimListView_ItemCommand"
+                    OnItemDataBound="ClaimListView_ItemDataBound">
                     <LayoutTemplate>
                         <div class="table responsive">
                             <table class="table table-striped" style="font-size: x-small">
@@ -129,7 +130,7 @@
                                         <th>Fecha</th>
                                         <th>Usuario</th>
                                         <th>Estado</th>
-                                        <th>Sub Estado</th>
+                                        <%--<th>Sub Estado</th>--%>
                                         <th>Pendiente</th>
                                     </tr>
                                 </thead>
@@ -159,9 +160,11 @@
                             <td>
                                 <asp:Label ID="lblUsuario" runat="server" Text='<%# Eval("Usuario") %>' /></td>
                             <td>
-                                <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>' /></td>
-                            <td>
-                                <asp:Label ID="lblSubStatus" runat="server" Text='<%# Eval("SubStatus") %>' /></td>
+                                <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>' />
+                                 <asp:Label ID="lblStatusID" runat="server" Text='<%# Eval("StatusID") %>' Visible="false" />
+                            </td>
+                           <%-- <td>
+                                <asp:Label ID="lblSubStatus" runat="server" Text='<%# Eval("SubStatus") %>' /></td>--%>
                             <td>
                                 <asp:HyperLink ID="linkAction" runat="server" Text='<%#   Eval("NextStatus") %>' NavigateUrl='<%#   Eval("ActionForm") %>'></asp:HyperLink>
                             </td>
@@ -176,12 +179,12 @@
                                 </asp:LinkButton>
 
 
-                                <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Delete" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar el Siniestro.?');">
+                                <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Delete" ToolTip="Eliminar" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar el Siniestro.?');">
                                                 <span class="glyphicon glyphicon-trash"></span>
                                 </asp:LinkButton>
 
-                                <asp:LinkButton ID="CloseButton" runat="server" Text="Borrar" CommandName="Close" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Cerrar el Siniestro.?');">
-                                                <span class="glyphicon glyphicon-download-alt"></span>
+                                <asp:LinkButton ID="CloseButton" runat="server" Text="Cerrar" CommandName="Close" ToolTip="Cerrar" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Cerrar el Siniestro.?');">
+                                                <span class="glyphicon glyphicon-off"></span>
                                 </asp:LinkButton>
 
                             </td>

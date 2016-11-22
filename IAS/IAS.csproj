@@ -315,6 +315,7 @@
     <Content Include="Claim.Master" />
     <Content Include="CaseManagement.Master" />
     <Content Include="Claims\search.ashx" />
+    <None Include="Properties\PublishProfiles\aibias - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\aibias - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\assa - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\seguros - Web Deploy.pubxml" />

@@ -117,7 +117,7 @@
 
                                         <tr>
                                             <td>
-                                                <a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fHistoricoCaso&rs:Command=Render&CaseID=<%# Item.CaseID %>" target="_blank">#</a>
+                                                <a href="http://adlsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fHistoricoCaso&rs:Command=Render&CaseID=<%# Item.CaseID %>" target="_blank">#</a>
                                             </td>
                                             <td>
                                                 <asp:Label ID="lblCaseDescription" runat="server" Text='<%# Item.Description %>' />
@@ -287,7 +287,7 @@
 
                                                 <tr>
                                                     <td>
-                                                        <a href="http://aibsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fHistoricoCaso&rs:Command=Render&CaseID=<%# Item.CaseID %>" target="_blank">#</a>
+                                                        <a href="http://adlsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fHistoricoCaso&rs:Command=Render&CaseID=<%# Item.CaseID %>" target="_blank">#</a>
                                                     </td>
                                                     <td>
                                                         <asp:Label ID="lblCaseDescription" runat="server" Text='<%# Item.Description %>' />

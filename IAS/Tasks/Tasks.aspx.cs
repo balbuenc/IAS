@@ -72,6 +72,10 @@ namespace IAS.Tasks
                         DeleteTask(int.Parse(e.CommandArgument.ToString()));
 
                         break;
+                    case "Cerrar":
+                        CloseTask(int.Parse(e.CommandArgument.ToString()));
+                        break;
+
                     case "Comentarios":
                         hf_TaskID.Value = e.CommandArgument.ToString();
                         ReloadTaskComments();
@@ -85,6 +89,37 @@ namespace IAS.Tasks
                 ErrorLabel.Text = "Error a ejecutar la operación.. : " + ex.Message;
                 ErrorLabel.Visible = true;
             }
+        }
+
+
+        private void CloseTask(int taskID)
+        {
+            SqlConnection sqlConnection1 = new SqlConnection(TasksSqldataSource.ConnectionString);
+
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cmd.CommandText = "[task].[sp_close_task]";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = sqlConnection1;
+
+                cmd.Parameters.AddWithValue("@taskID", taskID);
+
+                sqlConnection1.Open();
+                cmd.ExecuteNonQuery();
+                sqlConnection1.Close();
+
+            }
+            catch (Exception exp)
+            {
+                sqlConnection1.Close();
+                ErrorLabel.Text = "Error a ejecutar Cierre de Tareas .. : " + exp.Message;
+                ErrorLabel.Visible = true;
+            }
+
+            TasksLoad();
+
         }
 
         private void DeleteTask(int taskID)
@@ -109,7 +144,7 @@ namespace IAS.Tasks
             catch (Exception exp)
             {
                 sqlConnection1.Close();
-                ErrorLabel.Text = "Error a ejecutar busqueda.. : " + exp.Message;
+                ErrorLabel.Text = "Error al Eliminar Tareas .. : " + exp.Message;
                 ErrorLabel.Visible = true;
             }
 
@@ -252,7 +287,7 @@ namespace IAS.Tasks
         {
             string taskName;
             string taskDescription;
-            float percentComplete = 0;
+            decimal percentComplete = 0;
             int taskPriorityID;
             int taskStateID;
             int taskTypeID;
@@ -286,7 +321,7 @@ namespace IAS.Tasks
                         break;
                     case "update":
                         cmd.CommandText = "[task].[sp_update_task]";
-                        percentComplete = float.Parse(txtPorcentaje.Text);
+                        percentComplete = decimal.Parse(txtPorcentaje.Text);
                         cmd.Parameters.AddWithValue("@taskID", TaskID);
                         break;
                     default:

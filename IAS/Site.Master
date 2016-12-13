@@ -92,7 +92,7 @@
                                     <li><a href="../Tasks/Tasks.aspx">Tareas | <b style="color:red; font-style:italic; font-weight:bold">!Beta</b></a></li>
                                     <li><a href="../CaseManagment/CollectionsToExpire.aspx">Envio de SMS</a></li>
                                     <li><a href="../Collections/UploadCollections.aspx">Subir cuotas</a></li>
-                                    <li><a href="../Transports/Certificates.aspx">Transporte</a></li>
+                                    <%--<li><a href="../Transports/Certificates.aspx">Transporte</a></li>--%>
                                 </ul>
                             </div>
                             <div class="btn-group">
@@ -159,6 +159,7 @@
                                     <li><a href="http://adlsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fCasosCelulares&rs:Command=Render" target="_blank">Clientes con Celular</a></li>
                                     <li><a href="http://adlsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fEnvioSMSCasosConCelular&rs:Command=Render" target="_blank">Notificaciones por SMS</a></li>
                                     <li role="separator" class="divider"></li>
+                                    <li><a href="http://adlsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fTareas&rs:Command=Render" target="_blank">Tareas</a></li>
                                    <%-- <li><a href="http://adlsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fPropuestas&rs:Command=Render" target="_blank">Propuestas</a></li>
                                     <li><a href="http://adlsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fAsignaciones&rs:Command=Render" target="_blank">Asignaciones</a></li>
                                     <li><a href="http://adlsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fPolicies&rs:Command=Render" target="_blank">Pólizas</a></li>

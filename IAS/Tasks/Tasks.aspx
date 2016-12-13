@@ -232,11 +232,11 @@
                                                 <small><span class="glyphicon glyphicon-comment"></span></small>
                                 </asp:LinkButton>
 
-                                <asp:LinkButton ID="CloseButton" runat="server" Text="Cerrar" CommandName="Cerrar" CommandArgument='<%# Eval("TaskID").ToString() %>' CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Cerrar la Tarea.?');">
+                                <asp:LinkButton ID="CloseButton" runat="server" Text="Cerrar" CommandName="Cerrar" CommandArgument='<%# Eval("TaskID").ToString() %>' ToolTip="Cerrar Tarea"  CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Cerrar la Tarea.?');">
                                                 <small><span class="glyphicon glyphicon-off"></span></small>
                                 </asp:LinkButton>
 
-                                <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Eliminar" CommandArgument='<%# Eval("TaskID").ToString() %>' CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar la Tarea.?');">
+                                <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Eliminar" CommandArgument='<%# Eval("TaskID").ToString() %>' ToolTip="Eliminar"  CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar la Tarea.?');">
                                                 <small><span class="glyphicon glyphicon-trash"></span></small>
                                 </asp:LinkButton>
 

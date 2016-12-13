@@ -315,11 +315,6 @@
     <Content Include="Claim.Master" />
     <Content Include="CaseManagement.Master" />
     <Content Include="Claims\search.ashx" />
-    <None Include="Properties\PublishProfiles\aibias - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\aibias - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\assa - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\seguros - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\toyoias - Web Deploy.pubxml" />
     <Content Include="Reports.Master" />
     <Content Include="Policies\Policy.aspx" />
     <Content Include="Scripts\bloodhound.js" />
@@ -331,6 +326,12 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\d3.min.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
+    <None Include="Properties\PublishProfiles\adlws1 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\adlws1 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\adlws2 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\adlws2 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\adlws3 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\adlws3 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.0.js" />
     <Content Include="Scripts\jquery-3.1.0.min.js" />

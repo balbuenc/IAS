@@ -30,7 +30,7 @@
 
     <script src="/Scripts/moment-with-locales.min.js"></script>
     <script src="/Scripts/bootstrap-datetimepicker.min.js"></script>
-    
+
     <script type="text/javascript">
         $(function () {
             $("[id$=txtSearchCertificate]").autocomplete(
@@ -64,7 +64,7 @@
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container-fluid">
-        <div class="row" style="padding-left: 5px; height:40px; font-size:10px">
+        <div class="row" style="padding-left: 5px; height: 40px; font-size: 10px">
             <ul class="breadcrumb">
                 <li><a href="/Default.aspx">IAS</a></li>
                 <li><a href="/Transports/Certificates.aspx">TRANSPORTES</a></li>
@@ -72,45 +72,40 @@
             </ul>
         </div>
     </div>
-    <div class="container-fluid" style="padding-left: 3px; padding-right: 3px; ">
-        <%--<div class="panel panel-default">--%>
-            <%--<div class="panel-heading">
-                <h4 class="panel-title">BÚSQUEDA</h4>
-            </div>--%>
-         <%--   <div class="panel-body">--%>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <asp:TextBox ID="txtSearchCertificate" runat="server" CssClass="form-control" placeholder="DATOS DEL CLIENTE"></asp:TextBox>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class='input-group date' id='datetimepicker1'>
-                            <input id="dpStart" placeholder="FECHA DESDE" class="form-control" runat="server" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class='input-group date' id='datetimepicker2'>
-                            <input id="dpEnd" placeholder="FECHA HASTA" class="form-control" runat="server" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 pull-right">
-                        <button id="btnSearch" runat="server" class="btn btn-default" onserverclick="btnSearch_ServerClick">
-                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                        </button>
-                        <a href="Certificate.aspx?criteria=Client&mode=insert" class="btn btn-default">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </a>
-                    </div>
+    <div class="container-fluid" style="padding-left: 3px; padding-right: 3px;">
+
+        <div class="row">
+            <div class="col-lg-6">
+                <asp:TextBox ID="txtSearchCertificate" runat="server" CssClass="form-control" placeholder="DATOS DEL CLIENTE"></asp:TextBox>
+            </div>
+            <div class="col-lg-2">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input id="dpStart" placeholder="FECHA DESDE" class="form-control" runat="server" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
                 </div>
-           <%-- </div>--%>
-        <%--</div>--%>
-    </div>    
-    <hr/>
+            </div>
+            <div class="col-lg-2">
+                <div class='input-group date' id='datetimepicker2'>
+                    <input id="dpEnd" placeholder="FECHA HASTA" class="form-control" runat="server" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-2 pull-right">
+                <button id="btnSearch" runat="server" class="btn btn-default" onserverclick="btnSearch_ServerClick">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
+                <a href="Certificate.aspx?criteria=Client&mode=insert" class="btn btn-default">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <hr />
     <div class="container-fluid" style="font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif; padding-left: 15px; padding-right: 15px">
         <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
 
@@ -204,7 +199,7 @@
             </Fields>
         </asp:DataPager>
 
-       
+
     </div>
     <asp:SqlDataSource ID="CertificateDataSource" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" runat="server"
         SelectCommand="[transport].[sp_get_certificates]" SelectCommandType="StoredProcedure"

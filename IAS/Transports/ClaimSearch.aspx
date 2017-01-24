@@ -31,7 +31,7 @@
                             $("[id$=btnSearch]").click();
                             return false;
                         }
-                        
+
                     }
                 })
                 .autocomplete("instance")._renderItem = function (ul, item) {
@@ -45,8 +45,8 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="container-fluid" >
-        <div class="row" style="padding-left:5px; font-size: 10px">
+    <div class="container-fluid">
+        <div class="row" style="padding-left: 5px; font-size: 10px">
             <ul class="breadcrumb">
                 <li><a href="/Default.aspx">IAS</a></li>
                 <li><a href="/Transports/Certificates.aspx">TRANSPORTES</a></li>
@@ -55,157 +55,148 @@
         </div>
     </div>
     <div class="container-fluid" style="padding-left: 5px; padding-right: 5px">
-        <%--<div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Búsqueda</h3>
-            </div>
-            <div class="panel-body">--%>
-                <div class="row">
-                 
-                    <div class="col-lg-3">
-                        <asp:TextBox ID="txtSearchClaim" runat="server" CssClass="form-control" placeholder="CLIENTE, PÓLIZA, DOCUMENTO"></asp:TextBox>
-                    </div>
-                    <div class="col-lg-1">
-                        <asp:DropDownList ID="ddlMyClaims" runat="server" CssClass="form-control">
-                            <asp:ListItem Value="0" Text="Todos" Selected="True"></asp:ListItem>
-                            <asp:ListItem Value="1" Text="Mis siniestros"></asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
-                    <div class="col-lg-2">
-                        <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" DataValueField="ClaimStatusID" DataTextField="Status" DataSourceID="StatusSqldataSoruce" AppendDataBoundItems="true">
-                            <asp:ListItem Value="-1" Text="Todos los estados" Selected="True"></asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class='input-group date' id='datetimepicker1'>
-                            <input id="dpStart" placeholder="FECHA DESDE" class="form-control" runat="server" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class='input-group date' id='datetimepicker2'>
-                            <input id="dpEnd" placeholder="FECHA HASTA" class="form-control" runat="server" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 pull-right">
-                        <button id="btnSearch" runat="server" class="btn btn-default" onserverclick="btnSearch_Click">
-                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                        </button>
-                        &nbsp;
-                        <a href="Claim.aspx?mode=insert" class="btn btn-default">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </a>
-                    </div>
-                </div>
-            <%--</div>--%>
-        </div>
         <div class="row">
-            <div class="col-lg-12">
-                <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
+
+            <div class="col-lg-3">
+                <asp:TextBox ID="txtSearchClaim" runat="server" CssClass="form-control" placeholder="CLIENTE, PÓLIZA, DOCUMENTO"></asp:TextBox>
+            </div>
+            <div class="col-lg-1">
+                <asp:DropDownList ID="ddlMyClaims" runat="server" CssClass="form-control">
+                    <asp:ListItem Value="0" Text="Todos" Selected="True"></asp:ListItem>
+                    <asp:ListItem Value="1" Text="Mis siniestros"></asp:ListItem>
+                </asp:DropDownList>
+            </div>
+            <div class="col-lg-2">
+                <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" DataValueField="ClaimStatusID" DataTextField="Status" DataSourceID="StatusSqldataSoruce" AppendDataBoundItems="true">
+                    <asp:ListItem Value="-1" Text="Todos los estados" Selected="True"></asp:ListItem>
+                </asp:DropDownList>
+            </div>
+            <div class="col-lg-2">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input id="dpStart" placeholder="FECHA DESDE" class="form-control" runat="server" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class='input-group date' id='datetimepicker2'>
+                    <input id="dpEnd" placeholder="FECHA HASTA" class="form-control" runat="server" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-2 pull-right">
+                <button id="btnSearch" runat="server" class="btn btn-default" onserverclick="btnSearch_Click">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
+
+                <a href="Claim.aspx?mode=insert" class="btn btn-default">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
             </div>
         </div>
-        <div class="row" style="padding-top: 5px">
-            <div class="col-lg-12">
-                <asp:ListView ID="ClaimListView"
-                    runat="server"
-                    DataKeyNames="ClaimID"
-                    OnItemCommand="ClaimListView_ItemCommand"
-                    OnItemDataBound="ClaimListView_ItemDataBound">
-                    <LayoutTemplate>
-                        <div class="table responsive">
-                            <table class="table table-striped" style="font-size: x-small">
-                                <thead>
-                                    <tr>
-                                        <th>NRO PÓLIZA</th>
-                                        <th>CLIENTE</th>
-                                        <%--      <th>Nro. Doc.</th>--%>
-                                        <th>SINIESTRO</th>
-                                        <th>RIESGO</th>
-                                        <th>PERDIDA</th>
-                                        <th>FECHA</th>
-                                        <th>USUARIO</th>
-                                        <th>ESTADO</th>
-                                        <%--<th>Sub Estado</th>--%>
-                                        <th>PENDIENTE</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr runat="server" id="itemPlaceholder" />
-                                </tbody>
-                            </table>
-                        </div>
-                    </LayoutTemplate>
-                    <ItemTemplate>
-                        <tr>
-                            <td>
-                                <asp:Label ID="lblClaimID" runat="server" Text='<%# Eval("ClaimID").ToString() %>' Visible="false" />
-                                <asp:Label ID="lblPolicyNumber" runat="server" Text='<%# Eval("PolicyNumber").ToString() %>' /></td>
-                            <td>
-                                <asp:Label ID="lblClient" runat="server" Text='<%# Eval("Client") %>' /></td>
-                            <%-- <td>
-                                    <asp:Label ID="lblClientDocumentNumber" runat="server" Text='<%# Eval("ClientDocumentNumber") %>' /></td>--%>
-                            <td>
-                                <asp:Label ID="lblClaimNumber" runat="server" Text='<%# Eval("ClaimNumber") %>' /></td>
-                            <td>
-                                <asp:Label ID="lblRiskName" runat="server" Text='<%# Eval("RiskName") %>' /></td>
-                            <td>
-                                <asp:Label ID="lblLooseDescription" runat="server" Text='<%# Eval("LooseDescription") %>' /></td>
-                            <td>
-                                <asp:Label ID="lblRegistryDate" runat="server" Text='<%# DateTime.Parse( Eval("ClaimDate").ToString()).ToShortDateString() %>' /></td>
-                            <td>
-                                <asp:Label ID="lblUsuario" runat="server" Text='<%# Eval("Usuario") %>' /></td>
-                            <td>
-                                <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>' />
-                                 <asp:Label ID="lblStatusID" runat="server" Text='<%# Eval("StatusID") %>' Visible="false" />
-                            </td>
-                           <%-- <td>
-                                <asp:Label ID="lblSubStatus" runat="server" Text='<%# Eval("SubStatus") %>' /></td>--%>
-                            <td>
-                                <asp:HyperLink ID="linkAction" runat="server" Text='<%#   Eval("NextStatus") %>' NavigateUrl='<%#   Eval("ActionForm") %>'></asp:HyperLink>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="8"></td>
-                            <td colspan="2" style="text-align: right">
 
-
-                                <asp:LinkButton ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CssClass="btn btn-link">
-                                                    <span class="glyphicon glyphicon-edit"></span>
-                                </asp:LinkButton>
-
-
-                                <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Delete" ToolTip="Eliminar" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar el Siniestro.?');">
-                                                <span class="glyphicon glyphicon-trash"></span>
-                                </asp:LinkButton>
-
-                                <asp:LinkButton ID="CloseButton" runat="server" Text="Cerrar" CommandName="Close" ToolTip="Cerrar" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Cerrar el Siniestro.?');">
-                                                <span class="glyphicon glyphicon-off"></span>
-                                </asp:LinkButton>
-
-                            </td>
-
-                        </tr>
-                    </ItemTemplate>
-                    <EditItemTemplate>
-                    </EditItemTemplate>
-                    <InsertItemTemplate>
-                    </InsertItemTemplate>
-                    <EmptyDataTemplate>
-                        <div class="row">
-                            <div class="col-lg-12 text-center">
-                                <div class="msg-box bg-warning alert-danger">No se encontraron Siniestros.</div>
-                            </div>
-                        </div>
-                    </EmptyDataTemplate>
-                </asp:ListView>
-            </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
         </div>
     </div>
+    <div class="row" style="padding-top: 5px">
+        <div class="col-lg-12">
+            <asp:ListView ID="ClaimListView"
+                runat="server"
+                DataKeyNames="ClaimID"
+                OnItemCommand="ClaimListView_ItemCommand"
+                OnItemDataBound="ClaimListView_ItemDataBound">
+                <LayoutTemplate>
+                    <div class="table responsive">
+                        <table class="table table-striped" style="font-size: x-small">
+                            <thead>
+                                <tr>
+                                    <th>NRO PÓLIZA</th>
+                                    <th>CLIENTE</th>
+                                    <th>SINIESTRO</th>
+                                    <th>RIESGO</th>
+                                    <th>PERDIDA</th>
+                                    <th>FECHA</th>
+                                    <th>USUARIO</th>
+                                    <th>ESTADO</th>
+                                    <th>PENDIENTE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr runat="server" id="itemPlaceholder" />
+                            </tbody>
+                        </table>
+                    </div>
+                </LayoutTemplate>
+                <ItemTemplate>
+                    <tr>
+                        <td>
+                            <asp:Label ID="lblClaimID" runat="server" Text='<%# Eval("ClaimID").ToString() %>' Visible="false" />
+                            <asp:Label ID="lblPolicyNumber" runat="server" Text='<%# Eval("PolicyNumber").ToString() %>' /></td>
+                        <td>
+                            <asp:Label ID="lblClient" runat="server" Text='<%# Eval("Client") %>' /></td>
+
+                        <td>
+                            <asp:Label ID="lblClaimNumber" runat="server" Text='<%# Eval("ClaimNumber") %>' /></td>
+                        <td>
+                            <asp:Label ID="lblRiskName" runat="server" Text='<%# Eval("RiskName") %>' /></td>
+                        <td>
+                            <asp:Label ID="lblLooseDescription" runat="server" Text='<%# Eval("LooseDescription") %>' /></td>
+                        <td>
+                            <asp:Label ID="lblRegistryDate" runat="server" Text='<%# DateTime.Parse( Eval("ClaimDate").ToString()).ToShortDateString() %>' /></td>
+                        <td>
+                            <asp:Label ID="lblUsuario" runat="server" Text='<%# Eval("Usuario") %>' /></td>
+                        <td>
+                            <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>' />
+                            <asp:Label ID="lblStatusID" runat="server" Text='<%# Eval("StatusID") %>' Visible="false" />
+                        </td>
+
+                        <td>
+                            <asp:HyperLink ID="linkAction" runat="server" Text='<%#   Eval("NextStatus") %>' NavigateUrl='<%#   Eval("ActionForm") %>'></asp:HyperLink>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="8"></td>
+                        <td colspan="2" style="text-align: right">
+
+
+                            <asp:LinkButton ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CssClass="btn btn-link">
+                                                    <span class="glyphicon glyphicon-edit"></span>
+                            </asp:LinkButton>
+
+
+                            <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Delete" ToolTip="Eliminar" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar el Siniestro.?');">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                            </asp:LinkButton>
+
+                            <asp:LinkButton ID="CloseButton" runat="server" Text="Cerrar" CommandName="Close" ToolTip="Cerrar" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Cerrar el Siniestro.?');">
+                                                <span class="glyphicon glyphicon-off"></span>
+                            </asp:LinkButton>
+
+                        </td>
+
+                    </tr>
+                </ItemTemplate>
+                <EditItemTemplate>
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                </InsertItemTemplate>
+                <EmptyDataTemplate>
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <div class="msg-box bg-warning alert-danger">No se encontraron Siniestros.</div>
+                        </div>
+                    </div>
+                </EmptyDataTemplate>
+            </asp:ListView>
+        </div>
+    </div>
+
     <!-- #region DATSOURCES -->
     <asp:SqlDataSource ID="ClaimSqldataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
         SelectCommand="transport.sp_search_claims" SelectCommandType="StoredProcedure"

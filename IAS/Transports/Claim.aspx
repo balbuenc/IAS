@@ -11,13 +11,38 @@
     <script src="/Scripts/moment-with-locales.min.js"></script>
     <script src="/Scripts/bootstrap-datetimepicker.min.js"></script>
 
-    <script>
+    <script type="text/javascript">
+        $(function () {
+            $("[id$=txtSearch]").autocomplete(
+                {
+                    source: "SearchCertificate.ashx",
+                    // note minlength, triggers the Handler call only once 3 characters entered
+                    minLength: 3,
+                    focus: function (event, ui) {
+                        $("[id$=txtSearch]").val(ui.item.label);
+                        return false;
+                    },
+                    select: function (event, ui) {
+                        if (ui.item) {
+                            $("[id$=txtSearch]").val(ui.item.Client);
 
-        function openModalPolizas() {
-            $('#myModalPolizas').modal('show');
-        }
+                            var d = ui.item.Client.split('|');
+                            $("[id$=hifCertificateID]").text(d[1]);
+                            $("[id$=btnSearch]").click();
+                            return false;
+                        }
+                    }
+                })
+                .autocomplete("instance")._renderItem = function (ul, item) {
+
+                    return $("<li>")
+                      .append("<div>" + item.Client + "</div>")
+                      .appendTo(ul);
+                };
+        });
 
     </script>
+
     <script type="text/javascript">
         $(function () {
             $("[id$=txtSearch]").autocomplete(
@@ -50,20 +75,12 @@
 
     </script>
     <style>
-        #contenido {
-            margin: 0 10px;
-        }
-
-        #header {
-            padding-top: 5px;
-            height: 50px;
-            padding-right: 10px;
-        }
-
-        .modal-wide1 .modal-dialog {
+        .modal-wide .modal-dialog {
             left: 10px;
             width: 80%; /* or whatever you wish */
         }
+
+       
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -77,45 +94,6 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-
-                    <div class="panel-heading" hidden="hidden">DATOS DEL CLIENTE</div>
-                    <div class="panel-body" hidden="hidden">
-                        <div class="form-group">
-                            <div class="row">
-
-                                <div class="col-lg-1">CLIENTE</div>
-                                <div class="col-lg-10">
-                                    <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control"></asp:TextBox>
-                                    <asp:HiddenField ID="hifCertificateID" runat="server" />
-                                </div>
-                                <div class="col-lg-1" hidden="hidden">
-                                    <button id="btnSearch" runat="server" class="btn btn-default" onserverclick="searchBox_ServerClick">
-                                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <label class="col-sm-2 control-label" for="form-group-input">CLIENTE</label>
-                                <div class="col-sm-10">
-                                    <asp:Label ID="lblClient" runat="server"></asp:Label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <label class="col-sm-2 control-label" for="form-group-input">NRO DOCUMENTO</label>
-                                <div class="col-sm-10">
-                                    <asp:Label ID="lblDocumentNumber" runat="server"></asp:Label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <label class="col-sm-2 control-label" for="form-group-input">POLIZA</label>
-                                <div class="col-sm-10">
-                                    <asp:Label ID="lblPolicyNumber" runat="server"></asp:Label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="panel-heading">DATOS GENERALES DEL SINIESTRO</div>
                     <div class="panel-body">
                         <div class="form-group">
@@ -138,7 +116,12 @@
                                 <label class="col-sm-1 control-label" for="form-group-input">ASEGURADO</label>
                                 <div class="col-sm-3">
                                     <asp:TextBox ID="txtClient" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                    <button id="btnSearchClient" runat="server" class="btn btn-default" data-toggle="modal" data-target="#myModalNewClient">
+
+                                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                    </button>
                                 </div>
+
                             </div>
                             <br />
                             <div class="row">
@@ -240,15 +223,81 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <hr />
+    </div>
+    <div class="row">
+        <hr />
+    </div>
+    <div class="row">
+        <div class="col-lg-2 col-lg-offset-10">
+            <asp:Button ID="registrarSiniestroBtn" runat="server" Text="Guardar Siniestro" CssClass="btn btn-primary" OnClick="registrarSiniestroBtn_Click" />
         </div>
-        <div class="row">
-            <div class="col-lg-2 col-lg-offset-10">
-                <asp:Button ID="registrarSiniestroBtn" runat="server" Text="Guardar Siniestro" CssClass="btn btn-primary" OnClick="registrarSiniestroBtn_Click" />
+    </div>
+
+
+
+
+
+
+    <!-- #region MODAL SEARCH -->
+
+
+    <div class="modal fade modal-wide" id="myModalNewClient" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  >
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;<span aria-hidden="true"></span><span class="sr-only">Cerrar</span></button>
+                    <h4 class="modal-title" id="H5">CLIENTE</h4>
+                </div>
+                <br />
+                <div class="modal-body">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">DATOS DEL CLIENTE</div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="row">
+
+                                    <div class="col-lg-1">CLIENTE</div>
+                                    <div class="col-lg-10">
+                                        <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:HiddenField ID="hifCertificateID" runat="server" />
+                                    </div>
+                                    <div class="col-lg-1" hidden="hidden">
+                                        <button id="btnSearch" runat="server" class="btn btn-default" onserverclick="searchBox_ServerClick">
+                                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <label class="col-sm-2 control-label" for="form-group-input">CLIENTE</label>
+                                    <div class="col-sm-10">
+                                        <asp:Label ID="lblClient" runat="server"></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-2 control-label" for="form-group-input">NRO DOCUMENTO</label>
+                                    <div class="col-sm-10">
+                                        <asp:Label ID="lblDocumentNumber" runat="server"></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-2 control-label" for="form-group-input">POLIZA</label>
+                                    <div class="col-sm-10">
+                                        <asp:Label ID="lblPolicyNumber" runat="server"></asp:Label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- #endregion -->
+
+
     <!-- #SQL Data Sources -->
     <asp:SqlDataSource ID="clientesDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="sp_obtener_persona_para_siniestros" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
 

@@ -11,6 +11,12 @@
     <script src="/Scripts/moment-with-locales.min.js"></script>
     <script src="/Scripts/bootstrap-datetimepicker.min.js"></script>
 
+    <style>
+        .ui-autocomplete {
+            z-index: 215000000 !important;
+        }
+    </style>
+
     <script type="text/javascript">
         $(function () {
             $("[id$=txtSearch]").autocomplete(

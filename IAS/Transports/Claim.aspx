@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Nuevo siniestro" Language="C#" MasterPageFile="~/Transport.Master" AutoEventWireup="true" CodeBehind="Claim.aspx.cs" Inherits="IAS.Transports.Claim" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-        <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
     <script src="/Scripts/jquery-1.12.4.min.js"></script>
     <script src="/Scripts/jquery-ui-1.12.1.min.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
@@ -66,7 +67,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-     <div class="container">
+    <div class="container-fluid" style="font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif; padding-left: 10px; padding-right: 10px; font-size: xx-small">
         <div class="row">
             <div class="col-lg-12">
                 <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
@@ -74,14 +75,15 @@
         </div>
         <br />
         <div class="row">
-            <div class="col-lg-12" style="font-size: small">
+            <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Datos del Cliente</div>
-                    <div class="panel-body">
+
+                    <div class="panel-heading" hidden="hidden">DATOS DEL CLIENTE</div>
+                    <div class="panel-body" hidden="hidden">
                         <div class="form-group">
                             <div class="row">
 
-                                <div class="col-lg-1">Cliente</div>
+                                <div class="col-lg-1">CLIENTE</div>
                                 <div class="col-lg-10">
                                     <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control"></asp:TextBox>
                                     <asp:HiddenField ID="hifCertificateID" runat="server" />
@@ -94,30 +96,107 @@
                             </div>
                             <br />
                             <div class="row">
-                                <label class="col-sm-2 control-label" for="form-group-input">Cliente</label>
+                                <label class="col-sm-2 control-label" for="form-group-input">CLIENTE</label>
                                 <div class="col-sm-10">
                                     <asp:Label ID="lblClient" runat="server"></asp:Label>
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="col-sm-2 control-label" for="form-group-input">Nro Documento</label>
+                                <label class="col-sm-2 control-label" for="form-group-input">NRO DOCUMENTO</label>
                                 <div class="col-sm-10">
                                     <asp:Label ID="lblDocumentNumber" runat="server"></asp:Label>
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="col-sm-2 control-label" for="form-group-input">Poliza</label>
+                                <label class="col-sm-2 control-label" for="form-group-input">POLIZA</label>
                                 <div class="col-sm-10">
                                     <asp:Label ID="lblPolicyNumber" runat="server"></asp:Label>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="panel-heading">Datos del Siniestro</div>
+
+                    <div class="panel-heading">DATOS GENERALES DEL SINIESTRO</div>
                     <div class="panel-body">
                         <div class="form-group">
                             <div class="row">
-                                <label class="col-sm-1 control-label" for="form-group-input">Fecha del reclamo</label>
+                                <label class="col-sm-1 control-label" for="form-group-input">RECLAMO NRO.</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtClaimID" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <label class="col-sm-1 control-label" for="form-group-input">CERTIFICADO N°</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtCertificateNumber" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                </div>
+                                <label class="col-sm-1 control-label" for="form-group-input">PÓLIZA N°</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtPoliceNumber" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                </div>
+                                <label class="col-sm-1 control-label" for="form-group-input">ASEGURADO</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtClient" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <label class="col-sm-1 control-label" for="form-group-input">SUMA ASEGURADA*</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtInvoiceAmount" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <label class="col-sm-1 control-label" for="form-group-input">FECHA DE SOLICITUD CS*</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtClaimDate" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <label class="col-sm-1 control-label" for="form-group-input">TRANSPORTISTA</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtCarrier" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <label class="col-sm-1 control-label" for="form-group-input">MERCADERIA</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtCommodity" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <label class="col-sm-1 control-label" for="form-group-input">FACTURA NRO.</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtInvoiceNumber" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+
+                            <br />
+                            <div class="row">
+
+                                <label class="col-sm-1 control-label" for="form-group-input">ORIGEN</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtOrigin" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <label class="col-sm-1 control-label" for="form-group-input">DESTINO</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtDestination" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <label class="col-sm-1 control-labelContacto" for="form-group-input">CONTACTO</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtContact" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <label class="col-sm-1 control-label" for="form-group-input">TELEFONO</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtPhoneNumber" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <label class="col-sm-1 control-label" for="form-group-input">UBICACIÓN</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtLocation" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <label class="col-sm-1 control-label" for="form-group-input">FECHA RECLAMO</label>
                                 <div class="col-sm-3">
                                     <div class='input-group date' id='datetimepicker1'>
                                         <input id="dp1" placeholder="Fecha siniestro" class="form-control" runat="server" />
@@ -126,71 +205,37 @@
                                         </span>
                                     </div>
                                 </div>
-                                <label class="col-sm-1 control-label" for="form-group-input">CRT N°</label>
-                                <div class="col-sm-3">
-                                    <asp:TextBox ID="txtCrtNumber" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-                                </div>
-                                <label class="col-sm-1 control-label" for="form-group-input">Consignatario</label>
-                                <div class="col-sm-3">
-                                    <asp:TextBox ID="txtBeneficiary" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-                                </div>
                             </div>
                             <br />
-                            <div class="row">
-                                <label class="col-sm-1 control-label" for="form-group-input">Transportista</label>
-                                <div class="col-sm-3">
-                                    <asp:TextBox ID="txtCarrier" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                                <label class="col-sm-1 control-label" for="form-group-input">Mercaderia</label>
-                                <div class="col-sm-3">
-                                    <asp:TextBox ID="txtCommodity" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                                <label class="col-sm-1 control-label" for="form-group-input">Factura Nro</label>
-                                <div class="col-sm-3">
-                                    <asp:TextBox ID="txtInvoiceNumber" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <label class="col-sm-1 control-label" for="form-group-input">Valor Factura</label>
-                                <div class="col-sm-3">
-                                    <asp:TextBox ID="txtInvoiceAmount" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                                <label class="col-sm-1 control-label" for="form-group-input">Origen</label>
-                                <div class="col-sm-3">
-                                    <asp:TextBox ID="txtOrigin" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                                <label class="col-sm-1 control-label" for="form-group-input">Destino</label>
-                                <div class="col-sm-3">
-                                    <asp:TextBox ID="txtDestination" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <label class="col-sm-1 control-labelContacto" for="form-group-input">Contacto</label>
-                                <div class="col-sm-3">
-                                    <asp:TextBox ID="txtContact" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                                <label class="col-sm-1 control-label" for="form-group-input">Telefono</label>
-                                <div class="col-sm-3">
-                                    <asp:TextBox ID="txtPhoneNumber" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                                <label class="col-sm-1 control-label" for="form-group-input">Ubicación</label>
-                                <div class="col-sm-3">
-                                    <asp:TextBox ID="txtLocation" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                            </div>
 
-                            <br />
-                            <div class="row">
-                                <label class="col-sm-1 control-label" for="form-group-input">Observación</label>
-                                <div class="col-sm-10">
-                                    <asp:TextBox ID="txtObservations" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
-                                </div>
-
-                            </div>
-                            <br />
                         </div>
+                    </div>
+
+                    <div class="panel-heading">DATOS DE LA CARGA</div>
+                    <div class="panel-body">
+                        <label class="col-sm-1 control-label" for="form-group-input">CRT/ BL/ AWB N°</label>
+                        <div class="col-sm-3">
+                            <asp:TextBox ID="txtCrtNumber" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                        </div>
+                        <label class="col-sm-1 control-label" for="form-group-input">CONSIGNATARIO</label>
+                        <div class="col-sm-3">
+                            <asp:TextBox ID="txtBeneficiary" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                        </div>
+                    </div>
+
+                    <div class="panel-heading">DATOS DEL CONTACTO</div>
+                    <div class="panel-body"></div>
+
+                    <div class="panel-heading">DATOS DEL COMISARIO DE AVERIAS</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <label class="col-sm-1 control-label" for="form-group-input">OBSERVACIÓN</label>
+                            <div class="col-sm-10">
+                                <asp:TextBox ID="txtObservations" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
+                            </div>
+
+                        </div>
+                        <br />
                     </div>
                 </div>
             </div>

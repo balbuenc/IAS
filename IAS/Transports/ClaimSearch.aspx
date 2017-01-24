@@ -46,24 +46,24 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container-fluid" >
-        <div class="row" style="padding-left:5px">
+        <div class="row" style="padding-left:5px; font-size: 10px">
             <ul class="breadcrumb">
                 <li><a href="/Default.aspx">IAS</a></li>
-                <li><a href="/Transports/Certificates.aspx">Transportes</a></li>
-                <li class="active">Reclamos</li>
+                <li><a href="/Transports/Certificates.aspx">TRANSPORTES</a></li>
+                <li class="active">RECLAMOS</li>
             </ul>
         </div>
     </div>
     <div class="container-fluid" style="padding-left: 5px; padding-right: 5px">
-        <div class="panel panel-default">
+        <%--<div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Búsqueda</h3>
             </div>
-            <div class="panel-body">
+            <div class="panel-body">--%>
                 <div class="row">
                  
                     <div class="col-lg-3">
-                        <asp:TextBox ID="txtSearchClaim" runat="server" CssClass="form-control" placeholder="Cliente, Póliza, Documento"></asp:TextBox>
+                        <asp:TextBox ID="txtSearchClaim" runat="server" CssClass="form-control" placeholder="CLIENTE, PÓLIZA, DOCUMENTO"></asp:TextBox>
                     </div>
                     <div class="col-lg-1">
                         <asp:DropDownList ID="ddlMyClaims" runat="server" CssClass="form-control">
@@ -78,7 +78,7 @@
                     </div>
                     <div class="col-lg-2">
                         <div class='input-group date' id='datetimepicker1'>
-                            <input id="dpStart" placeholder="Fecha desde" class="form-control" runat="server" />
+                            <input id="dpStart" placeholder="FECHA DESDE" class="form-control" runat="server" />
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -86,7 +86,7 @@
                     </div>
                     <div class="col-lg-2">
                         <div class='input-group date' id='datetimepicker2'>
-                            <input id="dpEnd" placeholder="Fecha hasta" class="form-control" runat="server" />
+                            <input id="dpEnd" placeholder="FECHA HASTA" class="form-control" runat="server" />
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -102,7 +102,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            <%--</div>--%>
         </div>
         <div class="row">
             <div class="col-lg-12">
@@ -121,17 +121,17 @@
                             <table class="table table-striped" style="font-size: x-small">
                                 <thead>
                                     <tr>
-                                        <th>Nro Póliza</th>
-                                        <th>Cliente</th>
+                                        <th>NRO PÓLIZA</th>
+                                        <th>CLIENTE</th>
                                         <%--      <th>Nro. Doc.</th>--%>
-                                        <th>Siniestro</th>
-                                        <th>Riesgo</th>
-                                        <th>Perdida</th>
-                                        <th>Fecha</th>
-                                        <th>Usuario</th>
-                                        <th>Estado</th>
+                                        <th>SINIESTRO</th>
+                                        <th>RIESGO</th>
+                                        <th>PERDIDA</th>
+                                        <th>FECHA</th>
+                                        <th>USUARIO</th>
+                                        <th>ESTADO</th>
                                         <%--<th>Sub Estado</th>--%>
-                                        <th>Pendiente</th>
+                                        <th>PENDIENTE</th>
                                     </tr>
                                 </thead>
                                 <tbody>

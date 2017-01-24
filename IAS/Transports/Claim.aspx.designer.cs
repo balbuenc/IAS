@@ -76,31 +76,58 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.Label lblPolicyNumber;
         
         /// <summary>
-        /// dp1 control.
+        /// txtClaimID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText dp1;
+        protected global::System.Web.UI.WebControls.TextBox txtClaimID;
         
         /// <summary>
-        /// txtCrtNumber control.
+        /// txtCertificateNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCrtNumber;
+        protected global::System.Web.UI.WebControls.TextBox txtCertificateNumber;
         
         /// <summary>
-        /// txtBeneficiary control.
+        /// txtPoliceNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBeneficiary;
+        protected global::System.Web.UI.WebControls.TextBox txtPoliceNumber;
+        
+        /// <summary>
+        /// txtClient control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtClient;
+        
+        /// <summary>
+        /// txtInvoiceAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtInvoiceAmount;
+        
+        /// <summary>
+        /// txtClaimDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtClaimDate;
         
         /// <summary>
         /// txtCarrier control.
@@ -128,15 +155,6 @@ namespace IAS.Transports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtInvoiceNumber;
-        
-        /// <summary>
-        /// txtInvoiceAmount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInvoiceAmount;
         
         /// <summary>
         /// txtOrigin control.
@@ -182,6 +200,33 @@ namespace IAS.Transports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtLocation;
+        
+        /// <summary>
+        /// dp1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText dp1;
+        
+        /// <summary>
+        /// txtCrtNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCrtNumber;
+        
+        /// <summary>
+        /// txtBeneficiary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBeneficiary;
         
         /// <summary>
         /// txtObservations control.

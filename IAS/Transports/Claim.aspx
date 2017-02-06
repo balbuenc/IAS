@@ -23,7 +23,7 @@
                 {
                     source: "SearchCertificate.ashx",
                     // note minlength, triggers the Handler call only once 3 characters entered
-                    minLength: 3,
+                    minLength: 2,
                     focus: function (event, ui) {
                         $("[id$=txtSearch]").val(ui.item.label);
                         return false;
@@ -85,8 +85,6 @@
             left: 10px;
             width: 80%; /* or whatever you wish */
         }
-
-       
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -120,75 +118,25 @@
                                     <asp:TextBox ID="txtPoliceNumber" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                                 </div>
                                 <label class="col-sm-1 control-label" for="form-group-input">ASEGURADO</label>
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <asp:TextBox ID="txtClient" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                </div>
+                                <div class="col-sm-1">
                                     <button id="btnSearchClient" runat="server" class="btn btn-default" data-toggle="modal" data-target="#myModalNewClient">
-
                                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                                     </button>
                                 </div>
-
                             </div>
                             <br />
                             <div class="row">
                                 <label class="col-sm-1 control-label" for="form-group-input">SUMA ASEGURADA*</label>
                                 <div class="col-sm-3">
-                                    <asp:TextBox ID="txtInvoiceAmount" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtCapitalAmount" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                                 <label class="col-sm-1 control-label" for="form-group-input">FECHA DE SOLICITUD CS*</label>
                                 <div class="col-sm-3">
-                                    <asp:TextBox ID="txtClaimDate" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <label class="col-sm-1 control-label" for="form-group-input">TRANSPORTISTA</label>
-                                <div class="col-sm-3">
-                                    <asp:TextBox ID="txtCarrier" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                                <label class="col-sm-1 control-label" for="form-group-input">MERCADERIA</label>
-                                <div class="col-sm-3">
-                                    <asp:TextBox ID="txtCommodity" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                                <label class="col-sm-1 control-label" for="form-group-input">FACTURA NRO.</label>
-                                <div class="col-sm-3">
-                                    <asp:TextBox ID="txtInvoiceNumber" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                            </div>
-
-                            <br />
-                            <div class="row">
-
-                                <label class="col-sm-1 control-label" for="form-group-input">ORIGEN</label>
-                                <div class="col-sm-3">
-                                    <asp:TextBox ID="txtOrigin" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                                <label class="col-sm-1 control-label" for="form-group-input">DESTINO</label>
-                                <div class="col-sm-3">
-                                    <asp:TextBox ID="txtDestination" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <label class="col-sm-1 control-labelContacto" for="form-group-input">CONTACTO</label>
-                                <div class="col-sm-3">
-                                    <asp:TextBox ID="txtContact" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                                <label class="col-sm-1 control-label" for="form-group-input">TELEFONO</label>
-                                <div class="col-sm-3">
-                                    <asp:TextBox ID="txtPhoneNumber" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                                <label class="col-sm-1 control-label" for="form-group-input">UBICACIÓN</label>
-                                <div class="col-sm-3">
-                                    <asp:TextBox ID="txtLocation" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <label class="col-sm-1 control-label" for="form-group-input">FECHA RECLAMO</label>
-                                <div class="col-sm-3">
-                                    <div class='input-group date' id='datetimepicker1'>
-                                        <input id="dp1" placeholder="Fecha siniestro" class="form-control" runat="server" />
+                                    <div class='input-group date' id='datetimepicker3'>
+                                        <input id="txtClaimDate1" placeholder="FECHA DE SOLICITUD CS" class="form-control" runat="server" />
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
@@ -197,26 +145,235 @@
                             </div>
                             <br />
 
+                            <div class="row">
+                                <label class="col-sm-1 control-label" for="form-group-input">RECLAMO REALIZADO POR*</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtClaimBY" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <label class="col-sm-1 control-label" for="form-group-input">EMPRESA*</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtEnterprise" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <label class="col-sm-1 control-label" for="form-group-input">FECHA RECLAMO*</label>
+                                <div class="col-sm-3">
+                                    <div class='input-group date' id='datetimepicker1'>
+                                        <input id="dp1" placeholder="FECHA RECLAMO" class="form-control" runat="server" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="row">
+                                <label class="col-sm-1 control-label" for="form-group-input">FECHA SOLIC. INSPECC.*</label>
+                                <div class="col-sm-3">
+                                    <div class='input-group date' id='datetimepicker2'>
+                                        <input id="dp2" placeholder="FECHA SOLIC. INSPECC." class="form-control" runat="server" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <label class="col-sm-1 control-label" for="form-group-input">ESTADO DEL CERTIFICADO*</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtCertificateStatus" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <label class="col-sm-1 control-label" for="form-group-input">ESTADO DE PAGO</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtxPaymentStatus" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+                            <br />
+
+
+                            <br />
+                            <div class="row">
+                                <label class="col-sm-1 control-label" for="form-group-input">ESTADO DEL RECLAMO</label>
+                                <div class="col-sm-3">
+                                    <asp:TextBox ID="txtClaimStatus" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
 
                     <div class="panel-heading">DATOS DE LA CARGA</div>
                     <div class="panel-body">
-                        <label class="col-sm-1 control-label" for="form-group-input">CRT/ BL/ AWB N°</label>
-                        <div class="col-sm-3">
-                            <asp:TextBox ID="txtCrtNumber" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                        <div class="row">
+                            <label class="col-sm-1 control-label" for="form-group-input">CRT/ BL/ AWB N°</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtCrtNumber" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                            </div>
+                            <label class="col-sm-1 control-label" for="form-group-input">CONSIGNATARIO</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtBeneficiary" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                            </div>
+                            <label class="col-sm-1 control-label" for="form-group-input">TRANSPORTISTA</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtCarrier" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                            </div>
                         </div>
-                        <label class="col-sm-1 control-label" for="form-group-input">CONSIGNATARIO</label>
-                        <div class="col-sm-3">
-                            <asp:TextBox ID="txtBeneficiary" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                        <br />
+                        <div class="row">
+                            <label class="col-sm-1 control-label" for="form-group-input">MEDIO DE TRANSPORTE</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtTransportMethod" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <label class="col-sm-1 control-label" for="form-group-input">MERCADERIA</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtCommodity" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <label class="col-sm-1 control-label" for="form-group-input">CANTIDAD</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtCommmodityCount" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
                         </div>
+                        <br />
+
+                        <div class="row">
+                            <label class="col-sm-1 control-label" for="form-group-input">ORIGEN</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtOrigin" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <label class="col-sm-1 control-label" for="form-group-input">DESTINO</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtDestination" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <label class="col-sm-1 control-label" for="form-group-input">FECHA EMBARQUE</label>
+                                <div class="col-sm-3">
+                                    <div class='input-group date' id='datetimepicker4'>
+                                        <input id="txtAbordDate" placeholder="FECHA EMBARQUE" class="form-control" runat="server" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                        </div>
+                        <br />
+
+                        <div class="row">
+                            <label class="col-sm-1 control-label" for="form-group-input">FACTURA NRO.</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtInvoiceNumber" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <label class="col-sm-1 control-label" for="form-group-input">VALOR FACTURA</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtInvoiceAmount" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                        </div>
+                        <br />
                     </div>
 
                     <div class="panel-heading">DATOS DEL CONTACTO</div>
-                    <div class="panel-body"></div>
-
-                    <div class="panel-heading">DATOS DEL COMISARIO DE AVERIAS</div>
                     <div class="panel-body">
+                        <div class="row">
+                            <label class="col-sm-1 control-labelContacto" for="form-group-input">AGENCIA DE DESPACHO</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtDispatchAgency" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <label class="col-sm-1 control-label" for="form-group-input">DESPACHANTE</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtDispatcher" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <label class="col-sm-1 control-label" for="form-group-input">AUXILIAR DESPACHANTE</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtDispatcherAssistant" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                        </div>
+                        <br />
+                         <div class="row">
+                            <label class="col-sm-1 control-labelContacto" for="form-group-input">TELEFONO NRO.</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtContactPhoneNumber" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <label class="col-sm-1 control-label" for="form-group-input">CELULLAR NRO.</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtContactMobileNumber" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <label class="col-sm-1 control-label" for="form-group-input">CORREO ELECTRONICO</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtContactEmail" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <label class="col-sm-1 control-labelContacto" for="form-group-input">DEPOSITO PORTUARIO</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtLocation" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <label class="col-sm-1 control-label" for="form-group-input">FECHA ARRIBO DEP. PORT.</label>
+                             <div class="col-sm-3">
+                                    <div class='input-group date' id='datetimepicker5'>
+                                        <input id="dp5" placeholder="FECHA ARRIBO DEP. PORT." class="form-control" runat="server" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                        </div>
+                       <hr />
+                        <div class="row">
+                            <label class="col-sm-1 control-label" for="form-group-input">EMPRESA*</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtContactEnterprise" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <label class="col-sm-1 control-labelContacto" for="form-group-input">CONTACTO</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtContact" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <label class="col-sm-1 control-label" for="form-group-input">TELEFONO</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtPhoneNumber" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            
+                        </div>
+                        <br />
+
+                        <div class="row">
+                             <label class="col-sm-1 control-label" for="form-group-input">CELULLAR NRO.</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtContactMobileNumber1" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <label class="col-sm-1 control-label" for="form-group-input">CORREO ELECTRONICO</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtContactEmail1" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <label class="col-sm-1 control-label" for="form-group-input">DEPOSITO CONSIGNATARIO</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtLocationBeneficiary" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                        </div>
+                        <br />
+
+                        <div class="row">
+                            <label class="col-sm-1 control-label" for="form-group-input">FECHA ARRIBO DEP. CONSIG.</label>
+                             <div class="col-sm-3">
+                                    <div class='input-group date' id='datetimepicker6'>
+                                        <input id="Text1" placeholder="FECHA ARRIBO DEP. CONSIG." class="form-control" runat="server" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-heading">DATOS DEL COMISARIO DE AVERÍAS</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <label class="col-sm-1 control-labelContacto" for="form-group-input">ACOMISARIO DE AVERÍAS</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtComisary" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <label class="col-sm-1 control-label" for="form-group-input">CERTIFICADO DE AVERÍAS NRO.</label>
+                            <div class="col-sm-3">
+                                <asp:TextBox ID="txtAveryCertificateNumber" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            
+                        </div>
+                        <br />
                         <div class="row">
                             <label class="col-sm-1 control-label" for="form-group-input">OBSERVACIÓN</label>
                             <div class="col-sm-10">
@@ -224,7 +381,6 @@
                             </div>
 
                         </div>
-                        <br />
                     </div>
                 </div>
             </div>
@@ -247,7 +403,7 @@
     <!-- #region MODAL SEARCH -->
 
 
-    <div class="modal fade modal-wide" id="myModalNewClient" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  >
+    <div class="modal fade modal-wide" id="myModalNewClient" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
 
             <div class="modal-content">
@@ -310,6 +466,30 @@
     <script type="text/javascript">
 
         $('#datetimepicker1').datetimepicker({
+            format: 'DD-MM-YYYY',
+            locale: 'es'
+        });
+
+        $('#datetimepicker2').datetimepicker({
+            format: 'DD-MM-YYYY',
+            locale: 'es'
+        });
+        $('#datetimepicker3').datetimepicker({
+            format: 'DD-MM-YYYY',
+            locale: 'es'
+        });
+
+        $('#datetimepicker4').datetimepicker({
+            format: 'DD-MM-YYYY',
+            locale: 'es'
+        });
+
+        $('#datetimepicker5').datetimepicker({
+            format: 'DD-MM-YYYY',
+            locale: 'es'
+        });
+
+        $('#datetimepicker6').datetimepicker({
             format: 'DD-MM-YYYY',
             locale: 'es'
         });

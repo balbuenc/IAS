@@ -295,6 +295,9 @@ namespace IAS.Transports
                         CertificateID = certificateID;
                         txtCrtNumber.Text = dt.Rows[0]["CertificateNumber"].ToString();
                         txtBeneficiary.Text = dt.Rows[0]["Beneficiary"].ToString();
+                        txtClient.Text = dt.Rows[0]["Beneficiary"].ToString();
+                        txtCertificateNumber.Text = dt.Rows[0]["CertificateNumber"].ToString();
+                        txtCapitalAmount.Text = dt.Rows[0]["CapitalAmount"].ToString(); 
                     }
 
                 }

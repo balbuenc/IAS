@@ -67,22 +67,103 @@ namespace IAS.Transports {
         protected global::System.Web.UI.HtmlControls.HtmlButton btnSearchClient;
         
         /// <summary>
-        /// Control txtInvoiceAmount.
+        /// Control txtCapitalAmount.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInvoiceAmount;
+        protected global::System.Web.UI.WebControls.TextBox txtCapitalAmount;
         
         /// <summary>
-        /// Control txtClaimDate.
+        /// Control txtClaimDate1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtClaimDate;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtClaimDate1;
+        
+        /// <summary>
+        /// Control txtClaimBY.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtClaimBY;
+        
+        /// <summary>
+        /// Control txtEnterprise.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEnterprise;
+        
+        /// <summary>
+        /// Control dp1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText dp1;
+        
+        /// <summary>
+        /// Control dp2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText dp2;
+        
+        /// <summary>
+        /// Control txtCertificateStatus.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCertificateStatus;
+        
+        /// <summary>
+        /// Control txtxPaymentStatus.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtxPaymentStatus;
+        
+        /// <summary>
+        /// Control txtClaimStatus.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtClaimStatus;
+        
+        /// <summary>
+        /// Control txtCrtNumber.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCrtNumber;
+        
+        /// <summary>
+        /// Control txtBeneficiary.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBeneficiary;
         
         /// <summary>
         /// Control txtCarrier.
@@ -94,6 +175,15 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.TextBox txtCarrier;
         
         /// <summary>
+        /// Control txtTransportMethod.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTransportMethod;
+        
+        /// <summary>
         /// Control txtCommodity.
         /// </summary>
         /// <remarks>
@@ -103,13 +193,13 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.TextBox txtCommodity;
         
         /// <summary>
-        /// Control txtInvoiceNumber.
+        /// Control txtCommmodityCount.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInvoiceNumber;
+        protected global::System.Web.UI.WebControls.TextBox txtCommmodityCount;
         
         /// <summary>
         /// Control txtOrigin.
@@ -130,6 +220,114 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.TextBox txtDestination;
         
         /// <summary>
+        /// Control txtAbordDate.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtAbordDate;
+        
+        /// <summary>
+        /// Control txtInvoiceNumber.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtInvoiceNumber;
+        
+        /// <summary>
+        /// Control txtInvoiceAmount.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtInvoiceAmount;
+        
+        /// <summary>
+        /// Control txtDispatchAgency.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDispatchAgency;
+        
+        /// <summary>
+        /// Control txtDispatcher.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDispatcher;
+        
+        /// <summary>
+        /// Control txtDispatcherAssistant.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDispatcherAssistant;
+        
+        /// <summary>
+        /// Control txtContactPhoneNumber.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtContactPhoneNumber;
+        
+        /// <summary>
+        /// Control txtContactMobileNumber.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtContactMobileNumber;
+        
+        /// <summary>
+        /// Control txtContactEmail.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtContactEmail;
+        
+        /// <summary>
+        /// Control txtLocation.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLocation;
+        
+        /// <summary>
+        /// Control dp5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText dp5;
+        
+        /// <summary>
+        /// Control txtContactEnterprise.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtContactEnterprise;
+        
+        /// <summary>
         /// Control txtContact.
         /// </summary>
         /// <remarks>
@@ -148,40 +346,58 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.TextBox txtPhoneNumber;
         
         /// <summary>
-        /// Control txtLocation.
+        /// Control txtContactMobileNumber1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLocation;
+        protected global::System.Web.UI.WebControls.TextBox txtContactMobileNumber1;
         
         /// <summary>
-        /// Control dp1.
+        /// Control txtContactEmail1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText dp1;
+        protected global::System.Web.UI.WebControls.TextBox txtContactEmail1;
         
         /// <summary>
-        /// Control txtCrtNumber.
+        /// Control txtLocationBeneficiary.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCrtNumber;
+        protected global::System.Web.UI.WebControls.TextBox txtLocationBeneficiary;
         
         /// <summary>
-        /// Control txtBeneficiary.
+        /// Control Text1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBeneficiary;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text1;
+        
+        /// <summary>
+        /// Control txtComisary.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtComisary;
+        
+        /// <summary>
+        /// Control txtAveryCertificateNumber.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAveryCertificateNumber;
         
         /// <summary>
         /// Control txtObservations.

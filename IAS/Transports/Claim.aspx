@@ -115,7 +115,7 @@
                                 </div>
                                 <label class="col-sm-1 control-label" for="form-group-input">PÓLIZA N°</label>
                                 <div class="col-sm-3">
-                                    <asp:TextBox ID="txtPoliceNumber" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                    <asp:TextBox ID="txtPolicyNumber" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                                 </div>
                                 <label class="col-sm-1 control-label" for="form-group-input">ASEGURADO</label>
                                 <div class="col-sm-2">
@@ -136,7 +136,7 @@
                                 <label class="col-sm-1 control-label" for="form-group-input">FECHA DE SOLICITUD CS*</label>
                                 <div class="col-sm-3">
                                     <div class='input-group date' id='datetimepicker3'>
-                                        <input id="txtClaimDate1" placeholder="FECHA DE SOLICITUD CS" class="form-control" runat="server" />
+                                        <input id="txtRequestDate" placeholder="FECHA DE SOLICITUD CS" class="form-control" runat="server" />
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
@@ -170,7 +170,7 @@
                                 <label class="col-sm-1 control-label" for="form-group-input">FECHA SOLIC. INSPECC.*</label>
                                 <div class="col-sm-3">
                                     <div class='input-group date' id='datetimepicker2'>
-                                        <input id="dp2" placeholder="FECHA SOLIC. INSPECC." class="form-control" runat="server" />
+                                        <input id="txtInspectionRequestDate" placeholder="FECHA SOLIC. INSPECC." class="form-control" runat="server" />
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
@@ -182,7 +182,7 @@
                                 </div>
                                 <label class="col-sm-1 control-label" for="form-group-input">ESTADO DE PAGO</label>
                                 <div class="col-sm-3">
-                                    <asp:TextBox ID="txtxPaymentStatus" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtPaymentStatus" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
                             <br />

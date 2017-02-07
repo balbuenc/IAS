@@ -117,12 +117,18 @@ namespace IAS.Transports
                 // Load certificate
                 if (dt?.Rows.Count > 0)
                 {
+                  
+                    txtClient.Text = dt.Rows[0]["Beneficiary"].ToString();
+                    txtCertificateNumber.Text = dt.Rows[0]["CertificateNumber"].ToString();
+                    txtCapitalAmount.Text = dt.Rows[0]["CapitalAmount"].ToString();
+
                     lblClient.Text = dt.Rows[0]["Client"].ToString();
                     lblDocumentNumber.Text = dt.Rows[0]["ClientDocumentNumber"].ToString();
                     lblPolicyNumber.Text = dt.Rows[0]["PolicyNumber"].ToString();
                     dp1.Value = dt.Rows[0]["ClaimDate"].ToString();
                     PersonID = dt.Rows[0]["PersonID"].ToString();
                     PolicyNumber = dt.Rows[0]["PolicyNumber"].ToString();
+                    txtPolicyNumber.Text = dt.Rows[0]["PolicyNumber"].ToString();
                     CertificateID = long.Parse(dt.Rows[0]["CertificateID"].ToString());
                     txtCrtNumber.Text = dt.Rows[0]["CertificateNumber"].ToString();
                     txtBeneficiary.Text = dt.Rows[0]["Beneficiary"].ToString();
@@ -136,6 +142,10 @@ namespace IAS.Transports
                     txtPhoneNumber.Text = dt.Rows[0]["PhoneNumber"].ToString();
                     txtLocation.Text = dt.Rows[0]["Location"].ToString();
                     txtObservations.Text = dt.Rows[0]["Observations"].ToString();
+                    txtRequestDate.Value = dt.Rows[0]["RequestDate"].ToString();
+                    txtClaimBY.Text = dt.Rows[0]["ClaimBY"].ToString();
+                    txtEnterprise.Text = dt.Rows[0]["Enterprise"].ToString();
+                    txtInspectionRequestDate.Value = dt.Rows[0]["InspectionRequestDate"].ToString();
 
                 }
                 else
@@ -155,6 +165,7 @@ namespace IAS.Transports
         {
             SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
             SqlCommand cmd = new SqlCommand();
+
             int claimID;
             int rowsAffected;
 
@@ -167,6 +178,7 @@ namespace IAS.Transports
                     {
                         Direction = ParameterDirection.Output
                     };
+
                     cmd.Parameters.Add(claimIDOut);
                 }
                 else
@@ -193,7 +205,12 @@ namespace IAS.Transports
                 cmd.Parameters.AddWithValue("@destination", txtDestination.Text);
                 cmd.Parameters.AddWithValue("@contact", txtContact.Text);
                 cmd.Parameters.AddWithValue("@phoneNumber", txtPhoneNumber.Text);
-                cmd.Parameters.AddWithValue("@location", txtLocation.Text);
+                cmd.Parameters.AddWithValue("@location", txtLocation.Text);           
+                cmd.Parameters.AddWithValue("@requestDate", DateTime.Parse(txtRequestDate.Value));
+                cmd.Parameters.AddWithValue("@claimBY", txtClaimBY.Text);
+                cmd.Parameters.AddWithValue("@enterprise", txtEnterprise.Text);
+                cmd.Parameters.AddWithValue("@inspectionRequestDate", DateTime.Parse(txtInspectionRequestDate.Value));
+                          
 
                 sqlConnection1.Open();
 
@@ -292,6 +309,7 @@ namespace IAS.Transports
                         lblClient.Text = dt.Rows[0]["cliente"].ToString();
                         PersonID = dt.Rows[0]["id_persona"].ToString();
                         PolicyNumber = dt.Rows[0]["nro_poliza"].ToString();
+                        txtPolicyNumber.Text = dt.Rows[0]["nro_poliza"].ToString();
                         CertificateID = certificateID;
                         txtCrtNumber.Text = dt.Rows[0]["CertificateNumber"].ToString();
                         txtBeneficiary.Text = dt.Rows[0]["Beneficiary"].ToString();

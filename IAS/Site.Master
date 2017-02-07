@@ -92,7 +92,7 @@
                                     <li><a href="../Tasks/Tasks.aspx">Tareas | <b style="color:red; font-style:italic; font-weight:bold">!Beta</b></a></li>
                                     <li><a href="../CaseManagment/CollectionsToExpire.aspx">Envio de SMS</a></li>
                                     <li><a href="../Collections/UploadCollections.aspx">Subir cuotas</a></li>
-                                    <li><a href="../Transports/Certificates.aspx">Transporte</a></li>
+                                  <%--  <li><a href="../Transports/Certificates.aspx">Transporte</a></li>--%>
                                 </ul>
                             </div>
                             <div class="btn-group">

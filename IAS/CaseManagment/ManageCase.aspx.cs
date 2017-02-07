@@ -19,8 +19,8 @@ namespace IAS.CaseManagment
     {
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            //if (null == Request.QueryString["CaseID"])
-            //    Response.Redirect("~/Default.aspx", false);
+            if (null == Request.QueryString["CaseID"])
+                Response.Redirect("~/Default.aspx", false);
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -270,6 +270,6 @@ namespace IAS.CaseManagment
         {
             changeEffectiveDateEnableProperty();
         }
-
+      
     }
 }

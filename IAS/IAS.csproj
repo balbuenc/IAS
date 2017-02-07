@@ -205,6 +205,7 @@
     <Content Include="CaseManagment\ManageCase.aspx" />
     <Content Include="CaseManagment\MyCaseList.aspx" />
     <Content Include="CaseManagment\PolicyVerification.aspx" />
+    <Content Include="CaseManagment\SearchCase.aspx" />
     <Content Include="Claims\ApprovementClaim.aspx" />
     <Content Include="Claims\ClaimDetail.aspx" />
     <Content Include="Claims\ClaimFollow.aspx" />
@@ -326,12 +327,8 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\d3.min.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
-    <None Include="Properties\PublishProfiles\adlws1 - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\adlws1 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\adlws2 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\adlws2 - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\adlws3 - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\adlws3 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\AIBIAS.pubxml" />
     <None Include="Properties\PublishProfiles\LocalDEV - File System.pubxml" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
@@ -813,6 +810,13 @@
     </Compile>
     <Compile Include="CaseManagment\PolicyVerification.aspx.designer.cs">
       <DependentUpon>PolicyVerification.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CaseManagment\SearchCase.aspx.cs">
+      <DependentUpon>SearchCase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CaseManagment\SearchCase.aspx.designer.cs">
+      <DependentUpon>SearchCase.aspx</DependentUpon>
     </Compile>
     <Compile Include="Claim.Master.cs">
       <DependentUpon>Claim.Master</DependentUpon>

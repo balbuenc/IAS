@@ -41,11 +41,13 @@ namespace IAS.CaseManagment {
         protected void Page_Load(object sender, EventArgs e)
         {
             //if (User.Identity.Name != "Sergio" || Request.QueryString["Search"] == "True")
-            //    FindUserFirstCase(0); //Traer en automatico , DIA<< MES ACTUAL << VENCIDOS
+            if (User.Identity.Name == "jessica" )
+                FindUserFirstCase(0); //Traer en automatico , DIA<< MES ACTUAL << VENCIDOS
         }
 
         private void FindUserFirstCase(int period)
         {
+            string url;
 
             SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
             SqlCommand cmd = new SqlCommand();
@@ -83,8 +85,14 @@ namespace IAS.CaseManagment {
 
                 //Direcciono a la pagina de busqueda
                 if (caseID != String.Empty)
-                    Response.Redirect("ManageCase?CaseID=" + caseID);
-
+                {
+                    url = "ManageCase?CaseID=" + caseID;
+                    Response.Redirect(url,false);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "js_alert", "alert('NO TIENE CASOS ASIGNADOS.');", true);
+                }
             }
             catch (Exception exp)
             {
@@ -197,6 +205,9 @@ namespace IAS.CaseManagment {
         }
 
         protected void MyCasesListView_ItemCommand( object sender, ListViewCommandEventArgs e ) {
+
+            string url;
+
             var db = new ApplicationDbContext();
 
             if ( e.CommandName == "Sort" ) {
@@ -207,8 +218,8 @@ namespace IAS.CaseManagment {
             var currentCase = db.Cases.Where( c => c.CaseID == id_caso ).SingleOrDefault();
             switch ( e.CommandName.ToString() ) {
                 case "OpenCase":
-
-                    Response.Redirect("./CaseHub.aspx?CaseID=" + id_caso);
+                    url = "./CaseHub.aspx?CaseID=" + id_caso;
+                    Response.Redirect(url,false);
                     break;
 
                 case "ChangeUser":

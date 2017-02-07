@@ -222,20 +222,21 @@
                             </a>
 
                         </li>
-                        <li>
+                        <%--<li>
                             <a class='expandable' href='/Dashboard/CommercialBoard.aspx?CaseID=-1' title='Tablero de Control'>
                                 <span class='glyphicon glyphicon-th-large collapsed-element'></span>
                                 <span class='expanded-element'>Tablero de Control</span>
                             </a>
 
-                        </li>
+                        </li>--%>
 
                     </ul>
-                    <a href='#' id='logout-icon' title='Logout'>
-                        <span class='glyphicon glyphicon-off'></span>
+                    <%--<a href="http://adlsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fCasosPorCliente&rs:Command=Render" target="_blank" id='logout-icon' title='Búsqueda'>--%>
+                        <a href="/CaseManagment/SearchCase.aspx"  id='logout-icon' title='Búsqueda'>
+                        <span class='glyphicon glyphicon-search'></span>
                     </a>
 
-
+                   
 
                 </nav>
             </div>

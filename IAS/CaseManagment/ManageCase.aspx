@@ -6,10 +6,7 @@
 
     <script src="../Scripts/jquery-1.12.4.min.js"></script>
     <script src="../../Scripts/bootstrap.min.js"></script>
-
-
     <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
-
 
     <script>
         (function () {
@@ -99,11 +96,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="container-fluid" style="font-family: 'Segoe UI'">
+    <div class="container-fluid" style="font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;">
         <asp:HiddenField ID="hdnCaseID" runat="server" />
         <div class="row">
             <div class="col-lg-12" style="border-bottom: double; border-bottom-color: darkblue; color: darkblue">
-                <h2>Gestión de caso | Cobranzas</h2>
+                <h4>GESTIÓN DE CASO | COBRANZAS</h4>
             </div>
         </div>
         <div class="row">
@@ -111,44 +108,99 @@
                 DataKeyNames="PersonID"
                 SelectMethod="GetPerson">
                 <ItemTemplate>
-                    <h4 style="color: dodgerblue">Datos del Cliente</h4>
+                    <h4 style="color: dodgerblue">DATOS DEL CLIENTE</h4>
 
                     <div class="row">
-                        <div class="col-lg-3"><u>Cliente:</u></div>
-                        <div class="col-lg-9" style="color: forestgreen"><%#:Item.FullName %></div>
+                        <div class="col-lg-3"><u>CLIENTE:</u></div>
+                        <div class="col-lg-8" style="color: forestgreen"><%#:Item.FullName %></div>         
+                        
                     </div>
                     <div class="row">
-                        <div class="col-lg-3"><u>Teléfonos:</u></div>
-                        <div class="col-lg-3">Particular:<strong><%#:string.IsNullOrEmpty(Item.MobilePhone )?"nd": Item.HomePhone %> </strong></div>
-                        <div class="col-lg-3">Celular:<strong><%#:string.IsNullOrEmpty(Item.MobilePhone )?"nd": Item.MobilePhone %> </strong></div>
-                        <div class="col-lg-3">Laboral:<strong><%#:string.IsNullOrEmpty(Item.BusinessPhone )?"nd": Item.BusinessPhone %> </strong></div>
+                        <div class="col-lg-3"><u>TELÉFONOS:</u></div>
+                        <div class="col-lg-3">PARTICULAR:<strong><%#:string.IsNullOrEmpty(Item.MobilePhone )?"nd": Item.HomePhone %></strong></div>
+                        <div class="col-lg-3">CELULAR:<strong><%#:string.IsNullOrEmpty(Item.MobilePhone )?"nd": Item.MobilePhone %></strong></div>
+                        <div class="col-lg-3">LABORAL:<strong><%#:string.IsNullOrEmpty(Item.BusinessPhone )?"nd": Item.BusinessPhone %></strong></div>
                     </div>
                     <div class="row">
                         <div class="hidden-sm">
-                            <div class="col-lg-3"><u>Documentos:</u></div>
-                            <div class="col-lg-4">R.U.C.:<strong><%#:string.IsNullOrEmpty(Item.DocumentNumber )?"nd": Item.DocumentNumber%> </strong></div>
-                            <div class="col-lg-4">C.I.:<strong><%#:string.IsNullOrEmpty(Item.DocumentNumber2 )?"nd": Item.DocumentNumber2 %> </strong></div>
+                            <div class="col-lg-3"><u>DOCUMENTOS:</u></div>
+                            <div class="col-lg-4">R.U.C.:<strong><%#:string.IsNullOrEmpty(Item.DocumentNumber )?"nd": Item.DocumentNumber%></strong></div>
+                            <div class="col-lg-4">C.I.:<strong><%#:string.IsNullOrEmpty(Item.DocumentNumber2 )?"nd": Item.DocumentNumber2 %></strong></div>
                         </div>
                     </div>
-
 
                 </ItemTemplate>
                 <EmptyDataTemplate>
                     <div class="msg-box bg-info">
-                        No hay datos del cliente.
+                        NO HAY DATOS DEL CLIENTE.
                     </div>
                 </EmptyDataTemplate>
             </asp:FormView>
         </div>
-
-        <div class="row">
-            <div class="col-lg-12" style="border-bottom: double; border-bottom-color: darkblue">
-                <h4 style="color: dodgerblue">Pólizas a gestionar</h4>
-            </div>
-        </div>
     </div>
 
+
     <div class="row">
+        <div class="col-lg-12" style="border-bottom: double; border-bottom-color: darkblue">
+            <h4 style="color: dodgerblue">DETALLE DE LA GESTIÓN</h4>
+        </div>
+    </div>
+    <div class="row" id="CaseTransitionDiv">
+        <asp:Label ID="Label2" runat="server" Text="" CssClass="msg-box bg-danger" Visible="false"></asp:Label>
+        <div class="form-group container-fluid">
+            <div class="row">
+                <div class="col-sm-9">
+                    <label>NUEVO ESTADO:</label>
+                    <asp:DropDownList ID="ddlNewState" runat="server" CssClass="form-control"
+                        ItemType="IAS.Models.State"
+                        SelectMethod="GetNewStates"
+                        DataTextField="StateName"
+                        DataValueField="StateID"
+                        AutoPostBack="True"
+                        OnDataBound="ddlNewState_DataBound"
+                        OnSelectedIndexChanged="ddlNewState_SelectedIndexChanged">
+                    </asp:DropDownList>
+                </div>
+                <div class="col-sm-3">
+                    <label>EFECTIVIDAD:</label>
+                    <asp:TextBox ID="txtEffectiveDate" runat="server" CssClass="form-control datetime" type="date"></asp:TextBox>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>COMENTARIOS:</label>
+            <asp:TextBox ID="txtComments" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
+        </div>
+
+        <div class="text-right">
+            <asp:Button ID="buttonChangeState" runat="server" Text="Registrar" CssClass="btn btn-info" OnClick="buttonChangeState_Click" />
+        </div>
+
+        <%-- <asp:SqlDataSource ID="CaseTransitionDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"></asp:SqlDataSource>--%>
+        <asp:SqlDataSource ID="PolicyDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="select * from dbo.policy where PolicyNumber = @PolicyNumber"
+            SelectCommandType="Text">
+            <SelectParameters>
+                <asp:Parameter Name="PolicyNumber" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+
+        <asp:SqlDataSource ID="ActivePoliciesByCase" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
+            SelectCommand="sp_get_active_policies_by_CaseID"
+            SelectCommandType="StoredProcedure">
+            <SelectParameters>
+                <asp:QueryStringParameter QueryStringField="CaseID" Name="CaseID" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-12" style="border-bottom: double; border-bottom-color: darkblue">
+            <h4 style="color: dodgerblue">PÓLIZAS A GESTIONAR</h4>
+        </div>
+    </div>
+    <div class="row" style="font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif; font-size: small">
         <asp:Label ID="ErrorLabel" Visible="False" CssClass="msg-box bg-danger" runat="server" />
         <asp:ListView ID="CollectionsListView" runat="server" DataSourceID="ActivePoliciesByCase"
             DataKeyNames="PolicyNumber"
@@ -157,8 +209,8 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Nombre del riesgo</th>
-                            <th>Poliza</th>
+                            <th>NOMBRE DEL RIESGO</th>
+                            <th>POLIZA</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -192,14 +244,14 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Cuota</th>
-                                            <th>Recibo</th>
-                                            <th>Importe</th>
-                                            <th>Vencimiento</th>
-                                            <th>Metodo de cobro</th>
-                                            <th class="text-center">Cobrada</th>
-                                            <th>Fecha pago</th>
-                                            <th>Estado</th>
+                                            <th>CUOTA</th>
+                                            <th>RECIBO</th>
+                                            <th>IMPORTE</th>
+                                            <th>VENCIMIENTO</th>
+                                            <th>METODO DE COBRO</th>
+                                            <th class="text-center">COBRADA</th>
+                                            <th>FECHA PAGO</th>
+                                            <th>ESTADO</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -277,7 +329,7 @@
                                 </tr>
                             </EditItemTemplate>
                             <EmptyDataTemplate>
-                                <div class="msg-box bg-warning">No hay cuotas Pendientes de gestiòn para la Pòliza.</div>
+                                <div class="msg-box bg-warning">NO HAY CUOTAS PENDIENTES DE GESTIÒN PARA LA PÒLIZA.</div>
                             </EmptyDataTemplate>
                         </asp:ListView>
                     </td>
@@ -291,59 +343,9 @@
     </script>
     <asp:HiddenField ID="HiddenField1" runat="server" Value="" />
 
-    <div class="row">
-        <div class="col-lg-12" style="border-bottom: double; border-bottom-color: darkblue">
-            <h4 style="color: dodgerblue">Detalle de la gestión</h4>
-        </div>
-    </div>
-    <div class="row" id="CaseTransitionDiv">
-        <asp:Label ID="Label2" runat="server" Text="" CssClass="msg-box bg-danger" Visible="false"></asp:Label>
-        <div class="form-group container-fluid">
-            <div class="row">
-                <div class="col-sm-9">
-                    <label>Nuevo estado:</label>
-                    <asp:DropDownList ID="ddlNewState" runat="server" CssClass="form-control"
-                        ItemType="IAS.Models.State"
-                        SelectMethod="GetNewStates"
-                        DataTextField="StateName"
-                        DataValueField="StateID"
-                        AutoPostBack="True"
-                        OnDataBound="ddlNewState_DataBound"
-                        OnSelectedIndexChanged="ddlNewState_SelectedIndexChanged">
-                    </asp:DropDownList>
-                </div>
-                <div class="col-sm-3">
-                    <label>Efectividad:</label>
-                    <asp:TextBox ID="txtEffectiveDate" runat="server" CssClass="form-control datetime" type="date"></asp:TextBox>
-                </div>
-            </div>
-        </div>
 
-        <div class="form-group">
-            <label>Comentarios:</label>
-            <asp:TextBox ID="txtComments" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
-        </div>
+      
 
-        <div class="text-right">
-            <asp:Button ID="buttonChangeState" runat="server" Text="Registrar" CssClass="btn btn-info" OnClick="buttonChangeState_Click" />
-        </div>
-
-       <%-- <asp:SqlDataSource ID="CaseTransitionDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"></asp:SqlDataSource>--%>
-        <asp:SqlDataSource ID="PolicyDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="select * from dbo.policy where PolicyNumber = @PolicyNumber"
-             SelectCommandType="Text">
-            <SelectParameters>
-                <asp:Parameter Name="PolicyNumber" Type="Int32" />
-            </SelectParameters>
-        </asp:SqlDataSource>
-
-         <asp:SqlDataSource ID="ActivePoliciesByCase" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" 
-             SelectCommand="sp_get_active_policies_by_CaseID"
-             SelectCommandType="StoredProcedure">
-            <SelectParameters>
-                <asp:QueryStringParameter QueryStringField="CaseID" Name="CaseID" Type="Int32" />
-            </SelectParameters>
-        </asp:SqlDataSource>
-    </div>
 
 
 </asp:Content>

@@ -141,6 +141,8 @@
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
                                     </div>
+                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtRequestDate" Font-Bold="true"
+                                        CssClass="text-danger" ValidationGroup="save" ErrorMessage="El campo es requerido" />
                                 </div>
                             </div>
                             <br />
@@ -149,19 +151,25 @@
                                 <label class="col-sm-1 control-label" for="form-group-input">RECLAMO REALIZADO POR*</label>
                                 <div class="col-sm-3">
                                     <asp:TextBox ID="txtClaimBY" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtClaimBY" Font-Bold="true"
+                                        CssClass="text-danger" ValidationGroup="save" ErrorMessage="El campo es requerido" />
                                 </div>
                                 <label class="col-sm-1 control-label" for="form-group-input">EMPRESA*</label>
                                 <div class="col-sm-3">
                                     <asp:TextBox ID="txtEnterprise" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEnterprise" Font-Bold="true"
+                                        CssClass="text-danger" ValidationGroup="save" ErrorMessage="El campo es requerido" />
                                 </div>
                                 <label class="col-sm-1 control-label" for="form-group-input">FECHA RECLAMO*</label>
                                 <div class="col-sm-3">
                                     <div class='input-group date' id='datetimepicker1'>
-                                        <input id="dp1" placeholder="FECHA RECLAMO" class="form-control" runat="server" />
+                                        <input id="txtClaimDate" placeholder="FECHA RECLAMO" class="form-control" runat="server" />
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
                                     </div>
+                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtClaimDate" Font-Bold="true"
+                                        CssClass="text-danger" ValidationGroup="save" ErrorMessage="El campo es requerido" />
                                 </div>
                             </div>
                             <br />
@@ -175,10 +183,15 @@
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
                                     </div>
+                                    <asp:RequiredFieldValidator runat="server" ValidationGroup="save" Font-Bold="true"
+                                        ControlToValidate="txtInspectionRequestDate"
+                                        CssClass="text-danger" ErrorMessage="El campo es requerido" />
                                 </div>
                                 <label class="col-sm-1 control-label" for="form-group-input">ESTADO DEL CERTIFICADO*</label>
                                 <div class="col-sm-3">
                                     <asp:TextBox ID="txtCertificateStatus" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtCertificateStatus" Font-Bold="true"
+                                        CssClass="text-danger" ValidationGroup="save" ErrorMessage="El campo es requerido" />
                                 </div>
                                 <label class="col-sm-1 control-label" for="form-group-input">ESTADO DE PAGO</label>
                                 <div class="col-sm-3">
@@ -242,14 +255,14 @@
                                 <asp:TextBox ID="txtDestination" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                             <label class="col-sm-1 control-label" for="form-group-input">FECHA EMBARQUE</label>
-                                <div class="col-sm-3">
-                                    <div class='input-group date' id='datetimepicker4'>
-                                        <input id="txtAbordDate" placeholder="FECHA EMBARQUE" class="form-control" runat="server" />
-                                        <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                        </span>
-                                    </div>
+                            <div class="col-sm-3">
+                                <div class='input-group date' id='datetimepicker4'>
+                                    <input id="txtAbordDate" placeholder="FECHA EMBARQUE" class="form-control" runat="server" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
                                 </div>
+                            </div>
                         </div>
                         <br />
 
@@ -283,7 +296,7 @@
                             </div>
                         </div>
                         <br />
-                         <div class="row">
+                        <div class="row">
                             <label class="col-sm-1 control-labelContacto" for="form-group-input">TELEFONO NRO.</label>
                             <div class="col-sm-3">
                                 <asp:TextBox ID="txtContactPhoneNumber" runat="server" CssClass="form-control"></asp:TextBox>
@@ -304,16 +317,16 @@
                                 <asp:TextBox ID="txtLocation" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                             <label class="col-sm-1 control-label" for="form-group-input">FECHA ARRIBO DEP. PORT.</label>
-                             <div class="col-sm-3">
-                                    <div class='input-group date' id='datetimepicker5'>
-                                        <input id="dp5" placeholder="FECHA ARRIBO DEP. PORT." class="form-control" runat="server" />
-                                        <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                        </span>
-                                    </div>
+                            <div class="col-sm-3">
+                                <div class='input-group date' id='datetimepicker5'>
+                                    <input id="dp5" placeholder="FECHA ARRIBO DEP. PORT." class="form-control" runat="server" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
                                 </div>
+                            </div>
                         </div>
-                       <hr />
+                        <hr />
                         <div class="row">
                             <label class="col-sm-1 control-label" for="form-group-input">EMPRESA*</label>
                             <div class="col-sm-3">
@@ -327,12 +340,12 @@
                             <div class="col-sm-3">
                                 <asp:TextBox ID="txtPhoneNumber" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
-                            
+
                         </div>
                         <br />
 
                         <div class="row">
-                             <label class="col-sm-1 control-label" for="form-group-input">CELULLAR NRO.</label>
+                            <label class="col-sm-1 control-label" for="form-group-input">CELULLAR NRO.</label>
                             <div class="col-sm-3">
                                 <asp:TextBox ID="txtContactMobileNumber1" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
@@ -349,14 +362,14 @@
 
                         <div class="row">
                             <label class="col-sm-1 control-label" for="form-group-input">FECHA ARRIBO DEP. CONSIG.</label>
-                             <div class="col-sm-3">
-                                    <div class='input-group date' id='datetimepicker6'>
-                                        <input id="Text1" placeholder="FECHA ARRIBO DEP. CONSIG." class="form-control" runat="server" />
-                                        <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                        </span>
-                                    </div>
+                            <div class="col-sm-3">
+                                <div class='input-group date' id='datetimepicker6'>
+                                    <input id="Text1" placeholder="FECHA ARRIBO DEP. CONSIG." class="form-control" runat="server" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
                                 </div>
+                            </div>
                         </div>
                     </div>
 
@@ -371,7 +384,7 @@
                             <div class="col-sm-3">
                                 <asp:TextBox ID="txtAveryCertificateNumber" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
-                            
+
                         </div>
                         <br />
                         <div class="row">
@@ -391,7 +404,7 @@
     </div>
     <div class="row">
         <div class="col-lg-2 col-lg-offset-10">
-            <asp:Button ID="registrarSiniestroBtn" runat="server" Text="Guardar Siniestro" CssClass="btn btn-primary" OnClick="registrarSiniestroBtn_Click" />
+            <asp:Button ID="registrarSiniestroBtn" runat="server" ValidationGroup="save" Text="Guardar Siniestro" CssClass="btn btn-primary" OnClick="registrarSiniestroBtn_Click" />
         </div>
     </div>
 

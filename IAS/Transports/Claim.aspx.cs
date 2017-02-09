@@ -125,7 +125,7 @@ namespace IAS.Transports
                     lblClient.Text = dt.Rows[0]["Client"].ToString();
                     lblDocumentNumber.Text = dt.Rows[0]["ClientDocumentNumber"].ToString();
                     lblPolicyNumber.Text = dt.Rows[0]["PolicyNumber"].ToString();
-                    dp1.Value = dt.Rows[0]["ClaimDate"].ToString();
+                    txtClaimDate.Value = dt.Rows[0]["ClaimDate"].ToString();
                     PersonID = dt.Rows[0]["PersonID"].ToString();
                     PolicyNumber = dt.Rows[0]["PolicyNumber"].ToString();
                     txtPolicyNumber.Text = dt.Rows[0]["PolicyNumber"].ToString();
@@ -192,7 +192,7 @@ namespace IAS.Transports
 
                 cmd.Parameters.AddWithValue("@personID", PersonID);
                 cmd.Parameters.AddWithValue("@client", lblClient.Text);
-                cmd.Parameters.AddWithValue("@claimDate", Convert.ToDateTime(dp1.Value));
+                cmd.Parameters.AddWithValue("@claimDate", Convert.ToDateTime(txtClaimDate.Value));
                 cmd.Parameters.AddWithValue("@observations", txtObservations.Text);
                 cmd.Parameters.AddWithValue("@policyNumber", PolicyNumber);
                 cmd.Parameters.AddWithValue("@certificateID", CertificateID);

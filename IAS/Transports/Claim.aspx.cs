@@ -146,6 +146,8 @@ namespace IAS.Transports
                     txtClaimBY.Text = dt.Rows[0]["ClaimBY"].ToString();
                     txtEnterprise.Text = dt.Rows[0]["Enterprise"].ToString();
                     txtInspectionRequestDate.Value = dt.Rows[0]["InspectionRequestDate"].ToString();
+                    txtFailureCommissioner.Text = dt.Rows[0]["FailureCommissioner"].ToString();
+                    txtFailureCertificateNumber.Text = dt.Rows[0]["FailureCertificateNumber"].ToString();
 
                 }
                 else
@@ -210,8 +212,9 @@ namespace IAS.Transports
                 cmd.Parameters.AddWithValue("@claimBY", txtClaimBY.Text);
                 cmd.Parameters.AddWithValue("@enterprise", txtEnterprise.Text);
                 cmd.Parameters.AddWithValue("@inspectionRequestDate", DateTime.Parse(txtInspectionRequestDate.Value));
-                          
-
+                cmd.Parameters.AddWithValue("@failureCommissioner", txtFailureCommissioner.Text);
+                cmd.Parameters.AddWithValue("@failureCertificateNumber", txtFailureCertificateNumber.Text);
+                
                 sqlConnection1.Open();
 
                 rowsAffected = cmd.ExecuteNonQuery();

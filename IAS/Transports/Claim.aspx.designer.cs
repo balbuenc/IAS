@@ -382,22 +382,22 @@ namespace IAS.Transports {
         protected global::System.Web.UI.HtmlControls.HtmlInputText Text1;
         
         /// <summary>
-        /// txtComisary control.
+        /// txtFailureCommissioner control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtComisary;
+        protected global::System.Web.UI.WebControls.TextBox txtFailureCommissioner;
         
         /// <summary>
-        /// txtAveryCertificateNumber control.
+        /// txtFailureCertificateNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAveryCertificateNumber;
+        protected global::System.Web.UI.WebControls.TextBox txtFailureCertificateNumber;
         
         /// <summary>
         /// txtObservations control.

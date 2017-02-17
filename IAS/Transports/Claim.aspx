@@ -378,11 +378,11 @@
                         <div class="row">
                             <label class="col-sm-1 control-labelContacto" for="form-group-input">ACOMISARIO DE AVERÍAS</label>
                             <div class="col-sm-3">
-                                <asp:TextBox ID="txtComisary" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtFailureCommissioner" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                             <label class="col-sm-1 control-label" for="form-group-input">CERTIFICADO DE AVERÍAS NRO.</label>
                             <div class="col-sm-3">
-                                <asp:TextBox ID="txtAveryCertificateNumber" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtFailureCertificateNumber" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
 
                         </div>

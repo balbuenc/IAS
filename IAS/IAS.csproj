@@ -448,6 +448,7 @@
     <Content Include="Transports\Collection.aspx" />
     <Content Include="Transports\NewClaim.aspx" />
     <Content Include="Transports\Policies.aspx" />
+    <Content Include="Transports\TroubleInspection.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1203,6 +1204,13 @@
     </Compile>
     <Compile Include="Transports\SearchClient.ashx.cs">
       <DependentUpon>SearchClient.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Transports\TroubleInspection.aspx.cs">
+      <DependentUpon>TroubleInspection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Transports\TroubleInspection.aspx.designer.cs">
+      <DependentUpon>TroubleInspection.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

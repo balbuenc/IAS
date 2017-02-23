@@ -82,9 +82,7 @@ namespace IAS.Transports
 
                 if (Request.QueryString["mode"].ToString().Equals("update"))
                 {
-
                     LoadClaim();
-
                 }
                 else
                 {
@@ -131,6 +129,8 @@ namespace IAS.Transports
                     txtPolicyNumber.Text = dt.Rows[0]["PolicyNumber"].ToString();
                     CertificateID = long.Parse(dt.Rows[0]["CertificateID"].ToString());
                     txtCrtNumber.Text = dt.Rows[0]["CertificateNumber"].ToString();
+                    txtLocation.Text = dt.Rows[0]["Location"].ToString();
+                    txtLocationBeneficiary.Text = dt.Rows[0]["LocationBeneficiary"].ToString();
                     txtBeneficiary.Text = dt.Rows[0]["Beneficiary"].ToString();
                     txtCarrier.Text = dt.Rows[0]["Carrier"].ToString();
                     txtCommodity.Text = dt.Rows[0]["Commodity"].ToString();
@@ -148,7 +148,6 @@ namespace IAS.Transports
                     txtInspectionRequestDate.Value = dt.Rows[0]["InspectionRequestDate"].ToString();
                     txtFailureCommissioner.Text = dt.Rows[0]["FailureCommissioner"].ToString();
                     txtFailureCertificateNumber.Text = dt.Rows[0]["FailureCertificateNumber"].ToString();
-
                 }
                 else
                 {
@@ -207,7 +206,8 @@ namespace IAS.Transports
                 cmd.Parameters.AddWithValue("@destination", txtDestination.Text);
                 cmd.Parameters.AddWithValue("@contact", txtContact.Text);
                 cmd.Parameters.AddWithValue("@phoneNumber", txtPhoneNumber.Text);
-                cmd.Parameters.AddWithValue("@location", txtLocation.Text);           
+                cmd.Parameters.AddWithValue("@location", txtLocation.Text);
+                cmd.Parameters.AddWithValue("@locationBeneficiary", txtLocationBeneficiary.Text);
                 cmd.Parameters.AddWithValue("@requestDate", DateTime.Parse(txtRequestDate.Value));
                 cmd.Parameters.AddWithValue("@claimBY", txtClaimBY.Text);
                 cmd.Parameters.AddWithValue("@enterprise", txtEnterprise.Text);

@@ -38,7 +38,13 @@ namespace IAS.Transports
                     if (Request.QueryString["claimID"] != null)
                     {
                         ClaimID = long.Parse(Request.QueryString["claimID"].ToString());
+
                         LoadClaim();
+
+                        if (Request.QueryString["mode"] != null && Request.QueryString["mode"].Equals("insert"))
+                        {
+
+                        }
 
                     }
                 }
@@ -76,16 +82,18 @@ namespace IAS.Transports
                 // Load claim
                 if (dt?.Rows.Count > 0)
                 {
-                    txtClaimNumber.Text = dt.Rows[0]["ClaimID"].ToString();
+                    ClaimID = long.Parse(dt.Rows[0]["ClaimID"].ToString());
+                    txtClaimNumber.Text = dt.Rows[0]["ClaimNumber"].ToString();
                     txtFailureCommissioner.Text = dt.Rows[0]["FailureCommissioner"].ToString();
                     txtFailureCertificateNumber.Text = dt.Rows[0]["FailureCertificateNumber"].ToString();
                     txtInsured.Text = dt.Rows[0]["Client"].ToString();
                     txtCertificateNumber.Text = dt.Rows[0]["CertificateNumber"].ToString();
-
+                    txtDepositHandBook.Text = dt.Rows[0]["Location"].ToString();
+                    txtDepositConsignee.Text = dt.Rows[0]["LocationBeneficiary"].ToString();
                 }
                 else
                 {
-                    ErrorLabel.Text = "No existen registros del certificado";
+                    ErrorLabel.Text = "No existen registros del reclamo";
                     ErrorLabel.Visible = true;
                 }
             }
@@ -95,6 +103,65 @@ namespace IAS.Transports
                 ErrorLabel.Visible = true;
             }
 
+        }
+
+        protected void registrarTroubleBtn_Click(object sender, EventArgs e)
+        {
+            SqlConnection sqlConnection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["IASDBContext"].ToString());
+            SqlCommand cmd = new SqlCommand();
+
+            int troubleInspectionID;
+            int rowsAffected;
+
+            try
+            {
+                if (Request.QueryString["mode"]?.ToString() == "insert")
+                {
+                    cmd.CommandText = "[transport].[sp_insert_trouble_inspection]";
+                    SqlParameter troubleInspectionIDOut = new SqlParameter("@troubleInspectionID", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+
+                    cmd.Parameters.Add(troubleInspectionIDOut);
+                }
+                else
+                {
+                    cmd.CommandText = "[transport].[sp_update_trouble_inspection]";
+                    cmd.Parameters.AddWithValue("@troubleInspectionID", int.Parse(Request.QueryString["troubleInspectionID"]));
+                }
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = sqlConnection;
+
+                cmd.Parameters.AddWithValue("@claimID", ClaimID);
+                cmd.Parameters.AddWithValue("@inspectionDateHandBook", Convert.ToDateTime(txtInspectionDateHandBook.Value));
+                cmd.Parameters.AddWithValue("@directionHandBook", txtDirectionHandBook.Text);
+                cmd.Parameters.AddWithValue("@arrivalDateHandBook", Convert.ToDateTime(txtArrivalDateHandBook.Value));
+                cmd.Parameters.AddWithValue("@downloadDateHandBook", Convert.ToDateTime(txtDownloadDateHandBook.Value));
+                cmd.Parameters.AddWithValue("@presentInVerificationHandBook", txtPresentInVerificationHandBook.Text);
+                cmd.Parameters.AddWithValue("@claimAmount", Convert.ToDecimal(txtClaimAmountHandBook.Text));
+                cmd.Parameters.AddWithValue("@customsObservationHandBook", txtCustomsObservationHandBook.Text);
+                cmd.Parameters.AddWithValue("@inspectionDateConsignee", Convert.ToDateTime(txtInspectionDateConsignee.Value));
+                cmd.Parameters.AddWithValue("@directionConsignee", txtDirectionConsignee.Text);
+                cmd.Parameters.AddWithValue("@retirementDateConsignee",Convert.ToDateTime(  txtRetirementDateConsignee.Value));
+                cmd.Parameters.AddWithValue("@downloadDateConsignee", Convert.ToDateTime(txtDownloadDateConsignee.Value));
+                cmd.Parameters.AddWithValue("@presentInVerificationConsignee", txtPresentInVerificationConsignee.Text);
+                cmd.Parameters.AddWithValue("@claimAmountBeneficiary", Convert.ToDecimal(txtClaimAmountConsignee.Text));
+                cmd.Parameters.AddWithValue("@customsObservationConsignee", txtCustomsObservationConsignee.Text);
+
+                sqlConnection.Open();
+
+                rowsAffected = cmd.ExecuteNonQuery();
+              
+                sqlConnection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                ErrorLabel.Text = ex.Message;
+                ErrorLabel.Visible = true;
+            }
         }
     }
 }

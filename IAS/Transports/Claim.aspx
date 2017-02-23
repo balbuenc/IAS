@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Nuevo siniestro" Language="C#" MasterPageFile="~/Transport.Master" AutoEventWireup="true" CodeBehind="Claim.aspx.cs" Inherits="IAS.Transports.Claim" %>
+﻿<%@ Page Title="Siniestro" Language="C#" MasterPageFile="~/Transport.Master" AutoEventWireup="true" CodeBehind="Claim.aspx.cs" Inherits="IAS.Transports.Claim" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />

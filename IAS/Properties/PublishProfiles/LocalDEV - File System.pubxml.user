@@ -172,7 +172,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/24/2017 16:17:39</publishTime>
     </File>
     <File Include="bin/IAS.dll">
-      <publishTime>02/09/2017 12:27:38</publishTime>
+      <publishTime>02/23/2017 15:45:26</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.FriendlyUrls.dll">
       <publishTime>01/24/2017 16:17:40</publishTime>
@@ -964,7 +964,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/24/2017 16:17:39</publishTime>
     </File>
     <File Include="Transports/Claim.aspx">
-      <publishTime>02/09/2017 12:24:54</publishTime>
+      <publishTime>02/23/2017 11:08:52</publishTime>
     </File>
     <File Include="Transports/ClaimSearch.aspx">
       <publishTime>01/24/2017 16:17:39</publishTime>
@@ -990,11 +990,14 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Transports/SearchClient.ashx">
       <publishTime>01/24/2017 16:17:39</publishTime>
     </File>
+    <File Include="Transports/TroubleInspection.aspx">
+      <publishTime>02/23/2017 11:08:52</publishTime>
+    </File>
     <File Include="ViewSwitcher.ascx">
       <publishTime>01/24/2017 16:17:39</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/07/2017 17:06:20</publishTime>
+      <publishTime>02/23/2017 15:45:28</publishTime>
     </File>
   </ItemGroup>
 </Project>

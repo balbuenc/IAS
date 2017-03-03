@@ -61,7 +61,7 @@
 
                 <%--Site Scripts--%>
                 <asp:ScriptReference Path="~/Scripts/jqueryBlockUI.js" />
-                <asp:ScriptReference Path="~/Scripts/jquery.datetimepicker.js" />
+             <%--   <asp:ScriptReference Path="~/Scripts/jquery.datetimepicker.js" />--%>
 
             </Scripts>
         </asp:ScriptManager>

@@ -177,10 +177,10 @@
                                                 <span class="glyphicon glyphicon-trash"></span>
                                     </asp:LinkButton>
 
-                                    <asp:LinkButton ID="CloseButton" runat="server" Text="Borrar" CommandName="Close" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Cerrar el Siniestro.?');">
+                                    <asp:LinkButton ID="CloseButton" runat="server" Text="Cerrar" CommandName="Close" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Cerrar el Siniestro.?');">
                                                 <span class="glyphicon glyphicon-download-alt"></span>
                                     </asp:LinkButton>
-
+                                    
                                 </td>
 
                             </tr>

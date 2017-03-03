@@ -163,20 +163,22 @@
                     <tr>
                         <td colspan="8"></td>
                         <td colspan="2" style="text-align: right">
-
-
-                            <asp:LinkButton ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CssClass="btn btn-link">
-                                                    <span class="glyphicon glyphicon-edit"></span>
+                           
+                            <asp:LinkButton ID="InspectionButton" runat="server" Text="Inspección de avería" CommandName="Trouble" CssClass="btn btn-link" >
+                                  <span class="glyphicon glyphicon-wrench"></span>
                             </asp:LinkButton>
 
+                            <asp:LinkButton ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CssClass="btn btn-link">
+                                  <span class="glyphicon glyphicon-edit"></span>
+                            </asp:LinkButton>
 
                             <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Delete" ToolTip="Eliminar" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar el Siniestro.?');">
-                                                <span class="glyphicon glyphicon-trash"></span>
+                                  <span class="glyphicon glyphicon-trash"></span>
                             </asp:LinkButton>
 
                             <asp:LinkButton ID="CloseButton" runat="server" Text="Cerrar" CommandName="Close" ToolTip="Cerrar" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Cerrar el Siniestro.?');">
-                                                <span class="glyphicon glyphicon-off"></span>
-                            </asp:LinkButton>
+                                  <span class="glyphicon glyphicon-off"></span>
+                            </asp:LinkButton>                                                       
 
                         </td>
 

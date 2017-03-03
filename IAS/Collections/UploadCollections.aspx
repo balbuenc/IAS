@@ -15,69 +15,174 @@
 
     You should have received a copy of the GNU General Public License
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
- --%>
+--%>
 
 <%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="UploadCollections.aspx.cs" Inherits="IAS.Collections.UploadCollections" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-     <div class="page-header">
+
+    <%--<link href="../Content/bootstrap-datepicker.min.css" rel="stylesheet" />--%>
+    <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+    <script src="/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <link href="/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <script src="/Scripts/bootstrap-datepicker.min.js"></script>
+    <script src="/Scripts/moment-with-locales.min.js"></script>
+    <script src="/Scripts/bootstrap-datetimepicker.min.js"></script>
+
+    <div class="page-header">
         <h2>Subir cuotas</h2>
     </div>
-      
 
-            <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
-            <div class="table responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Cuotas</th>
-                                    <th>Archivo (.csv)</th>
-                                    <th>&nbsp;</th>
-                                   
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <th>Mapfre vencidos</th>
-                                <th>
-                                    <asp:FileUpload ID="MapfreExpiredUp" runat="server"   />
-                                </th>
-                                <th>
-                                <asp:Button runat="server" id="MapfreExpireBtn" text="Upload" onclick="MapfreExpireBtn_Click" />
-                                    </th>
-                                <th>
-                                    <asp:Label runat="server" id="MapfreExpiredStatus" text="Estado" />
+    <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
 
-                                </th>
-                            </tr>
-                                <tr>
-                                <th>Mapfre a vencer</th>
-                                <th>
-                                    <asp:FileUpload ID="MapfreToExpireUp" runat="server" />
-                                </th>
-                                     <th>
-                                <asp:Button runat="server" id="MapfreToExpireBtn" text="Upload" onclick="MapfreToExpireBtn_Click" />
-                                    </th>
-                                     <th>
-                                    <asp:Label runat="server" id="MapfreToExpireStatus" text="Estado" />
-
-                                </th>
-                            </tr>
-                                <tr>
-                                <th>Sancor</th>
-                                <th>
-                                    <asp:FileUpload ID="Sancor" runat="server" />
-                                </th>
-                                     <th>
-                                <asp:Button runat="server" id="SancorBtn" text="Upload" onclick="SancorBtn_Click" />
-                                    </th>
-                                    <th>
-                                    <asp:Label runat="server" id="SancorStatus" text="Estado" />
-
-                                </th>
-                            </tr>
-                            </tbody>
-                            </table>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Mapfre</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label>Cuotas</label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Archivo (.csv)</label>
+                            </div>
+                            <div class="col-lg-3"></div>
+                            <div class="col-lg-3"></div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <label>Fecha</label>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <input id="txtDateMapfre" placeholder="" class="form-control" runat="server" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtDateMapfre" Font-Bold="true"
+                                        CssClass="text-danger" ValidationGroup="mapfre" ErrorMessage="El campo es requerido" />
+                            </div>
+                            <div class="col-lg-3"></div>
+                            <div class="col-lg-3"></div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <label>Mapfre vencidos</label>
+                            </div>
+                            <div class="col-lg-3">
+                                <asp:FileUpload ID="MapfreExpiredUp" runat="server" />
+                            </div>
+                            <div class="col-lg-3 col-lg-offset-1">
+                                <asp:Button runat="server" ID="MapfreExpireBtn" ValidationGroup="mapfre" Text="Upload" OnClick="MapfreExpireBtn_Click" />
+                            </div>
+                            <div class="col-lg-3">
+                                <label>
+                                    <asp:Label runat="server" ID="MapfreExpiredStatus" Text="Estado" /></label>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <label>Mapfre a vencer</label>
+                            </div>
+                            <div class="col-lg-3">
+                                <asp:FileUpload ID="MapfreToExpireUp" runat="server" />
+                            </div>
+                            <div class="col-lg-3 col-lg-offset-1">
+                                <asp:Button runat="server" ID="MapfreToExpireBtn" ValidationGroup="mapfre" Text="Upload" OnClick="MapfreToExpireBtn_Click" />
+                            </div>
+                            <div class="col-lg-3">
+                                <label>
+                                    <asp:Label runat="server" ID="MapfreToExpireStatus" Text="Estado" /></label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-           
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Sancor</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label>Cuotas</label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Archivo (.csv)</label>
+                            </div>
+                            <div class="col-lg-3"></div>
+                            <div class="col-lg-3"></div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <label>Fecha</label>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class='input-group date' id='datetimepicker2'>
+                                    <input id="txtDateSancor" placeholder="" class="form-control" runat="server" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtDateSancor" Font-Bold="true"
+                                        CssClass="text-danger" ValidationGroup="sancor" ErrorMessage="El campo es requerido" />
+                            </div>
+                            <div class="col-lg-3"></div>
+                            <div class="col-lg-3"></div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <label>Sancor</label>
+                            </div>
+                            <div class="col-lg-3">
+                                <asp:FileUpload ID="Sancor" runat="server" />
+                            </div>
+                            <div class="col-lg-3 col-lg-offset-1">
+                                <asp:Button runat="server" ID="SancorBtn" ValidationGroup="sancor" Text="Upload" OnClick="SancorBtn_Click" />
+                            </div>
+                            <div class="col-lg-3">
+                                <label>
+                                    <asp:Label runat="server" ID="SancorStatus" Text="Estado" /></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%--<script src="../Scripts/jquery-1.12.4.min.js"></script>
+    <script src="../Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="../Scripts/bootstrap-datepicker.min.js"></script>
+    <script src="../Scripts/bootstrap-datetimepicker.min.js"></script>
+    <script src="../Scripts/moment-with-locales.min.js"></script>
+    --%>
+    <script type="text/javascript">
+
+        $('#datetimepicker1').datetimepicker({
+            format: 'DD-MM-YYYY',
+            locale: 'es'
+        });
+
+        $('#datetimepicker2').datetimepicker({
+            format: 'DD-MM-YYYY',
+            locale: 'es'
+        });
+
+    </script>
 
 </asp:Content>

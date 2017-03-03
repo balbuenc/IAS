@@ -48,7 +48,7 @@
                     <div class="panel-body">
                         <div class="form-group">
                             <div class="row">
-                                <label class="col-sm-1 control-label" for="form-group-input">RECLAMO NRO.</label>
+                                <label class="col-sm-1 control-label" for="form-group-input">RECLAMO NRO.*</label>
                                 <div class="col-sm-5">
                                     <asp:TextBox ID="txtClaimNumber" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
@@ -59,7 +59,7 @@
                                 <div class="col-sm-5">
                                     <asp:TextBox ID="txtInsured" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
-                                <label class="col-sm-1 control-label" for="form-group-input">CERTIFICADO SEGURO N°</label>
+                                <label class="col-sm-1 control-label" for="form-group-input">CERTIFICADO SEGURO N°*</label>
                                 <div class="col-sm-5">
                                     <asp:TextBox ID="txtCertificateNumber" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
@@ -70,7 +70,7 @@
                                 <div class="col-sm-5">
                                     <asp:TextBox ID="txtFailureCommissioner" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
-                                <label class="col-sm-1 control-label" for="form-group-input">CERTIFICADO DE AVERIAS N°*</label>
+                                <label class="col-sm-1 control-label" for="form-group-input">CERTIFICADO DE AVERIAS N°</label>
                                 <div class="col-sm-5">
                                     <asp:TextBox ID="txtFailureCertificateNumber" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
@@ -146,7 +146,7 @@
                             </div>
                             <br />
                             <div class="row">
-                                <label class="col-sm-2 control-label" for="form-group-input">MONTO RECLAMADO</label>
+                                <label class="col-sm-2 control-label" for="form-group-input">MONTO RECLAMADO*</label>
                                 <div class="col-sm-10">
                                     <asp:TextBox ID="txtClaimAmountHandBook" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
@@ -207,7 +207,7 @@
                             </div>
                             <br />
                             <div class="row">
-                                <label class="col-sm-2 control-label" for="form-group-input">FECHA DE DESCARGA*</label>
+                                <label class="col-sm-2 control-label" for="form-group-input">FECHA DE DESCARGA</label>
                                 <div class="col-sm-10">
                                     <div class='input-group date' id='datetimepicker6'>
                                         <input id="txtDownloadDateConsignee" placeholder="FECHA DESCARGA" class="form-control" runat="server" />
@@ -226,7 +226,7 @@
                             </div>
                             <br />
                             <div class="row">
-                                <label class="col-sm-2 control-label" for="form-group-input">MONTO RECLAMADO</label>
+                                <label class="col-sm-2 control-label" for="form-group-input">MONTO RECLAMADO*</label>
                                 <div class="col-sm-10">
                                     <asp:TextBox ID="txtClaimAmountConsignee" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
@@ -262,6 +262,7 @@
             format: 'DD-MM-YYYY',
             locale: 'es'
         });
+
         $('#datetimepicker3').datetimepicker({
             format: 'DD-MM-YYYY',
             locale: 'es'

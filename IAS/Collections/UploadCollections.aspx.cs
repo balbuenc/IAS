@@ -26,7 +26,7 @@ using System.Web.UI.WebControls;
 
 namespace IAS.Collections
 {
-    public partial class UploadCollections : System.Web.UI.Page
+    public partial class UploadCollections : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,9 +39,21 @@ namespace IAS.Collections
             {
                 try
                 {
-                    string filename = Path.GetFileName(MapfreExpiredUp.FileName);
-                    MapfreExpiredUp.SaveAs(Server.MapPath("../Exchange/") + filename);
-                    MapfreExpiredStatus.Text = "Estado: Archivo actualizado!";
+                    
+                    DateTime dateMapfre = DateTime.Parse(txtDateMapfre.Value);
+                    string fileName = $"mapfre_expire_{dateMapfre.Year}{((dateMapfre.Month.ToString().Length == 1) ? "0" + dateMapfre.Month : dateMapfre.Month.ToString())}{((dateMapfre.Day.ToString().Length == 1) ? "0" + dateMapfre.Day : dateMapfre.Day.ToString())}.csv";
+                  
+                    string fileExtension = Path.GetExtension(MapfreExpiredUp.FileName);
+
+                    if (fileExtension.Equals(".csv"))
+                    {
+                        MapfreExpiredUp.SaveAs(Server.MapPath("../Exchange/") + fileName);
+                        MapfreExpiredStatus.Text = "Estado: Archivo actualizado!";
+                    }
+                    else
+                    {
+                        MapfreExpiredStatus.Text = "Estado: El archivo debe ser .csv!";
+                    }                  
                 }
                 catch (Exception ex)
                 {
@@ -56,9 +68,23 @@ namespace IAS.Collections
             {
                 try
                 {
-                    string filename = Path.GetFileName(MapfreToExpireUp.FileName);
-                    MapfreToExpireUp.SaveAs(Server.MapPath("../Exchange/") + filename);
-                    MapfreToExpireStatus.Text = "Estado: Archivo actualizado!";
+                    DateTime dateMapfre = DateTime.Parse(txtDateMapfre.Value);
+                    string fileName = $"mapfre_to_expire_{dateMapfre.Year}{((dateMapfre.Month.ToString().Length == 1) ? "0" + dateMapfre.Month : dateMapfre.Month.ToString())}{((dateMapfre.Day.ToString().Length == 1) ? "0" + dateMapfre.Day : dateMapfre.Day.ToString())}.csv";
+
+
+                    string fileExtension = Path.GetExtension(MapfreToExpireUp.FileName);
+
+                    if (fileExtension.Equals(".csv"))
+                    {
+                        MapfreToExpireUp.SaveAs(Server.MapPath("../Exchange/") + fileName);
+                        MapfreToExpireStatus.Text = "Estado: Archivo actualizado!";
+                    }
+                    else
+                    {
+                        MapfreToExpireStatus.Text = "Estado: El archivo debe ser .csv!";
+                    }
+
+                 
                 }
                 catch (Exception ex)
                 {
@@ -73,9 +99,21 @@ namespace IAS.Collections
             {
                 try
                 {
-                    string filename = Path.GetFileName(Sancor.FileName);
-                    Sancor.SaveAs(Server.MapPath("../Exchange/") + filename);
-                    SancorStatus.Text = "Estado: Archivo actualizado!";
+                    DateTime dateSancor = DateTime.Parse(txtDateSancor.Value);
+                    string fileName = $"sancor_collection_{dateSancor.Year}{((dateSancor.Month.ToString().Length == 1) ? "0" + dateSancor.Month : dateSancor.Month.ToString())}{((dateSancor.Day.ToString().Length == 1) ? "0" + dateSancor.Day : dateSancor.Day.ToString())}.csv";
+
+                    string fileExtension = Path.GetExtension(Sancor.FileName);
+
+                    if (fileExtension.Equals(".csv"))
+                    {
+                        Sancor.SaveAs(Server.MapPath("../Exchange/") + fileName);
+                        SancorStatus.Text = "Estado: Archivo actualizado!";
+                    }
+                    else
+                    {
+                        SancorStatus.Text = "Estado: El archivo debe ser .csv!";
+                    }
+                
                 }
                 catch (Exception ex)
                 {

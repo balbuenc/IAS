@@ -2890,7 +2890,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 }
 
 .glyphicon-calendar:before {
-    content: "\e109";
+    content: "\1f4c5";
 }
 
 .glyphicon-random:before {

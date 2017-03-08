@@ -256,7 +256,7 @@ namespace IAS.CaseManagment
             this.txtComments.Text = string.Empty;
             this.txtEffectiveDate.Text = string.Empty;
 
-            Response.Redirect("MyCaseList.aspx");
+            Response.Redirect("MyCaseList.aspx?mode=robot");
         }
 
 

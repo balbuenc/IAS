@@ -107,8 +107,7 @@
                 ItemType="IAS.Models.Collection" DataKeyNames="CollectionID"
                 SelectMethod="GetCollectionsForCase"
                 
-                 OnItemDataBound="CollectionsListView_ItemDataBound"
-                >
+                 OnItemDataBound="CollectionsListView_ItemDataBound">
                 <LayoutTemplate>
                     <table class="table table-striped">
                         <thead>
@@ -125,11 +124,19 @@
                 <ItemTemplate>
                     <asp:HiddenField ID="txtOuterID" runat="server" Value="<%#:Item.PolicyNumber%>" Visible="True" />
                     <asp:SqlDataSource ID="CollectionSqlDatSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
-                        SelectCommand="[collection].[sp_get_collections_by_policy]" SelectCommandType="StoredProcedure">
+                        SelectCommand="[collection].[sp_get_collections_by_policy]" 
+                        UpdateCommand="[collection].[sp_update_collection]"
+                        SelectCommandType="StoredProcedure">
                         <SelectParameters>
                             <asp:QueryStringParameter Name="CaseID" QueryStringField="CaseID" Type="Int32" />
                             <asp:ControlParameter ControlID="txtOuterID" Name="PolicyNumber" PropertyName="Value" />
                         </SelectParameters>
+                        <UpdateParameters>
+                            <asp:Parameter Name="CollectionID" />
+                            <asp:Parameter Name="Collected" />
+                            <asp:Parameter Name="CollectedDate" />
+                        </UpdateParameters>
+                       
                     </asp:SqlDataSource>
                     <tr>
                         <td>
@@ -144,7 +151,9 @@
                         <td>
                             <asp:ListView ID="DetailListView" runat="server"
                                 DataKeyNames="CollectionID"
-                                DataSourceID="CollectionSqlDatSource">
+                                DataSourceID="CollectionSqlDatSource"
+                                OnItemEditing="DetailListView_ItemEditing"
+                                OnItemUpdating="DetailListView_ItemUpdating">
                                 <LayoutTemplate>
                                     <table class="table table-striped">
                                         <thead>
@@ -181,6 +190,7 @@
                                         </td>
                                         <td>
                                             <asp:Label ID="lblCollection" runat="server" Text='<%#:string.Format("{0:d}",Eval("CollectionMethod")) %>'  />
+                                            <asp:Label ID="lblCollectionID" Visible="false" runat="server" Text='<%#: Eval("CollectionID") %>'  />
                                         </td>
                                         <td>
                                             <asp:CheckBox ID="chkCollected" runat="server" Checked='<%# Eval("Collected") %>' Enabled="false" />
@@ -213,6 +223,7 @@
                                         </td>
                                         <td>
                                             <asp:Label ID="lblCollection" runat="server" Text='<%#:string.Format("{0:d}",Eval("CollectionMethod")) %>'  />
+                                            <asp:Label ID="lblCollectionID" Visible="false" runat="server" Text='<%#: Eval("CollectionID") %>'  />
                                         </td>
                                         <td class="text-center">
                                             <asp:CheckBox ID="chkCollected" runat="server" Checked='<%# Eval("Collected") %>' />

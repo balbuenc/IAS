@@ -373,7 +373,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/24/2017 16:17:39</publishTime>
     </File>
     <File Include="Content/bootstrap-theme.css">
-      <publishTime>01/24/2017 16:17:39</publishTime>
+      <publishTime>03/03/2017 15:30:22</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
       <publishTime>01/24/2017 16:17:39</publishTime>

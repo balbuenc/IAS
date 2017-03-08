@@ -330,6 +330,7 @@
     <None Include="Properties\PublishProfiles\adlws2 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\adlws2 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\AIBIAS.pubxml" />
+    <None Include="Properties\PublishProfiles\IASTEST - Local.pubxml" />
     <None Include="Properties\PublishProfiles\LocalDEV - File System.pubxml" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.0.js" />

@@ -326,8 +326,8 @@
 
 
         <%-- Modal de Nuevo Siniestro Manual --%>
-        <script src="Scripts/bootstrap-datepicker.min.js"></script>
-        <link href="Content/bootstrap-datepicker.min.css" rel="stylesheet" />
+        <script src="../Scripts/bootstrap-datepicker.min.js"></script>
+        <link href="../Content/bootstrap-datepicker.min.css" rel="stylesheet" />
 
         <script>
             var nowTemp = new Date();

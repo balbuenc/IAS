@@ -35,6 +35,7 @@ namespace IAS.CaseManagment
             try
             {
                 var db = new ApplicationDbContext();
+               
                 var colls = db.Collections.Where(c => c.CaseID == caseID);
                 if (null != colls)
                     return colls.First().Person;
@@ -47,7 +48,7 @@ namespace IAS.CaseManagment
             }
         }
 
-       
+
         public IQueryable<CollectionState> GetCollectionStates()
         {
             var db = new ApplicationDbContext();

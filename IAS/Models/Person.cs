@@ -129,7 +129,7 @@ namespace IAS.Models
         [NotMapped]
         public virtual string FullName { 
             get {
-                return string.Format("{0} {1} {2}",FirstName, LastName, LastName1);
+                return string.Format("{0} {1} {2} {3}",FirstName, LastName, LastName1, CorporateName);
             }
         }
 

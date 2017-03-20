@@ -21,20 +21,15 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <%--   <link href="../Content/bootstrap-datepicker.min.css" rel="stylesheet" />--%>
-
-    <script src="/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <%--<link href="../Content/bootstrap-datepicker.min.css" rel="stylesheet" />--%>
     <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
     <script src="/Scripts/jquery-1.12.4.min.js"></script>
-    
-
+    <%--<script src="/Scripts/jquery-ui-1.12.1.min.js"></script>--%>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <link href="/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
     <script src="/Scripts/bootstrap-datepicker.min.js"></script>
     <script src="/Scripts/moment-with-locales.min.js"></script>
     <script src="/Scripts/bootstrap-datetimepicker.min.js"></script>
-
-    <script src="/Scripts/bootstrap.min.js"></script>
-    <link href="/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
-
 
     <div class="page-header">
         <h2>Subir cuotas</h2>
@@ -71,7 +66,7 @@
                                     </span>
                                 </div>
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtDateMapfre" Font-Bold="true"
-                                    CssClass="text-danger" ValidationGroup="mapfre" ErrorMessage="El campo es requerido" />
+                                        CssClass="text-danger" ValidationGroup="mapfre" ErrorMessage="El campo es requerido" />
                             </div>
                             <div class="col-lg-3"></div>
                             <div class="col-lg-3"></div>
@@ -143,7 +138,7 @@
                                     </span>
                                 </div>
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtDateSancor" Font-Bold="true"
-                                    CssClass="text-danger" ValidationGroup="sancor" ErrorMessage="El campo es requerido" />
+                                        CssClass="text-danger" ValidationGroup="sancor" ErrorMessage="El campo es requerido" />
                             </div>
                             <div class="col-lg-3"></div>
                             <div class="col-lg-3"></div>

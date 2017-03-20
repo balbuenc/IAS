@@ -91,7 +91,7 @@
                             <div class="row">
                                 <label class="col-sm-2 control-label" for="form-group-input">DEPOSITO PORTUARIO</label>
                                 <div class="col-sm-10">
-                                    <asp:TextBox ID="txtDepositHandBook" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtDepositPort" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
                             <br />
@@ -99,7 +99,7 @@
                                 <label class="col-sm-2 control-label" for="form-group-input">FECHA DE INSPECCION*</label>
                                 <div class="col-sm-10">
                                     <div class='input-group date' id='datetimepicker1'>
-                                        <input id="txtInspectionDateHandBook" placeholder="FECHA INSPECCION" class="form-control" runat="server" />
+                                        <input id="txtInspectionDatePort" placeholder="FECHA INSPECCION" class="form-control" runat="server" />
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
@@ -110,7 +110,7 @@
                             <div class="row">
                                 <label class="col-sm-2 control-label" for="form-group-input">DIRECCION</label>
                                 <div class="col-sm-10">
-                                    <asp:TextBox ID="txtDirectionHandBook" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtDirectionPort" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
                             <br />
@@ -118,7 +118,7 @@
                                 <label class="col-sm-2 control-label" for="form-group-input">FECHA DE LLEGADA*</label>
                                 <div class="col-sm-10">
                                     <div class='input-group date' id='datetimepicker2'>
-                                        <input id="txtArrivalDateHandBook" placeholder="FECHA LLEGADA" class="form-control" runat="server" />
+                                        <input id="txtArrivalDatePort" placeholder="FECHA LLEGADA" class="form-control" runat="server" />
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
@@ -130,7 +130,7 @@
                                 <label class="col-sm-2 control-label" for="form-group-input">FECHA DE DESCARGA*</label>
                                 <div class="col-sm-10">
                                     <div class='input-group date' id='datetimepicker3'>
-                                        <input id="txtDownloadDateHandBook" placeholder="FECHA DESCARGA" class="form-control" runat="server" />
+                                        <input id="txtDownloadDatePort" placeholder="FECHA DESCARGA" class="form-control" runat="server" />
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
@@ -141,21 +141,21 @@
                             <div class="row">
                                 <label class="col-sm-2 control-label" for="form-group-input">PRESENTES EN VERIFICACION</label>
                                 <div class="col-sm-10">
-                                    <asp:TextBox ID="txtPresentInVerificationHandBook" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtPresentInVerificationPort" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
                             <br />
                             <div class="row">
                                 <label class="col-sm-2 control-label" for="form-group-input">MONTO RECLAMADO*</label>
                                 <div class="col-sm-10">
-                                    <asp:TextBox ID="txtClaimAmountHandBook" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtClaimAmountPort" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
                             <br />
                             <div class="row">
                                 <label class="col-sm-2 control-label" for="form-group-input">OBSERVACION EN ADUANAS</label>
                                 <div class="col-sm-10">
-                                    <asp:TextBox ID="txtCustomsObservationHandBook" runat="server" TextMode="MultiLine" Height="100px" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtCustomsObservationPort" runat="server" TextMode="MultiLine" Height="100px" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
                         </div>

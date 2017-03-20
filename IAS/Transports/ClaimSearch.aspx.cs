@@ -223,6 +223,10 @@ namespace IAS.Transports
                         ErrorLabel.Visible = true;
                     }
                     break;
+                case "trouble":
+                    //Direcciono a la pagina de busqueda
+                    Response.Redirect("TroubleInspection.aspx?ClaimID=" + claimID);
+                    break;
                 default:
                     break;
             }

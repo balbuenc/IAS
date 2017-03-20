@@ -67,76 +67,76 @@ namespace IAS.Transports {
         protected global::System.Web.UI.WebControls.TextBox txtFailureCertificateNumber;
         
         /// <summary>
-        /// txtDepositHandBook control.
+        /// txtDepositPort control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDepositHandBook;
+        protected global::System.Web.UI.WebControls.TextBox txtDepositPort;
         
         /// <summary>
-        /// txtInspectionDateHandBook control.
+        /// txtInspectionDatePort control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtInspectionDateHandBook;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtInspectionDatePort;
         
         /// <summary>
-        /// txtDirectionHandBook control.
+        /// txtDirectionPort control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDirectionHandBook;
+        protected global::System.Web.UI.WebControls.TextBox txtDirectionPort;
         
         /// <summary>
-        /// txtArrivalDateHandBook control.
+        /// txtArrivalDatePort control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtArrivalDateHandBook;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtArrivalDatePort;
         
         /// <summary>
-        /// txtDownloadDateHandBook control.
+        /// txtDownloadDatePort control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtDownloadDateHandBook;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtDownloadDatePort;
         
         /// <summary>
-        /// txtPresentInVerificationHandBook control.
+        /// txtPresentInVerificationPort control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPresentInVerificationHandBook;
+        protected global::System.Web.UI.WebControls.TextBox txtPresentInVerificationPort;
         
         /// <summary>
-        /// txtClaimAmountHandBook control.
+        /// txtClaimAmountPort control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtClaimAmountHandBook;
+        protected global::System.Web.UI.WebControls.TextBox txtClaimAmountPort;
         
         /// <summary>
-        /// txtCustomsObservationHandBook control.
+        /// txtCustomsObservationPort control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustomsObservationHandBook;
+        protected global::System.Web.UI.WebControls.TextBox txtCustomsObservationPort;
         
         /// <summary>
         /// txtDepositConsignee control.

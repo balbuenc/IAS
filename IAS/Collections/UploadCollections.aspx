@@ -24,7 +24,7 @@
     <%--<link href="../Content/bootstrap-datepicker.min.css" rel="stylesheet" />--%>
     <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
     <script src="/Scripts/jquery-1.12.4.min.js"></script>
-    <script src="/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <%--<script src="/Scripts/jquery-ui-1.12.1.min.js"></script>--%>
     <script src="/Scripts/bootstrap.min.js"></script>
     <link href="/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
     <script src="/Scripts/bootstrap-datepicker.min.js"></script>

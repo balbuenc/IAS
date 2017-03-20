@@ -332,11 +332,6 @@
     <None Include="Properties\PublishProfiles\AIBIAS.pubxml" />
     <None Include="Properties\PublishProfiles\IASTEST - Local.pubxml" />
     <None Include="Properties\PublishProfiles\LocalDEV - File System.pubxml" />
-    <None Include="Scripts\jquery-3.1.0.intellisense.js" />
-    <Content Include="Scripts\jquery-3.1.0.js" />
-    <Content Include="Scripts\jquery-3.1.0.min.js" />
-    <Content Include="Scripts\jquery-3.1.0.slim.js" />
-    <Content Include="Scripts\jquery-3.1.0.slim.min.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\jquery.datetimepicker.js" />
@@ -460,8 +455,6 @@
     <Content Include="Transport.Master" />
     <Content Include="Task.Master" />
     <Content Include="Tasks\search.ashx" />
-    <Content Include="Scripts\jquery-3.1.0.slim.min.map" />
-    <Content Include="Scripts\jquery-3.1.0.min.map" />
     <Content Include="Transports\SearchClient.ashx" />
     <Content Include="Transports\SearchClaim.ashx" />
     <Content Include="Transports\SearchCertificate.ashx" />

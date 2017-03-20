@@ -114,6 +114,9 @@
                                     <li><a href="../Admin/Partners.aspx">Asociados</a></li>
                                     <li><a href="../Admin/Agents.aspx">Agentes</a></li>
                                     <li role="separator" class="divider"></li>
+                                    <li><a href="../Admin/UserCollectionConfig.aspx">Cobranzas Adm.</a></li>
+                                     <li role="separator" class="divider"></li>
+
                                     <li><a href="../Admin/CollectionStates.aspx">Estado de cuotas</a></li>
                                     <li><a href="../Admin/CollectionMethods.aspx">Método de cobro</a></li>
                                     <li><a href="../Admin/CollectionManagementResults.aspx">Resultados de Cobranza</a></li>

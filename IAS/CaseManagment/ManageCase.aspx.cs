@@ -225,7 +225,7 @@ namespace IAS.CaseManagment
             {
                 try
                 {
-                    effectiveDate = DateTime.ParseExact(txtEffectiveDate.Text, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
+                    effectiveDate = DateTime.ParseExact(txtEffectiveDate.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture);
                 }
                 catch (Exception ex)
                 {

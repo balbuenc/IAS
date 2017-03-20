@@ -188,6 +188,7 @@
     <Content Include="Admin\RoleStateTransitions.aspx" />
     <Content Include="Admin\Sections.aspx" />
     <Content Include="Admin\StatesTransitionsChart.aspx" />
+    <Content Include="Admin\UserCollectionConfig.aspx" />
     <Content Include="Admin\WorkflowStateForms.aspx" />
     <Content Include="Admin\States.aspx" />
     <Content Include="Admin\UserStateTransitions.aspx" />
@@ -676,6 +677,13 @@
     </Compile>
     <Compile Include="Admin\StatesTransitionsChart.aspx.designer.cs">
       <DependentUpon>StatesTransitionsChart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserCollectionConfig.aspx.cs">
+      <DependentUpon>UserCollectionConfig.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserCollectionConfig.aspx.designer.cs">
+      <DependentUpon>UserCollectionConfig.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\WorkflowStateForms.aspx.cs">
       <DependentUpon>WorkflowStateForms.aspx</DependentUpon>

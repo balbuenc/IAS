@@ -21,15 +21,14 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <%--<link href="../Content/bootstrap-datepicker.min.css" rel="stylesheet" />--%>
-    <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
-    <script src="/Scripts/jquery-1.12.4.min.js"></script>
-    <%--<script src="/Scripts/jquery-ui-1.12.1.min.js"></script>--%>
-    <script src="/Scripts/bootstrap.min.js"></script>
+    <%--<link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
     <link href="/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+    
+    <script src="/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
     <script src="/Scripts/bootstrap-datepicker.min.js"></script>
     <script src="/Scripts/moment-with-locales.min.js"></script>
-    <script src="/Scripts/bootstrap-datetimepicker.min.js"></script>
+    <script src="/Scripts/bootstrap-datetimepicker.min.js"></script>--%>
 
     <div class="page-header">
         <h2>Subir cuotas</h2>
@@ -59,12 +58,13 @@
                                 <label>Fecha</label>
                             </div>
                             <div class="col-lg-3">
-                                <div class='input-group date' id='datetimepicker1'>
+                                <input id="txtDateMapfre" placeholder="" type="date" class="form-control" runat="server" />
+                                <%--<div class='input-group date' id='datetimepicker1'>
                                     <input id="txtDateMapfre" placeholder="" class="form-control" runat="server" />
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
-                                </div>
+                                </div>--%>
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtDateMapfre" Font-Bold="true"
                                         CssClass="text-danger" ValidationGroup="mapfre" ErrorMessage="El campo es requerido" />
                             </div>
@@ -131,12 +131,13 @@
                                 <label>Fecha</label>
                             </div>
                             <div class="col-lg-3">
-                                <div class='input-group date' id='datetimepicker2'>
+                                <input id="txtDateSancor" placeholder="" type="date" class="form-control" runat="server" />
+                                <%--<div class='input-group date' id='datetimepicker2'>
                                     <input id="txtDateSancor" placeholder="" class="form-control" runat="server" />
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
-                                </div>
+                                </div>--%>
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtDateSancor" Font-Bold="true"
                                         CssClass="text-danger" ValidationGroup="sancor" ErrorMessage="El campo es requerido" />
                             </div>
@@ -165,12 +166,6 @@
         </div>
     </div>
 
-    <%--<script src="../Scripts/jquery-1.12.4.min.js"></script>
-    <script src="../Scripts/jquery-ui-1.12.1.min.js"></script>
-    <script src="../Scripts/bootstrap-datepicker.min.js"></script>
-    <script src="../Scripts/bootstrap-datetimepicker.min.js"></script>
-    <script src="../Scripts/moment-with-locales.min.js"></script>
-    --%>
     <script type="text/javascript">
 
         $('#datetimepicker1').datetimepicker({

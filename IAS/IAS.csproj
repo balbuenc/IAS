@@ -333,6 +333,11 @@
     <None Include="Properties\PublishProfiles\AIBIAS.pubxml" />
     <None Include="Properties\PublishProfiles\IASTEST - Local.pubxml" />
     <None Include="Properties\PublishProfiles\LocalDEV - File System.pubxml" />
+    <None Include="Scripts\jquery-3.1.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.1.0.js" />
+    <Content Include="Scripts\jquery-3.1.0.min.js" />
+    <Content Include="Scripts\jquery-3.1.0.slim.js" />
+    <Content Include="Scripts\jquery-3.1.0.slim.min.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\jquery.datetimepicker.js" />
@@ -460,6 +465,8 @@
     <Content Include="Transports\SearchClaim.ashx" />
     <Content Include="Transports\SearchCertificate.ashx" />
     <Content Include="Transports\SearchBeneficiary.ashx" />
+    <Content Include="Scripts\jquery-3.1.0.min.map" />
+    <Content Include="Scripts\jquery-3.1.0.slim.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

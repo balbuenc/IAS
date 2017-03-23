@@ -110,7 +110,7 @@
         </div>
         <div class="col-sm-3">
             <label>Efectividad:</label>
-            <asp:TextBox ID="txtEffectiveDate" runat="server" CssClass="form-control datetime"></asp:TextBox>
+            <asp:TextBox ID="txtEffectiveDate" runat="server" CssClass="form-control" type="date"></asp:TextBox>
         </div>
     </div>
 </div>

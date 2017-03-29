@@ -77,9 +77,4 @@ namespace IAS.Claims
         }
     }
 
-    [Serializable]
-    public class ResponseData
-    {
-        public string Client;
-    }
 }

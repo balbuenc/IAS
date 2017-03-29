@@ -193,6 +193,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
+                         <a href="NewPerson.aspx" class="btn btn-default">
+                            <span class="glyphicon glyphicon-plus"></span>
+                         </a>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     </div>
                 </div>

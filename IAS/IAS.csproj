@@ -215,6 +215,8 @@
     <Content Include="Claims\ClaimSearch.aspx" />
     <Content Include="Claims\CloseClaim.aspx" />
     <Content Include="Claims\NewClaim.aspx" />
+    <Content Include="Claims\NewPerson.aspx" />
+    <Content Include="Claims\NewPolicy.aspx" />
     <Content Include="Claims\UploadClaims.aspx" />
     <Content Include="Claims\WorkShopClaim.aspx" />
     <Content Include="Collections\Assignations.aspx" />
@@ -316,7 +318,7 @@
     <Content Include="Account\Web.config" />
     <Content Include="Claim.Master" />
     <Content Include="CaseManagement.Master" />
-    <Content Include="Claims\search.ashx" />
+    <Content Include="Claims\searchClaim.ashx" />
     <Content Include="Reports.Master" />
     <Content Include="Policies\Policy.aspx" />
     <Content Include="Scripts\bloodhound.js" />
@@ -328,6 +330,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\d3.min.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
+    <Content Include="Claims\searchPerson.ashx" />
     <None Include="Properties\PublishProfiles\adlws2 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\adlws2 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\AIBIAS.pubxml" />
@@ -891,8 +894,26 @@
     <Compile Include="Claims\NewClaim.aspx.designer.cs">
       <DependentUpon>NewClaim.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Claims\search.ashx.cs">
-      <DependentUpon>search.ashx</DependentUpon>
+    <Compile Include="Claims\NewPerson.aspx.cs">
+      <DependentUpon>NewPerson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Claims\NewPerson.aspx.designer.cs">
+      <DependentUpon>NewPerson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Claims\NewPolicy.aspx.cs">
+      <DependentUpon>NewPolicy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Claims\NewPolicy.aspx.designer.cs">
+      <DependentUpon>NewPolicy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Claims\ResponseData.cs" />
+    <Compile Include="Claims\searchClaim.ashx.cs">
+      <DependentUpon>searchClaim.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Claims\searchPerson.ashx.cs">
+      <DependentUpon>searchPerson.ashx</DependentUpon>
     </Compile>
     <Compile Include="Claims\UploadClaims.aspx.cs">
       <DependentUpon>UploadClaims.aspx</DependentUpon>

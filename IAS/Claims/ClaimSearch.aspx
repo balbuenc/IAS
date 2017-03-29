@@ -16,7 +16,7 @@
         $(function () {
             $("[id$=txtSearchClaim]").autocomplete(
                 {
-                    source: "search.ashx",
+                    source: "searchClaim.ashx",
                     // note minlength, triggers the Handler call only once 3 characters entered
                     minLength: 3,
                     focus: function (event, ui) {
@@ -166,7 +166,6 @@
                             <tr>
                                 <td colspan="8"></td>
                                 <td colspan="2" style="text-align: right">
-
 
                                     <asp:LinkButton ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CssClass="btn btn-link">
                                                     <span class="glyphicon glyphicon-edit"></span>

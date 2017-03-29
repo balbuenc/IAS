@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace IAS.Claims
 {
-    public partial class NewClaim : System.Web.UI.Page
+    public partial class NewClaim : Page
     {
 
         public string nro_poliza

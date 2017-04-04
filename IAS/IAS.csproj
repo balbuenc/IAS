@@ -318,7 +318,7 @@
     <Content Include="Account\Web.config" />
     <Content Include="Claim.Master" />
     <Content Include="CaseManagement.Master" />
-    <Content Include="Claims\searchClaim.ashx" />
+    <Content Include="Claims\SearchClaim.ashx" />
     <Content Include="Reports.Master" />
     <Content Include="Policies\Policy.aspx" />
     <Content Include="Scripts\bloodhound.js" />
@@ -330,7 +330,8 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\d3.min.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
-    <Content Include="Claims\searchPerson.ashx" />
+    <Content Include="Claims\SearchPerson.ashx" />
+    <Content Include="Claims\SearchClient.ashx" />
     <None Include="Properties\PublishProfiles\adlws2 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\adlws2 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\AIBIAS.pubxml" />
@@ -909,11 +910,14 @@
       <DependentUpon>NewPolicy.aspx</DependentUpon>
     </Compile>
     <Compile Include="Claims\ResponseData.cs" />
-    <Compile Include="Claims\searchClaim.ashx.cs">
-      <DependentUpon>searchClaim.ashx</DependentUpon>
+    <Compile Include="Claims\SearchClaim.ashx.cs">
+      <DependentUpon>SearchClaim.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Claims\searchPerson.ashx.cs">
-      <DependentUpon>searchPerson.ashx</DependentUpon>
+    <Compile Include="Claims\SearchClient.ashx.cs">
+      <DependentUpon>SearchClient.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Claims\SearchPerson.ashx.cs">
+      <DependentUpon>SearchPerson.ashx</DependentUpon>
     </Compile>
     <Compile Include="Claims\UploadClaims.aspx.cs">
       <DependentUpon>UploadClaims.aspx</DependentUpon>

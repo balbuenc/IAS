@@ -51,42 +51,42 @@ namespace IAS.Claims
             try
             {
 
-                if (Request.QueryString["criteria"] != null)
-                {
-                    criteria = Request.QueryString["criteria"].ToString();
-                    switch (criteria)
-                    {
-                        case "PolicyNumber":
-                            txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Póliza";
-                            criteriaBtn.InnerText = "Nro. Póliza";
-                            break;
-                        case "Client":
-                            txtSearchClaim.Attributes["placeholder"] = "Buscar por Cliente";
-                            criteriaBtn.InnerText = "Cliente";
-                            break;
-                        case "ClientDocumentNumber":
-                            txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Documento";
-                            criteriaBtn.InnerText = "Nro. Documento";
-                            break;
+                //if (Request.QueryString["criteria"] != null)
+                //{
+                //    criteria = Request.QueryString["criteria"].ToString();
+                //    switch (criteria)
+                //    {
+                //        case "PolicyNumber":
+                //            txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Póliza";
+                //            criteriaBtn.InnerText = "Nro. Póliza";
+                //            break;
+                //        case "Client":
+                //            txtSearchClaim.Attributes["placeholder"] = "Buscar por Cliente";
+                //            criteriaBtn.InnerText = "Cliente";
+                //            break;
+                //        case "ClientDocumentNumber":
+                //            txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Documento";
+                //            criteriaBtn.InnerText = "Nro. Documento";
+                //            break;
 
-                        default:
-                            txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Pòliza";
-                            criteriaBtn.InnerText = "Nro. Pòliza";
-                            criteria = "PolicyNumber";
-                            break;
-                    }
-                }
-                else
-                {
-                    criteria = "Client";
-                }
+                //        default:
+                //            txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Pòliza";
+                //            criteriaBtn.InnerText = "Nro. Pòliza";
+                //            criteria = "PolicyNumber";
+                //            break;
+                //    }
+                //}
+                //else
+                //{
+                //    criteria = "Client";
+                //}
 
             }
             catch (Exception exp)
             {
-                txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Póliza";
-                criteriaBtn.InnerText = "Nro. Póliza";
-                criteria = "PolicyNumber";
+                //txtSearchClaim.Attributes["placeholder"] = "Buscar por Nro. Póliza";
+                //criteriaBtn.InnerText = "Nro. Póliza";
+                //criteria = "PolicyNumber";
             }
         }
 
@@ -183,37 +183,37 @@ namespace IAS.Claims
         protected void searchBox_ServerClick(object sender, EventArgs e)
         {
 
-            SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
-            SqlCommand cmd = new SqlCommand();
+            //SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
+            //SqlCommand cmd = new SqlCommand();
 
-            SqlDataAdapter da = new SqlDataAdapter();
-            DataTable dt = new DataTable();
+            //SqlDataAdapter da = new SqlDataAdapter();
+            //DataTable dt = new DataTable();
 
-            try
-            {
+            //try
+            //{
 
-                cmd.CommandText = "[claim].[sp_search_clients]";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = sqlConnection1;
+            //    cmd.CommandText = "[claim].[sp_search_clients]";
+            //    cmd.CommandType = CommandType.StoredProcedure;
+            //    cmd.Connection = sqlConnection1;
 
-                cmd.Parameters.AddWithValue("@find", txtSearchClaim.Value);
-                cmd.Parameters.AddWithValue("@criteria", criteria);
+            //    cmd.Parameters.AddWithValue("@find", txtSearchClaim.Value);
+            //    cmd.Parameters.AddWithValue("@criteria", criteria);
 
-                da.SelectCommand = cmd;
+            //    da.SelectCommand = cmd;
 
-                da.Fill(dt);
+            //    da.Fill(dt);
 
-                gridClients.DataSource = dt;
-                gridClients.DataBind();
+            //    gridClients.DataSource = dt;
+            //    gridClients.DataBind();
 
-            }
-            catch (Exception exp)
-            {
-                ErrorLabel.Text = exp.Message;
-                ErrorLabel.Visible = true;
-            }
+            //}
+            //catch (Exception exp)
+            //{
+            //    ErrorLabel.Text = exp.Message;
+            //    ErrorLabel.Visible = true;
+            //}
 
-            ScriptManager.RegisterStartupScript(this, GetType(), "Pop", "openModalPolizas();", true);
+            //ScriptManager.RegisterStartupScript(this, GetType(), "Pop", "openModalPolizas();", true);
         }
 
         protected void gridClients_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -224,12 +224,11 @@ namespace IAS.Claims
                 case "seleccionar":
                     string[] values = e.CommandArgument.ToString().Split('|');
 
-                    string detail = values[0];
+                    string idPersona = values[0];
                     string numero_documento = values[1];
                     string cliente = values[2];
-                    string idPersona = values[3];
-                    string nroPoliza = values[4];
-                    lblPoliza.Text = detail;
+                    string nroPoliza = values[3];
+                    lblPoliza.Text = nroPoliza;
                     lblNroDocumento.Text = numero_documento;
                     lblCliente.Text = cliente;
 
@@ -243,6 +242,25 @@ namespace IAS.Claims
 
             }
 
+        }
+
+        protected void btnSearch_ServerClick(object sender, EventArgs e)
+        {
+            string[] data = txtSearchClient.Text.Split('|');
+
+            string idPersona = data[0];
+            string numero_documento = data[1];
+            string cliente = data[2];
+            string nroPoliza = data[3];
+            string detail = data[4];
+            string aseguradora = data[5];
+
+            lblPoliza.Text = nroPoliza;
+            lblNroDocumento.Text = numero_documento;
+            lblCliente.Text = cliente;
+            lblAseguradora.Text = aseguradora;
+            id_persona = idPersona;
+            nro_poliza = nroPoliza;
         }
     }
 }

@@ -22,31 +22,22 @@ namespace IAS.Claims {
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
-        /// searchBox control.
+        /// txtSearchClient control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton searchBox;
+        protected global::System.Web.UI.WebControls.TextBox txtSearchClient;
         
         /// <summary>
-        /// txtSearchClaim control.
+        /// btnSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtSearchClaim;
-        
-        /// <summary>
-        /// criteriaBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton criteriaBtn;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnSearch;
         
         /// <summary>
         /// lblCliente control.
@@ -74,6 +65,15 @@ namespace IAS.Claims {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPoliza;
+        
+        /// <summary>
+        /// lblAseguradora control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAseguradora;
         
         /// <summary>
         /// dp1 control.

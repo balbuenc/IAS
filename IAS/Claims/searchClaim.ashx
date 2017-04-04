@@ -1,1 +1,1 @@
-﻿<%@ WebHandler Language="C#" CodeBehind="searchClaim.ashx.cs" Class="IAS.Claims.search" %>
+﻿<%@ WebHandler Language="C#" CodeBehind="SearchClaim.ashx.cs" Class="IAS.Claims.search" %>

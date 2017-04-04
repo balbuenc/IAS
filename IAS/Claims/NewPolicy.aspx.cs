@@ -88,5 +88,51 @@ namespace IAS.Claims
                 ErrorLabel.Visible = true;
             }
         }
+
+        protected void registrarPolizaBtn_Click(object sender, EventArgs e)
+        {
+
+            SqlConnection sqlConnection1 = new SqlConnection(ConfigurationManager.ConnectionStrings["IASDBContext"].ConnectionString);
+            SqlCommand cmd = new SqlCommand();
+       
+            int rowsAffected;
+
+            try
+            {
+
+                cmd.CommandText = "[dbo].[sp_insert_policy]";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = sqlConnection1;
+                
+                cmd.Parameters.AddWithValue("@PolicyNumber", long.Parse(txtNroPoliza.Text));
+                cmd.Parameters.AddWithValue("@SectionNumber", DBNull.Value);
+                cmd.Parameters.AddWithValue("@InsuranceManagerID", int.Parse(ddlAseguradora.SelectedValue));
+                cmd.Parameters.AddWithValue("@EmissionDate", DBNull.Value);
+                cmd.Parameters.AddWithValue("@ExpirationDate", DBNull.Value);
+                cmd.Parameters.AddWithValue("@PersonID", PersonaID);
+                cmd.Parameters.AddWithValue("@Coverage", DBNull.Value);
+                cmd.Parameters.AddWithValue("@RiskName", DBNull.Value);
+                cmd.Parameters.AddWithValue("@PaymentsNumber", DBNull.Value);
+                cmd.Parameters.AddWithValue("@Status", DBNull.Value);
+                cmd.Parameters.AddWithValue("@Premium", DBNull.Value);
+
+                sqlConnection1.Open();
+
+                rowsAffected = cmd.ExecuteNonQuery();
+              
+                sqlConnection1.Close();
+                
+                //Direcciono a la pagina de cliam
+                Response.Redirect("NewClaim.aspx");
+
+            }
+            catch (Exception exp)
+            {
+                ErrorLabel.Text = exp.Message;
+                ErrorLabel.Visible = true;
+            }
+
+
+        }
     }
 }

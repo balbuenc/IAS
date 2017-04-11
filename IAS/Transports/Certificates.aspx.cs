@@ -41,7 +41,7 @@ namespace IAS.Transports
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 

@@ -152,8 +152,8 @@
                                 </button>
 
                                 <ul class="dropdown-menu" aria-labelledby="ReportsDropDown">
-                                    <li><a href="http://adlsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fClaimsResume&rs:Command=Render" target="_blank">Informe Siniestros</a></li>
-                                    <li><a href="http://adlsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fClaimsByStatus&rs:Command=Render" target="_blank">Resultado Gestion</a></li>
+                                    <li><a href="http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fClaimsResume&rs:Command=Render" target="_blank">Informe Siniestros</a></li>
+                                    <li><a href="http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fClaimsByStatus&rs:Command=Render" target="_blank">Resultado Gestion</a></li>
                                 </ul>
                             </div>
                             <div class="btn-group">

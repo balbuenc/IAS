@@ -76,7 +76,7 @@ namespace IAS.Transports
                 catch (Exception ex)
                 {
 
-                    throw;
+                    throw ex;
                 }
 
             }
@@ -177,7 +177,7 @@ namespace IAS.Transports
             SqlConnection sqlConnection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["IASDBContext"].ToString());
             SqlCommand cmd = new SqlCommand();
 
-            int troubleInspectionID;
+            //int troubleInspectionID;
             int rowsAffected;
 
             try

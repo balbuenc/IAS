@@ -67,8 +67,8 @@ namespace IAS.Transports
             }
         }
 
-        private string criteria;
-        private string find;
+        //private string criteria;
+        //private string find;
 
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -34,7 +34,7 @@ using System.Globalization;
 using IAS.Constants;
 
 using System.Data;
-using System.Data.SqlClient;
+
 
 namespace IAS.CaseManagment
 {

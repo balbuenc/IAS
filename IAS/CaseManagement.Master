@@ -231,7 +231,7 @@
                         </li>--%>
 
                     </ul>
-                    <%--<a href="http://adlsql.cloudapp.net/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fCasosPorCliente&rs:Command=Render" target="_blank" id='logout-icon' title='Búsqueda'>--%>
+                    <%--<a href="http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fCasosPorCliente&rs:Command=Render" target="_blank" id='logout-icon' title='Búsqueda'>--%>
                         <a href="/CaseManagment/SearchCase.aspx"  id='logout-icon' title='Búsqueda'>
                         <span class='glyphicon glyphicon-search'></span>
                     </a>

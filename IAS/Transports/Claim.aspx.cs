@@ -66,8 +66,8 @@ namespace IAS.Transports
             }
         }
 
-        private string criteria;
-        private string find;
+        //private string criteria;
+        //private string find;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -167,7 +167,7 @@ namespace IAS.Transports
             SqlConnection sqlConnection1 = new SqlConnection(clientesDataSource.ConnectionString);
             SqlCommand cmd = new SqlCommand();
 
-            int claimID;
+            //int claimID;
             int rowsAffected;
 
             try

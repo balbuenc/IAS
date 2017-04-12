@@ -202,28 +202,23 @@ namespace IAS.CaseManagment
             }
             else
             {
-                try
-                {
-                    effectiveDate = DateTime.ParseExact(txtEffectiveDate.Text, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
-                }
-                catch (Exception ex)
-                {
-                    effectiveDate = DateTime.Now;
-                }
+                //try
+                //{
 
-                //string[] components = txtEffectiveDate.Text.Split( '/' );                
+                //    effectiveDate = DateTime.ParseExact(txtEffectiveDate.Text, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
+                //}
+                //catch (Exception ex)
+                //{
+                //    effectiveDate = DateTime.Now;
+                //}
 
-                //int day = int.Parse( components[0] );
-                //int month = int.Parse( components[1] );
+                string[] components = txtEffectiveDate.Text.Split('-');
 
-                //string[] yearhour = components[2].Split( ' ' );                
-                //string[] hourminute = yearhour[1].Split( ':' );
-
-                //int year = int.Parse( yearhour[0] );
-                //int hour = int.Parse( hourminute[0] );
-                //int minutes = int.Parse( hourminute[1] );
-
-                //effectiveDate = new DateTime( year, month, day, hour, minutes, 0 );
+                int day = int.Parse(components[2]);
+                int month = int.Parse(components[1]);
+                int year = int.Parse(components[0]);
+             
+                effectiveDate = new DateTime(year, month, day);
             }
 
             var transition = new CaseTransition();

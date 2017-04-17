@@ -39,8 +39,17 @@ namespace IAS.Collections
             {
                 try
                 {
-                    
-                    DateTime dateMapfre = DateTime.Parse(txtDateMapfre.Value);
+
+                    DateTime dateMapfre;
+
+                    string[] components = txtDateMapfre.Value.Split('-');
+
+                    int day = int.Parse(components[2]);
+                    int month = int.Parse(components[1]);
+                    int year = int.Parse(components[0]);
+
+                    dateMapfre = new DateTime(year, month, day);
+
                     string fileName = $"mapfre_expire_{dateMapfre.Year}{((dateMapfre.Month.ToString().Length == 1) ? "0" + dateMapfre.Month : dateMapfre.Month.ToString())}{((dateMapfre.Day.ToString().Length == 1) ? "0" + dateMapfre.Day : dateMapfre.Day.ToString())}.csv";
                   
                     string fileExtension = Path.GetExtension(MapfreExpiredUp.FileName);
@@ -68,7 +77,16 @@ namespace IAS.Collections
             {
                 try
                 {
-                    DateTime dateMapfre = DateTime.Parse(txtDateMapfre.Value);
+                    DateTime dateMapfre;
+                    
+                    string[] components = txtDateMapfre.Value.Split('-');
+
+                    int day = int.Parse(components[2]);
+                    int month = int.Parse(components[1]);
+                    int year = int.Parse(components[0]);
+
+                    dateMapfre = new DateTime(year, month, day);
+
                     string fileName = $"mapfre_to_expire_{dateMapfre.Year}{((dateMapfre.Month.ToString().Length == 1) ? "0" + dateMapfre.Month : dateMapfre.Month.ToString())}{((dateMapfre.Day.ToString().Length == 1) ? "0" + dateMapfre.Day : dateMapfre.Day.ToString())}.csv";
 
 
@@ -99,7 +117,17 @@ namespace IAS.Collections
             {
                 try
                 {
-                    DateTime dateSancor = DateTime.Parse(txtDateSancor.Value);
+                    DateTime dateSancor;
+                    
+                    string[] components = txtDateSancor.Value.Split('-');
+
+                    int day = int.Parse(components[2]);
+                    int month = int.Parse(components[1]);
+                    int year = int.Parse(components[0]);
+
+                    dateSancor = new DateTime(year, month, day);
+
+
                     string fileName = $"sancor_collection_{dateSancor.Year}{((dateSancor.Month.ToString().Length == 1) ? "0" + dateSancor.Month : dateSancor.Month.ToString())}{((dateSancor.Day.ToString().Length == 1) ? "0" + dateSancor.Day : dateSancor.Day.ToString())}.csv";
 
                     string fileExtension = Path.GetExtension(Sancor.FileName);

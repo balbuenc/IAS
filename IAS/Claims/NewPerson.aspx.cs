@@ -26,6 +26,16 @@ namespace IAS.Claims
 
             try
             {
+                DateTime fechaNacimiento;
+
+
+                string[] components = txtFechaNacimiento.Text.Split('-');
+
+                int day = int.Parse(components[2]);
+                int month = int.Parse(components[1]);
+                int year = int.Parse(components[0]);
+
+                fechaNacimiento = new DateTime(year, month, day);
 
                 cmd.CommandText = "[exchange].[sp_new_person]";
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -43,7 +53,7 @@ namespace IAS.Claims
                 cmd.Parameters.AddWithValue("@apellido1", txtApellido1.Text);
                 cmd.Parameters.AddWithValue("@apellido2", txtApellido2.Text);
                 cmd.Parameters.AddWithValue("@razon_social", TxtRazonSocial.Text);
-                cmd.Parameters.AddWithValue("@fecha_nacimiento", Convert.ToDateTime(txtFechaNacimiento.Text));
+                cmd.Parameters.AddWithValue("@fecha_nacimiento", fechaNacimiento);
                 cmd.Parameters.AddWithValue("@sexo", rdbSexo.SelectedValue);
                 cmd.Parameters.AddWithValue("@tipo_persona", rdbTipoPersona.SelectedValue);
 

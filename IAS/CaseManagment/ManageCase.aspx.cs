@@ -225,7 +225,14 @@ namespace IAS.CaseManagment
             {
                 try
                 {
-                    effectiveDate = DateTime.ParseExact(txtEffectiveDate.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                    //effectiveDate = DateTime.ParseExact(txtEffectiveDate.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                    string[] components = txtEffectiveDate.Text.Split('-');
+
+                    int day = int.Parse(components[2]);
+                    int month = int.Parse(components[1]);
+                    int year = int.Parse(components[0]);
+
+                    effectiveDate = new DateTime(year, month, day);
                 }
                 catch (Exception ex)
                 {

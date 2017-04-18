@@ -50,6 +50,7 @@ namespace IAS.Account
                 ApplicationUser user = manager.Find(UserName.Text, Password.Text);
                 if (user != null)
                 {
+                    Logger.Log.Debug($"Usuario accesado: {user}");
                     IdentityHelper.SignIn(manager, user, RememberMe.Checked);
                     IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
                 }

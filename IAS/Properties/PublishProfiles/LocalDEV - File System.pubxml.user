@@ -175,7 +175,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/04/2017 17:28:37</publishTime>
     </File>
     <File Include="bin/IAS.dll">
-      <publishTime>04/11/2017 11:30:20</publishTime>
+      <publishTime>04/18/2017 14:54:05</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>03/08/2017 19:26:22</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.FriendlyUrls.dll">
       <publishTime>04/04/2017 17:28:37</publishTime>
@@ -607,7 +610,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>04/06/2017 12:50:50</publishTime>
+      <publishTime>04/18/2017 14:39:11</publishTime>
     </File>
     <File Include="Policies/Policy.aspx">
       <publishTime>04/04/2017 17:28:36</publishTime>
@@ -1015,7 +1018,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/11/2017 11:30:21</publishTime>
+      <publishTime>04/18/2017 14:54:06</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -1,0 +1,45 @@
+2017-04-24 00:38:14,705 | IAS.Logger | DEBUG | Usuario accesado: Christian Balbuena
+2017-04-24 00:38:15,725 | IAS.Logger | DEBUG | Error al autenticar : Thread was being aborted.
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at IAS.Account.Login.LogIn(Object sender, EventArgs e) in C:\source\GIT\IAS\IAS\Account\Login.aspx.cs:line 58
+2017-04-24 00:41:07,857 | IAS.Logger | DEBUG | Usuario accesado: Christian Balbuena
+2017-04-24 00:41:45,067 | IAS.Logger | DEBUG | Error al autenticar : Thread was being aborted.
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at IAS.Account.Login.LogIn(Object sender, EventArgs e) in C:\source\GIT\IAS\IAS\Account\Login.aspx.cs:line 58
+2017-04-24 00:42:05,350 | IAS.Logger | DEBUG | Usuario accesado: Christian Balbuena
+2017-04-24 00:42:09,490 | IAS.Logger | DEBUG | Error al autenticar : Thread was being aborted.
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at IAS.Account.Login.LogIn(Object sender, EventArgs e) in C:\source\GIT\IAS\IAS\Account\Login.aspx.cs:line 58
+2017-04-24 00:42:39,997 | IAS.Logger | DEBUG | Usuario accesado: Christian Balbuena
+2017-04-24 00:42:42,900 | IAS.Logger | DEBUG | Error al autenticar : Thread was being aborted.
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at IAS.Account.Login.LogIn(Object sender, EventArgs e) in C:\source\GIT\IAS\IAS\Account\Login.aspx.cs:line 58
+2017-04-24 00:45:32,958 | IAS.Logger | DEBUG | Usuario accesado: Christian Balbuena
+2017-04-24 00:45:39,900 | IAS.Logger | DEBUG | Error al autenticar : Thread was being aborted.
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpServerUtility.Transfer(String path, Boolean preserveForm)
+   at IAS.Account.Login.LogIn(Object sender, EventArgs e) in C:\source\GIT\IAS\IAS\Account\Login.aspx.cs:line 59

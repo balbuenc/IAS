@@ -50,7 +50,7 @@ namespace IAS.Collections
 
                     dateMapfre = new DateTime(year, month, day);
 
-                    string fileName = $"mapfre_expire_{dateMapfre.Year}{((dateMapfre.Month.ToString().Length == 1) ? "0" + dateMapfre.Month : dateMapfre.Month.ToString())}{((dateMapfre.Day.ToString().Length == 1) ? "0" + dateMapfre.Day : dateMapfre.Day.ToString())}.csv";
+                    string fileName = $"mapfre_expired_{dateMapfre.Year}{((dateMapfre.Month.ToString().Length == 1) ? "0" + dateMapfre.Month : dateMapfre.Month.ToString())}{((dateMapfre.Day.ToString().Length == 1) ? "0" + dateMapfre.Day : dateMapfre.Day.ToString())}.csv";
                   
                     string fileExtension = Path.GetExtension(MapfreExpiredUp.FileName);
 
@@ -128,7 +128,7 @@ namespace IAS.Collections
                     dateSancor = new DateTime(year, month, day);
 
 
-                    string fileName = $"sancor_collection_{dateSancor.Year}{((dateSancor.Month.ToString().Length == 1) ? "0" + dateSancor.Month : dateSancor.Month.ToString())}{((dateSancor.Day.ToString().Length == 1) ? "0" + dateSancor.Day : dateSancor.Day.ToString())}.csv";
+                    string fileName = $"sancor_collections_{dateSancor.Year}{((dateSancor.Month.ToString().Length == 1) ? "0" + dateSancor.Month : dateSancor.Month.ToString())}{((dateSancor.Day.ToString().Length == 1) ? "0" + dateSancor.Day : dateSancor.Day.ToString())}.csv";
 
                     string fileExtension = Path.GetExtension(Sancor.FileName);
 

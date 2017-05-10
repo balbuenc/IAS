@@ -322,6 +322,8 @@
     <Content Include="Claim.Master" />
     <Content Include="CaseManagement.Master" />
     <Content Include="Claims\SearchClaim.ashx" />
+    <Content Include="Renovations\NewRenovation.aspx" />
+    <Content Include="Renovations\Renovations.aspx" />
     <Content Include="Reports.Master" />
     <Content Include="Policies\Policy.aspx" />
     <Content Include="Scripts\bloodhound.js" />
@@ -343,6 +345,7 @@
     <None Include="Properties\PublishProfiles\GS.pubxml" />
     <None Include="Properties\PublishProfiles\IASTEST - Local.pubxml" />
     <None Include="Properties\PublishProfiles\LocalDEV - File System.pubxml" />
+    <Content Include="Renovations\SearchPolicy.ashx" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.0.js" />
     <Content Include="Scripts\jquery-3.1.0.min.js" />
@@ -1131,6 +1134,24 @@
       <DependentUpon>Policy.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renovations\NewRenovation.aspx.cs">
+      <DependentUpon>NewRenovation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Renovations\NewRenovation.aspx.designer.cs">
+      <DependentUpon>NewRenovation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Renovations\Renovations.aspx.cs">
+      <DependentUpon>Renovations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Renovations\Renovations.aspx.designer.cs">
+      <DependentUpon>Renovations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Renovations\ResponseData.cs" />
+    <Compile Include="Renovations\SearchPolicy.ashx.cs">
+      <DependentUpon>SearchPolicy.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Reports.Master.cs">
       <DependentUpon>Reports.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1263,7 +1284,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Readme\" />
-    <Folder Include="Renovations\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201402081817594_Initial.resx">

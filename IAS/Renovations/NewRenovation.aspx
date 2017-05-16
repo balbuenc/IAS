@@ -47,6 +47,7 @@
         });
 
     </script>
+
     <script>
 
         function openModalPolizas() {

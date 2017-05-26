@@ -84,7 +84,9 @@
                     <div class="col-lg-12">
                         <asp:ListView ID="RenovationsListView"
                             runat="server"
-                            DataKeyNames="RenovationID">
+                            DataKeyNames="RenovationID"
+                            OnItemDataBound="RenovationsListView_ItemDataBound"
+                            OnItemCommand="RenovationsListView_ItemCommand">
                             <LayoutTemplate>
                                 <div class="table table-responsive">
                                     <table class="table table-hover  table-condensed ">
@@ -95,6 +97,7 @@
                                                 <th class="visible-lg">NRO DOCUMENTO</th>
                                                 <th class="visible-lg">NOMBRE</th>
                                                 <th class="visible-lg">ESTADO</th>
+                                                <th class="visible-lg">ACCIONES</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -122,6 +125,19 @@
                                     <td>
                                         <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("status") %>' />
                                     </td>
+                                    <td>
+                                        <asp:LinkButton ID="AvanzarButton" runat="server" Text="Avanzar renovación" CommandName="Avanzar" CommandArgument='<%# Eval("RenovationID").ToString() + ";"+  Eval("PolicyRenovationStatusID").ToString() %>' ToolTip="Avanzar renovación" CssClass="btn btn-link" Style="padding-left: 0px; padding-right: 0px;">
+                                                <small><span class="glyphicon glyphicon-chevron-right"></span></small>
+                                        </asp:LinkButton>
+                                        &nbsp;
+                                         <asp:LinkButton ID="RechazarButton" runat="server" Text="Rechazar renovación" CommandName="Rechazar" CommandArgument='<%# Eval("RenovationID").ToString() %>' ToolTip="Rechazar renovación" CssClass="btn btn-link" Style="padding-left: 0px; padding-right: 0px;">
+                                                <small><span class="glyphicon glyphicon-remove"></span></small>
+                                         </asp:LinkButton>
+                                        &nbsp;
+                                        <asp:LinkButton ID="CommentButton" runat="server" Text="Comentarios" CommandName="Comentarios" CommandArgument='<%# Eval("TaskID").ToString() %>' ToolTip="Comentarios" CssClass="btn btn-link" Style="padding-left: 0px; padding-right: 0px;">
+                                                <small><span class="glyphicon glyphicon-comment"></span></small>
+                                        </asp:LinkButton>
+                                    </td>
 
                                 </tr>
                             </ItemTemplate>
@@ -140,9 +156,153 @@
         </div>
     </div>
 
+    <%-- Modal Task Comments --%>
+    <div class="modal fade modal-wide" id="myModalTaskComment" tabindex="-1" role="dialog" aria-labelledby="myModalTaskCommentLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width: 80%">
+            <div class="modal-content">
+                <div class="container-fluid">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+                        <h4 class="modal-title" id="myModalTaskCommentLabel">
+                            <asp:Label ID="lblComentarioTitle" runat="server" Text="Comentarios"></asp:Label>
+                        </h4>
+                    </div>
+                    <br />
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <asp:TextBox ID="txtComments" runat="server" CssClass="form-control" />
+                            </div>
+                            <div class="col-lg-1">
+                                <asp:Button ID="btnCommentAdd" runat="server" Text="Comentar" CssClass="btn btn-default" OnClick="btnCommentAdd_Click" />
+                            </div>
+                            <asp:HiddenField ID="hf_TaskID" runat="server" />
+                        </div>
+                        <div class="row">
+                            <br />
+                            <div class="col-lg-12">
+                                <asp:GridView ID="grdTaskComments" runat="server" CssClass="table table-hover table-bordered"
+                                    AutoGenerateColumns="false"
+                                    DataKeyNames="TaskCommentID"
+                                    DataSourceID="TaskCommentsDataSource"
+                                    RowStyle-Font-Size="Small"
+                                    HeaderStyle-Font-Size="Small"
+                                    OnRowCommand="grdTaskComments_RowCommand">
+                                    <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
+                                    <EditRowStyle BackColor="#ffffcc" />
+                                    <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
+                                    <EmptyDataTemplate>
+                                        <b>No hay comentarios para la Tarea.</b>
+                                    </EmptyDataTemplate>
+                                    <RowStyle Height="20px" />
+                                    <AlternatingRowStyle Height="20px" />
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="ID" Visible="false">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lbltaskCommentID" runat="server" Text='<%# Eval("TaskCommentID") %>'></asp:Label>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <asp:Label ID="lbltaskCommentID" runat="server" Text='<%# Eval("TaskCommentID") %>'></asp:Label>
+                                            </EditItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Comentario">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblComment" runat="server" Text='<%# Eval("Comment") %>'></asp:Label>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <asp:TextBox ID="txtComment" CssClass="form-control" runat="server" Text='<%# Eval("Comment") %>'></asp:TextBox>
+                                            </EditItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="User">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblUserName" runat="server" Text='<%# Eval("UserName") %>'></asp:Label>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <asp:TextBox ID="txtUserName" CssClass="form-control" runat="server" ReadOnly="true" Text='<%# Eval("UserName") %>'></asp:TextBox>
+                                            </EditItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Fecha">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblCommentDate" runat="server" Text='<%# DateTime.Parse( Eval("CommentDate").ToString()).ToShortDateString() %>'></asp:Label>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <asp:Label ID="txtCommentDate" CssClass="form-control" runat="server" ReadOnly="False" Text='<%# DateTime.Parse( Eval("CommentDate").ToString()).ToShortDateString() %>'></asp:Label>
+                                            </EditItemTemplate>
+                                        </asp:TemplateField>
+
+                                        <asp:TemplateField HeaderText="...">
+                                            <ItemTemplate>
+                                                <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Eliminar" CommandArgument='<%# Eval("TaskCommentID").ToString() %>' CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar el Comentario.?');">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                                </asp:LinkButton>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                </asp:GridView>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <asp:Button ID="TaskCommentsAcceptBtn" runat="server" CssClass="btn btn-primary" Text="Aceptar" OnClick="TaskCommentsAcceptBtn_Click"></asp:Button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-wide" id="myModalStatus" tabindex="-1" role="dialog" aria-labelledby="myModalStatusLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="container-fluid">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+                        <h4 class="modal-title" id="myModalStatusLabel">
+                            <asp:Label ID="Label1" runat="server" Text="Avanzar estado"></asp:Label>
+                        </h4>
+                    </div>
+                    <br />
+                    <div class="modal-body">
+                        <asp:HiddenField ID="hf_RenovationID" runat="server" />
+                        <asp:HiddenField ID="hf_RenovationStatusID" runat="server" />
+                        Desea avanzar al siguiente estado?
+                        <asp:Label ID="lblSiguienteEstado" runat="server" Text=""></asp:Label>
+                    </div>
+
+                    <div class="modal-footer">
+                        <asp:Button ID="SiguienteEstadoButton" runat="server" CssClass="btn btn-primary" Text="Aceptar" OnClick="SiguienteEstadoButton_Click"></asp:Button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <asp:SqlDataSource ID="RenovationsSqldataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
         SelectCommand="commercial.sp_get_policy_renovation" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
 
     <asp:SqlDataSource ID="RenovationStatusSqldataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
         SelectCommand="commercial.sp_get_renovations_status_ddl" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+
+    <asp:SqlDataSource ID="TaskCommentsDataSource" runat="server"
+        ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
+        SelectCommand="[task].[sp_get_TaskComments]" SelectCommandType="StoredProcedure">
+        <SelectParameters>
+            <asp:ControlParameter Name="TaskID" ControlID="hf_TaskID" PropertyName="Value" Type="Int32" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+
+    <script type="text/javascript">
+
+        function openModalTaskComments() {
+            $('#myModalTaskComment').modal('show');
+        }
+        function openModalNextStatus() {
+            $('#myModalStatus').modal('show');
+        }
+
+    </script>
 </asp:Content>

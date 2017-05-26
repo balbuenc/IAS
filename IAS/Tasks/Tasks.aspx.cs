@@ -90,8 +90,7 @@ namespace IAS.Tasks
                 ErrorLabel.Visible = true;
             }
         }
-
-
+        
         private void CloseTask(int taskID)
         {
             SqlConnection sqlConnection1 = new SqlConnection(TasksSqldataSource.ConnectionString);
@@ -267,8 +266,7 @@ namespace IAS.Tasks
             Clean();
             ScriptManager.RegisterStartupScript(this, GetType(), "Pop", "openModalTask();", true);
         }
-
-
+        
         void Clean()
         {
             DateTime localDate = DateTime.Now;
@@ -283,6 +281,7 @@ namespace IAS.Tasks
             ddlEstado.SelectedIndex = 0;
             txtPorcentaje.Text = "0";
         }
+
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             string taskName;
@@ -408,8 +407,7 @@ namespace IAS.Tasks
             if (e.CommandName == "Eliminar")
                 DeleteTaskComment(int.Parse(e.CommandArgument.ToString()));
         }
-
-
+        
         private void DeleteTaskComment(int TaskCommentID)
         {
             SqlConnection sqlConnection1 = new SqlConnection(TasksSqldataSource.ConnectionString);

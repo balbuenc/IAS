@@ -322,6 +322,7 @@
     <Content Include="Claim.Master" />
     <Content Include="CaseManagement.Master" />
     <Content Include="Claims\SearchClaim.ashx" />
+    <Content Include="Renovations\EditRenovation.aspx" />
     <Content Include="Renovations\NewRenovation.aspx" />
     <Content Include="Renovations\Renovations.aspx" />
     <Content Include="Reports.Master" />
@@ -1134,6 +1135,13 @@
       <DependentUpon>Policy.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renovations\EditRenovation.aspx.cs">
+      <DependentUpon>EditRenovation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Renovations\EditRenovation.aspx.designer.cs">
+      <DependentUpon>EditRenovation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Renovations\NewRenovation.aspx.cs">
       <DependentUpon>NewRenovation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

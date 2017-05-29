@@ -164,7 +164,7 @@
                     OnItemCommand="TasksListView_ItemCommand">
                     <LayoutTemplate>
                         <div class="table table-responsive">
-                            <table class="table table-hover  table-condensed ">
+                            <table class="table table-hover table-condensed ">
                                 <thead>
                                     <tr runat="server" style="padding-top: 5px; padding-bottom: 5px; height: 40px">
                                         <th>TAREA</th>

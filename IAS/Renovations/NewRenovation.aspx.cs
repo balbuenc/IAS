@@ -93,7 +93,7 @@ namespace IAS.Renovations
 
                 sqlConnection1.Close();
 
-                //Direcciono a la pagina de cliam
+                //Direcciono a la pagina de renovaciones
                 Response.Redirect("Renovations.aspx");
 
             }

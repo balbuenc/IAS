@@ -93,7 +93,7 @@
                                         <thead>
                                             <tr runat="server" style="padding-top: 5px; padding-bottom: 5px; height: 40px">
                                                 <th class="visible-lg">FECHA RENOVACION</th>
-                                                <th>NUMERO POLIZA</th>
+                                                <th class="visible-lg">NUMERO POLIZA</th>
                                                 <th class="visible-lg">NRO DOCUMENTO</th>
                                                 <th class="visible-lg">NOMBRE</th>
                                                 <th class="visible-lg">ESTADO</th>
@@ -126,7 +126,7 @@
                                         <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("status") %>' />
                                     </td>
                                     <td>
-                                        <asp:LinkButton ID="AvanzarButton" runat="server" Text="Avanzar renovación" CommandName="Avanzar" CommandArgument='<%# Eval("RenovationID").ToString() + ";"+  Eval("PolicyRenovationStatusID").ToString() %>' ToolTip="Avanzar renovación" CssClass="btn btn-link" Style="padding-left: 0px; padding-right: 0px;">
+                                        <asp:LinkButton ID="AvanzarButton" runat="server" Text="Avanzar renovación" CommandName="Avanzar" CommandArgument='<%# Eval("RenovationID").ToString() + ";"+  Eval("PolicyRenovationStatusID").ToString() + ";"+  Eval("TaskID").ToString() + ";"+  Eval("Status").ToString() %>' ToolTip="Avanzar renovación" CssClass="btn btn-link" Style="padding-left: 0px; padding-right: 0px;">
                                                 <small><span class="glyphicon glyphicon-chevron-right"></span></small>
                                         </asp:LinkButton>
                                         &nbsp;
@@ -267,6 +267,7 @@
                     <div class="modal-body">
                         <asp:HiddenField ID="hf_RenovationID" runat="server" />
                         <asp:HiddenField ID="hf_RenovationStatusID" runat="server" />
+                         <asp:HiddenField ID="hf_status" runat="server" />
                         Desea avanzar al siguiente estado?
                         <asp:Label ID="lblSiguienteEstado" runat="server" Text=""></asp:Label>
                     </div>

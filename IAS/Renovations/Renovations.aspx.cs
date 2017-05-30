@@ -32,7 +32,7 @@ namespace IAS.Renovations
         {
             if (!Page.IsPostBack)
             {
-                //RenovationsLoad();
+                RenovationsLoad();
             }
         }
 
@@ -45,7 +45,7 @@ namespace IAS.Renovations
 
             try
             {
-                int status = (ddlStatus.SelectedValue == string.Empty) ? -1 : int.Parse(ddlStatus.SelectedValue);
+                int status = (ddlStatus.SelectedValue == string.Empty) ? 1 : int.Parse(ddlStatus.SelectedValue);
                 cmd.CommandText = "[commercial].[sp_get_policy_renovation]";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = sqlConnection1;
@@ -119,7 +119,7 @@ namespace IAS.Renovations
                     case "Avanzar":
                         string[] data = e.CommandArgument.ToString().Split(';');
 
-                        Avanzar(int.Parse(data[0]), int.Parse(data[1]));
+                        Avanzar(int.Parse(data[0]), int.Parse(data[1]), int.Parse(data[2]), data[3]);
                         break;
                     case "Rechazar":
                         Rechazar(int.Parse(e.CommandArgument.ToString()));
@@ -144,7 +144,7 @@ namespace IAS.Renovations
             ScriptManager.RegisterStartupScript(this, GetType(), "Pop", "openModalNextStatus();", true);
         }
 
-        private void Avanzar(int renovationID, int status)
+        private void Avanzar(int renovationID, int status, int taskID, string statusDescripcion)
         {
             SqlConnection sqlConnection1 = new SqlConnection(RenovationsSqldataSource.ConnectionString);
             SqlDataAdapter da = new SqlDataAdapter();
@@ -153,6 +153,9 @@ namespace IAS.Renovations
 
             hf_RenovationID.Value = renovationID.ToString();
             hf_RenovationStatusID.Value = status.ToString();
+            hf_TaskID.Value = taskID.ToString();
+            hf_status.Value = statusDescripcion;
+
             try
             {
                
@@ -293,6 +296,24 @@ namespace IAS.Renovations
                 sqlConnection1.Open();
                 cmd.ExecuteNonQuery();
                 sqlConnection1.Close();
+
+
+                cmd = new SqlCommand();
+                sqlConnection1 = new SqlConnection(TaskCommentsDataSource.ConnectionString);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = sqlConnection1;
+
+                cmd.CommandText = "[task].[sp_insert_TaskComment]";
+
+                cmd.Parameters.AddWithValue("@TaskID", hf_TaskID.Value);
+                cmd.Parameters.AddWithValue("@UserName", User.Identity.Name);
+                cmd.Parameters.AddWithValue("@Comment", $"De estado {hf_status.Value} a {lblSiguienteEstado.Text} - Usuario: {User.Identity.Name}");
+
+                cmd.Parameters.Add("@CommentDate", SqlDbType.DateTime).Value = DateTime.Now;
+                sqlConnection1.Open();
+                cmd.ExecuteNonQuery();
+                sqlConnection1.Close();
+
 
                 RenovationsLoad();
 

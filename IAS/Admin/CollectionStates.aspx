@@ -22,7 +22,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     
     <div class="page-header">
-        <h2>Estados</h2>
+        <h2>Estados de cuota</h2>
     </div>
 
     <asp:UpdatePanel ID="upnlEstados" runat="server">
@@ -90,7 +90,7 @@
 
             </asp:ListView>
 
-            <asp:DataPager ID="CollectionStatesDataPager" runat="server" PagedControlID="CollectionStatesListView" PageSize="5">
+            <asp:DataPager ID="CollectionStatesDataPager" runat="server" PagedControlID="CollectionStatesListView" PageSize="10">
                 <Fields>
                     <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
                     <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />

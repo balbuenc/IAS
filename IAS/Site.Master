@@ -87,12 +87,12 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li><a href="../CaseManagment/MyCaseList.aspx">Mis Pendientes</a></li>
-                                    <li><a href="../CaseManagment/MyCaseList.aspx?mode=robot">Mis Pendientes | <b style="color:red; font-style:italic; font-weight:bold">!Beta</b></a></li>
+                                    <li><a href="../CaseManagment/MyCaseList.aspx?mode=robot">Mis Pendientes | <b style="color: red; font-style: italic; font-weight: bold">!Beta</b></a></li>
                                     <li><a href="../Claims/ClaimSearch.aspx">Siniestros <b style="color: green; font-style: italic; font-weight: bold">!Novedades</b></a></li>
                                     <li><a href="../Tasks/Tasks.aspx">Tareas | <b style="color: red; font-style: italic; font-weight: bold">!Beta</b></a></li>
-                                    <%--<li><a href="../CaseManagment/CollectionsToExpire.aspx">Envio de SMS</a></li>--%>
+                                    <li><a href="../Renovations/Renovations.aspx">Renovaciones | <b style="color: red; font-style: italic; font-weight: bold">!Beta</b></a></li>
                                     <li><a href="../Collections/UploadCollections.aspx">Subir cuotas</a></li>
-                                    <%--      <li><a href="../Transports/Certificates.aspx">Transporte</a></li>--%>
+                                    <%--<li><a href="../Transports/Certificates.aspx">Transporte</a></li>--%>
                                 </ul>
                             </div>
                             <div class="btn-group">
@@ -112,7 +112,7 @@
                                     <li><a href="../Admin/Countries.aspx">Paises</a></li>
                                     <li><a href="../Admin/Partners.aspx">Asociados</a></li>
                                     <li><a href="../Admin/Agents.aspx">Agentes</a></li>
-                                    <li><a href="../Renovations/Renovations.aspx">Renovaciones</a></li>
+
                                     <li role="separator" class="divider"></li>
                                     <li><a href="../Admin/UserCollectionConfig.aspx">Cobranzas Adm.</a></li>
                                     <li role="separator" class="divider"></li>

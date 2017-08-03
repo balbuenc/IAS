@@ -58,10 +58,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
     <File Include="Admin/CollectionResult.aspx">
-      <publishTime>04/04/2017 17:28:36</publishTime>
+      <publishTime>06/19/2017 11:49:09</publishTime>
     </File>
     <File Include="Admin/CollectionStates.aspx">
-      <publishTime>04/04/2017 17:28:36</publishTime>
+      <publishTime>06/19/2017 12:02:17</publishTime>
     </File>
     <File Include="Admin/ContactDestinations.aspx">
       <publishTime>04/04/2017 17:28:36</publishTime>

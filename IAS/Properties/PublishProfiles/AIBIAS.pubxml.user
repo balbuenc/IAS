@@ -178,7 +178,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/04/2017 17:28:37</publishTime>
     </File>
     <File Include="bin/IAS.dll">
-      <publishTime>04/24/2017 00:47:44</publishTime>
+      <publishTime>08/03/2017 18:02:23</publishTime>
     </File>
     <File Include="bin/IAS.pdb">
       <publishTime>04/06/2017 12:52:11</publishTime>
@@ -618,6 +618,18 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Policies/Policy.aspx">
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
+    <File Include="Renovations/EditRenovation.aspx">
+      <publishTime>05/29/2017 11:58:59</publishTime>
+    </File>
+    <File Include="Renovations/NewRenovation.aspx">
+      <publishTime>05/16/2017 10:41:25</publishTime>
+    </File>
+    <File Include="Renovations/Renovations.aspx">
+      <publishTime>05/30/2017 16:59:41</publishTime>
+    </File>
+    <File Include="Renovations/SearchPolicy.ashx">
+      <publishTime>05/10/2017 15:43:19</publishTime>
+    </File>
     <File Include="Reports.Master">
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
@@ -964,7 +976,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>04/25/2017 14:23:59</publishTime>
+      <publishTime>08/03/2017 17:38:12</publishTime>
     </File>
     <File Include="Site.Mobile.Master">
       <publishTime>04/04/2017 17:28:36</publishTime>
@@ -976,7 +988,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
     <File Include="Tasks/Tasks.aspx">
-      <publishTime>04/04/2017 17:28:36</publishTime>
+      <publishTime>05/29/2017 11:58:59</publishTime>
     </File>
     <File Include="Transport.Master">
       <publishTime>04/04/2017 17:28:36</publishTime>
@@ -1021,7 +1033,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/23/2017 23:22:23</publishTime>
+      <publishTime>08/03/2017 17:40:46</publishTime>
     </File>
   </ItemGroup>
 </Project>

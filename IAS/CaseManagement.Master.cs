@@ -17,8 +17,16 @@ namespace IAS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack && Request.Url.LocalPath.ToString() != "/Account/Login")
+            {
+                Core.Core User = new Core.Core();
 
+                if (!User.IsUserAuthenticate())
+                {
+                    Response.Redirect("/Account/Login.aspx", false);
+                }
 
+            }
         }
 
         public IQueryable<CaseTransition> GetData([QueryString("CaseID")] long? caseID)

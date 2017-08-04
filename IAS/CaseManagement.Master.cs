@@ -23,9 +23,6 @@ namespace IAS
 
                 if (!User.IsUserAuthenticate())
                 {
-                    //Response.Cookies.Add(new HttpCookie("returnUrl", Request.Url.PathAndQuery));
-                    //Response.Redirect("/Account/Login.aspx", false);
-
                     string OriginalUrl = HttpContext.Current.Request.RawUrl;
                     string LoginPageUrl = "/Account/Login.aspx";
                     HttpContext.Current.Response.Redirect(String.Format("{0}?ReturnUrl={1}", LoginPageUrl, OriginalUrl));

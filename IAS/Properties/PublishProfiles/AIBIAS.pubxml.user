@@ -976,7 +976,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>08/03/2017 17:38:12</publishTime>
+      <publishTime>08/04/2017 10:52:22</publishTime>
     </File>
     <File Include="Site.Mobile.Master">
       <publishTime>04/04/2017 17:28:36</publishTime>

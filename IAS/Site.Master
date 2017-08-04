@@ -152,7 +152,7 @@
                                 </button>
                                 <ul class="dropdown-menu">
 
-                                    <li><a href="http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fCumplimientoDWH&rs:Command=Render" target="_blank">Cumplimiento</a></li>
+                                    <li><a href="http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fCumplimientoParametrico&rs:Command=Render" target="_blank">Cumplimiento</a></li>
                                     <li><a href="http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fMorosidad&rs:Command=Render" target="_blank">Morosidad</a></li>
                                     <li><a href="http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fGestionCasos&rs:Command=Render" target="_blank">Historial de gestión</a></li>
                                     <li><a href="http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fHistoricoSMS&rs:Command=Render" target="_blank">Historial de SMS</a></li>

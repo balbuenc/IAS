@@ -85,6 +85,42 @@ namespace IAS.Collections {
         protected global::System.Web.UI.WebControls.Label MapfreToExpireStatus;
         
         /// <summary>
+        /// MapfreToExcludeUp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload MapfreToExcludeUp;
+        
+        /// <summary>
+        /// MapfreToExcludeBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button MapfreToExcludeBtn;
+        
+        /// <summary>
+        /// DDLMapfreToExclude control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDLMapfreToExclude;
+        
+        /// <summary>
+        /// MapfreToExcludeStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MapfreToExcludeStatus;
+        
+        /// <summary>
         /// txtDateSancor control.
         /// </summary>
         /// <remarks>
@@ -119,5 +155,41 @@ namespace IAS.Collections {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label SancorStatus;
+        
+        /// <summary>
+        /// SancorToExcludeUp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload SancorToExcludeUp;
+        
+        /// <summary>
+        /// SancorToExcludeUpBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SancorToExcludeUpBtn;
+        
+        /// <summary>
+        /// DDLSancorToExclude control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDLSancorToExclude;
+        
+        /// <summary>
+        /// SancorToExcludeStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label SancorToExcludeStatus;
     }
 }

@@ -59,14 +59,8 @@
                             </div>
                             <div class="col-lg-3">
                                 <input id="txtDateMapfre" placeholder="" type="date" class="form-control" runat="server" />
-                                <%--<div class='input-group date' id='datetimepicker1'>
-                                    <input id="txtDateMapfre" placeholder="" class="form-control" runat="server" />
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>--%>
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtDateMapfre" Font-Bold="true"
-                                        CssClass="text-danger" ValidationGroup="mapfre" ErrorMessage="El campo es requerido" />
+                                    CssClass="text-danger" ValidationGroup="mapfre" ErrorMessage="El campo es requerido" />
                             </div>
                             <div class="col-lg-3"></div>
                             <div class="col-lg-3"></div>
@@ -103,6 +97,39 @@
                                     <asp:Label runat="server" ID="MapfreToExpireStatus" Text="Estado" /></label>
                             </div>
                         </div>
+                        <br />
+
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <label>Excluir cumplimiento</label>
+                            </div>
+                            <div class="col-lg-3">
+                                <asp:FileUpload ID="MapfreToExcludeUp" runat="server" />
+                            </div>
+                            <div class="col-lg-3 col-lg-offset-1">
+                                <asp:Button runat="server" ID="MapfreToExcludeBtn" ValidationGroup="mapfre" Text="Upload" OnClick="MapfreToExcludeBtn_Click" />
+                            </div>
+                            <div class="col-lg-3">
+                                <asp:DropDownList ID="DDLMapfreToExclude" runat="server">
+                                    <asp:ListItem>201704</asp:ListItem>
+                                    <asp:ListItem>201705</asp:ListItem>
+                                    <asp:ListItem>201706</asp:ListItem>
+                                    <asp:ListItem>201707</asp:ListItem>
+                                    <asp:ListItem>201708</asp:ListItem>
+                                    <asp:ListItem>201709</asp:ListItem>
+                                    <asp:ListItem>201710</asp:ListItem>
+                                    <asp:ListItem>201711</asp:ListItem>
+                                    <asp:ListItem>201712</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                             <div class="col-lg-3">
+                                <label>
+                                    <asp:Label runat="server" ID="MapfreToExcludeStatus" Text="Estado" /></label>
+                            </div>
+                        </div>
+
+
+
                     </div>
                 </div>
             </div>
@@ -132,14 +159,8 @@
                             </div>
                             <div class="col-lg-3">
                                 <input id="txtDateSancor" placeholder="" type="date" class="form-control" runat="server" />
-                                <%--<div class='input-group date' id='datetimepicker2'>
-                                    <input id="txtDateSancor" placeholder="" class="form-control" runat="server" />
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>--%>
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtDateSancor" Font-Bold="true"
-                                        CssClass="text-danger" ValidationGroup="sancor" ErrorMessage="El campo es requerido" />
+                                    CssClass="text-danger" ValidationGroup="sancor" ErrorMessage="El campo es requerido" />
                             </div>
                             <div class="col-lg-3"></div>
                             <div class="col-lg-3"></div>
@@ -160,6 +181,39 @@
                                     <asp:Label runat="server" ID="SancorStatus" Text="Estado" /></label>
                             </div>
                         </div>
+
+                        <br />
+
+                          <div class="row">
+                            <div class="col-lg-2">
+                                <label>Excluir cumplimiento</label>
+                            </div>
+                            <div class="col-lg-3">
+                                <asp:FileUpload ID="SancorToExcludeUp" runat="server" />
+                            </div>
+                            <div class="col-lg-3 col-lg-offset-1">
+                                <asp:Button runat="server" ID="SancorToExcludeUpBtn" ValidationGroup="mapfre" Text="Upload" OnClick="SancorToExcludeUpBtn_Click"/>
+                            </div>
+                            <div class="col-lg-3">
+                                <asp:DropDownList ID="DDLSancorToExclude" runat="server">
+                                    <asp:ListItem>201704</asp:ListItem>
+                                    <asp:ListItem>201705</asp:ListItem>
+                                    <asp:ListItem>201706</asp:ListItem>
+                                    <asp:ListItem>201707</asp:ListItem>
+                                    <asp:ListItem>201708</asp:ListItem>
+                                    <asp:ListItem>201709</asp:ListItem>
+                                    <asp:ListItem>201710</asp:ListItem>
+                                    <asp:ListItem>201711</asp:ListItem>
+                                    <asp:ListItem>201712</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                             <div class="col-lg-3">
+                                <label>
+                                    <asp:Label runat="server" ID="SancorToExcludeStatus" Text="Estado" /></label>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>

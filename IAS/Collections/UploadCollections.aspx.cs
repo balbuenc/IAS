@@ -149,5 +149,69 @@ namespace IAS.Collections
                 }
             }
         }
+
+        protected void MapfreToExcludeBtn_Click(object sender, EventArgs e)
+        {
+            if (MapfreToExcludeUp.HasFile)
+            {
+                try
+                {
+                   
+
+                    string fileName = $"mapfre_to_exclude_{DDLMapfreToExclude.SelectedValue}.xlsx";
+
+
+                    string fileExtension = Path.GetExtension(MapfreToExcludeUp.FileName);
+
+                    if (fileExtension.Equals(".xlsx"))
+                    {
+                        MapfreToExcludeUp.SaveAs(Server.MapPath("../Exchange/") + fileName);
+                        MapfreToExcludeStatus.Text = "Estado: Archivo actualizado!";
+                    }
+                    else
+                    {
+                        MapfreToExcludeStatus.Text = "Estado: El archivo debe ser .xlsx!";
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+                    MapfreToExcludeStatus.Text = "Estado: Error al subir el archivo: " + ex.Message;
+                }
+            }
+        }
+
+        protected void SancorToExcludeUpBtn_Click(object sender, EventArgs e)
+        {
+            if (SancorToExcludeUp.HasFile)
+            {
+                try
+                {
+
+
+                    string fileName = $"sancor_to_exclude_{DDLSancorToExclude.SelectedValue}.xlsx";
+
+
+                    string fileExtension = Path.GetExtension(SancorToExcludeUp.FileName);
+
+                    if (fileExtension.Equals(".xlsx"))
+                    {
+                        SancorToExcludeUp.SaveAs(Server.MapPath("../Exchange/") + fileName);
+                        SancorToExcludeStatus.Text = "Estado: Archivo actualizado!";
+                    }
+                    else
+                    {
+                        SancorToExcludeStatus.Text = "Estado: El archivo debe ser .xlsx!";
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+                    SancorToExcludeStatus.Text = "Estado: Error al subir el archivo: " + ex.Message;
+                }
+            }
+        }
     }
 }

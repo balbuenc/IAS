@@ -223,6 +223,7 @@
     <Content Include="Claims\UploadClaims.aspx" />
     <Content Include="Claims\WorkShopClaim.aspx" />
     <Content Include="Collections\Assignations.aspx" />
+    <Content Include="Collections\ManageCumpliment.aspx" />
     <Content Include="Collections\UploadCollections.aspx" />
     <Content Include="Commercial\PaymentTypes.aspx" />
     <Content Include="Commercial\ProposalCommission.aspx" />
@@ -949,6 +950,13 @@
     </Compile>
     <Compile Include="Collections\Assignations.aspx.designer.cs">
       <DependentUpon>Assignations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Collections\ManageCumpliment.aspx.cs">
+      <DependentUpon>ManageCumpliment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Collections\ManageCumpliment.aspx.designer.cs">
+      <DependentUpon>ManageCumpliment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Collections\UploadCollections.aspx.cs">
       <DependentUpon>UploadCollections.aspx</DependentUpon>

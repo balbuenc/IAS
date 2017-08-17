@@ -121,6 +121,7 @@
                                     <li><a href="../Admin/CollectionMethods.aspx">Método de cobro</a></li>
                                     <li><a href="../Admin/CollectionManagementResults.aspx">Resultados de Cobranza</a></li>
                                     <li><a href="../Admin/CollectionResult.aspx">Asignacion de Resultado</a></li>
+                                    <li><a href="../Collections/ManageCumpliment.aspx">Cumplimiento</a></li>
                                     <%-- <li><a href="../Admin/PersonUserAssignments.aspx">Asignación de responsables</a></li>--%>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="../Admin/ContactTypes.aspx">Tipos de Contacto</a></li>

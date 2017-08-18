@@ -155,7 +155,66 @@ namespace IAS.Collections
             }
 
         }
+      
 
-       
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Commit")
+            {
+
+                // Convert the row index stored in the CommandArgument
+                // property to an Integer.
+                int index = Convert.ToInt32(e.CommandArgument);            
+
+                //Get the new Values.
+                GridViewRow row = GridView1.Rows[index];
+                String CollectionStateID = ((DropDownList)row.Cells[7].Controls[1]).SelectedValue;
+                String CollectionID = ((Label)row.Cells[0].Controls[1]).Text;
+
+                // Code to update the DataSource.
+                //collection.sp_update_collecction_result
+
+
+
+                SqlConnection sqlConnection1 = new SqlConnection(CumplimentSqlDataSource.ConnectionString);
+                SqlCommand cmd = new SqlCommand();
+
+
+
+                try
+                {
+                    cmd.CommandText = "collection.sp_update_collecction_result";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = sqlConnection1;
+
+                    cmd.Parameters.AddWithValue("@Period", ddlPeriod.SelectedValue);
+                    cmd.Parameters.AddWithValue("@CollentionID", CollectionID);
+                    cmd.Parameters.AddWithValue("@CollectionStatID ", CollectionStateID);
+
+
+
+
+                    sqlConnection1.Open();
+
+                    cmd.ExecuteNonQuery();
+
+
+                    sqlConnection1.Close();
+
+                    //Reset the edit index.
+                    GridView1.EditIndex = -1;
+
+                    GetValues();
+                }
+
+
+
+                catch (Exception exp)
+                {
+                    ErrorLabel.Text = exp.Message;
+                    ErrorLabel.Visible = true;
+                }
+            }
+        }
     }
 }

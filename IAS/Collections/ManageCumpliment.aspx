@@ -69,9 +69,9 @@
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 </button>
 
-                <button id="btnNewTask" runat="server" class="btn btn-default">
+               <%-- <button id="btnNewTask" runat="server" class="btn btn-default">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button>
+                </button>--%>
 
 
             </div>
@@ -85,38 +85,57 @@
         <hr style="margin-top: 7px; margin-bottom: 5px; border-color: #3d4247; border-width: 2px" />
         <div class="row">
             <div class="col-lg-12">
-                <asp:GridView ID="GridView1" runat="server" AllowPaging="True" PageSize="40" AllowSorting="True" AutoGenerateColumns="False" 
-                    BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" 
-                    BorderWidth="1px" CellPadding="3" DataKeyNames="CollectionID,PolicyNumber" DataSourceID="CumplimentSqlDataSource" GridLines="Horizontal" Width="100%">
+                <asp:GridView ID="GridView1" runat="server" AllowPaging="True" PageSize="40" AllowSorting="True" AutoGenerateColumns="False"
+                    BackColor="White" BorderColor="#E7E7FF" BorderStyle="None"
+                    BorderWidth="1px" CellPadding="3" DataKeyNames="CollectionID,PolicyNumber" DataSourceID="CumplimentSqlDataSource" GridLines="Horizontal" Width="100%"
+                    OnRowCommand="GridView1_RowCommand">
                     <AlternatingRowStyle BackColor="#F7F7F7" />
                     <Columns>
-                        <asp:BoundField DataField="CollectionID" HeaderText="ID" ReadOnly="True" SortExpression="CollectionID" HeaderStyle-HorizontalAlign="Center">
-                            <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
-                        </asp:BoundField>
-                        <asp:BoundField DataField="PolicyNumber" HeaderText="Póliza" SortExpression="PolicyNumber" HeaderStyle-HorizontalAlign="Center">
-                            <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
-                        </asp:BoundField>
-                        <asp:BoundField DataField="ReceiptNumber" HeaderText="Recibo" SortExpression="ReceiptNumber" HeaderStyle-HorizontalAlign="Center">
-                            <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
-                        </asp:BoundField>
-                        <asp:BoundField DataField="PaymentNumber" HeaderText="Cuota" SortExpression="PaymentNumber" HeaderStyle-HorizontalAlign="Center">
-                            <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
-                        </asp:BoundField>
-                        <asp:BoundField DataField="PaymentDueDate" HeaderText="Vencimiento" SortExpression="PaymentDueDate" DataFormatString="{0:d}" HeaderStyle-HorizontalAlign="Center">
-                            <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
-                        </asp:BoundField>
-                        <asp:BoundField DataField="DebtAmount" HeaderText="Monto" SortExpression="DebtAmount" DataFormatString="{0:n2}" ItemStyle-HorizontalAlign="Right" HeaderStyle-HorizontalAlign="Center">
-                            <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
-
-                            <ItemStyle HorizontalAlign="Right"></ItemStyle>
-                        </asp:BoundField>
-                        <asp:BoundField DataField="RiskName" HeaderText="Riesgo" SortExpression="RiskName" HeaderStyle-HorizontalAlign="Center">
-                            <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
-                        </asp:BoundField>
-                        <%--<asp:BoundField DataField="Result" HeaderText="Resultado" ReadOnly="True" SortExpression="Result" HeaderStyle-HorizontalAlign="Center">
+                        <%--<asp:BoundField DataField="CollectionID" HeaderText="ID" ReadOnly="True" SortExpression="CollectionID" HeaderStyle-HorizontalAlign="Center">
                             <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                         </asp:BoundField>--%>
-
+                        <asp:TemplateField>
+                            <HeaderTemplate>ID</HeaderTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="lblCollectionID" runat="server" Text='<%# Eval("CollectionID") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <HeaderTemplate>Póliza</HeaderTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="lblPolicyNumber" runat="server" Text='<%# Eval("PolicyNumber") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <HeaderTemplate>Recibo</HeaderTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="lblReceiptNumber" runat="server" Text='<%# Eval("ReceiptNumber") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <HeaderTemplate>Cuota</HeaderTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="lblPaymentNumber" runat="server" Text='<%# Eval("PaymentNumber") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <HeaderTemplate>Vencimiento</HeaderTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="lblPaymentDueDate" runat="server" Text='<%# string.Format("{0:d}", Eval("PaymentDueDate")) %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <HeaderTemplate>Monto</HeaderTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="lblDebtAmount" runat="server" Text='<%# Eval("DebtAmount") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <HeaderTemplate>Riesgo</HeaderTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="lblRiskName" runat="server" Text='<%# Eval("RiskName") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField>
                             <HeaderTemplate>
                                 Resultado
@@ -125,20 +144,22 @@
                                 <asp:Label ID="lblResult" runat="server" Text='<%# Eval("Result") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox runat="server" ID="txtResult" Text='<%# Eval("Result")%>'></asp:TextBox>
+                                <asp:DropDownList ID="ddlResultEdit" runat="server" DataSourceID="ResultEditSqlDataSource"
+                                    DataTextField="FullResult" DataValueField="CollectionStateID">
+                                </asp:DropDownList>
                             </EditItemTemplate>
                         </asp:TemplateField>
 
                         <asp:TemplateField HeaderText="Edit" ShowHeader="false">
                             <ItemTemplate>
                                 <asp:LinkButton ID="btnedit" runat="server"
-                                    CommandName="Edit" Text="Edit"></asp:LinkButton>
+                                    CommandName="Edit" Text="Editar"></asp:LinkButton>
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:LinkButton ID="btnupdate" runat="server"
-                                    CommandName="Update" Text="Update"></asp:LinkButton>
+                                    CommandName="Commit" Text="Aplicar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"></asp:LinkButton>
                                 <asp:LinkButton ID="btncancel" runat="server"
-                                    CommandName="Cancel" Text="Cancel"></asp:LinkButton>
+                                    CommandName="Cancel" Text="Cancelar"></asp:LinkButton>
                             </EditItemTemplate>
                         </asp:TemplateField>
 
@@ -187,7 +208,8 @@
     <asp:SqlDataSource ID="ResultSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
         SelectCommand="[collection].[sp_get_management_resuts]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
 
-
+    <asp:SqlDataSource ID="ResultEditSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
+        SelectCommand="select cr.CollectionStateID , upper(mr.Result) + ' (' + cs.CollectionStateName + ')' as FullResult , mr.Result from CollectionResult cr inner join CollectionManagementResult mr on cr.CollectionManagementResultID = mr.CollectionManagementResultID inner join CollectionState cs on cr.CollectionStateID = cs.CollectionStateID order by mr.Result " SelectCommandType="Text"></asp:SqlDataSource>
 
 
 

@@ -69,11 +69,9 @@
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 </button>
 
-               <%-- <button id="btnNewTask" runat="server" class="btn btn-default">
+                <%-- <button id="btnNewTask" runat="server" class="btn btn-default">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button>--%>
-
-
             </div>
 
         </div>
@@ -88,26 +86,27 @@
                 <asp:GridView ID="GridView1" runat="server" AllowPaging="True" PageSize="40" AllowSorting="True" AutoGenerateColumns="False"
                     BackColor="White" BorderColor="#E7E7FF" BorderStyle="None"
                     BorderWidth="1px" CellPadding="3" DataKeyNames="CollectionID,PolicyNumber" DataSourceID="CumplimentSqlDataSource" GridLines="Horizontal" Width="100%"
-                    OnRowCommand="GridView1_RowCommand">
+                    OnRowCommand="GridView1_RowCommand"   >
                     <AlternatingRowStyle BackColor="#F7F7F7" />
                     <Columns>
-                        <%--<asp:BoundField DataField="CollectionID" HeaderText="ID" ReadOnly="True" SortExpression="CollectionID" HeaderStyle-HorizontalAlign="Center">
-                            <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
-                        </asp:BoundField>--%>
                         <asp:TemplateField>
                             <HeaderTemplate>ID</HeaderTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="lblCollectionID" runat="server" Text='<%# Eval("CollectionID") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField>
-                            <HeaderTemplate>Póliza</HeaderTemplate>
+                        <asp:TemplateField HeaderText="Póliza" SortExpression="PolicyNumber">
+                            <HeaderTemplate>
+                                <asp:LinkButton ID="lnkSortPolicyNumber" runat="server" Text="Póliza" CommandName="Sort" CommandArgument="PolicyNumber" />
+                            </HeaderTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="lblPolicyNumber" runat="server" Text='<%# Eval("PolicyNumber") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField>
-                            <HeaderTemplate>Recibo</HeaderTemplate>
+                        <asp:TemplateField HeaderText="Recibo" SortExpression="ReceiptNumber">
+                            <HeaderTemplate>
+                                <asp:LinkButton ID="lnkSortReceiptNumber" runat="server" Text="Recibo" CommandName="Sort" CommandArgument="ReceiptNumber" />
+                            </HeaderTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="lblReceiptNumber" runat="server" Text='<%# Eval("ReceiptNumber") %>'></asp:Label>
                             </ItemTemplate>
@@ -124,10 +123,13 @@
                                 <asp:Label ID="lblPaymentDueDate" runat="server" Text='<%# string.Format("{0:d}", Eval("PaymentDueDate")) %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField>
-                            <HeaderTemplate>Monto</HeaderTemplate>
+                        <asp:TemplateField HeaderText="Monto" SortExpression="DebtAmount">
+                            <HeaderTemplate>
+                                <asp:LinkButton ID="lnkSortDebtAmount" runat="server" Text="Monto" CommandName="Sort" CommandArgument="DebtAmount" />
+                            </HeaderTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="lblDebtAmount" runat="server" Text='<%# Eval("DebtAmount") %>'></asp:Label>
+                                <%--<asp:Label ID="lblDebtAmount" runat="server" Text='<%# string.Format("{0:c}", Eval("DebtAmount")) %>'></asp:Label>--%>
+                                <asp:Label ID="lblDebtAmount" runat="server" Text='<%# ddlCurrency.SelectedIndex.Equals(1)? string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-us"),"{0:c}", Eval("DebtAmount")) : string.Format(System.Globalization.CultureInfo.GetCultureInfo("es-PY"),"{0:c}", Eval("DebtAmount")) %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>

@@ -11,6 +11,19 @@ namespace IAS.Collections
 {
     public partial class ManageCumpliment : System.Web.UI.Page
     {
+
+        //private SortDirection SortColumnDirection;
+        //private string SortColumn;
+
+        void Page_PreRender(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                ViewState["SortColumn"] = "DebtAmount";
+                ViewState["SortColumnDirection"] = SortDirection.Ascending;
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -20,20 +33,22 @@ namespace IAS.Collections
         {
             CumplimentSqlDataSource.DataBind();
             GetValues();
+
+
         }
 
         protected void GetValues()
         {
             decimal Total = 0;
 
-            
+
             SqlConnection sqlConnection1 = new SqlConnection(CumplimentSqlDataSource.ConnectionString);
             SqlCommand cmd = new SqlCommand();
             SqlCommand cmd1 = new SqlCommand();
 
             txtObjetivo.Text = "0";
             txtDevolver.Text = "0";
-          
+
 
 
             //Obtengo el valor del Objetivo
@@ -63,7 +78,7 @@ namespace IAS.Collections
 
                 Total = Convert.ToDecimal(Ptotal.Value);
 
-             
+
                 if (ddlCurrency.SelectedValue == "1")
                 {
                     txtObjetivo.Text = Total.ToString("c", System.Globalization.CultureInfo.GetCultureInfo("es-PY"));
@@ -72,18 +87,18 @@ namespace IAS.Collections
                 {
                     txtObjetivo.Text = Total.ToString("c", System.Globalization.CultureInfo.GetCultureInfo("en-us"));
                 }
-                
+
                 sqlConnection1.Close();
 
 
-                }
+            }
 
 
-           
+
             catch (Exception exp)
             {
                 Total = 0;
-                
+
 
                 if (ddlCurrency.SelectedValue == "1")
                 {
@@ -95,7 +110,7 @@ namespace IAS.Collections
                 }
             }
 
-           
+
 
             //Obtengo el valor a devolver
             try
@@ -155,7 +170,7 @@ namespace IAS.Collections
             }
 
         }
-      
+
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -164,7 +179,7 @@ namespace IAS.Collections
 
                 // Convert the row index stored in the CommandArgument
                 // property to an Integer.
-                int index = Convert.ToInt32(e.CommandArgument);            
+                int index = Convert.ToInt32(e.CommandArgument);
 
                 //Get the new Values.
                 GridViewRow row = GridView1.Rows[index];
@@ -215,6 +230,61 @@ namespace IAS.Collections
                     ErrorLabel.Visible = true;
                 }
             }
+            else if (e.CommandName == "Sort")
+            {
+
+
+                ////CumplimentSqlDataSource.SortParameterName
+                if (e.CommandArgument.ToString() == "DebtAmount")
+                {
+                    if ((SortDirection)ViewState["SortColumnDirection"] == SortDirection.Ascending)
+                    {
+                        GridView1.Sort("DebtAmount", SortDirection.Descending);
+                        ViewState["SortColumn"] = "DebtAmount";
+                        ViewState["SortColumnDirection"] = SortDirection.Descending;
+                    }
+                    else
+                    {
+                        GridView1.Sort("DebtAmount", SortDirection.Ascending);
+                        ViewState["SortColumn"] = "DebtAmount";
+                        ViewState["SortColumnDirection"] = SortDirection.Ascending;
+                    }
+
+                }
+                else if (e.CommandArgument.ToString() == "ReceiptNumber")
+                {
+                    if ((SortDirection)ViewState["SortColumnDirection"] == SortDirection.Ascending)
+                    {
+                        GridView1.Sort("ReceiptNumber", SortDirection.Descending);
+                        ViewState["SortColumn"] = "ReceiptNumber";
+                        ViewState["SortColumnDirection"] = SortDirection.Descending;
+                    }
+                    else
+                    {
+                        GridView1.Sort("ReceiptNumber", SortDirection.Ascending);
+                        ViewState["SortColumn"] = "ReceiptNumber";
+                        ViewState["SortColumnDirection"] = SortDirection.Ascending;
+                    }
+                }
+                else if (e.CommandArgument.ToString() == "PolicyNumber")
+                {
+                    if ((SortDirection)ViewState["SortColumnDirection"] == SortDirection.Ascending)
+                    {
+                        GridView1.Sort("PolicyNumber", SortDirection.Descending);
+                        ViewState["SortColumn"] = "PolicyNumber";
+                        ViewState["SortColumnDirection"] = SortDirection.Descending;
+                    }
+                    else
+                    {
+                        GridView1.Sort("PolicyNumber", SortDirection.Ascending);
+                        ViewState["SortColumn"] = "PolicyNumber";
+                        ViewState["SortColumnDirection"] = SortDirection.Ascending;
+                    }
+                }
+
+
+            }
         }
     }
+
 }

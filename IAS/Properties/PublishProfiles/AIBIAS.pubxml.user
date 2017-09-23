@@ -178,7 +178,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/04/2017 17:28:37</publishTime>
     </File>
     <File Include="bin/IAS.dll">
-      <publishTime>08/21/2017 21:44:19</publishTime>
+      <publishTime>09/15/2017 17:49:10</publishTime>
     </File>
     <File Include="bin/IAS.pdb">
       <publishTime>04/06/2017 12:52:11</publishTime>
@@ -979,7 +979,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>08/16/2017 20:44:20</publishTime>
+      <publishTime>09/15/2017 14:06:28</publishTime>
     </File>
     <File Include="Site.Mobile.Master">
       <publishTime>04/04/2017 17:28:36</publishTime>
@@ -1036,7 +1036,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/21/2017 20:03:54</publishTime>
+      <publishTime>09/19/2017 16:51:55</publishTime>
     </File>
   </ItemGroup>
 </Project>

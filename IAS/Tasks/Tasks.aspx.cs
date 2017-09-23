@@ -46,7 +46,18 @@ namespace IAS.Tasks
             {
                 if (User.Identity.Name != string.Empty)
                 {
-                    TasksLoad();
+                    if (null == Request.QueryString["TaskID"])
+                    {
+                        TasksLoad();
+                    }
+                      
+                    else
+                    {
+                        lblTitulo.Text = "Editar tarea";
+                        Operacion = "update";
+                        GetTask(Int32.Parse( Request.QueryString["TaskID"].ToString()));
+                        ScriptManager.RegisterStartupScript(this, GetType(), "Pop", "openModalTask();", true);
+                    }
                 }
             }
         }

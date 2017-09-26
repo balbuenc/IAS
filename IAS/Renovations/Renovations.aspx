@@ -130,7 +130,7 @@
                                                 <small><span class="glyphicon glyphicon-chevron-right"></span></small>
                                         </asp:LinkButton>
                                         &nbsp;
-                                         <asp:LinkButton ID="RechazarButton" runat="server" Text="Rechazar renovación" CommandName="Rechazar" CommandArgument='<%# Eval("RenovationID").ToString() %>' ToolTip="Rechazar renovación" CssClass="btn btn-link" Style="padding-left: 0px; padding-right: 0px;">
+                                         <asp:LinkButton ID="RechazarButton" runat="server" Text="Cerrar renovación" CommandName="Rechazar" CommandArgument='<%# Eval("RenovationID").ToString() + ";"+  Eval("TaskID").ToString()  %>' ToolTip="Cerrar renovación" CssClass="btn btn-link" Style="padding-left: 0px; padding-right: 0px;">
                                                 <small><span class="glyphicon glyphicon-remove"></span></small>
                                          </asp:LinkButton>
                                         &nbsp;

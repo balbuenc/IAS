@@ -30,7 +30,7 @@ namespace IAS.Renovations
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            //if (!Page.IsPostBack)
             {
                 RenovationsLoad();
             }
@@ -122,7 +122,8 @@ namespace IAS.Renovations
                         Avanzar(int.Parse(data[0]), int.Parse(data[1]), int.Parse(data[2]), data[3]);
                         break;
                     case "Rechazar":
-                        Rechazar(int.Parse(e.CommandArgument.ToString()));
+                        string[] dataDelete = e.CommandArgument.ToString().Split(';');
+                        Rechazar(int.Parse(dataDelete[0]), int.Parse(dataDelete[1]));
                         break;
                     default:
                         break;
@@ -135,11 +136,12 @@ namespace IAS.Renovations
             }
         }
 
-        private void Rechazar(int renovationID)
+        private void Rechazar(int renovationID , int taskID)
         {
             lblSiguienteEstado.Text = "CERRADO";
             hf_RenovationID.Value = renovationID.ToString();
             hf_RenovationStatusID.Value = "0";
+            hf_TaskID.Value = taskID.ToString();
 
             ScriptManager.RegisterStartupScript(this, GetType(), "Pop", "openModalNextStatus();", true);
         }

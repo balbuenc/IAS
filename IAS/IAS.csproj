@@ -324,6 +324,8 @@
     <Content Include="CaseManagement.Master" />
     <Content Include="Claims\SearchClaim.ashx" />
     <Content Include="Renovations\EditRenovation.aspx" />
+    <Content Include="Renovations\NewPerson.aspx" />
+    <Content Include="Renovations\NewPolicy.aspx" />
     <Content Include="Renovations\NewRenovation.aspx" />
     <Content Include="Renovations\Renovations.aspx" />
     <Content Include="Reports.Master" />
@@ -348,6 +350,7 @@
     <None Include="Properties\PublishProfiles\IASTEST - Local.pubxml" />
     <None Include="Properties\PublishProfiles\LocalDEV - File System.pubxml" />
     <Content Include="Renovations\SearchPolicy.ashx" />
+    <Content Include="Renovations\searchPerson.ashx" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.0.js" />
     <Content Include="Scripts\jquery-3.1.0.min.js" />
@@ -1150,6 +1153,20 @@
     <Compile Include="Renovations\EditRenovation.aspx.designer.cs">
       <DependentUpon>EditRenovation.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Renovations\NewPerson.aspx.cs">
+      <DependentUpon>NewPerson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Renovations\NewPerson.aspx.designer.cs">
+      <DependentUpon>NewPerson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Renovations\NewPolicy.aspx.cs">
+      <DependentUpon>NewPolicy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Renovations\NewPolicy.aspx.designer.cs">
+      <DependentUpon>NewPolicy.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Renovations\NewRenovation.aspx.cs">
       <DependentUpon>NewRenovation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1165,6 +1182,9 @@
       <DependentUpon>Renovations.aspx</DependentUpon>
     </Compile>
     <Compile Include="Renovations\ResponseData.cs" />
+    <Compile Include="Renovations\searchPerson.ashx.cs">
+      <DependentUpon>searchPerson.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Renovations\SearchPolicy.ashx.cs">
       <DependentUpon>SearchPolicy.ashx</DependentUpon>
     </Compile>

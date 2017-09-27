@@ -1,1 +1,1 @@
-﻿<%@ WebHandler Language="C#" CodeBehind="SearchRenovation.ashx.cs" Class="IAS.Renovations.SearchPolicy" %>
+﻿<%@ WebHandler Language="C#" CodeBehind="SearchRenovation.ashx.cs" Class="IAS.Renovations.SearchRenovation" %>

@@ -77,7 +77,7 @@
     <div class="container-fluid" style="padding-left: 5px; padding-right: 5px">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Búsqueda</h3>
+                <h3 class="panel-title">Búsqueda de Pòliza</h3>
             </div>
             <div class="panel-body">
                 <div class="row">

@@ -351,6 +351,7 @@
     <None Include="Properties\PublishProfiles\LocalDEV - File System.pubxml" />
     <Content Include="Renovations\SearchPolicy.ashx" />
     <Content Include="Renovations\searchPerson.ashx" />
+    <Content Include="Renovations\SearchRenovation.ashx" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.0.js" />
     <Content Include="Scripts\jquery-3.1.0.min.js" />
@@ -1184,6 +1185,9 @@
     <Compile Include="Renovations\ResponseData.cs" />
     <Compile Include="Renovations\searchPerson.ashx.cs">
       <DependentUpon>searchPerson.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Renovations\SearchRenovation.ashx.cs">
+      <DependentUpon>SearchRenovation.ashx</DependentUpon>
     </Compile>
     <Compile Include="Renovations\SearchPolicy.ashx.cs">
       <DependentUpon>SearchPolicy.ashx</DependentUpon>

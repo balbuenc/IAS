@@ -17,7 +17,7 @@
         $(function () {
             $("[id$=txtSearchPolicy]").autocomplete(
                 {
-                    source: "SearchPolicy.ashx",
+                    source: "SearchRenovation.ashx",
                     response: function (event, ui) {
                     },
                     // note minlength, triggers the Handler call only once 3 characters entered

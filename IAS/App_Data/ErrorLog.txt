@@ -3115,3 +3115,8 @@ Exception Type: System.Exception
 Exception: El error no fué controlado por la aplicación.
 Source: customErrors section - Web.config
 Stack Trace: 
+********** 26/09/2017 09:28:47 p.m. **********
+Exception Type: System.Web.HttpException
+Exception: Ha ocurrido un error HTTP. La página no ha sido encontrada. Por favor intentelo de nuevo.
+Source: customErrors section - Web.config
+Stack Trace: 

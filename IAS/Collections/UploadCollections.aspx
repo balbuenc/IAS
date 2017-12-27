@@ -220,6 +220,123 @@
         </div>
     </div>
 
+
+     <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">EL SOL</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label>Cuotas</label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Archivo (.csv)</label>
+                            </div>
+                            <div class="col-lg-3"></div>
+                            <div class="col-lg-3"></div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <label>Fecha</label>
+                            </div>
+                            <div class="col-lg-3">
+                                <input id="txtDateElSol" placeholder="" type="date" class="form-control" runat="server" />
+                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtDateElSol" Font-Bold="true"
+                                    CssClass="text-danger" ValidationGroup="ElSol" ErrorMessage="El campo es requerido" />
+                            </div>
+                            <div class="col-lg-3"></div>
+                            <div class="col-lg-3"></div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <label>El Sol</label>
+                            </div>
+                            <div class="col-lg-3">
+                                <asp:FileUpload ID="ElSol" runat="server" />
+                            </div>
+                            <div class="col-lg-3 col-lg-offset-1">
+                                <asp:Button runat="server" ID="ElSolBtn" ValidationGroup="ElSol" Text="Upload" OnClick="ElSolBtn_Click" />
+                            </div>
+                            <div class="col-lg-3">
+                                <label>
+                                    <asp:Label runat="server" ID="ElSolStatus" Text="Estado" /></label>
+                            </div>
+                        </div>
+
+                        <br />
+
+                      
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">OTRAS ASEGURADORAS</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label>Cuotas</label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Archivo (.csv)</label>
+                            </div>
+                            <div class="col-lg-3"></div>
+                            <div class="col-lg-3"></div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <label>Fecha</label>
+                            </div>
+                            <div class="col-lg-3">
+                                <input id="txtDateOtraAseguradora" placeholder="" type="date" class="form-control" runat="server" />
+                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtDateOtraAseguradora" Font-Bold="true"
+                                    CssClass="text-danger" ValidationGroup="ElSol" ErrorMessage="El campo es requerido" />
+                            </div>
+                            <div class="col-lg-3"></div>
+                            <div class="col-lg-3"></div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <label>Otra Aseguradora</label>
+                            </div>
+                            <div class="col-lg-3">
+                                <asp:FileUpload ID="OtraAseguradora" runat="server" />
+                            </div>
+                            <div class="col-lg-3 col-lg-offset-1">
+                                <asp:Button runat="server" ID="OtraAseguradoraBtn" ValidationGroup="OtraAseguradora" Text="Upload" OnClick="OtraAseguradoraBtn_Click" />
+                            </div>
+                            <div class="col-lg-3">
+                                <label>
+                                    <asp:Label runat="server" ID="OtraAseguradoraStatus" Text="Estado" /></label>
+                            </div>
+                        </div>
+
+                        <br />
+
+                      
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript">
 
         $('#datetimepicker1').datetimepicker({

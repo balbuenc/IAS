@@ -49,6 +49,7 @@
                                     <th>CASO</th>
                                     <th>ESTADO</th>
                                     <th>USUARIO</th>
+                                    <th>POLIZA</th>
                                 </thead>
                                 <tbody>
                                     <tr runat="server" id="itemPlaceholder" />
@@ -58,7 +59,7 @@
                     </LayoutTemplate>
                     <ItemTemplate>
                         <tr>
-                            <td>
+                            <td class="visible-lg" >
                                 <asp:Label ID="lblcaseID" runat="server" Text='<%# Eval("caseID") %>' />
                             </td>
                             <td>
@@ -89,14 +90,22 @@
                                 <asp:Label ID="lblUserName" runat="server" Text='<%# Eval("UserName") %>' />
                             </td>
                             <td>
+                                <asp:Label ID="lblPoliza" runat="server" Text='<%# Eval("PolicyNumber") %>' />
+                            </td>
+                            <td>
                                 <div class="row">
-                                    <asp:LinkButton ID="EditButton" runat="server" Text="Editar" ToolTip="Editar" CommandName="Edit" CommandArgument='<%# Eval("CaseID") %>' CssClass="btn btn-link">
+                                    <div>
+                                        <asp:LinkButton ID="EditButton" runat="server" Text="Editar" ToolTip="Editar" CommandName="Edit" CommandArgument='<%# Eval("CaseID") %>' CssClass="btn btn-link">
                                         <span class="glyphicon glyphicon-edit"></span>
-                                    </asp:LinkButton>
+                                        </asp:LinkButton>
 
-                                    <asp:LinkButton ID="ManageCaseButton" runat="server" Text="Gestionar" ToolTip="Gestionar Caso" CommandName="Manage" CommandArgument='<%# Eval("CaseID") %>' CssClass="btn btn-link">
+                                        <asp:LinkButton ID="ManageCaseButton" runat="server" Text="Gestionar" ToolTip="Gestionar Caso" CommandName="Manage" CommandArgument='<%# Eval("CaseID") %>' CssClass="btn btn-link">
                                         <span class="glyphicon glyphicon-cog"></span>
-                                    </asp:LinkButton>
+                                        </asp:LinkButton>
+                                        <a href='<%#String.Format("http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fHistoricoCaso&rs:Command=Render&CaseID={0}", Eval("CaseID")) %>' target="_blank">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </a>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -126,6 +135,9 @@
                             </td>
                             <td>
                                 <asp:Label ID="lblCaso" runat="server" Text='<%# Eval("caso") %>' />
+                            </td>
+                            <td>
+                                <asp:Label ID="lblPoliza" runat="server" Text='<%# Eval("PolicyNumber") %>' />
                             </td>
                             <td>
                                 <%--<asp:TextBox ID="txtUserName" runat="server" Text='<%# Eval("UserName") %>' />--%>

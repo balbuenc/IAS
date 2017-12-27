@@ -19,7 +19,7 @@ namespace IAS.CaseManagment
         protected void CaseListView_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
             string url;
-
+            string url_reponse;
             try
             {
                 if (e.CommandName == "Manage")
@@ -32,6 +32,7 @@ namespace IAS.CaseManagment
                 {
                     CaseID = e.CommandArgument.ToString();
                 }
+               
 
             }
             catch (Exception ex)
@@ -47,5 +48,7 @@ namespace IAS.CaseManagment
             CaseDataSource.UpdateParameters["CaseID"].DefaultValue = CaseID;
             CaseDataSource.UpdateParameters["UserID"].DefaultValue = ddlOrigen.SelectedValue;
         }
+
+        
     }
 }

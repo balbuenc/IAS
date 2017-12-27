@@ -146,7 +146,11 @@
                         AssociatedControlID="chkToggleButton" runat="server"
                         ToolTip="Mis Tareas" />
                 </div>
-
+            </div>
+            <div class="col-lg-1" style="padding-top: 5px;  display: -webkit-box">
+                <button id="btnMyCalendar" runat="server" class="btn btn-default" onserverclick="btnMyCalendar_ServerClick">
+                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                </button>
             </div>
 
         </div>

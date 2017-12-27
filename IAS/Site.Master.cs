@@ -23,6 +23,7 @@ using System.Security.Principal;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace IAS
@@ -95,6 +96,24 @@ namespace IAS
                     string OriginalUrl = HttpContext.Current.Request.RawUrl;
                     string LoginPageUrl = "/Account/Login.aspx";
                     HttpContext.Current.Response.Redirect(String.Format("{0}?ReturnUrl={1}", LoginPageUrl, OriginalUrl));
+                }
+                else
+                {
+                    try
+                    {  
+                        if (User.User.Identity.Name == "lucia")
+                        {
+                            ((HtmlGenericControl)lv.FindControl("MyCollectionsMenuItem")).Style.Add("visibility", "visible");
+                        }
+                        else
+                        {
+                            ((HtmlGenericControl)lv.FindControl("MyCollectionsMenuItem")).Style.Add("visibility", "hidden");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Response.Write(ex.Message);
+                    }
                 }
             }
         }

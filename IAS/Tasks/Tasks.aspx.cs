@@ -451,5 +451,9 @@ namespace IAS.Tasks
 
         }
 
+        protected void btnMyCalendar_ServerClick(object sender, EventArgs e)
+        {
+            Response.Redirect("/Tasks/TaskCalendar");
+        }
     }
 }

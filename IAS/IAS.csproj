@@ -48,6 +48,9 @@
       <HintPath>..\packages\AspNet.ScriptManager.jQuery.3.1.0\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="DayPilot, Version=5.0.303.0, Culture=neutral, PublicKeyToken=ce5d34538e20ef65, processorArchitecture=MSIL">
+      <HintPath>..\packages\DayPilot.5.0.303\lib\DayPilot.dll</HintPath>
+    </Reference>
     <Reference Include="Elmah">
       <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
     </Reference>
@@ -461,6 +464,7 @@
     <Content Include="SideTest.html" />
     <Content Include="Site.Master" />
     <Content Include="Collections\Tasks.aspx" />
+    <Content Include="Tasks\TaskCalendar.aspx" />
     <Content Include="Tasks\Tasks.aspx" />
     <Content Include="Transports\Certificate.aspx" />
     <Content Include="Transports\Certificates.aspx" />
@@ -1231,6 +1235,13 @@
     <Compile Include="Tasks\search.ashx.cs">
       <DependentUpon>search.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Tasks\TaskCalendar.aspx.cs">
+      <DependentUpon>TaskCalendar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tasks\TaskCalendar.aspx.designer.cs">
+      <DependentUpon>TaskCalendar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Tasks\Tasks.aspx.cs">
       <DependentUpon>Tasks.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1324,6 +1335,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Readme\" />
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201402081817594_Initial.resx">

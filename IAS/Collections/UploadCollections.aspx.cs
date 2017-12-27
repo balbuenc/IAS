@@ -213,5 +213,83 @@ namespace IAS.Collections
                 }
             }
         }
+
+        protected void ElSolBtn_Click(object sender, EventArgs e)
+        {
+            if (ElSol.HasFile)
+            {
+                try
+                {
+                    DateTime dateElSol;
+
+                    string[] components = txtDateElSol.Value.Split('-');
+
+                    int day = int.Parse(components[2]);
+                    int month = int.Parse(components[1]);
+                    int year = int.Parse(components[0]);
+
+                    dateElSol = new DateTime(year, month, day);
+
+
+                    string fileName = $"elsol_collections_{dateElSol.Year}{((dateElSol.Month.ToString().Length == 1) ? "0" + dateElSol.Month : dateElSol.Month.ToString())}{((dateElSol.Day.ToString().Length == 1) ? "0" + dateElSol.Day : dateElSol.Day.ToString())}.csv";
+
+                    string fileExtension = Path.GetExtension(ElSol.FileName);
+
+                    if (fileExtension.Equals(".csv"))
+                    {
+                        ElSol.SaveAs(Server.MapPath("../Exchange/") + fileName);
+                        ElSolStatus.Text = "Estado: Archivo actualizado!";
+                    }
+                    else
+                    {
+                        ElSolStatus.Text = "Estado: El archivo debe ser .csv!";
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    ElSolStatus.Text = "Estado: Error al subir el archivo: " + ex.Message;
+                }
+            }
+        }
+
+        protected void OtraAseguradoraBtn_Click(object sender, EventArgs e)
+        {
+            if (OtraAseguradora.HasFile)
+            {
+                try
+                {
+                    DateTime dateOtraAseguradora;
+
+                    string[] components = txtDateOtraAseguradora.Value.Split('-');
+
+                    int day = int.Parse(components[2]);
+                    int month = int.Parse(components[1]);
+                    int year = int.Parse(components[0]);
+
+                    dateOtraAseguradora = new DateTime(year, month, day);
+
+
+                    string fileName = $"manual_collections_{dateOtraAseguradora.Year}{((dateOtraAseguradora.Month.ToString().Length == 1) ? "0" + dateOtraAseguradora.Month : dateOtraAseguradora.Month.ToString())}{((dateOtraAseguradora.Day.ToString().Length == 1) ? "0" + dateOtraAseguradora.Day : dateOtraAseguradora.Day.ToString())}.csv";
+
+                    string fileExtension = Path.GetExtension(OtraAseguradora.FileName);
+
+                    if (fileExtension.Equals(".csv"))
+                    {
+                        OtraAseguradora.SaveAs(Server.MapPath("../Exchange/") + fileName);
+                        OtraAseguradoraStatus.Text = "Estado: Archivo actualizado!";
+                    }
+                    else
+                    {
+                        OtraAseguradoraStatus.Text = "Estado: El archivo debe ser .csv!";
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    OtraAseguradoraStatus.Text = "Estado: Error al subir el archivo: " + ex.Message;
+                }
+            }
+        }
     }
 }

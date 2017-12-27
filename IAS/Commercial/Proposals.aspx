@@ -51,6 +51,8 @@
                                         <th>Mensual</th>
                                         <th>Cliente</th>
                                         <th>Nro. Doc.</th>
+                                        <th>Póliza</th>
+                                        <th>Tel. Cliente</th>
                                     </thead>
                                     <tbody>
                                         <tr runat="server" id="itemPlaceholder" />
@@ -86,6 +88,10 @@
 
                                 <td>
                                     <asp:Label ID="lblDocumentNumber" runat="server" Text='<%# Eval("DocumentNumber") %>' /></td>
+                                <td>
+                                    <asp:Label ID="lblPolicyNumber" runat="server" Text='<%# Eval("PolicyNumber") %>' /></td>
+                                <td>
+                                    <asp:Label ID="lblClientPhoneNumber" runat="server" Text='<%# Eval("ClientPhoneNumber") %>' /></td>
 
                                 <td class="text-right">
                                     <asp:Button ID="EditButton" runat="server" Text="Editar" CommandName="Edit" CssClass="btn btn-info" />
@@ -124,6 +130,10 @@
 
                                 <td>
                                     <asp:TextBox ID="txtDocumentNumber" runat="server" Text='<%# Bind("DocumentNumber") %>' /></td>
+                                <td>
+                                    <asp:TextBox ID="txtPolicyNumber" runat="server" Text='<%# Bind("PolicyNumber") %>' /></td>
+                                <td>
+                                    <asp:TextBox ID="txtClientPhoneNumber" runat="server" Text='<%# Bind("ClientPhoneNumber") %>' /></td>
                                 <td class="text-right">
                                     <asp:Button ID="UpdateButton" runat="server" Text="Guardar" CommandName="Update" CssClass="btn btn-info" />
                                     <asp:Button ID="CancelButton" runat="server" Text="Cancelar" CommandName="Cancel" CssClass="btn" />
@@ -162,6 +172,10 @@
 
                                 <td>
                                     <asp:TextBox ID="txtDocumentNumber" runat="server" Text='<%# Bind("DocumentNumber") %>' /></td>
+                                <td>
+                                    <asp:TextBox ID="txtPolicyNumber" runat="server" Text='<%# Bind("PolicyNumber") %>' /></td>
+                                <td>
+                                    <asp:TextBox ID="txtClientPhoneNumber" runat="server" Text='<%# Bind("ClientPhoneNumber") %>' /></td>
                                 <td>
                                     <asp:Button ID="InsertButton" runat="server" Text="Agregar" CommandName="Insert" CssClass="btn btn-success" />
                                 </td>
@@ -204,6 +218,8 @@
                             <asp:Parameter Name="Commission" Type="Int32" />
                             <asp:Parameter Name="Beneficiary" Type="String" />
                             <asp:Parameter Name="DocumentNumber" Type="String" />
+                            <asp:Parameter Name="PolicyNumber" Type="Int64" />
+                            <asp:Parameter Name="ClientPhoneNumber" Type="String" />
                         </UpdateParameters>
                         <InsertParameters>
                             <asp:Parameter Name="ProposalNumber" Type="Int64" />
@@ -217,6 +233,8 @@
                             <asp:ControlParameter Name="Commission" ControlID="ctl00$MainContent$ProposalListView$ctrl0$ProposalCommisionDDL" PropertyName="SelectedValue" />
                             <asp:Parameter Name="Beneficiary" Type="String" />
                             <asp:Parameter Name="DocumentNumber" Type="String" />
+                            <asp:Parameter Name="PolicyNumber" Type="Int64" />
+                            <asp:Parameter Name="ClientPhoneNumber" Type="String" />
                         </InsertParameters>
                     </asp:SqlDataSource>
                     <asp:SqlDataSource ID="InsuranceManagersDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[dbo].[sp_get_insurance_managers_ddl]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>

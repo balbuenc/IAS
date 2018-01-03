@@ -213,6 +213,7 @@
     <Content Include="CaseManagment\MyCaseList.aspx" />
     <Content Include="CaseManagment\PolicyVerification.aspx" />
     <Content Include="CaseManagment\SearchCase.aspx" />
+    <Content Include="CaseManagment\SearchCollection.aspx" />
     <Content Include="Claims\ApprovementClaim.aspx" />
     <Content Include="Claims\ClaimDetail.aspx" />
     <Content Include="Claims\ClaimFollow.aspx" />
@@ -851,6 +852,13 @@
     <Compile Include="CaseManagment\SearchCase.aspx.designer.cs">
       <DependentUpon>SearchCase.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CaseManagment\SearchCollection.aspx.cs">
+      <DependentUpon>SearchCollection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CaseManagment\SearchCollection.aspx.designer.cs">
+      <DependentUpon>SearchCollection.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Claim.Master.cs">
       <DependentUpon>Claim.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1335,7 +1343,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Readme\" />
-    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201402081817594_Initial.resx">

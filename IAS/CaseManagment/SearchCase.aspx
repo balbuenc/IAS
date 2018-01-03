@@ -6,9 +6,9 @@
     <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container">
+    <div class="container" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
         <div class="row">
-            <h2>BUSQUEDA DE CASOS</h2>
+            <h3 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">BÚSQUEDA DE CASOS</h3>
         </div>
         <div class="row">
             <div class="container-fluid" style="padding-left: 3px; padding-right: 3px;">
@@ -18,17 +18,18 @@
                         <asp:TextBox ID="txtSearchCase" runat="server" CssClass="form-control" placeholder="DATOS DEL CLIENTE"></asp:TextBox>
                     </div>
 
-                    <div class="col-lg-2 pull-right">
+                    <div class="col-lg-2">
                         <button id="btnSearch" runat="server" class="btn btn-default">
                             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                         </button>
 
                     </div>
+                   
                 </div>
 
             </div>
             <hr />
-            <div class="container-fluid" style="font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif; padding-left: 15px; padding-right: 15px">
+            <div class="container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-left: 15px; padding-right: 15px">
                 <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
 
                 <asp:ListView ID="CaseListView" runat="server"
@@ -42,14 +43,14 @@
                                     <th class="visible-lg">ID. CASO</th>
                                     <th>NOMBRES</th>
                                     <th>PRIMER APELLIDO</th>
-                                    <th class="visible-lg">SEGUNDO AEPLLIDO</th>
-                                    <th class="visible-lg">RAZON SOCIAL</th>
+                                    <th class="visible-lg">SEGUNDO APELLIDO</th>
+                                    <th class="visible-lg">RAZÓN SOCIAL</th>
                                     <th class="visible-lg">NRO. DOC.</th>
                                     <th class="visible-lg">TIPO DOC.</th>
                                     <th>CASO</th>
                                     <th>ESTADO</th>
                                     <th>USUARIO</th>
-                                    <th>POLIZA</th>
+                                    <th>PÓLIZA</th>
                                 </thead>
                                 <tbody>
                                     <tr runat="server" id="itemPlaceholder" />
@@ -59,7 +60,7 @@
                     </LayoutTemplate>
                     <ItemTemplate>
                         <tr>
-                            <td class="visible-lg" >
+                            <td class="visible-lg">
                                 <asp:Label ID="lblcaseID" runat="server" Text='<%# Eval("caseID") %>' />
                             </td>
                             <td>
@@ -92,20 +93,27 @@
                             <td>
                                 <asp:Label ID="lblPoliza" runat="server" Text='<%# Eval("PolicyNumber") %>' />
                             </td>
-                            <td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="11" style="text-align: left; border-color: transparent; padding: 0px">
                                 <div class="row">
-                                    <div>
+                                    
                                         <asp:LinkButton ID="EditButton" runat="server" Text="Editar" ToolTip="Editar" CommandName="Edit" CommandArgument='<%# Eval("CaseID") %>' CssClass="btn btn-link">
                                         <span class="glyphicon glyphicon-edit"></span>
                                         </asp:LinkButton>
-
+                                  
                                         <asp:LinkButton ID="ManageCaseButton" runat="server" Text="Gestionar" ToolTip="Gestionar Caso" CommandName="Manage" CommandArgument='<%# Eval("CaseID") %>' CssClass="btn btn-link">
-                                        <span class="glyphicon glyphicon-cog"></span>
+                                        <span class="glyphicon glyphicon-tags"></span>
                                         </asp:LinkButton>
-                                        <a href='<%#String.Format("http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fHistoricoCaso&rs:Command=Render&CaseID={0}", Eval("CaseID")) %>' target="_blank">
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                        </a>
-                                    </div>
+                                   
+                                        <asp:LinkButton ID="HistoryButton" runat="server" Text="Histórico Gestión" ToolTip="Histórico Gestión" CssClass="btn btn-link" 
+                                           OnClientClick='<%#String.Format("javascript:window.open(\"http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fHistoricoCaso&rs:Command=Render&CaseID={0}\",\"\",\"left=250px, top=245px, width=700px, height=450px, scrollbars=no, status=no, resizable=no\");return false;", Eval("CaseID").ToString()) %>'>
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                        </asp:LinkButton>
+
+                                  
+                                </div>
                                 </div>
                             </td>
                         </tr>
@@ -143,7 +151,10 @@
                                 <%--<asp:TextBox ID="txtUserName" runat="server" Text='<%# Eval("UserName") %>' />--%>
                                 <asp:DropDownList ID="ddlUser" runat="server" CssClass="form-control" SelectedValue='<%# Eval("UserID") %>' DataTextField="UserName" DataValueField="Id" DataSourceID="UserDataSource"></asp:DropDownList>
                             </td>
-                            <td>
+
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; border-color: transparent; padding: 0px">
                                 <div class="row">
                                     <asp:LinkButton ID="UpdateButton" runat="server" Text="Actualizar" ToolTip="Asignar Usuario" CommandName="Update" CommandArgument='<%# Eval("CaseID") %>' CssClass="btn btn-link">
                                         <span class="glyphicon glyphicon-ok"></span>
@@ -158,7 +169,7 @@
                     <InsertItemTemplate>
                     </InsertItemTemplate>
                     <EmptyDataTemplate>
-                        <h4 style="color: lightgray; text-align: center"><span class="glyphicon glyphicon-comment"></span>NO SE ENCONTRARON CASOS.</h4>
+                        <h5 style="color: lightgray; text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"><span class="glyphicon glyphicon-comment"></span>NO SE ENCONTRARON CASOS.</h5>
                     </EmptyDataTemplate>
 
                 </asp:ListView>

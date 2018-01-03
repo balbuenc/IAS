@@ -96,11 +96,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="container-fluid" style="font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;">
+    <div class="container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
         <asp:HiddenField ID="hdnCaseID" runat="server" />
         <div class="row">
             <div class="col-lg-12" style="border-bottom: double; border-bottom-color: darkblue; color: darkblue">
-                <h4>GESTIÓN DE CASO | COBRANZAS</h4>
+                <h4>COBRANZAS | Gestión de Casos</h4>
             </div>
         </div>
         <div class="row">
@@ -200,7 +200,7 @@
             <h4 style="color: dodgerblue">PÓLIZAS A GESTIONAR</h4>
         </div>
     </div>
-    <div class="row" style="font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif; font-size: small">
+    <div class="row" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: small">
         <asp:Label ID="ErrorLabel" Visible="False" CssClass="msg-box bg-danger" runat="server" />
         <asp:ListView ID="CollectionsListView" runat="server" DataSourceID="ActivePoliciesByCase"
             DataKeyNames="PolicyNumber"

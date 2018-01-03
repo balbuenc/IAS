@@ -87,7 +87,7 @@
                                 </button>
                                 <ul class="dropdown-menu" id="ServiciosUl" runat="server">
                                     <li id="MyCollectionsMenuItem" runat="server"><a href="../CaseManagment/MyCaseList.aspx">Mis Pendientes</a></li>
-                                    <li><a href="../CaseManagment/MyCaseList.aspx?mode=robot">Mis Pendientes | <b style="color: red; font-style: italic; font-weight: bold">!Beta</b></a></li>
+                                    <li><a href="../CaseManagment/MyCaseList.aspx?mode=robot">Mis Cobranzas</li>
                                     <li><a href="../Claims/ClaimSearch.aspx">Siniestros <b style="color: green; font-style: italic; font-weight: bold">!Novedades</b></a></li>
                                     <li><a href="../Tasks/Tasks.aspx">Tareas | <b style="color: red; font-style: italic; font-weight: bold">!Beta</b></a></li>
                                     <li><a href="../Renovations/Renovations.aspx">Renovaciones | <b style="color: red; font-style: italic; font-weight: bold">!Beta</b></a></li>
@@ -158,12 +158,14 @@
                                     <li><a href="http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fMetasMes&rs:Command=Render" target="_blank">Metas</a></li>
                                     <li><a href="http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fGestionCasos&rs:Command=Render" target="_blank">Historial de gestión</a></li>
                                     <li><a href="http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fHistoricoSMS&rs:Command=Render" target="_blank">Historial de SMS</a></li>
-                                    <li><a href="http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fMapfreCuotasOmitidas&rs:Command=Render" target="_blank">Mapfre | Cuotas Omitidas</a></li>
-                                    <li><a href="http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fSancorCuotasExcluidas&rs:Command=Render" target="_blank">Sancor | Cuotas Omitidas</a></li>
+                                    <%--<li><a href="http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fMapfreCuotasOmitidas&rs:Command=Render" target="_blank">Mapfre | Cuotas Omitidas</a></li>--%>
+                                    <%--<li><a href="http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fSancorCuotasExcluidas&rs:Command=Render" target="_blank">Sancor | Cuotas Omitidas</a></li>--%>
                                     <li><a href="http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fCobranzasDiferencias&rs:Command=Render" target="_blank">Diferencias en Cuotas</a></li>
                                     <li><a href="http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fCasosPorCliente&rs:Command=Render" target="_blank">Listado de casos</a></li>
                                     <li><a href="http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fCasosCelulares&rs:Command=Render" target="_blank">Clientes con Celular</a></li>
+                                    <li><a href="http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fSmsByCaseValidNumber&rs:Command=Render" target="_blank">Cant. Envío de SMS con Celular Válido</a></li>
                                     <li><a href="http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fEnvioSMSCasosConCelular&rs:Command=Render" target="_blank">Notificaciones por SMS</a></li>
+                                    <li><a href="http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fCollectedDateAVG&rs:Command=Render" target="_blank">Promedio Fechas de Pago</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fTareas&rs:Command=Render" target="_blank">Tareas</a></li>
                                     <li><a href="http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fMonthTaskReport&rs:Command=Render" target="_blank">Efectividad</a></li>

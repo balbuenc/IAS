@@ -218,14 +218,14 @@
                                 </li>
                             </ul>
                         </li>
-                        <li>
+                        <li id="CaseHistorylLI" runat="server" visible="false">
                             <a class='expandable' href='#myCaseHistoryModal' title='Historial' data-target="#myCaseHistoryModal" data-toggle="modal">
                                 <span class='glyphicon glyphicon-calendar collapsed-element'></span>
                                 <span class='expanded-element'>Historial</span>
                             </a>
 
                         </li>
-                        <li>
+                        <li id="CaseDataLI" runat="server" visible="false">
                             <a class='expandable' href="#myCaseDataModal" title='Datos Caso' data-target="#myCaseDataModal" data-toggle="modal">
                                 <span class='glyphicon glyphicon-comment collapsed-element'></span>
                                 <span class='expanded-element'>Datos caso</span>
@@ -287,123 +287,131 @@
                             <h4 class="modal-title">Histórico del Caso</h4>
                         </div>
                         <div class="modal-body">
-                            <div class="row">
-                                <asp:UpdatePanel ID="upnlHistory" runat="server" UpdateMode="Conditional">
-                                    <ContentTemplate>
-                                        <asp:Label ID="ErrorLabel" runat="server" Text="" CssClass="msg-box bg-danger" Visible="false"></asp:Label>
-                                        <asp:HiddenField ID="hdnCaseID" runat="server" />
-                                        <asp:ListView ID="CaseTransitionsListView" runat="server"
-                                            ItemType="IAS.Models.CaseTransition"
-                                            SelectMethod="GetData"
-                                            DataKeyNames="CaseTransitionID" OnItemCommand="CaseTransitionsListView_ItemCommand">
+                            <div class="container">
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item"><a class="nav-link active" href="#gestion" data-toggle="tab">Gestion</a></li>
+
+                                    <li class="nav-item"><a class="nav-link" href="#sms" data-toggle="tab">SMS</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="gestion" style="padding-top:10px">
+                                        <asp:UpdatePanel ID="upnlHistory" runat="server" UpdateMode="Conditional">
+                                            <ContentTemplate>
+                                                <asp:Label ID="ErrorLabel" runat="server" Text="" CssClass="msg-box bg-danger" Visible="false"></asp:Label>
+                                                <asp:HiddenField ID="hdnCaseID" runat="server" />
+                                                <asp:ListView ID="CaseTransitionsListView" runat="server"
+                                                    ItemType="IAS.Models.CaseTransition"
+                                                    SelectMethod="GetData"
+                                                    DataKeyNames="CaseTransitionID" OnItemCommand="CaseTransitionsListView_ItemCommand">
+                                                    <LayoutTemplate>
+                                                        <div class="containter-fluid">
+                                                            <div runat="server" id="itemPlaceholder" />
+                                                        </div>
+                                                    </LayoutTemplate>
+                                                    <ItemTemplate>
+                                                        <div class="history-row">
+                                                            <div class="row">
+                                                                <div class="col-sm-3">
+                                                                    <asp:Image ID="imgCalendar" ImageUrl="~/Images/calendar-icon.png" CssClass="history-icon" runat="server" />
+                                                                    <asp:Label runat="server" ID="lblTransitionDate" Text='<%# Bind("TransitionDate", "{0:dd/MM/yyyy HH:mm:ss}") %>' Style="font-size: 0.8em;" />
+                                                                </div>
+
+                                                                <div class="col-sm-4">
+                                                                    <asp:Label ID="lblPreviousState" runat="server" Text="<%# Item.PreviousState.StateName %>" />
+                                                                    <asp:Image ID="imgArrow" ImageUrl="~/Images/arrow-icon.png" runat="server" />
+                                                                    <asp:Label ID="lblNewState" runat="server" Text="<%# Item.NewState.StateName %>" />
+                                                                </div>
+
+                                                                <div class="col-sm-2">
+                                                                    <asp:Image ID="imgEffeciveDate" ImageUrl="~/Images/schedule-icon.png" CssClass="history-icon" runat="server" />
+                                                                    <asp:Label runat="server" ID="lblEffectiveDate" Text='<%# Bind("EffectiveDate", "{0:dd/MM/yyyy HH:mm:ss}") %>' Style="font-size: 0.8em;" />
+                                                                </div>
+
+                                                                <div class="col-sm-3">
+                                                                    <asp:Image ID="imgUser" ImageUrl="~/Images/user-icon.png" runat="server" CssClass="history-icon" />
+                                                                    <asp:Label ID="lblUser" runat="server" Text="<%# Item.User.FullName %>" />
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="row">
+
+                                                                <div class="col-sm-10">
+                                                                    <asp:Image ID="imgComments" ImageUrl="~/Images/comments-icon.png" CssClass="history-icon" runat="server" />
+                                                                    <asp:Label ID="Label3" runat="server" Text="<%#Item.Comment%>" />
+                                                                    <asp:Label ID="lblCaseTransitionID" runat="server" Text="<%#Item.CaseTransitionID%>" Visible="false" />
+                                                                </div>
+                                                                <div class="col-sm-2">
+                                                                    <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Drop" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar el registro.?');">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                                                    </asp:LinkButton>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </ItemTemplate>
+                                                    <EmptyDataTemplate>
+                                                        <div class="msg-box bg-info">
+                                                            El historial del caso esta vacío
+                                                        </div>
+                                                    </EmptyDataTemplate>
+                                                </asp:ListView>
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel>
+                                    </div>
+                                    <div class="tab-pane" id="sms">
+                                        <asp:ListView ID="SMSListView" runat="server"
+                                            DataSourceID="SmsDataSource"
+                                            DataKeyNames="SMSNotificationID"
+                                            AllowSorting="true">
                                             <LayoutTemplate>
-                                                <div class="containter-fluid">
-                                                    <div runat="server" id="itemPlaceholder" />
+                                                <div class="table responsive">
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>ID</th>
+                                                                <th>Mensaje</th>
+                                                                <th>Fecha</th>
+                                                                <th>Riesgo</th>
+                                                                <th>Vencimiento</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr runat="server" id="itemPlaceholder" />
+                                                        </tbody>
+
+                                                    </table>
+
                                                 </div>
                                             </LayoutTemplate>
+
                                             <ItemTemplate>
-                                                <div class="history-row">
-                                                    <div class="row">
-                                                        <div class="col-sm-3">
-                                                            <asp:Image ID="imgCalendar" ImageUrl="~/Images/calendar-icon.png" CssClass="history-icon" runat="server" />
-                                                            <asp:Label runat="server" ID="lblTransitionDate" Text='<%# Bind("TransitionDate", "{0:dd/MM/yyyy HH:mm:ss}") %>' Style="font-size: 0.8em;" />
-                                                        </div>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("SMSNotificationID") %>' />
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label2" runat="server" Text='<%# Eval("Message") %>' />
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label4" runat="server" Text='<%# String.Format("{0:d}", Eval("SendDate")) %>' />
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label5" runat="server" Text='<%# Eval("RiskName") %>' />
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label6" runat="server" Text='<%# String.Format("{0:d}", Eval("PaymentDueDate")) %>' />
+                                                    </td>
+                                                </tr>
 
-                                                        <div class="col-sm-4">
-                                                            <asp:Label ID="lblPreviousState" runat="server" Text="<%# Item.PreviousState.StateName %>" />
-                                                            <asp:Image ID="imgArrow" ImageUrl="~/Images/arrow-icon.png" runat="server" />
-                                                            <asp:Label ID="lblNewState" runat="server" Text="<%# Item.NewState.StateName %>" />
-                                                        </div>
-
-                                                        <div class="col-sm-2">
-                                                            <asp:Image ID="imgEffeciveDate" ImageUrl="~/Images/schedule-icon.png" CssClass="history-icon" runat="server" />
-                                                            <asp:Label runat="server" ID="lblEffectiveDate" Text='<%# Bind("EffectiveDate", "{0:dd/MM/yyyy HH:mm:ss}") %>' Style="font-size: 0.8em;" />
-                                                        </div>
-
-                                                        <div class="col-sm-3">
-                                                            <asp:Image ID="imgUser" ImageUrl="~/Images/user-icon.png" runat="server" CssClass="history-icon" />
-                                                            <asp:Label ID="lblUser" runat="server" Text="<%# Item.User.FullName %>" />
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div class="row">
-
-                                                        <div class="col-sm-10">
-                                                            <asp:Image ID="imgComments" ImageUrl="~/Images/comments-icon.png" CssClass="history-icon" runat="server" />
-                                                            <asp:Label ID="Label3" runat="server" Text="<%#Item.Comment%>" />
-                                                            <asp:Label ID="lblCaseTransitionID" runat="server" Text="<%#Item.CaseTransitionID%>" Visible="false" />
-                                                        </div>
-                                                        <div class="col-sm-2">
-                                                            <asp:LinkButton ID="DeleteButton" runat="server" Text="Borrar" CommandName="Drop" CssClass="btn btn-link" OnClientClick="return confirm('Esta Usted seguro de Eliminar el registro.?');">
-                                                <span class="glyphicon glyphicon-trash"></span>
-                                                            </asp:LinkButton>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </ItemTemplate>
+
                                             <EmptyDataTemplate>
-                                                <div class="msg-box bg-info">
-                                                    El historial del caso esta vacío
-                                                </div>
+                                                <div class="msg-box bg-warning">No hay historico de SMS para el caso</div>
                                             </EmptyDataTemplate>
+
                                         </asp:ListView>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </div>
-                            <hr />
-                            <div>
-                                <asp:ListView ID="SMSListView" runat="server"
-                                    DataSourceID="SmsDataSource"
-                                    DataKeyNames="SMSNotificationID"
-                                    AllowSorting="true">
-                                    <LayoutTemplate>
-                                        <div class="table responsive">
-                                            <table class="table table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Mensaje</th>
-                                                        <th>Fecha</th>
-                                                        <th>Riesgo</th>
-                                                        <th>Vencimiento</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr runat="server" id="itemPlaceholder" />
-                                                </tbody>
-
-                                            </table>
-
-                                        </div>
-                                    </LayoutTemplate>
-
-                                    <ItemTemplate>
-                                        <tr>
-                                            <td>
-                                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("SMSNotificationID") %>' />
-                                            </td>
-                                            <td>
-                                                <asp:Label ID="Label2" runat="server" Text='<%# Eval("Message") %>' />
-                                            </td>
-                                            <td>
-                                                <asp:Label ID="Label4" runat="server" Text='<%# String.Format("{0:d}", Eval("SendDate")) %>' />
-                                            </td>
-                                            <td>
-                                                <asp:Label ID="Label5" runat="server" Text='<%# Eval("RiskName") %>' />
-                                            </td>
-                                            <td>
-                                                <asp:Label ID="Label6" runat="server" Text='<%# String.Format("{0:d}", Eval("PaymentDueDate")) %>' />
-                                            </td>
-                                        </tr>
-
-                                    </ItemTemplate>
-
-                                    <EmptyDataTemplate>
-                                        <div class="msg-box bg-warning">No hay historico de SMS para el caso</div>
-                                    </EmptyDataTemplate>
-
-                                </asp:ListView>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">

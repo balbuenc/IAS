@@ -11,6 +11,7 @@ using System.Linq;
 using System.Web;
 using System.Web.ModelBinding;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace IAS.CaseManagment
@@ -19,8 +20,20 @@ namespace IAS.CaseManagment
     {
         protected void Page_PreRender(object sender, EventArgs e)
         {
+            HtmlControl CaseHistoryli = (HtmlGenericControl)this.Master.FindControl("CaseHistorylLI");
+            HtmlControl CaseDataLI = (HtmlGenericControl)this.Master.FindControl("CaseDataLI");
+
             if (null == Request.QueryString["CaseID"])
+            {
+                CaseHistoryli.Visible = false;
+                CaseDataLI.Visible = false;
                 Response.Redirect("~/Default.aspx", false);
+            }                
+            else
+            {
+                CaseHistoryli.Visible = true;
+                CaseDataLI.Visible = true;
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -35,7 +48,7 @@ namespace IAS.CaseManagment
             try
             {
                 var db = new ApplicationDbContext();
-               
+
                 var colls = db.Collections.Where(c => c.CaseID == caseID);
                 if (null != colls)
                     return colls.First().Person;
@@ -278,6 +291,6 @@ namespace IAS.CaseManagment
         {
             changeEffectiveDateEnableProperty();
         }
-      
+
     }
 }

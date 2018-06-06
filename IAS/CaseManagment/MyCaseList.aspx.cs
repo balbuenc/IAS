@@ -91,7 +91,8 @@ namespace IAS.CaseManagment {
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "js_alert", "alert('NO TIENE CASOS ASIGNADOS.');", true);
+                    //ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "js_alert", "alert('NO TIENE CASOS ASIGNADOS.');", true);
+                    Response.Redirect("/CaseManagment/SearchCase.aspx");
                 }
             }
             catch (Exception exp)

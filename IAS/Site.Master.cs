@@ -1,4 +1,4 @@
-﻿//«Copyright 2014 Balcazz HT, http://www.balcazzht.com»
+﻿//«Copyright 2014 Balcazz HT, http://www.enigmatech.biz»
 
 //This file is part of IAS | Insurance Advanced Services.
 
@@ -97,24 +97,24 @@ namespace IAS
                     string LoginPageUrl = "/Account/Login.aspx";
                     HttpContext.Current.Response.Redirect(String.Format("{0}?ReturnUrl={1}", LoginPageUrl, OriginalUrl));
                 }
-                else
-                {
-                    try
-                    {  
-                        if (User.User.Identity.Name == "lucia")
-                        {
-                            ((HtmlGenericControl)lv.FindControl("MyCollectionsMenuItem")).Style.Add("visibility", "visible");
-                        }
-                        else
-                        {
-                            ((HtmlGenericControl)lv.FindControl("MyCollectionsMenuItem")).Style.Add("visibility", "hidden");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Response.Write(ex.Message);
-                    }
-                }
+                //else
+                //{
+                //    try
+                //    {  
+                //        if (User.User.Identity.Name == "lucia")
+                //        {
+                //            ((HtmlGenericControl)lv.FindControl("MyCollectionsMenuItem")).Style.Add("visibility", "visible");
+                //        }
+                //        else
+                //        {
+                //            ((HtmlGenericControl)lv.FindControl("MyCollectionsMenuItem")).Style.Add("visibility", "hidden");
+                //        }
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        Response.Write(ex.Message);
+                //    }
+                //}
             }
         }
 

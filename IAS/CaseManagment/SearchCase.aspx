@@ -4,9 +4,11 @@
     <script src="../Scripts/jquery-1.12.4.min.js"></script>
     <script src="../../Scripts/bootstrap.min.js"></script>
     <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="../Scripts/sidemenu.js"></script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+    <div class="container" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
         <div class="row">
             <h3 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">BÚSQUEDA DE CASOS</h3>
         </div>
@@ -24,7 +26,7 @@
                         </button>
 
                     </div>
-                   
+
                 </div>
 
             </div>
@@ -98,21 +100,24 @@
                         <tr>
                             <td colspan="11" style="text-align: left; border-color: transparent; padding: 0px">
                                 <div class="row">
-                                    
-                                        <asp:LinkButton ID="EditButton" runat="server" Text="Editar" ToolTip="Editar" CommandName="Edit" CommandArgument='<%# Eval("CaseID") %>' CssClass="btn btn-link">
-                                        <span class="glyphicon glyphicon-edit"></span>
-                                        </asp:LinkButton>
-                                  
-                                        <asp:LinkButton ID="ManageCaseButton" runat="server" Text="Gestionar" ToolTip="Gestionar Caso" CommandName="Manage" CommandArgument='<%# Eval("CaseID") %>' CssClass="btn btn-link">
-                                        <span class="glyphicon glyphicon-tags"></span>
-                                        </asp:LinkButton>
-                                   
-                                        <asp:LinkButton ID="HistoryButton" runat="server" Text="Histórico Gestión" ToolTip="Histórico Gestión" CssClass="btn btn-link" 
-                                           OnClientClick='<%#String.Format("javascript:window.open(\"http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fHistoricoCaso&rs:Command=Render&CaseID={0}\",\"\",\"left=250px, top=245px, width=700px, height=450px, scrollbars=no, status=no, resizable=no\");return false;", Eval("CaseID").ToString()) %>'>
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                        </asp:LinkButton>
 
-                                  
+                                    <asp:LinkButton ID="EditButton" runat="server" Text="Editar" ToolTip="Editar" CommandName="Edit" CommandArgument='<%# Eval("CaseID") %>' CssClass="btn btn-link">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </asp:LinkButton>
+
+                                    <asp:LinkButton ID="ManageCaseButton" runat="server" Text="Gestionar" ToolTip="Gestionar Caso" CommandName="Manage" CommandArgument='<%# Eval("CaseID") %>' CssClass="btn btn-link">
+                                        <span class="glyphicon glyphicon-tags"></span>
+                                    </asp:LinkButton>
+
+                                    <asp:LinkButton ID="HistoryButton" runat="server" Text="Histórico Gestión" ToolTip="Histórico Gestión" CssClass="btn btn-link"
+                                        OnClientClick='<%#String.Format("javascript:window.open(\"http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fHistoricoCaso&rs:Command=Render&CaseID={0}&rc:Parameters=false\",\"\",\"left=250px, top=245px, width=700px, height=450px, scrollbars=no, status=no, resizable=no\");return false;", Eval("CaseID").ToString()) %>'>
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </asp:LinkButton>
+
+                                    <asp:LinkButton ID="AccountDetailButton" runat="server" Text="Estado de Cuenta" ToolTip="Estado de Cuenta" CssClass="btn btn-link"
+                                        OnClientClick='<%#String.Format("javascript:window.open(\"http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fEstadoCuenta&rs:Command=Render&CaseID={0}&rc:Parameters=false\",\"\",\"left=250px, top=245px, width=700px, height=450px, scrollbars=no, status=no, resizable=no\");return false;", Eval("CaseID").ToString()) %>'>
+                                        <span class="glyphicon glyphicon-stats"></span>
+                                    </asp:LinkButton>
                                 </div>
                                 </div>
                             </td>
@@ -169,7 +174,7 @@
                     <InsertItemTemplate>
                     </InsertItemTemplate>
                     <EmptyDataTemplate>
-                        <h5 style="color: lightgray; text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"><span class="glyphicon glyphicon-comment"></span>NO SE ENCONTRARON CASOS.</h5>
+                        <h5 style="color: lightgray; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"><span class="glyphicon glyphicon-comment"></span>NO SE ENCONTRARON CASOS.</h5>
                     </EmptyDataTemplate>
 
                 </asp:ListView>

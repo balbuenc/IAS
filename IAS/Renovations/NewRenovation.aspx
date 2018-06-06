@@ -77,12 +77,12 @@
     <div class="container-fluid" style="padding-left: 5px; padding-right: 5px">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Búsqueda de Pòliza</h3>
+                <h3 class="panel-title">Búsqueda de Póliza</h3>
             </div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-10">
-                        <asp:TextBox ID="txtSearchPolicy" runat="server" CssClass="form-control" placeholder="Busqueda de poliza: CI, Nombre, Apellido, Nro Poliza"></asp:TextBox>
+                        <asp:TextBox ID="txtSearchPolicy" runat="server" CssClass="form-control" placeholder="Búsqueda de póliza: CI, Nombre, Apellido, Nro. Póliza"></asp:TextBox>
                         <button style="display: none;" id="btnSearch" runat="server" class="btn btn-default" onserverclick="btnSearch_ServerClick">
                             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                         </button>
@@ -107,13 +107,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <label class="col-sm-2 control-label" for="form-group-input">Nro Documento</label>
+                    <label class="col-sm-2 control-label" for="form-group-input">Nro. Documento</label>
                     <div class="col-sm-10">
                         <asp:Label ID="lblNroDocumento" runat="server"></asp:Label>
                     </div>
                 </div>
                 <div class="row">
-                    <label class="col-sm-2 control-label" for="form-group-input">Poliza</label>
+                    <label class="col-sm-2 control-label" for="form-group-input">Póliza</label>
                     <div class="col-sm-10">
                         <asp:Label ID="lblPoliza" runat="server"></asp:Label>
                     </div>
@@ -174,13 +174,13 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
-                        <h4 class="modal-title" id="H5">No existe la poliza</h4>
+                        <h4 class="modal-title" id="H5">No existe la póliza</h4>
                     </div>
                     <br />
                     <div class="form-horizontal" role="form">
                         <div class="row" style="padding-left: 20px; padding-right: 20px; font-size: x-small !important;">
                             <div class="col-lg-12">
-                                <h4>¿Quisiera dar de alta la poliza?
+                                <h4>¿Quisiera dar de alta la póliza?
                                 </h4>
                             </div>
                         </div>

@@ -1,5 +1,5 @@
 ﻿<%--   
-    «Copyright 2014 Balcazz HT, http://www.balcazzht.com»
+    «Copyright 2014 Balcazz HT, http://www.enigmatech.biz»
 
     This file is part of IAS | Insurance Advanced Services.
 

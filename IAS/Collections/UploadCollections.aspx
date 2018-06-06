@@ -122,7 +122,7 @@
                                     <asp:ListItem>201712</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
-                             <div class="col-lg-3">
+                            <div class="col-lg-3">
                                 <label>
                                     <asp:Label runat="server" ID="MapfreToExcludeStatus" Text="Estado" /></label>
                             </div>
@@ -184,7 +184,7 @@
 
                         <br />
 
-                          <div class="row">
+                        <div class="row">
                             <div class="col-lg-2">
                                 <label>Excluir cumplimiento</label>
                             </div>
@@ -192,7 +192,7 @@
                                 <asp:FileUpload ID="SancorToExcludeUp" runat="server" />
                             </div>
                             <div class="col-lg-3 col-lg-offset-1">
-                                <asp:Button runat="server" ID="SancorToExcludeUpBtn" ValidationGroup="mapfre" Text="Upload" OnClick="SancorToExcludeUpBtn_Click"/>
+                                <asp:Button runat="server" ID="SancorToExcludeUpBtn" ValidationGroup="mapfre" Text="Upload" OnClick="SancorToExcludeUpBtn_Click" />
                             </div>
                             <div class="col-lg-3">
                                 <asp:DropDownList ID="DDLSancorToExclude" runat="server">
@@ -207,7 +207,7 @@
                                     <asp:ListItem>201712</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
-                             <div class="col-lg-3">
+                            <div class="col-lg-3">
                                 <label>
                                     <asp:Label runat="server" ID="SancorToExcludeStatus" Text="Estado" /></label>
                             </div>
@@ -221,7 +221,7 @@
     </div>
 
 
-     <div class="row">
+    <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">EL SOL</div>
@@ -268,10 +268,6 @@
                         </div>
 
                         <br />
-
-                      
-
-
                     </div>
                 </div>
             </div>
@@ -304,7 +300,7 @@
                             <div class="col-lg-3">
                                 <input id="txtDateOtraAseguradora" placeholder="" type="date" class="form-control" runat="server" />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtDateOtraAseguradora" Font-Bold="true"
-                                    CssClass="text-danger" ValidationGroup="ElSol" ErrorMessage="El campo es requerido" />
+                                    CssClass="text-danger" ValidationGroup="OtraAseguradora" ErrorMessage="El campo es requerido" />
                             </div>
                             <div class="col-lg-3"></div>
                             <div class="col-lg-3"></div>
@@ -327,9 +323,6 @@
                         </div>
 
                         <br />
-
-                      
-
 
                     </div>
                 </div>

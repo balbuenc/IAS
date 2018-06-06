@@ -31,7 +31,7 @@
 
             var prodId = getParameterByName('CaseID');
 
-            var url = "http://app.balcazzht.com/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fEstadoCuenta&rs:Command=Render&CaseID=" + prodId;
+            var url = "http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fEstadoCuenta&rs:Command=Render&CaseID=" + prodId;
 
         window.open(url);
 

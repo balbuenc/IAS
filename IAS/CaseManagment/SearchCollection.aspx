@@ -11,6 +11,8 @@
 
     <script src="/Scripts/moment-with-locales.min.js"></script>
     <script src="/Scripts/bootstrap-datetimepicker.min.js"></script>
+
+    <script src="../Scripts/sidemenu.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
@@ -51,7 +53,7 @@
                         <div class="table responsive">
                             <table class="table table-striped" style="font-size: x-small">
                                 <thead>
-                                    <th class="visible-lg">ID. CASO</th>
+                                    <th >ID. CASO</th>
                                     <th>CASO</th>
                                     <th>RIESGO</th>
                                     <th>VENCIMIENTO</th>
@@ -68,7 +70,7 @@
                     </LayoutTemplate>
                     <ItemTemplate>
                         <tr>
-                            <td class="visible-lg">
+                            <td >
                                 <%--<asp:Label ID="lblcaseID" runat="server" Text='<%# Eval("caseID") %>' />--%>
                                 <%--<a href="ManageCase?CaseID=" + <%# Eval("CaseID") %> title='<%# Eval("caseID") %>' ></a>--%>
                                 

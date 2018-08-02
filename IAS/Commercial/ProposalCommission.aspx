@@ -143,7 +143,12 @@
                     <%--<asp:ControlParameter Name="ProposalType" ControlID="ctl00$MainContent$ProposalCommissionListView$ctrl0$ddlProposalType" PropertyName="SelectedValue" />--%>
                 </InsertParameters>
             </asp:SqlDataSource>
+            <asp:SqlDataSource ID="PaymentTypesDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
+                SelectCommand="select PaymentTypeID , PaymentType from commercial.PaymentType order by PaymentType"
+                SelectCommandType="Text"></asp:SqlDataSource>
 
+            <asp:SqlDataSource ID="ProposalOriginsDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>"
+                SelectCommand="select ProposalOriginID, ProposalOrigin from commercial.ProposalOrigin order by ProposalOrigin"></asp:SqlDataSource>
             <asp:SqlDataSource ID="ProposalTypesDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IASDBContext %>" SelectCommand="[commercial].[sp_get_proposal_types_ddl]" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
         </ContentTemplate>
 

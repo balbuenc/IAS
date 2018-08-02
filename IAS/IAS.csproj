@@ -232,6 +232,7 @@
     <Content Include="Commercial\PaymentTypes.aspx" />
     <Content Include="Commercial\ProposalCommission.aspx" />
     <Content Include="Commercial\Proposals.aspx" />
+    <Content Include="Commercial\Quotes.aspx" />
     <Content Include="Commercial\Shipping.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-datepicker.css" />
@@ -345,11 +346,8 @@
     <Content Include="Scripts\jquery-1.12.4.min.js" />
     <Content Include="Claims\SearchPerson.ashx" />
     <Content Include="Claims\SearchClient.ashx" />
-    <None Include="Properties\PublishProfiles\adlws1 - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\adlws1 - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\adlws2 - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\adlws2 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\AIBIAS.pubxml" />
+    <None Include="Properties\PublishProfiles\AIME.pubxml" />
     <None Include="Properties\PublishProfiles\GS.pubxml" />
     <None Include="Properties\PublishProfiles\IASTEST - Local.pubxml" />
     <None Include="Properties\PublishProfiles\LocalDEV - File System.pubxml" />
@@ -1002,6 +1000,13 @@
     </Compile>
     <Compile Include="Commercial\Proposals.aspx.designer.cs">
       <DependentUpon>Proposals.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\Quotes.aspx.cs">
+      <DependentUpon>Quotes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Commercial\Quotes.aspx.designer.cs">
+      <DependentUpon>Quotes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Commercial\Shipping.aspx.cs">
       <DependentUpon>Shipping.aspx</DependentUpon>

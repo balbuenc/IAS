@@ -110,12 +110,12 @@
                                     </asp:LinkButton>
 
                                     <asp:LinkButton ID="HistoryButton" runat="server" Text="Histórico Gestión" ToolTip="Histórico Gestión" CssClass="btn btn-link"
-                                        OnClientClick='<%#String.Format("javascript:window.open(\"http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fHistoricoCaso&rs:Command=Render&CaseID={0}&rc:Parameters=false\",\"\",\"left=250px, top=245px, width=700px, height=450px, scrollbars=no, status=no, resizable=no\");return false;", Eval("CaseID").ToString()) %>'>
+                                        OnClientClick='<%#String.Format("javascript:window.open(\"http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fIAS_AIME%2fHistoricoCaso&rs:Command=Render&CaseID={0}&rc:Parameters=false\",\"\",\"left=250px, top=245px, width=700px, height=450px, scrollbars=no, status=no, resizable=no\");return false;", Eval("CaseID").ToString()) %>'>
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </asp:LinkButton>
 
                                     <asp:LinkButton ID="AccountDetailButton" runat="server" Text="Estado de Cuenta" ToolTip="Estado de Cuenta" CssClass="btn btn-link"
-                                        OnClientClick='<%#String.Format("javascript:window.open(\"http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fIAS_SSRS%2fEstadoCuenta&rs:Command=Render&CaseID={0}&rc:Parameters=false\",\"\",\"left=250px, top=245px, width=700px, height=450px, scrollbars=no, status=no, resizable=no\");return false;", Eval("CaseID").ToString()) %>'>
+                                        OnClientClick='<%#String.Format("javascript:window.open(\"http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fIAS_AIME%2fEstadoCuenta&rs:Command=Render&CaseID={0}&rc:Parameters=false\",\"\",\"left=250px, top=245px, width=700px, height=450px, scrollbars=no, status=no, resizable=no\");return false;", Eval("CaseID").ToString()) %>'>
                                         <span class="glyphicon glyphicon-stats"></span>
                                     </asp:LinkButton>
                                 </div>

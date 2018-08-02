@@ -58,6 +58,24 @@ namespace IAS.Commercial {
         protected global::System.Web.UI.WebControls.SqlDataSource ProposalCommissionDataSource;
         
         /// <summary>
+        /// PaymentTypesDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource PaymentTypesDataSource;
+        
+        /// <summary>
+        /// ProposalOriginsDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ProposalOriginsDataSource;
+        
+        /// <summary>
         /// ProposalTypesDataSource control.
         /// </summary>
         /// <remarks>

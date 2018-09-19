@@ -31,7 +31,7 @@
 
             var prodId = getParameterByName('CaseID');
 
-            var url = "http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fIAS_AIME%2fEstadoCuenta&rs:Command=Render&CaseID=" + prodId;
+            var url = "http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fIAS_TOYOTOSHI%2fEstadoCuenta&rs:Command=Render&CaseID=" + prodId;
 
         window.open(url);
 

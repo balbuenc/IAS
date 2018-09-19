@@ -11,10 +11,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="About.aspx">
-      <publishTime>04/04/2017 17:28:35</publishTime>
+      <publishTime>01/08/2018 08:33:47</publishTime>
     </File>
     <File Include="Account/Login.aspx">
-      <publishTime>04/04/2017 17:28:36</publishTime>
+      <publishTime>01/08/2018 08:33:47</publishTime>
     </File>
     <File Include="Account/Manage.aspx">
       <publishTime>04/04/2017 17:28:36</publishTime>
@@ -59,10 +59,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
     <File Include="Admin/CollectionResult.aspx">
-      <publishTime>04/04/2017 17:28:36</publishTime>
+      <publishTime>06/19/2017 11:49:09</publishTime>
     </File>
     <File Include="Admin/CollectionStates.aspx">
-      <publishTime>04/04/2017 17:28:36</publishTime>
+      <publishTime>06/19/2017 12:02:17</publishTime>
     </File>
     <File Include="Admin/ContactDestinations.aspx">
       <publishTime>04/04/2017 17:28:36</publishTime>
@@ -166,6 +166,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/AspNet.ScriptManager.jQuery.dll">
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
+    <File Include="bin/DayPilot.dll">
+      <publishTime>06/25/2015 15:26:28</publishTime>
+    </File>
     <File Include="bin/Elmah.dll">
       <publishTime>04/04/2017 17:28:37</publishTime>
     </File>
@@ -176,7 +179,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/04/2017 17:28:37</publishTime>
     </File>
     <File Include="bin/IAS.dll">
-      <publishTime>04/23/2017 18:43:29</publishTime>
+      <publishTime>08/05/2018 21:55:05</publishTime>
     </File>
     <File Include="bin/log4net.dll">
       <publishTime>03/08/2017 19:26:22</publishTime>
@@ -254,7 +257,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
     <File Include="CaseManagement.Master">
-      <publishTime>04/23/2017 18:36:45</publishTime>
+      <publishTime>06/06/2018 15:29:14</publishTime>
     </File>
     <File Include="CaseManagment/CaseData.ascx">
       <publishTime>04/04/2017 17:28:36</publishTime>
@@ -269,28 +272,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
     <File Include="CaseManagment/ClaimCaseDetails.aspx">
-      <publishTime>04/23/2017 18:36:45</publishTime>
+      <publishTime>08/05/2018 18:52:56</publishTime>
     </File>
     <File Include="CaseManagment/CollectionCaseDetails.aspx">
-      <publishTime>04/23/2017 18:36:45</publishTime>
+      <publishTime>08/05/2018 18:52:56</publishTime>
     </File>
     <File Include="CaseManagment/CollectionsToExpire.aspx">
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
     <File Include="CaseManagment/ManageCase.aspx">
-      <publishTime>04/04/2017 17:28:36</publishTime>
+      <publishTime>01/05/2018 11:31:52</publishTime>
     </File>
     <File Include="CaseManagment/MyCaseList.aspx">
-      <publishTime>04/23/2017 18:36:45</publishTime>
+      <publishTime>08/05/2018 18:52:56</publishTime>
     </File>
     <File Include="CaseManagment/PolicyVerification.aspx">
-      <publishTime>04/23/2017 18:36:44</publishTime>
+      <publishTime>08/05/2018 18:52:55</publishTime>
     </File>
     <File Include="CaseManagment/SearchCase.aspx">
-      <publishTime>04/04/2017 17:28:36</publishTime>
+      <publishTime>08/05/2018 18:52:55</publishTime>
+    </File>
+    <File Include="CaseManagment/SearchCollection.aspx">
+      <publishTime>01/05/2018 11:32:10</publishTime>
     </File>
     <File Include="Claim.Master">
-      <publishTime>04/23/2017 18:36:44</publishTime>
+      <publishTime>08/05/2018 18:52:54</publishTime>
     </File>
     <File Include="Claims/ApprovementClaim.aspx">
       <publishTime>04/04/2017 17:28:36</publishTime>
@@ -340,20 +346,29 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Collections/Assignations.aspx">
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
+    <File Include="Collections/ManageCumpliment.aspx">
+      <publishTime>08/21/2017 21:43:57</publishTime>
+    </File>
     <File Include="Collections/Tasks.aspx">
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
     <File Include="Collections/UploadCollections.aspx">
-      <publishTime>04/04/2017 17:28:36</publishTime>
+      <publishTime>01/18/2018 08:48:05</publishTime>
     </File>
     <File Include="Commercial/PaymentTypes.aspx">
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
     <File Include="Commercial/ProposalCommission.aspx">
-      <publishTime>04/04/2017 17:28:36</publishTime>
+      <publishTime>08/01/2018 19:48:23</publishTime>
     </File>
     <File Include="Commercial/Proposals.aspx">
-      <publishTime>04/04/2017 17:28:36</publishTime>
+      <publishTime>12/05/2017 15:30:58</publishTime>
+    </File>
+    <File Include="Commercial/Prospecting.aspx">
+      <publishTime>08/12/2018 15:31:15</publishTime>
+    </File>
+    <File Include="Commercial/Quotes.aspx">
+      <publishTime>08/01/2018 23:48:35</publishTime>
     </File>
     <File Include="Commercial/Shipping.aspx">
       <publishTime>04/04/2017 17:28:36</publishTime>
@@ -605,10 +620,34 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>04/18/2017 14:39:11</publishTime>
+      <publishTime>10/30/2017 11:07:26</publishTime>
     </File>
     <File Include="Policies/Policy.aspx">
       <publishTime>04/04/2017 17:28:36</publishTime>
+    </File>
+    <File Include="Renovations/EditRenovation.aspx">
+      <publishTime>05/29/2017 11:58:59</publishTime>
+    </File>
+    <File Include="Renovations/NewPerson.aspx">
+      <publishTime>09/26/2017 13:12:47</publishTime>
+    </File>
+    <File Include="Renovations/NewPolicy.aspx">
+      <publishTime>09/26/2017 13:08:19</publishTime>
+    </File>
+    <File Include="Renovations/NewRenovation.aspx">
+      <publishTime>01/04/2018 10:32:02</publishTime>
+    </File>
+    <File Include="Renovations/Renovations.aspx">
+      <publishTime>09/26/2017 21:29:31</publishTime>
+    </File>
+    <File Include="Renovations/searchPerson.ashx">
+      <publishTime>09/26/2017 13:13:17</publishTime>
+    </File>
+    <File Include="Renovations/SearchPolicy.ashx">
+      <publishTime>05/10/2017 15:43:19</publishTime>
+    </File>
+    <File Include="Renovations/SearchRenovation.ashx">
+      <publishTime>09/27/2017 13:05:42</publishTime>
     </File>
     <File Include="Reports.Master">
       <publishTime>04/04/2017 17:28:36</publishTime>
@@ -874,6 +913,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/respond.min.js">
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
+    <File Include="Scripts/sidemenu.js">
+      <publishTime>01/05/2018 11:29:16</publishTime>
+    </File>
     <File Include="Scripts/typeahead.bundle.js">
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
@@ -956,7 +998,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>04/23/2017 18:36:46</publishTime>
+      <publishTime>08/05/2018 18:52:56</publishTime>
     </File>
     <File Include="Site.Mobile.Master">
       <publishTime>04/04/2017 17:28:36</publishTime>
@@ -967,8 +1009,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Tasks/search.ashx">
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
+    <File Include="Tasks/TaskCalendar.aspx">
+      <publishTime>11/03/2017 21:25:24</publishTime>
+    </File>
     <File Include="Tasks/Tasks.aspx">
-      <publishTime>04/04/2017 17:28:36</publishTime>
+      <publishTime>10/30/2017 16:50:45</publishTime>
     </File>
     <File Include="Transport.Master">
       <publishTime>04/04/2017 17:28:36</publishTime>
@@ -1013,7 +1058,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/04/2017 17:28:36</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/23/2017 18:43:30</publishTime>
+      <publishTime>08/05/2018 21:55:08</publishTime>
     </File>
   </ItemGroup>
 </Project>

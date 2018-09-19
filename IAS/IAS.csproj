@@ -232,6 +232,7 @@
     <Content Include="Commercial\PaymentTypes.aspx" />
     <Content Include="Commercial\ProposalCommission.aspx" />
     <Content Include="Commercial\Proposals.aspx" />
+    <Content Include="Commercial\Prospecting.aspx" />
     <Content Include="Commercial\Quotes.aspx" />
     <Content Include="Commercial\Shipping.aspx" />
     <Content Include="Contact.aspx" />
@@ -1000,6 +1001,13 @@
     </Compile>
     <Compile Include="Commercial\Proposals.aspx.designer.cs">
       <DependentUpon>Proposals.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\Prospecting.aspx.cs">
+      <DependentUpon>Prospecting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Commercial\Prospecting.aspx.designer.cs">
+      <DependentUpon>Prospecting.aspx</DependentUpon>
     </Compile>
     <Compile Include="Commercial\Quotes.aspx.cs">
       <DependentUpon>Quotes.aspx</DependentUpon>
